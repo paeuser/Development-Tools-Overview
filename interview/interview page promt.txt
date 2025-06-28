@@ -1,0 +1,25 @@
+✅ Prompt to Generate interviewDefault.html
+
+    I want to create an HTML file called interviewDefault.html that I will copy and reuse each time I apply for a new position.
+
+    The page should have a two-column layout:
+
+        Left column (static): Contains sample company details including job title, company name, location, tech stack, recruiter contact info, etc.
+
+        Right column (scrollable): Used for interview preparation notes. This section should allow vertical scrolling so I can add and read multiple notes during prep.
+
+    The layout should be clean, readable, and mobile-friendly.
+
+    Please:
+
+        Include default content in both the left and right columns.
+
+        Make sure the right column scrolls independently.
+
+        Use inline CSS (no external stylesheets).
+
+        Format the HTML so I can easily copy and modify it for each new role I apply to.
+
+        The right column must always be present and must not be omitted in any generated file.
+
+        <!-- The left column is for job description details. The right column is for interview notes and must always be present. Both must be clearly marked in the HTML with comments for future reference. -->

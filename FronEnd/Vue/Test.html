@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue + Vitest Testing Quickstart</title>
+  <link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+  <div class="container" style="max-width:700px;margin:2em auto;background:#fff;border-radius:8px;box-shadow:0 2px 8px #0001;padding:2em;">
+    <h1>Vue + Vitest Testing Quickstart</h1>
+    <h2>Project Setup</h2>
+    <ol>
+      <li>Run <code>npx create-vite@latest . --template vue</code> to create a new Vue project.</li>
+      <li>Install testing dependencies:<br>
+        <code>npm install -D vitest @vue/test-utils jsdom</code>
+      </li>
+    </ol>
+    <ul>
+      <li><strong>vitest</strong>: Fast unit testing framework for Vite projects.</li>
+      <li><strong>@vue/test-utils</strong>: Official Vue utility library for testing components.</li>
+      <li><strong>jsdom</strong>: Simulates a browser DOM for Node.js testing.</li>
+    </ul>
+    <h2>Test Script</h2>
+    <p>Add to <code>package.json</code>:</p>
+    <pre><code>{
+  "scripts": {
+    "test": "vitest"
+  }
+}</code></pre>
+    <p>Run tests with <code>npm run test</code>.</p>
+    <h2>Sample Test File</h2>
+    <p>Create <code>HelloWorld.spec.js</code>:</p>
+    <pre><code>import { mount } from '@vue/test-utils';
+import HelloWorld from './HelloWorld.vue';
+
+describe('HelloWorld', () => {
+  it('renders message', () => {
+    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } });
+    expect(wrapper.text()).toContain('Hello Vitest');
+  });
+});
+</code></pre>
+    <h2>Common Error & Solution</h2>
+    <p><strong>Error:</strong> <code>ReferenceError: document is not defined</code></p>
+    <p><strong>Cause:</strong> Vitest runs in Node.js by default, which lacks DOM APIs.</p>
+    <p><strong>Solution:</strong> Set the test environment to <code>jsdom</code> in <code>vitest.config.js</code>:</p>
+    <pre><code>import { defineConfig } from 'vitest/config';
+export default defineConfig({
+  test: {
+    environment: 'jsdom',
+  },
+});
+</code></pre>
+    <p>After this, DOM-related tests will work and pass.</p>
+  </div>
+</body>
+</html>

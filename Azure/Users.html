@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure User Accounts Explained</title>
+    <link rel="stylesheet" href="../site.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Understanding Azure User Accounts</h1>
+        <h2>Your Personal Microsoft Account (MSA)</h2>
+        <p><strong>eric-cabrera@live.com</strong> is your personal Microsoft Account (MSA). This is the email and identity you used to sign up for Azure.</p>
+        <h2>Default Directory</h2>
+        <p>When you create an Azure subscription with a personal Microsoft Account, Azure automatically creates a directory (tenant) for you, called a <strong>“default directory”</strong>.</p>
+        <p>This directory contains a user that corresponds to your MSA (<strong>eric-cabrera@live.com</strong>), but sometimes the portal will show this account as a guest user in another tenant, especially if you are invited to collaborate on other Azure tenants.</p>
+        <h2>Guest User Accounts</h2>
+        <p>The account <strong>"eric cabrera (Guest)"</strong> with the email <strong>eric-cabrera_live.com#EXT#@ericcabreralive.onmicrosoft.com</strong> represents a guest user in the Azure Active Directory tenant named <strong>ericcabreralive.onmicrosoft.com</strong>.</p>
+        <ul>
+            <li>This guest account is created when your personal Microsoft Account (<strong>eric-cabrera@live.com</strong>) is invited to collaborate in another organization’s Azure tenant.</li>
+            <li>Azure AD modifies the email to include <code>#EXT#</code> and replaces the <code>@</code> symbol to indicate it is an external user.</li>
+            <li>Because this is a guest account, it has limited permissions compared to your main user account and is distinct from your primary login, which owns your Azure subscription and has full administrative rights.</li>
+        </ul>
+    </div>
+</body>
+</html>

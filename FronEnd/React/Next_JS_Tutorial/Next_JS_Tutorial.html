@@ -1,0 +1,328 @@
+https://www.youtube.com/watch?v=ZVnjOPwW4ZA
+
+
+<h1>rafce</h1>
+<p><strong>rafce</strong> is a popular code snippet (commonly available in VS Code with the ES7+ React/Redux/React-Native snippets extension) that quickly generates a React Arrow Function Component with export. It scaffolds a functional component using an arrow function and exports it by default, saving time when creating new React components.</p>
+
+<h1>TABLE OF CONTENT</h1>
+<h2>Course Intro</h2>
+<h2>Prerequisites</h2>
+<h2>Fundamentals</h2>
+<h2>What is react?</h2>
+<p>React is a popular open-source JavaScript library developed by Facebook for building user interfaces, especially single-page applications. It allows developers to create reusable UI components and efficiently update and render them in response to data changes.</p>
+<h2>What is Next.js?</h2>
+<p>Next.js is a React framework that enables server-side rendering, static site generation, and other advanced features out of the box. It simplifies building production-ready React applications by providing routing, data fetching, and performance optimizations.</p>
+
+<h3>Next.js Architecture Diagram</h3>
+<pre>
++-------------------+
+|   Next.js App     |
++-------------------+
+          |
+          v
++-------------------+
+|   Next.js Compiler|
+|   (Babel, SWC)    |
++-------------------+
+          |
+          v
++-------------------+
+|   Next.js CLI     |
++-------------------+
+          |
+          v
++-------------------+
+| Node.js Runtime   |
++-------------------+
+</pre>
+<p>This diagram shows how your Next.js application code is processed by the Next.js compiler (using Babel or SWC), managed by the Next.js CLI, and finally executed in the Node.js runtime. Unlike traditional React apps that run entirely in the client browser, Next.js executes code on the server, enabling server-side rendering and improved performance.</p>
+<h2>Server-side Rendering</h2>
+<p>
+    Server-side rendering (SSR) is a technique where the HTML for a web page is generated on the server for each request, rather than in the browser. In Next.js, SSR allows you to pre-render pages on the server, improving SEO and reducing the time to first meaningful paint for users. This is achieved using functions like <code>getServerSideProps</code>, which fetch data and render the page on the server before sending it to the client.
+</p>
+
+<h2>Static Site Generation</h2>
+<p>
+    Static Site Generation (SSG) is a method where HTML pages are generated at build time, rather than on each request. In Next.js, SSG allows you to pre-render pages into static HTML, which can be served quickly to users and cached by CDNs for optimal performance. This is achieved using functions like <code>getStaticProps</code> and <code>getStaticPaths</code>, which fetch data and generate pages during the build process.
+</p>
+
+<h1>Babel</h1>
+<p>Babel is a popular JavaScript compiler that allows developers to use the latest JavaScript features by transforming modern JavaScript code into a version compatible with older browsers or environments. In the context of Next.js, Babel is used as part of the build process to compile and optimize your React and JavaScript code, ensuring compatibility and performance across different platforms.</p>
+
+<h2>Client-side Rendering</h2>
+<p>
+    Client-side rendering (CSR) is when the browser downloads a minimal HTML page and uses JavaScript to render the content on the client side. In Next.js, you can use standard React components and hooks to fetch and display data after the page loads. CSR is useful for pages that do not require SEO or for dynamic, user-specific content.
+</p>
+<h2>Setting Up the Development Environment</h2>
+<h2>Creating Your First Next.js Project</h2>
+<pre>
+
+<pre>
+npx create-next-app@13.4
+</pre>
+<p>
+The <code>npx create-next-app@13.4</code> command is used to quickly create a new Next.js project using version 13.4 of the <code>create-next-app</code> tool.
+</p>
+<ul>
+    <li><strong>npx</strong> runs a package without installing it globally.</li>
+    <li><strong>create-next-app</strong> is the official tool to scaffold a new Next.js application with all the necessary files and configuration.</li>
+    <li><strong>@13.4</strong> specifies the version to use (in this case, 13.4).</li>
+</ul>
+<p>
+This command will prompt you for project options and set up a ready-to-use Next.js project in a new folder.
+</p>
+<pre>
+PS C:\Git3\Projects\FrontEnd\React\Next_JS_Tutorial> npx create-next-app@13.4
+Need to install the following packages:
+create-next-app@13.4.19
+</pre>
+Ok to proceed? (y) y
+
+√ What is your project named? ... next-app
+√ Would you like to use TypeScript? ... No / Yes
+√ Would you like to use ESLint? ... No / Yes
+√ Would you like to use Tailwind CSS? ... No / Yes
+√ Would you like to use `src/` directory? ... No / Yes
+√ Would you like to use App Router? (recommended) ... No / Yes
+√ Would you like to customize the default import alias? ... No / Yes
+Creating a new Next.js app in C:\Git3\Projects\FrontEnd\React\Next_JS_Tutorial\next-app.
+
+Using npm.
+
+Initializing project with template: app-tw 
+
+
+Installing dependencies:
+- react
+- react-dom
+- next
+- typescript
+- @types/react
+- @types/node
+- @types/react-dom
+- tailwindcss
+- postcss
+- autoprefixer
+- eslint
+- eslint-config-next
+
+</pre>
+
+<h2>Project Structure</h2>
+<p>The default Next.js project structure includes several important files and folders:</p>
+<ul>
+  <li><strong>next.config.js</strong>: Configuration file for customizing Next.js settings and behavior.</li>
+  <li><strong>package.json</strong>: Lists project dependencies, scripts, and metadata.</li>
+  <li><strong>tsconfig.json</strong>: TypeScript configuration file (if using TypeScript).</li>
+  <li><strong>postcss.config.js</strong>: Configuration for PostCSS, used for processing CSS.</li>
+  <li><strong>tailwind.config.ts</strong>: Configuration for Tailwind CSS styling framework.</li>
+  <li><strong>next-env.d.ts</strong>: TypeScript type definitions for Next.js.</li>
+  <li><strong>README.md</strong>: Project documentation and instructions.</li>
+  <li><strong>app/</strong>: Contains application source code, including pages, layouts, and global styles.
+<br>
+also called the app router container:
+on not next.js the router is base on file system.
+here we don't have to configure our routes and map them to our components 
+we just simply add folder and files and they represent our routes 
+</li>
+  <li><strong>app/layout.tsx</strong>: Defines the root layout for your application. The <code>.tsx</code> extension indicates a TypeScript React component file, allowing you to use both TypeScript and JSX syntax.</li>
+  <li><strong>app/page.tsx</strong>: The main entry page for your application. The <code>.tsx</code> extension means this file is written in TypeScript and JSX.</li>
+ <br>pages name most be lowercase when saved as .tsx
+
+  <li><strong>app/globals.css</strong>: Global CSS styles for the application.</li>
+  <li><strong>app/favicon.ico</strong>: The favicon for your site.</li>
+  <li><strong>public/</strong>: Static assets like images and icons that are publicly accessible.</li>
+  <li><strong>public/next.svg</strong> and <strong>public/vercel.svg</strong>: Example SVG images included by default.</li>
+</ul>
+<p>This structure helps organize your code, configuration, and assets for scalable and maintainable Next.js applications.</p>
+
+<h1>Issues running the project </h1>
+<ul>
+  <li>Initially, running <code>npm run dev</code> from the parent directory resulted in a "Missing script: 'dev'" error because the command must be run inside the <code>next-app</code> folder where the <code>package.json</code> with the scripts is located.</li>
+  <li>When running <code>npm run dev</code> inside <code>next-app</code>, an error "'next' is not recognized as an internal or external command" appeared. This was due to missing or incomplete dependencies.</li>
+  <li>After running <code>npm install</code> in the <code>next-app</code> directory, all required dependencies (including <code>next</code>, <code>react</code>, and <code>react-dom</code>) were installed.</li>
+  <li>Another error appeared: <code>Argument for '--moduleResolution' option must be: 'node', 'classic', 'node16', 'nodenext'.</code> This was fixed by updating <code>tsconfig.json</code> to use <code>"moduleResolution": "node"</code>.</li>
+  <li>After these fixes, running <code>npm run dev</code> from inside <code>next-app</code> successfully started the Next.js development server, and the project can now be accessed at <code>http://localhost:3000</code>.</li>
+</ul>
+
+<h2>Routing and Navigation</h2>
+<h2>Client and Server Components</h2>
+<p><strong>Client Components:</strong></p>
+<ul>
+  <li>Are bundled and sent to the browser, increasing bundle size and using more client memory and resources.</li>
+  <li>Can execute JavaScript, access browser APIs, listen to browser events, and maintain state (e.g., for interactive features like search boxes or rerouting).</li>
+  <li>Are less secure because all code is exposed to the client; sensitive data should not be handled here.</li>
+</ul>
+<p><strong>Server Components:</strong></p>
+<ul>
+  <li>Are rendered on the server and only send essential HTML to the client, reducing bundle size and client resource usage.</li>
+  <li>Improve SEO and initial load performance since content is pre-rendered and sent directly to the browser.</li>
+  <li>Are more secure, as sensitive data and logic remain on the server and are never exposed to the client.</li>
+  <li>Cannot listen to browser events, access browser APIs, or maintain client-side state—these functionalities are only available in client components.</li>
+</ul>
+<p>In summary, use server components for secure, resource-efficient, and SEO-friendly rendering, and client components for interactivity and features that require access to the browser environment.</p>
+<h2>Data Fetching</h2>
+<p>Data fetching in Next.js can be done on both the client and the server:</p>
+<ul>
+  <li><strong>Client-side Data Fetching:</strong> You can use <code>useState()</code> and <code>useEffect()</code> hooks to fetch data after the component mounts. A better alternative is to use a library like <strong>React Query</strong> for more advanced data fetching, caching, and synchronization. However, fetching data on the client has several drawbacks:
+    <ul>
+      <li>Increases the bundle size over time, making the app more resource intensive for the client.</li>
+      <li>Requires an extra round trip to the server after the initial page load, which can slow down perceived performance.</li>
+      <li>Can expose sensitive data to the client, which is a security risk.</li>
+      <li>Hurts SEO, since search engines may not see the data rendered on the initial page load.</li>
+    </ul>
+  </li>
+  <li><strong>Server-side Data Fetching:</strong> Fetching data on the server (using Next.js server components or data fetching methods like <code>getServerSideProps</code> or <code>getStaticProps</code>) avoids these issues by sending only the necessary data to the client, improving performance, security, and SEO.</li>
+</ul>
+
+<p>
+  Here we will be using the <code>fetch</code> API to retrieve data from an external API endpoint, such as <code>https://jsonplaceholder.typicode.com/todos/1</code>. This endpoint returns a JSON object representing a todo item. The <code>fetch</code> function is used to make HTTP requests and can be used in both client and server components in Next.js.
+</p>
+<p>
+  Example endpoint: <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a>
+</p>
+
+
+<h2>Caching</h2>
+<p>Caching in Next.js is a technique used to store the results of data fetching or page rendering, so repeated requests can be served faster without recomputing or refetching the data each time. Next.js supports built-in caching for static assets, server-rendered pages, and API responses. You can also use HTTP headers and third-party CDNs to further optimize caching. Effective caching improves performance, reduces server load, and provides a better user experience.</p>
+<h2>Static and Dynamic Rendering</h2>
+<p><strong>Static Rendering</strong> (also known as Static Site Generation or SSG) is when HTML is generated at build time. The generated pages are served as static files, making them very fast and efficient. This approach is ideal for content that does not change often, such as blogs or documentation, and is great for SEO.</p>
+<p><strong>Dynamic Rendering</strong> (also known as Server-Side Rendering or SSR) is when HTML is generated on each request, allowing the content to be personalized or frequently updated. This is useful for pages that depend on user data, authentication, or real-time information. Dynamic rendering ensures users always see the most up-to-date content, but may be slightly slower than static rendering due to the server processing required for each request.</p>
+<p>Next.js allows you to choose between static and dynamic rendering on a per-page basis, giving you flexibility to optimize performance, SEO, and user experience for different parts of your application.</p>
+<h2>Styling Next.js Applications</h2>
+
+<h2>Global Styles</h2>
+<p>Global styles in Next.js are CSS rules that apply to your entire application. You typically define them in a single CSS file (like <code>app/globals.css</code>) and import this file at the root layout (e.g., <code>app/layout.tsx</code>). Global styles are useful for setting base styles, typography, colors, and CSS resets that should be consistent across all pages and components.</p>
+<pre><code>{`// app/layout.tsx
+import './globals.css';
+
+export default function RootLayout({ children }) {
+  return <html><body>{children}</body></html>;
+}`}</code></pre>
+<p>Remember: Avoid putting component-specific styles in global CSS to prevent style conflicts.</p>
+
+<h2>CSS Modules</h2>
+<p>CSS Modules allow you to write CSS that is scoped to a specific component, preventing class name collisions. In Next.js, you create a CSS file with the <code>.module.css</code> extension and import it into your component. The imported classes are available as a JavaScript object, ensuring styles only apply to that component.</p>
+<pre><code>{`// app/components/Button.module.css
+.button {
+  background: #0070f3;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+// app/components/Button.tsx
+import styles from './Button.module.css';
+
+export default function Button() {
+  return <button className={styles.button}>Click me</button>;
+}`}</code></pre>
+<p>Use CSS Modules for component-level styling and encapsulation.</p>
+
+<h2>Tailwind CSS</h2>
+<p>Tailwind CSS is a utility-first CSS framework that lets you style elements by applying pre-defined classes directly in your JSX. It is highly customizable and encourages rapid UI development. In Next.js, Tailwind is set up by installing the package and adding it to your <code>postcss.config.js</code> and <code>tailwind.config.ts</code> files. You then use Tailwind classes in your components:</p>
+<pre><code>{`// app/page.tsx
+export default function Home() {
+  return (
+    <div className="bg-blue-500 text-white p-4 rounded">
+      Welcome to Next.js with Tailwind CSS!
+    </div>
+  );
+}`}</code></pre>
+<p>Tailwind is great for building responsive, modern UIs quickly without writing custom CSS.</p>
+
+<h2>DaisyUI</h2>
+<p>DaisyUI is a plugin for Tailwind CSS that provides a set of pre-styled, customizable UI components (like buttons, cards, navbars, etc.). It works seamlessly with Tailwind, letting you use component classes such as <code>btn</code>, <code>card</code>, and <code>alert</code> in your JSX. To use DaisyUI, install it and add it to your <code>tailwind.config.ts</code> plugins. Example usage:</p>
+<pre><code>{`// app/components/Example.tsx
+export default function Example() {
+  return <button className="btn btn-primary">DaisyUI Button</button>;
+}`}</code></pre>
+<p>DaisyUI helps you build beautiful interfaces faster by leveraging Tailwind’s utility classes and ready-made components.</p>
+<h2>Server Component Sample: E-commerce Layout</h2>
+<pre>
+// app/components/Navbar.tsx
+export default function Navbar() {
+  return (
+    <nav>
+      <h2>Navbar</h2>
+      {/* Navigation links here */}
+    </nav>
+  );
+}
+
+// app/components/ProductList.tsx
+export default function ProductList() {
+  return (
+    <section>
+      <h2>Product List</h2>
+      {/* Map products here */}
+    </section>
+  );
+}
+
+// app/components/Pagination.tsx
+export default function Pagination() {
+  return (
+    <div>
+      <h2>Pagination</h2>
+      {/* Pagination controls here */}
+    </div>
+  );
+}
+
+// app/components/Sidebar.tsx
+export default function Sidebar() {
+  return (
+    <aside>
+      <h2>Sidebar</h2>
+      {/* Sidebar content here */}
+    </aside>
+  );
+}
+
+// app/components/ProductCard.tsx
+export default function ProductCard() {
+  return (
+    <div>
+      <h3>Product Card</h3>
+      {/* Product details here */}
+    </div>
+  );
+}
+
+// app/components/Footer.tsx
+export default function Footer() {
+  return (
+    <footer>
+      <h2>Footer</h2>
+      {/* Footer content here */}
+    </footer>
+  );
+}
+</pre>
+<p>All these components are server components by default in Next.js (no 'use client' directive). They render on the server, send only essential HTML to the client, and are suitable for static or data-driven content that does not require browser interactivity.</p>
+<h2>Client and Server Components: AddToCart Example</h2>
+<p>On the client side, you can add an <strong>AddToCart</strong> component to handle client events such as button clicks. This component can be reused inside a server component like <strong>ProductCard</strong> to provide interactivity. For example:</p>
+<pre><code>{`// AddToCart.tsx (Client Component)
+"use client";
+export default function AddToCart() {
+  return (
+    <button onClick={() => alert('Added to cart!')}>
+      Add to Cart
+    </button>
+  );
+}
+
+// ProductCard.tsx (Server Component)
+import AddToCart from './AddToCart';
+export default function ProductCard() {
+  return (
+    <div>
+      <h3>Product Card</h3>
+      {/* Product details here */}
+      <AddToCart />
+    </div>
+  );
+}`}</code></pre>
+<p>This demonstrates how a client component (with <code>"use client"</code> directive) can be used for browser events and interactivity, while being reused inside a server component for efficient rendering and separation of concerns.</p>
+<p>Note: So far, everything in the <code>app</code> folder is a server component by default in Next.js, unless you explicitly add the <code>"use client"</code> directive at the top of a file to make it a client component.</p>

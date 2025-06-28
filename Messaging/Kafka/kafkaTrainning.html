@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kafka Producer Tutorial Summary</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        h1, h2 { color: #2c3e50; }
+        .screenshot { margin: 1em 0; }
+        code, pre { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; }
+        ul { margin-bottom: 1em; }
+        .section { margin-bottom: 2em; }
+    </style>
+</head>
+<body>
+
+<!-- Always visible, end-of-page training link -->
+<section style="margin:2em 0; border-top:1px solid #eee; padding-top:1.5em;">
+  <h3>Kafka Training for .NET Developers</h3>
+  <p>
+    <a href="https://developer.confluent.io/courses/apache-kafka-for-dotnet/overview/?utm_source=youtube&utm_medium=video&utm_campaign=tm.devx_ch.cd-apache-kafka-for-dot-net-developers_content.connecting-to-apache-kafka" target="_blank">
+      Apache Kafka for .NET Developers (Confluent Training)
+    </a>
+  </p>
+
+<p>
+  <strong>Repo:</strong>
+  <a href="https://github.com/confluentinc/confluent-kafka-dotnet" target="_blank">
+    https://github.com/confluentinc/confluent-kafka-dotnet
+  </a>
+</p>
+
+
+
+<p>
+  <strong>Note:</strong> Registered for Confluent Cloud with <code>eric-cabrera@live.com</code>.<br>
+  <a href="https://confluent.cloud/home" target="_blank">Confluent Cloud Dashboard</a>
+</p>
+
+
+
+    <h1>Kafka Producer Tutorial Summary</h1>
+
+    <div class="section">
+        <h2>Steps Performed</h2>
+        <ol>
+            <li><strong>Created a Confluent Cloud API Key</strong><br>
+                Generated API key and secret from the Confluent Cloud console for authentication.
+            </li>
+            <li><strong>Configured the Producer Example</strong><br>
+                Edited <code>Program.cs</code> to set up <code>ProducerConfig</code> with:
+                <ul>
+                    <li><code>BootstrapServers</code> from Confluent Cloud</li>
+                    <li><code>SecurityProtocol = SaslSsl</code></li>
+                    <li><code>SaslMechanism = Plain</code></li>
+                    <li><code>SaslUsername</code> and <code>SaslPassword</code> set to API key and secret</li>
+                </ul>
+            </li>
+            <li><strong>Created a Kafka Topic in Confluent Cloud</strong><br>
+                Used the Confluent Cloud UI to create a topic named <code>producer-example</code>.<br>
+                Left partition count at default (6).<br>
+                Did not add a data contract/schema (optional for string messages).
+            </li>
+            <li><strong>Ran the Producer</strong><br>
+                Executed the producer with:<br>
+                <pre>Producer.exe "&lt;bootstrap-server&gt;" "producer-example"</pre>
+                Sent a test message:<br>
+                <pre>this is my first kafka message</pre>
+                Confirmed delivery with output:<br>
+                <pre>delivered to: producer-example [[1]] @0</pre>
+            </li>
+            <li><strong>Verified Message Delivery</strong><br>
+                Used Confluent Cloud UI to confirm the message appeared in the topic.<br>
+                Screenshot saved as <code>confluent.cloudNewTpopic.png</code>.
+            </li>
+        </ol>
+    </div>
+
+    <div class="section">
+        <h2>Learning and Observations (LAO)</h2>
+        <ul>
+            <li>Confluent Cloud does not auto-create topics; manual creation is required.</li>
+            <li>Default partition count is suitable for most dev/test scenarios.</li>
+            <li>Data contracts (schemas) are optional for simple string messages.</li>
+            <li>Successful message delivery is confirmed both in the producer output and the Confluent Cloud UI.</li>
+            <li>Sensitive credentials (API key/secret) should not be hardcoded for production.</li>
+        </ul>
+    </div>
+
+    <div class="section screenshot">
+        <h2>Screenshot: Confluent Cloud Topic View</h2>
+        <img src="confluent.cloudNewTpopic.png" alt="Confluent Cloud New Topic Screenshot" style="max-width: 1000px; width: 100%; border: 1px solid #ccc;">
+        <p>The screenshot shows:<br>
+            - Topic: <code>producer-example</code><br>
+            - Message successfully produced and visible in the UI.<br>
+            - Partition, offset, timestamp, and message value details.<br>
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>References</h2>
+        <ul>
+            <li><a href="https://docs.confluent.io/cloud/current/client-apps/csharp.html">Confluent Cloud .NET Client Quickstart</a></li>
+            <li><a href="https://docs.confluent.io/cloud/current/client-apps/topics.html#create-a-topic">Create and manage topics in Confluent Cloud</a></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div style="font-size:1.1em;line-height:1.7;max-width:900px;margin:auto;padding:1em;">
+    <strong>The Commissions module</strong> provides agents and business users with a comprehensive view of their
+    commission earnings, debt balances, and related financial details. It allows users to:
+    <ul style="margin-left:1.5em;">
+        <li>View commission summaries, year-to-date and year-over-year comparisons.</li>
+        <li>Access detailed breakdowns by policy and by writing agent.</li>
+        <li>Download commission and debt data for further analysis.</li>
+        <li>See important dates for commission processing and statement availability.</li>
+        <li>Review direct deposit information and other related resources.</li>
+    </ul>
+    <p>This module is designed to help agents understand their earnings, track outstanding debts, and access all
+        relevant financial information in one place, supporting better business decisions and transparency.</p>
+</div>
+
+<div style="font-size:1.05em;line-height:1.7;max-width:900px;margin:auto;padding:1em;">
+    <strong>How this UI works (for technical users):</strong>
+    <ul style="margin-left:1.5em;">
+        <li><b>Vue.js &amp; Vuetify:</b> The UI is built with Vue.js and Vuetify for a modern, responsive experience
+            that adapts to both desktop and mobile devices.</li>
+        <li><b>Component-based:</b> The interface is split into reusable components (e.g., AgentStatement,
+            DirectDeposit, ExpandedDetails, ExpandedDetailsTable) for maintainability and modularity.</li>
+        <li><b>Views &amp; Tabs:</b> Main screens (like HomeView, DebtView) aggregate these components, presenting
+            summary cards, tables, and filters. Tabs allow users to switch between commission and debt breakdowns (by
+            policy, by agent, secured/unsecured debt).</li>
+        <li><b>Data Tables:</b> Vuetify's data tables display large sets of commission and debt records, with sorting,
+            filtering, and expandable rows for more detail. These tables are responsive and adapt to screen size.</li>
+        <li><b>State Management:</b> Pinia (Vue's store) manages data such as commission details, debt, filters, and
+            loading states, ensuring a reactive and consistent UI.</li>
+        <li><b>Download &amp; Export:</b> Users can export data (e.g., to XLSX) for offline analysis.</li>
+        <li><b>Responsive Design:</b> The UI adapts for desktop and mobile, showing different layouts and controls as
+            appropriate. Mobile layouts use stacked cards and collapsible sections for readability.</li>
+        <li><b>Custom Styling:</b> Styles are managed with PostCSS (PCSS) for consistent branding and layout.</li>
+    </ul>
+    <p>This architecture ensures the Commissions module is user-friendly, scalable, and easy to maintain, while
+        providing all the features agents and business users need to manage their commission-related activities.</p>
+</div>

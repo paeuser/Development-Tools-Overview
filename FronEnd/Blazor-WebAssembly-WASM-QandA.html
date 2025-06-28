@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blazor WebAssembly Q&A</title>
+</head>
+<body>
+    <header>
+        <h1>Blazor WebAssembly (WASM) Q&amp;A</h1>
+    </header>
+    <main>
+        <section>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <style>
+                    table td {
+                        padding: 10px;
+                    }
+                </style>
+                <tr>
+                    <td>What is Blazor WebAssembly?</td>
+                    <td>Blazor WebAssembly is a framework for building interactive web applications using C# and .NET.</td>
+                </tr>
+                <tr>
+                    <td>How does Blazor WebAssembly work?</td>
+                    <td>It runs .NET code directly in the browser using WebAssembly, without the need for plugins.</td>
+                </tr>
+                <tr>
+                    <td>What are the benefits of using Blazor WebAssembly?</td>
+                    <td>It allows developers to use C# for both client-side and server-side development, improving productivity and code sharing.</td>
+                </tr>
+                <tr>
+                    <td>What is WebAssembly?</td>
+                    <td>WebAssembly is a binary instruction format for a stack-based virtual machine, designed as a portable compilation target for high-level languages like C#.</td>
+                </tr>
+                <tr>
+                    <td>What are the differences between Blazor Server and Blazor WebAssembly?</td>
+                    <td>Blazor Server runs on the server and uses SignalR for UI updates, while Blazor WebAssembly runs entirely in the browser on WebAssembly.</td>
+                </tr>
+                <tr>
+                    <td>How do you debug a Blazor WebAssembly application?</td>
+                    <td>You can debug using browser developer tools or Visual Studio, which supports debugging WebAssembly applications.</td>
+                </tr>
+                <tr>
+                    <td>What is the role of the Program.cs file in Blazor?</td>
+                    <td>The Program.cs file is the entry point of the application, where the Blazor application is configured and started.</td>
+                </tr>
+                <tr>
+                    <td>What is the purpose of the wwwroot folder in Blazor?</td>
+                    <td>The wwwroot folder is the root directory for static files like CSS, JavaScript, and images in a Blazor application.</td>
+                </tr>
+                <tr>
+                    <td>Can Blazor WebAssembly work offline?</td>
+                    <td>Yes, Blazor WebAssembly can work offline by using Progressive Web App (PWA) features.</td>
+                </tr>
+                <tr>
+                    <td>What are Razor components?</td>
+                    <td>Razor components are reusable building blocks of UI in Blazor, defined using Razor syntax.</td>
+                </tr>
+                <tr>
+                    <td>How do you handle state management in Blazor?</td>
+                    <td>State management in Blazor can be handled using services, cascading parameters, or third-party libraries like Fluxor.</td>
+                </tr>
+                <tr>
+                    <td>How does the Decentralized Expense Tracker demonstrate state management in Blazor?</td>
+                    <td>The Decentralized Expense Tracker uses a service called <code>ExpenseStateService</code> to manage the application's state. This service holds the total expenses, which are shared across components. The <code>DecentralizedExpenseTracker.razor</code> page injects this service to update and display the total expenses. This approach ensures that the state is centralized and consistent across the application.</td>
+                </tr>
+                <tr>
+                    <td>What is dependency injection in Blazor?</td>
+                    <td>Dependency injection is a design pattern used in Blazor to provide services to components and classes.</td>
+                </tr>
+                <tr>
+                    <td>What are the lifecycle methods in Blazor components?</td>
+                    <td>Blazor components have lifecycle methods like OnInitialized, OnParametersSet, and OnAfterRender for handling initialization and updates.</td>
+                </tr>
+                <tr>
+                    <td>How do you call JavaScript functions from Blazor?</td>
+                    <td>You can call JavaScript functions from Blazor using the IJSRuntime service.</td>
+                </tr>
+                <tr>
+                    <td>How do you secure a Blazor WebAssembly application?</td>
+                    <td>Blazor WebAssembly applications can be secured using authentication and authorization mechanisms like OAuth and OpenID Connect.</td>
+                </tr>
+                <tr>
+                    <td>How does the TotalExpenses property work in Blazor?</td>
+                    <td>The <code>TotalExpenses</code> property is a parameter in the <code>TotalExpensesDisplay.razor</code> component. It is used to display the total expenses dynamically. This property is marked with the <code>[Parameter]</code> attribute, allowing it to receive data from a parent component. The value of <code>TotalExpenses</code> is rendered in the UI using Razor syntax (<code>@TotalExpenses</code>), ensuring that any updates to the property are reflected in the display automatically. The <code>TotalExpensesDisplay</code> component is typically used within a parent component or page, where the parent passes the total expenses value as a parameter. For state management, the application can use a service like <code>ExpenseStateService</code> to hold and update the total expenses. This service ensures that the state is shared and consistent across components, enabling real-time updates to the UI when the state changes.</td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2>Blazor vs React</h2>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <style>
+                    table td {
+                        padding: 10px;
+                    }
+                </style>
+                <tr>
+                    <th>Feature</th>
+                    <th>Blazor</th>
+                    <th>React</th>
+                </tr>
+                <tr>
+                    <td>Advantages</td>
+                    <td>
+                        <ul>
+                            <li>Uses C#, allowing .NET developers to leverage existing skills.</li>
+                            <li>Seamless integration with the .NET ecosystem.</li>
+                            <li>Supports both client-side (WebAssembly) and server-side (SignalR) rendering.</li>
+                            <li>Strongly typed, reducing runtime errors.</li>
+                            <li>Integrated with Visual Studio for robust tooling.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Highly popular with a large community and ecosystem.</li>
+                            <li>Wide range of third-party libraries and tools.</li>
+                            <li>Fast rendering with Virtual DOM.</li>
+                            <li>Flexible and lightweight for various use cases.</li>
+                            <li>Supports JavaScript and TypeScript, widely used languages.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Disadvantages</td>
+                    <td>
+                        <ul>
+                            <li>Relatively new, with a smaller community compared to React.</li>
+                            <li>Limited third-party libraries and ecosystem.</li>
+                            <li>Performance may lag for very large-scale applications.</li>
+                            <li>Requires .NET runtime, increasing application size.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Steeper learning curve for developers unfamiliar with JavaScript.</li>
+                            <li>Complex state management for large applications.</li>
+                            <li>Frequent updates and breaking changes in the ecosystem.</li>
+                            <li>Relies heavily on third-party libraries, which may vary in quality.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+        <section>
+            <h2>Blazor vs Angular</h2>
+            <table border="1" style="width: 100%; border-collapse: collapse;">
+                <style>
+                    table td {
+                        padding: 10px;
+                    }
+                </style>
+                <tr>
+                    <th>Feature</th>
+                    <th>Blazor</th>
+                    <th>Angular</th>
+                </tr>
+                <tr>
+                    <td>Advantages</td>
+                    <td>
+                        <ul>
+                            <li>Uses C#, allowing .NET developers to leverage existing skills.</li>
+                            <li>Seamless integration with the .NET ecosystem.</li>
+                            <li>Supports both client-side (WebAssembly) and server-side (SignalR) rendering.</li>
+                            <li>Strongly typed, reducing runtime errors.</li>
+                            <li>Integrated with Visual Studio for robust tooling.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Highly mature framework with a large community and ecosystem.</li>
+                            <li>Comprehensive built-in features like routing, forms, and HTTP services.</li>
+                            <li>Strong support for TypeScript, improving code maintainability.</li>
+                            <li>Powerful dependency injection system.</li>
+                            <li>Backed by Google, ensuring long-term support.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Disadvantages</td>
+                    <td>
+                        <ul>
+                            <li>Relatively new, with a smaller community compared to Angular.</li>
+                            <li>Limited third-party libraries and ecosystem.</li>
+                            <li>Performance may lag for very large-scale applications.</li>
+                            <li>Requires .NET runtime, increasing application size.</li>
+                        </ul>
+                    </td>
+                    <td>
+                        <ul>
+                            <li>Steeper learning curve due to its comprehensive feature set.</li>
+                            <li>Verbose syntax compared to other frameworks.</li>
+                            <li>Frequent updates can introduce breaking changes.</li>
+                            <li>Heavier framework size compared to lightweight alternatives.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Blazor WebAssembly Q&amp;A</p>
+    </footer>
+</body>
+</html>

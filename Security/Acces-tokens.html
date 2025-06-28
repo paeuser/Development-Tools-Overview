@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Tokens & BFF Security</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            background: #f9f9f9;
+            color: #222;
+        }
+        section, article {
+            background: #fff;
+            border-radius: 8px;
+            margin: 1rem auto;
+            padding: 1.5rem;
+            max-width: 700px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        h1, h2 {
+            color: #1976d2;
+            margin-top: 0;
+        }
+        ul {
+            padding-left: 1.2rem;
+        }
+        code {
+            background: #f4f4f4;
+            border-radius: 4px;
+            padding: 2px 6px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 0.5rem;
+            }
+            section, article {
+                padding: 1rem;
+                margin: 0.5rem 0;
+            }
+            h2 {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Access Tokens, Browsers, and the BFF Security Pattern</h1>
+        <p>
+            <b>Backend for Frontend (BFF):</b> <a href="https://www.youtube.com/watch?v=6zMSwlGBmxs&t=21s" target="_blank">Video: BFF Security Pattern</a>
+        </p>
+        <p>
+            <b>Best .NET Security Content:</b> <a href="https://duendesoftware.com/products/identityserver" target="_blank">Duende IdentityServer</a>
+        </p>
+        <p>
+            Access tokens contain claims about who you are and what you can do. They are provided and signed by a trusted party and are used to authenticate requests to services. Protecting these tokens is critical for application security.
+        </p>
+    </section>
+
+    <section>
+        <h2>Why Storing Access Tokens in the Browser is a Bad Idea</h2>
+        <ul>
+            <li>Browsers are vulnerable to script injection attacks (e.g., XSS), which can expose tokens to attackers.</li>
+            <li>Third-party libraries and dependencies can introduce security risks if compromised.</li>
+            <li>Access tokens and especially refresh tokens are valuable targets for attackers; if stolen, they can be used to impersonate users.</li>
+            <li>Modern security best practices recommend keeping sensitive tokens out of the browser and using secure backend patterns like BFF.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Why is Storing Access Tokens in the Browser a Bad Idea?</h2>
+        <ul>
+            <li>Browsers are designed to run code on the client, not in secure data centers.</li>
+            <li>The browser sandbox protects across sites, but if malicious code runs within your site (via XSS), it can steal tokens.</li>
+            <li>Attackers use injection attacks to steal tokens; these are still common (see OWASP Top 10).</li>
+            <li>Even with good coding practices, third-party libraries (node_modules) can be compromised and leak tokens.</li>
+            <li>Once an attacker grabs an access token, they can use it until it expires. If a refresh token is stolen, they can keep getting new access tokens—this is even worse.</li>
+            <li>Leaking access tokens is like leaving your house unlocked; leaking refresh tokens is like giving away your house keys.</li>
+        </ul>
+        <p><b>Conclusion:</b> The answer is to stop storing access tokens in the browser. Use the BFF pattern to keep tokens secure on the backend.</p>
+    </section>
+
+    <section>
+        <h2>What You'll Learn</h2>
+        <ul>
+            <li>How easy it is to compromise browser security and steal access tokens.</li>
+            <li>How the BFF security pattern solves these issues.</li>
+            <li>How to migrate an existing React JS application from storing tokens in the browser to using the Duende BFF Security framework.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>Further Reading & Resources</h2>
+        <ul>
+            <li><a href="https://duendesoftware.com/products/identityserver" target="_blank">Duende IdentityServer</a> (official site)</li>
+            <li><a href="https://www.youtube.com/watch?v=6zMSwlGBmxs&t=21s" target="_blank">BFF Security Pattern - YouTube</a></li>
+            <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top 10 Security Risks</a></li>
+        </ul>
+    </section>
+</body>
+</html>

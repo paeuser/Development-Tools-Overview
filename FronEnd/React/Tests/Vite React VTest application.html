@@ -1,0 +1,154 @@
+<!--
+Vite + React + Vitest: Beginner's Guide
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite React Vitest Application - Beginner's Guide</title>
+  <style>
+    body {
+      font-family: system-ui, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      color: #222;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px #0001;
+      padding: 2rem;
+    }
+    h1, h2 {
+      color: #646cff;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 1em;
+    }
+    pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+        margin: 0.5rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>How We Created This Vite + React App</h1>
+    <p>
+      <strong>Step 1: Scaffolding the App</strong><br>
+      We started by creating a new React app using <b>Vite</b>, a fast build tool for modern web projects. In your terminal, we ran:<br>
+      <code>npx create-vite@latest . --template react-ts</code><br>
+      This set up a new project with React and TypeScript.
+    </p>
+    <p>
+      <strong>Step 2: Installing Dependencies</strong><br>
+      After scaffolding, we installed all the required packages by running:<br>
+      <code>npm install</code>
+    </p>
+    <h2>Setting Up and Running Our First Test</h2>
+    <p>
+      <strong>Step 3: Adding Testing Tools</strong><br>
+      To test our React components, we installed <b>Vitest</b> (a fast test runner), <b>@testing-library/react</b> (for testing React UIs), and <b>@testing-library/jest-dom</b> (for better assertions):<br>
+      <code>npm install --save-dev vitest @testing-library/react @testing-library/jest-dom @testing-library/user-event jsdom</code>
+    </p>
+    <p>
+      <strong>Step 4: Configuring Vitest</strong><br>
+      We updated <code>vite.config.ts</code> to use the <code>jsdom</code> environment and set up a test setup file. This makes sure our tests run in a browser-like environment and have access to helpful matchers.
+    </p>
+    <p>
+      <strong>Step 5: Writing Our First Test</strong><br>
+      We created <code>src/App.test.tsx</code> to check that our main page shows the heading <b>Vite + React</b>.<br>
+      Example test code:
+      <pre><code>{`import { render, screen } from '@testing-library/react';
+import App from './App';
+describe('App', () => {
+  it('renders the Vite + React heading', () => {
+    render(<App />);
+    expect(screen.getByText(/Vite \+ React/i)).toBeInTheDocument();
+  });
+});`}</code></pre>
+    </p>
+    <p>
+      <strong>Step 6: Running the Test</strong><br>
+      We ran our test suite with:<br>
+      <code>npm run test</code><br>
+      The test passed, confirming our setup works!
+    </p>
+    <h2>Example Test Code</h2>
+    <p>This is the code for our first test. It checks that the heading <code>Vite + React</code> is displayed on the page. Each line is commented to help you understand what it does:</p>
+    <pre><code>// Import render and screen utilities for testing React components
+import { render, screen } from '@testing-library/react';
+// Import Vitest's test functions and assertion library
+import { describe, it, expect } from 'vitest';
+// Import the App component to be tested
+import App from './App';
+
+// Group related tests for the App component
+describe('App', () => {
+  // Test that the heading 'Vite + React' is rendered
+  it('renders the Vite + React heading', () => {
+    // Render the App component in a virtual DOM
+    render(<App />);
+    // Assert that the heading is present in the document
+    expect(screen.getByText(/Vite \\+ React/i)).toBeInTheDocument();
+  });
+});
+</code></pre>
+    <h3>What is this test doing?</h3>
+    <ul>
+      <li><b>Rendering:</b> It creates a virtual version of your <code>App</code> component, just like it would appear in the browser.</li>
+      <li><b>Querying:</b> It looks for the text <code>Vite + React</code> in the rendered output.</li>
+      <li><b>Asserting:</b> It checks that this text is actually present on the page. If it is, the test passes!</li>
+    </ul>
+    <h2>Project File Structure</h2>
+    <pre><code>react-vite/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── App.css
+│   ├── App.test.tsx
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── setupTests.ts
+│   ├── vite-env.d.ts
+│   └── assets/
+│       └── react.svg
+├── index.html
+├── package.json
+├── README.md
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+├── Vite React VTest application.html
+├── vite.config.ts
+└── eslint.config.js
+</code></pre>
+    <h2>Viewing on Web and Mobile</h2>
+    <p>
+      This guide and your app are styled to look good on both desktop and mobile devices. Try resizing your browser or opening this file on your phone to see the responsive design in action!
+    </p>
+    <hr />
+    <p style="font-size:0.95em;color:#888;">Beginner-friendly guide generated by GitHub Copilot</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node.js Interview Questions & Answers</title>
+    <link rel="stylesheet" href="../site.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 2em; }
+        h1, h2 { color: #1976d2; }
+        section { background: #fff; border-radius: 8px; margin: 1.5em auto; padding: 1.5em; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        ul { margin: 0.5em 0 0 1.5em; }
+        .q { font-weight: bold; color: #17406a; margin-top: 1em; }
+        .a { margin-bottom: 1em; }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>Node.js Interview Questions & Answers</h1>
+        <div class="q">1. What is Node.js and why is it popular?</div>
+        <div class="a">Node.js is a runtime environment that allows you to run JavaScript on the server side. It's popular because it's fast, event-driven, non-blocking, and enables full-stack JavaScript development.</div>
+        <div class="q">2. Explain the event loop in Node.js.</div>
+        <div class="a">The event loop is the core mechanism that handles asynchronous operations in Node.js. It allows Node.js to perform non-blocking I/O by offloading operations and executing callbacks when events are ready.</div>
+        <div class="q">3. What is the difference between process.nextTick(), setImmediate(), and setTimeout()?</div>
+        <div class="a"><ul>
+            <li><b>process.nextTick()</b>: Executes a callback after the current operation completes, before the event loop continues.</li>
+            <li><b>setImmediate()</b>: Executes a callback on the next iteration of the event loop.</li>
+            <li><b>setTimeout()</b>: Schedules a callback after a minimum delay.</li>
+        </ul></div>
+        <div class="q">4. How do you handle uncaught exceptions in Node.js?</div>
+        <div class="a">You can use <code>process.on('uncaughtException', handler)</code> to catch uncaught exceptions, but it's better to handle errors at the source and use promises or callbacks with error handling.</div>
+        <div class="q">5. What is middleware in Express.js?</div>
+        <div class="a">Middleware are functions that have access to the request and response objects in Express.js. They can modify requests, responses, or end the request-response cycle. Examples: logging, authentication, error handling.</div>
+        <div class="q">6. How do you manage packages in Node.js?</div>
+        <div class="a">Node.js uses npm (Node Package Manager) or yarn to manage packages. You can install, update, and remove packages using commands like <code>npm install</code>, <code>npm update</code>, and <code>npm uninstall</code>.</div>
+        <div class="q">7. What is a callback hell and how can you avoid it?</div>
+        <div class="a">Callback hell is deeply nested callbacks that make code hard to read and maintain. You can avoid it by using promises, async/await, or modularizing your code.</div>
+        <div class="q">8. How do you create a simple HTTP server in Node.js?</div>
+        <div class="a"><pre><code>const http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('Hello World');
+}).listen(3000);
+</code></pre></div>
+        <div class="q">9. What is the difference between require and import in Node.js?</div>
+        <div class="a"><b>require</b> is CommonJS syntax, used in most Node.js projects. <b>import</b> is ES Module syntax, supported in newer Node.js versions with <code>type: "module"</code> in package.json.</div>
+        <div class="q">10. How do you handle environment variables in Node.js?</div>
+        <div class="a">You can use <code>process.env</code> to access environment variables. Tools like <code>dotenv</code> can load variables from a <code>.env</code> file.</div>
+        <h2>Node Package Management (npm)</h2>
+        <p><strong>npm</strong> (Node Package Manager) is the default package manager for Node.js. It allows developers to install, share, and manage third-party libraries (called packages or modules) for their Node.js projects.</p>
+        <ul>
+            <li><strong>Installing Packages:</strong> Use <code>npm install package-name</code> to add a package to your project.</li>
+            <li><strong>package.json:</strong> This file lists your project's dependencies and scripts. It is created with <code>npm init</code>.</li>
+            <li><strong>Global vs Local:</strong> Packages can be installed globally (available everywhere) or locally (only in your project).</li>
+            <li><strong>Updating Packages:</strong> Use <code>npm update</code> to update dependencies.</li>
+            <li><strong>Removing Packages:</strong> Use <code>npm uninstall package-name</code> to remove a package.</li>
+            <li><strong>Running Scripts:</strong> Define custom scripts in <code>package.json</code> and run them with <code>npm run script-name</code>.</li>
+        </ul>
+        <p>npm makes it easy to manage project dependencies and automate common development tasks in Node.js applications.</p>
+    </section>
+</body>
+</html>

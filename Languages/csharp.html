@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C#</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        .answer {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>abstract class vs interface?</td>
+            <td class="answer">An abstract class can have implementations for some of its members, but an interface can only have declarations.</td>
+        </tr>
+        <tr>
+            <td>access modifiers?</td>
+            <td class="answer">Access modifiers define the scope and visibility of a class, method, or variable. Examples include public, private, protected, and internal.</td>
+        </tr>
+        <tr>
+            <td>async and await?</td>
+            <td class="answer">The "async" and "await" keywords are used to write asynchronous code, allowing tasks to run without blocking the main thread.</td>
+        </tr>
+        <tr>
+            <td>boxing and unboxing?</td>
+            <td class="answer">Boxing is the process of converting a value type to an object type, while unboxing is the reverse process.</td>
+        </tr>
+        <tr>
+            <td>constructor?</td>
+            <td class="answer">A constructor is a special method in a class that is called when an object of the class is created. It is used to initialize the object.</td>
+        </tr>
+        <tr>
+            <td>const vs readonly?</td>
+            <td class="answer">"const" is a compile-time constant, while "readonly" is a runtime constant that can only be assigned during declaration or in a constructor.</td>
+        </tr>
+        <tr>
+            <td>delegate?</td>
+            <td class="answer">A delegate is a type that represents references to methods with a specific parameter list and return type.</td>
+        </tr>
+        <tr>
+            <td>dependency injection?</td>
+            <td class="answer">Dependency injection is a design pattern used to achieve Inversion of Control (IoC) between classes and their dependencies.</td>
+        </tr>
+        <tr>
+            <td>encapsulation?</td>
+            <td class="answer">Encapsulation is the process of wrapping data and methods into a single unit, typically a class, and restricting access to some of the object's components.</td>
+        </tr>
+        <tr>
+            <td>events?</td>
+            <td class="answer">Events are a way for a class to notify other classes or objects when something of interest occurs.</td>
+        </tr>
+        <tr>
+            <td>exception handling?</td>
+            <td class="answer">Exception handling is a mechanism to handle runtime errors using try, catch, and finally blocks.</td>
+        </tr>
+        <tr>
+            <td>garbage collection?</td>
+            <td class="answer">Garbage collection automatically manages memory by reclaiming unused objects to free up resources.</td>
+        </tr>
+        <tr>
+            <td>inheritance?</td>
+            <td class="answer">Inheritance is a feature that allows a class to inherit methods and properties from another class.</td>
+        </tr>
+        <tr>
+            <td>LINQ?</td>
+            <td class="answer">LINQ (Language Integrated Query) is a feature that allows querying data from different sources (e.g., collections, databases) in a consistent manner.</td>
+        </tr>
+        <tr>
+            <td>MVC</td>
+            <td class="answer">MVC (Model-View-Controller) is a design pattern that separates an application into three interconnected components: Model (data), View (UI), and Controller (logic).</td>
+        </tr>
+        <tr>
+            <td>namespace?</td>
+            <td class="answer">A namespace is a container for classes and other types, used to organize code and prevent naming conflicts.</td>
+        </tr>
+        <tr>
+            <td>overloading vs overriding?</td>
+            <td class="answer">Overloading allows multiple methods with the same name but different parameters, while overriding allows a subclass to provide a specific implementation of a method in its parent class.</td>
+        </tr>
+        <tr>
+            <td>polymorphism?</td>
+            <td class="answer">Polymorphism allows methods to have the same name but behave differently based on the object that calls them.</td>
+        </tr>
+        <tr>
+            <td>sealed class?</td>
+            <td class="answer">A sealed class is a class that cannot be inherited by other classes.</td>
+        </tr>
+        <tr>
+            <td>serialization?</td>
+            <td class="answer">Serialization is the process of converting an object into a format that can be stored or transmitted and later reconstructed.</td>
+        </tr>
+        <tr>
+            <td>static class?</td>
+            <td class="answer">A static class is a class that cannot be instantiated and can only contain static members.</td>
+        </tr>
+        <tr>
+            <td>struct vs class?</td>
+            <td class="answer">A struct is a value type and is stored on the stack, while a class is a reference type and is stored on the heap.</td>
+        </tr>
+        <tr>
+            <td>== vs .Equals()?</td>
+            <td class="answer">"==" checks for reference equality for reference types, while ".Equals()" checks for value equality.</td>
+        </tr>
+        <tr>
+            <td>using statement?</td>
+            <td class="answer">The "using" statement is used to include namespaces in a program or to ensure the proper disposal of resources.</td>
+        </tr>
+        <tr>
+            <td>value types vs reference types?</td>
+            <td class="answer">Value types store data directly, while reference types store references to the data's memory address.</td>
+        </tr>
+        <tr>
+            <td>asynchronous programming?</td>
+            <td class="answer">Asynchronous programming allows tasks to run independently of the main program flow, improving responsiveness and performance.</td>
+        </tr>
+        <tr>
+            <td>attributes?</td>
+            <td class="answer">Attributes provide metadata about the program elements, such as classes, methods, and properties, and can be used to control their behavior.</td>
+        </tr>
+        <tr>
+            <td>data annotations?</td>
+            <td class="answer">Data annotations are attributes used to configure model properties, such as validation rules, in frameworks like Entity Framework.</td>
+        </tr>
+        <tr>
+            <td>dynamic keyword?</td>
+            <td class="answer">The dynamic keyword allows variables to bypass compile-time type checking, enabling runtime type resolution.</td>
+        </tr>
+        <tr>
+            <td>extension methods?</td>
+            <td class="answer">Extension methods allow you to add new methods to existing types without modifying their source code.</td>
+        </tr>
+        <tr>
+            <td>generics?</td>
+            <td class="answer">Generics allow you to define classes, methods, and data structures with a placeholder for the type of data they store or use.</td>
+        </tr>
+        <tr>
+            <td>indexers?</td>
+            <td class="answer">Indexers allow objects to be indexed like arrays, providing a way to access data in a class using array-like syntax.</td>
+        </tr>
+        <tr>
+            <td>iterators?</td>
+            <td class="answer">Iterators are methods that use the yield keyword to return elements one at a time in a collection.</td>
+        </tr>
+        <tr>
+            <td>partial classes?</td>
+            <td class="answer">Partial classes allow a class to be split into multiple files, making it easier to manage and maintain large classes.</td>
+        </tr>
+        <tr>
+            <td>reflection?</td>
+            <td class="answer">Reflection provides the ability to inspect and interact with metadata and types at runtime.</td>
+        </tr>
+        <tr>
+            <td>threading?</td>
+            <td class="answer">Threading allows multiple threads to run concurrently, enabling parallel execution of tasks.</td>
+        </tr>
+        <tr>
+            <td>tuples?</td>
+            <td class="answer">Tuples are data structures that can hold multiple values of different types in a single object.</td>
+        </tr>
+        <tr>
+            <td>unsafe code?</td>
+            <td class="answer">Unsafe code allows the use of pointers and direct memory manipulation in C#.</td>
+        </tr>
+        <tr>
+            <td>virtual methods?</td>
+            <td class="answer">Virtual methods allow derived classes to override the implementation of a method defined in a base class.</td>
+        </tr>
+        <tr>
+            <td>yield keyword?</td>
+            <td class="answer">The yield keyword is used in iterators to return each element of a collection one at a time.</td>
+        </tr>
+        <tr>
+            <td>ESLint/StyleCop/Code Analysis?</td>
+            <td class="answer">Use free static analysis tools like StyleCop (for C#) to check for coding standards and best practices. These tools can be run locally or integrated into your CI/CD pipeline.</td>
+        </tr>
+    </table>
+</body>
+</html>

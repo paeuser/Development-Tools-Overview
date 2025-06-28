@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure AI Foundry</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; max-width: 800px; margin: 0 auto; padding: 1em; }
+        h1, h2, h3 { color: #1976d2; }
+        img { max-width: 100%; height: auto; display: block; margin: 1em 0; border-radius: 8px; }
+        .section { background: #fff; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.04); padding: 1em; margin-bottom: 1.5em; }
+        .tip { background: #e8f5e9; border-left: 4px solid #43a047; padding: 0.8em; margin: 1em 0; }
+        @media (max-width: 600px) { body { padding: 0.5em; } h1 { font-size: 1.3em; } }
+    </style>
+</head>
+<body>
+    <h1>Azure AI Foundry</h1>
+    <div class="section">
+        <p><strong>Azure AI Foundry</strong> is a platform for AI development on Microsoft Azure. While you can provision individual Azure AI services and build applications without it, the project organization, resource management, and AI development capabilities of Azure AI Foundry make it the recommended way to build all but the simplest solutions.</p>
+        <ul>
+            <li><b>Azure AI Foundry Portal:</b> A web-based visual interface for working with AI projects.</li>
+            <li><b>Azure AI Foundry SDK:</b> Tools to build AI solutions programmatically.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>Azure AI Foundry Projects</h2>
+        <p>In Azure AI Foundry, you manage resource connections, data, code, and other elements of your AI solution in projects. There are two main types of project:</p>
+        <h3>Foundry Projects</h3>
+        <img src="images/foundry-project.png" alt="Diagram of a Foundry project">
+        <ul>
+            <li>Associated with an Azure AI Foundry resource in your Azure subscription.</li>
+            <li>Support for Azure AI Foundry models (including OpenAI models), Agent Service, Azure AI services, and tools for evaluation and responsible AI development.</li>
+            <li>Best for most common AI development tasks, such as building generative AI chat apps and agents.</li>
+            <li>Centralizes resources and capabilities with minimal administrative overhead.</li>
+            <li>Manage projects and deployments easily through the Azure AI Foundry portal.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h3>Hub-based Projects</h3>
+        <img src="images/hub-project.png" alt="Diagram of a hub-based project">
+        <ul>
+            <li>Associated with an Azure AI hub resource in your Azure subscription.</li>
+            <li>Includes an Azure AI Foundry resource, managed compute, support for Prompt Flow development, and connected Azure storage and key vault for secure data.</li>
+            <li>Supports advanced AI development scenarios, like Prompt Flow apps or model fine-tuning.</li>
+            <li>Accessible from both Azure AI Foundry portal and Azure Machine Learning portal for collaboration between data scientists, ML specialists, and developers.</li>
+        </ul>
+    </div>
+
+    <div class="tip">
+        <b>Tip:</b> Use Foundry projects for most solutions. Use hub-based projects for advanced scenarios or when you need more control over compute, storage, and security.
+    </div>
+</body>
+</html>

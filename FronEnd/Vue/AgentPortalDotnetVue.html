@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgentPortal Vue Terms</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vue Terms Used in the Application</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Term</th>
+                <th>Explanation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Component</td>
+                <td>A reusable block of code that encapsulates HTML, CSS, and JavaScript.</td>
+            </tr>
+            <tr>
+                <td>Directive</td>
+                <td>Special tokens in the markup that tell the library to do something to a DOM element.</td>
+            </tr>
+            <tr>
+                <td>Vuex</td>
+                <td>A state management library for Vue.js applications.</td>
+            </tr>
+            <tr>
+                <td>Router</td>
+                <td>A library for managing navigation and routing in Vue applications.</td>
+            </tr>
+            <tr>
+                <td>Template</td>
+                <td>HTML-like syntax used to define the structure of a Vue component.</td>
+            </tr>
+            <tr>
+                <td>Pinia</td>
+                <td>A modern state management library for Vue.js, used as an alternative to Vuex.</td>
+            </tr>
+            <tr>
+                <td>Vuetify</td>
+                <td>A Vue UI library with pre-built components following the Material Design specification.</td>
+            </tr>
+            <tr>
+                <td>Axios</td>
+                <td>A promise-based HTTP client used for making API requests. Includes request and response interceptors for handling authentication and error responses.</td>
+            </tr>
+            <tr>
+                <td>DynamicComponentList</td>
+                <td>A component used to dynamically render a list of components based on configuration data.</td>
+            </tr>
+            <tr>
+                <td>ContainerBlock</td>
+                <td>A layout component used to structure content blocks in the application.</td>
+            </tr>
+            <tr>
+                <td>aButton</td>
+                <td>A custom button component used throughout the application for consistent styling and behavior.</td>
+            </tr>
+            <tr>
+                <td>aDropdownV2</td>
+                <td>A custom dropdown component used for selecting options in forms and filters.</td>
+            </tr>
+            <tr>
+                <td>aHorizontalRule</td>
+                <td>A component for rendering horizontal dividers in the UI.</td>
+            </tr>
+            <tr>
+                <td>AssurityIcon</td>
+                <td>A set of custom SVG icons used for various UI elements.</td>
+            </tr>
+            <tr>
+                <td>PopoverModal</td>
+                <td>A modal component used for displaying additional information or confirmation dialogs.</td>
+            </tr>
+            <tr>
+                <td>DataFilters</td>
+                <td>A component for managing and applying filters to data tables.</td>
+            </tr>
+            <tr>
+                <td>FileHelper</td>
+                <td>A utility module for handling file-related operations, such as downloads and uploads.</td>
+            </tr>
+            <tr>
+                <td>ValidationHelpers</td>
+                <td>A utility module for validating form inputs and other data.</td>
+            </tr>
+            <tr>
+                <td>State Management</td>
+                <td>The app uses Vuex and Pinia for managing the state of the application, ensuring a centralized and reactive data store.</td>
+            </tr>
+            <tr>
+                <td>Authentication</td>
+                <td>Likely managed through Axios interceptors, handling token-based authentication and securing API calls.</td>
+            </tr>
+            <tr>
+                <td>Vite</td>
+                <td>Used as the build tool for the application, providing fast development server and optimized production builds.</td>
+            </tr>
+            <tr>
+                <td>Vitest</td>
+                <td>A testing framework for Vite projects, providing fast and efficient unit testing capabilities.</td>
+            </tr>
+            <tr>
+                <td>TanStack Query</td>
+                <td>A library for managing server state, offering features like caching, synchronization, and automatic updates for API data.</td>
+            </tr>
+            <tr>
+                <td>Vue Option API vs Composition API</td>
+                <td>The Option API organizes code by options like data, methods, and computed properties, while the Composition API organizes code by logical concerns, using functions and hooks for better reusability and flexibility.</td>
+            </tr>
+            <tr>
+                <td>Axios GraphQL</td>
+                <td>Axios can be used to make GraphQL queries and mutations by sending requests to a GraphQL endpoint with the appropriate query or mutation payload.</td>
+            </tr>
+            <tr>
+                <td>Pinia Store</td>
+                <td>Used for managing client-side state, such as maintaining filter selections between pages. For server-side data, TanStack Query is preferred as it reuses cached data.</td>
+            </tr>
+            <tr>
+                <td>ESLint</td>
+                <td>
+                    A tool for identifying and fixing problems in JavaScript code, often indicated by red squigglies in the editor.<br>
+                    <strong>To run ESLint before a pull request:</strong><br>
+                    <code>npm run lint</code><br>
+                    This checks your code for linting errors and attempts to fix them.<br>
+                    To automatically fix fixable issues, run:<br>
+                    <code>npm run lint:fix</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Prettier</td>
+                <td>An opinionated code formatter that enforces consistent code style across the project.</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>Feature Flag</h2>
+    <p>
+      The <strong>feature flag</strong> system in this project enables or disables specific features dynamically, allowing for safer deployments, controlled rollouts, and rapid experimentation. This implementation involves several technologies working together across the backend and frontend:
+    </p>
+    <ul>
+      <li>
+        <strong>.NET 8 Web API</strong>: Provides RESTful endpoints for managing feature flag states. Administrators can toggle features on or off without redeploying code. The API securely stores and retrieves flag configurations, ensuring real-time control over application behavior.<br>
+        <a href="https://learn.microsoft.com/en-us/aspnet/core/web-api/?view=aspnetcore-8.0" target="_blank">Learn more about .NET 8 Web API</a>
+      </li>
+      <li>
+        <strong>Vue 3</strong>: The frontend consumes the feature flag API to determine which UI components and workflows should be enabled or disabled. This is achieved using reactive state and conditional rendering, ensuring the user interface reflects the current flag status.<br>
+        <a href="https://vuejs.org/guide/introduction.html" target="_blank">Learn more about Vue 3</a>
+      </li>
+      <li>
+        <strong>Pinia</strong>: Used for client-side state management, Pinia can store the current feature flag states fetched from the backend, making them easily accessible throughout the application.<br>
+        <a href="https://pinia.vuejs.org/" target="_blank">Learn more about Pinia</a>
+      </li>
+      <li>
+        <strong>Axios</strong>: Handles HTTP requests between the Vue frontend and the .NET 8 Web API, including authentication and error handling for feature flag operations.<br>
+        <a href="https://axios-http.com/" target="_blank">Learn more about Axios</a>
+      </li>
+      <li>
+        <strong>Azure DevOps</strong>: Supports CI/CD pipelines, ensuring that feature flag changes and related code updates are tested and deployed reliably across environments.<br>
+        <a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops" target="_blank">Learn more about Azure DevOps Pipelines</a>
+      </li>
+    </ul>
+    <p>
+      By combining these technologies, the project achieves a robust and flexible feature flag system that empowers both developers and administrators to manage application features efficiently and safely.
+    </p>
+    <h2>File Structure</h2>
+<pre>
+App/
+├── AgentPortalDotnetVue.html
+├── env.d.ts
+├── index.html
+├── package.json
+├── directus-settings/
+│   ├── flows/
+│   │   ├── page-copy.json
+│   │   ├── create-slug/
+│   └── ...
+├── public/
+│   ├── favicon.png
+│   ├── robots.txt
+├── src/
+│   ├── App.vue
+│   ├── main.ts
+│   ├── AccountActivation/
+│   │   ├── api/
+│   │   ├── models/
+│   │   ├── views/
+│   ├── assets/
+│   │   ├── *.svg
+│   │   ├── fonts/
+│   ├── CaseManagement/
+│   │   ├── caseManagementStore.ts
+│   │   ├── api/
+│   │   ├── models/
+│   │   ├── utils/
+│   │   ├── views/
+│   ├── Claims/
+│   │   ├── api/
+│   │   ├── views/
+│   ├── Commissions/
+│   │   ├── components/
+│   │   ├── styles/
+│   │   ├── views/
+│   ├── components/
+│   │   ├── *.vue
+│   │   ├── aAlertBox/
+│   │   ├── AccountDropdown/
+│   │   ├── aCollapsible/
+│   │   ├── ...
+│   ├── Contracting/
+│   │   ├── components/
+│   │   ├── mockdata/
+│   ├── directives/
+│   │   ├── atooltip.ts
+│   ├── GroupInventory/
+│   │   ├── api/
+│   │   ├── models/
+│   │   ├── utils/
+│   │   ├── views/
+│   ├── Hierarchy/
+│   │   ├── hierarchyStore.ts
+│   │   ├── api/
+│   │   ├── models/
+│   │   ├── views/
+│   ├── Integration/
+│   │   ├── api/
+│   │   ├── views/
+│   ├── layouts/
+│   │   ├── DefaultLayout.vue
+│   │   ├── DynamicContent.vue
+│   ├── ListBill/
+│   │   ├── api/
+│   │   ├── ...
+│   ├── MockData/
+│   ├── models/
+│   ├── PAT/
+│   ├── ProductionCredit/
+│   ├── Settings/
+│   ├── Shared/
+│   ├── TaxForms/
+</pre>
+<h2>main.ts</h2>
+<p>
+The <code>main.ts</code> file is the entry point of the Vue application. It performs the following key tasks:
+</p>
+<ul>
+    <li><strong>Imports:</strong> Loads core libraries, plugins, and custom components, such as Vue, Pinia (state management), Vuetify (UI framework), and Axios (HTTP client).</li>
+    <li><strong>Theme Configuration:</strong> Defines a custom theme for Vuetify, specifying colors for various UI elements.</li>
+    <li><strong>App Initialization:</strong> Creates the Vue app instance and registers plugins like Vuetify, Pinia, Vue Router, and Vue Query. It also adds custom directives like <code>atooltip</code>.</li>
+    <li><strong>Axios Interceptors:</strong> Configures Axios to handle authentication token refresh and error handling for HTTP responses.</li>
+    <li><strong>Google Tag Manager and New Relic:</strong> Fetches configuration data from an API endpoint and initializes New Relic for performance monitoring and Google Tag Manager for analytics.</li>
+    <li><strong>App Mounting:</strong> Mounts the Vue app to the DOM element with the ID <code>#app</code>.</li>
+</ul>
+
+<h2>Vuetify in the Project</h2>
+<p><strong>Vuetify</strong> is a popular Material Design component framework for Vue.js. It provides a wide range of pre-designed UI components and tools that help developers build visually appealing and responsive user interfaces with minimal effort.</p>
+
+<h3>Usage in the Agent Portal Project</h3>
+<ul>
+  <li><strong>UI Components:</strong> Vuetify is used to create consistent and modern UI elements such as buttons, forms, modals, and navigation bars across the Vue frontend of the Agent Portal.</li>
+  <li><strong>Responsive Design:</strong> Vuetify's grid system and layout components ensure that the application is responsive and works seamlessly on different screen sizes and devices.</li>
+  <li><strong>Customization:</strong> The framework allows for easy customization of themes, colors, and styles to align with the branding requirements of the Agent Portal.</li>
+  <li><strong>Integration:</strong> Vuetify integrates seamlessly with Vue.js, making it easier to manage the frontend components and their interactions with the backend API.</li>
+</ul>
+
+<h3>Example Usage</h3>
+<p>Below is an example of how Vuetify might be used in the project:</p>
+<pre>
+<template>
+  <v-container>
+    <v-row>
+      <v-col cols="12" md="6">
+        <v-btn color="primary" @click="handleClick">Click Me</v-btn>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+export default {
+  methods: {
+    handleClick() {
+      console.log('Button clicked!');
+    },
+  },
+};
+</script>
+</pre>
+
+<p>This example demonstrates the use of Vuetify's <code>v-container</code>, <code>v-row</code>, <code>v-col</code>, and <code>v-btn</code> components to create a responsive layout with a button.</p>
+
+<h2>Comparison of Vue 2 and Vue 3</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Feature</th>
+      <th>Vue 2</th>
+      <th>Vue 3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>API Style</td>
+      <td>Options API</td>
+      <td>Composition API (with Options API still supported)</td>
+    </tr>
+    <tr>
+      <td>Reactivity System</td>
+      <td>Based on <code>Object.defineProperty</code></td>
+      <td>Proxy-based reactivity</td>
+    </tr>
+    <tr>
+      <td>Performance</td>
+      <td>Good</td>
+      <td>Improved with optimized rendering and smaller runtime</td>
+    </tr>
+    <tr>
+      <td>Fragments</td>
+      <td>Not supported (single root element required)</td>
+      <td>Supported (multiple root elements allowed)</td>
+    </tr>
+    <tr>
+      <td>TypeScript Support</td>
+      <td>Limited</td>
+      <td>Built-in and better integration</td>
+    </tr>
+    <tr>
+      <td>Tree-Shaking</td>
+      <td>Not fully tree-shakable</td>
+      <td>Fully tree-shakable</td>
+    </tr>
+    <tr>
+      <td>Teleport</td>
+      <td>Not available</td>
+      <td>Available for rendering outside parent DOM</td>
+    </tr>
+    <tr>
+      <td>Custom Directives</td>
+      <td>Hooks like <code>bind</code>, <code>update</code></td>
+      <td>Simplified hooks like <code>created</code>, <code>updated</code></td>
+    </tr>
+    <tr>
+      <td>V-model</td>
+      <td>Single binding with <code>value</code> and <code>input</code></td>
+      <td>Multiple bindings with <code>modelValue</code></td>
+    </tr>
+    <tr>
+      <td>Portals and Suspense</td>
+      <td>Not available</td>
+      <td>Available</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Additional Vue Features Used in the Application</h2>
+<ul>
+  <li><strong>Vue Router:</strong> Used for navigation and routing, enabling seamless transitions between different views and pages.</li>
+  <li><strong>Vue Query (TanStack Query):</strong> Manages server state with features like caching, synchronization, and automatic updates for API data.</li>
+  <li><strong>Dynamic Component Rendering:</strong> Components like <code>DynamicComponentList</code> dynamically render content based on configuration data.</li>
+  <li><strong>Scoped Styles:</strong> Ensures CSS is applied only to specific components, avoiding global style conflicts.</li>
+  <li><strong>Custom Directives:</strong> Includes directives like <code>atooltip</code> for enhanced interactivity and functionality.</li>
+  <li><strong>Error Handling and Loading States:</strong> Components like <code>ErrorComponent</code> and <code>aLoadingSpinner</code> manage error states and loading indicators effectively.</li>
+  <li><strong>PostCSS Plugins:</strong> Utilizes plugins like <code>postcss-nested</code> and <code>postcss-preset-env</code> for advanced CSS features.</li>
+  <li><strong>TypeScript Integration:</strong> Extensively used for type safety and better developer experience.</li>
+</ul>
+
+<h2>Directus Integration in the Application</h2>
+<p><strong>Directus</strong> is used in the application as a headless CMS to manage and deliver content dynamically. It provides a flexible and scalable way to handle structured content, which is then rendered in the Vue frontend.</p>
+
+<h3>Usage in the Agent Portal Project</h3>
+<ul>
+  <li><strong>Dynamic Content:</strong> The application fetches page content from Directus using API calls and renders it dynamically using components like <code>DynamicComponentList</code> and <code>AutoTableOfContents</code>.</li>
+  <li><strong>Routing:</strong> The <code>slug</code> from the current route is used to fetch the corresponding page data from Directus, ensuring that the content is always in sync with the URL.</li>
+  <li><strong>Error Handling:</strong> If the requested page is not found or access is denied, the application redirects to an error page using Vue Router.</li>
+  <li><strong>External Tabs:</strong> Components like <code>externalTabsComponent</code> are dynamically rendered based on the content fetched from Directus.</li>
+</ul>
+
+<h3>Connecting to Directus</h3>
+<p>The application connects to Directus using the <code>axios</code> library to send HTTP requests to the Directus API endpoints. Below are the key steps involved in the connection:</p>
+<ul>
+  <li><strong>API Endpoint:</strong> The application dynamically constructs the API endpoint using the <code>slug</code> from the current route. For example:
+    <pre><code>const response = await axios.get(`/Content/Page?slug=${btoa(slug.value)}`);</code></pre>
+  </li>
+  <li><strong>Authentication:</strong> If required, the application includes an authorization token in the request headers, managed through Axios interceptors.</li>
+  <li><strong>Error Handling:</strong> If the API call fails or the requested page is not found, the application redirects to an error page using Vue Router:
+    <pre><code>if (isError) {
+  router.push({ name: "error" });
+}</code></pre>
+  </li>
+  <li><strong>Dynamic Content Rendering:</strong> The fetched data is parsed and rendered dynamically using Vue components like <code>DynamicComponentList</code> and <code>AutoTableOfContents</code>.</li>
+</ul>
+<p>This integration ensures that the application can fetch and display content dynamically based on the current route and user context.</p>
+
+<h3>Example Workflow</h3>
+<p>Below is an example of how Directus is integrated into the application:</p>
+<pre>
+<script setup lang="ts">
+import { useQuery } from "@tanstack/vue-query";
+import { useRouter, useRoute } from "vue-router";
+import axios from "axios";
+
+const router = useRouter();
+const route = useRoute();
+const slug = ref(router.currentRoute.value.path);
+
+async function fetchPage() {
+  const response = await axios.get(`/Content/Page?slug=${btoa(slug.value)}`);
+  return response.data;
+}
+
+const { data, isError } = useQuery({
+  queryKey: [slug],
+  queryFn: fetchPage,
+});
+
+if (isError) {
+  router.push({ name: "error" });
+}
+</script>
+</pre>
+<p>This workflow demonstrates how the application fetches and renders content from Directus dynamically based on the current route.</p>
+
+<h3>Vue Query (TanStack Query) in the Application</h3>
+<p><strong>Vue Query</strong>, part of the TanStack Query library, is used in the application to manage server state efficiently. It provides powerful features like caching, synchronization, and automatic updates, making it easier to handle API data in Vue applications.</p>
+
+<h3>Key Features</h3>
+<ul>
+  <li><strong>Data Fetching:</strong> Vue Query simplifies data fetching by providing hooks like <code>useQuery</code> and <code>useMutation</code> to handle API calls and mutations.</li>
+  <li><strong>Caching:</strong> Automatically caches API responses, reducing redundant network requests and improving performance.</li>
+  <li><strong>Background Updates:</strong> Keeps data fresh by refetching it in the background based on specified intervals or triggers.</li>
+  <li><strong>Error Handling:</strong> Provides built-in mechanisms to handle errors gracefully, such as retrying failed requests.</li>
+  <li><strong>Optimistic Updates:</strong> Allows for immediate UI updates while waiting for server confirmation, improving user experience.</li>
+</ul>
+
+<h3>Usage in the Agent Portal Project</h3>
+<ul>
+  <li><strong>Server State Management:</strong> Vue Query is used to manage server-side data, such as fetching page content from Directus or handling API responses.</li>
+  <li><strong>Integration with Axios:</strong> The application integrates Vue Query with Axios to perform HTTP requests and manage their lifecycle.</li>
+  <li><strong>Dynamic Data:</strong> Ensures that data displayed in the application is always up-to-date by leveraging Vue Query's background refetching capabilities.</li>
+</ul>
+
+<h3>Example Workflow</h3>
+<p>Below is an example of how Vue Query is used in the application:</p>
+<pre>
+<script setup lang="ts">
+import { useQuery } from "@tanstack/vue-query";
+import axios from "axios";
+
+async function fetchData() {
+  const response = await axios.get("/api/data");
+  return response.data;
+}
+
+const { data, isLoading, isError } = useQuery({
+  queryKey: ["data"],
+  queryFn: fetchData,
+  staleTime: 300000, // Cache data for 5 minutes
+});
+</script>
+</pre>
+<p>In this example, Vue Query fetches data from an API endpoint, caches it for 5 minutes, and handles loading and error states automatically.</p>
+
+</body>
+</html>

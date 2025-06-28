@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PostCSS Files</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="dist/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 1rem;
+            background: #fafbfc;
+            color: #222;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        code {
+            background: #eaeaea;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 0.5rem;
+            }
+            h1 {
+                font-size: 1.4rem;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>PostCSS Files</h1>
+    <p>
+        <strong>PostCSS</strong> is a tool for transforming CSS with JavaScript plugins. It allows you to use modern CSS features, optimize stylesheets, and automate repetitive tasks. PostCSS processes your CSS files through a series of plugins, each performing a specific function such as autoprefixing, minifying, or enabling future CSS syntax.
+    </p>
+    <p>
+        To use PostCSS, you typically create a configuration file (like <code>postcss.config.js</code>) where you specify which plugins to use. When you run your build process, PostCSS reads your CSS files, applies the plugins in order, and outputs the transformed CSS ready for production.
+    </p>
+    <section>
+        <h2>How to Use PostCSS (Step by Step)</h2>
+        <ol>
+            <li><strong>Install Node.js and npm</strong><br>
+                Download and install Node.js from <a href="https://nodejs.org/" target="_blank">nodejs.org</a>. npm comes bundled with Node.js.
+            </li>
+            <li><strong>Initialize your project</strong><br>
+                Open your terminal, navigate to your project folder, and run:<br>
+                <code>npm init -y</code>
+            </li>
+            <li><strong>Install PostCSS and plugins</strong><br>
+                For example, to install PostCSS and Autoprefixer, run:<br>
+                <code>npm install postcss postcss-cli autoprefixer</code>
+            </li>
+            <li><strong>Create a PostCSS config file</strong><br>
+                In your project root, create a file named <code>postcss.config.js</code> with the following content:<br>
+                <pre><code>module.exports = {
+    plugins: [
+        require('autoprefixer')
+    ]
+};</code></pre>
+            </li>
+            <li><strong>Create your source CSS file</strong><br>
+                Write your CSS in a file, for example, <code>src/styles.css</code>.
+            </li>
+            <li><strong>Run PostCSS to process your CSS</strong><br>
+                Use the following command to process your CSS file:<br>
+                <code>npx postcss src/styles.css -o dist/styles.css</code>
+            </li>
+            <li><strong>Link the processed CSS in your HTML</strong><br>
+                In your HTML file, link to the output CSS file:<br>
+                <code>&lt;link rel="stylesheet" href="dist/styles.css"&gt;</code>
+            </li>
+        </ol>
+    </section>
+    <section>
+        <h2>Using a .pcss File with PostCSS</h2>
+        <p></p>
+            You can use files with the <code>.pcss</code> extension as your source stylesheets for PostCSS. The <code>.pcss</code> extension is commonly used to indicate that the file is intended to be processed by PostCSS and may contain modern CSS features or plugin-specific syntax.
+        </p>
+        <ol>
+            <li><strong>Create a <code>.pcss</code> file</strong><br>
+                In your <code>src</code> folder, create a file named <code>main.pcss</code> (or any name you prefer). Write your CSS using modern features or PostCSS plugin syntax.
+            </li>
+            <li><strong>Update your build command</strong><br>
+                Change your PostCSS command to use the <code>.pcss</code> file as the input:<br>
+                <code>npx postcss src/main.pcss -o dist/styles.css</code>
+            </li>
+            <li><strong>Why use <code>.pcss</code>?</strong><br>
+                Using <code>.pcss</code> helps distinguish files that require PostCSS processing from standard CSS files. This makes your workflow clearer and helps avoid confusion between source and output files.
+            </li>
+            <li><strong>How to use it in your project</strong><br>
+                After processing, link the output CSS file (<code>dist/styles.css</code>) in your HTML as usual. The browser will use the processed CSS, while you maintain and edit the <code>.pcss</code> source file.
+            </li>
+        </ol>
+    </section>
+    <footer style="margin-top:2rem; font-size:0.95rem; color:#555;">
+        <em>Note: To make style changes, always edit your <code>.pcss</code> source file (e.g., <code>src/main.pcss</code>), then run PostCSS to generate the updated <code>dist/styles.css</code> file used by your website.</em>
+    </footer>
+</body>
+</html>

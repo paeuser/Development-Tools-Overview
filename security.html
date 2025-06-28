@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Security</h1>
+    <p>Welcome to the Security page. Here, we will discuss various aspects of security, including best practices, tools, and techniques to ensure the safety and integrity of your applications and data.</p>
+    
+    <h2 id="security-training">Security Training</h2>
+    <p><strong>Introduction</strong></p>
+    <p>Personally identifiable information (PII) is more than just data. It’s a representation of real people. This short module focuses on that concept by:</p>
+    <ul>
+        <li>Reviewing the types of PII</li>
+        <li>Exploring what can happen when PII gets leaked or stolen</li>
+        <li>Identifying ways you can protect PII</li>
+    </ul>
+    <p>You’ll need to pass a short quiz to complete this training. Let’s get started!</p>
+
+    <h2>Frequently Asked Questions (FAQs) on Website Security</h2>
+    <h3>General Security Questions</h3>
+    <ul>
+        <li><strong>What are the common security vulnerabilities in web applications?</strong><br>Examples include SQL Injection, Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), and insecure direct object references.</li>
+        <li><strong>What is HTTPS, and why is it important?</strong><br>HTTPS encrypts data between the client and server, ensuring secure communication and protecting sensitive information.</li>
+        <li><strong>What is the difference between authentication and authorization?</strong><br>Authentication verifies the user's identity, while authorization determines what resources the user has access to.</li>
+    </ul>
+
+    <h3>Front-End Security</h3>
+    <ul>
+        <li><strong>How do you prevent Cross-Site Scripting (XSS)?</strong><br>By sanitizing user input, using Content Security Policy (CSP), and escaping output in HTML.</li>
+        <li><strong>What is Content Security Policy (CSP)?</strong><br>CSP is a browser feature that helps prevent XSS attacks by restricting the sources from which content can be loaded.</li>
+        <li><strong>How do you secure cookies in a web application?</strong><br>Use the <code>HttpOnly</code>, <code>Secure</code>, and <code>SameSite</code> attributes to protect cookies from being accessed by malicious scripts.</li>
+    </ul>
+
+    <h3>Back-End Security</h3>
+    <ul>
+        <li><strong>What is SQL Injection, and how do you prevent it?</strong><br>SQL Injection is a vulnerability where attackers execute malicious SQL queries. Prevent it by using parameterized queries or ORM frameworks.</li>
+        <li><strong>What is Cross-Site Request Forgery (CSRF), and how do you prevent it?</strong><br>CSRF tricks users into performing actions they didn't intend. Prevent it by using CSRF tokens and validating requests.</li>
+        <li><strong>How do you handle sensitive data like passwords?</strong><br>Use strong hashing algorithms like bcrypt or Argon2 to store passwords securely.</li>
+    </ul>
+
+    <h3>API Security</h3>
+    <ul>
+        <li><strong>How do you secure RESTful APIs?</strong><br>Use HTTPS, implement authentication (e.g., OAuth2), validate input, and limit request rates.</li>
+        <li><strong>What is the purpose of API keys?</strong><br>API keys are used to authenticate and authorize access to APIs.</li>
+        <li><strong>How do you prevent data exposure in APIs?</strong><br>Avoid exposing sensitive data, use proper access controls, and validate responses.</li>
+    </ul>
+
+    <h3>Advanced Security</h3>
+    <ul>
+        <li><strong>What is OWASP, and why is it important?</strong><br>OWASP (Open Web Application Security Project) provides guidelines and tools to improve web application security.</li>
+        <li><strong>What is a penetration test?</strong><br>A penetration test is a simulated attack on a system to identify vulnerabilities.</li>
+        <li><strong>How do you secure file uploads in a web application?</strong><br>Validate file types, use secure storage, and scan files for malware.</li>
+    </ul>
+    <div style="margin-top: 30px;">
+        <p><strong>Introduction</strong></p>
+        <p>Personally identifiable information (PII) is more than just data. It’s a representation of real people. This short module focuses on that concept by:</p>
+        <ul>
+            <li>Reviewing the types of PII</li>
+            <li>Exploring what can happen when PII gets leaked or stolen</li>
+            <li>Identifying ways you can protect PII</li>
+        </ul>
+        <p>You’ll need to pass a short quiz to complete this training. Let’s get started!</p>
+    </div>
+</body>
+</html>

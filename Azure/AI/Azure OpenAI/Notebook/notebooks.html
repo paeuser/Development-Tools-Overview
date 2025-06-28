@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jupyter Notebook Tutorial</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7fafd;
+      color: #222;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2em auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(60,80,120,0.10);
+      padding: 2em 1.5em;
+    }
+    h1, h2, h3 {
+      color: #1a3a5d;
+      margin-top: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    ul, ol {
+      padding-left: 1.5em;
+      margin-bottom: 1em;
+    }
+    pre, code {
+      background: #f0f4f8;
+      border-radius: 6px;
+      padding: 0.3em 0.6em;
+      font-size: 1.05em;
+      color: #2a4d7a;
+    }
+    .cell {
+      margin-bottom: 1.5em;
+      padding: 1.2em 1em;
+      border-left: 4px solid #2a4d7a;
+      background: #f9fbfd;
+      border-radius: 8px;
+    }
+    .cell.code {
+      background: #f4f8fb;
+      border-left: 4px solid #4e8cff;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 1em 0.5em;
+      }
+      h1 {
+        font-size: 1.3em;
+      }
+      h2 {
+        font-size: 1.1em;
+      }
+      pre, code {
+        font-size: 0.98em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cell">
+      <h1>What is a Jupyter Notebook?</h1>
+      <p>A Jupyter Notebook is an interactive document where you can write and run code, add notes, and see results all in one place. It is great for learning, experimenting, and sharing code, especially in Python.</p>
+    </div>
+    <div class="cell">
+      <h2>Simple Tutorial: How to Use a Jupyter Notebook</h2>
+      <ol>
+        <li><b>Open a Notebook:</b> Double-click a <code>.ipynb</code> file or open it in VS Code or GitHub Codespaces.</li>
+        <li><b>Cells:</b> Notebooks are made of cells. Each cell can be code (Python) or text (Markdown).</li>
+        <li><b>Run Code:</b> Click a code cell and press <kbd>Shift</kbd>+<kbd>Enter</kbd> to run it. The output appears below the cell.</li>
+        <li><b>Add Notes:</b> Use markdown cells to write explanations, titles, or instructions.</li>
+        <li><b>Edit and Experiment:</b> Change code or text, then run again to see new results.</li>
+        <li><b>Save:</b> Your work is saved automatically, but you can also use <kbd>Ctrl</kbd>+<kbd>S</kbd>.</li>
+      </ol>
+    </div>
+    <div class="cell code">
+      <pre><code># Example: Simple Python code in a notebook
+print("Hello, world!")</code></pre>
+    </div>
+    <div class="cell">
+      <h2>Tips for Beginners</h2>
+      <ul>
+        <li>Use code cells for Python code.</li>
+        <li>Use markdown cells for notes and explanations.</li>
+        <li>You can add, delete, or move cells as you like.</li>
+        <li>Notebooks are perfect for step-by-step learning and trying out ideas.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h2>How to Create a Jupyter Notebook Programmatically</h2>
+      <ol>
+        <li><b>Import Required Libraries:</b> Use <code>import nbformat</code> to work with notebook files.</li>
+        <li><b>Create a Notebook Object:</b> Use <code>nb = nbformat.v4.new_notebook()</code> to start a new notebook.</li>
+        <li><b>Add Cells:</b> Add markdown and code cells using <code>nbformat.v4.new_markdown_cell()</code> and <code>nbformat.v4.new_code_cell()</code>.</li>
+        <li><b>Save the Notebook:</b> Write the notebook to a file with <code>nbformat.write(nb, file)</code>.</li>
+      </ol>
+      <p>This lets you generate <code>.ipynb</code> files with Python code, which is useful for automation or sharing templates.</p>
+    </div>
+    <div class="cell">
+      <h2>Before You Start: Install the Jupyter and Python Extensions</h2>
+      <ul>
+        <li>To use Jupyter Notebooks in VS Code, you need to install the <b>Jupyter</b> extension from the Extensions Marketplace.</li>
+        <li>You also need the <b>Python</b> extension to run Python code in notebooks.</li>
+        <li>Search for "Jupyter" and "Python" in the Extensions view (<kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>X</kbd>) and click <b>Install</b> for both.</li>
+        <li>These extensions let you open, edit, and run <code>.ipynb</code> files directly in VS Code.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h2>Getting Started with Jupyter Notebooks in VS Code</h2>
+      <ul>
+        <li>Watch this video: <a href="https://www.youtube.com/watch?v=suAkMeWJ1yE" target="_blank">Getting Started with Jupyter Notebooks in VS Code</a></li>
+      </ul>
+      <ol>
+        <li><b>Go to the Command Palette:</b> Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd> and type <b>Create: New Jupyter Notebook</b> to quickly create a new notebook file in VS Code.</li>
+        <li><b>Before you start writing code, connect to the kernel:</b> The kernel is the computational engine that runs your code. Make sure the kernel is connected (look for the status in the top right of the notebook) before running any code cells.</li>
+      </ol>
+    </div>
+    <div class="cell">
+      <h2>What is the <code>.venv</code> Folder and Why Was it Created?</h2>
+      <ul>
+        <li>When you use the Command Palette in VS Code to create or open a Jupyter Notebook, VS Code may prompt you to select or create a Python environment for your project.</li>
+        <li>If you choose to create a new environment, VS Code will often create a <code>.venv</code> folder in your project directory. This stands for "virtual environment."</li>
+        <li>A virtual environment is an isolated space for Python, allowing you to install packages and dependencies just for your project, without affecting other projects or your system Python.</li>
+        <li>This helps keep your project organized and avoids version conflicts between different Python projects.</li>
+        <li>You can see and manage the <code>.venv</code> folder in your workspace. It is safe to keep it in your project folder.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h2>Working with Cells in Jupyter Notebooks</h2>
+      <ul>
+        <li>You can add <b>cells</b> to your notebook. Cells are where you write and execute code.</li>
+        <li>You can also add <b>markdown</b> cells for notes, explanations, and formatting.</li>
+        <li>Cells can be deleted, moved, or edited as needed to organize your notebook.</li>
+      </ul>
+    </div>
+    <div class="cell">
+      <h2>Product Analysis Example</h2>
+      <p>This is my product analysis.<br>
+      Below I ask Copilot to generate some sample data for me showing different products and their price and stock.</p>
+    </div>
+    <div class="cell code">
+      <pre><code>import pandas as pd
+
+data = {
+    'Product': ['Laptop', 'Smartphone', 'Tablet', 'Monitor', 'Keyboard'],
+    'Price': [1200, 800, 400, 250, 50],
+    'Stock': [15, 30, 25, 10, 50]
+}
+df = pd.DataFrame(data)
+df</code></pre>
+      <p><i>Note: After pandas is installed, you can remove <code>%pip install pandas</code> from your notebook code cells.</i></p>
+    </div>
+    <div class="cell">
+      <h2>Visualizing Data with Matplotlib</h2>
+      <p>To create a scatter plot of your product data, you can use the <b>matplotlib</b> library. Here’s what each line does:</p>
+      <pre><code>import matplotlib.pyplot as plt
+
+plt.scatter(df['Price'], df['Stock'])
+plt.xlabel('Price')
+plt.ylabel('Stock')
+plt.title('Product Price vs Stock')
+plt.show()</code></pre>
+      <ul>
+        <li><b>import matplotlib.pyplot as plt</b>: Imports the plotting library and gives it the alias <code>plt</code>.</li>
+        <li><b>plt.scatter(df['Price'], df['Stock'])</b>: Creates a scatter plot with Price on the x-axis and Stock on the y-axis.</li>
+        <li><b>plt.xlabel('Price')</b>: Labels the x-axis as "Price".</li>
+        <li><b>plt.ylabel('Stock')</b>: Labels the y-axis as "Stock".</li>
+        <li><b>plt.title('Product Price vs Stock')</b>: Adds a title to the plot.</li>
+        <li><b>plt.show()</b>: Displays the plot in the notebook.</li>
+      </ul>
+      <p>This is a simple way to visualize the relationship between product price and stock in your data.</p>
+    </div>
+  </div>
+</body>
+</html>

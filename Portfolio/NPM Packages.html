@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NPM/NuGet Automation Discussion Notes</title>
+</head>
+<body>
+    <h1>NPM/NuGet Automation Discussion</h1>
+    <h2>Team Notes</h2>
+    <ul>
+        <li>Discussing automation for npm and NuGet package updates.</li>
+        <li>Interest in creating a PR (pull request) for these updates.</li>
+        <li>Team member shared the <strong>Dependabot</strong> tool for automating dependency updates.</li>
+    </ul>
+    <h2>Questions</h2>
+    <ul>
+        <li>How do we configure Dependabot for both npm and NuGet in our repositories?</li>
+        <li>What are the best practices for reviewing and merging automated PRs?</li>
+        <li>Should we enable auto-merge for certain dependencies?</li>
+        <li>How do we handle breaking changes introduced by automated updates?</li>
+    </ul>
+    <h2>Next Steps</h2>
+    <ul>
+        <li>Research and document Dependabot configuration for our projects.</li>
+        <li>Draft a PR template for dependency update reviews.</li>
+        <li>Schedule a follow-up meeting to finalize automation workflow.</li>
+    </ul>
+    <h2>About Dependabot</h2>
+    <p><strong>Dependabot</strong> is a GitHub tool that helps automate dependency management for your projects. It regularly checks for updates to your dependencies (such as npm and NuGet packages) and automatically creates pull requests to keep them up to date. This helps ensure your codebase stays secure and benefits from the latest features and bug fixes.</p>
+    <ul>
+        <li><strong>Automated PRs:</strong> Dependabot creates pull requests when new versions of dependencies are available.</li>
+        <li><strong>Multi-ecosystem support:</strong> Works with npm, NuGet, Maven, pip, and more.</li>
+        <li><strong>Security updates:</strong> Notifies you and creates PRs for dependencies with known vulnerabilities.</li>
+        <li><strong>Customizable:</strong> You can configure update frequency, target branches, and more via a <code>.github/dependabot.yml</code> file.</li>
+    </ul>
+    <p>For more information, see the <a href="https://docs.github.com/en/code-security/supply-chain-security/keeping-your-dependencies-updated-automatically/about-dependabot-version-updates" target="_blank">Dependabot documentation</a>.</p>
+    <h2>Dependabot Azure DevOps Extension — Overview</h2>
+    <p><strong>Dependabot</strong> is a tool that automatically checks your project dependencies for updates and security vulnerabilities, and creates pull requests to keep them current and secure.</p>
+    <p>This Azure DevOps extension lets you run Dependabot inside your Azure DevOps build pipelines, automating dependency updates as part of your CI/CD process.</p>
+    <p>Learn more: <a href="https://marketplace.visualstudio.com/items?itemName=tingle-software.dependabot" target="_blank">Dependabot Azure DevOps Extension</a></p>
+    <h2>Dependency Update Tools Comparison</h2>
+    <table border="1" cellpadding="6" style="border-collapse:collapse;">
+        <tr>
+            <th>Tool</th>
+            <th>Azure DevOps Support</th>
+            <th>npm/NuGet Support</th>
+            <th>Other Ecosystems</th>
+            <th>Free/Open Source</th>
+            <th>Cross Platform</th>
+            <th>Key Features</th>
+        </tr>
+        <tr>
+            <td><strong>Dependabot</strong></td>
+            <td>Yes (via extension)</td>
+            <td>Yes</td>
+            <td>Maven, pip, etc.</td>
+            <td>Free (GitHub), not open source</td>
+            <td>Yes</td>
+            <td>Automated PRs, security updates, customizable config</td>
+        </tr>
+        <tr>
+            <td><strong>Renovate</strong></td>
+            <td>Yes (via extension or self-hosted)</td>
+            <td>Yes</td>
+            <td>Many (npm, NuGet, Maven, pip, etc.)</td>
+            <td>Free & open source</td>
+            <td>Yes</td>
+            <td>Highly configurable, supports monorepos, auto-merge</td>
+        </tr>
+        <tr>
+            <td><strong>Snyk</strong></td>
+            <td>Yes (integration)</td>
+            <td>Yes</td>
+            <td>Many (npm, NuGet, Maven, pip, etc.)</td>
+            <td>Free tier, paid plans, not open source</td>
+            <td>Yes</td>
+            <td>Security scanning, fix PRs, license checks</td>
+        </tr>
+        <tr>
+            <td><strong>UpdateBot</strong></td>
+            <td>Yes (integration)</td>
+            <td>Yes</td>
+            <td>Several (npm, Maven, etc.)</td>
+            <td>Free & open source</td>
+            <td>Yes</td>
+            <td>Automated PRs, supports scripting</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Content Management System (WCMS)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+      body { font-family: Arial, sans-serif; line-height: 1.6; }
+      .container { max-width: 700px; margin: 0 auto; padding: 16px; }
+      table { width: 100%; }
+      @media (max-width: 600px) {
+        .container { padding: 8px; }
+        h2, h3 { font-size: 1.2em; }
+        table, thead, tbody, th, td, tr { display: block; width: 100%; }
+        thead { display: none; }
+        tr { margin-bottom: 1em; border: 1px solid #ddd; border-radius: 6px; }
+        td { border: none; position: relative; padding-left: 50%; min-height: 40px; }
+        td:before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 45%;
+          padding-left: 10px;
+          font-weight: bold;
+          white-space: nowrap;
+        }
+        td:nth-of-type(1):before { content: 'Term'; }
+        td:nth-of-type(2):before { content: 'Description'; }
+      }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <h2>What is a WCMS?</h2>
+    <p><strong>WCMS</strong> stands for <strong>Web Content Management System</strong>. It is a software platform that allows users to create, manage, and publish digital content on websites without requiring advanced programming skills.</p>
+
+    <h3>Key Features:</h3>
+    <ul>
+      <li>Content creation and editing tools (e.g., WYSIWYG editors)</li>
+      <li>Digital asset management (images, videos, documents)</li>
+      <li>Website publishing workflows</li>
+      <li>User roles and permissions (editors, admins)</li>
+      <li>Templates and themes for consistent design</li>
+      <li>SEO and analytics integration</li>
+    </ul>
+
+    <h3>Popular WCMS Platforms:</h3>
+    <ul>
+      <li><strong>WordPress</strong> – Most popular, user-friendly, open-source</li>
+      <li><strong>Drupal</strong> – Flexible, secure, developer-focused</li>
+      <li><strong>Joomla</strong> – Intermediate-level, open-source</li>
+      <li><strong>Sitecore</strong> – Enterprise-grade, .NET-based</li>
+      <li><strong>Adobe Experience Manager (AEM)</strong> – Premium, marketing-driven WCMS</li>
+      <li><strong>Kentico</strong> – ASP.NET-based, business-friendly</li>
+      <li><strong>Contentful / Sanity</strong> – Headless CMS platforms (API-first)</li>
+    </ul>
+
+    <h3>WCMS vs CMS vs Headless CMS</h3>
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Term</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>CMS</strong></td>
+          <td>General term for systems that manage digital content</td>
+        </tr>
+        <tr>
+          <td><strong>WCMS</strong></td>
+          <td>CMS focused on creating and publishing web content</td>
+        </tr>
+        <tr>
+          <td><strong>Headless CMS</strong></td>
+          <td>Back-end only system that delivers content via APIs; front-end is decoupled</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

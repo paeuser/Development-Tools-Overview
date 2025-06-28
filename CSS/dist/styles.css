@@ -1,0 +1,57 @@
+/* Example PostCSS (.pcss) file with modern CSS features */
+
+:root {
+    --primary-color: #0078d4;
+    --secondary-color: #f4f4f4;
+    --font-main: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-main);
+    background: var(--secondary-color);
+    color: #222;
+    margin: 0;
+    padding: 1rem;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Example of nesting (requires postcss-nesting plugin) */
+section {
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    
+    h2 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 0.5rem;
+    }
+    h1 {
+        font-size: 1.4rem;
+    }
+    p {
+        font-size: 1rem;
+    }
+}
+
+/*
+Note: To make style changes, always edit your .pcss source file (e.g., src/main.pcss), then run PostCSS to generate the updated dist/styles.css file used by your website.
+*/

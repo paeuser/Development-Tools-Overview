@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Services: REST and SOAP</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Web Services: REST and SOAP</h1>
+    <h2>What is a Web Service?</h2>
+    <p>A web service is a way for applications to communicate with each other over the internet using standard protocols. The two most common types are REST and SOAP.</p>
+    <h2>REST (Representational State Transfer)</h2>
+    <ul>
+        <li>Uses standard HTTP methods (GET, POST, PUT, DELETE).</li>
+        <li>Stateless: each request contains all the information needed.</li>
+        <li>Data is usually sent and received as JSON or XML.</li>
+        <li>Resource-based URLs (e.g., <code>/api/products/1</code>).</li>
+        <li>Simple, scalable, and widely used for modern web APIs.</li>
+    </ul>
+    <h2>SOAP (Simple Object Access Protocol)</h2>
+    <ul>
+        <li>Uses XML for all messages.</li>
+        <li>Relies on a strict messaging structure (envelope, header, body).</li>
+        <li>Supports advanced features like security, transactions, and ACID compliance.</li>
+        <li>Can use protocols other than HTTP (e.g., SMTP).</li>
+        <li>Common in enterprise and legacy systems.</li>
+    </ul>
+    <h2>Key Differences</h2>
+    <ul>
+        <li><strong>REST:</strong> Lightweight, easy to use, best for web/mobile APIs.</li>
+        <li><strong>SOAP:</strong> Heavyweight, more features, best for complex enterprise needs.</li>
+    </ul>
+    <h2>Example REST Request</h2>
+    <pre><code>GET /api/users/123 HTTP/1.1
+Host: example.com</code></pre>
+    <h2>Example SOAP Request</h2>
+    <pre><code>&lt;soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;soap:Body&gt;
+    &lt;GetUser&gt;
+      &lt;UserId&gt;123&lt;/UserId&gt;
+    &lt;/GetUser&gt;
+  &lt;/soap:Body&gt;
+&lt;/soap:Envelope&gt;</code></pre>
+</div>
+</body>
+</html>

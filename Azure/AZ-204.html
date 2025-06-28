@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azure AI Quiz Questions</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #0078d4;
+    }
+    .question {
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: #ffffff;
+      border-left: 5px solid #0078d4;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .choices {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .choices li {
+      margin: 6px 0;
+      padding: 8px;
+      background-color: #f0f0f0;
+      border-left: 4px solid transparent;
+    }
+    .correct {
+      background-color: #d4edda;
+      border-left-color: #28a745;
+      font-weight: bold;
+    }
+    .incorrect {
+      background-color: #f8d7da;
+      border-left-color: #dc3545;
+    }
+    .explanation {
+      margin-top: 15px;
+      background-color: #eef6fb;
+      padding: 10px;
+      border-left: 3px solid #17a2b8;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Azure AI Quiz Questions</h1>
+
+  <div class="question">
+    <p><strong>1. Which Azure resource provides language and vision services from a single endpoint?</strong></p>
+    <ul class="choices">
+      <li class="incorrect">Azure AI Language</li>
+      <li class="incorrect">Azure AI Vision</li>
+      <li class="correct">Azure AI Services</li>
+    </ul>
+    <div class="explanation">
+      <strong>Explanation:</strong> Azure AI Services is a unified resource that offers multiple AI capabilities—like language, vision, speech, and decision—all accessible through a single endpoint. It simplifies integration and billing when using multiple services together.
+    </div>
+  </div>
+
+  <div class="question">
+    <p><strong>2. You plan to create a simple chat app that uses a generative AI model. What kind of project should you create?</strong></p>
+    <ul class="choices">
+      <li class="correct">Azure AI Foundry project</li>
+      <li class="incorrect">Azure AI hub based project</li>
+      <li class="incorrect">Azure AI Custom Vision project</li>
+    </ul>
+    <div class="explanation">
+      <strong>Explanation:</strong> Azure AI Foundry projects are designed for generative AI workloads like chatbots. They provide tooling and infrastructure specifically tailored for working with LLMs such as OpenAI models.
+    </div>
+  </div>
+
+  <div class="question">
+    <p><strong>3. Which SDK enables you to connect to resources in a project?</strong></p>
+    <ul class="choices">
+      <li class="incorrect">Azure AI Services SDK</li>
+      <li class="incorrect">Semantic Kernel SDK</li>
+      <li class="correct">Azure AI Foundry SDK</li>
+    </ul>
+    <div class="explanation">
+      <strong>Explanation:</strong> The Azure AI Foundry SDK is used to programmatically connect to and interact with resources in an Azure AI Foundry project. It includes tools to manage workflows, access models, and deploy AI applications.
+    </div>
+  </div>
+
+</body>
+</html>

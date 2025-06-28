@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Engineering Techniques</title>
+    <link rel="stylesheet" href="../../../site.css">
+</head>
+<body>
+    <main>
+        <h1>Prompt Engineering Techniques</h1>
+        <section>
+            <h2>1. Instruction-based Prompts</h2>
+            <p><strong>Explanation:</strong> Instruction-based prompts clearly tell the AI model what you want it to do. The more direct and specific the instruction, the more likely you are to get a relevant and accurate response. This technique is foundational for all prompt engineering and is used in almost every interaction with large language models.</p>
+            <p><strong>How it works:</strong> You provide a clear command or question, and the model follows your instruction as closely as possible.</p>
+            <h3>Real-World Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+Instruction: Summarize the following article in three bullet points.
+
+[Paste article text here]
+            </pre>
+            <p><strong>Expected Output:</strong></p>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+• The article discusses the main features of Azure Key Vault.
+• It explains how Key Vault secures secrets, keys, and certificates in the cloud.
+• The article highlights integration with Azure services and best practices for access control.
+            </pre>
+        </section>
+        <section>
+            <h2>2. Few-shot Learning</h2>
+            <p><strong>Explanation:</strong> Few-shot learning involves providing the model with a few examples of the desired input-output pattern. This helps the model understand the format, style, or logic you want it to follow.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+Q: What is Azure Key Vault?
+A: Azure Key Vault is a cloud service for securely storing and managing secrets, keys, and certificates.
+
+Q: What is Azure Cognitive Services?
+A: Azure Cognitive Services is a set of APIs for vision, speech, language, and decision AI tasks.
+
+Q: What is Azure OpenAI?
+A:
+            </pre>
+            <p>The model will likely continue the pattern and provide a concise answer for Azure OpenAI.</p>
+        </section>
+        <section>
+            <h2>3. Zero-shot Learning</h2>
+            <p><strong>Explanation:</strong> Zero-shot learning asks the model to perform a task without any examples, relying on its general knowledge and training.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+"Translate the following sentence to French: 'Azure Key Vault secures your secrets.'"
+            </pre>
+        </section>
+        <section>
+            <h2>4. Chain-of-Thought Prompting</h2>
+            <p><strong>Explanation:</strong> This technique encourages the model to explain its reasoning step by step, which can improve accuracy for complex tasks.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+"Explain how Azure Key Vault works, step by step."
+            </pre>
+            <p><strong>Expected Output:</strong></p>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+1. The application authenticates to Azure Key Vault.
+2. It requests a secret (such as a database connection string).
+3. Key Vault returns the secret securely.
+4. The application uses the secret to access the resource.
+            </pre>
+        </section>
+        <section>
+            <h2>5. Role Assignment</h2>
+            <p><strong>Explanation:</strong> Ask the model to act as a specific expert or persona to tailor the response style and depth.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+"You are a senior Azure architect. Explain the benefits of using Azure Key Vault to a new developer."
+            </pre>
+        </section>
+        <section>
+            <h2>6. Output Constraints</h2>
+            <p><strong>Explanation:</strong> Specify the format, length, or style of the response to ensure the output meets your needs.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+"List three key features of Azure Key Vault in JSON format."
+            </pre>
+            <p><strong>Expected Output:</strong></p>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+{
+  "features": [
+    "Secure secret storage",
+    "Access control via Azure AD",
+    "Integration with Azure services"
+  ]
+}
+            </pre>
+        </section>
+        <section>
+            <h2>7. Contextual Prompts</h2>
+            <p><strong>Explanation:</strong> Provide background information or context to improve the relevance and accuracy of the model's response.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+"In the context of a multi-cloud application, explain how Azure Key Vault can be used to manage secrets."
+            </pre>
+        </section>
+        <section>
+            <h2>8. Iterative Refinement</h2>
+            <p><strong>Explanation:</strong> Adjust and refine prompts based on the model's responses to improve results over time.</p>
+            <h3>Sample</h3>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
+First prompt: "Summarize Azure Key Vault."
+
+Refined prompt: "Summarize Azure Key Vault in three bullet points, focusing on security and integration features."
+            </pre>
+        </section>
+    </main>
+</body>
+</html>

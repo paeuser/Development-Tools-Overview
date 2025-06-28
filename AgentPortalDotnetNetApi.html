@@ -1,0 +1,219 @@
+<!-- This file describes the backend API for the Agent Portal project. -->
+
+<h1>Agent Portal Backend API</h1>
+
+<h2>Directory Functions</h2>
+<ul>
+  <li><strong>Authorization/</strong>: Contains classes and handlers for managing authorization requirements and policies, such as excluding subaccounts.</li>
+  <li><strong>ClientUtilities/</strong>: Provides utility classes for handling client-side operations, including token transformations, feature flag helpers, and logging utilities.</li>
+  <li><strong>Controllers/</strong>: Houses the API controllers that define the endpoints for various functionalities, such as authentication, features, forms, and subaccount management.</li>
+  <li><strong>Extensions/</strong>: Includes extension methods and constants for enhancing the functionality of existing classes, such as HttpContext.</li>
+  <li><strong>Middleware/</strong>: Contains middleware components for handling cross-cutting concerns like logging, feature flags, and API route validation.</li>
+  <li><strong>Properties/</strong>: Stores configuration files, such as launch settings for the application.</li>
+  <li><strong>Root Files</strong>: Includes configuration files like <code>appsettings.json</code>, project files, and New Relic configuration for monitoring and settings.</li>
+</ul>
+
+<h2>Directory Structure</h2>
+<pre>
+Assurity.AgentPortal.Web/
+├── Authorization/
+│   ├── ExcludeSubAccountsAuthorizationHandler.cs
+│   ├── ExcludeSubAccountsAuthorizationRequirement.cs
+├── ClientUtilities/
+│   ├── BearerTokenAuthHeaderTransform.cs
+│   ├── BearerTokenContentHeaderTransform.cs
+│   ├── Feature.cs
+│   ├── FeatureFlagMiddlewareHelper.cs
+│   ├── IFeatureFlagMiddlewareHelper.cs
+│   ├── ImpersonationTransform.cs
+│   ├── LogHelper.cs
+│   ├── RequestHelpers.cs
+│   └── Constants/
+│       └── CookieConstants.cs
+├── Controllers/
+│   ├── AuthController.cs
+│   ├── AWPSController.cs
+│   ├── DirectusController.cs
+│   ├── FeaturesController.cs
+│   ├── FormsController.cs
+│   ├── IllustrationProController.cs
+│   ├── ProfileController.cs
+│   ├── SubaccountController.cs
+│   ├── WPSController.cs
+│   └── Requests/
+│       ├── ActivateSubAccountRequest.cs
+│       ├── ChangeMFADeviceRequest.cs
+│       ├── ChangePasswordRequest.cs
+│       ├── ConfirmMFADeviceChangeRequest.cs
+│       ├── CreateSubAccountRequest.cs
+│       ├── DirectusGetContractsRequest.cs
+│       └── ...
+├── Extensions/
+│   ├── HttpContextConstants.cs
+│   └── HttpContextExtension.cs
+├── Middleware/
+│   ├── AgentDataMiddleware.cs
+│   ├── ApiRouteNotFoundMiddleware.cs
+│   ├── AuthGuardMiddleware.cs
+│   ├── FeatureFlagMiddleware.cs
+│   └── LoggingMiddleware.cs
+├── Properties/
+│   └── launchSettings.json
+├── appsettings.json
+├── appsettings.json.token
+├── Assurity.AgentPortal.Web.csproj
+├── newrelic.config
+├── newrelic.config.token
+└── Program.cs
+</pre>
+
+<h2>Security: Authentication and Authorization</h2>
+<p>The backend API implements robust security mechanisms for authentication and authorization using the following components:</p>
+
+<h3>Authentication and Authorization in .NET</h3>
+<ul>
+  <li><strong>Authentication:</strong> The application uses <code>CookieAuthenticationDefaults.AuthenticationScheme</code> as the default scheme and integrates with OpenID Connect for external identity providers. The configuration for authentication is defined in the <code>Program.cs</code> file. It includes multiple OpenID Connect configurations, such as Azure AD and PingOne, to handle user authentication and token management.</li>
+  <li><strong>Authorization:</strong> The application uses policies to enforce authorization rules. For example, the "ExcludeSubAccounts" policy is defined in <code>Program.cs</code> and implemented using the <code>ExcludeSubAccountsAuthorizationHandler</code> class located in the <code>Authorization/</code> directory. This policy ensures that certain subaccounts are excluded based on specific requirements.</li>
+  <li><strong>Middleware:</strong> Custom middleware components, such as <code>AuthGuardMiddleware</code> and <code>ApiRouteNotFoundMiddleware</code>, are used to handle authentication and route validation. These middleware components are located in the <code>Middleware/</code> directory.</li>
+</ul>
+
+<h3>Integration with the Vue Application</h3>
+<ul>
+  <li><strong>Authentication Flow:</strong> The Vue application interacts with the backend API for authentication by redirecting users to the appropriate OpenID Connect login endpoint. Upon successful authentication, the backend issues a secure session cookie (<code>.agentCenter.Session</code>) to the client.</li>
+  <li><strong>Authorization:</strong> The Vue application relies on the backend API to enforce authorization rules. API endpoints are protected by the backend, ensuring that only authorized users can access specific resources. The Vue application uses the session cookie to make authenticated requests to the backend.</li>
+  <li><strong>Token Management:</strong> The backend handles token validation and storage, ensuring that the Vue application does not directly manage sensitive tokens. This approach enhances security by centralizing token management in the backend.</li>
+</ul>
+
+<h2>System Design Diagram</h2>
+<p>The following diagram provides a high-level overview of the system design for the Agent Portal backend API:</p>
+
+<pre>
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+|   Vue Frontend    | <---> |   Backend API     | <---> |   External APIs   |
+|                   |       |                   |       |                   |
++-------------------+       +-------------------+       +-------------------+
+        |                           |                           |
+        |                           |                           |
+        v                           v                           v
++-------------------+       +-------------------+       +-------------------+
+|                   |       |                   |       |                   |
+| Authentication    |       | Authorization     |       | Token Management |
+|                   |       |                   |       |                   |
++-------------------+       +-------------------+       +-------------------+
+</pre>
+
+<p><strong>Key Components:</strong></p>
+<ul>
+  <li><strong>Vue Frontend:</strong> The user interface that interacts with the backend API for authentication, authorization, and data retrieval.</li>
+  <li><strong>Backend API:</strong> The core of the system, handling business logic, authentication, and communication with external APIs.</li>
+  <li><strong>External APIs:</strong> Third-party services integrated into the system, such as Azure AD and PingOne for authentication and token management.</li>
+</ul>
+
+<h3>Glossary of Terms</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>OpenID Connect</td>
+      <td>A simple identity layer on top of the OAuth 2.0 protocol, used for user authentication and single sign-on (SSO).</td>
+    </tr>
+    <tr>
+      <td>Azure AD</td>
+      <td>Microsoft's cloud-based identity and access management service, used for authentication and authorization.</td>
+    </tr>
+    <tr>
+      <td>PingOne</td>
+      <td>A cloud-based identity-as-a-service (IDaaS) solution for secure authentication and single sign-on.</td>
+    </tr>
+    <tr>
+      <td>Session Cookie</td>
+      <td>A small piece of data stored on the client-side, used to maintain a user's session with the backend server.</td>
+    </tr>
+    <tr>
+      <td>Token Management</td>
+      <td>The process of securely handling, validating, and storing tokens used for authentication and authorization.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>FeaturesController Overview</h2>
+<p>The <code>FeaturesController</code> is a backend API controller responsible for managing feature flags in the application. It provides a mechanism to dynamically enable or disable features without requiring code changes or redeployment.</p>
+
+<h3>Key Responsibilities</h3>
+<ul>
+  <li><strong>Feature Management:</strong> Interacts with the <code>IFeatureManager</code> interface to check the status of specific features.</li>
+  <li><strong>Endpoint:</strong> Exposes an HTTP GET endpoint (<code>/Features</code>) that accepts a query parameter <code>feature</code> to check if a feature is enabled.</li>
+  <li><strong>Error Handling:</strong> Handles unsupported feature names gracefully by returning a response indicating the feature is disabled.</li>
+</ul>
+
+<h3>Integration with Vue Frontend</h3>
+<ul>
+  <li><strong>Dynamic Feature Toggles:</strong> The Vue application queries the <code>FeaturesController</code> to determine the status of features and adapt its behavior accordingly.</li>
+  <li><strong>Example Usage:</strong> The Vue frontend can use an HTTP client (e.g., Axios) to call the endpoint and conditionally render components or enable/disable functionality based on the response.</li>
+</ul>
+
+<h3>Example API Response</h3>
+<pre>
+GET /Features?feature=NewDashboard
+Response: { "isEnabled": true }
+</pre>
+
+<p>This response indicates that the <code>NewDashboard</code> feature is enabled.</p>
+
+<h2>Feature Flags: Dynamic Feature Management</h2>
+<p>The Agent Portal backend uses <strong>Microsoft.FeatureManagement</strong> to enable or disable features dynamically at runtime. This allows for safe feature rollouts, A/B testing, and quick toggling of application functionality without redeploying code.</p>
+
+<h3>Feature Flag API Endpoint</h3>
+<p>The <code>FeaturesController</code> exposes an endpoint to check if a feature is enabled:</p>
+<pre><code>[HttpGet]
+public async Task<IActionResult> CheckFeature([FromQuery]string feature)
+{
+    try
+    {
+        var isEnabled = await featureManager.IsEnabledAsync(feature);
+        return Ok(new { isEnabled });
+    }
+    catch (NotSupportedException)
+    {
+        return Ok(new { isEnabled = false });
+    }
+}
+</code></pre>
+<ul>
+  <li><strong>Route:</strong> <code>GET /features?feature=FeatureName</code></li>
+  <li><strong>Returns:</strong> <code>{ isEnabled: true/false }</code> depending on the feature flag status.</li>
+  <li><strong>Service:</strong> Uses <code>IFeatureManager</code> from <code>Microsoft.FeatureManagement</code> to check feature status.</li>
+</ul>
+
+<h3>FeatureFlagMiddlewareHelper</h3>
+<p>The <code>FeatureFlagMiddlewareHelper</code> class provides utility methods to:</p>
+<ul>
+  <li>Check if a request path matches a feature-flagged route.</li>
+  <li>Determine if a feature is enabled for a given path using <code>IFeatureManager</code>.</li>
+  <li>Maintain a whitelist of paths and a mapping of features to API routes.</li>
+</ul>
+<p>This enables fine-grained control over which API endpoints are governed by feature flags.</p>
+
+<h3>Configuration</h3>
+<ul>
+  <li>Feature flags are defined in <code>appsettings.json</code> under the <code>FeatureManagement</code> section.</li>
+  <li>Flags can be toggled without code changes or redeployment.</li>
+</ul>
+
+<h3>Example Usage</h3>
+<pre><code>// appsettings.json
+"FeatureManagement": {
+  "NewFeature": true,
+  "BetaFeature": false
+}
+</code></pre>
+<p>To check if <code>NewFeature</code> is enabled, call <code>/features?feature=NewFeature</code>.</p>
+
+<h2>Implemented Features Summary</h2>
+<p>Implemented a robust feature flag system by designing and developing .NET 8 Web API endpoints using Microsoft.FeatureManagement for dynamic feature management, integrating Directus for content/data management, and connecting Vue 3 frontend logic with Pinia state management and Axios for real-time feature toggling. Enabled or disabled UI components and workflows based on live configuration, supporting safer deployments, controlled rollouts, and rapid experimentation without code redeployment.</p>

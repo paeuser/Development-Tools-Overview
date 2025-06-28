@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI-Powered Feedback Analyzer - Project Plan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1, h2 {
+      color: #005a9e;
+    }
+    code {
+      background-color: #eef;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    ul, ol {
+      padding-left: 1.5rem;
+    }
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .goal {
+      background-color: #fff9e6;
+      border-left: 6px solid #ffc107;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="goal">
+    <h2>🎯 My Initial Goal</h2>
+    <p>
+      I'm studying for the <strong>AZ-AI-102: Microsoft Certified Azure AI Engineer Associate</strong> certification, 
+      but I also need to prepare for a job interview where I must demonstrate experience with <strong>React (UI)</strong> 
+      and <strong>.NET 9</strong>. I'm looking for a project that allows me to use all three technologies so I can continue 
+      learning AI while gaining full-stack experience. Ideally, this includes building a React app with some AI functionality, 
+      deploying it to Azure using DevOps, and integrating with an Azure AI service.
+    </p>
+  </div>
+
+  <h1>AI-Powered Customer Feedback Analyzer</h1>
+  <p><strong>Full-Stack Project Plan: React + .NET 9 + Azure AI</strong></p>
+  <p style="font-size:0.98em;color:#444;margin-bottom:1.5em;max-width:600px"><em>Open source project: Collect, analyze, and translate customer feedback with a React frontend, .NET 9 API, and Azure Cognitive Services. Demonstrates secure cloud deployment, DevOps, and real-world AI integration for learning and portfolios.</em></p>
+
+  <section>
+    <h2>📦 Tech Stack</h2>
+    <ul>
+      <li><strong>Frontend:</strong> React (TypeScript)</li>
+      <li><strong>Backend:</strong> .NET 9 Web API (C#)</li>
+      <li><strong>AI Services:</strong> Azure Cognitive Services (Text Analytics, Translator)</li>
+      <li><strong>Deployment:</strong> Azure App Service + Azure DevOps</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🎯 Objective</h2>
+    <p>Build a full-stack app that allows users to submit written feedback and:</p>
+    <ol>
+      <li>Analyzes sentiment using Azure Text Analytics</li>
+      <li>Translates feedback using Azure Translator</li>
+      <li>Displays AI results on the UI</li>
+      <li>Deploys to Azure with CI/CD via Azure DevOps</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>🧩 Features</h2>
+    <h3>Frontend (React)</h3>
+    <ul>
+      <li>Feedback input form</li>
+      <li>Dropdown to select translation language</li>
+      <li>Display sentiment score and translated text</li>
+    </ul>
+
+    <h3>Backend (.NET 9)</h3>
+    <ul>
+      <li>API endpoint: <code>/api/analyze</code></li>
+      <li>Uses Azure Text Analytics & Translator</li>
+      <li>Returns JSON with sentiment and translation</li>
+    </ul>
+
+    <h3>Azure Integration</h3>
+    <ul>
+      <li>Configure Azure Cognitive Services</li>
+      <li>Secure API keys with Azure Key Vault</li>
+      <li>Set up App Insights for monitoring</li>
+      <li>CI/CD pipeline with Azure DevOps</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🔁 Stretch Goals</h2>
+    <ul>
+      <li>Azure OpenAI for text summarization</li>
+      <li>Azure Bot Framework for smart Q&A</li>
+      <li>Speech-to-Text using Azure Speech Services</li>
+      <li>User authentication via Azure AD</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📝 Tasks</h2>
+    <ul>
+      <li>[ ] Create GitHub repo and push code</li>
+      <li>[ ] Set up .NET 9 Web API</li>
+      <li>[ ] Create React app with feedback form</li>
+      <li>[ ] Connect backend to Azure services</li>
+      <li>[ ] Secure secrets in Key Vault</li>
+      <li>[ ] Style UI (Tailwind or Bootstrap)</li>
+      <li>[ ] Add Azure DevOps pipeline</li>
+      <li>[ ] Deploy to Azure App Service</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>🧠 AI-102 Certification Skills Applied</h2>
+    <ul>
+      <li>Use Azure Language and Translator services</li>
+      <li>Secure keys with Key Vault</li>
+      <li>Deploy via Azure App Service</li>
+      <li>Monitor with App Insights</li>
+      <li>Automate with DevOps pipeline</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><strong>Tip:</strong> Use <code>Azure Portal</code>, <code>Postman</code>, <code>VS Code</code>, and <code>Azure CLI</code> to help manage resources and test APIs.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,50 @@
+# Docker Compose file for local Kafka, Zookeeper, and Kafka UI setup
+version: "2"
+
+services:
+  # Zookeeper service for Kafka coordination
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.8
+    ports:
+      - "2181:2181"  # Expose Zookeeper port
+    volumes:
+      - "zookeeper_data:/bitnami"  # Persist Zookeeper data
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes  # Allow anonymous login for dev
+
+  # Kafka broker service
+  kafka1:
+    image: docker.io/bitnami/kafka:3.6
+    ports:
+      - "9092:9092"  # Expose Kafka broker port
+    volumes:
+      - "kafka_data:/bitnami"  # Persist Kafka data
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181  # Connect to Zookeeper
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093,EXTERNAL://:9094  # Listener configs
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092,EXTERNAL://kafka1:9094  # Advertised listeners
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,EXTERNAL:PLAINTEXT,PLAINTEXT:PLAINTEXT  # Protocol map
+    depends_on:
+      - zookeeper  # Wait for Zookeeper
+      
+  # Kafka UI for managing and viewing Kafka
+  kafka-ui:
+    image: provectuslabs/kafka-ui:latest
+    ports:
+      - 9100:8080  # Expose Kafka UI on localhost:9100
+    environment:
+      KAFKA_CLUSTERS_0_NAME: local  # Cluster name in UI
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka1:9092  # Kafka broker address
+      KAFKA_CLUSTERS_0_ZOOKEEPER: zookeeper:2181  # Zookeeper address
+      KAFKA_CLUSTERS_0_JMXPORT: 9997  # JMX port for monitoring
+    depends_on:
+      - kafka1  # Wait for Kafka broker
+
+volumes:
+  # Volume for Zookeeper data
+  zookeeper_data:
+    driver: local
+
+  # Volume for Kafka data
+  kafka_data:
+    driver: local

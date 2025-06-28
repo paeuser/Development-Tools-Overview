@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Vulnerabilities: XSS, CSRF, SQL Injection</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Common Vulnerabilities: XSS, CSRF, SQL Injection</h1>
+    <h2>Cross-Site Scripting (XSS)</h2>
+    <ul>
+        <li><strong>What is it?</strong> XSS allows attackers to inject malicious scripts into web pages viewed by other users.</li>
+        <li><strong>Impact:</strong> Can steal cookies, session tokens, or perform actions as the user.</li>
+        <li><strong>Prevention:</strong> Always escape user input, use Content Security Policy (CSP), and sanitize data before rendering.</li>
+    </ul>
+    <h2>Cross-Site Request Forgery (CSRF)</h2>
+    <ul>
+        <li><strong>What is it?</strong> CSRF tricks a user into submitting unwanted actions on a web app where they're authenticated.</li>
+        <li><strong>Impact:</strong> Can change user data, make purchases, or perform admin actions without consent.</li>
+        <li><strong>Prevention:</strong> Use anti-CSRF tokens, check referer headers, and require re-authentication for sensitive actions.</li>
+    </ul>
+    <h2>SQL Injection</h2>
+    <ul>
+        <li><strong>What is it?</strong> SQL Injection lets attackers run arbitrary SQL queries by injecting code into input fields.</li>
+        <li><strong>Impact:</strong> Can read, modify, or delete database data; sometimes gain full control of the server.</li>
+        <li><strong>Prevention:</strong> Always use parameterized queries or prepared statements, validate and sanitize input, and limit database permissions.</li>
+    </ul>
+    <h2>Best Practices</h2>
+    <ul>
+        <li>Validate and sanitize all user input.</li>
+        <li>Use security libraries and frameworks that protect against these attacks.</li>
+        <li>Keep software and dependencies up to date.</li>
+        <li>Educate developers about secure coding practices.</li>
+    </ul>
+</div>
+</body>
+</html>

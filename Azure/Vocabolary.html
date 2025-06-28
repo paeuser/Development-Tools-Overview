@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Vocabulary: Tenant & Key Vault</title>
+    <link rel="stylesheet" href="../site.css">
+</head>
+<body>
+    <main>
+        <h1>Azure Vocabulary: Tenant & Key Vault</h1>
+        <section>
+            <h2>Term: <span style="color:#1976d2">tenant</span></h2>
+            <p><strong>Definition:</strong> In Azure, a <b>tenant</b> is a dedicated, isolated instance of Azure Active Directory (Azure AD) that an organization receives when it signs up for a Microsoft cloud service such as Azure, Microsoft 365, or Intune.</p>
+            <ul>
+                <li>The tenant represents your organization and is used to manage users, groups, and access to resources across Microsoft cloud services.</li>
+                <li>Each tenant is unique and separate from other tenants, providing security and isolation for your organization's data and identity management.</li>
+                <li>Tenants are identified by a unique domain name (e.g., yourcompany.onmicrosoft.com) and a globally unique identifier (GUID).</li>
+            </ul>
+            <p><strong>Example:</strong> If your company signs up for Azure, you get a tenant (e.g., contoso.onmicrosoft.com) that you use to manage all your users and resources in Azure.</p>
+            <h3>Your Tenant Information</h3>
+            <ul>
+                <li><strong>Tenant ID:</strong> 7a16bfae-5ad8-4333-ae59-bdd3df252e95</li>
+                <li><strong>Subscription Name:</strong> Visual Studio Enterprise</li>
+                <li><strong>Subscription ID:</strong> f6ab9759-ffe4-4b77-81f6-e55987b84565</li>
+                <li><strong>Signed-in User:</strong> live.com#eric-cabrera@LIVE.COM</li>
+                <li><strong>State:</strong> Enabled</li>
+            </ul>
+            <p style="font-size:0.98em;color:#555;">This information was obtained by running <code>az account show</code> in Azure Cloud Shell.</p>
+        </section>
+        <section>
+            <h2>Term: <span style="color:#1976d2">Azure Key Vault</span></h2>
+            <p><strong>Definition:</strong> <b>Azure Key Vault</b> is a cloud service for securely storing and managing sensitive information such as secrets, encryption keys, and certificates.</p>
+            <ul>
+                <li>Helps safeguard cryptographic keys and secrets used by cloud applications and services.</li>
+                <li>Supports secure storage and tight access control for tokens, passwords, API keys, and other secrets.</li>
+                <li>Enables you to control access using Azure Active Directory and policies.</li>
+                <li>Provides logging and monitoring for access and usage.</li>
+                <li>Integrates with other Azure services for secure key management and secret retrieval.</li>
+            </ul>
+            <p><strong>Example:</strong> You can store a database connection string or an SSL certificate in Azure Key Vault and allow only your application to access it securely at runtime.</p>
+        </section>
+    </main>
+</body>
+</html>

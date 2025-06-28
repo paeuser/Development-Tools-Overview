@@ -1,0 +1,575 @@
+ % Coverage report from v8
+----------------------------------------------|---------|----------|---------|---------|--------------------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+----------------------------------------------|---------|----------|---------|---------|--------------------------------
+All files                                     |   31.11 |    49.34 |   31.43 |   31.11 |                                
+ directus-settings/flows/create-slug          |       0 |        0 |       0 |       0 |                                
+  step1.js                                    |       0 |        0 |       0 |       0 | 1-42                           
+  step2-false.js                              |       0 |        0 |       0 |       0 | 1-16                           
+  step2-true.js                               |       0 |        0 |       0 |       0 | 1-18                           
+  step3.js                                    |       0 |        0 |       0 |       0 | 1-80                           
+  step4.js                                    |       0 |        0 |       0 |       0 | 1-21                           
+ src                                          |       0 |        0 |       0 |       0 |                                
+  App.vue                                     |       0 |        0 |       0 |       0 | 1-70                           
+  main.ts                                     |       0 |        0 |       0 |       0 | 1-150                          
+ src/AccountActivation/api                    |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-24                           
+ src/AccountActivation/models                 |       0 |        0 |       0 |       0 |                                
+  createPasswordResposne.ts                   |       0 |        0 |       0 |       0 |                                
+ src/AccountActivation/views                  |       0 |        0 |       0 |       0 |                                
+  AccountConfirmation.vue                     |       0 |        0 |       0 |       0 | 1-282                          
+ src/CaseManagement                           |       0 |        0 |       0 |       0 |                                
+  caseManagementStore.ts                      |       0 |        0 |       0 |       0 | 1-14                           
+ src/CaseManagement/api                       |       0 |        0 |       0 |       0 |                                
+  caseManagementApi.ts                        |       0 |        0 |       0 |       0 | 1-55                           
+ src/CaseManagement/models                    |       0 |       80 |      80 |       0 |                                
+  ActionData.ts                               |       0 |        0 |       0 |       0 |                                
+  CaseManagementFilterData.ts                 |       0 |        0 |       0 |       0 | 1-91                           
+  CaseManagementFilterField.ts                |       0 |      100 |     100 |       0 | 2-7                            
+  CaseManagementFilterItems.ts                |       0 |        0 |       0 |       0 |                                
+  CaseManagementFilterOptions.ts              |       0 |        0 |       0 |       0 |                                
+ src/CaseManagement/models/enums              |       0 |        0 |       0 |       0 |                                
+  AudienceType.ts                             |       0 |        0 |       0 |       0 | 1-5                            
+  ComponentName.ts                            |       0 |        0 |       0 |       0 | 1-15                           
+  EventType.ts                                |       0 |        0 |       0 |       0 | 1-11                           
+  NextView.ts                                 |       0 |        0 |       0 |       0 | 1-5                            
+  ProductType.ts                              |       0 |        0 |       0 |       0 | 1-13                           
+ src/CaseManagement/utils                     |       0 |        0 |       0 |       0 |                                
+  caseManagementFilterHelpers.ts              |       0 |        0 |       0 |       0 | 1-171                          
+  caseUtils.ts                                |       0 |        0 |       0 |       0 | 1-128                          
+  dateUtils.ts                                |       0 |        0 |       0 |       0 | 1-16                           
+  tableUtils.ts                               |       0 |        0 |       0 |       0 | 1-437                          
+ src/CaseManagement/views                     |       0 |        0 |       0 |       0 |                                
+  CaseManagementTable.vue                     |       0 |        0 |       0 |       0 | 1-361                          
+  CaseManagementView.vue                      |       0 |        0 |       0 |       0 | 1-379                          
+  ChildPerson.vue                             |       0 |        0 |       0 |       0 | 1-85                           
+  ChildProduct.vue                            |       0 |        0 |       0 |       0 | 1-36                           
+  ClientSectionMobile.vue                     |       0 |        0 |       0 |       0 | 1-63                           
+  MessageModal.vue                            |       0 |        0 |       0 |       0 | 1-13                           
+  PrimaryInsuredPerson.vue                    |       0 |        0 |       0 |       0 | 1-162                          
+  PrimaryInsuredProduct.vue                   |       0 |        0 |       0 |       0 | 1-589                          
+  ProductSectionMobile.vue                    |       0 |        0 |       0 |       0 | 1-48                           
+  RelatedPerson.vue                           |       0 |        0 |       0 |       0 | 1-66                           
+  SectionHeading.vue                          |       0 |        0 |       0 |       0 | 1-10                           
+  SpousePerson.vue                            |       0 |        0 |       0 |       0 | 1-135                          
+  SpouseProduct.vue                           |       0 |        0 |       0 |       0 | 1-76                           
+  StatusHistoryAction.vue                     |       0 |        0 |       0 |       0 | 1-139                          
+  StatusHistoryDate.vue                       |       0 |        0 |       0 |       0 | 1-27                           
+  StatusHistoryMobile.vue                     |       0 |        0 |       0 |       0 | 1-12                           
+  StatusHistoryName.vue                       |       0 |        0 |       0 |       0 | 1-22                           
+  StatusModal.vue                             |       0 |        0 |       0 |       0 | 1-81                           
+ src/Claims/api                               |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-90                           
+ src/Claims/views                             |       0 |        0 |       0 |       0 |                                
+  ClaimResultsView.vue                        |       0 |        0 |       0 |       0 | 1-238                          
+  ClaimsHomeView.vue                          |       0 |        0 |       0 |       0 | 1-334                          
+ src/Commissions/components                   |   67.27 |    84.61 |    37.5 |   67.27 |                                
+  AgentStatement.vue                          |   95.74 |      100 |      50 |   95.74 | 43,100-101,108                 
+  DirectDeposit.vue                           |     100 |      100 |     100 |     100 |                                
+  ExpandedDetails.vue                         |       0 |        0 |       0 |       0 | 1-11                           
+  ExpandedDetailsTable.vue                    |       0 |        0 |       0 |       0 | 1-60                           
+ src/Commissions/views                        |       0 |        0 |       0 |       0 |                                
+  CommissionDetails.vue                       |       0 |        0 |       0 |       0 | 1-30                           
+  CommissionPolicyDetailsTab.vue              |       0 |        0 |       0 |       0 | 1-407                          
+  CommissionWritingAgentTab.vue               |       0 |        0 |       0 |       0 | 1-393                          
+  DebtDetails.vue                             |       0 |        0 |       0 |       0 | 1-31                           
+  DebtSecuredAdvancesDetailsTab.vue           |       0 |        0 |       0 |       0 | 1-473                          
+  DebtUnsecuredAdvancesDetailsTab.vue         |       0 |        0 |       0 |       0 | 1-502                          
+  DebtView.vue                                |       0 |        0 |       0 |       0 | 1-144                          
+  HomeView.vue                                |       0 |        0 |       0 |       0 | 1-1019                         
+ src/Contracting/components                   |     100 |      100 |     100 |     100 |                                
+  ContractingForm.vue                         |     100 |      100 |     100 |     100 |                                
+  VertaforeRedirectButton.vue                 |     100 |      100 |     100 |     100 |                                
+ src/Contracting/mockdata                     |       0 |      100 |     100 |       0 |                                
+  MockDataService.ts                          |       0 |      100 |     100 |       0 | 12-31                          
+ src/GroupInventory/api                       |       0 |        0 |       0 |       0 |                                
+  groupInventoryApi.ts                        |       0 |        0 |       0 |       0 | 1-87                           
+ src/GroupInventory/models                    |       0 |       50 |      50 |       0 |                                
+  GroupInventoryDetailFilterData.ts           |       0 |        0 |       0 |       0 | 1-63                           
+  GroupInventoryDetailFilterField.ts          |       0 |        0 |       0 |       0 | 1-7                            
+  GroupInventoryDetailFilterOptions.ts        |       0 |        0 |       0 |       0 |                                
+  GroupInventoryDetailFilterParameters.ts     |       0 |        0 |       0 |       0 |                                
+  GroupInventoryFilterData.ts                 |       0 |        0 |       0 |       0 | 1-52                           
+  GroupInventoryFilterField.ts                |       0 |        0 |       0 |       0 | 1-5                            
+  GroupInventoryFilterOptions.ts              |       0 |        0 |       0 |       0 |                                
+  GroupInventoryFilterParameters.ts           |       0 |        0 |       0 |       0 |                                
+ src/GroupInventory/utils                     |       0 |        0 |       0 |       0 |                                
+  groupInventoryFilterHelpers.ts              |       0 |        0 |       0 |       0 | 1-244                          
+ src/GroupInventory/views                     |       0 |        0 |       0 |       0 |                                
+  GroupInventoryBenefits.vue                  |       0 |        0 |       0 |       0 | 1-75                           
+  GroupInventoryBenefitsMobile.vue            |       0 |        0 |       0 |       0 | 1-91                           
+  GroupInventoryDetailView.vue                |       0 |        0 |       0 |       0 | 1-657                          
+  GroupInventoryMobileHeader.vue              |       0 |        0 |       0 |       0 | 1-27                           
+  GroupInventoryView.vue                      |       0 |        0 |       0 |       0 | 1-603                          
+ src/Hierarchy                                |       0 |        0 |       0 |       0 |                                
+  hierarchyStore.ts                           |       0 |        0 |       0 |       0 | 1-37                           
+ src/Hierarchy/api                            |       0 |        0 |       0 |       0 |                                
+  hierarchyApi.ts                             |       0 |        0 |       0 |       0 | 1-158                          
+ src/Hierarchy/models                         |       0 |        0 |       0 |       0 |                                
+  AgentAgencyDetails.ts                       |       0 |        0 |       0 |       0 |                                
+  AgentAgencyRow.ts                           |       0 |        0 |       0 |       0 |                                
+  AppointmentFilterOptions.ts                 |       0 |        0 |       0 |       0 |                                
+  HierarchyAgentCounts.ts                     |       0 |        0 |       0 |       0 |                                
+  HierarchyFilterOptions.ts                   |       0 |        0 |       0 |       0 |                                
+ src/Hierarchy/views                          |       0 |        0 |       0 |       0 |                                
+  AgentAgencyActiveDetails.vue                |       0 |        0 |       0 |       0 | 1-340                          
+  AgentAgencyPendingDetails.vue               |       0 |        0 |       0 |       0 | 1-139                          
+  AgentAgencyTable.vue                        |       0 |        0 |       0 |       0 | 1-157                          
+  HierarchyActiveTab.vue                      |       0 |        0 |       0 |       0 | 1-744                          
+  HierarchyPendingTab.vue                     |       0 |        0 |       0 |       0 | 1-301                          
+  HierarchyView.vue                           |       0 |        0 |       0 |       0 | 1-110                          
+ src/Integration/api                          |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-108                          
+ src/Integration/views                        |       0 |        0 |       0 |       0 |                                
+  AWPSView.vue                                |       0 |        0 |       0 |       0 | 1-88                           
+  FormsLauncher.vue                           |       0 |        0 |       0 |       0 | 1-23                           
+  IPipelineView.vue                           |       0 |        0 |       0 |       0 | 1-131                          
+  IllustrationProView.vue                     |       0 |        0 |       0 |       0 | 1-37                           
+  IndividualFormsView.vue                     |       0 |        0 |       0 |       0 | 1-67                           
+  LifePortraitsView.vue                       |       0 |        0 |       0 |       0 | 1-34                           
+  WPSView.vue                                 |       0 |        0 |       0 |       0 | 1-33                           
+  WorksiteFormsView.vue                       |       0 |        0 |       0 |       0 | 1-67                           
+ src/ListBill/api                             |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-15                           
+ src/ListBill/mockdata                        |     100 |      100 |     100 |     100 |                                
+  mockdata.ts                                 |     100 |      100 |     100 |     100 |                                
+ src/ListBill/utils                           |   89.74 |    57.14 |     100 |   89.74 |                                
+  tableUtils.ts                               |   89.74 |    57.14 |     100 |   89.74 | 9-10,38-39                     
+ src/ListBill/views                           |       0 |        0 |       0 |       0 |                                
+  ListBill.vue                                |       0 |        0 |       0 |       0 | 1-407                          
+ src/MockData                                 |     100 |      100 |     100 |     100 |                                
+  mockData.ts                                 |     100 |      100 |     100 |     100 |                                
+ src/PAT/components/active                    |   36.07 |    72.22 |   11.53 |   36.07 |                                
+  ActiveDataTable.vue                         |   36.07 |    72.22 |   11.53 |   36.07 | ...339-353,357-365,383,386-577 
+ src/PAT/components/pending                   |   65.26 |    55.26 |   28.57 |   65.26 |                                
+  PendingDataTable.vue                        |   65.26 |    55.26 |   28.57 |   65.26 | ...587,595-596,598-599,604-608 
+ src/PAT/components/policy                    |    81.6 |    56.25 |   61.11 |    81.6 |                                
+  PolicyActionsView.vue                       |   72.47 |    52.72 |   26.31 |   72.47 | ...382,396-407,411-419,421-506 
+  PolicyDetailsView.vue                       |   90.02 |    58.42 |     100 |   90.02 | ...504,506,508,521,527,535-536 
+ src/PAT/components/terminated                |   32.04 |    70.58 |       8 |   32.04 |                                
+  TerminatedDataTable.vue                     |   32.04 |    70.58 |       8 |   32.04 | ...385-399,403-411,429,432-639 
+ src/PAT/views                                |   90.35 |    70.73 |      25 |   90.35 |                                
+  HomeView.vue                                |   92.85 |      100 |       0 |   92.85 | 125-131                        
+  PolicySummaryView.vue                       |   96.25 |    92.85 |     100 |   96.25 | 90,101,109                     
+  PolicyView.vue                              |   87.39 |    54.16 |       0 |   87.39 | ...215,231,241,253-273,287-288 
+ src/ProductionCredit                         |       0 |        0 |       0 |       0 |                                
+  productionCreditStore.ts                    |       0 |        0 |       0 |       0 | 1-60                           
+ src/ProductionCredit/api                     |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-98                           
+ src/ProductionCredit/models                  |       0 |    33.33 |   33.33 |       0 |                                
+  GroupingType.ts                             |       0 |        0 |       0 |       0 | 1-5                            
+  ProductionCreditFilterData.ts               |       0 |        0 |       0 |       0 | 1-312                          
+  ProductionCreditFilterModel.ts              |       0 |        0 |       0 |       0 |                                
+ src/ProductionCredit/utils                   |   34.43 |    20.77 |   41.66 |   34.43 |                                
+  routeUtils.ts                               |       0 |        0 |       0 |       0 | 1-32                           
+  tableUtils.ts                               |   35.11 |    21.05 |   43.47 |   35.11 | ...53-1019,1022-1058,1061-1071 
+ src/ProductionCredit/views                   |       0 |        0 |       0 |       0 |                                
+  AgentView.vue                               |       0 |        0 |       0 |       0 | 1-556                          
+  DownlineView.vue                            |       0 |        0 |       0 |       0 | 1-519                          
+  GroupView.vue                               |       0 |        0 |       0 |       0 | 1-212                          
+  PolicyDetailView.vue                        |       0 |        0 |       0 |       0 | 1-290                          
+  ProductionIndividualView.vue                |       0 |        0 |       0 |       0 | 1-820                          
+  ProductionWorksiteView.vue                  |       0 |        0 |       0 |       0 | 1-1077                         
+  ProductsView.vue                            |       0 |        0 |       0 |       0 | 1-805                          
+ src/Settings/api                             |       0 |        0 |       0 |       0 |                                
+  index.ts                                    |       0 |        0 |       0 |       0 | 1-339                          
+ src/Settings/components                      |       0 |        0 |       0 |       0 |                                
+  AddUser.vue                                 |       0 |        0 |       0 |       0 | 1-331                          
+  AlertsDistributionList.vue                  |       0 |        0 |       0 |       0 | 1-228                          
+  AlertsPreferences.vue                       |       0 |        0 |       0 |       0 | 1-273                          
+  ChangePassword.vue                          |       0 |        0 |       0 |       0 | 1-238                          
+  EditSubaccountRoles.vue                     |       0 |        0 |       0 |       0 | 1-371                          
+ src/Settings/icons                           |       0 |        0 |       0 |       0 |                                
+  AssuritySettingsAlertBellIcon.vue           |       0 |        0 |       0 |       0 | 1-9                            
+  AssuritySettingsAlertEnvelopeIcon.vue       |       0 |        0 |       0 |       0 | 1-9                            
+  AssuritySettingsProfileDetailsIcon.vue      |       0 |        0 |       0 |       0 | 1-9                            
+  AssuritySettingsProfileLockIcon.vue         |       0 |        0 |       0 |       0 | 1-9                            
+  AssuritySettingsUsersAddUserIcon.vue        |       0 |        0 |       0 |       0 | 1-9                            
+  AssuritySettingsUsersPaperAirplaneIcon.vue  |       0 |        0 |       0 |       0 | 1-9                            
+ src/Settings/models                          |       0 |    85.71 |   85.71 |       0 |                                
+  Role.ts                                     |       0 |        0 |       0 |       0 | 1-11                           
+  changePasswordResponse.ts                   |       0 |        0 |       0 |       0 |                                
+  confirmMFAResponse.ts                       |       0 |        0 |       0 |       0 |                                
+  createSubaccountResult.ts                   |       0 |        0 |       0 |       0 |                                
+  distributionListEmail.ts                    |       0 |        0 |       0 |       0 |                                
+  mfaDevice.ts                                |       0 |        0 |       0 |       0 |                                
+  subAccountUser.ts                           |       0 |        0 |       0 |       0 |                                
+ src/Settings/views                           |       0 |        0 |       0 |       0 |                                
+  AlertsView.vue                              |       0 |        0 |       0 |       0 | 1-62                           
+  HelpView.vue                                |       0 |        0 |       0 |       0 | 1-92                           
+  PolicyView.vue                              |       0 |        0 |       0 |       0 | 1-404                          
+  ProfileView.vue                             |       0 |        0 |       0 |       0 | 1-300                          
+  SettingsView.vue                            |       0 |        0 |       0 |       0 | 1-115                          
+  UsersView.vue                               |       0 |        0 |       0 |       0 | 1-722                          
+ src/Shared/utils                             |   25.86 |    43.42 |   38.23 |   25.86 |                                
+  FileHelper.ts                               |    4.16 |      100 |       0 |    4.16 | 2-28                           
+  FormatHelpers.ts                            |   75.75 |    66.66 |      70 |   75.75 | 42-46,49-53,60-65              
+  ProductionFilterHelpers.ts                  |       0 |        0 |       0 |       0 | 1-351                          
+  SortHelpers.ts                              |   44.21 |    47.82 |      25 |   44.21 | ...,61-62,68-81,84-101,104-116 
+  TableHelpers.ts                             |    41.2 |    33.33 |      50 |    41.2 | ...198,200-201,213,215,220-233 
+  ValidationHelpers.ts                        |       0 |        0 |       0 |       0 | 1-138                          
+  contentTransformHelpers.ts                  |      12 |      100 |      25 |      12 | 3-8,11-33,36-54                
+  dataHelpers.ts                              |       0 |        0 |       0 |       0 | 1-7                            
+  environHelpers.ts                           |   33.33 |      100 |       0 |   33.33 | 3-8,11-15                      
+  hasOverflow.ts                              |       0 |      100 |       0 |       0 | 2-17                           
+  routeUtils.ts                               |       0 |        0 |       0 |       0 | 1-25                           
+  stateHelper.ts                              |     100 |      100 |     100 |     100 |                                
+ src/Shared/views                             |       0 |        0 |       0 |       0 |                                
+  AccessRequired.vue                          |       0 |        0 |       0 |       0 | 1-7                            
+  ErrorView.vue                               |       0 |        0 |       0 |       0 | 1-13                           
+  HomeOffice.vue                              |       0 |        0 |       0 |       0 | 1-27                           
+  RequiresPing.vue                            |       0 |        0 |       0 |       0 | 1-8                            
+ src/TaxForms/views                           |       0 |        0 |       0 |       0 |                                
+  TaxFormsView.vue                            |       0 |        0 |       0 |       0 | 1-121                          
+ src/components                               |   31.35 |     68.7 |   17.24 |   31.35 |                                
+  AppBanner.vue                               |       0 |        0 |       0 |       0 | 1-9                            
+  AppFooter.vue                               |       0 |        0 |       0 |       0 | 1-73                           
+  AppNavItem.vue                              |       0 |        0 |       0 |       0 | 1-210                          
+  AppNavigation.vue                           |       0 |        0 |       0 |       0 | 1-138                          
+  AppNavigationDynamic.vue                    |       0 |        0 |       0 |       0 | 1-316                          
+  AssurityDrawer.vue                          |   41.22 |    85.71 |   16.66 |   41.22 | 19,73-85,88-144,153-156        
+  AssurityModal.vue                           |     100 |      100 |     100 |     100 |                                
+  BackButton.vue                              |     100 |      100 |     100 |     100 |                                
+  DataFilters.vue                             |   79.58 |       64 |   17.64 |   79.58 | ...155,161-162,171,181,208-239 
+  DataFiltersDrawer.vue                       |       0 |        0 |       0 |       0 | 1-381                          
+  DataFiltersSelectedFilters.vue              |       0 |        0 |       0 |       0 | 1-100                          
+  DataTable.vue                               |   49.72 |    88.46 |      20 |   49.72 | ...188-190,201-202,205-220,227 
+  DateFilter.vue                              |   58.97 |    85.71 |   33.33 |   58.97 | ...124-125,133-185,188,191-196 
+  DateFilterStaticItems.vue                   |       0 |        0 |       0 |       0 | 1-167                          
+  DetailsTable.vue                            |     100 |       75 |     100 |     100 | 1,37-46,86-143                 
+  ErrorComponent.vue                          |     100 |      100 |     100 |     100 |                                
+  MobileTable.vue                             |    22.3 |       75 |       0 |    22.3 | 1-140,196-198                  
+  NotificationFlag.vue                        |     100 |      100 |     100 |     100 |                                
+  NotificationsModal.vue                      |       0 |        0 |       0 |       0 | 1-113                          
+  PaginationOptions.vue                       |   93.75 |      100 |       0 |   93.75 | 60-62                          
+  PopoverModal.vue                            |     100 |      100 |     100 |     100 |                                
+  PremiumOverview.vue                         |     100 |      100 |     100 |     100 |                                
+  RadioButtons.vue                            |       0 |        0 |       0 |       0 | 1-118                          
+  StatusOverviewCard.vue                      |     100 |      100 |     100 |     100 |                                
+  TabbedContent.vue                           |       0 |        0 |       0 |       0 | 1-57                           
+  ToggleFilter.vue                            |   83.33 |       50 |      25 |   83.33 | 37-38,41-43                    
+  aAutocomplete.vue                           |       0 |        0 |       0 |       0 | 1-250                          
+  aHorizontalRule.vue                         |     100 |      100 |     100 |     100 |                                
+  aLoadingSpinner.vue                         |       0 |        0 |       0 |       0 | 1-5                            
+  aMFAVerification.vue                        |       0 |        0 |       0 |       0 | 1-121                          
+  aVerticalRule.vue                           |     100 |      100 |     100 |     100 |                                
+ src/components/AccountDropdown               |       0 |        0 |       0 |       0 |                                
+  BecomeAUser.vue                             |       0 |        0 |       0 |       0 | 1-78                           
+  ImpersonationList.vue                       |       0 |        0 |       0 |       0 | 1-82                           
+  ProfileModal.vue                            |       0 |        0 |       0 |       0 | 1-552                          
+ src/components/AccountDropdown/api           |       0 |        0 |       0 |       0 |                                
+  accountDropdownAPI.ts                       |       0 |        0 |       0 |       0 | 1-53                           
+ src/components/ContactCard                   |     100 |      100 |     100 |     100 |                                
+  ContactCard.vue                             |     100 |      100 |     100 |     100 |                                
+  ContactCardV2.vue                           |     100 |      100 |     100 |     100 |                                
+ src/components/aAlertBox                     |       0 |        0 |       0 |       0 |                                
+  aAlertBox.vue                               |       0 |        0 |       0 |       0 | 1-66                           
+  definitions.ts                              |       0 |        0 |       0 |       0 | 1-5                            
+ src/components/aAlertBox/icons               |       0 |        0 |       0 |       0 |                                
+  AssurityIconAlertError.vue                  |       0 |        0 |       0 |       0 | 1-22                           
+  AssurityIconAlertInfo.vue                   |       0 |        0 |       0 |       0 | 1-22                           
+  AssurityIconAlertSuccess.vue                |       0 |        0 |       0 |       0 | 1-22                           
+  AssurityIconAlertWarning.vue                |       0 |        0 |       0 |       0 | 1-20                           
+ src/components/aCollapsible                  |       0 |        0 |       0 |       0 |                                
+  aCollapsible.vue                            |       0 |        0 |       0 |       0 | 1-42                           
+ src/components/aDataCard                     |     100 |       80 |     100 |     100 |                                
+  aDataCard.vue                               |     100 |       80 |     100 |     100 | 9                              
+ src/components/aDateInput                    |       0 |        0 |       0 |       0 |                                
+  aDateInput.vue                              |       0 |        0 |       0 |       0 | 1-816                          
+ src/components/aDateRange                    |       0 |        0 |       0 |       0 |                                
+  aDateRange.vue                              |       0 |        0 |       0 |       0 | 1-28                           
+ src/components/aFilterDrawer                 |       0 |        0 |       0 |       0 |                                
+  aFilterAutocomplete.vue                     |       0 |        0 |       0 |       0 | 1-46                           
+  aFilterDrawer.vue                           |       0 |        0 |       0 |       0 | 1-451                          
+  aFilterItems.vue                            |       0 |        0 |       0 |       0 | 1-222                          
+  aSelectedFilters.vue                        |       0 |        0 |       0 |       0 | 1-122                          
+ src/components/aFilterDrawer/models          |       0 |        0 |       0 |       0 |                                
+  aFilterData.ts                              |       0 |        0 |       0 |       0 |                                
+  aFilterItem.ts                              |       0 |        0 |       0 |       0 |                                
+ src/components/aFilterDrawer/models/enums    |       0 |       50 |      50 |       0 |                                
+  aFilterField.ts                             |       0 |      100 |     100 |       0 | 3-24                           
+  aFilterType.ts                              |       0 |        0 |       0 |       0 | 1-12                           
+ src/components/aPagination                   |   33.89 |      100 |       0 |   33.89 |                                
+  aPagination.vue                             |   33.89 |      100 |       0 |   33.89 | 1-34,71-73,79-83               
+ src/components/aSearch                       |       0 |        0 |       0 |       0 |                                
+  aSearch.vue                                 |       0 |        0 |       0 |       0 | 1-238                          
+ src/components/aTable                        |     100 |      100 |     100 |     100 |                                
+  definitions.ts                              |     100 |      100 |     100 |     100 |                                
+ src/components/aTable/desktop                |   61.43 |       50 |   38.88 |   61.43 |                                
+  aTableDesktop.vue                           |   60.16 |    48.93 |   38.09 |   60.16 | ...470-471,478,489-492,504-506 
+  aTableDesktopRow.vue                        |   63.19 |    51.35 |      40 |   63.19 | ...358,367-368,372,378,382-386 
+ src/components/aTable/mobile                 |   89.65 |    38.09 |    23.8 |   89.65 |                                
+  aNestedRowDetailsDrawer.vue                 |     100 |      100 |     100 |     100 |                                
+  aTableMobile.vue                            |   81.25 |    38.09 |    23.8 |   81.25 | ...380,383-399,402-404,413-421 
+  aTableMobileComparison.vue                  |     100 |      100 |     100 |     100 |                                
+ src/components/aToggle                       |       0 |        0 |       0 |       0 |                                
+  aToggle.vue                                 |       0 |        0 |       0 |       0 | 1-28                           
+ src/components/content                       |   99.92 |    14.28 |     100 |   99.92 |                                
+  AccordionBlock.vue                          |     100 |      100 |     100 |     100 |                                
+  AssurityTooltip.vue                         |     100 |      100 |     100 |     100 |                                
+  AutoTableOfContents.vue                     |     100 |      100 |     100 |     100 |                                
+  BlockHeader.vue                             |     100 |      100 |     100 |     100 |                                
+  CallToAction.vue                            |     100 |      100 |     100 |     100 |                                
+  CallToActionComponent.vue                   |     100 |      100 |     100 |     100 |                                
+  ContainerBlock.vue                          |   96.55 |    14.28 |     100 |   96.55 | 1,84                           
+  ContentBlock.vue                            |     100 |      100 |     100 |     100 |                                
+  DocumentDownload.vue                        |     100 |      100 |     100 |     100 |                                
+  DynamicComponentList.vue                    |     100 |      100 |     100 |     100 |                                
+  IconBlock.vue                               |     100 |      100 |     100 |     100 |                                
+  LayoutColumn.vue                            |     100 |      100 |     100 |     100 |                                
+  LinkAnchor.vue                              |     100 |      100 |     100 |     100 |                                
+  LinkList.vue                                |     100 |      100 |     100 |     100 |                                
+  LoadMore.vue                                |     100 |      100 |     100 |     100 |                                
+  MarketingMaterial.vue                       |     100 |      100 |     100 |     100 |                                
+  MarketingMaterials.vue                      |     100 |      100 |     100 |     100 |                                
+  MediaBlock.vue                              |     100 |      100 |     100 |     100 |                                
+  ProspectCard.vue                            |     100 |      100 |     100 |     100 |                                
+  StateAvailability.vue                       |     100 |      100 |     100 |     100 |                                
+  TableOfContents.vue                         |     100 |      100 |     100 |     100 |                                
+  TabsContainer.vue                           |     100 |      100 |     100 |     100 |                                
+  TextBlock.vue                               |     100 |      100 |     100 |     100 |                                
+  ToggleSwitch.vue                            |     100 |      100 |     100 |     100 |                                
+  VideoBlock.vue                              |     100 |      100 |     100 |     100 |                                
+  VideoEmbed.vue                              |     100 |      100 |     100 |     100 |                                
+  aContactCard.vue                            |     100 |      100 |     100 |     100 |                                
+ src/components/forms                         |      72 |    65.21 |      50 |      72 |                                
+  aButton.vue                                 |   86.04 |       50 |   66.66 |   86.04 | 13,23-26,70                    
+  aCheckboxInput.vue                          |       0 |        0 |       0 |       0 | 1-20                           
+  aDropdown.vue                               |   97.14 |    71.42 |     100 |   97.14 | 26                             
+  aDropdownV2.vue                             |     100 |      100 |     100 |     100 |                                
+  aFileUpload.vue                             |   78.76 |    69.56 |   53.33 |   78.76 | ...291,297-328,331-336,343-344 
+  aForm.vue                                   |   91.66 |    66.66 |     100 |   91.66 | 1,20                           
+  aTextArea.vue                               |     100 |      100 |       0 |     100 |                                
+  aTextInput.vue                              |       0 |        0 |       0 |       0 | 1-204                          
+ src/components/icons                         |   40.48 |        0 |       0 |   40.48 |                                
+  AssurityDownloadIcon.vue                    |     100 |      100 |     100 |     100 |                                
+  AssurityEmailIcon.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconAccount.vue                     |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconAccountAdd.vue                  |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconAccountBecome.vue               |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconAccountCircle.vue               |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconAccountImpersonation.vue        |       0 |        0 |       0 |       0 | 1-22                           
+  AssurityIconAccountMultiple.vue             |       0 |        0 |       0 |       0 | 1-10                           
+  AssurityIconAccountResume.vue               |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconActive.vue                      |     100 |      100 |     100 |     100 |                                
+  AssurityIconAddFile.vue                     |     100 |      100 |     100 |     100 |                                
+  AssurityIconAgentProfile.vue                |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconAlert.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconArrow.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconArrowUTurn.vue                  |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconBell.vue                        |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconBellAlert.vue                   |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconBellAlertTooltip.vue            |       0 |        0 |       0 |       0 | 1-14                           
+  AssurityIconCalendar.vue                    |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconCheckBox.vue                    |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconCheckMark.vue                   |     100 |      100 |     100 |     100 |                                
+  AssurityIconChevronDown.vue                 |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconChevronLeft.vue                 |     100 |      100 |     100 |     100 |                                
+  AssurityIconChevronRight.vue                |     100 |      100 |     100 |     100 |                                
+  AssurityIconChevronUp.vue                   |     100 |      100 |     100 |     100 |                                
+  AssurityIconChevronUpDown.vue               |     100 |      100 |     100 |     100 |                                
+  AssurityIconClear.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconClose.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconDate.vue                        |     100 |      100 |     100 |     100 |                                
+  AssurityIconDownload.vue                    |     100 |      100 |     100 |     100 |                                
+  AssurityIconDropdown.vue                    |       0 |        0 |       0 |       0 | 1-14                           
+  AssurityIconEditPencil.vue                  |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconEmail.vue                       |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconFilter.vue                      |     100 |      100 |     100 |     100 |                                
+  AssurityIconFilterOne.vue                   |       0 |        0 |       0 |       0 | 1-4                            
+  AssurityIconFlag.vue                        |     100 |      100 |     100 |     100 |                                
+  AssurityIconGroup.vue                       |       0 |        0 |       0 |       0 | 1-4                            
+  AssurityIconHelp.vue                        |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconHome.vue                        |       0 |        0 |       0 |       0 | 1-8                            
+  AssurityIconIncrease.vue                    |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconInfo.vue                        |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconInfoModal.vue                   |       0 |        0 |       0 |       0 | 1-2                            
+  AssurityIconInfoTooltip.vue                 |     100 |      100 |     100 |     100 |                                
+  AssurityIconLock.vue                        |     100 |      100 |     100 |     100 |                                
+  AssurityIconMagnify.vue                     |       0 |        0 |       0 |       0 | 1-16                           
+  AssurityIconMail.vue                        |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconMailBills.vue                   |       0 |        0 |       0 |       0 | 1-7                            
+  AssurityIconMenu.vue                        |       0 |        0 |       0 |       0 | 1-11                           
+  AssurityIconMoney.vue                       |       0 |        0 |       0 |       0 | 1-13                           
+  AssurityIconOnlineAction.vue                |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconPDF.vue                         |     100 |      100 |     100 |     100 |                                
+  AssurityIconPending.vue                     |     100 |      100 |     100 |     100 |                                
+  AssurityIconPhone.vue                       |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconPlay.vue                        |     100 |      100 |     100 |     100 |                                
+  AssurityIconPlus.vue                        |       0 |        0 |       0 |       0 | 1-22                           
+  AssurityIconPopoverInfo.vue                 |       0 |        0 |       0 |       0 | 1-3                            
+  AssurityIconProfits.vue                     |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconSearch.vue                      |       0 |        0 |       0 |       0 | 1-2                            
+  AssurityIconSearchBlue.vue                  |       0 |        0 |       0 |       0 | 1-6                            
+  AssurityIconSend.vue                        |       0 |        0 |       0 |       0 | 1-4                            
+  AssurityIconShare.vue                       |     100 |      100 |     100 |     100 |                                
+  AssurityIconSortAscending.vue               |     100 |      100 |     100 |     100 |                                
+  AssurityIconSortDefault.vue                 |     100 |      100 |     100 |     100 |                                
+  AssurityIconSortDescending.vue              |     100 |      100 |     100 |     100 |                                
+  AssurityIconStopSign.vue                    |     100 |      100 |     100 |     100 |                                
+  AssurityIconTimer.vue                       |       0 |        0 |       0 |       0 | 1-10                           
+  AssurityIconTooltip.vue                     |     100 |      100 |     100 |     100 |                                
+  AssurityIconTrashcan.vue                    |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconTrashcanBig.vue                 |       0 |        0 |       0 |       0 | 1-9                            
+  AssurityIconVisibility.vue                  |       0 |        0 |       0 |       0 | 1-12                           
+  AssurityIconVisibilityOff.vue               |       0 |        0 |       0 |       0 | 1-15                           
+  AssurityIconWarning.vue                     |     100 |      100 |     100 |     100 |                                
+  AssurityPhoneIcon.vue                       |     100 |      100 |     100 |     100 |                                
+ src/directives                               |       0 |      100 |     100 |       0 |                                
+  atooltip.ts                                 |       0 |      100 |     100 |       0 | 8-115                          
+ src/layouts                                  |   81.81 |        0 |       0 |   81.81 |                                
+  DefaultLayout.vue                           |       0 |        0 |       0 |       0 | 1-3                            
+  DynamicContent.vue                          |     100 |      100 |     100 |     100 |                                
+ src/models                                   |       0 |        0 |       0 |       0 |                                
+  ActiveOverviewModel.ts                      |       0 |        0 |       0 |       0 |                                
+  Address.ts                                  |       0 |        0 |       0 |       0 |                                
+  Agent.ts                                    |       0 |        0 |       0 |       0 |                                
+  AgentLookup.ts                              |       0 |        0 |       0 |       0 |                                
+  Annuitant.ts                                |       0 |        0 |       0 |       0 |                                
+  AppNavItem.ts                               |       0 |        0 |       0 |       0 |                                
+  Asignee.ts                                  |       0 |        0 |       0 |       0 |                                
+  AssignedAgent.ts                            |       0 |        0 |       0 |       0 |                                
+  Beneficiary.ts                              |       0 |        0 |       0 |       0 |                                
+  Benefit.ts                                  |       0 |        0 |       0 |       0 |                                
+  BenefitOption.ts                            |       0 |        0 |       0 |       0 |                                
+  Business.ts                                 |       0 |        0 |       0 |       0 |                                
+  ClaimDetail.ts                              |       0 |        0 |       0 |       0 |                                
+  ClaimItem.ts                                |       0 |        0 |       0 |       0 |                                
+  ClaimModel.ts                               |       0 |        0 |       0 |       0 |                                
+  Claimant.ts                                 |       0 |        0 |       0 |       0 |                                
+  ClaimsParameters.ts                         |       0 |        0 |       0 |       0 |                                
+  ClaimsResponse.ts                           |       0 |        0 |       0 |       0 |                                
+  ClientInformationModel.ts                   |       0 |        0 |       0 |       0 |                                
+  CommissionReqParams.ts                      |       0 |        0 |       0 |       0 |                                
+  DateSelection.ts                            |       0 |        0 |       0 |       0 |                                
+  Employer.ts                                 |       0 |        0 |       0 |       0 |                                
+  FilterModel.ts                              |       0 |        0 |       0 |       0 |                                
+  FilterOptions.ts                            |       0 |        0 |       0 |       0 |                                
+  Filters.ts                                  |       0 |        0 |       0 |       0 |                                
+  ImpersonationRecord.ts                      |       0 |        0 |       0 |       0 |                                
+  Insured.ts                                  |       0 |        0 |       0 |       0 |                                
+  Name.ts                                     |       0 |        0 |       0 |       0 |                                
+  Owner.ts                                    |       0 |        0 |       0 |       0 |                                
+  Participant.ts                              |       0 |        0 |       0 |       0 |                                
+  Payee.ts                                    |       0 |        0 |       0 |       0 |                                
+  Payor.ts                                    |       0 |        0 |       0 |       0 |                                
+  PendingOverviewModel.ts                     |       0 |        0 |       0 |       0 |                                
+  Person.ts                                   |       0 |        0 |       0 |       0 |                                
+  Policy.ts                                   |       0 |        0 |       0 |       0 |                                
+  PolicyStatusCount.ts                        |       0 |        0 |       0 |       0 |                                
+  PolicySummary.ts                            |       0 |        0 |       0 |       0 |                                
+  ProductionFilterDataModel.ts                |       0 |        0 |       0 |       0 |                                
+  RadioItem.ts                                |       0 |        0 |       0 |       0 |                                
+  RequiementModel.ts                          |       0 |        0 |       0 |       0 |                                
+  Requirement.ts                              |       0 |        0 |       0 |       0 |                                
+  RequirementSummary.ts                       |       0 |        0 |       0 |       0 |                                
+  TableRow.ts                                 |       0 |        0 |       0 |       0 |                                
+  TaxForm.ts                                  |       0 |        0 |       0 |       0 |                                
+  UserInfoModel.ts                            |       0 |        0 |       0 |       0 |                                
+ src/models/CommissionsDebt                   |       0 |      100 |     100 |       0 |                                
+  CommissionDetailTypes.ts                    |       0 |      100 |     100 |       0 | 2-4                            
+  Hierarchy.ts                                |       0 |      100 |     100 |       0 | 9-13                           
+ src/models/Responses                         |       0 |        0 |       0 |       0 |                                
+  AdditionalAgent.ts                          |       0 |        0 |       0 |       0 |                                
+  CommissionsDebtSecuredAdvancesResponse.ts   |       0 |        0 |       0 |       0 |                                
+  CommissionsDebtUnsecuredAdvancesResponse.ts |       0 |        0 |       0 |       0 |                                
+  CommissionsPolicyDetailsResponse.ts         |       0 |        0 |       0 |       0 |                                
+  CommissionsWritingAgentDetailsResponse.ts   |       0 |        0 |       0 |       0 |                                
+  FeatureResponse.ts                          |       0 |        0 |       0 |       0 |                                
+  ImpersonationResponse.ts                    |       0 |        0 |       0 |       0 |                                
+  PolicyStatusCountResponse.ts                |       0 |        0 |       0 |       0 |                                
+  PolicySummariesResponse.ts                  |       0 |        0 |       0 |       0 |                                
+  RequirementsSummaryResponse.ts              |       0 |        0 |       0 |       0 |                                
+  TemporaryMessagesResponse.ts                |       0 |        0 |       0 |       0 |                                
+  UserInfoAgentData.ts                        |       0 |        0 |       0 |       0 |                                
+  UserInfoResponse.ts                         |       0 |        0 |       0 |       0 |                                
+ src/models/Responses/CommissionsAndDebt      |       0 |        0 |       0 |       0 |                                
+  AgentStatementOptions.ts                    |       0 |        0 |       0 |       0 |                                
+ src/models/ViewModels                        |   91.85 |    51.21 |   86.36 |   91.85 |                                
+  FilterSummaryModel.ts                       |     100 |      100 |     100 |     100 |                                
+  HeaderSummaryModel.ts                       |     100 |      100 |     100 |     100 |                                
+  PolicyDetailsModel.ts                       |   74.52 |    47.36 |   84.21 |   74.52 | ...325-330,345-346,348,361-366 
+  StatusOverviewCardModel.ts                  |       0 |        0 |       0 |       0 |                                
+ src/models/components                        |       0 |        0 |       0 |       0 |                                
+  DetailsTable.ts                             |       0 |        0 |       0 |       0 |                                
+  TableColumn.ts                              |       0 |        0 |       0 |       0 |                                
+ src/models/directus                          |       0 |        0 |       0 |       0 |                                
+  DirectusComponent.ts                        |       0 |        0 |       0 |       0 |                                
+  DirectusContact.ts                          |       0 |        0 |       0 |       0 |                                
+  DirectusContactType.ts                      |       0 |        0 |       0 |       0 |                                
+  DirectusMarketingMaterial.ts                |       0 |        0 |       0 |       0 |                                
+  DirectusPage.ts                             |       0 |        0 |       0 |       0 |                                
+  DirectusRider.ts                            |       0 |        0 |       0 |       0 |                                
+  DirectusState.ts                            |       0 |        0 |       0 |       0 |                                
+  DirectusTab.ts                              |       0 |        0 |       0 |       0 |                                
+ src/models/enums                             |   45.16 |    80.95 |   33.33 |   45.16 |                                
+  AnnuitantType.ts                            |     100 |      100 |     100 |     100 |                                
+  BeneficiaryType.ts                          |     100 |      100 |     100 |     100 |                                
+  CommissionsDebtType.ts                      |     100 |      100 |     100 |     100 |                                
+  Country.ts                                  |       0 |        0 |       0 |       0 | 1-261                          
+  FileTypes.ts                                |     100 |      100 |     100 |     100 |                                
+  FilterField.ts                              |     100 |      100 |     100 |     100 |                                
+  FilterType.ts                               |     100 |      100 |     100 |     100 |                                
+  FilterValueResponse.ts                      |       0 |        0 |       0 |       0 |                                
+  Gender.ts                                   |       0 |        0 |       0 |       0 | 1-4                            
+  OwnerType.ts                                |     100 |      100 |     100 |     100 |                                
+  PayorType.ts                                |     100 |      100 |     100 |     100 |                                
+  PendingFilterModel.ts                       |       0 |        0 |       0 |       0 |                                
+  PendingFilterType.ts                        |       0 |        0 |       0 |       0 | 1-8                            
+  PolicyStatus.ts                             |     100 |      100 |     100 |     100 |                                
+  QuickDates.ts                               |     100 |      100 |     100 |     100 |                                
+  RelationshipToPrimaryInsured.ts             |     100 |      100 |     100 |     100 |                                
+  RequirementStatus.ts                        |     100 |      100 |     100 |     100 |                                
+  SortOptions.ts                              |     100 |      100 |     100 |     100 |                                
+  State.ts                                    |     100 |      100 |     100 |     100 |                                
+  UploadStatus.ts                             |       0 |        0 |       0 |       0 | 1-5                            
+ src/router                                   |   80.57 |    19.56 |      10 |   80.57 |                                
+  index.ts                                    |   80.57 |    19.56 |      10 |   80.57 | ...700,703-710,713-720,723-724 
+ src/stores                                   |    21.4 |    42.85 |    5.26 |    21.4 |                                
+  commissionDebtStore.ts                      |    16.4 |      100 |       0 |    16.4 | ...45,948-962,965-970,974-1001 
+  featureStore.ts                             |   68.75 |      100 |       0 |   68.75 | 27-37                          
+  marketingStore.ts                           |   28.57 |      100 |     100 |   28.57 | 5-9                            
+  mockdataStore.ts                            |       0 |        0 |       0 |       0 | 1-375                          
+  policystore.ts                              |   32.31 |    31.25 |   16.66 |   32.31 | ...583,586-640,643-664,667-673 
+  userStore.ts                                |   47.57 |      100 |       0 |   47.57 | ...89-92,95-97,100-101,104-111 
+  utilityStore.ts                             |   63.63 |      100 |       0 |   63.63 | 35-38,41-46,49-51              
+ src/tests/stores/PATTests                    |     100 |      100 |     100 |     100 |                                
+  TestHelpers.ts                              |     100 |      100 |     100 |     100 |                                
+ src/views                                    |     100 |      100 |     100 |     100 |                                
+  DirectusView.vue                            |     100 |      100 |     100 |     100 |                                
+----------------------------------------------|---------|----------|---------|---------|--------------------------------
+PS C:\Dev\NewAssureLink\AgentPortal-Dotnet\Assurity.AgentPortal.Web\App> 
+
+
+
+
+----------------------------------------------|---------|----------|---------|---------|--------------------------------
+File                                          | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+PolicySummaryView.vue                         |   96.25 |    92.85 |     100 |   96.25 | 90,101,109   
+
+
+📊 Table Breakdown:
+Column	Meaning
+File	The name/path of the source file being tested (in this case, PolicySummaryView.vue).
+% Stmts	Percentage of statements (like variable assignments, function calls) that were executed during tests.
+% Branch	Percentage of conditional branches (like if, else, switch, ?:) that were executed.
+% Funcs	Percentage of functions that were called during the tests.
+% Lines	Percentage of lines in the file that were executed.
+Uncovered Line #s	Specific line numbers that were not hit during testing — meaning those lines were skipped or never executed by any test case.
+
+
+this is wrong 
+API Client
+   Using the client
+    
+
+
+here is the correct way 
+
+API Client
+   Using the client
+
+Running Frontend Tests with Coverage
+
+as you can see i removed Running .NET Backend Test Coverage
+and Running Frontend Tests with Coverage should be a new section at the button of the index and its content at the end of the file

@@ -1,0 +1,154 @@
+                               Eric Cabrera
+          Hialeah Gardens, FL - 786-797-9643 - eric-cabrera@live.com
+
+PROFESSIONAL SUMMARY
+Results-oriented Full-Stack Software Engineer with over 15 years of experience designing, developing, and deploying scalable solutions using .NET, C#, Azure, and modern web frameworks (Vue.js, Angular). Expertise in FinTech, payment processing, and insurance domains. Seeking to leverage deep technical skills and leadership capabilities in a challenging software engineering role.
+
+WORK EXPERIENCE
+Assurity Life Insurance Company (Lincoln, NE 68503)
+Software Engineer (Contract Remote) (June 2023 to present)
+    • Responsible for driving the modern development of systems, utilizing
+      advanced .NET Core technologies and cutting-edge front-end UI tools to
+      deliver efficient, scalable solutions.
+    • Spearheaded the integration of ABBYY Vantage with a .NET 8 Web API to
+      automate document processing, utilizing OCR and character recognition
+      to validate customer insurance claim documents against defined
+      thresholds. Developed a Vue 3 mobile UI for seamless document uploads,
+      storing results in MongoDB for processing, which streamlined claims workflows
+      by reducing processing time approximately 15% and improved customer support operations.
+    • Participated in a full rewrite of Assurity's Agent Center portal, a
+      secure platform used by insurance producers to manage in-force
+      business, quotes, commissions, and claims. Worked on both frontend
+      (Vue.js) and backend (.NET 8 Web API) to enhance usability,
+      performance, and data integration. Integrated with legacy systems and
+      modernized them to support secure, encrypted communication.
+    • Contributed to continuous integration and deployment (CI/CD) by
+      configuring and maintaining Azure DevOps build and release pipelines,
+      enabling streamlined deployments across development, test, and
+      production environments.
+
+RebusPay/Velmie/AOShield Solutions Inc
+Software Consultant (January 2023 to July 2023)
+    • Developed and deployed a PaaS Azure App Service .Net Core RESTful
+      API and a background process within a 4-week timeframe to exchange banking FTPS debit and credit
+      transactions currently consumed by multiple web and native wallets.
+    • Developed comprehensive API documentation for FinTech API wallet
+      integration, encompassing endpoint specifications, sample requests and
+      responses, authentication methods, error handling guidelines, and
+      recommended usage practices.
+    • Developed a server-side front end Blazor application using .NET Core
+      authentication mechanism to administer a transactional .Net core Web
+      API.
+
+Fidelity FIS/WorldPay Jacksonville, FL
+https://www.fisglobal.com
+Full-Stack SW Engineer (June 2020 to December 2022)
+    • Developed and maintained solutions using Clean Architecture .NET C#
+      Core RESTful API and Angular UI Material Design to schedule digital
+      payments serving over 5,000 active merchants. Optimized coding workflows
+      by leveraging GitHub Copilot, resulting in an estimated 10% reduction in routine coding time.
+    • Developed and maintained Angular components that served as self-
+      contained custom elements for use on merchants' websites. The compiled
+      JS components were embedded as scripts on clients' sites, allowing
+      them to invoke payment components as popup windows generated on demand
+      to transact with the FIS payment processor.
+    • Refactored and maintained .NET modern and legacy enterprise
+      applications to serve thousands of merchants with IRS tax payments,
+      processing over $10M in daily transactions.
+    • Refactored a Web API's background service to reconcile and settle
+      WorldPay payments for various credit card processing service
+      providers.
+    • Developed CI/CD pipelines using Octopus. Integrated Serilog and Azure
+      application insights in several .Net core apps. Used Checkmarx to
+      identify potential security vulnerabilities in source code.
+    • Completed multiple training series and certifications for financial
+      compliance awareness and most critical security risks to web
+      applications.
+
+InComm Agent Solutions Miami FL (Payment Processor)
+Full-Stack SW Engineer (May 2015 to May 2020)
+    • Presented greenfield projects ideas, microservices prototypes using
+      docker images, Kubernetes and Azure Service Fabric through continuous
+      delivery using Azure portal & DevOps.
+    • Interacted with external users, partners, stakeholders and vendors to
+      find common solutions.
+    • Developed a rich client-side app using API/SPA/Angular for ATT
+      subscribers to perform device activation operations using robust
+      security models such as OpenID, OAuth and IdentityServer4 and Bearer
+      Tokens, improving user activation success rate by 20%.
+    • Created standalone widgets using CDN Vue library to be used in
+      existing UI projects, reducing development time for new features by 30%.
+
+QPAY Miami FL (Payment Processor)
+Full-Stack SW Engineer (Jan 2008 to May 2015)
+    • Extended MVC payment UI app using NuGet packages react scripts,
+      ReactJs.Net, React.Web React.Core Mvc4 and
+      JavaScriptsEngineSwicher.v8 to create React JSX class components to be
+      rendered in razor payment term and condition in razor view section and
+      updated CSS classes dynamically using JavaScript event handler.
+    • Developed, refactored and troubleshot multi-tier payment processing
+      solutions adopting OOP/DevOps best design patterns and practices.
+      Worked with SQL server reporting services and SSIS packages.
+    • Provided Agile value in extensive Scrum/Kanban ceremonies (grooming,
+      sprint planning, retrospectives stand-ups and continually feedback).
+      Participated in on-call rotation.
+    • Enhanced Branch management tool with a new module developed using
+      HTML5, CSS3, JavaScript, Bootstrap, AngularJS with an intuitive user
+      interface to manage and monitor Branch accounts, reducing account setup errors by 15%.
+    • Developed multiple ASPX/MVC/WCF/Restful APIs solutions. Integrated
+      multiple external APIs to conduct B2B products and services.
+
+EARLY CAREER EXPERIENCE (1995-2008)
+    • Held various senior software development roles, building applications and systems using technologies like VB, ASP.NET, C#, and SQL Server across industries including legal (Lawex Corporation), airline (Caribbean Sun Airlines), logistics (DDU Express, UPS), healthcare (Medica Healthcare Plans), and education (College of Business & Technology).
+    • Key accomplishments included implementing document assembly engines, developing airline websites with TSA integration, creating automated invoicing systems, designing healthcare commission calculation software, and teaching web and database development courses.
+
+EDUCATION
+    • 2020 - Present: Application Azure Architect Professional- Certificate,
+      The Academy of South Florida. (AZ-204)
+    • 2000: Associate degree Computer information systems, Humber College,
+      Toronto
+    • 1992: Bachelor of Engineering, Automation major, Institute of Chemical
+      Machinery Construction.
+
+TECHNICAL SKILLS
+      AI-ASSISTED DEVELOPMENT: Advanced proficiency with AI-augmented development workflows
+      WEB TECHNOLOGIES: React, Angular, Vue, JavaScript, TypeScript,
+      Bootstrap, HTML5, CSS3, LESS/SASS, AJAX, JSON/XML,
+      DOM, Redux, JSX, BrowserStack
+      LANGUAGES: C#, VB, Java, JavaScript (jQuery, JSON), C++,
+      SOAP, REST APIs, T-SQL, PL/SQL
+      FRAMEWORKS & PLATFORMS: .NET Core, ASP.NET MVC, Web API, EF CORE 3.1,
+      Entity Framework Code First, ADO.NET, Web services,
+      WCF, LINQ, jQuery, Bootstrap 3/4, Angular,
+      Vue.js, Swagger 2.0 and OpenAPI 3.0,
+      IIS, Kestrel, JWT, Identity Provider
+      DATA: Azure SQL Server, NoSQL (Azure Cosmos, MongoDB)
+      REPORTING: SQL Server Reporting Services, Crystal Reports
+      METHODOLOGIES: Agile/Scrum, Test Driven Development (TDD),
+      Service-now, SPA, Waterfall
+      COMMAND LINE TOOLS: PowerShell, Kubernetes/kubectl, NPM,
+      Angular/cli/ng, Vue/cli, Git Bash
+      MESSAGING SYSTEMS: Service Bus, RabbitMQ, CYBERARK
+      DEVOPS & TOOLS: Team City, Octopus, Docker, Kubernetes, MOVEit, Azure DevOps,
+      Azure Pipelines, App Services, GitHub, Azure Monitor/Application
+      Insights, PaaS, CI/CD, Memory Profiler, JetBrains dotMemory, Serilog,
+      SendGrid, Twilio, Service Fabric, Checkmarx, OAuth 2, Okta,
+      ES6/ES2015, New Relic
+
+CERTIFICATIONS
+    • Azure Microservices with .NET Core for Developers (Current)
+    • Previous Certifications: MCP, MCDBA 2000, CompTIA NCP 2003
+
+TRAINING
+    • Manage Azure Kubernetes Services Infrastructure (AKS)
+    • Kubernetes for Developers: Core Concepts
+    • Building an Application with Azure Service Fabric Mesh
+    • Instrument Application with Azure Monitor Application Insights
+    • Angular University
+    • Building a RESTful API with ASP.NET Core 3
+    • Vue.js 3 Essential Training
+    • Building Web Applications with AngularJS by John Lindquist
+    • Docker and Kubernetes for Developers: Core Concepts
+    • Building a Web App with ASP.NET Core, MVC, Entity Framework Core,
+      Bootstrap, and Angular
+    • Building and Securing a RESTful API for Multiple Clients in ASP.NET

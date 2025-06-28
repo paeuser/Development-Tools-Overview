@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>General Testing Principles & Interview Questions</title>
+    <link rel="stylesheet" href="../site.css">
+</head>
+<body>
+    <nav>
+        <a href="../Index.html">Home</a> |
+        <a href="../frontend-tools.html">Frontend Tools</a> |
+        <a href="../React/index.html">React</a> |
+        <a href="../Vue/index.html">Vue</a> |
+        <a href="../Static Code Analysis Tools/index.html">Static Code Analysis</a>
+    </nav>
+    <main>
+        <h1>General Testing Principles</h1>
+        <ul>
+            <li>Testing is a process to evaluate software quality and identify defects before release.</li>
+            <li>It includes various levels: unit, integration, system, and acceptance testing.</li>
+            <li>Good tests are repeatable, independent, and have clear pass/fail criteria.</li>
+            <li>Automated testing increases reliability and efficiency.</li>
+            <li>Test coverage measures how much of the code is exercised by tests.</li>
+            <li>Regression testing ensures new changes do not break existing functionality.</li>
+            <li>Mocking and stubbing help isolate components during testing.</li>
+            <li>Continuous Integration (CI) automates running tests on every code change.</li>
+            <li>Test-Driven Development (TDD) means writing tests before code.</li>
+            <li>Testing is not just for finding bugs, but also for verifying requirements and design.</li>
+        </ul>
+        <h2>Common Interview Questions on Testing (with Answers)</h2>
+        <ol>
+            <li><strong>What are the different types of software testing?</strong><br>
+                <em>Answer:</em> Types include unit testing, integration testing, system testing, acceptance testing, regression testing, performance testing, security testing, usability testing, and exploratory testing.
+            </li>
+            <li><strong>Explain the difference between unit, integration, and system testing.</strong><br>
+                <em>Answer:</em> Unit testing checks individual components in isolation. Integration testing checks interactions between components. System testing validates the complete, integrated application against requirements.
+            </li>
+            <li><strong>What is the purpose of regression testing?</strong><br>
+                <em>Answer:</em> To ensure that new code changes do not break or degrade existing functionality.
+            </li>
+            <li><strong>How do you decide what to test?</strong><br>
+                <em>Answer:</em> Prioritize critical paths, user-facing features, high-risk areas, and code with recent changes. Use requirements, user stories, and risk analysis to guide test selection.
+            </li>
+            <li><strong>What is mocking and why is it useful?</strong><br>
+                <em>Answer:</em> Mocking replaces real dependencies with controlled substitutes, allowing you to isolate the unit under test and simulate various scenarios.
+            </li>
+            <li><strong>What is code coverage and why does it matter?</strong><br>
+                <em>Answer:</em> Code coverage measures the percentage of code executed by tests. Higher coverage can indicate better-tested code, but quality of tests is more important than quantity.
+            </li>
+            <li><strong>Describe the Test Pyramid. Why is it important?</strong><br>
+                <em>Answer:</em> The Test Pyramid suggests having more low-level (unit) tests, fewer integration tests, and even fewer end-to-end tests. This ensures fast, reliable, and maintainable test suites.
+            </li>
+            <li><strong>What is the difference between black-box and white-box testing?</strong><br>
+                <em>Answer:</em> Black-box testing focuses on inputs and outputs without knowledge of internal code. White-box testing involves knowledge of the internal logic and structure.
+            </li>
+            <li><strong>How do you handle flaky or unreliable tests?</strong><br>
+                <em>Answer:</em> Investigate root causes, improve test isolation, avoid external dependencies, and use retries only as a last resort. Flaky tests should be fixed or removed.
+            </li>
+            <li><strong>What is TDD and what are its benefits?</strong><br>
+                <em>Answer:</em> Test-Driven Development (TDD) is writing tests before code. Benefits include better design, fewer bugs, and more maintainable code.
+            </li>
+            <li><strong>How do you test asynchronous code?</strong><br>
+                <em>Answer:</em> Use async/await or callbacks in tests, and testing frameworks that support asynchronous operations. Mock timers or network calls as needed.
+            </li>
+            <li><strong>What is the role of CI/CD in testing?</strong><br>
+                <em>Answer:</em> CI/CD automates running tests on every code change, ensuring issues are caught early and deployments are reliable.
+            </li>
+            <li><strong>How do you test APIs?</strong><br>
+                <em>Answer:</em> Write tests for endpoints using tools like Postman, REST Assured, or automated scripts. Validate responses, status codes, and error handling.
+            </li>
+            <li><strong>What is acceptance testing?</strong><br>
+                <em>Answer:</em> Acceptance testing verifies the system meets business requirements and is ready for delivery. Often performed by end users or QA.
+            </li>
+            <li><strong>How do you ensure your tests are maintainable?</strong><br>
+                <em>Answer:</em> Write clear, independent, and well-documented tests. Use setup/teardown methods, avoid duplication, and refactor tests as code evolves.
+            </li>
+            <li><strong>What is exploratory testing?</strong><br>
+                <em>Answer:</em> Exploratory testing is unscripted, manual testing where testers actively explore the application to find issues not covered by automated tests.
+            </li>
+            <li><strong>How do you test for security vulnerabilities?</strong><br>
+                <em>Answer:</em> Use static analysis tools, penetration testing, and write tests for common vulnerabilities (e.g., XSS, SQL injection). Review code for security best practices.
+            </li>
+            <li><strong>What is the difference between functional and non-functional testing?</strong><br>
+                <em>Answer:</em> Functional testing checks if features work as intended. Non-functional testing checks aspects like performance, security, and usability.
+            </li>
+            <li><strong>How do you prioritize test cases?</strong><br>
+                <em>Answer:</em> Prioritize based on risk, business impact, frequency of use, and criticality of features.
+            </li>
+            <li><strong>What tools have you used for automated testing?</strong><br>
+                <em>Answer:</em> Answers will vary: examples include Jest, Mocha, Jasmine, JUnit, NUnit, Selenium, Cypress, Playwright, Postman, etc.
+            </li>
+        </ol>
+        <p>These questions and principles apply to both frontend and backend technologies.</p>
+    </main>
+</body>
+</html>

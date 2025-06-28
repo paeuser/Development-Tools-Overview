@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Media Queries Sample</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 32px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        /* Desktop styles */
+        .device-message {
+            font-size: 2rem;
+            color: #0078d7;
+        }
+        /* Tablet styles */
+        @media (max-width: 900px) {
+            .container {
+                padding: 24px;
+            }
+            .device-message {
+                font-size: 1.5rem;
+                color: #e67e22;
+            }
+        }
+        /* Mobile styles */
+        @media (max-width: 600px) {
+            .container {
+                padding: 12px;
+            }
+            .device-message {
+                font-size: 1.1rem;
+                color: #27ae60;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p style="font-size:1rem;color:#555;background:#eaf6ff;padding:10px 16px;border-radius:6px;margin-bottom:18px;">
+        This container holds the main content of the page.<br>
+        Its style and the style of its children will change based on the screen size using CSS Media Queries defined above.<br>
+        <strong>Desktop:</strong> large padding, blue message<br>
+        <strong>Tablet:</strong> medium padding, orange message<br>
+        <strong>Mobile:</strong> small padding, green message<br>
+        Try resizing your browser window to see the effect!
+    </p>
+    <div class="container">
+        <h1>Responsive Design Demo</h1>
+        <p class="device-message">
+            Resize your browser window to see the style change for desktop, tablet, and mobile!
+        </p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSIS FAQ</title>
+    <link rel="stylesheet" href="../site.css">
+</head>
+<body>
+    <div class="faq">
+        <h1>SSIS FAQ</h1>
+        <div class="question">What is SSIS?</div>
+        <div class="answer">
+            SSIS stands for <strong>SQL Server Integration Services</strong>.<br>
+            It’s a tool from Microsoft used to move, transform, and load data between different systems.<br>
+            This is also known as <strong>ETL</strong>:
+            <ul>
+                <li><strong>Extract</strong> → <strong>Transform</strong> → <strong>Load</strong></li>
+            </ul>
+        </div>
+        <div class="question">What are the main components of SSIS?</div>
+        <div class="answer">
+            <ul>
+                <li><strong>Control Flow</strong>: Defines the workflow of tasks.</li>
+                <li><strong>Data Flow</strong>: Defines how data is extracted, transformed, and loaded.</li>
+                <li><strong>Connection Managers</strong>: Manage connections to data sources.</li>
+                <li><strong>Event Handlers</strong>: Handle events during package execution.</li>
+                <li><strong>Parameters and Variables</strong>: Store values used in packages.</li>
+            </ul>
+        </div>
+        <div class="question">What is a Data Flow Task in SSIS?</div>
+        <div class="answer">
+            The Data Flow Task is a core component that allows you to extract, transform, and load data between sources and destinations within an SSIS package.
+        </div>
+        <div class="question">What is the difference between Control Flow and Data Flow?</div>
+        <div class="answer">
+            <strong>Control Flow</strong> manages the sequence and logic of tasks, while <strong>Data Flow</strong> manages the movement and transformation of data between sources and destinations.
+        </div>
+        <div class="question">How do you handle errors in SSIS?</div>
+        <div class="answer">
+            You can handle errors using event handlers, error outputs in data flow components, and configuring precedence constraints to control task execution on failure.
+        </div>
+        <div class="question">What is a package in SSIS?</div>
+        <div class="answer">
+            A package is a collection of control flow, data flow, connections, variables, and configurations that define an ETL process in SSIS.
+        </div>
+        <div class="question">How can you deploy SSIS packages?</div>
+        <div class="answer">
+            SSIS packages can be deployed to SQL Server, the SSIS Catalog, or the file system. Deployment can be done using SQL Server Data Tools (SSDT), Management Studio, or command-line utilities.
+        </div>
+        <div class="question">What is a Lookup transformation?</div>
+        <div class="answer">
+            The Lookup transformation is used to join data in the data flow with reference data, similar to a SQL JOIN operation.
+        </div>
+        <div class="question">How do you schedule SSIS packages?</div>
+        <div class="answer">
+            SSIS packages can be scheduled using SQL Server Agent jobs or other scheduling tools.
+        </div>
+    </div>
+</body>
+</html>

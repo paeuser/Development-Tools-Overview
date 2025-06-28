@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaging and Event-Driven Architecture Tools</title>
+    <link rel="stylesheet" href="../site.css">
+</head>
+<body>
+<div class="responsive-container">
+    <h1>✅ Summary: Messaging and Event-Driven Architecture Tools</h1>
+    <p>In modern software systems—especially those built on microservices, cloud-native architectures, or distributed systems—messaging and event-driven architecture tools are essential. These tools enable systems to communicate asynchronously, decouple services, and scale independently. They support key use cases such as real-time data streaming, background processing, event sourcing, and system integration.</p>
+    <p>These tools typically fall into two major categories:</p>
+    <ul>
+        <li><strong>Messaging Queues (MQ):</strong> Focused on reliable, point-to-point message delivery. Ideal for background tasks, job queues, and system decoupling.</li>
+        <li><strong>Event Streaming Platforms:</strong> Handle continuous flows of events with high throughput. Designed for real-time analytics, stream processing, and pub-sub systems.</li>
+    </ul>
+    <h2>📊 Tool Comparison Table</h2>
+    <div class="table-responsive">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Category</th>
+                    <th>Best Use Case</th>
+                    <th>Message Model</th>
+                    <th>Persistence</th>
+                    <th>Scalability</th>
+                    <th>Cloud Support</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Apache Kafka</strong></td>
+                    <td>Event Streaming Platform</td>
+                    <td>Real-time event pipelines, analytics</td>
+                    <td>Pub/Sub (Topic-based)</td>
+                    <td>High (retains messages for days/weeks)</td>
+                    <td>Excellent (horizontal, partitioned)</td>
+                    <td>Yes (e.g., Confluent Cloud, AWS MSK)</td>
+                </tr>
+                <tr>
+                    <td><strong>Apache Pulsar</strong></td>
+                    <td>Event Streaming + Queuing</td>
+                    <td>IoT, multi-tenant high-throughput systems</td>
+                    <td>Pub/Sub + Queues</td>
+                    <td>High (tiered storage support)</td>
+                    <td>Excellent (multi-tenant, geo-replication)</td>
+                    <td>Yes (Pulsar on AWS, Azure, GCP)</td>
+                </tr>
+                <tr>
+                    <td><strong>RabbitMQ</strong></td>
+                    <td>Message Queue (Broker)</td>
+                    <td>Task queues, background job processing</td>
+                    <td>Queue-based, Pub/Sub</td>
+                    <td>Moderate (until message is acknowledged)</td>
+                    <td>Good (clustered setups)</td>
+                    <td>Yes (available on AWS, Azure)</td>
+                </tr>
+                <tr>
+                    <td><strong>ActiveMQ</strong></td>
+                    <td>Message Queue (Broker)</td>
+                    <td>Enterprise apps, Java-based systems</td>
+                    <td>Queue-based, Pub/Sub (JMS support)</td>
+                    <td>Moderate</td>
+                    <td>Good (scale via brokers)</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td><strong>Amazon SQS</strong></td>
+                    <td>Managed Message Queue (Cloud)</td>
+                    <td>Simple decoupling of AWS services</td>
+                    <td>Queue-based</td>
+                    <td>Managed by AWS</td>
+                    <td>High (cloud-native)</td>
+                    <td>Yes (AWS native)</td>
+                </tr>
+                <tr>
+                    <td><strong>Redis Streams</strong></td>
+                    <td>In-memory Stream Processor</td>
+                    <td>Lightweight event handling, caching</td>
+                    <td>Stream (append-only log)</td>
+                    <td>Low to Moderate (mostly in-memory)</td>
+                    <td>Moderate (single-node or Redis cluster)</td>
+                    <td>Yes (Redis Cloud, AWS ElastiCache)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p style="margin-top:1.5em;">Let me know if you'd like this turned into a styled HTML block or embedded in a template!</p>
+
+    <h2>🧩 Message Model Explanations</h2>
+    <ul>
+        <li><strong>Queue-based:</strong> Messages are sent to a queue and processed by one or more consumers. Each message is typically consumed by a single receiver. This model is ideal for task distribution, load balancing, and background job processing.</li>
+        <li><strong>Pub/Sub (Publish/Subscribe):</strong> Messages are published to a topic or channel and delivered to all subscribers. Multiple consumers can receive the same message, enabling event broadcasting and decoupled communication between producers and consumers.</li>
+        <li><strong>Topic-based:</strong> A form of Pub/Sub where messages are categorized into topics. Consumers subscribe to specific topics to receive relevant messages. This allows for fine-grained filtering and organization of events.</li>
+        <li><strong>Stream (Append-only log):</strong> Messages (events) are appended to a log and can be read by multiple consumers at their own pace. This model supports event replay, time-travel queries, and is foundational for event sourcing and real-time analytics.</li>
+        <li><strong>JMS (Java Message Service):</strong> A standard API for messaging in Java, supporting both queue and topic-based models. Used by brokers like ActiveMQ for enterprise integration.</li>
+    </ul>
+    <h2>🧩 Which Tools Cover All Messaging Models?</h2>
+    <p>No single tool provides all messaging and event-driven models (queue, pub/sub, topic, stream, JMS) with full feature parity, but some platforms come close by supporting multiple paradigms:</p>
+    <ul>
+        <li><strong>Apache Pulsar</strong><br>
+            - Supports both queue-based and pub/sub models.<br>
+            - Offers topics, streams, and even JMS compatibility.<br>
+            - Multi-tenant, geo-replication, and tiered storage.<br>
+            - Can be run on-premises or in the cloud (including Azure via containers or third-party services).
+        </li>
+        <li><strong>RabbitMQ</strong><br>
+            - Primarily a message broker (queue-based), but supports pub/sub and topics via exchanges.<br>
+            - Has a JMS plugin for Java integration.<br>
+            - Can be deployed on Azure using Azure Marketplace images.
+        </li>
+        <li><strong>ActiveMQ (and Artemis)</strong><br>
+            - Supports queue, pub/sub, topics, and is JMS-native.<br>
+            - Can be run on Azure VMs or containers.
+        </li>
+    </ul>
+    <h3>Summary Table</h3>
+    <p><strong>Table Key:</strong><br>
+    <strong>Tool</strong>: The messaging/event platform.<br>
+    <strong>Queue</strong>: Supports traditional message queues (point-to-point, one-to-one delivery).<br>
+    <strong>Pub/Sub</strong>: Supports publish/subscribe messaging (one-to-many, broadcast to subscribers).<br>
+    <strong>Topic</strong>: Supports topic-based routing or filtering (subscribers receive messages for specific topics).<br>
+    <strong>Stream</strong>: Supports event streaming or append-only log models (multiple consumers, event replay).<br>
+    <strong>JMS Support</strong>: Provides compatibility with Java Message Service (JMS) API, either natively or via plugins.<br>
+    </p>
+    <div class="table-responsive">
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Tool</th>
+                    <th>Queue</th>
+                    <th>Pub/Sub</th>
+                    <th>Topic</th>
+                    <th>Stream</th>
+                    <th>JMS Support</th>
+                    <th>Sample</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Pulsar</td>
+                    <td>✔<br><code>pulsar-client produce my-queue --messages "queue message"</code><br><span class="sample-desc">Send a message to a Pulsar queue.</span></td>
+                    <td>✔<br><code>pulsar-client consume my-topic -s "sub1"</code><br><span class="sample-desc">Subscribe to a Pulsar topic (Pub/Sub).</span></td>
+                    <td>✔<br><code>pulsar-admin topics create persistent://public/default/my-topic</code><br><span class="sample-desc">Create a topic in Pulsar.</span></td>
+                    <td>✔<br><code>pulsar-client consume my-stream -s "stream-sub"</code><br><span class="sample-desc">Consume a stream of messages from a Pulsar topic.</span></td>
+                    <td>Partial<br><code>pulsar-jms-client --destination queue://JMSQueue</code><br><span class="sample-desc">Send a JMS message using Pulsar's JMS client.</span></td>
+                    <td><code>pulsar-client produce my-topic --messages "hello world"</code><br>
+    <span class="sample-desc"><strong>User Case:</strong> Real-time order processing in e-commerce.<br>
+    <strong>Steps:</strong>
+    <ol>
+        <li>Order is placed on the website.</li>
+        <li>Order service publishes an event to a Pulsar topic.</li>
+        <li>Inventory and shipping services subscribe to the topic and process the order independently.</li>
+        <li>Each service updates its own database and triggers downstream workflows.</li>
+    </ol>
+    <strong>Business Purpose:</strong> Decouple order intake from downstream inventory and shipping systems, enabling scalable, reliable event-driven workflows.</span>
+</td>
+                </tr>
+                <tr>
+                    <td>RabbitMQ</td>
+                    <td>✔<br><code>rabbitmqadmin publish routing_key=myqueue payload="queue msg"</code><br><span class="sample-desc">Send a message to a RabbitMQ queue.</span></td>
+                    <td>✔<br><code>rabbitmqadmin publish exchange=amq.fanout payload="pubsub msg"</code><br><span class="sample-desc">Publish a message to a fanout exchange (Pub/Sub).</span></td>
+                    <td>✔<br><code>rabbitmqadmin declare exchange name=mytopic type=topic</code><br><span class="sample-desc">Declare a topic exchange in RabbitMQ.</span></td>
+                    <td>(via plugins)<br><code>rabbitmq-streams publish mystream "stream msg"</code><br><span class="sample-desc">Publish to a RabbitMQ stream (requires plugin).</span></td>
+                    <td>Partial<br><code>java -cp rabbitmq-jms-client.jar ...</code><br><span class="sample-desc">Send a JMS message using RabbitMQ JMS client.</span></td>
+                    <td><code>rabbitmqadmin publish routing_key=myqueue payload="hello"</code><br>
+    <span class="sample-desc"><strong>User Case:</strong> Background job queue for image processing.<br>
+    <strong>Steps:</strong>
+    <ol>
+        <li>User uploads an image via the web app.</li>
+        <li>Web server publishes a message to a RabbitMQ queue.</li>
+        <li>Worker service consumes messages from the queue and processes images (resize, watermark, etc.).</li>
+        <li>Processed images are stored and user is notified when ready.</li>
+    </ol>
+    <strong>Business Purpose:</strong> Offload CPU-intensive image resizing tasks from the main web server, improving user experience and system responsiveness.</span>
+</td>
+                </tr>
+                <tr>
+                    <td>ActiveMQ</td>
+                    <td>✔<br><code>activemq producer --destination queue://TEST --messageCount 1</code><br><span class="sample-desc">Send a message to an ActiveMQ queue.</span></td>
+                    <td>✔<br><code>activemq producer --destination topic://EVENTS --messageCount 1</code><br><span class="sample-desc">Publish to a topic (Pub/Sub) in ActiveMQ.</span></td>
+                    <td>✔<br><code>activemq-admin query --topicName EVENTS</code><br><span class="sample-desc">Query a topic in ActiveMQ.</span></td>
+                    <td>(limited)<br><code>activemq producer --destination stream://STREAM --messageCount 1</code><br><span class="sample-desc">Send a message to a stream (if supported).</span></td>
+                    <td>✔<br><code>java -cp activemq-all.jar ...</code><br><span class="sample-desc">Send a JMS message using ActiveMQ JMS client.</span></td>
+                    <td><code>activemq producer --destination queue://TEST --messageCount 1</code><br>
+    <span class="sample-desc"><strong>User Case:</strong> Enterprise integration between legacy ERP and CRM systems.<br>
+    <strong>Steps:</strong>
+    <ol>
+        <li>ERP system generates a customer update event.</li>
+        <li>Event is sent to an ActiveMQ queue.</li>
+        <li>CRM integration service consumes the message and updates CRM records.</li>
+        <li>Both systems remain loosely coupled and can evolve independently.</li>
+    </ol>
+    <strong>Business Purpose:</strong> Ensure reliable, asynchronous data exchange between business-critical applications, reducing manual intervention and errors.</span>
+</td>
+                </tr>
+                <tr>
+                    <td>Kafka</td>
+                    <td>(via plugins)<br><code>kafka-console-producer --topic my-queue --bootstrap-server localhost:9092</code><br><span class="sample-desc">Send a message to a Kafka queue (with plugin).</span></td>
+                    <td>✔<br><code>kafka-console-producer --topic my-topic --bootstrap-server localhost:9092</code><br><span class="sample-desc">Publish to a Kafka topic (Pub/Sub).</span></td>
+                    <td>✔<br><code>kafka-topics --create --topic my-topic --bootstrap-server localhost:9092</code><br><span class="sample-desc">Create a topic in Kafka.</span></td>
+                    <td>✔<br><code>kafka-console-consumer --topic my-topic --from-beginning --bootstrap-server localhost:9092</code><br><span class="sample-desc">Consume a stream of messages from a Kafka topic.</span></td>
+                    <td>(via plugins)<br><code>java -cp kafka-jms-client.jar ...</code><br><span class="sample-desc">Send a JMS message using Kafka JMS client (plugin).</span></td>
+                    <td><code>kafka-console-producer --topic my-topic --bootstrap-server localhost:9092</code><br>
+    <span class="sample-desc"><strong>User Case:</strong> Real-time analytics for website clickstream data.<br>
+    <strong>Steps:</strong>
+    <ol>
+        <li>Website frontend sends click events to a backend API.</li>
+        <li>API publishes events to a Kafka topic.</li>
+        <li>Analytics service consumes the topic and aggregates user behavior data.</li>
+        <li>Marketing dashboard displays real-time insights for business teams.</li>
+    </ol>
+    <strong>Business Purpose:</strong> Enable marketing teams to analyze user behavior instantly and adjust campaigns or site content dynamically.</span>
+</td>
+                </tr>
+                <tr>
+                    <td>Redis Streams</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>✔<br><code>XRANGE mystream - +</code><br><span class="sample-desc">Read all entries from a Redis stream.</span></td>
+                    <td></td>
+                    <td><code>XRANGE mystream - +</code><br>
+    <span class="sample-desc"><strong>User Case:</strong> Lightweight event log for IoT sensor data.<br>
+    <strong>Steps:</strong>
+    <ol>
+        <li>IoT devices send sensor readings to a Redis stream.</li>
+        <li>Backend service reads new entries from the stream.</li>
+        <li>Service processes, stores, and visualizes the data in real time.</li>
+        <li>Alerts are triggered if abnormal readings are detected.</li>
+    </ol>
+    <strong>Business Purpose:</strong> Collect and process time-series data from devices for monitoring, alerting, and dashboarding in real time.</span>
+</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><strong>Note:</strong><br>
+    No tool is "best at everything"—choose based on your use case, language, and cloud requirements.<br>
+    For Azure-native, consider combining <strong>Azure Service Bus</strong> (queues, topics) and <strong>Event Hubs</strong> (streaming).</p>
+    <h3>About Azure Service Bus</h3>
+    <p><strong>Azure Service Bus</strong> is a fully managed enterprise message broker with message queues and publish-subscribe topics. It is designed for high reliability, security, and integration with other Azure services. Service Bus supports:</p>
+    <ul>
+        <li><strong>Queues:</strong> For point-to-point, one-to-one communication.</li>
+        <li><strong>Topics & Subscriptions:</strong> For publish/subscribe, one-to-many communication.</li>
+        <li>Advanced features like dead-lettering, duplicate detection, scheduled delivery, and transactions.</li>
+        <li>Integration with Azure Event Grid, Logic Apps, Functions, and more.</li>
+    </ul>
+    <p>For real-time streaming, use <strong>Azure Event Hubs</strong> alongside Service Bus for a complete messaging and event-driven solution on Azure.</p>
+
+    <!-- Azure Event Grid Resource Section -->
+    <h3>About Azure Event Grid Resource</h3>
+    <p><strong>Azure Event Grid</strong> is a fully managed event routing service that enables you to build event-based and reactive architectures in Azure. It allows different Azure services and custom applications to publish and subscribe to events in a scalable, reliable, and secure way.</p>
+    <ul>
+        <li><strong>Event Grid Topic:</strong> A resource where event publishers send events. You can create custom topics or use built-in topics provided by Azure services (like Blob Storage, Resource Groups, etc.).</li>
+        <li><strong>Event Subscription:</strong> A resource that defines how and where to deliver events from a topic to event handlers (such as Azure Functions, Logic Apps, WebHooks, or queues).</li>
+        <li><strong>Event Domains:</strong> Used for large-scale, multi-tenant event publishing scenarios.</li>
+    </ul>
+    <p><strong>How it works:</strong></p>
+    <ol>
+        <li>An event source (like Azure Storage or a custom app) publishes events to an Event Grid Topic.</li>
+        <li>Event Grid routes those events to all configured Event Subscriptions.</li>
+        <li>Each subscription delivers the event to its endpoint (e.g., Azure Function, WebHook, Service Bus).</li>
+    </ol>
+    <p><strong>Business Value:</strong> Event Grid enables loosely coupled, scalable, and real-time event-driven solutions across Azure and custom applications.</p>
+    <p>Learn more: <a href="https://learn.microsoft.com/en-us/azure/event-grid/overview" target="_blank">Azure Event Grid documentation</a></p>
+</div>
+
+
+<!-- Lab Introduction -->
+<h2>Lab 09: Publish and Subscribe to Event Grid Events</h2>
+<p>
+This lab will guide you through the basics of publishing and subscribing to events using Azure Event Grid. By completing this lab, you'll gain hands-on experience with event-driven architecture in Azure, helping you understand how services can communicate asynchronously and react to real-time events. This practical exercise will reinforce the concepts of messaging, event publishing, and event handling covered above.
+</p>
+<p>
+<a href="https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/Instructions/Labs/AZ-204_lab_09.html" target="_blank">Lab instructions: AZ-204 Lab 09</a>
+</p>
+
+</body>
+</html>

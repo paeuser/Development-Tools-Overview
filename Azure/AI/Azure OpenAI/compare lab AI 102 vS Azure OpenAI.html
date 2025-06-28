@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Azure AI Services vs Azure OpenAI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 1rem;
+      background-color: #f4f4f4;
+    }
+    h1, h2 {
+      color: #004578;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background-color: #004578;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    @media (max-width: 768px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+      th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+      }
+      td {
+        padding-left: 50%;
+        position: relative;
+      }
+      td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        font-weight: bold;
+        white-space: nowrap;
+      }
+    }
+    .note {
+      font-style: italic;
+      background: #e6f7ff;
+      border-left: 4px solid #0078d4;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>AI-102 vs Azure OpenAI</h1>
+
+  <div class="note">
+    <strong>🧠 AI-102:</strong> "Designing and Implementing a Microsoft Azure AI Solution" teaches you how to build intelligent apps using <strong>pre-built models</strong> from Azure Cognitive Services.
+  </div>
+
+  <div class="note">
+    <strong>🤖 Azure OpenAI:</strong> Enterprise access to OpenAI models like GPT-4, Codex, DALL·E via Azure. Focuses on <strong>foundation models</strong> for generative, flexible, large-scale AI use cases.
+  </div>
+
+  <h2>General Comparison</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>AI-102 (Azure Cognitive Services)</th>
+        <th>Azure OpenAI</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Feature">Purpose</td>
+        <td data-label="AI-102">Pre-built APIs for language, vision, speech, and decision tasks</td>
+        <td data-label="Azure OpenAI">General-purpose foundation models like GPT-4 and DALL·E</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Customization</td>
+        <td>Minimal setup, mostly configuration-based</td>
+        <td>Highly customizable using prompts, embeddings, RAG, or fine-tuning</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Pre-trained Models</td>
+        <td>Yes, models are managed by Microsoft</td>
+        <td>No pre-built logic — you build interactions through prompts</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Use Cases</td>
+        <td>Text analysis, OCR, translation, bot building, speech recognition</td>
+        <td>Chatbots, summarization, document Q&A, creative generation, semantic search</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Ease of Use</td>
+        <td>Beginner-friendly, suitable for low-code/no-code environments</td>
+        <td>Requires understanding of prompt engineering, NLP logic, and design patterns</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Cost</td>
+        <td>Lower per API call</td>
+        <td>Higher, usage-based pricing depending on tokens and model used</td>
+      </tr>
+      <tr>
+        <td data-label="Feature">Labs & Resources</td>
+        <td>Microsoft Learn AI-102 learning path, Cognitive Services quickstarts</td>
+        <td>GitHub workshops, Azure OpenAI Studio, RAG demos and playgrounds</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>AI-102: Cognitive Services by Category</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Focus Area</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>✅ Language</td>
+        <td>Text analytics, QnA Maker, LUIS (Language Understanding), Azure Language Service</td>
+      </tr>
+      <tr>
+        <td>✅ Vision</td>
+        <td>OCR, face detection, image classification, object detection</td>
+      </tr>
+      <tr>
+        <td>✅ Speech</td>
+        <td>Speech-to-text, text-to-speech, speech translation</td>
+      </tr>
+      <tr>
+        <td>✅ Decision</td>
+        <td>Personalizer (recommendation engine), anomaly detection</td>
+      </tr>
+      <tr>
+        <td>✅ Bot Service</td>
+        <td>Azure Bot Framework to build and deploy conversational bots</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Azure OpenAI: Models and Capabilities</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Capability</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GPT-4 / GPT-3.5</td>
+        <td>Natural language understanding, generation, summarization, chatbots</td>
+      </tr>
+      <tr>
+        <td>DALL·E</td>
+        <td>Generates images from natural language prompts</td>
+      </tr>
+      <tr>
+        <td>Embeddings</td>
+        <td>Vector search, semantic similarity, RAG implementations</td>
+      </tr>
+      <tr>
+        <td>Whisper (coming)</td>
+        <td>Multilingual speech-to-text (ASR)</td>
+      </tr>
+      <tr>
+        <td>GPT-4o</td>
+        <td>Faster, cheaper GPT-4 with multimodal capabilities (text, vision, audio)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

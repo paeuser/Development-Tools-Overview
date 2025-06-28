@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS & CSS Grid Layout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 2em; }
+        h1, h2 { color: #1976d2; }
+        section { background: #fff; border-radius: 8px; margin: 1.5em auto; padding: 1.5em; max-width: 800px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        pre { background: #f4f4f4; border-radius: 6px; padding: 1em; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <section>
+        <h1>What is Tailwind CSS?</h1>
+        <p>
+            <strong>Tailwind CSS</strong> is a utility-first CSS framework for rapidly building custom user interfaces. Instead of writing custom CSS, you compose your designs using small, reusable utility classes directly in your HTML. This approach makes it easy to create responsive, modern layouts without leaving your markup.
+        </p>
+        <ul>
+            <li>Utility-first: Use classes like <code>p-4</code>, <code>text-center</code>, <code>bg-blue-500</code> to style elements.</li>
+            <li>Highly customizable: Configure your design system via a config file.</li>
+            <li>Responsive and mobile-friendly out of the box.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>What is CSS Grid Layout?</h2>
+        <p>
+            <strong>CSS Grid Layout</strong> is a powerful layout system in CSS that allows you to create complex, two-dimensional layouts on the web. With Grid, you can define rows and columns, and place items precisely where you want them, making it ideal for building responsive and flexible designs.
+        </p>
+        <ul>
+            <li>Define grids with <code>display: grid</code> and set rows/columns with <code>grid-template-rows</code> and <code>grid-template-columns</code>.</li>
+            <li>Place items using <code>grid-row</code>, <code>grid-column</code>, or <code>grid-area</code>.</li>
+            <li>Great for dashboards, galleries, and any layout that needs alignment in two dimensions.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Sample: Tailwind CSS Grid Layout</h2>
+        <p>This example uses Tailwind CSS utility classes to create a simple 3-column grid layout:</p>
+        <div class="grid grid-cols-3 gap-4 p-4 bg-gray-100 rounded-lg">
+            <div class="bg-blue-200 p-6 text-center rounded">1</div>
+            <div class="bg-blue-300 p-6 text-center rounded">2</div>
+            <div class="bg-blue-400 p-6 text-center rounded">3</div>
+        </div>
+        <pre><code>&lt;div class="grid grid-cols-3 gap-4"&gt;
+  &lt;div&gt;1&lt;/div&gt;
+  &lt;div&gt;2&lt;/div&gt;
+  &lt;div&gt;3&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+        <p>
+            <strong>Explanation:</strong> <br>
+            <code>grid</code> enables CSS Grid layout. <code>grid-cols-3</code> creates 3 equal columns. <code>gap-4</code> adds spacing between grid items. You can adjust the number of columns and gaps as needed.
+        </p>
+    </section>
+</body>
+</html>

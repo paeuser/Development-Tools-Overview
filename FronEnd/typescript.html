@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript Questions and Answers</title>
+</head>
+<body>
+    <h1>TypeScript Questions and Answers</h1>
+
+    <h2>What is TypeScript?</h2>
+    <p>TypeScript is a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale.</p>
+
+    <h2>What are the benefits of using TypeScript?</h2>
+    <ul>
+        <li>Static typing helps catch errors early during development.</li>
+        <li>Improved code readability and maintainability.</li>
+        <li>Enhanced IDE support with autocompletion and refactoring tools.</li>
+        <li>Compatibility with existing JavaScript code.</li>
+    </ul>
+
+    <h2>How do you install TypeScript?</h2>
+    <p>You can install TypeScript globally using npm with the following command:</p>
+    <pre><code>npm install -g typescript</code></pre>
+
+    <h2>What is a .ts file?</h2>
+    <p>A .ts file is a TypeScript file that contains TypeScript code. It is transpiled into JavaScript for execution in browsers or Node.js.</p>
+
+    <h2>How do you compile TypeScript code?</h2>
+    <p>Use the TypeScript compiler (tsc) to compile .ts files into .js files. For example:</p>
+    <pre><code>tsc filename.ts</code></pre>
+
+    <h2>What is the difference between TypeScript and JavaScript?</h2>
+    <p>TypeScript is a superset of JavaScript that adds static typing and other features, while JavaScript is a dynamic, loosely typed language.</p>
+
+    <h2>TypeScript Interview Questions and Answers</h2>
+
+    <h3>What are TypeScript's key features?</h3>
+    <p>TypeScript offers static typing, interfaces, classes, and modules, which enhance JavaScript development.</p>
+
+    <h3>What is the difference between an interface and a type in TypeScript?</h3>
+    <p>Both are used for defining object shapes, but interfaces can be extended or implemented, while types are more flexible and can represent unions or intersections.</p>
+
+    <h3>What is the purpose of TypeScript's "any" type?</h3>
+    <p>The "any" type allows you to opt out of type checking for a variable, making it compatible with any type.</p>
+
+    <h3>How does TypeScript handle null and undefined?</h3>
+    <p>TypeScript has strict null checks enabled by default, requiring explicit handling of null and undefined values.</p>
+
+    <h3>What is the difference between "unknown" and "any" in TypeScript?</h3>
+    <p>The "unknown" type is safer than "any" because you must perform type checks before using it, while "any" bypasses type checking entirely.</p>
+
+    <h3>How do you define a function in TypeScript?</h3>
+    <p>You define a function with type annotations for its parameters and return value. For example:</p>
+    <pre><code>function add(a: number, b: number): number {
+    return a + b;
+}</code></pre>
+
+    <h3>What is TypeScript's "readonly" modifier?</h3>
+    <p>The "readonly" modifier ensures that a property cannot be reassigned after its initial assignment.</p>
+
+    <h2>TypeScript Utility Types</h2>
+    <p>
+        <strong>What are Utility Types?</strong><br>
+        TypeScript provides several built-in <em>utility types</em> that help you transform, compose, and work with types more efficiently. These utilities make it easier to express common type transformations and constraints, improving code safety and readability.
+    </p>
+    <p>
+        Utility types are generic types provided by TypeScript, such as <code>Partial</code>, <code>Pick</code>, <code>Omit</code>, <code>Record</code>, and <code>Readonly</code>. They are especially useful for manipulating existing types or creating new types based on existing structures.
+    </p>
+    <h3>Common Utility Types and Examples</h3>
+    <pre><code>// Partial: Makes all properties optional
+interface User { name: string; age: number; }
+type PartialUser = Partial<User>; // { name?: string; age?: number; }
+
+// Pick: Selects a subset of properties
+type NameOnly = Pick<User, "name">; // { name: string; }
+
+// Omit: Removes specified properties
+type WithoutAge = Omit<User, "age">; // { name: string; }
+
+// Record: Creates an object type with specific keys and value type
+type Example = Record<"a" | "b", number>; // { a: number; b: number; }
+
+// Readonly: Makes all properties readonly
+type ReadonlyUser = Readonly<User>; // { readonly name: string; readonly age: number; }
+</code></pre>
+    <h3>Explanation: <code>Record&lt;K, T&gt;</code></h3>
+    <p>
+        <code>Record&lt;K, T&gt;</code> constructs an object type with keys <code>K</code> and values of type <code>T</code>.<br>
+        Example: <code>Record&lt;"a" | "b", number&gt;</code> is equivalent to <code>{ a: number; b: number; }</code>.
+    </p>
+    <p>
+        <strong>Simple Sample:</strong>
+        <pre><code>const scores: Record<"math" | "english", number> = { math: 95, english: 88 };</code></pre>
+        Here, <code>scores</code> must have both <code>math</code> and <code>english</code> properties, each with a number value.
+    </p>
+</body>
+</html>

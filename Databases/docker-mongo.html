@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Docker Image Instructions</title>
+</head>
+<body>
+
+<h1>Instructions for Using MongoDB with Docker</h1>
+
+<h2>How to Check if the MongoDB Docker Image is Already Installed</h2>
+<ol>
+  <li>Open <b>PowerShell</b> or <b>Command Prompt</b>.</li>
+  <li>Run the following command:<br>
+    <code>docker images --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | findstr mongodb-community-server</code>
+  </li>
+  <li>If you see a result, the image is already installed. If not, proceed to pull the image as described below.</li>
+</ol>
+
+<h2>How to Pull the MongoDB Docker Image</h2>
+<ol>
+  <li>Open <b>PowerShell</b> or <b>Command Prompt</b>.</li>
+  <li>Run the following command:<br>
+    <code>docker pull mongodb/mongodb-community-server</code>
+  </li>
+  <li>This will download the latest MongoDB Community Server image from Docker Hub.</li>
+</ol>
+
+<h2>How to Run MongoDB Docker Image</h2>
+<ol>
+  <li>After the image is downloaded, you can run it using the following command:<br>
+    <code>docker run --name mongodb -d mongodb/mongodb-community-server</code>
+  </li>
+  <li>This command will run the MongoDB image in a new container named "mongodb".</li>
+</ol>
+
+<h2>How to Run MongoDB for Local Development</h2>
+<ol>
+  <li>To ensure your application can connect using <code>mongodb://localhost:27017/?ssl=false</code>, run the following command:<br>
+    <code>docker run --name mongodb -p 27017:27017 -d mongodb/mongodb-community-server</code>
+  </li>
+  <li>This maps port 27017 on your computer to port 27017 in the container, so <b>localhost:27017</b> works for your app.</li>
+  <li>If you already have a container named <code>mongodb</code>, remove it first with:<br>
+    <code>docker rm mongodb</code>
+  </li>
+</ol>
+
+<h2>How to Check if MongoDB is Running</h2>
+<ol>
+  <li>Open <b>PowerShell</b> or <b>Command Prompt</b>.</li>
+  <li>Run the following command:<br>
+    <code>docker ps --filter "name=mongodb"</code>
+  </li>
+  <li>If you see a line with the container details, MongoDB is running.<br>
+      If nothing is returned, the container is not running.</li>
+  <li>To check all containers (including stopped ones), run:<br>
+    <code>docker ps -a --filter "name=mongodb"</code>
+  </li>
+</ol>
+
+<h2>How to Connect to MongoDB</h2>
+<ol>
+  <li>To connect to the MongoDB instance running in the container, use the following command:<br>
+    <code>docker exec -it mongodb mongo</code>
+  </li>
+  <li>This command will open the MongoDB shell connected to your MongoDB instance.</li>
+</ol>
+
+</body>
+</html>

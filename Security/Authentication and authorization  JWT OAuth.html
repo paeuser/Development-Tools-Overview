@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication and Authorization: JWT & OAuth</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Authentication and Authorization: JWT & OAuth</h1>
+    <h2>Authentication vs Authorization</h2>
+    <ul>
+        <li><strong>Authentication:</strong> Verifies who a user is (identity).</li>
+        <li><strong>Authorization:</strong> Determines what a user can do (permissions/access).</li>
+    </ul>
+    <h2>What is JWT (JSON Web Token)?</h2>
+    <ul>
+        <li>A compact, URL-safe token format for securely transmitting information between parties as a JSON object.</li>
+        <li>Commonly used for authentication in web applications (stateless sessions).</li>
+        <li>Consists of three parts: header, payload, and signature.</li>
+        <li>Example: <code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</code></li>
+    </ul>
+    <h2>What is OAuth?</h2>
+    <ul>
+        <li>An open standard for access delegation (authorization), commonly used for token-based access to APIs.</li>
+        <li>Allows users to grant third-party applications access to their resources without sharing passwords.</li>
+        <li>OAuth 2.0 is the most widely used version.</li>
+        <li>Common in social login ("Sign in with Google/Facebook") and API integrations.</li>
+    </ul>
+    <h2>How They Work Together</h2>
+    <ul>
+        <li>OAuth is used to obtain an access token (often a JWT) after user authentication.</li>
+        <li>The access token is sent with API requests to prove identity and permissions.</li>
+    </ul>
+    <h2>Example JWT Payload</h2>
+    <pre><code>{
+  "sub": "1234567890",
+  "name": "John Doe",
+  "role": "admin",
+  "exp": 1718025600
+}</code></pre>
+    <h2>Benefits</h2>
+    <ul>
+        <li>Stateless authentication (no server session storage needed)</li>
+        <li>Scalable and secure for APIs and SPAs</li>
+        <li>Widely supported and easy to integrate</li>
+    </ul>
+</div>
+</body>
+</html>

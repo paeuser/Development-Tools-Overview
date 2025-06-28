@@ -1,0 +1,69 @@
+<!-- Assurity.ApiWrapper.Service Project Overview -->
+<h2>Assurity.ApiWrapper.Service - Project Overview</h2>
+<p><strong>Assurity.ApiWrapper.Service</strong> is a .NET backend service that manages OCR (Optical Character Recognition) workflows for claim documents. It acts as an intermediary between external clients, ABBYY Vantage OCR API, and internal data storage (MongoDB). The service is secured with API key authentication and supports robust configuration and health monitoring.</p>
+
+<h3>Key Components</h3>
+<ul>
+  <li><strong>Controllers:</strong> The main controller is <code>ApiWrapperController</code>, which exposes endpoints for transaction management, confidence score logging, session management, and document retrieval.</li>
+  <li><strong>Authentication:</strong> All endpoints are protected by an API key filter (<code>ApiKeyAuthenticationFilter</code>). API keys are stored encrypted in <code>appsettings.json</code> and validated per request.</li>
+  <li><strong>External API:</strong> Integrates with ABBYY Vantage for OCR processing. Handles authentication, transaction creation, file upload, and processing via <code>VantageUtility</code>.</li>
+  <li><strong>Database:</strong> Uses MongoDB for storing transactions, login sessions, and document data. Collections are managed and indexed for performance and data expiry.</li>
+  <li><strong>Configuration:</strong> All settings (cache, Vantage credentials, allowed origins, API keys, etc.) are managed in <code>appsettings.json</code>.</li>
+  <li><strong>Program.cs:</strong> Configures dependency injection, CORS, Swagger, rate limiting, health checks, and middleware pipeline.</li>
+</ul>
+
+<h3>Controllers & Endpoints</h3>
+<ul>
+  <li><strong>/startTransaction</strong> (POST): Start a new OCR transaction with uploaded files.</li>
+  <li><strong>/getTransaction</strong> (GET): Retrieve transaction details by ID.</li>
+  <li><strong>/logConfidence</strong> (POST): Log confidence scores for OCR results.</li>
+  <li><strong>/logData</strong> (POST): Log additional document data.</li>
+  <li><strong>/createSession</strong> (POST): Create a new user session for OCR login.</li>
+  <li><strong>/updateSession</strong> (POST): Update session status (e.g., after login).</li>
+  <li><strong>/claimDocuments</strong> (GET): Retrieve claim documents for a session.</li>
+</ul>
+
+<h3>Authentication & Security</h3>
+<ul>
+  <li>API requests require a valid API key in the header (<code>api-Key</code>).</li>
+  <li>API keys are encrypted and validated using <code>ApiIdKeyEngine</code> and <code>ApiKeyAuthenticationFilter</code>.</li>
+  <li>Endpoints are restricted based on user type (e.g., Vantage user can only access certain endpoints).</li>
+  <li>Rate limiting is enforced to prevent abuse.</li>
+</ul>
+
+<h3>Configuration (appsettings.json)</h3>
+<ul>
+  <li><strong>Cache:</strong> MongoDB connection, collection names, expiry settings, simulation mode, etc.</li>
+  <li><strong>Vantage:</strong> Credentials and environment for ABBYY Vantage API.</li>
+  <li><strong>Authentication:</strong> List of allowed API keys and users.</li>
+  <li><strong>CorsSettings:</strong> Allowed origins for CORS.</li>
+  <li><strong>RateLimiting:</strong> Request limits per time period.</li>
+  <li><strong>NLog:</strong> Logging configuration for console, email, and New Relic.</li>
+</ul>
+
+<h3>External API Integration</h3>
+<ul>
+  <li>Uses <strong>ABBYY Vantage</strong> for OCR processing.</li>
+  <li>Handles authentication, transaction creation, file upload, and processing via <code>VantageUtility</code>.</li>
+  <li>All credentials are securely managed and decrypted as needed.</li>
+</ul>
+
+<h3>MongoDB Usage</h3>
+<ul>
+  <li>Stores transactions, login sessions, and document data.</li>
+  <li>Indexes are created for automatic data expiry and efficient queries.</li>
+  <li>All access is abstracted via <code>MongoDBConnection</code> and accessor classes.</li>
+</ul>
+
+<h3>Program.cs & Pipeline</h3>
+<ul>
+  <li>Configures dependency injection for all services and utilities.</li>
+  <li>Sets up CORS, Swagger (for non-production), health checks, and error middleware.</li>
+  <li>Enforces API key authentication and rate limiting globally.</li>
+  <li>Maps all controller endpoints and health check endpoint (<code>/healthcheck</code>).</li>
+</ul>
+
+<h3>Mobile Friendly Notes</h3>
+<ul>
+  <li>This summary is formatted for easy reading on mobile devices. For more details, see the project README and source code.</li>
+</ul>

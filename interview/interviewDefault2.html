@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation - Default Template</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f9fa;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+        .left {
+            flex: 0 0 320px;
+            background: #e3f2fd;
+            padding: 32px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #b3c6e0;
+        }
+        .right {
+            flex: 1 1 0%;
+            padding: 32px 24px;
+            overflow-y: auto;
+            background: #fff;
+            min-width: 0;
+        }
+        h2 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .label {
+            font-weight: bold;
+            color: #17406a;
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .left {
+                flex: none;
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #b3c6e0;
+            }
+            .right {
+                padding: 20px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h2>Company Details</h2>
+            <div><span class="label">Job Title:</span> Software Engineer</div>
+            <div><span class="label">Company:</span> Millennium (Corporate Systems development team)</div>
+            <div><span class="label">Location:</span> Not specified</div>
+            <div><span class="label">Tech Stack:</span> .NET Core, API, Kafka, REST, Angular, React, SQL, AWS, Linux, Windows</div>
+            <div><span class="label">Recruiter:</span> Meg Moriarty</div>
+            <div><span class="label">Recruiter Title:</span> Recruitment Consultant</div>
+            <div><span class="label">Recruiter Company:</span> OB Recruitment Inc</div>
+            <div style="margin-top: 24px;">
+                <span class="label">Notes:</span>
+                <ul style="margin: 8px 0 0 18px;">
+                    <li>8+ years software development experience</li>
+                    <li>Containerized .NET Core microservices for API/messaging</li>
+                    <li>Integration workflow modeling</li>
+                    <li>Kafka, REST, asynchronous event/data distribution</li>
+                    <li>3+ years UI: Angular, React, or equivalent JavaScript</li>
+                    <li>5+ years Relational DB, complex SQL, Stored Procedures</li>
+                    <li>5+ years AWS cloud native development</li>
+                    <li>DevOps for build, delivery, support of mission critical apps</li>
+                    <li>Windows & Linux development</li>
+                    <li>Storyboards, user flows, wireframes for UI/UX</li>
+                    <li>Work with business teams, implement complex calculations</li>
+                    <li>Self-starter, critical thinker, ownership, improvement</li>
+                    <li>Independent & collaborative work</li>
+                    <li>Quick learner, multitasker</li>
+                    <li>Desirable: HTML, CSS, JavaScript, Angular/React/Ember</li>
+                    <li>UNIX familiarity a plus</li>
+                    <li>AWS hosting (EC2, RDS, CloudWatch), Linux knowledge</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Interview Preparation Notes</h2>
+            <div>
+                <p style="color:#888; font-size:0.98em;">Add your notes here as you prepare for the interview. This area scrolls independently for easy reference during prep or live calls.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

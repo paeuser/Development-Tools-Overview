@@ -1,0 +1,94 @@
+<!-- Assurity.Ocr.ReverseProxy Project Overview -->
+<h2>Assurity.Ocr.ReverseProxy - Project Overview</h2>
+<p><strong>Assurity.Ocr.ReverseProxy</strong> is a secure, high-performance reverse proxy service built with .NET and YARP (Yet Another Reverse Proxy). It acts as a gateway for all OCR-related API requests, providing authentication, routing, rate limiting, and error handling for downstream services such as <code>Assurity.ApiWrapper.Service</code>.</p>
+
+<h3>Key Components</h3>
+<ul>
+  <li><strong>Reverse Proxy Routing</strong>
+    <ul>
+      <li>Uses YARP to route incoming requests to the appropriate backend service based on path and method, as defined in <code>appsettings.json</code>.</li>
+      <li>Supports path transforms, header manipulation, and cluster-based load balancing.</li>
+    </ul>
+  </li>
+  <li><strong>Authentication & Authorization</strong>
+    <ul>
+      <li>API key authentication is enforced for all routes using <code>AspNetCore.Authentication.ApiKey</code>.</li>
+      <li>API keys are securely managed and validated using <code>IApiIdKeyEngine</code> and configuration.</li>
+      <li>Authorization policies ensure only authenticated users can access the API.</li>
+      <li>Includes a simple API key input view (<code>ApiKeyInput.cshtml</code>) for interactive scenarios.</li>
+    </ul>
+  </li>
+  <li><strong>Rate Limiting</strong>
+    <ul>
+      <li>Implements IP-based rate limiting using <code>AspNetCoreRateLimit</code> to prevent abuse.</li>
+      <li>Limits are configurable in <code>appsettings.json</code> (e.g., 5 requests per 10 seconds).</li>
+    </ul>
+  </li>
+  <li><strong>Error Handling</strong>
+    <ul>
+      <li>Custom <code>ErrorMiddleware</code> logs and handles unhandled exceptions and rate limit violations, providing robust diagnostics.</li>
+    </ul>
+  </li>
+  <li><strong>Configuration</strong>
+    <ul>
+      <li>All proxy routes, clusters, authentication, CORS, and logging are managed in <code>appsettings.json</code>.</li>
+      <li>Supports CORS for multiple origins, and detailed NLog configuration for logging and monitoring.</li>
+    </ul>
+  </li>
+  <li><strong>Health Checks</strong>
+    <ul>
+      <li>Exposes a <code>/healthcheck</code> endpoint for monitoring proxy health.</li>
+    </ul>
+  </li>
+  <li><strong>Dependency Injection</strong>
+    <ul>
+      <li>All services and utilities are registered via <code>InversionOfControlConfig</code> for modularity and testability.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3>Proxy Routing & YARP</h3>
+<ul>
+  <li>Routes such as <code>/service/{**catch-all}</code>, <code>/startTransaction</code>, <code>/getTransaction</code>, etc., are mapped to backend clusters and transformed as needed.</li>
+  <li>Supports header copying and response header transforms for traceability.</li>
+  <li>Load balancing policy (e.g., RoundRobin) is configurable per cluster.</li>
+</ul>
+
+<h3>Authentication & Security</h3>
+<ul>
+  <li>API key must be provided in the <code>api-Key</code> header or query parameter.</li>
+  <li>Keys are validated against encrypted values in configuration.</li>
+  <li>Authorization policies restrict access to authenticated users only.</li>
+</ul>
+
+<h3>Rate Limiting</h3>
+<ul>
+  <li>Limits requests per IP to prevent abuse (default: 5 requests per 10 seconds).</li>
+  <li>Returns HTTP 429 with detailed logging on violations.</li>
+</ul>
+
+<h3>Error Handling</h3>
+<ul>
+  <li>All unhandled exceptions and rate limit errors are logged with request details for diagnostics.</li>
+  <li>Custom middleware ensures consistent error responses and monitoring.</li>
+</ul>
+
+<h3>Configuration (appsettings.json)</h3>
+<ul>
+  <li><strong>ReverseProxy:</strong> Defines clusters, routes, transforms, and load balancing.</li>
+  <li><strong>Authentication:</strong> API key list for secure access.</li>
+  <li><strong>CorsSettings:</strong> Allowed origins for CORS.</li>
+  <li><strong>RateLimiting:</strong> Request limits per time period.</li>
+  <li><strong>NLog:</strong> Logging configuration for console, email, and New Relic.</li>
+</ul>
+
+<h3>Other Features</h3>
+<ul>
+  <li>Includes Razor view for API key input for interactive authentication scenarios.</li>
+  <li>Supports health checks and diagnostics for operational monitoring.</li>
+</ul>
+
+<h3>Mobile Friendly Notes</h3>
+<ul>
+  <li>This summary is formatted for easy reading on mobile devices. For more details, see the project source code and configuration files.</li>
+</ul>

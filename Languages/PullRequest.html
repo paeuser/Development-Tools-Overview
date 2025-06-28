@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Senior Pull Request Review Notes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 32px 40px;
+        }
+        h1 {
+            color: #2d3a4b;
+            margin-bottom: 16px;
+        }
+        ul {
+            margin: 0 0 24px 24px;
+        }
+        li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        .note {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 12px 18px;
+            margin-bottom: 24px;
+            color: #17406a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Senior Pull Request Review Notes</h1>
+        <div class="note">
+            <strong>Note:</strong> Pull request reviews are not about enforcing personal code style or preferred solutions.
+        </div>
+        <ul>
+            <li>Focus on <strong>scalability</strong>, <strong>supportability</strong>, and <strong>understandability</strong> for all developers, including juniors.</li>
+            <li>Do not reject code just because you dislike a particular style or want to rename variables.</li>
+            <li>Watch for <strong>overengineering</strong> and unnecessary abstractions that make code harder to support.</li>
+            <li>Ensure code follows the <strong>Single Responsibility Principle</strong> and is easy to test.</li>
+            <li>Check for edge cases, not just the happy path (e.g., failed states, error handling, network failures, unexpected backend data).</li>
+            <li>Review tests for meaningful coverage, not just quantity. AI-generated tests should make sense and cover real scenarios.</li>
+            <li>Be mindful of heavy computations and their impact.</li>
+            <li>Verify correct use of <code>git</code> and proper commit practices.</li>
+            <li>Ensure the pull request is named with the ticket ID.</li>
+        </ul>
+    </div>
+</body>
+</html>

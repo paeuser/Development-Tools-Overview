@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET Core and Entity Framework</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f4f4f4;
+            text-align: left;
+        }
+        .answer {
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>What is .NET Core?</td>
+            <td class="answer">.NET Core is a cross-platform, open-source framework for building modern, cloud-based, and internet-connected applications.</td>
+        </tr>
+        <tr>
+            <td>What is Entity Framework Core?</td>
+            <td class="answer">Entity Framework Core (EF Core) is a lightweight, extensible, and cross-platform version of the popular Entity Framework data access technology.</td>
+        </tr>
+        <tr>
+            <td>What are migrations in EF Core?</td>
+            <td class="answer">Migrations in EF Core are a way to incrementally update the database schema to keep it in sync with the application's data model.</td>
+        </tr>
+        <tr>
+            <td>What is DbContext?</td>
+            <td class="answer">DbContext is the primary class in EF Core that interacts with the database and manages entity objects during runtime.</td>
+        </tr>
+        <tr>
+            <td>What is LINQ in EF Core?</td>
+            <td class="answer">LINQ (Language Integrated Query) in EF Core allows querying the database using strongly-typed C# syntax.</td>
+        </tr>
+        <tr>
+            <td>What is lazy loading?</td>
+            <td class="answer">Lazy loading is a feature in EF Core that delays the loading of related data until it is accessed for the first time.</td>
+        </tr>
+        <tr>
+            <td>What is eager loading?</td>
+            <td class="answer">Eager loading is a feature in EF Core that loads related data along with the main data in a single query.</td>
+        </tr>
+        <tr>
+            <td>What is the difference between Add and Attach in EF Core?</td>
+            <td class="answer">Add marks an entity as new and includes it in the database on SaveChanges, while Attach marks an entity as unchanged and does not include it in the database.</td>
+        </tr>
+        <tr>
+            <td>What is the purpose of AsNoTracking in EF Core?</td>
+            <td class="answer">AsNoTracking is used to query data without tracking it in the DbContext, improving performance for read-only operations.</td>
+        </tr>
+        <tr>
+            <td>What is the difference between First and FirstOrDefault in EF Core?</td>
+            <td class="answer">First throws an exception if no records are found, while FirstOrDefault returns null if no records are found.</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Interview Questions & Answers</title>
+  <link rel="stylesheet" href="../../site.css">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    .container { max-width: 800px; margin: 1.5em auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 1.5em; }
+    h1 { font-size: 2em; margin-bottom: 0.5em; }
+    h2 { font-size: 1.2em; margin-top: 2em; color: #1976d2; }
+    .qa { margin-bottom: 1.5em; }
+    .question { font-weight: bold; margin-bottom: 0.3em; }
+    .answer { margin-left: 0.5em; }
+    pre, code { background: #f4f4f4; border-radius: 4px; padding: 0.3em 0.5em; font-size: 0.98em; }
+    @media (max-width: 600px) {
+      .container { padding: 0.7em; }
+      h1 { font-size: 1.3em; }
+      h2 { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>React Interview Questions & Answers</h1>
+    <!-- Q&A Section -->
+    <div class="qa">
+      <div class="question">1. What is JSX?</div>
+      <div class="answer">JSX stands for JavaScript XML. It allows us to write HTML inside JavaScript and place them in the DOM without using functions like <code>appendChild()</code> or <code>createElement()</code>. It provides syntactic sugar for <code>React.createElement()</code>.</div>
+    </div>
+    <div class="qa">
+      <div class="question">2. What are the differences between functional and class components?</div>
+      <div class="answer">Functional components are JavaScript functions, while class components use ES6 classes. Functional components use hooks for state and lifecycle, while class components use <code>this.state</code> and lifecycle methods. Hooks make functional components as powerful as class components.</div>
+    </div>
+    <div class="qa">
+      <div class="question">3. What is the virtual DOM? How does React use it to render the UI?</div>
+      <div class="answer">The virtual DOM is a lightweight copy of the real DOM. React updates the virtual DOM, compares it to the previous version, and only updates the real DOM where changes occurred, making UI updates efficient.</div>
+    </div>
+    <div class="qa">
+      <div class="question">4. What are the differences between controlled and uncontrolled components?</div>
+      <div class="answer">Controlled components have their input values managed by React state, while uncontrolled components rely on the DOM for their state. Controlled components use <code>onChange</code> and state, while uncontrolled use refs.</div>
+    </div>
+    <div class="qa">
+      <div class="question">5. What are props in React?</div>
+      <div class="answer">Props are inputs to a React component, passed as attributes. They are read-only and allow data to flow from parent to child components.</div>
+    </div>
+    <div class="qa">
+      <div class="question">6. Explain React state and props.</div>
+      <div class="answer">State is local, mutable data managed within a component. Props are immutable and passed from parent to child. State changes trigger re-renders; props are read-only.</div>
+    </div>
+    <div class="qa">
+      <div class="question">7. Explain about types of side effects in React component.</div>
+      <div class="answer">Effects without cleanup (e.g., data fetching) and effects with cleanup (e.g., subscriptions) are managed with <code>useEffect</code>. Cleanup prevents memory leaks.</div>
+    </div>
+    <div class="qa">
+      <div class="question">8. What is prop drilling in React?</div>
+      <div class="answer">Prop drilling is passing data from a parent to deeply nested child components through intermediate components, which can make code harder to maintain.</div>
+    </div>
+    <div class="qa">
+      <div class="question">9. What are error boundaries?</div>
+      <div class="answer">Error boundaries are React components that catch JavaScript errors in their child component tree and display a fallback UI instead of crashing the app. Implemented using <code>getDerivedStateFromError</code> and <code>componentDidCatch</code>.</div>
+    </div>
+    <div class="qa">
+      <div class="question">10. What are React Hooks?</div>
+      <div class="answer">Hooks are built-in functions (like <code>useState</code>, <code>useEffect</code>) that let you use state and lifecycle features in functional components.</div>
+    </div>
+    <div class="qa">
+      <div class="question">11. What are the rules for using React Hooks?</div>
+      <div class="answer">Hooks must be called at the top level of a React function component or custom hook, not inside loops, conditions, or nested functions.</div>
+    </div>
+    <div class="qa">
+      <div class="question">12. What is the use of <code>useEffect</code> React Hook?</div>
+      <div class="answer"><code>useEffect</code> lets you perform side effects in functional components, such as data fetching, subscriptions, or manual DOM changes. It runs after render and can clean up effects.</div>
+    </div>
+    <div class="qa">
+      <div class="question">13. Why do React Hooks make use of refs?</div>
+      <div class="answer">Refs let you access and interact with DOM elements directly. <code>useRef</code> is used in function components for focus, media playback, or integrating with third-party libraries.</div>
+    </div>
+    <div class="qa">
+      <div class="question">14. What are Custom Hooks?</div>
+      <div class="answer">Custom Hooks are JavaScript functions that start with <code>use</code> and call other hooks. They allow you to reuse stateful logic across components.</div>
+    </div>
+    <div class="qa">
+      <div class="question">15. What are the lifecycle methods of React?</div>
+      <div class="answer">Lifecycle methods are special methods in class components: <code>constructor</code>, <code>render</code>, <code>componentDidMount</code>, <code>shouldComponentUpdate</code>, <code>componentDidUpdate</code>, <code>componentWillUnmount</code>, etc. Hooks provide similar functionality in functional components.</div>
+    </div>
+    <div class="qa">
+      <div class="question">16. What are Higher Order Components?</div>
+      <div class="answer">A Higher-Order Component (HOC) is a function that takes a component and returns a new component, often used for code reuse and logic abstraction.</div>
+    </div>
+    <!-- ...existing code for more Q&A... -->
+  </div>
+</body>
+</html>

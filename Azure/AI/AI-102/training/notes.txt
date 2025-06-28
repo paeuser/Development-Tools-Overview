@@ -1,0 +1,19 @@
+Are there alternatives to using your personal card?
+
+Yes, a few:
+
+    Use a disposable virtual card (like Privacy.com or your bank's temporary card features) just for verification.
+
+    Ask your employer or school if they have a Microsoft/Azure education or developer program.
+
+    Join Microsoft Learn for Students:
+    https://learn.microsoft.com/en-us/training/azure-for-students/
+    No card is needed if you're eligible (must have a valid school email).
+
+    Microsoft Learn Sandbox:
+    Some AI-102 learning modules use sandbox environments — these don’t require a credit card or account setup. You can run real code and AI services in-browser.
+
+
+
+
+    

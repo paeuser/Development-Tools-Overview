@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Coding Practices</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Secure Coding Practices</h1>
+    <h2>Why Secure Coding Matters</h2>
+    <p>Secure coding practices help prevent vulnerabilities and protect applications from attacks such as XSS, CSRF, and SQL injection. Writing secure code is essential for safeguarding user data and maintaining trust.</p>
+    <h2>Key Secure Coding Practices</h2>
+    <ul>
+        <li>Validate and sanitize all user input.</li>
+        <li>Use parameterized queries or prepared statements for database access.</li>
+        <li>Escape output to prevent XSS attacks.</li>
+        <li>Implement proper authentication and authorization checks.</li>
+        <li>Store passwords securely using strong hashing algorithms (e.g., bcrypt, Argon2).</li>
+        <li>Use HTTPS to encrypt data in transit.</li>
+        <li>Keep dependencies and libraries up to date.</li>
+        <li>Limit error messages to avoid exposing sensitive information.</li>
+        <li>Apply the principle of least privilege for users and services.</li>
+        <li>Log security-relevant events and monitor for suspicious activity.</li>
+    </ul>
+    <h2>Example: Parameterized SQL Query</h2>
+    <pre><code>// C# example
+string query = "SELECT * FROM Users WHERE Username = @username";
+using (var cmd = new SqlCommand(query, connection)) {
+    cmd.Parameters.AddWithValue("@username", username);
+    // ...
+}
+</code></pre>
+    <h2>Resources</h2>
+    <ul>
+        <li><a href="https://owasp.org/www-project-top-ten/" target="_blank">OWASP Top Ten</a></li>
+        <li><a href="https://cheatsheetseries.owasp.org/" target="_blank">OWASP Cheat Sheet Series</a></li>
+    </ul>
+</div>
+</body>
+</html>

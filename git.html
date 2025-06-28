@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git: Check In and Push</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #007BFF; }
+        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+        pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <h1>How to Check In and Push This Project with Git</h1>
+    <ol>
+        <li><strong>Open a terminal</strong> in the project directory:<br>
+            <code>cd C:\Play\1Epic2005\Applications\Development-Tools-Overview</code>
+        </li>
+        <li><strong>Check the status of your files:</strong><br>
+            <code>git status</code>
+        </li>
+        <li><strong>Add all changes to staging:</strong><br>
+            <code>git add .</code>
+        </li>
+        <li><strong>Commit your changes:</strong><br>
+            <code>git commit -m "Describe your changes here"</code>
+        </li>
+        <li><strong>Push to the remote repository:</strong><br>
+            <code>git push</code>
+        </li>
+    </ol>
+    <h2>Notes</h2>
+    <ul>
+        <li>Make sure you have set up the remote repository (e.g., on GitHub) and have the correct permissions.</li>
+        <li>If this is your first push, you may need to set the upstream branch:<br>
+            <code>git push --set-upstream origin main</code>
+        </li>
+        <li>Replace <code>main</code> with your branch name if different.</li>
+    </ul>
+    <h2>Scenario: PR Approvals and Merging Develop</h2>
+    <p><strong>Scenario:</strong> You created a pull request (PR). Some people approved it, but you were told not to complete it yet. Later, you see a warning about your branch being out of date. Paul says:</p>
+    <blockquote>
+        <strong>Paul Williams</strong> (Wednesday):<br>
+        <em>It's not necessary to merge Develop into this branch unless it contains changes that will impact this PR. Merging Develop unnecessarily just resets the votes.</em>
+    </blockquote>
+    <h3>What does this mean?</h3>
+    <ul>
+        <li>Only merge <code>develop</code> into your branch if you need updates from <code>develop</code> (e.g., bug fixes, new features, or to resolve conflicts).</li>
+        <li>If you merge <code>develop</code> into your branch, PR approvals may be reset and reviewers will need to approve again.</li>
+        <li>If you do <strong>not</strong> merge <code>develop</code>, your PR remains as-is and votes are preserved. Any conflicts will be resolved when the PR is eventually merged.</li>
+    </ul>
+    <h3>Best Practice</h3>
+    <ul>
+        <li>Do <strong>not</strong> merge <code>develop</code> into your branch unless necessary.</li>
+        <li>Communicate with your team if you are unsure whether you need to update your branch.</li>
+    </ul>
+    <h3>Summary</h3>
+    <p>Only update your branch with <code>develop</code> if it is required for your changes to work or to resolve conflicts. Otherwise, leave your branch as-is to avoid resetting PR approvals.</p>
+</body>
+</html>

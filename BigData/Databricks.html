@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 1: Easiest — Use Databricks (No Setup)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Option 1: Easiest — Use Databricks (No Setup)</h2>
+
+        <p><strong>What is Databricks?</strong></p>
+        <p>Databricks is a cloud-based platform that simplifies big data analytics and machine learning by providing collaborative workspaces and managed Apache Spark clusters. It enables users to process, analyze, and visualize data at scale without complex setup or infrastructure management.</p>
+
+        <p>If you're new to Spark or want to avoid installation headaches:</p>
+        <ul>
+            <li>Go to <a href="https://community.cloud.databricks.com" target="_blank">https://community.cloud.databricks.com</a></li>
+            <li>Sign up for a free account</li>
+            <li>Create a cluster (1-click)</li>
+            <li>Upload a dataset (CSV)</li>
+            <li>Write PySpark code in a notebook (runs in the cloud)</li>
+        </ul>
+
+        <p><strong>What is Apache Spark?</strong></p>
+        <p>Apache Spark is an open-source distributed computing system designed for fast processing of large-scale data. It provides an easy-to-use interface for big data analytics, supporting tasks like data transformation, machine learning, and real-time stream processing across clusters of computers.</p>
+
+        <p>
+        In this project, Apache Spark was used behind the scenes through Databricks to process and manage the uploaded CSV file. When the CSV was uploaded and a table was created from it, Spark handled the data ingestion, inferred the schema, and stored the data in a distributed format. Then, as you interacted with the table using the notebook—whether previewing it or running code—Spark executed those operations using its powerful distributed processing engine. Even though the interface was user-friendly, all data handling and querying were powered by Apache Spark running on the Databricks cluster.
+
+        </p>
+
+        <p><strong>Relationship between Databricks and Apache Spark:</strong></p>
+        <div style="display: flex; justify-content: center; margin: 2rem 0;">
+            <svg width="350" height="200" viewBox="0 0 350 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Databricks outer box -->
+                <rect x="40" y="40" width="270" height="120" rx="24" fill="#0077c2" stroke="#005999" stroke-width="3"/>
+                <text x="175" y="75" text-anchor="middle" font-size="22" fill="#fff" font-family="Segoe UI, Arial" font-weight="bold">Databricks</text>
+                <text x="175" y="100" text-anchor="middle" font-size="13" fill="#fff" font-family="Segoe UI, Arial">(Cloud Platform)</text>
+                <text x="175" y="120" text-anchor="middle" font-size="12" fill="#fff" font-family="Segoe UI, Arial">Managed Spark, UI, Collaboration</text>
+                <!-- Spark inner box -->
+                <rect x="90" y="130" width="170" height="40" rx="12" fill="#f37021" stroke="#d35400" stroke-width="2"/>
+                <text x="175" y="155" text-anchor="middle" font-size="18" fill="#fff" font-family="Segoe UI, Arial">Apache Spark</text>
+            </svg>
+        </div>
+        <p style="text-align:center; font-size:1rem; color:#444;">Databricks is a cloud platform built on top of Apache Spark, providing managed infrastructure, collaboration tools, and an easy-to-use interface.</p>
+
+        <p>I went to Databricks and created a cluster to have a cloud-based environment where I can run Apache Spark jobs easily without setting up anything on my computer.</p>
+
+        <p>Next, you can:</p>
+        <ol>
+            <li>Create a new notebook in Databricks.</li>
+            <p><strong>What is a notebook?</strong> A notebook is an interactive document where you can write and run code, see results, and add notes—all in one place. It helps you organize your data analysis and share your work easily.</p>
+            <li>Attach the notebook to your running cluster.</li>
+            <li>Write and run PySpark code to process or analyze data.</li>
+            <li>Optionally, upload a dataset (like a CSV file) to work with real data.</li>
+            <li>Experiment with data transformations, queries, and visualizations.</li>
+        </ol>
+
+        <p>
+            I used the Databricks Community Edition.<br>
+            View your uploaded table here: 
+            <a href="https://community.cloud.databricks.com/#table/hive_metastore/default/people_csv" target="_blank">
+                https://community.cloud.databricks.com/#table/hive_metastore/default/people_csv
+            </a>
+        </p>
+
+
+        <p>
+            I created a CSV file named <code>people.csv</code> on my local computer with sample data. Then, I uploaded this CSV file to Databricks using the data upload interface. After uploading, I created a new table from this CSV file—either through the user interface or directly in a notebook. This table, named <code>people_csv</code>, is now stored in the Databricks default database and can be queried using Spark SQL or accessed within notebooks for further data processing and analysis. This process allows you to work with your data directly inside the Databricks environment.
+        </p>
+
+        <p>
+        Once your data is loaded into Databricks tables, you can easily access and analyze it using powerful tools and APIs. You can run SQL queries, process the data with Spark to perform complex transformations, and build machine learning models—all within the same environment. Applications can also connect to this data via APIs to integrate insights directly into other systems.
+
+        Databricks enables fast, scalable processing of big data, allowing you to handle large datasets efficiently. This makes it ideal for data analytics, reporting, and building data-driven applications.
+
+        </p>
+    </div>
+</body>
+</html>

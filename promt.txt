@@ -1,0 +1,11 @@
+This project consists of a directory containing subdirectories. Each subdirectory has its own index.html.
+The root index.html includes links to each subdirectory’s index.html, using the name of the subdirectory as the link text.
+All HTML files in every subdirectory must include a <link rel="stylesheet" href="../site.css"> (or the correct relative path) in the <head> and should not have inline <style> blocks. This ensures a consistent look and feel across the project.
+This is simple HTML that should be easily viewable in desktop browsers as well as on mobile browsers.
+
+important make sure the html file look ok on mobile 
+
+sample all files on C:\Play\1Epic2005\Development\Development-Tools-Overview\Languages look good on mobile
+
+ only display index.html if its root folder has subfolder(s), and only include a 'Back to Main Index' link if the current folder contains subfolders.
+Do not include any 'Back to Main Index' or 'index.html' links in subdirectory index.html files unless explicitly requested. Never add self-referential or back-to-root index links by default.

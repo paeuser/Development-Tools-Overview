@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client-Server Model and RESTful APIs</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Client-Server Model and RESTful APIs</h1>
+    <h2>Client-Server Model</h2>
+    <p>The client-server model is a network architecture where a client (such as a web browser or mobile app) requests resources or services from a server (such as a web server or database server). The server processes the request and sends back a response. This separation allows for scalable, maintainable, and secure applications.</p>
+    <ul>
+        <li><strong>Client:</strong> Initiates requests, displays data, and interacts with users.</li>
+        <li><strong>Server:</strong> Handles requests, processes data, and returns responses.</li>
+    </ul>
+    <h2>What is a RESTful API?</h2>
+    <p>A RESTful API (Representational State Transfer) is a set of rules for building web services that allow clients and servers to communicate over HTTP. RESTful APIs use standard HTTP methods (GET, POST, PUT, DELETE) and are stateless, meaning each request contains all the information needed to process it.</p>
+    <ul>
+        <li><strong>GET:</strong> Retrieve data from the server.</li>
+        <li><strong>POST:</strong> Send new data to the server.</li>
+        <li><strong>PUT:</strong> Update existing data on the server.</li>
+        <li><strong>DELETE:</strong> Remove data from the server.</li>
+    </ul>
+    <h2>Key Principles of REST</h2>
+    <ul>
+        <li>Stateless communication</li>
+        <li>Resource-based URLs (e.g., <code>/users/123</code>)</li>
+        <li>Use of standard HTTP methods</li>
+        <li>Structured responses (usually JSON or XML)</li>
+    </ul>
+    <h2>Example RESTful API Request</h2>
+    <pre><code>GET /api/products/42 HTTP/1.1
+Host: example.com
+</code></pre>
+    <h2>Benefits</h2>
+    <ul>
+        <li>Decouples client and server development</li>
+        <li>Scalable and easy to maintain</li>
+        <li>Widely supported and easy to integrate</li>
+    </ul>
+</div>
+</body>
+</html>

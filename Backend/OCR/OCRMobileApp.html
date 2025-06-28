@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>OCR Mobile App</title>
+    <meta name="description" content="OCR Mobile App - Vue.js application for optical character recognition.">
+    <meta name="theme-color" content="#1976d2">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Vite injects the script tag for the app here -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <style>
+      html, body, #app {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: #fafafa;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      body {
+        -webkit-tap-highlight-color: transparent;
+        min-height: 100vh;
+      }
+      #app {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (max-width: 600px) {
+        html, body, #app {
+          font-size: 16px;
+        }
+      }
+    </style>
+</head>
+<body>
+    <!--
+        OCRMobileApp.html
+        This file describes the OCR Mobile App, a Vue.js-based application for optical character recognition (OCR).
+    -->
+
+    <section>
+        <h2>Project Overview</h2>
+        <ul>
+            <li>Built with Vue.js, using a modular component structure (see <code>src/components/</code>).</li>
+            <li>Main entry: <code>src/main.js</code>; root component: <code>src/App.vue</code>.</li>
+            <li>Uses static assets and JS libraries (e.g., <code>public/libs/js/web-capture.js</code>) for image/document capture.</li>
+            <li>Bundled and served with Vite (<code>vite.config.js</code>).</li>
+            <li>Designed for both desktop and mobile browsers, with responsive layout and mobile web app meta tags.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>How the App Works</h2>
+        <ol>
+            <li>The user interacts with the UI rendered by Vue components (<code>App.vue</code> and <code>components/</code>).</li>
+            <li>The app can capture images/documents using the <code>web-capture.js</code> library.</li>
+            <li>Captured images are processed for OCR, and results are displayed in the app interface.</li>
+            <li>The app structure supports easy extension and backend integration.</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>Project Files</h2>
+        <ul>
+            <li><code>src/App.vue</code>: Main Vue component, contains the app's core logic and layout.</li>
+            <li><code>src/main.js</code>: Entry point, mounts the Vue app to <code>#app</code> in this HTML.</li>
+            <li><code>src/components/</code>: Reusable Vue components for UI and features.</li>
+            <li><code>public/libs/js/web-capture.js</code>: JS library for image/document capture.</li>
+            <li><code>vite.config.js</code>: Vite configuration for development/build.</li>
+            <li><code>README.md</code>: Project documentation and usage instructions.</li>
+        </ul>
+        <p>For more details, see the <code>README.md</code> and the source files in the <code>src/</code> directory.</p>
+    </section>
+
+    <div id="app"></div>
+    <!-- Vue app is mounted here by src/main.js -->
+    <!-- Additional scripts or libraries can be included here if needed -->
+</body>
+</html>

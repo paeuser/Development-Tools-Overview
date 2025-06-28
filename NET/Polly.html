@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polly (.NET) - High-Level Summary</title>
+    <link rel="stylesheet" href="../site.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            color: #222;
+            margin: 0;
+            padding: 1.5em;
+        }
+        .container {
+            background: #fff;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 2em auto;
+            padding: 2em 1.5em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+        h1 {
+            color: #1976d2;
+            font-size: 1.7em;
+            margin-top: 0;
+        }
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+            margin-top: 0;
+        }
+        h3 {
+            color: #555;
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+        ul {
+            margin: 1em 0 1em 1.5em;
+        }
+        li {
+            margin-bottom: 0.7em;
+        }
+        .highlight {
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            padding: 0.7em 1em;
+            margin: 1.2em 0;
+            border-radius: 6px;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 1em 0.5em;
+                margin: 1em 0.2em;
+            }
+            h1 {
+                font-size: 1.2em;
+            }
+            h2 {
+                font-size: 1.3em;
+            }
+            h3 {
+                font-size: 1.1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Polly (.NET) - High-Level Summary</h1>
+        <div class="highlight">
+            Polly is a .NET library that helps you handle temporary failures in your code — like network timeouts, API errors, or service unavailability — by adding resilience strategies such as:
+        </div>
+        <ul>
+            <li><b>Retry:</b> Try the operation again if it fails.</li>
+            <li><b>Timeout:</b> Cancel slow operations after a set time.</li>
+            <li><b>Circuit Breaker:</b> Temporarily stop calling a failing service.</li>
+            <li><b>Fallback:</b> Provide an alternative result when something goes wrong.</li>
+            <li><b>Bulkhead Isolation:</b> Limit how many operations run at once.</li>
+        </ul>
+        <div class="highlight">
+            It’s commonly used in HTTP requests and external service calls to make your application more stable and reliable.
+        </div>
+        <p>Let me know if you'd like a visual example or quick demo code!</p>
+    </div>
+
+    <div class="container">
+        <h2>📄 Ticket Summary – WP25-1374</h2>
+        <div class="highlight">
+            <b>Goal:</b> Improve the reliability of API calls in the Agent Center by implementing Polly retry logic in the API layer (instead of the UI).
+        </div>
+        <h3>✅ What Needs to Be Done</h3>
+        <ul>
+            <li>Remove any retry logic currently handled in the UI.</li>
+            <li>Implement Polly in the API Accessors to automatically retry failed calls (e.g., due to timeouts or network errors).</li>
+            <li>Identify all accessor methods missing retry logic.</li>
+            <li>For each missing one, create a subtask or new Jira story to track the work.</li>
+        </ul>
+        <h3>🧑‍💻 Why This Matters</h3>
+        <div class="highlight">
+            Moving retry logic to the API ensures better centralized error handling, reduces UI complexity, and improves the app’s resilience.
+        </div>
+    </div>
+
+</body>
+</html>

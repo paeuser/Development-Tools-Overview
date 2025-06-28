@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET 9</title>
+</head>
+<body>
+    <h1>.NET 9</h1>
+    <p><strong>Release Date:</strong> November 2024</p>
+
+    <h2>New Features</h2>
+    <ul>
+        <li><strong>Native AOT Improvements</strong>: Faster startup time and smaller executables, ideal for microservices and containerized apps.</li>
+        <li><strong>DATAS Garbage Collector</strong>: Smarter memory management that adapts heap sizes dynamically.</li>
+        <li><strong>Control-flow Enforcement Technology (CET)</strong>: Default on Windows for improved runtime security.</li>
+        <li><strong>Cloud-native Optimizations</strong>: Smaller container images, better support for Kubernetes and Dapr, and new tools for distributed systems.</li>
+        <li><strong>.NET Aspire (Preview)</strong>: A new stack of NuGet packages to simplify building observable, scalable cloud apps.</li>
+        <li><strong>Enhanced System.Text.Json</strong>: Better serialization options and performance.</li>
+        <li><strong>LINQ Enhancements</strong>: New methods like <code>CountBy</code>, <code>AggregateBy</code>, and <code>WhereNotNull</code>.</li>
+        <li><strong>NuGet Vulnerability Audits</strong>: Automatic scanning of transitive package vulnerabilities during build.</li>
+        <li><strong>Improved MSBuild</strong>: Parallel test execution and workload version pinning.</li>
+        <li><strong>PersistentAssemblyBuilder API</strong>: Emit and debug dynamic assemblies more easily.</li>
+        <li><strong>PriorityQueue Enhancements</strong>: Ability to remove specific items by value.</li>
+        <li><strong>ARM SVE/SVE2 Support</strong>: Vectorized hardware acceleration for ARM64 devices.</li>
+        <li><strong>Windows Forms Updates</strong>: Support for async dialogs, experimental dark mode, and visual enhancements.</li>
+        <li><strong>.NET MAUI Improvements</strong>: Better mobile/web UI integration with new controls and performance tweaks.</li>
+        <li><strong>Cryptography Updates</strong>: KMAC support and one-shot hashing APIs in <code>CryptographicOperations</code>.</li>
+    </ul>
+
+    <h2>C# 13 Highlights</h2>
+    <ul>
+        <li><strong><code>params Span&lt;T&gt;</code></strong>: Enables efficient parameter passing for performance-critical APIs.</li>
+        <li><strong>New <code>Lock</code> Object Support</strong>: Safer and more expressive thread synchronization options.</li>
+        <li><strong>Escape Sequence <code>\e</code></strong>: Represents the ASCII escape character in strings.</li>
+        <li><strong>Implicit Indexers & Method Group Enhancements</strong>: Improved overload resolution and indexing from end of arrays.</li>
+    </ul>
+
+    <h2>.NET SDK</h2>
+    <p>The <strong>.NET SDK</strong> (Software Development Kit) is a set of libraries, tools, and utilities for building, running, and publishing .NET applications. It includes:</p>
+    <ul>
+        <li><strong>Compilers</strong> for C#, F#, and Visual Basic.</li>
+        <li>The <strong>dotnet CLI</strong> (<code>dotnet</code> command-line tool) for creating, building, running, testing, and publishing projects.</li>
+        <li>Core libraries and runtime components needed to develop and execute .NET apps.</li>
+        <li>Project templates for quickly starting new applications, libraries, and services.</li>
+        <li>Tools for dependency management, package restore, and integration with NuGet (the .NET package manager).</li>
+        <li><strong>Workload version pinning</strong>: Keep consistent SDK behavior across team environments.</li>
+    </ul>
+    <p>The .NET SDK is cross-platform and can be installed on Windows, macOS, and Linux. It is updated regularly with new features, performance improvements, and support for the latest .NET versions (such as .NET 9).</p>
+    <p>To check your installed SDKs, run <code>dotnet --list-sdks</code> in your terminal. To create a new project, use <code>dotnet new</code> followed by the template name.</p>
+</body>
+</html>

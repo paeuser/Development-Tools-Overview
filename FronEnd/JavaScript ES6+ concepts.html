@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript ES6+ Concepts</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>JavaScript ES6+ Concepts</h1>
+    <h2>Key Features Introduced in ES6 and Beyond</h2>
+    <ul>
+        <li><strong>let & const:</strong> Block-scoped variable declarations.</li>
+        <li><strong>Arrow Functions:</strong> Shorter function syntax: <code>(a, b) =&gt; a + b</code></li>
+        <li><strong>Template Literals:</strong> String interpolation with backticks: <code>`Hello, ${name}!`</code></li>
+        <li><strong>Destructuring:</strong> Extract values from arrays/objects: <code>const [a, b] = arr;</code></li>
+        <li><strong>Default Parameters:</strong> Set default values for function parameters.</li>
+        <li><strong>Rest & Spread Operators:</strong> <code>...</code> for variable arguments and copying/merging arrays/objects.</li>
+        <li><strong>Classes:</strong> Syntactic sugar for constructor functions and inheritance.</li>
+        <li><strong>Modules:</strong> <code>import</code> and <code>export</code> for modular code.</li>
+        <li><strong>Promises & async/await:</strong> Modern asynchronous programming.</li>
+        <li><strong>Map & Set:</strong> New collection types for unique values and key-value pairs.</li>
+        <li><strong>Optional Chaining & Nullish Coalescing (ES2020):</strong> <code>obj?.prop</code>, <code>value ?? default</code></li>
+    </ul>
+    <h2>Example: Arrow Function & Destructuring</h2>
+    <pre><code>const add = (a, b) => a + b;
+const person = { name: "Alice", age: 30 };
+const {{ name, age }} = person;
+</code></pre>
+    <h2>Example: Async/Await</h2>
+    <pre><code>async function fetchData() {
+  const response = await fetch('https://api.example.com/data');
+  const data = await response.json();
+  return data;
+}
+</code></pre>
+    <h2>Why Learn ES6+?</h2>
+    <ul>
+        <li>Cleaner, more readable code</li>
+        <li>Modern syntax is widely used in frameworks (React, Vue, Angular)</li>
+        <li>Better support for modular, maintainable applications</li>
+    </ul>
+</div>
+</body>
+</html>

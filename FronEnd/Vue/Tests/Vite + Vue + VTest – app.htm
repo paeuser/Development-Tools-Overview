@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vite + Vue + Vitest App Documentation</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; margin: 2rem; background: #f9f9f9; color: #222; }
+    h1, h2, h3 { color: #2c3e50; }
+    code, pre { background: #f4f4f4; border-radius: 4px; padding: 2px 6px; }
+    pre { padding: 1em; overflow-x: auto; }
+    ul, ol { margin-left: 1.5em; }
+    .container { max-width: 700px; margin: auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; padding: 2rem; }
+    @media (max-width: 600px) {
+      .container { padding: 1rem; }
+      body { margin: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vite + Vue + Vitest App Documentation</h1>
+
+    <h2>Project Creation</h2>
+    <p>This app was created using Vite with the Vue template. The following command was used:</p>
+    <pre><code>npx create-vite@latest . --template vue</code></pre>
+
+    <h2>File Structure and Explanation</h2>
+    <ul>
+      <li><b>index.html</b>: The main HTML entry point for the app.</li>
+      <li><b>package.json</b>: Manages project dependencies, scripts, and metadata.</li>
+      <li><b>README.md</b>: Project overview and instructions.</li>
+      <li><b>vite.config.js</b>: Vite configuration file (optional, for advanced config).</li>
+      <li><b>vitest.config.js</b>: Vitest configuration file, sets up the test environment to use <code>jsdom</code> for browser-like testing.</li>
+      <li><b>public/</b>: Static assets folder (e.g., images, icons).</li>
+      <li><b>src/</b>: Source code folder.
+        <ul>
+          <li><b>App.vue</b>: Root Vue component.</li>
+          <li><b>main.js</b>: Entry point that mounts the Vue app.</li>
+          <li><b>style.css</b>: Global styles.</li>
+          <li><b>assets/</b>: Additional static assets (e.g., <code>vue.svg</code>).</li>
+          <li><b>components/HelloWorld.vue</b>: Example Vue component used for demonstration and testing.</li>
+        </ul>
+      </li>
+      <li><b>tests/HelloWorld.spec.js</b>: Contains unit tests for the <code>HelloWorld.vue</code> component.</li>
+    </ul>
+
+    <h2>Testing Setup</h2>
+    <h3>What Was Installed</h3>
+    <p>To enable testing, the following packages were installed as development dependencies:</p>
+    <pre><code>npm install -D vitest @vue/test-utils jsdom</code></pre>
+    <ul>
+      <li><b>vitest</b>: Test runner designed for Vite projects.</li>
+      <li><b>@vue/test-utils</b>: Utilities for testing Vue components.</li>
+      <li><b>jsdom</b>: Simulates a browser environment for DOM testing in Node.js.</li>
+    </ul>
+
+    <h3>Test Example</h3>
+    <p>The test in <code>tests/HelloWorld.spec.js</code> checks that the <code>HelloWorld</code> component correctly renders a message passed as a prop:</p>
+    <pre><code>import { mount } from '@vue/test-utils'
+import { describe, it, expect } from 'vitest'
+import HelloWorld from '../src/components/HelloWorld.vue'
+
+describe('HelloWorld.vue', () => {
+  it('renders props.msg when passed', () => {
+    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } })
+    expect(wrapper.text()).toContain('Hello Vitest')
+  })
+})
+</code></pre>
+
+    <h3>Configuration Required</h3>
+    <p>To fix the error <code>ReferenceError: document is not defined</code>, a <code>vitest.config.js</code> file was created with the following content:</p>
+    <pre><code>import { defineConfig } from 'vitest/config'
+import vue from '@vitejs/plugin-vue'
+
+export default defineConfig({
+  plugins: [vue()],
+  test: {
+    environment: 'jsdom',
+  },
+})
+</code></pre>
+    <p>This ensures that tests run in a simulated browser environment.</p>
+
+    <h3>Running the App and Tests</h3>
+    <ul>
+      <li>To start the development server: <code>npm run dev</code></li>
+      <li>To run the tests: <code>npm run test</code></li>
+    </ul>
+
+    <hr>
+    <p style="font-size:0.95em;color:#888;">End of Documentation</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Key Vault Explained</title>
+    <link rel="stylesheet" href="../../site.css">
+</head>
+<body>
+    <main>
+        <h1>Azure Key Vault</h1>
+        <section>
+            <h2>What is Azure Key Vault?</h2>
+            <p><strong>Azure Key Vault</strong> is a cloud service provided by Microsoft Azure for securely storing and managing sensitive information such as secrets, encryption keys, and certificates. It helps safeguard cryptographic keys and secrets used by cloud applications and services.</p>
+            <ul>
+                <li>Securely store secrets like API keys, passwords, certificates, and cryptographic keys.</li>
+                <li>Control access using Azure Active Directory and policies.</li>
+                <li>Monitor and log access to sensitive data.</li>
+                <li>Integrate with Azure services and applications for secure secret retrieval.</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Example Scenario</h2>
+            <p>Suppose you have a web application hosted in Azure App Service that needs to connect to a database. Instead of storing the database connection string in your application code or configuration files, you store it securely in Azure Key Vault. The application retrieves the secret at runtime using secure authentication.</p>
+        </section>
+        <section>
+            <h2>Diagram: Using Azure Key Vault</h2>
+            <pre style="background:#f4f4f4; padding:1em; overflow-x:auto;">
++-------------------+         +---------------------+         +-------------------+
+|   Web App (App    |  --->   |   Azure Key Vault   |  --->   |   Database        |
+|   Service, VM,    |         |  (Secrets, Keys,    |         |   (SQL, CosmosDB, |
+|   Function, etc.) |         |   Certificates)     |         |   etc.)           |
++-------------------+         +---------------------+         +-------------------+
+        |                             ^
+        | 1. Authenticates            |
+        |    (Managed Identity)       |
+        |---------------------------->|
+        | 2. Requests secret          |
+        |<----------------------------|
+        | 3. Uses secret to connect   |
+        |    to database              |
+        +-----------------------------+
+            </pre>
+            <ul>
+                <li><strong>Step 1:</strong> The application authenticates to Azure Key Vault using a managed identity or service principal.</li>
+                <li><strong>Step 2:</strong> The application requests a secret (e.g., database connection string) from Key Vault.</li>
+                <li><strong>Step 3:</strong> The application uses the secret to connect securely to the database or other resource.</li>
+            </ul>
+        </section>
+    </main>
+    <section>
+        <h2>Lab Notes: Creating a Key Vault and Adding a Secret</h2>
+        <ol>
+            <li>Make a note of the <b>key1</b> value for your Azure AI services resource (or copy it to the clipboard).</li>
+            <li>In the Azure portal, select <b>＋Create a resource</b>, search for <b>Key Vault</b>, and create a Key Vault resource with:
+                <ul>
+                    <li><b>Subscription:</b> Your Azure subscription</li>
+                    <li><b>Resource group:</b> Same as your Azure AI service resource</li>
+                    <li><b>Key vault name:</b> Enter a unique name</li>
+                    <li><b>Region:</b> Same as your Azure AI service resource</li>
+                    <li><b>Pricing tier:</b> Standard</li>
+                </ul>
+            </li>
+            <li>On the <b>Access configuration</b> tab:
+                <ul>
+                    <li><b>Permission model:</b> Vault access policy</li>
+                    <li>Scroll to <b>Access policies</b> and select your user.</li>
+                </ul>
+            </li>
+            <li>Wait for deployment, then go to your key vault resource.</li>
+            <li>In the left navigation, select <b>Secrets</b> (under Objects).</li>
+            <li>Select <b>+ Generate/Import</b> and add a new secret:
+                <ul>
+                    <li><b>Upload options:</b> Manual</li>
+                    <li><b>Name:</b> Cognitive-Services-Key <span style="color:#888;">(must match exactly)</span></li>
+                    <li><b>Value:</b> Your key1 Azure AI services key</li>
+                </ul>
+            </li>
+            <li>Create a <b>service principal</b> using the Azure CLI to access the secret.</li>
+            <li>Find its object ID and grant access to the secret in Azure Key Vault via <b>Access policies</b> (Set, Get, List, Delete permissions).</li>
+            <li>After this, you can create and access the secret <b>Cognitive-Services-Key</b> in your Key Vault.</li>
+        </ol>
+        <p><strong>Access policies</strong> enable fine-grained control over vault items. For example, user <b>eric cabrera</b> (eric-cabrera_live.com#EXT#@ericcabreralive.onmicrosoft.com) was granted Set, Get, List, and Delete permissions for secrets.</p>
+        <p>Once configured, you can view and manage secrets like <b>Cognitive-Services-Key</b> in the Azure portal under your Key Vault's <b>Secrets</b> section.</p>
+    </section>
+</body>
+</html>

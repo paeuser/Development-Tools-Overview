@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced C# Features: Q&amp;A</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { text-align: center; }
+        ul { margin-bottom: 1.5rem; }
+        .q { font-weight: bold; margin-top: 1.2em; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Advanced C# Features: Questions and Answers</h1>
+    <ul>
+        <li>
+            <span class="q">Q: What is async/await in C# and why is it useful?</span>
+            <div>A: <code>async</code> and <code>await</code> are used for asynchronous programming in C#. They allow you to write non-blocking code that can perform long-running operations (like I/O or network calls) without freezing the application. <code>await</code> pauses the method until the awaited task completes, but the thread is free to do other work.</div>
+        </li>
+        <li>
+            <span class="q">Q: What is LINQ and what are its benefits?</span>
+            <div>A: LINQ (Language Integrated Query) is a set of features in C# for querying collections (like arrays, lists, or databases) in a readable, declarative way. It brings SQL-like query capabilities into C# and helps write concise, type-safe, and maintainable code.</div>
+        </li>
+        <li>
+            <span class="q">Q: What is a delegate in C#?</span>
+            <div>A: A delegate is a type that represents references to methods with a specific parameter list and return type. Delegates are used for callback methods and event handling. They enable methods to be passed as parameters.</div>
+        </li>
+        <li>
+            <span class="q">Q: What are events in C# and how are they related to delegates?</span>
+            <div>A: Events are a way for a class to provide notifications to clients of that class when something happens. Events are based on delegates; they use delegates to define the signature of the event handler methods. Only the class that declares an event can invoke it, but other classes can subscribe to it.</div>
+        </li>
+        <li>
+            <span class="q">Q: Can you give a simple example of using async/await?</span>
+            <pre><code>public async Task DoWorkAsync() {
+    await Task.Delay(1000); // Simulates work
+    Console.WriteLine("Done!");
+}</code></pre>
+        </li>
+        <li>
+            <span class="q">Q: Can you show a basic LINQ query?</span>
+            <pre><code>var numbers = new[] { 1, 2, 3, 4 };
+var evens = numbers.Where(n => n % 2 == 0).ToList();</code></pre>
+        </li>
+        <li>
+            <span class="q">Q: How do you declare and use a delegate?</span>
+            <pre><code>public delegate int MathOp(int x, int y);
+MathOp add = (a, b) => a + b;
+int result = add(2, 3); // result is 5</code></pre>
+        </li>
+        <li>
+            <span class="q">Q: How do you declare and use an event?</span>
+            <pre><code>public event EventHandler SomethingHappened;
+
+// To raise the event:
+SomethingHappened?.Invoke(this, EventArgs.Empty);</code></pre>
+        </li>
+    </ul>
+    <h2>Popular Front-End Testing Libraries and Framework Support</h2>
+    <ul>
+        <li><strong>Jest</strong><br>
+            Jest is a widely used JavaScript testing framework for unit and integration tests. It works well with React (officially recommended), and also supports Vue and Angular (with some configuration).<br>
+            <b>Best for:</b> React (official), Vue, Angular
+        </li>
+        <li><strong>React Testing Library</strong><br>
+            A library focused on testing React components in a way that resembles user interaction. It is the standard for React projects and works seamlessly with Jest.<br>
+            <b>Best for:</b> React only
+        </li>
+        <li><strong>Enzyme</strong><br>
+            A React-specific testing utility for rendering and manipulating components. It is now less recommended in favor of React Testing Library.<br>
+            <b>Best for:</b> React only
+        </li>
+        <li><strong>Mocha</strong><br>
+            A flexible JavaScript test framework for browser and Node.js, often used with assertion libraries like Chai. It can be used with any front-end framework.<br>
+            <b>Best for:</b> React, Vue, Angular, plain JS
+        </li>
+        <li><strong>Chai</strong><br>
+            An assertion library that works with Mocha and other test runners. It is framework-agnostic.<br>
+            <b>Best for:</b> React, Vue, Angular, plain JS
+        </li>
+        <li><strong>Cypress</strong><br>
+            An end-to-end (E2E) testing tool for web applications. Runs tests in the browser and is great for simulating real user behavior. Supports all major frameworks.<br>
+            <b>Best for:</b> React, Vue, Angular, plain JS
+        </li>
+        <li><strong>Playwright</strong><br>
+            A modern E2E testing framework from Microsoft, supporting multiple browsers and powerful automation. Works with all major frameworks.<br>
+            <b>Best for:</b> React, Vue, Angular, plain JS
+        </li>
+        <li><strong>Jasmine</strong><br>
+            A behavior-driven development (BDD) framework for testing JavaScript code, often used for Angular projects.<br>
+            <b>Best for:</b> Angular (official), React, Vue
+        </li>
+        <li><strong>Karma</strong><br>
+            A test runner that launches browsers and runs tests, often used with Jasmine or Mocha in Angular projects.<br>
+            <b>Best for:</b> Angular (official), React, Vue
+        </li>
+    </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation - Default Template</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f7f9fa;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+        .left {
+            flex: 0 0 320px;
+            background: #e3f2fd;
+            padding: 32px 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #b3c6e0;
+        }
+        .right {
+            flex: 1 1 0%;
+            padding: 32px 24px;
+            overflow-y: auto;
+            background: #fff;
+            min-width: 0;
+        }
+        h2 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .label {
+            font-weight: bold;
+            color: #17406a;
+        }
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+            .left {
+                flex: none;
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #b3c6e0;
+            }
+            .right {
+                padding: 20px 8px;
+            }
+        }
+        ul.notes-list {
+            margin: 16px 0 0 0;
+            padding-left: 20px;
+        }
+        ul.notes-list li {
+            margin-bottom: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <h2>Company Details</h2>
+
+            <div class="label">Job Title:</div>
+            <div>Application Developer III</div>
+            <div class="label">Location:</div>
+            <div>Remote</div>
+            <div class="label">Employment Type:</div>
+            <div>Full-Time – Permanent</div>
+            <br>
+            <div class="label">Recruiter:</div>
+            <div>Fazil Farooqui</div>
+            <div>Sr. IT Recruiter</div>
+            <div><a href="tel:+19122921770">(912) 292 1770</a></div>
+            <div><a href="mailto:ffazil@avistatech.net">ffazil@avistatech.net</a></div>
+            <div><a href="https://avistatech.net" target="_blank">avistatech.net</a></div>
+
+            <div style="margin-top: 24px;">
+                <span class="label">Notes:</span>
+                <ul class="notes-list">
+                    <li>5+ years of software development experience</li>
+                    <li>Strong C#, .NET Core/Framework, and Azure cloud-native skills</li>
+                    <li>Experience with Azure Functions, App Services, Azure SQL, Cosmos DB, SSIS</li>
+                    <li>Familiarity with Python, Apache Spark, Databricks</li>
+                    <li>CI/CD practices, version control (Git, Azure DevOps)</li>
+                    <li>Agile/Scrum team experience</li>
+                    <li>Debugging, troubleshooting, performance tuning</li>
+                    <li>Strong communication and collaboration</li>
+                    <li>Detail-oriented, clean and testable code</li>
+                    <li>Eagerness to learn Microsoft cloud stack</li>
+                    <li>Healthcare/clinical app background (plus)</li>
+                    <li>Azure certifications (AZ-204, AZ-305) (plus)</li>
+                    <li>Production monitoring tools (e.g., Dynatrace) (plus)</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <h2>Preparation Notes</h2>
+note for ai , these are not for my self, please be a simple as you can 
+
+            <div class="label">Tell me about yourself?</div>
+            <p>
+                Currently, I am working as a Senior Full Stack Developer at <a href="assurity.html">Asurity</a>
+            </p>
+            <p>
+               we been working for the past 2 years in rewriting an Agent insurance portal
+               using vue.js.
+            </p>
+            <p>
+             Similar to what you are looking for, 
+             I have also been working on the backend RESTful API using .NET 8 Web API.
+            </p>
+            <p></p>
+                This is a large application with many components. It has been developed by a team of consultant contractors, and I am one of them.
+            </p>
+
+            <p>
+                To keep the UI lightweight, most of the work is handled on the backend.
+            </p>
+            <p>
+                The system went fully live about a month ago. Using an agile approach and feature flags, we gradually released features into production.
+            </p>
+         
+            <a href="../AgentPortalDotnetNetApi.html" target="_blank">Agent Portal .NET API</a>
+
+
+            <br>
+            AZ-204 <br>
+            my Azure AD tenant <br>
+            Exam sandbox storage accounts ,Blobs ,Enable Application Insights  <br>
+            Take a free Practice Assessment <br>
+            <a href="../Azure/Certifications.html">Certifications</a>
+<p style="color: red;">
+    Given the dynamic nature of Microsoft cloud tools, you might experience Azure UI 
+    changes that occur after the development of this training content.
+    As a result, the lab instructions and lab steps might not align correctly.
+</p>
+            <br>
+            <h3>Dynatrace</h3>
+            <br>
+            is a powerful platform not only to monitor applications but also to observe infrastructure
+  
+            <br>
+            <br>
+            monitor, analyze, and optimize the performance. 
+            <BR>
+            real-time observability, detect anomalies,
+            </BR>
+
+
+            <p></p>
+                <B>Serilog</B> :structured logging library for .NET  sinck to external platform apis <br>
+                <br><b>OpenTelemetry</B> : cross-platform observability framework for collecting  collecting logs, metrics, and trace AND export telemetry data to backends like Dynatrace, Azure Monitor<br> 
+                software intelligence platforms such as New Relic, Datadog,Azure Monitor: 
+            </p>
+            <p>
+                In the past, I gave a presentation to InComm Agent Solutions on how to use Dynatrace. During their free trial, I configured some of my personal Azure development apps (including my AZ-204 labs) and added the OneAgent extension.
+                <BR> the presentation also include <Br>
+                OpenTelemetry traces and logs directly to Dynatrace viad implemting <b>nuget packages</b> in .net apps.
+                 <br>
+                 api URL
+                 api token.    
+            </Br>
+            </p>
+
+
+
+
+
+          
+        </div>
+    </div>
+</body>
+</html>

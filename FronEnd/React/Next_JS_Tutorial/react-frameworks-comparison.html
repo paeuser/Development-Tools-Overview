@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Frameworks Comparison</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      color: #0070f3;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: #fff;
+      overflow-x: auto;
+      display: block;
+      max-width: 100vw;
+    }
+    th, td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: left;
+      word-break: break-word;
+    }
+    th {
+      background-color: #f0f0f0;
+    }
+    .framework {
+      margin-bottom: 20px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 8px;
+      }
+      h1 {
+        font-size: 1.5em;
+      }
+      table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+      }
+      thead {
+        display: none;
+      }
+      tr {
+        margin-bottom: 15px;
+        border-bottom: 2px solid #eee;
+      }
+      td {
+        position: relative;
+        padding-left: 50%;
+        min-height: 40px;
+        box-sizing: border-box;
+      }
+      td:before {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        color: #555;
+        content: attr(data-label);
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>React Frameworks Comparison</h1>
+
+  <p>There are several ways to build applications with React. Below is a comparison of the most popular tools and frameworks:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Tool</th>
+        <th>SSR/SSG</th>
+        <th>Client-Side</th>
+        <th>Routing</th>
+        <th>Best For</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td data-label="Tool">Create React App (CRA)</td>
+        <td data-label="SSR/SSG">❌</td>
+        <td data-label="Client-Side">✅</td>
+        <td data-label="Routing">Manual</td>
+        <td data-label="Best For">Simple apps, learning</td>
+      </tr>
+      <tr>
+        <td data-label="Tool">Next.js</td>
+        <td data-label="SSR/SSG">✅</td>
+        <td data-label="Client-Side">✅</td>
+        <td data-label="Routing">✅</td>
+        <td data-label="Best For">SEO, hybrid apps, production</td>
+      </tr>
+      <tr>
+        <td data-label="Tool">Vite + React</td>
+        <td data-label="SSR/SSG">❌</td>
+        <td data-label="Client-Side">✅</td>
+        <td data-label="Routing">Manual</td>
+        <td data-label="Best For">Speed, simplicity</td>
+      </tr>
+      <tr>
+        <td data-label="Tool">Gatsby</td>
+        <td data-label="SSR/SSG">✅</td>
+        <td data-label="Client-Side">✅</td>
+        <td data-label="Routing">✅</td>
+        <td data-label="Best For">Static content sites</td>
+      </tr>
+      <tr>
+        <td data-label="Tool">Remix</td>
+        <td data-label="SSR/SSG">✅</td>
+        <td data-label="Client-Side">✅</td>
+        <td data-label="Routing">✅</td>
+        <td data-label="Best For">Full-stack, complex routing/data</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Key Terms</h2>
+  <ul>
+    <li><strong>SSR</strong>: Server-Side Rendering</li>
+    <li><strong>SSG</strong>: Static Site Generation</li>
+    <li><strong>CSR</strong>: Client-Side Rendering</li>
+  </ul>
+
+  <p>Each tool serves a different use case. Choose based on your app’s needs, SEO requirements, and development preferences.</p>
+
+<h2>What is SEO?</h2>
+<p>
+    <strong>SEO</strong> stands for <em>Search Engine Optimization</em>. It’s the process of improving your website so it ranks higher on search engines like Google, Bing, or DuckDuckGo—which helps more people find it.
+</p>
+
+<h2>Caching</h2>
+<p>Caching in Next.js helps improve performance by storing the results of data fetching or page rendering, so repeated requests can be served faster. Next.js supports built-in caching for static assets, server-rendered pages, and API responses. You can also use HTTP headers and third-party CDNs to further optimize caching.</p>
+
+<h2>Static and Dynamic Rendering</h2>
+<p><strong>Static Rendering</strong> (SSG) generates HTML at build time, serving the same content to every user. This is fast and great for SEO. <strong>Dynamic Rendering</strong> (SSR) generates HTML on each request, allowing for personalized or frequently updated content. Next.js lets you choose between static and dynamic rendering on a per-page basis.</p>
+
+<h2>Styling Next.js Applications</h2>
+<p>Next.js supports multiple ways to style your application, including global CSS, CSS Modules, and utility-first frameworks like Tailwind CSS. You can choose the approach that best fits your project’s needs.</p>
+
+<h2>Global Styles</h2>
+<p>Global styles are CSS rules that apply to your entire application. In Next.js, you typically add global styles in <code>app/globals.css</code> and import them in your root layout or custom <code>_app.js</code> file. Use global styles for base styles, resets, and typography.</p>
+
+<h2>CSS Modules</h2>
+<p>CSS Modules allow you to write CSS that is scoped to a specific component, preventing class name conflicts. In Next.js, you can create a file with the <code>.module.css</code> extension and import it into your component. This approach is great for modular and maintainable styles.</p>
+
+<h2>Tailwind CSS</h2>
+<p>Tailwind CSS is a utility-first CSS framework that lets you style your components using utility classes directly in your markup. It integrates seamlessly with Next.js and helps you build modern, responsive designs quickly without writing custom CSS for every style.</p>
+
+</body>
+</html>
