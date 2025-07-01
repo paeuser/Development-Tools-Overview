@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AZ-204 Labs Overview</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .card { margin-bottom: 1.5rem; }
+    .lab-title { color: #1976d2; }
+    .purpose { font-style: italic; color: #495057; }
+  </style>
+</head>
+<body>
+  <div class="container py-4">
+    <h1 class="mb-4 text-center">AZ-204 Labs Overview</h1>
+    <div class="alert alert-info">These labs help you learn core Azure developer skills. Each lab builds practical experience with real Azure services.</div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">Lab 01: Build a Web Application on Azure PaaS</h5>
+        <div class="purpose">Purpose: Learn how to create and deploy a web app using Azure App Service (PaaS).</div>
+        <ul>
+          <li>Sign in to the provided Windows 11 VM.</li>
+          <li>Use tools like Edge, VS Code, and Terminal.</li>
+          <li>Create a web app in Azure.</li>
+          <li>Deploy your web app files using Kudu zip deployment.</li>
+          <li>Test your deployed app.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">Lab 02: Implement Task Processing Logic with Azure Functions</h5>
+        <div class="purpose">Purpose: Understand how to use Azure Functions for serverless computing.</div>
+        <ul>
+          <li>Create a simple Azure Function that echoes text sent via HTTP POST.</li>
+          <li>Learn how to trigger functions over HTTP.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">Lab 03: Retrieve Azure Storage Resources with .NET SDK</h5>
+        <div class="purpose">Purpose: Learn to access Azure Storage (like blobs) from a .NET app.</div>
+        <ul>
+          <li>Use the Azure Storage SDK in C# to connect to storage containers.</li>
+          <li>Retrieve metadata and URIs for blobs.</li>
+          <li>Practice accessing and displaying storage data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">Lab 04: Construct a Polyglot Data Solution (Cosmos DB)</h5>
+        <div class="purpose">Purpose: Work with Azure Cosmos DB (a NoSQL database) and integrate it with .NET.</div>
+        <ul>
+          <li>Create Cosmos DB and a storage account.</li>
+          <li>Use C# to upload and access data in Cosmos DB.</li>
+          <li>Build a simple web interface to display Cosmos DB data.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">Lab 05: Deploy Compute Workloads with Images and Containers</h5>
+        <div class="purpose">Purpose: Learn about containers and how to deploy them in Azure.</div>
+        <ul>
+          <li>Use Docker to containerize a .NET app.</li>
+          <li>Push the container image to Azure Container Registry.</li>
+          <li>Deploy the container to Azure Container Apps.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h5 class="lab-title">How to Complete the Labs</h5>
+        <ul>
+          <li><b>Access the Lab Environment:</b> Use the provided VM credentials (Admin / Pa55w.rd) and follow your instructor’s setup instructions.</li>
+          <li><b>Follow Each Lab’s Steps:</b> Open the corresponding markdown file (e.g., <code>AZ-204_lab_01.md</code>) for detailed, step-by-step instructions.</li>
+          <li><b>Use the Right Tools:</b> Most labs use Visual Studio Code, Terminal, and the Azure Portal.</li>
+          <li><b>Adapt to UI Changes:</b> Azure’s interface may change. If you see differences, adapt and continue.</li>
+          <li><b>Test Your Work:</b> Each lab ends with testing or validating what you built or deployed.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="alert alert-warning mt-4">If you want a summary for labs 6–11 or more details for any specific lab, let me know!</div>
+
+    <div class="card shadow-sm mt-5">
+      <div class="card-body">
+        <h5 class="lab-title">How to Get Started</h5>
+        <ul>
+          <li>To begin the AZ-204 labs, open the first lab instruction file:<br>
+            <code>AZ-204/Instructions/Labs/AZ-204_lab_01.md</code>
+          </li>
+          <li>Each lab has its own markdown file in the same folder (e.g., <code>AZ-204_lab_02.md</code>, <code>AZ-204_lab_03.md</code>, etc.).</li>
+          <li>Open these files in order to follow the labs step by step.</li>
+          <li>You can use Visual Studio Code or any markdown viewer to read the instructions.</li>
+        </ul>
+        <div class="alert alert-success mt-3">
+          <b>Tip:</b> Start with <b>AZ-204_lab_01.md</b> and progress through the labs in order for the best learning experience.
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <div class="card shadow-sm mt-5">
+    <div class="card-body">
+      <h5 class="lab-title">Quick Links to All Labs</h5>
+      <p>Below are links to each lab. Click a link to open the markdown file for full instructions. Each description is a simple summary of what the lab is about:</p>
+      <ul>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_01.md" target="_blank">AZ-204_lab_01.md</a></b> – Build a web app on Azure App Service and deploy code using zip deployment.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_02.md" target="_blank">AZ-204_lab_02.md</a></b> – Create and trigger Azure Functions to process tasks via HTTP.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_03.md" target="_blank">AZ-204_lab_03.md</a></b> – Use .NET to access Azure Storage, retrieve blobs, and metadata.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_04.md" target="_blank">AZ-204_lab_04.md</a></b> – Work with Cosmos DB and .NET to store and display data.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_05.md" target="_blank">AZ-204_lab_05.md</a></b> – Deploy containerized .NET apps to Azure Container Registry and Apps.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_06.md" target="_blank">AZ-204_lab_06.md</a></b> – Add authentication to apps using OpenID Connect, MSAL, and .NET SDKs.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_07.md" target="_blank">AZ-204_lab_07.md</a></b> – Securely access secrets using Azure Key Vault and managed identities.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_08.md" target="_blank">AZ-204_lab_08.md</a></b> – Build a multi-tier solution with containerized web apps and API Management.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_09.md" target="_blank">AZ-204_lab_09.md</a></b> – Publish and subscribe to events using Azure Event Grid.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_10.md" target="_blank">AZ-204_lab_10.md</a></b> – Process messages asynchronously with Azure Service Bus Queues.</li>
+        <li><b><a href="../AZ-204/Instructions/Labs/AZ-204_lab_11.md" target="_blank">AZ-204_lab_11.md</a></b> – Monitor and log Azure services using Application Insights.</li>
+      </ul>
+    </div>
+  </div>
+
+</body>
+</html>
