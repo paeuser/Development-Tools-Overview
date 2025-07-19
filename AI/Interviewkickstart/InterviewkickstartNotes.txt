@@ -1,0 +1,68 @@
+a bit about the instructor Rishabh Misra
+he is a a machine learning engineer and co-authored of book called sculpting data for ml.
+he is a machine learning tech lead 
+
+
+agent ai : are intelligent system that perceive information , processes it to understand context , and autonomouly acts to achive specidic 
+objective adapting to changes in its eviroment  
+
+they can take action in response to the data and initiate action proactibly 
+they make these decitions on its own in other to achive some kind of objective 
+
+
+
+
+
+add below notes 
+
+here is the agentic ai technical definition 
+THINK OF agentic ai agents  as large language models with set of tools that sre used in a reasoning action loop 
+this allow ai agent systems to perform more complex functions than any vanilla LLM 
+SO TAKING THIS ANOLOGY A GENERIC ai COULD BE THOUGHT OF AS	 A SKILLED WRITER who can draft excellent content on any topic 
+than you can provide 
+but an agent Ai WILL be like a personal assitant who can not only write but also able to understand your goals and needs 
+and they can also take actions like schedualling meeting , book travel and manage aby other tasks morre proactively 
+so in the agen workflow we can observe tha he agent takes feedback and revises its responsive as well 
+this doea not hapen in avery workflow 
+
+than add image from   agenticAItechnicalDefinition
+
+
+
+add below notes 
+
+how agents are transforming industries 
+
+here are some sample 
+
+
+add image 
+agentsIndustries 
+
+
+add this notes 
+what does it take to build such a system 
+in the below sample we're building an enterprice , wehere we're not only throing data into the models
+so we can start with the user input 
+and go throu each step of the flow 
+
+
+
+add this image 
+diagramAgenticArchitecture 
+
+ beloqw are some sample of companies looking for these roles 
+ 
+ 
+ 
+ aiRolesJobs 
+ 
+ 
+ 
+ 
+ LIVE CODING : HOW ai AGENTS WORKS 
+ IN THIS SAMPLe we will look at a multi agent system in the health care insudrty domain 
+ heath care is important because genartive ai can make a big impat in providing support to patients 
+ 
+ 
+here is the notebokk we have prepare 

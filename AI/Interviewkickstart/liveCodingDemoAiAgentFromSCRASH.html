@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Coding Demo: AI Agent from Scratch</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .container { max-width: 700px; margin: 40px auto; }
+    .card { margin-top: 2rem; }
+    @media (max-width: 700px) {
+      .container { padding: 0 0.5rem; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h2 class="mb-2" style="color:#1976d2;">LIVE CODING: HOW AI AGENTS WORK</h2>
+        <p>In this sample, we will look at a <b>multi-agent system</b> in the healthcare industry domain.</p>
+        <p>Healthcare is important because generative AI can make a big impact in providing support to patients.</p>
+      </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="mb-3" style="color:#1976d2;">Notebook Example: Multi-Agent System in Healthcare</h5>
+        <div class="text-center mb-3">
+          <img src="images/notebook1.jpg" alt="Notebook Example: Multi-Agent System in Healthcare" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <p>This notebook demonstrates how multiple AI agents can collaborate to solve real-world healthcare problems, such as patient support, triage, and information retrieval.</p>
+      </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <div class="text-center mb-3">
+          <img src="images/notebook2.jpg" alt="Notebook Example 2: Advanced Multi-Agent Collaboration" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+      </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="mb-3" style="color:#1976d2;">Here's a Breakdown of the Tools and Libraries You'll Need</h5>
+        <div class="text-center mb-3">
+          <img src="images/notebook3.jpg" alt="Notebook 3: Tools and Libraries Overview" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <h6 class="mb-2" style="color:#1976d2;">Step 1. Install Necessary Libraries</h6>
+        <p>These are the libraries you'll need to install in your Python environment. The command <code>!pip install ...</code> is used for this.</p>
+        <ul>
+          <li><b>httpx:</b> A fast, modern HTTP client for Python. You'll likely use this for making requests to web services or APIs.</li>
+          <li><b>langchain:</b> The core library for building applications with large language models. It provides the framework for chaining together different LLM components.<br>
+            <span style="color:#555;font-size:0.97em;"><b>Example:</b> <code>from langchain.llms import OpenAI\nlm = OpenAI()</code> creates an OpenAI language model instance for use in your application.</span>
+          </li>
+          <li><b>langchain_core:</b> Contains core abstractions and components used across LangChain, ensuring modularity and reusability.</li>
+          <li><b>langchain_openai:</b> Provides specific integrations for OpenAI's language models (like ChatGPT, GPT-4), allowing your LangChain application to use them.</li>
+          <li><b>langchain_experimental:</b> Contains newer or experimental features for LangChain agents or other functionalities.</li>
+          <li><b>crewai:</b> CrewAI is a framework designed for orchestrating role-playing autonomous AI agents.</li>
+          <li><b>RAG (Retrieval-Augmented Generation):</b> A technique that combines the power of large language models with external knowledge sources. The AI retrieves relevant information from databases or documents and uses it to generate more accurate and up-to-date responses.</li>
+          <li><b>MLOps:</b> The practice of automating and managing the lifecycle of machine learning models, from development to deployment and monitoring. MLOps ensures reliable, scalable, and efficient AI operations.</li>
+          <li><b>Amazon SageMaker:</b> A cloud platform from AWS for building, training, and deploying machine learning models at scale. It provides tools for data preparation, model training, and production deployment.</li>
+          <li><b>Vector DBs:</b> Specialized databases designed to store and search data as vectors (numerical representations). They are essential for similarity search, semantic search, and retrieval-augmented generation in AI applications.</li>
+          <li><b>Semantic Search:</b> A search technique that understands the meaning and context of queries, not just keywords. It enables AI systems to find more relevant and accurate information by comparing the semantic similarity of queries and data.</li>
+          <li><b>Prompt Engineering:</b> The process of designing and refining prompts to guide large language models in generating desired outputs. Effective prompt engineering improves the quality, relevance, and safety of AI responses.</li>
+          <li><b>Azure OpenAI:</b> Microsoft's cloud-based service that provides access to OpenAI's powerful language models (like GPT-4) through the Azure platform, enabling secure and scalable AI integration for enterprise applications.</li>
+          <li><b>TensorFlow:</b> An open-source platform developed by Google for building and training machine learning and deep learning models. It's widely used for AI projects, especially those involving neural networks.</li>
+          <li><b>Context Management:</b> The methods and tools used to track, store, and utilize relevant information (context) throughout an AI system's operation. Good context management helps AI agents maintain coherent conversations and make better decisions.</li>
+        </ul>
+        <h6 class="mb-2" style="color:#1976d2;">Step 2. Imports and Configuration</h6>
+        <p>These are the specific modules and classes you'll import from the installed libraries to use in your code.</p>
+        <b>Standard Python Libraries:</b>
+        <ul>
+          <li><b>httpx:</b> (Already mentioned above) For HTTP requests.</li>
+          <li><b>pandas as pd:</b> A powerful Python library for data manipulation and analysis. Pandas makes it easy to clean, transform, and explore data, especially using <b>DataFrames</b>—which are like tables or spreadsheets in Python. It's widely used for tasks such as loading data from files, filtering and grouping data, handling missing values, and preparing data for machine learning or visualization.</li>
+          <li><b>os:</b> Provides a way of using operating system dependent functionality, like interacting with file paths or environment variables (e.g., for API keys).</li>
+          <li><b>sqlite3:</b> Python's built-in module for working with SQLite databases. This is used for lightweight, file-based relational database management.</li>
+        </ul>
+        <b>LangChain Specific Imports:</b>
+        <ul>
+          <li><b>from langchain_openai import ChatOpenAI:</b> To interact with OpenAI's chat models.</li>
+          <li><b>from langchain_community.utilities import SQLDatabase:</b> Likely for connecting to and interacting with SQL databases (like the sqlite3 one).</li>
+          <li><b>from langchain_community.agent_toolkits import SQLDatabaseToolkit:</b> A set of tools specifically designed for LangChain agents to interact with SQL databases, allowing the AI to query databases.</li>
+          <li><b>from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent:</b> A specialized agent toolkit that allows an AI agent to work with and analyze pandas DataFrames.</li>
+          <li><b>from langchain_core.prompts import SystemMessagePromptTemplate, ChatPromptTemplate:</b> For creating and managing prompts that guide the behavior of the LLMs and agents. <b>SystemMessagePromptTemplate</b> sets the overall persona or instructions for the AI, while <b>ChatPromptTemplate</b> structures the conversational turns.</li>
+          <li><b>from langchain.agents.agent_types import AgentType:</b> Used to specify the type of AI agent you are creating (e.g., which underlying model or method it uses).</li>
+          <li><b>from langchain.agents import create_sql_agent, AgentExecutor:</b> <b>create_sql_agent</b> is a function to create an AI agent specifically designed to interact with SQL databases. <b>AgentExecutor</b> is the core component that runs the LangChain agent, managing the execution of its thoughts, actions, and observations.</li>
+        </ul>
+        <p>In summary, for this lab, you'll be setting up an environment to:</p>
+        <ul>
+          <li>Communicate over HTTP.</li>
+          <li>Perform data analysis using pandas.</li>
+          <li>Interact with a SQLite database.</li>
+          <li>Most importantly, build and run intelligent AI agents using the LangChain framework, specifically allowing them to query databases (<b>SQLDatabaseToolkit, create_sql_agent</b>) and analyze dataframes (<b>create_pandas_dataframe_agent</b>), all powered by OpenAI's language models (<b>ChatOpenAI</b>) and guided by structured prompts.</li>
+        </ul>
+        <hr>
+        <h5 class="mb-3" style="color:#1976d2;">Step 3. Add OpenAI API Key</h5>
+        <div class="text-center mb-3">
+          <img src="images/notebook4.jpg" alt="Notebook 4: Add OpenAI API Key" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <p>This section is all about setting up the crucial key that allows your AI system to communicate with OpenAI's powerful language models (like GPT-4, GPT-3.5, etc., as mentioned in the first diagram's "LLM Models" section). Without this key, your AI agent wouldn't be able to generate human-like text or perform many of its advanced functions.</p>
+        <h6 class="mb-2" style="color:#1976d2;">Best Practices for API Key Safety</h6>
+        <ul>
+          <li>API keys are like passwords; they grant access to paid services and powerful AI, so they must be protected.</li>
+          <li><b>Never embed your API key directly in your code.</b> Avoid hardcoding in scripts.</li>
+          <li>Use unique keys for each team member.</li>
+          <li>Never deploy keys in client-side environments (browsers, mobile apps).</li>
+          <li>Use Environment Variables (the preferred method shown in the code example below).</li>
+          <li>Use a Key Management Service for production.</li>
+          <li>Monitor usage and regularly rotate keys.</li>
+        </ul>
+        <p>The code snippet below demonstrates how to define and securely set up this API key using an environment variable, which is a safer approach than directly pasting the key into the code. It also shows how to specify which OpenAI model (<code>gpt-4o-2024-08-06</code> in the example) the system should use.</p>
+        <pre><code class="language-python">import os
+
+# Set your OpenAI API key as an environment variable (recommended)
+os.environ["OPENAI_API_KEY"] = "your-openai-api-key-here"  # Never hardcode in production!
+
+# Specify the OpenAI model to use
+default_model = "gpt-4o-2024-08-06"
+</code></pre>
+        <hr>
+        <h5 class="mb-3" style="color:#1976d2;">Agentic AI System: Architecture & Reasoning Loop</h5>
+        <div class="text-center mb-3">
+          <img src="images/notebook5.jpg" alt="Notebook 5: Agentic AI System Architecture and Reasoning Loop" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <div class="mt-3">
+          <ul class="list-group">
+            <li class="list-group-item"><b>User Query:</b> This is the initial question or prompt provided by a user, serving as the starting point for the chat agent's processing. It tells the agent what information is needed or what task needs to be performed.</li>
+            <li class="list-group-item"><b>LLM (Large Language Model):</b> The LLM is the core intelligence of the chat agent, responsible for understanding the user's intent and generating coherent responses. It acts as the central orchestrator, deciding how to fulfill the user query, including when to interact with external tools.</li>
+            <li class="list-group-item"><b>Agent Reasoning Loop:</b> This iterative process allows the LLM to dynamically interact with various tools to achieve a complete and accurate answer. It involves a cycle of choosing, executing, and observing tools until the desired conditions are met.</li>
+            <li class="list-group-item"><b>Choose Tools:</b> In this step, the LLM determines which external functionalities or resources are relevant and necessary to address the user's query. This decision is based on the LLM's understanding of the query and the capabilities of the available tools.</li>
+            <li class="list-group-item"><b>Execute Tools:</b> Once tools are chosen, this phase involves invoking them with specific inputs to perform actions or retrieve information. The LLM provides the necessary data for the tools to operate effectively.</li>
+            <li class="list-group-item"><b>Observe Tools:</b> After a tool has been executed, the LLM receives and analyzes its output. This observation helps the LLM understand the results of the tool's operation and decide on the next steps in the reasoning loop.</li>
+            <li class="list-group-item"><b>Repeat until conditions met:</b> This signifies the iterative nature of the reasoning loop, where the cycle of choosing, executing, and observing tools continues until the LLM has gathered all necessary information or completed the required actions. It ensures the agent can handle complex queries that require multiple steps or external interactions.</li>
+            <li class="list-group-item"><b>Tool Input:</b> This refers to the data or parameters that the LLM provides to an external tool when it's being executed. It guides the tool in performing its specific function relevant to the user's query.</li>
+            <li class="list-group-item"><b>Tool Output:</b> This is the result or information returned by an external tool after it has been executed. The LLM uses this output to inform its further reasoning and to formulate the final answer.</li>
+            <li class="list-group-item"><b>Tool 1, Tool 2, Tool 3 (Generic Tools):</b> These represent various external functionalities or databases that the LLM can access to extend its capabilities beyond its pre-trained knowledge. Examples include search engines, calculators, APIs, or specialized knowledge bases, allowing the agent to perform diverse tasks.</li>
+            <li class="list-group-item"><b>Answer:</b> This is the final, synthesized response generated by the LLM and presented to the user. It represents the culmination of the agent's understanding, reasoning, and interaction with tools to address the initial user query.</li>
+          </ul>
+        </div>
+  </div>
+  <hr>
+  <h5 class="mb-3" style="color:#1976d2;">What Do These Terms Mean?</h5>
+<ul class="list-group mb-4">
+  <li class="list-group-item"><b>LangChain:</b> An open-source framework for building applications powered by large language models (LLMs), making it easier to connect AI models to data and tools.<br>
+    <span style="color:#555;font-size:0.97em;">
+      <b>Sample Usage:</b>
+      <pre style="background:#f8f9fa;border-radius:6px;padding:8px;"><code class="language-python">from langchain.llms import OpenAI
+
+# Create an OpenAI language model instance
+llm = OpenAI()
+
+# Generate a response to a prompt
+response = llm("What are the benefits of AI in healthcare?")
+print(response)
+</code></pre>
+      This code creates an LLM instance and generates a response to a user prompt.
+    </span>
+  </li>
+  <li class="list-group-item"><b>RAG (Retrieval-Augmented Generation):</b> A technique that combines large language models with external data sources, allowing the AI to retrieve relevant information from databases or documents to generate more accurate and up-to-date responses.</li>
+  <li class="list-group-item"><b>MLOps:</b> A set of practices that combines Machine Learning (ML) and DevOps to automate and streamline the deployment, monitoring, and management of ML models in production environments.</li>
+  <li class="list-group-item"><b>Amazon SageMaker:</b> A fully managed service by AWS that provides tools to build, train, and deploy machine learning models at scale.</li>
+  <li class="list-group-item"><b>Vector DBs (Vector Databases):</b> Specialized databases designed to store and search high-dimensional vector embeddings, enabling fast similarity search for applications like semantic search and recommendation systems.<br>
+    <span style="color:#555;font-size:0.97em;">
+      <b>Sample Usage (FAISS with LangChain):</b>
+      <pre style="background:#f8f9fa;border-radius:6px;padding:8px;"><code class="language-python">from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
+
+# Example documents and embedding model
+documents = ["AI in healthcare", "Machine learning for diagnosis"]
+embeddings = OpenAIEmbeddings()
+
+# Create a FAISS vector store
+vectorstore = FAISS.from_texts(documents, embedding=embeddings)
+
+# Perform a similarity search
+results = vectorstore.similarity_search("healthcare AI", k=1)
+print(results)
+</code></pre>
+      This code creates a FAISS vector database from text documents and performs a similarity search.
+    </span>
+  </li>
+  <li class="list-group-item"><b>Semantic Search:</b> A search technique that understands the meaning and context of search queries and documents, rather than relying solely on keyword matching, often using embeddings and AI models.<br>
+    <span style="color:#555;font-size:0.97em;">
+      <b>Sample Usage (Semantic Search with LangChain):</b>
+      <pre style="background:#f8f9fa;border-radius:6px;padding:8px;"><code class="language-python">from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+
+# Example documents
+documents = ["AI improves patient care", "Machine learning for diagnosis", "Healthcare data analysis"]
+embeddings = OpenAIEmbeddings()
+
+# Create a FAISS vector store
+vectorstore = FAISS.from_texts(documents, embedding=embeddings)
+
+# Perform a semantic search
+query = "How does AI help in healthcare?"
+results = vectorstore.similarity_search(query, k=2)
+print(results)
+</code></pre>
+      This code uses embeddings to find documents semantically similar to the query, not just by keyword.
+    </span>
+  </li>
+  <li class="list-group-item"><b>Prompt Engineering:</b> The process of designing and refining prompts to guide large language models in generating desired outputs, improving accuracy and relevance.</li>
+  <li class="list-group-item"><b>Azure OpenAI:</b> A Microsoft Azure service that provides access to OpenAI's powerful language models (like GPT-4) with enterprise-grade security, compliance, and scalability.</li>
+  <li class="list-group-item"><b>TensorFlow:</b> An open-source machine learning framework developed by Google, widely used for building and training deep learning models.</li>
+  <li class="list-group-item"><b>Context Management:</b> Techniques and tools used to maintain, update, and utilize relevant information (context) throughout an AI system's reasoning or conversation, ensuring coherent and accurate responses.</li>
+</ul>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

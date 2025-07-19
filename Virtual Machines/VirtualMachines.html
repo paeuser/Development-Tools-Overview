@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Machine Setup Tutorial</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+        /* Ensure images are fluid within their containers */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* Custom styling for the table cells to ensure padding and alignment */
+        .table-cell {
+            padding: 1rem; /* Default padding */
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb; /* Light gray border */
+        }
+        /* Styling for header cells */
+        .table-header {
+            background-color: #4f46e5; /* Indigo-700 */
+            color: white;
+            font-weight: bold;
+            padding: 1rem;
+            text-align: left;
+        }
+        /* Specific styling for the feature column */
+        .feature-column {
+            font-weight: 600; /* Semi-bold */
+            color: #1e3a8a; /* Darker blue for emphasis */
+        }
+
+        /* Responsive adjustments for smaller screens in the comparison table */
+        @media (max-width: 768px) {
+            .responsive-table-container {
+                display: block; /* Stack table rows */
+                overflow-x: auto; /* Allow horizontal scrolling for table if needed */
+                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            }
+            .responsive-table {
+                width: 100%;
+                min-width: 600px; /* Ensure a minimum width to prevent squishing */
+                display: block;
+            }
+            .responsive-table thead, .responsive-table tbody, .responsive-table th, .responsive-table td, .responsive-table tr {
+                display: block; /* Make table elements behave like block elements */
+            }
+            .responsive-table thead tr {
+                position: absolute;
+                top: -9999px; /* Hide table headers visually but keep them for screen readers */
+                left: -9999px;
+            }
+            .responsive-table tr {
+                margin-bottom: 0.75rem; /* Space between stacked rows */
+                border: 1px solid #e5e7eb; /* Add border to each "row" */
+                border-radius: 0.5rem; /* Rounded corners for stacked rows */
+                overflow: hidden; /* Hide overflow from rounded corners */
+                box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Subtle shadow */
+            }
+            .responsive-table td {
+                border-bottom: 1px solid #e5e7eb; /* Border between cells in stacked row */
+                position: relative;
+                padding-left: 50%; /* Make space for the "header" label */
+                text-align: right; /* Align content to the right */
+            }
+            .responsive-table td:last-child {
+                border-bottom: 0; /* No border for the last cell in a stacked row */
+            }
+            .responsive-table td::before {
+                /* Create a pseudo-element to act as a label for each cell */
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%; /* Width of the label */
+                padding-left: 1rem;
+                font-weight: bold;
+                text-align: left;
+                color: #4f46e5; /* Indigo-600 */
+            }
+            /* Specific styling for the feature column in responsive view */
+            .responsive-table td[data-label="Feature"] {
+                text-align: left; /* Keep feature text aligned left */
+                font-weight: 600;
+                color: #1e3a8a;
+            }
+            .responsive-table td[data-label="Feature"]::before {
+                display: none; /* Hide the "Feature" label for the feature column itself */
+            }
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+    <!-- Explanation of Kali Linux and Ubuntu -->
+    <div class="bg-blue-100 p-4 rounded-lg shadow-md mb-8 mx-auto max-w-4xl">
+        <h2 class="text-xl font-bold text-blue-800 mb-2">Understanding Kali Linux and Ubuntu</h2>
+        <p class="text-gray-700 mb-2">
+            **Kali Linux** is like a specialized toolbox for cybersecurity. It comes packed with hundreds of tools designed for things like testing computer network security (penetration testing), finding digital evidence (digital forensics), and ethical hacking. It's built for professionals and serious enthusiasts in the security field, and it's generally **not recommended for everyday computer use** because of its specialized nature and how it's set up.
+        </p>
+        <p class="text-gray-700">
+            **Ubuntu** is a general-purpose operating system, much like Windows or macOS, but it's free and open-source. It's designed to be easy to use for everyday tasks like browsing the internet, writing documents, watching videos, and developing software. It's very user-friendly and a great choice for anyone who wants a stable and versatile operating system for daily use.
+        </p>
+
+        <br>
+
+https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#4-explore-virtual-box
+
+    </div>
+
+    <!-- Kali Linux vs. Ubuntu Responsive HTML Table -->
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+        <h2 class="text-3xl sm:text-4xl font-bold text-indigo-700 mb-6 text-center">
+            Kali Linux vs. Ubuntu: A Detailed Comparison
+        </h2>
+
+        <div class="responsive-table-container">
+            <table class="responsive-table w-full border-collapse">
+                <thead>
+                    <tr>
+                        <th class="table-header rounded-tl-lg">Feature</th>
+                        <th class="table-header">Kali Linux</th>
+                        <th class="table-header rounded-tr-lg">Ubuntu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Primary Purpose</td>
+                        <td class="table-cell" data-label="Kali Linux">Penetration testing, ethical hacking, digital forensics, security assessments.</td>
+                        <td class="table-cell" data-label="Ubuntu">General-purpose computing, web browsing, office work, software development.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Target Audience</td>
+                        <td class="table-cell" data-label="Kali Linux">Cybersecurity professionals, ethical hackers, security researchers, IT security.</td>
+                        <td class="table-cell" data-label="Ubuntu">Beginners, general users, developers, students.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Pre-installed Tools</td>
+                        <td class="table-cell" data-label="Kali Linux">Over 600 specialized security and hacking tools (e.g., Nmap, Metasploit).</td>
+                        <td class="table-cell" data-label="Ubuntu">Common desktop applications (web browser, office suite, media players).</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">User-Friendliness</td>
+                        <td class="table-cell" data-label="Kali Linux">Less beginner-friendly; requires technical knowledge for effective use.</td>
+                        <td class="table-cell" data-label="Ubuntu">Highly user-friendly; designed for ease of use and accessibility.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Recommended Use</td>
+                        <td class="table-cell" data-label="Kali Linux">Isolated environments like Virtual Machines for specific security tasks.</td>
+                        <td class="table-cell" data-label="Ubuntu">Daily driver OS for personal and professional use.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Security Focus</td>
+                        <td class="table-cell" data-label="Kali Linux">Designed for offensive security, often run with root privileges by default.</td>
+                        <td class="table-cell" data-label="Ubuntu">Designed for general security and stability, runs with regular user privileges by default.</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                        <td class="table-cell feature-column" data-label="Feature">Release Model</td>
+                        <td class="table-cell" data-label="Kali Linux">Rolling release (continuous updates).</td>
+                        <td class="table-cell" data-label="Ubuntu">Point releases, with Long Term Support (LTS) versions every two years.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container mx-auto p-4 sm:p-6 lg:p-8">
+        <header class="text-center mb-10">
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-indigo-700 mb-4 rounded-lg p-4 bg-white shadow-lg">
+                Simple Step-by-Step Tutorial: Setting Up a Kali Linux Virtual Machine
+            </h1>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                This guide will walk you through creating your very first virtual machine (VM) using VirtualBox,
+                allowing you to safely run Kali Linux without impacting your main computer.
+            </p>
+        </header>
+
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">What You'll Need:</h2>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-2">
+                <li>A computer (laptop or desktop) purchased within the last 10 years.</li>
+                <li>At least <strong class="font-semibold">4 GB of RAM</strong> (8 GB or more is highly recommended for smoother performance).</li>
+                <li>At least <strong class="font-semibold">20-30 GB of free hard drive space</strong>.</li>
+                <li>An active internet connection.</li>
+            </ul>
+        </section>
+
+        <!-- Step 1: Enable Virtualization -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 1: Enable Virtualization in Your Computer's BIOS (Optional but Recommended for 64-bit OS)
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                Most modern operating systems are 64-bit. To run a 64-bit guest OS in a VM, you'll likely need to enable a specific setting in your computer's BIOS/UEFI. If you plan to use a 32-bit guest OS, you can skip this step.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li><strong class="font-semibold">Restart your computer.</strong></li>
+                <li>As soon as it starts booting up, <strong class="font-semibold">repeatedly press the BIOS/UEFI access key</strong>. This key varies by manufacturer but is commonly <code class="bg-gray-100 px-1 rounded">F2</code>, <code class="bg-gray-100 px-1 rounded">F10</code>, <code class="bg-gray-100 px-1 rounded">F12</code>, <code class="bg-gray-100 px-1 rounded">Del</code>, or <code class="bg-gray-100 px-1 rounded">Esc</code>. You might see a message on screen telling you which key to press.</li>
+                <li>Once in the BIOS/UEFI settings, navigate through the menus. Look for sections like "Advanced," "CPU Configuration," "Security," or "Virtualization Technology."</li>
+                <li>Find a setting named <strong class="font-semibold">"Intel VT-x," "Intel VMX," "Virtualization Technology,"</strong> or <strong class="font-semibold">"AMD-V"</strong> (if you have an AMD CPU).</li>
+                <li><strong class="font-semibold">Enable</strong> this setting.</li>
+                <li><strong class="font-semibold">Save your changes and exit</strong> the BIOS/UEFI. Your computer will then restart normally.</li>
+            </ol>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-indigo-600 mt-8 mb-4">How to Check if Virtualization is Already Enabled:</h3>
+            <p class="text-lg text-gray-700 mb-4">
+                If you think you've enabled virtualization in the past, you can quickly verify its status without restarting your computer and entering the BIOS again.
+            </p>
+
+            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mb-2">For Windows (10/11):</h4>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-2 ml-4">
+                <li><strong class="font-semibold">Using Task Manager (Easiest Visual Check):</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Press <code class="bg-gray-100 px-1 rounded">Ctrl + Shift + Esc</code> to open the Task Manager.</li>
+                        <li>Click on the <strong class="font-semibold">"Performance"</strong> tab.</li>
+                        <li>Select <strong class="font-semibold">"CPU"</strong> from the left-hand pane.</li>
+                        <li>On the right side, under the CPU graph, look for <strong class="font-semibold">"Virtualization."</strong> It will say either <strong class="font-semibold">"Enabled"</strong> or <strong class="font-semibold">"Disabled."</strong> If it says "Enabled," you're all set!</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Using Command Prompt or PowerShell:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Open <strong class="font-semibold">Command Prompt</strong> or <strong class="font-semibold">PowerShell</strong> by searching for "cmd" or "powershell" in the Start menu and selecting "Run as administrator."</li>
+                        <li>Type the following command and press Enter: <code class="bg-gray-100 px-1 rounded">systeminfo</code></li>
+                        <li>Scroll down and look for the <strong class="font-semibold">"Hyper-V Requirements"</strong> section. You'll see a line like <strong class="font-semibold">"Virtualization Enabled In Firmware: Yes"</strong> (or "No"). If it says "Yes," virtualization is enabled.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h4 class="text-lg sm:text-xl font-semibold text-gray-800 mt-6 mb-2">For macOS:</h4>
+            <p class="text-lg text-gray-700 mb-2">
+                On Intel-based Macs, virtualization (VT-x) is typically enabled by default by macOS itself during the boot process, assuming your CPU supports it. There isn't a direct user-facing setting to enable/disable it in the same way as in a PC's BIOS.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-2 ml-4">
+                <li><strong class="font-semibold">Using Terminal:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Open <strong class="font-semibold">Terminal</strong> (found in <code class="bg-gray-100 px-1 rounded">Applications > Utilities > Terminal</code> or by searching with Spotlight <code class="bg-gray-100 px-1 rounded">Command + Space</code>).</li>
+                        <li>Type the following command and press Enter: <code class="bg-gray-100 px-1 rounded">sysctl -a | grep machdep.cpu.features | grep -o VMX</code></li>
+                        <li>If you see <strong class="font-semibold"><code>VMX</code></strong> in the output, it means your CPU supports Intel VT-x. If there's no output, it might not be supported.</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Important Note for macOS:</strong> Even if <code class="bg-gray-100 px-1 rounded">VMX</code> is shown, it primarily indicates CPU support. macOS generally handles the enabling of this feature. If you have issues running a VM on a Mac, ensure your macOS is up to date, as firmware updates can affect virtualization support. For Apple Silicon (M1/M2/M3) Macs, the virtualization technology is different (ARM-based), and traditional x86 virtualization software like VirtualBox may require specific versions or alternatives (like Parallels Desktop or UTM) to run x86-based guest OSes.</li>
+            </ol>
+        </section>
+
+        <!-- Step 2: Download OS -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 2: Download the Operating System (Kali Linux ISO)
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                You need the installation file for the operating system that you will install in your VM. We'll primarily focus on Kali Linux, but also provide instructions for Ubuntu.
+            </p>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-indigo-600 mt-6 mb-4">Downloading Kali Linux:</h3>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>Open your web browser and go to the official Kali Linux download page.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">Google Search:</strong> "Kali Linux download"</li>
+                        <li><strong class="font-semibold">Official Site:</strong> <a href="https://www.kali.org/get-kali/#kali-bare-metal" target="_blank" class="text-blue-600 hover:underline">kali.org/get-kali/#kali-bare-metal</a></li>
+                    </ul>
+                </li>
+                <li>Scroll down to the section titled <strong class="font-semibold">"Installer Images."</strong></li>
+                <li>Under <strong class="font-semibold">"Kali Linux 2025.2 Changelog,"</strong> choose the architecture that matches your computer:
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">x86_64</strong> (for most standard Windows or Linux desktop/laptop computers)</li>
+                        <li><strong class="font-semibold">Apple Silicon (ARM64)</strong> (if you have a newer Mac with an M1/M2/M3 chip)</li>
+                    </ul>
+                </li>
+                <li>Under your chosen architecture, find the row labeled <strong class="font-semibold">"Installer"</strong> (which says "Complete offline installation with customization").</li>
+                <li>Click on the <strong class="font-semibold"><code>torrent</code></strong> link next to it. This will download a small torrent file, which you'll then open with a torrent client (like qBittorrent or uTorrent) to download the large <code class="bg-gray-100 px-1 rounded">.iso</code> installation file. This file is usually several gigabytes and may take some time depending on your internet speed.</li>
+            </ol>
+
+            <h3 class="text-xl sm:text-2xl font-bold text-indigo-600 mt-8 mb-4">Downloading Ubuntu Desktop:</h3>
+            <p class="text-lg text-gray-700 mb-4">
+                If you prefer to install Ubuntu instead of Kali Linux, here's how to download its installer:
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>Open your web browser and go to the official Ubuntu Desktop download page.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">Google Search:</strong> "Ubuntu Desktop download"</li>
+                        <li><strong class="font-semibold">Official Site:</strong> <a href="https://ubuntu.com/download/desktop" target="_blank" class="text-blue-600 hover:underline">ubuntu.com/download/desktop</a></li>
+                    </ul>
+                </li>
+                <li>Look for the section titled <strong class="font-semibold">"Ubuntu 24.04.2 LTS"</strong> (this is the recommended Long-Term Support version).</li>
+                <li>Under this section, you will see a line that says <strong class="font-semibold">"Intel or AMD 64-bit architecture"</strong>.</li>
+                <li>Next to that, click the <strong class="font-semibold">"Download 5.9GB"</strong> button. This will download the <code class="bg-gray-100 px-1 rounded">.iso</code> file for Ubuntu Desktop.</li>
+            </ol>
+        </section>
+
+        <!-- Step 3: Download and Install VirtualBox -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 3: Download and Install Oracle VirtualBox (Hypervisor)
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                VirtualBox is the software that will create and manage your virtual machines.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>Open your web browser and go to the VirtualBox download page.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">Google Search:</strong> "VirtualBox download"</li>
+                        <li><strong class="font-semibold">Official Site:</strong> <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" class="text-blue-600 hover:underline">virtualbox.org/wiki/Downloads</a></li>
+                    </ul>
+                </li>
+                <li>Under "VirtualBox [version number] platform packages," click on the link that corresponds to your computer's operating system (e.g., <strong class="font-semibold">"Windows hosts,"</strong> "macOS hosts," or "Linux distributions").</li>
+                <li>The installer will download. Once finished, <strong class="font-semibold">run the installer file.</strong></li>
+                <li>Follow the on-screen prompts. For most users, clicking <strong class="font-semibold">"Next"</strong> repeatedly and accepting the default settings will be sufficient. You may be asked to allow the installation of device software – click <strong class="font-semibold">"Install"</strong> or "Yes."</li>
+                <li>Once the installation is complete, <strong class="font-semibold">check the box to "Start Oracle VM VirtualBox after installation"</strong> and click <strong class="font-semibold">"Finish."</strong></li>
+            </ol>
+        </section>
+
+        <!-- Step 4: Install Extension Pack -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 4: Install the VirtualBox Extension Pack
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                This optional but highly recommended component adds functionality like USB 2.0/3.0 support and other features.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>Go back to the VirtualBox download page in your web browser (<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" class="text-blue-600 hover:underline">virtualbox.org/wiki/Downloads</a>).</li>
+                <li>Scroll down to the <strong class="font-semibold">"Oracle VM VirtualBox Extension Pack"</strong> section.</li>
+                <li>Click the <strong class="font-semibold">"All supported platforms"</strong> link.</li>
+                <li>Once downloaded, <strong class="font-semibold">double-click the <code class="bg-gray-100 px-1 rounded">.vbox-extpack</code> file</strong>.</li>
+                <li>VirtualBox will open and prompt you to install the Extension Pack. Click <strong class="font-semibold">"Install."</strong></li>
+                <li>Scroll through and <strong class="font-semibold">agree to the license terms</strong> by clicking <strong class="font-semibold">"I Agree."</strong></li>
+                <li>Confirm any security prompts from your operating system.</li>
+            </ol>
+        </section>
+
+        <!-- Step 5: Create New VM -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 5: Create Your New Virtual Machine
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                Now we'll create the empty "shell" for your Kali Linux VM.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>In the VirtualBox Manager window, click the <strong class="font-semibold">"New"</strong> button (it looks like a blue star or a folder with a star).</li>
+                <li><strong class="font-semibold">Name:</strong> Type a name for your VM, e.g., <code class="bg-gray-100 px-1 rounded">Kali Linux</code>.</li>
+                <li><strong class="font-semibold">Machine Folder:</strong> (Leave as default unless you want to save it elsewhere).</li>
+                <li><strong class="font-semibold">Type:</strong> Select <code class="bg-gray-100 px-1 rounded">Linux</code>.</li>
+                <li><strong class="font-semibold">Version:</strong> Select <code class="bg-gray-100 px-1 rounded">Debian (64-bit)</code>. (Kali Linux is based on Debian).</li>
+                <li>Click <strong class="font-semibold">"Next."</strong></li>
+                <li><strong class="font-semibold">Memory Size (RAM):</strong> Allocate RAM for your VM.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>The green bar indicates safe limits.</li>
+                        <li><strong class="font-semibold">Recommendation:</strong> Give at least <strong class="font-semibold">2048 MB (2 GB)</strong>. If your host has 8 GB or more RAM, you can allocate more (e.g., 4096 MB or 4 GB) for better performance.</li>
+                    </ul>
+                </li>
+                <li>Click <strong class="font-semibold">"Next."</strong></li>
+                <li><strong class="font-semibold">Hard Disk:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Select <strong class="font-semibold">"Create a virtual hard disk now."</strong></li>
+                        <li>Click <strong class="font-semibold">"Create."</strong></li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Hard Disk File Type:</strong> Select <strong class="font-semibold">"VDI (VirtualBox Disk Image)"</strong> (default).
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Click <strong class="font-semibold">"Next."</strong></li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Storage on Physical Hard Disk:</strong> Select <strong class="font-semibold">"Dynamically allocated"</strong> (default). This means the VM's hard disk file will only grow as you use space inside the VM, saving space on your host until needed.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Click <strong class="font-semibold">"Next."</strong></li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">File location and size:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>You can leave the default location.</li>
+                        <li><strong class="font-semibold">Size:</strong> Increase the size to at least <strong class="font-semibold">20.00 GB</strong>. Kali Linux with all its tools can take up a fair amount of space. You can drag the slider or type the number.</li>
+                        <li>Click <strong class="font-semibold">"Create."</strong></li>
+                    </ul>
+                </li>
+            </ol>
+            <p class="text-lg text-gray-700 mt-4">Your new VM shell is now created and listed in the VirtualBox Manager on the left.</p>
+        </section>
+
+        <!-- Step 6: Adjust VM Settings -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 6: Adjust VM Settings (Optional but Recommended)
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                A few quick tweaks can improve performance.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>In the VirtualBox Manager, select your newly created VM (<code class="bg-gray-100 px-1 rounded">Kali Linux</code>).</li>
+                <li>Click the <strong class="font-semibold">"Settings"</strong> button (looks like a gear).</li>
+                <li>Go to <strong class="font-semibold">"System"</strong> on the left.</li>
+                <li>Click the <strong class="font-semibold">"Processor"</strong> tab.</li>
+                <li><strong class="font-semibold">Processors:</strong> Increase the number of CPUs allocated to your VM.
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">Recommendation:</strong> If your host CPU has 4 cores, allocate at least <strong class="font-semibold">2 CPUs</strong> to the VM. Do not exceed the green zone, and ideally, do not allocate more than half of your host's physical cores.</li>
+                    </ul>
+                </li>
+                <li>Click <strong class="font-semibold">"OK"</strong> to save changes.</li>
+            </ol>
+        </section>
+
+        <!-- Step 7: Install Kali Linux -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 7: Install Kali Linux on Your Virtual Machine
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                Now we'll boot your VM and install the operating system using the ISO file you downloaded.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>In the VirtualBox Manager, select your <code class="bg-gray-100 px-1 rounded">Kali Linux</code> VM.</li>
+                <li>Click the <strong class="font-semibold">"Start"</strong> button (the green arrow).</li>
+                <li>A new window will open for your VM. It will first ask for a <strong class="font-semibold">"Startup Disk."</strong></li>
+                <li>Click the <strong class="font-semibold">small folder icon</strong> next to the empty field.</li>
+                <li>In the "Optical Disk Selector" window, click <strong class="font-semibold">"Add."</strong></li>
+                <li>Navigate to where you saved the <strong class="font-semibold">Kali Linux ISO file</strong> (usually your "Downloads" folder), select it, and click <strong class="font-semibold">"Open."</strong></li>
+                <li>Back in the "Optical Disk Selector," select the Kali Linux ISO you just added and click <strong class="font-semibold">"Choose."</strong></li>
+                <li>Back in the "Startup Disk" prompt, click <strong class="font-semibold">"Start."</strong></li>
+                <li class="mt-4"><strong class="font-semibold">The Kali Linux installer will now boot inside your VM window.</strong></li>
+                <li><strong class="font-semibold">Follow the Kali Linux installation prompts:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1 space-y-1">
+                        <li>Use the <strong class="font-semibold">arrow keys</strong> and <strong class="font-semibold">Enter</strong> to navigate the installer.</li>
+                        <li>Choose <strong class="font-semibold">"Graphical install"</strong> and press <strong class="font-semibold">Enter</strong>.</li>
+                        <li>Select your <strong class="font-semibold">language, location, and keyboard layout</strong>.</li>
+                        <li><strong class="font-semibold">Hostname:</strong> You can leave the default (<code class="bg-gray-100 px-1 rounded">kali</code>) or choose a new one.</li>
+                        <li><strong class="font-semibold">Domain name:</strong> Leave blank or create one (e.g., <code class="bg-gray-100 px-1 rounded">local</code>).</li>
+                        <li><strong class="font-semibold">Create user account:</strong> Enter your full name, a username, and a strong password. <strong class="font-semibold">Remember this username and password!</strong></li>
+                        <li><strong class="font-semibold">Partitioning method:</strong> Select <strong class="font-semibold">"Guided - Use entire disk."</strong> This will use the entire virtual hard disk you created earlier (e.g., 20 GB). It will <strong class="font-semibold">NOT</strong> affect your physical hard drive.</li>
+                        <li>Select the virtual disk presented (it will be something like <code class="bg-gray-100 px-1 rounded">SCSI1 (0,0,0) (sDA)</code>).</li>
+                        <li>Select <strong class="font-semibold">"All files in one partition"</strong> (recommended for beginners).</li>
+                        <li>Select <strong class="font-semibold">"Finish partitioning and write changes to disk."</strong></li>
+                        <li>Confirm by selecting <strong class="font-semibold">"Yes"</strong> to "Write the changes to disks?"</li>
+                        <li><strong class="font-semibold">Software selection:</strong> You can leave the defaults (usually "GNOME" desktop environment and "default recommended tools"). This step takes the longest.</li>
+                        <li><strong class="font-semibold">Install the GRUB boot loader:</strong> Select <strong class="font-semibold">"Yes."</strong></li>
+                        <li>Select the virtual hard disk to install the boot loader on (e.g., <code class="bg-gray-100 px-1 rounded">/dev/sda</code>).</li>
+                        <li>Once the installation is complete, select <strong class="font-semibold">"Continue"</strong> to reboot.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Step 8: Log In -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">
+                Step 8: Log In and Explore Your New VM!
+            </h2>
+            <p class="text-lg text-gray-700 mb-4">
+                After the VM reboots, you'll see the Kali Linux login screen.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li>Enter the <strong class="font-semibold">username and password</strong> you created during installation.</li>
+                <li>Press <strong class="font-semibold">Enter</strong>.</li>
+            </ol>
+            <p class="text-lg text-gray-700 mt-4 font-semibold">
+                Congratulations! You are now running Kali Linux inside a virtual machine on your computer.
+                You can explore, learn, and experiment within this isolated environment without worrying about affecting your main system.
+            </p>
+        </section>
+
+        <!-- Handy Tips -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-indigo-600 mb-4">Handy VirtualBox Tips:</h2>
+            <ul class="list-disc list-inside text-lg text-gray-700 space-y-3">
+                <li><strong class="font-semibold">Capturing Mouse/Keyboard:</strong> When you click inside the VM window, your mouse and keyboard input will be "captured" by the VM. To release them back to your host OS, press the <strong class="font-semibold">Host Key</strong> (by default, this is the <strong class="font-semibold">Right Ctrl</strong> key on your keyboard).</li>
+                <li><strong class="font-semibold">Snapshots:</strong> In the VirtualBox Manager, select your VM, then click the <strong class="font-semibold">"Snapshots"</strong> tab. Click "Take" to save the current state of your VM. If you mess things up later, you can revert to a previous snapshot.</li>
+                <li><strong class="font-semibold">Cloning:</strong> You can right-click your VM in the VirtualBox Manager and select "Clone" to create an exact copy of your VM, useful for creating backups or different testing scenarios.</li>
+                <li><strong class="font-semibold">Pause/Save State:</strong> You can right-click your running VM and select "Pause" to temporarily stop it, or "Close" and then "Save the machine state" to save its current state and resume later.</li>
+            </ul>
+        </section>
+
+        <!-- Troubleshooting Section -->
+        <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg mb-8">
+            <h2 class="text-2xl sm:text-3xl font-bold text-red-600 mb-4">
+                Troubleshooting Common Issues
+            </h2>
+            <h3 class="text-xl sm:text-2xl font-bold text-gray-800 mb-4">
+                Error: "The image is required to be signed with the same certificate as the rest of VirtualBox" or "make sure the kernel module has been loaded successfully"
+            </h3>
+            <p class="text-lg text-gray-700 mb-4">
+                These errors typically occur on Windows and indicate a problem with VirtualBox's drivers or its interaction with Windows security features like driver signature enforcement or Secure Boot. The log entry "Signature #1/1: Not signed with the build certificate" confirms a driver signing issue.
+            </p>
+            <ol class="list-decimal list-inside text-lg text-gray-700 space-y-3">
+                <li><strong class="font-semibold">Reinstall the VirtualBox Extension Pack Carefully:</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Go back to the VirtualBox download page: <a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" class="text-blue-600 hover:underline">virtualbox.org/wiki/Downloads</a></li>
+                        <li>Download the **"VirtualBox 7.1.10 Extension Pack"** again (the "All supported platforms" link).</li>
+                        <li><strong class="font-semibold">Crucially, when you double-click the <code class="bg-gray-100 px-1 rounded">.vbox-extpack</code> file to install it, make sure to accept *all* security prompts that pop up.</strong> Windows might ask for administrator permissions or warn about unsigned drivers. You *must* allow these for the Extension Pack to function correctly. Sometimes, simply running the installer again and paying close attention to these prompts can fix it.</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Check Windows Core Isolation / Memory Integrity (Windows 10/11):</strong>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Search for "Core isolation" in your Windows search bar and open it.</li>
+                        <li>Look for <strong class="font-semibold">"Memory integrity."</strong> If it's turned <strong class="font-semibold">On</strong>, try temporarily turning it <strong class="font-semibold">Off</strong> (you might need to restart your computer).</li>
+                        <li>Then, try running your VM again. If the VM works, you've found the conflict. You can then decide if you want to keep Memory integrity off or look for updated VirtualBox versions/drivers that are compatible.</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Temporarily Disable Driver Signature Enforcement (Windows):</strong>
+                    <p class="text-sm text-gray-600 mt-1 mb-2">This is an advanced step. Only proceed if the above steps don't work. Re-enable it after testing.</p>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Click the <strong class="font-semibold">Start button</strong>, then the <strong class="font-semibold">Power icon</strong>.</li>
+                        <li>While holding down the <strong class="font-semibold">Shift key</strong>, click <strong class="font-semibold">"Restart."</strong></li>
+                        <li>Your PC will reboot into the Windows Recovery Environment.</li>
+                        <li>Select <strong class="font-semibold">"Troubleshoot" > "Advanced options" > "Startup Settings" > "Restart."</strong></li>
+                        <li>After the restart, you'll see a list of options. Press the number **7** or **F7** on your keyboard to select **"Disable driver signature enforcement."**</li>
+                        <li>Windows will boot normally. Now, try to start your Virtual Machine. If it works, this was the issue. Remember to restart your computer normally to re-enable driver signature enforcement after you're done using the VM or troubleshooting.</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Temporarily Disable Secure Boot (BIOS/UEFI Setting):</strong>
+                    <p class="text-sm text-gray-600 mt-1 mb-2">This is an advanced step and requires entering your computer's BIOS/UEFI. Only proceed if other steps fail. Re-enable it after testing.</p>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li><strong class="font-semibold">Restart your computer</strong> and repeatedly press your BIOS/UEFI access key (e.g., <code class="bg-gray-100 px-1 rounded">F2</code>, <code class="bg-gray-100 px-1 rounded">Del</code>, <code class="bg-gray-100 px-1 rounded">F10</code>).</li>
+                        <li>Navigate through the BIOS/UEFI menus. Look for sections like "Boot," "Security," or "Authentication."</li>
+                        <li>Find the <strong class="font-semibold">"Secure Boot"</strong> option.</li>
+                        <li><strong class="font-semibold">Disable</strong> it.</li>
+                        <li><strong class="font-semibold">Save changes and exit</strong> the BIOS/UEFI.</li>
+                        <li>Your computer will restart. Try running your Virtual Machine. If it works, Secure Boot was the cause. Remember to re-enable Secure Boot in your BIOS/UEFI after you're done to enhance system security.</li>
+                    </ul>
+                </li>
+                <li><strong class="font-semibold">Disable Hyper-V and Other Windows Virtualization Features:</strong>
+                    <p class="text-sm text-gray-600 mt-1 mb-2">This is often the direct cause of the `0xc0000409` error. VirtualBox conflicts with Windows' native hypervisor (Hyper-V) and other virtualization-based security features.</p>
+                    <h4 class="text-md sm:text-lg font-semibold text-gray-800 mt-2 mb-1">Method 1: Using "Turn Windows features on or off"</h4>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Search for <strong class="font-semibold">"Turn Windows features on or off"</strong> in your Windows search bar and open it.</li>
+                        <li>In the "Windows Features" dialog box, <strong class="font-semibold">uncheck (disable)</strong> the following items:
+                            <ul class="list-disc list-inside ml-6 mt-1">
+                                <li><strong class="font-semibold">Hyper-V</strong> (if present)</li>
+                                <li><strong class="font-semibold">Virtual Machine Platform</strong></li>
+                                <li><strong class="font-semibold">Windows Hypervisor Platform</strong></li>
+                            </ul>
+                        </li>
+                        <li>Click <strong class="font-semibold">"OK"</strong> and let Windows apply the changes. You will likely be prompted to restart your computer.</li>
+                        <li>After restarting, try running your Virtual Machine again.</li>
+                    </ul>
+                    <h4 class="text-md sm:text-lg font-semibold text-gray-800 mt-4 mb-1">Method 2: Using Command Prompt (if Method 1 doesn't fully work)</h4>
+                    <ul class="list-disc list-inside ml-6 mt-1">
+                        <li>Open <strong class="font-semibold">Command Prompt</strong> as an **administrator** (search for "cmd", right-click, "Run as administrator").</li>
+                        <li>Execute the following commands one by one, pressing Enter after each:
+                            <code class="block bg-gray-100 px-3 py-2 rounded-md text-sm mt-2 mb-2">bcdedit /set hypervisorlaunchtype off</code>
+                            <code class="block bg-gray-100 px-3 py-2 rounded-md text-sm mt-2 mb-2">dism.exe /Online /Disable-Feature:HypervisorPlatform /NoRestart</code>
+                            <code class="block bg-gray-100 px-3 py-2 rounded-md text-sm mt-2 mb-2">dism.exe /Online /Disable-Feature:VirtualMachinePlatform /NoRestart</code>
+                        </li>
+                        <li>After running these commands, <strong class="font-semibold">restart your computer</strong>.</li>
+                        <li>Try starting your Virtual Machine.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-10">
+            <p>&copy; 2025 Virtual Machine Tutorial. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Build AI Agents from Scratch - Free Course</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background: #f8f9fa; }
+    .container { max-width: 600px; margin: 40px auto; }
+    .card { margin-top: 2rem; }
+    @media (max-width: 600px) {
+      .container { padding: 0 0.5rem; }
+      h1 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h2 class="mb-2" style="color:#1976d2;">Learn How to Build AI Agents from Scratch</h2>
+        <p>Watch the on-demand masterclass and learn how to build your own AI Agent with tools like <b>Docker</b>, <b>LangChain</b>, <b>Sagemaker</b>, and <b>Vector DB</b>.</p>
+        <a href="https://learn.interviewkickstart.com/event/build-ai-agents-from-scratch-v1?_gl=1*rilsly*_gcl_au*MTYxNjY4MzcwNS4xNzUxOTgzMzQyLjE2NjcxODgyNTEuMTc1MTk4MzM1Ni4xNzUxOTgzMzU2*_ga*MTg0MzE3MDQ3NC4xNzUxOTgzMzQz*_ga_L4RSQLBKGB*czE3NTIwNjcyMjEkbzMkZzEkdDE3NTIwNjcyNTUkajI2JGwwJGgw" class="btn btn-success mt-2 mb-3" target="_blank">Unlock Masterclass Now &rarr;</a>
+      </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h4 class="mb-3" style="color:#1976d2;">What You’ll Learn in This Masterclass:</h4>
+        <ul>
+          <li><b>Practical Skill Development:</b> Build production-ready AI projects using industry-standard tools and frameworks.</li>
+          <li><b>AI Career Transition Strategy:</b> Discover how domain-specific projects can facilitate your move into AI.</li>
+          <li><b>Projects Over Certifications:</b> Understand why 2-3 strong projects matter more than multiple online certifications.</li>
+          <li><b>Hiring Manager Insights:</b> Learn exactly what FAANG+ recruiters expect from candidates applying to AI roles.</li>
+        </ul>
+        <div class="mt-3">
+          <b>Meet Your Instructor:</b> Rishabh Misra<br>
+          <span style="font-size: 0.97em;">
+            Rishabh is a machine learning engineer, tech lead, and co-author of the book <i>Sculpting Data for ML</i>.<br>
+            He specializes in building real-world AI systems and sharing practical knowledge for aspiring AI professionals.
+          </span>
+        </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h4 class="mb-3" style="color:#1976d2;">What is an Agent AI?</h4>
+        <div class="text-center mb-3">
+          <img src="images/agenticAI.jpg" alt="Agentic AI Diagram" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <p><b>Agent AI</b> refers to intelligent systems that perceive information, process it to understand context, and autonomously act to achieve specific objectives, adapting to changes in their environment.</p>
+        <ul>
+          <li>They can take action in response to data and also initiate actions proactively.</li>
+          <li>They make decisions on their own to achieve goals, not just follow fixed instructions.</li>
+        </ul>
+        <p>In short, agent AIs are designed to sense, reason, and act independently to accomplish tasks—even as things change around them.</p>
+        <hr>
+        <h5 class="mt-4 mb-2" style="color:#1976d2;">Agentic AI: Technical Definition & Analogy</h5>
+        <p><b>Technical Definition:</b> Think of <b>agentic AI agents</b> as large language models (LLMs) equipped with a set of tools, operating in a <b>reasoning-action loop</b>. This allows agent AI systems to perform more complex functions than a standard ("vanilla") LLM.</p>
+        <p><b>Analogy:</b> Imagine a generic AI as a skilled writer who can draft excellent content on any topic you provide. In contrast, an <b>agent AI</b> is like a personal assistant who not only writes, but also understands your goals and needs, and can take actions—like scheduling meetings, booking travel, or managing other tasks proactively.</p>
+        <ul>
+          <li>In the agent workflow, the agent takes feedback and revises its responses as needed. This feedback loop does not happen in every workflow.</li>
+        </ul>
+        <div class="text-center mb-3">
+          <img src="images/agenticAItechnicalDefinition.jpg" alt="Agentic AI Technical Definition Diagram" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <hr>
+        <h5 class="mt-4 mb-2" style="color:#1976d2;">How Agents Are Transforming Industries</h5>
+        <p>AI agents are revolutionizing a wide range of industries by automating complex tasks, improving decision-making, and enabling new services. Here are some examples of how agentic AI is making an impact:</p>
+        <ul>
+          <li><b>Healthcare:</b> Agents help with patient triage, appointment scheduling, and personalized health recommendations.</li>
+          <li><b>Finance:</b> Agents automate fraud detection, portfolio management, and customer support.</li>
+          <li><b>Retail:</b> Agents power personalized shopping assistants, inventory management, and dynamic pricing.</li>
+          <li><b>Travel:</b> Agents can book flights, manage itineraries, and provide real-time travel updates.</li>
+          <li><b>Customer Service:</b> Agents handle inquiries, resolve issues, and learn from interactions to improve over time.</li>
+        </ul>
+        <div class="text-center mb-3">
+          <img src="images/agentsIndustries.jpg" alt="Industries Transformed by AI Agents" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <hr>
+        <h5 class="mt-4 mb-2" style="color:#1976d2;">What Does It Take to Build Such a System?</h5>
+        <div class="text-center mb-3">
+          <img src="images/diagramAgenticArchitecture.jpg" alt="Agentic AI System Architecture Diagram" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <p>Here's what each part generally represents on the diagram:</p>
+        <ul>
+          <li><b>"User Question" (Left Side):</b> This is you asking a question. It shows you can ask by Voice, Chat, or Email.</li>
+          <li><b>"UI Interface" (Box 'i.'):</b> This is where your question first arrives. It's the front door of the system, taking your voice, chat, or email and preparing it for the AI.</li>
+          <li><b>"Firewall" (Boxes 'ii.'):</b> These are like security guards. They protect the system from bad stuff and make sure only allowed information goes in and out. You see them at different points, showing security is important throughout.</li>
+          <li><b>"Bot Server" (Box 'iii.'):</b> This is the first "brain" of the system. It quickly tries to understand what you want (your "intent") and what key things you mentioned (the "entities"). For example, if you ask "What's my order status for order 123?", it knows you want "order status" and the "order number is 123."</li>
+          <li><b>"Semantic Search" (Box 'iv.'):</b> This is a super-smart search engine. Instead of just looking for keywords, it understands the meaning of your question. It then finds relevant information by comparing the meaning of your question to the meaning of all the data it has. It also makes sure to remove any sensitive personal details.</li>
+          <li><b>"Retrieval Engine" (Box 'v.'):</b> This is where all the company's knowledge is stored and organized. Think of it as a huge, well-indexed library of all the company's documents, policies, customer information, etc. It constantly updates itself by "Continuous polling" the "Enterprise Data" at the bottom.</li>
+          <li><b>"Enterprise Data" (Bottom Section):</b> This is the actual source of all the company's information – like customer support tickets (TOPDesk), internal documents (Confluence, SharePoint), or sales data (SAP). This is the "knowledge base" the AI refers to.</li>
+          <li><b>"API Gateway" (Box 'vi.'):</b> This is like a central post office. It handles all the communication between the system's "brains" and the outside world, especially when it needs to talk to the really powerful AI models.</li>
+          <li><b>"Workflow Builder" (Box 'vii.'):</b> This is where the rules and steps for answering questions are set up. It's like a recipe book for how the AI should combine information and interact with different parts to give you the best answer. It's often "No/Low Code," meaning you don't need to be a super programmer to set up these rules.</li>
+          <li><b>"LLM Models" (Box 'viii.'):</b> These are the "Big Brains" or "Large Language Models" that can generate human-like text. Once the system has all the relevant information, it sends it here, and these models create the actual reply for you. The diagram shows it can use different ones like Google Bard, Llama 2, or Azure OpenAI.</li>
+        </ul>
+        <p>In essence, the diagram shows how your question travels through different smart stages: being understood, looking up information in the company's knowledge, and finally getting a well-thought-out answer generated by powerful AI. Security (firewalls) and continuous updates are built in throughout.</p>
+        <hr>
+        <h5 class="mt-4 mb-2" style="color:#1976d2;">Below Are Some Sample Companies Looking for These Roles</h5>
+        <div class="text-center mb-3">
+          <img src="images/aiRolesJobs.jpg" alt="Sample Companies Hiring for AI Agent Roles" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+        <div class="text-center mb-3">
+          <img src="images/aiRolesJobs2.jpg" alt="More Companies Hiring for AI Agent Roles" style="max-width:100%;height:auto;border-radius:8px;box-shadow:0 2px 8px #bbb;">
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="mb-3" style="color:#1976d2;">What Do These Terms Mean?</h5>
+        <p style="font-size:1.05em;">These are the main tools and concepts you'll use in the masterclass to build your own AI agent. Each one plays a unique role in making modern AI systems work in the real world:</p>
+        <ul>
+          <li><b>Docker:</b> A tool that lets you package your code and all its dependencies into a container, so it runs the same everywhere (on your computer, in the cloud, etc.).</li>
+          <li><b>LangChain:</b> An open-source framework for building applications powered by large language models (LLMs), making it easier to connect AI models to data and tools.</li>
+          <li><b>TensorFlow:</b> An open-source platform developed by Google for building and training machine learning and deep learning models. It's widely used for AI projects, especially those involving neural networks.</li>
+          <li><b>Sagemaker:</b> Amazon Web Services’ (AWS) platform for building, training, and deploying machine learning models at scale.</li>
+          <li><b>Vector DB:</b> A special type of database designed to store and search data as vectors (numbers), which is useful for AI tasks like similarity search and retrieval-augmented generation.</li>
+          <li><b>MLOps Pipelines:</b> The set of tools and processes that automate and manage the lifecycle of machine learning models—from development and training to deployment and monitoring. MLOps helps teams deliver reliable, scalable AI solutions efficiently.</li>
+          <li><b>Context:</b> The information an AI agent uses to understand its current situation, task, or conversation. Context helps the agent make better decisions by keeping track of what’s relevant—like previous messages, user preferences, or the current goal—so it can respond intelligently and adapt as things change.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h1 class="mb-3" style="color:#1976d2;">Build AI Agents from Scratch</h1>
+        <p>This is a <b>free course</b> from Interview Kickstart. Learn how to build AI agents step by step, suitable for beginners and those looking to deepen their AI skills.</p>
+        <a href="https://learn.interviewkickstart.com/event/build-ai-agents-from-scratch-v1?_gl=1*rilsly*_gcl_au*MTYxNjY4MzcwNS4xNzUxOTgzMzQyLjE2NjcxODgyNTEuMTc1MTk4MzM1Ni4xNzUxOTgzMzQz*_ga_L4RSQLBKGB*czE3NTIwNjcyMjEkbzMkZzEkdDE3NTIwNjcyNTUkajI2JGwwJGgw" class="btn btn-primary mt-2" target="_blank">Go to Course</a>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

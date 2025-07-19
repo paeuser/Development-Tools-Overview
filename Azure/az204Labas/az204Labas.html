@@ -1,3 +1,75 @@
+  <!-- Azure Functions Diagram Explanations -->
+  <div class="card shadow-sm mt-5">
+    <div class="card-body">
+      <h5 class="lab-title">How Azure Functions Work (with Diagram)</h5>
+      <b>Simple Explanation:</b>
+      <p>
+        This picture shows how you can run small pieces of code (called “functions”) in the cloud without worrying about servers.
+        <ul>
+          <li>You build your function on your computer.</li>
+          <li>You upload some settings to help it work.</li>
+          <li>You send your function to the cloud (Azure).</li>
+          <li>In the cloud, your function can do different jobs, like getting information, repeating tasks, or sending back a message.</li>
+          <li>Your function can also save or read files from storage.</li>
+          <li>Everything happens automatically—no need to manage any servers!</li>
+        </ul>
+        <b>In short:</b> You write code, upload it, and Azure runs it for you whenever it’s needed.
+      </p>
+      <hr>
+      <b>Detailed Explanation:</b>
+      <p>
+        This diagram shows the process of creating, configuring, and deploying an Azure Functions app in a serverless environment:
+        <ul>
+          <li><b>User Actions:</b> The user creates and configures a local Azure Functions project, and uploads a <code>settings.json</code> file with configuration settings.</li>
+          <li><b>Deployment:</b> The function app is deployed to Azure.</li>
+          <li><b>Azure Resources:</b> The function app (funclogic) interacts with other Azure resources:
+            <ul>
+              <li>It can access storage (funcstor/content) to read or write data.</li>
+              <li>It runs different functions, such as <code>GetSettingInfo</code>, <code>Recurring</code>, and <code>Echo</code>.</li>
+            </ul>
+          </li>
+          <li><b>Integration:</b> The function app can communicate with other services, like ASP-Serverless. Logic and data flow between the user, storage, and the function app.</li>
+        </ul>
+        <b>Summary:</b> The diagram illustrates how a user develops and configures an Azure Functions project locally, uploads configuration, deploys it to Azure, and how the deployed function app interacts with storage and other services in a serverless environment.
+      </p>
+    </div>
+  </div>
+  <!-- Azure Functions Diagram Explanations -->
+  <div class="card shadow-sm mt-5">
+    <div class="card-body">
+      <h5 class="lab-title">How Azure Functions Work (with Diagram)</h5>
+      <b>Simple Explanation:</b>
+      <p>
+        This picture shows how you can run small pieces of code (called “functions”) in the cloud without worrying about servers.<br>
+        <ul>
+          <li>You build your function on your computer.</li>
+          <li>You upload some settings to help it work.</li>
+          <li>You send your function to the cloud (Azure).</li>
+          <li>In the cloud, your function can do different jobs, like getting information, repeating tasks, or sending back a message.</li>
+          <li>Your function can also save or read files from storage.</li>
+          <li>Everything happens automatically—no need to manage any servers!</li>
+        </ul>
+        <b>In short:</b> You write code, upload it, and Azure runs it for you whenever it’s needed.
+      </p>
+      <hr>
+      <b>Detailed Explanation:</b>
+      <p>
+        This diagram shows the process of creating, configuring, and deploying an Azure Functions app in a serverless environment:
+        <ul>
+          <li><b>User Actions:</b> The user creates and configures a local Azure Functions project, and uploads a <code>settings.json</code> file with configuration settings.</li>
+          <li><b>Deployment:</b> The function app is deployed to Azure.</li>
+          <li><b>Azure Resources:</b> The function app (funclogic) interacts with other Azure resources:
+            <ul>
+              <li>It can access storage (funcstor/content) to read or write data.</li>
+              <li>It runs different functions, such as <code>GetSettingInfo</code>, <code>Recurring</code>, and <code>Echo</code>.</li>
+            </ul>
+          </li>
+          <li><b>Integration:</b> The function app can communicate with other services, like ASP-Serverless. Logic and data flow between the user, storage, and the function app.</li>
+        </ul>
+        <b>Summary:</b> The diagram illustrates how a user develops and configures an Azure Functions project locally, uploads configuration, deploys it to Azure, and how the deployed function app interacts with storage and other services in a serverless environment.
+      </p>
+    </div>
+  </div>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -109,7 +181,18 @@
         </div>
       </div>
     </div>
-  </div>
+
+    <div class="card shadow-sm mt-5">
+      <div class="card-body">
+        <h5 class="lab-title">Official Microsoft Learning Labs</h5>
+        <p>
+            Access the official AZ-204 labs on GitHub:<br>
+            <a href="https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure" target="_blank">
+                https://github.com/MicrosoftLearning/AZ-204-DevelopingSolutionsforMicrosoftAzure
+            </a>
+        </p>
+      </div>
+    </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
   <div class="card shadow-sm mt-5">

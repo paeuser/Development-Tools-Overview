@@ -1,0 +1,59 @@
+Build a Local AI Agent with Python, Ollama, LangChain and SingleStore
+
+https://www.singlestore.com/blog/build-a-local-ai-agent-python-ollama-langchain-singlestore/
+
+ollama
+
+after the intalation i copied this: 
+
+ollama run gemma3
+
+
+We'll use:
+
+llama3.2 for LLM-based question answering
+mxbai-embed-large for generating vector embeddings
+
+
+
+🧠 1. llama3:latest (LLaMA 3.2)
+
+    This is your Large Language Model (LLM).
+
+    It handles the natural language understanding and generation parts of your AI system.
+
+    Used for:
+
+        Responding to user questions
+
+        Interacting in chat format
+
+        Following instructions
+
+        Performing reasoning, summarization, Q&A, etc.
+
+✅ You're using this for:
+
+    LLM-based question answering
+
+📐 2. mxbai-embed-large
+
+    This is an embedding model.
+
+    It transforms text (e.g., documents, user queries) into vector embeddings — numerical representations of meaning.
+
+    These vectors are then used for semantic similarity and retrieval in:
+
+        RAG (Retrieval-Augmented Generation)
+
+        Search engines
+
+        Knowledge bots
+
+✅ You're using this for:
+
+    Generating vector embeddings for document/question matching
+	
+	
+	folder created in C:\Users\Erisbel\ai_tutorial
+	

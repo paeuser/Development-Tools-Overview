@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 1: Azure Web App Overview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 lg:p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-blue-600 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 1: Building Web Apps on Azure PaaS</h1>
+            <p class="text-blue-100 text-lg">A high-level overview of deploying a two-tier web application using Azure Platform as a Service.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-700 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to create and deploy a web application consisting of a backend API and a frontend web app, leveraging Azure's Platform as a Service (PaaS) offerings. The focus was on understanding how these components work together in a cloud environment.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-700 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">1. Azure Storage Account</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Used for storing data, specifically images in this lab.</li>
+                            <li>**Functionality:** Acted as the central repository for image files, accessible by the backend API.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">2. Backend API (Azure Web App)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Handled business logic and data interaction.</li>
+                            <li>**Functionality:** Responsible for listing and uploading images to the Azure Storage Account. It was configured with an Application Setting to securely connect to storage.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md md:col-span-2">
+                        <h3 class="text-xl font-bold text-blue-800 mb-3">3. Frontend Web Application (Azure Web App)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Provided the user interface for interacting with the application.</li>
+                            <li>**Functionality:** Displayed images from the backend API and allowed users to upload new ones. It was configured with an Application Setting to connect to the backend API.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-700 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Platform as a Service (PaaS):** Azure managed the underlying infrastructure (servers, operating systems, networking), allowing focus purely on application code.</li>
+                    <li>**Application Settings:** Securely passing configuration values (like connection strings and API URLs) to deployed applications.</li>
+                    <li>**Azure CLI Zip Deployment:** Efficiently deploying application code to Azure Web Apps using compressed packages.</li>
+                    <li>**Two-Tier Architecture:** Understanding how a frontend application communicates with a separate backend API, which in turn interacts with data storage.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="bg-blue-600 text-white p-6 rounded-b-xl text-center text-sm">
+            <p>&copy; 2025 Azure Lab Overview. All rights reserved.</p>
+        </footer>
+    </div>
+
+
+        <header class="bg-purple-700 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 2: Implementing Task Processing with Azure Functions</h1>
+            <p class="text-purple-100 text-lg">A high-level overview of developing, testing, and deploying serverless functions.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-purple-800 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to create flexible, on-demand task processing logic using Azure Functions. It covered various ways functions can be triggered and how they can integrate with other Azure services.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-purple-800 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-purple-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-purple-800 mb-3">1. Azure Storage Account</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Provided persistent storage for function app internal operations and for application data (e.g., configuration files).</li>
+                            <li>**Functionality:** Essential for Azure Functions runtime and for functions integrating with Blob storage.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-purple-800 mb-3">2. Azure Function App</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Hosted the serverless functions in the cloud.</li>
+                            <li>**Functionality:** Provided the execution environment, scaling, and management for the deployed functions. Configured with .NET 8 (LTS) isolated worker model on Linux.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg shadow-md md:col-span-2">
+                        <h3 class="text-xl font-bold text-purple-800 mb-3">3. Implemented Azure Functions (Examples)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**HTTP-Triggered Function (Echo):** Responded to web requests, demonstrating basic API functionality.</li>
+                            <li>**Timer-Triggered Function (Recurring):** Executed automatically on a predefined schedule, ideal for background tasks.</li>
+                            <li>**HTTP-Triggered Function with Blob Input (GetSettingInfo):** Demonstrated integration with Azure Storage by reading a configuration file from Blob storage in response to an HTTP request.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-purple-800 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Serverless Compute (PaaS):** Focusing on code execution without managing underlying infrastructure.</li>
+                    <li>**Azure Functions Core Tools:** Developing and testing functions locally before deployment.</li>
+                    <li>**Function Triggers:** Understanding different ways functions can be activated (HTTP, Timer, Blob, etc.).</li>
+                    <li>**Input/Output Bindings:** Seamlessly connecting functions to other Azure services (like Storage) without complex code.</li>
+                    <li>**Azure CLI Deployment:** Publishing local function projects to Azure Function Apps.</li>
+                </ul>
+            </section>
+
+ <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-teal-700 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 3: Retrieving Azure Storage Resources with .NET SDK</h1>
+            <p class="text-teal-100 text-lg">A high-level overview of interacting with Azure Storage using the .NET SDK.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-teal-800 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab focused on programmatically accessing Azure Storage containers and blobs within a C# application using the Azure Storage SDK for .NET. It demonstrated how to retrieve account metadata, enumerate containers and blobs, and obtain direct URIs to blob content.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-teal-800 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-teal-800 mb-3">1. Azure Storage Account</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Centralized cloud storage for various data types, including blobs (files).</li>
+                            <li>**Functionality:** Served as the target for programmatic access, holding containers and blobs with different access levels.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-teal-800 mb-3">2. .NET Console Application (BlobManager)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** The local C# application developed to interact with Azure Storage.</li>
+                            <li>**Functionality:** Used the Azure Storage SDK to perform operations like connecting to storage, enumerating resources, and retrieving blob URIs.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-teal-50 p-6 rounded-lg shadow-md md:col-span-2">
+                        <h3 class="text-xl font-bold text-teal-800 mb-3">3. Azure Storage SDK for .NET</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A library that simplifies interaction with Azure Storage services from .NET applications.</li>
+                            <li>**Functionality:** Provided classes and methods (e.g., `BlobServiceClient`, `BlobContainerClient`, `BlobClient`) to authenticate, manage, and access storage resources.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-teal-800 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Programmatic Azure Storage Access:** Connecting to and managing Azure Storage resources using C# code.</li>
+                    <li>**Storage Account Metadata:** Retrieving information about the storage account itself (e.g., account kind, SKU).</li>
+                    <li>**Container and Blob Enumeration:** Listing existing containers and the blobs within them.</li>
+                    <li>**Blob URIs and Public Access:** Understanding how to get direct web addresses for blobs and the implications of public access settings on containers.</li>
+                    <li>**Shared Key Authentication:** Using storage account names and keys for secure access from applications.</li>
+                </ul>
+            </section>
+
+ <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-blue-800 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 4: Constructing a Polyglot Data Solution</h1>
+            <p class="text-blue-100 text-lg">A high-level overview of integrating different data stores in Azure for varied data needs.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-900 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to build a "polyglot" data solution in Azure, meaning using different types of data stores (like NoSQL for flexible data and Blob Storage for files) to meet diverse application requirements. It covered data ingestion and displaying data through a web interface.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-900 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">1. Azure Cosmos DB (NoSQL)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A globally distributed, multi-model database service for flexible, schema-less data (like JSON documents).</li>
+                            <li>**Functionality:** Used to store and query product model data, demonstrating its suitability for high-performance, flexible data access.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">2. Azure Storage Account (Blob Storage)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Scalable and secure storage for unstructured data like images, videos, and files.</li>
+                            <li>**Functionality:** Used to store image assets associated with the product data, demonstrating its role in handling binary files.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-lg shadow-md md:col-span-2">
+                        <h3 class="text-xl font-bold text-blue-900 mb-3">3. .NET Applications (C#)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Data Upload Console App:** Programmatically ingested JSON data into Cosmos DB.</li>
+                            <li>**Web Application:** Accessed and displayed data from both Cosmos DB and Blob Storage in a user-friendly interface.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-900 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Polyglot Persistence:** Using multiple data storage technologies (Cosmos DB for documents, Blob Storage for images) within a single solution.</li>
+                    <li>**Azure Cosmos DB for NoSQL:** Creating accounts, databases, and containers, and uploading JSON data.</li>
+                    <li>**Azure Storage Blob Containers:** Uploading and managing image files.</li>
+                    <li>**Azure SDK for .NET:** Programmatically interacting with Azure Cosmos DB and Azure Storage from C# applications.</li>
+                    <li>**Data Integration:** Connecting a web application to different Azure data stores to retrieve and display comprehensive information.</li>
+                    <li>**Partitioning:** Understanding how partitioning keys (like `/Category` for Cosmos DB) influence data distribution and query performance.</li>
+                </ul>
+            </section>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 5: Deploying Compute Workloads with Images and Containers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 lg:p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-green-700 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 5: Deploying Compute Workloads with Images & Containers</h1>
+            <p class="text-green-100 text-lg">A high-level overview of containerizing applications and deploying them to various Azure container services.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-green-800 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to containerize a .NET application using Docker and deploy it to different Azure container services, including Azure Container Registry, Azure Container Instances, and Azure Container Apps. The focus was on understanding the lifecycle of containerized applications in Azure.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-green-800 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-3">1. Docker & Dockerfile</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** To package the .NET application and its dependencies into a standardized, portable container image.</li>
+                            <li>**Functionality:** The Dockerfile provided instructions for building the image (e.g., base image, working directory, copying files, publishing, entry point).</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-3">2. Azure Container Registry (ACR)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A private, managed Docker registry in Azure for storing and managing container images.</li>
+                            <li>**Functionality:** Acted as the central repository where the built Docker image was pushed and stored.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-3">3. Azure Container Instances (ACI)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A service for running containers directly in Azure without managing virtual machines or orchestration.</li>
+                            <li>**Functionality:** Used to quickly deploy and run the containerized .NET application for task-based workloads, demonstrating both automatic and manual deployment methods.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-green-800 mb-3">4. Azure Container Apps</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A serverless platform for building and deploying modern apps and microservices using containers.</li>
+                            <li>**Functionality:** Demonstrated deploying a sample container app to a Container Apps environment, showcasing its capabilities for hosting web applications and APIs.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-green-800 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Containerization:** Packaging applications and their dependencies into portable Docker images.</li>
+                    <li>**Container Image Management:** Storing and retrieving container images from a private registry (ACR).</li>
+                    <li>**Ephemeral Compute:** Running short-lived, task-based containers (ACI).</li>
+                    <li>**Serverless Containers:** Deploying and scaling containerized applications in a managed, serverless environment (Azure Container Apps).</li>
+                    <li>**Azure CLI for Containers:** Using command-line tools to build, push, and deploy containers across various Azure services.</li>
+                </ul>
+            </section>
+        </main>
+
+        <footer class="bg-green-700 text-white p-6 rounded-b-xl text-center text-sm">
+            <p>&copy; 2025 Azure Lab Overview. All rights reserved.</p>
+        </footer>
+    </div>
+ <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-indigo-700 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 5: Deploying Compute Workloads with Images & Containers</h1>
+            <p class="text-indigo-100 text-lg">A high-level overview of containerizing applications and deploying them to various Azure container services.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-indigo-800 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to containerize a .NET application using Docker and deploy it to different Azure container services, including Azure Container Registry, Azure Container Instances, and Azure Container Apps. The focus was on understanding the lifecycle of containerized applications in Azure.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-indigo-800 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-indigo-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-3">1. Docker & Dockerfile</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** To package the .NET application and its dependencies into a standardized, portable container image.</li>
+                            <li>**Functionality:** The Dockerfile provided instructions for building the image (e.g., base image, working directory, copying files, publishing, entry point).</li>
+                            <li>**When to Use:** When you need to ensure your application runs consistently across different environments (development, testing, production), manage complex dependencies, or package legacy applications.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-3">2. Azure Container Registry (ACR)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A private, managed Docker registry in Azure for storing and managing container images.</li>
+                            <li>**Functionality:** Acted as the central repository where the built Docker image was pushed and stored.</li>
+                            <li>**When to Use:** When you need a secure, private place to store your Docker images in Azure, integrate with Azure DevOps for CI/CD, or distribute images across different Azure services or regions.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-3">3. Azure Container Instances (ACI)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A service for running containers directly in Azure without managing virtual machines or orchestration.</li>
+                            <li>**Functionality:** Used to quickly deploy and run the containerized .NET application for task-based workloads, demonstrating both automatic and manual deployment methods.</li>
+                            <li>**When to Use:** For simple, single-container applications, batch processing jobs, short-lived tasks, or when you need to quickly run a container without the overhead of a full orchestrator like Kubernetes.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-indigo-800 mb-3">4. Azure Container Apps</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** A serverless platform for building and deploying modern apps and microservices using containers.</li>
+                            <li>**Functionality:** Demonstrated deploying a sample container app to a Container Apps environment, showcasing its capabilities for hosting web applications and APIs.</li>
+                            <li>**When to Use:** For microservices, event-driven processing, web APIs, or background processing where you need serverless scaling and simplified management compared to Kubernetes, but more features than ACI.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-indigo-800 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Containerization:** Packaging applications and their dependencies into portable Docker images.</li>
+                    <li>**Container Image Management:** Storing and retrieving container images from a private registry (ACR).</li>
+                    <li>**Ephemeral Compute:** Running short-lived, task-based containers (ACI).</li>
+                    <li>**Serverless Containers:** Deploying and scaling containerized applications in a managed, serverless environment (Azure Container Apps).</li>
+                    <li>**Azure CLI for Containers:** Using command-line tools to build, push, and deploy containers across various Azure services.</li>
+                </ul>
+            </section>
+
+
+ <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+        <header class="bg-red-700 text-white p-6 rounded-t-xl">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-2">Lab 6: Authenticating with OpenID Connect, MSAL, & .NET SDKs</h1>
+            <p class="text-red-100 text-lg">A high-level overview of securing applications using Microsoft Entra ID for identity management.</p>
+        </header>
+
+        <main class="p-6 sm:p-8">
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-red-800 mb-4">Core Objective</h2>
+                <p class="text-lg leading-relaxed">This lab demonstrated how to secure a web application by integrating it with Microsoft Entra ID (formerly Azure Active Directory) for user authentication. It focused on using OpenID Connect (OIDC) and the Microsoft Authentication Library (MSAL) with .NET SDKs to manage user access.</p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-red-800 mb-4">Key Components and Their Roles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-red-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-red-800 mb-3">1. Microsoft Entra ID</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** Microsoft's cloud-based identity and access management service.</li>
+                            <li>**Functionality:** Used to register the web application, manage user accounts, and provide the authentication service for the application.</li>
+                            <li>**When to Use:** When you need a centralized identity provider for your applications, manage user access, or integrate with other Microsoft cloud services.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-red-800 mb-3">2. ASP.NET Web App (OIDCClient)</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** The client application that requires user authentication.</li>
+                            <li>**Functionality:** Configured to interact with Microsoft Entra ID using OpenID Connect to sign in users and manage their sessions.</li>
+                            <li>**When to Use:** For building web applications (e.g., MVC, Razor Pages) where users need to log in securely using Microsoft identities.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-6 rounded-lg shadow-md md:col-span-2">
+                        <h3 class="text-xl font-bold text-red-800 mb-3">3. OpenID Connect (OIDC) & MSAL .NET SDKs</h3>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>**Purpose:** OIDC is an authentication protocol built on OAuth 2.0; MSAL is Microsoft's library for integrating with Microsoft identity platform.</li>
+                            <li>**Functionality:** These technologies facilitate the secure flow of authentication tokens between the web app and Microsoft Entra ID, allowing the app to verify user identities.</li>
+                            <li>**When to Use:** When implementing modern authentication flows for applications interacting with Microsoft Entra ID or other identity providers that support OIDC.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 class="text-2xl sm:text-3xl font-semibold text-red-800 mb-4">Core Concepts Demonstrated</h2>
+                <ul class="list-disc list-inside space-y-3 text-lg leading-relaxed">
+                    <li>**Application Registration:** Registering an application in Microsoft Entra ID to define its identity and permissions.</li>
+                    <li>**Redirect URIs:** Configuring URLs where Microsoft Entra ID sends authentication responses after a user logs in.</li>
+                    <li>**Single-Tenant Authentication:** Securing an application to allow access only to users within a specific Microsoft Entra ID directory.</li>
+                    <li>**User Principal Name (UPN):** Understanding the format and use of user identities in Microsoft Entra ID.</li>
+                    <li>**Local Development with HTTPS:** Setting up and trusting self-signed certificates for secure local testing of authentication flows.</li>
+                    <li>**`Microsoft.Identity.Web` Library:** Simplifying the integration of Microsoft identity platform authentication into ASP.NET Core applications.</li>
+                </ul>
+            </section>
+        </main>
+            
+</body>
+</html>
