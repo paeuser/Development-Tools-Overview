@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assurity ECS API – Backend Overview</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; }
+        .summary-card { max-width: 700px; margin: 40px auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card summary-card shadow">
+            <div class="card-body">
+                <h1 class="card-title text-center mb-4">Assurity ECS API – Backend</h1>
+                <p class="card-text lead text-center mb-4">
+                    <strong>What is this?</strong><br>
+                    The Assurity ECS API is the backend service for the Assurity platform. It powers all business logic, data management, and integrations, acting as the core engine for the system.
+                </p>
+                <div class="mb-3">
+                    <strong>Who uses it?</strong><br>
+                    Developers and system integrators use the API to build, extend, and automate the Assurity platform for their organizations or clients.
+                </div>
+                <div class="mb-3">
+                    <strong>Why is it important?</strong><br>
+                    It provides secure, reliable, and scalable endpoints for managing products, users, configurations, and integrations with external services.
+                </div>
+                <hr>
+                <h5>Main Backend Features</h5>
+                <ul>
+                    <li>RESTful API endpoints for configuration, product, and user management</li>
+                    <li>White label support for custom branding</li>
+                    <li>Authentication and authorization (token-based security)</li>
+                    <li>Integration with email and e-signature providers</li>
+                    <li>Comprehensive error handling and logging</li>
+                </ul>
+                <div class="alert alert-info mt-3" role="alert">
+                    <strong>What is White Label?</strong><br>
+                    <em>White labeling</em> lets organizations customize the platform’s branding (logo, colors, styles) so it appears as their own product.
+                </div>
+                <hr>
+                <h5>Technologies & Architecture Details (Backend)</h5>
+                <ul>
+                    <li><strong>.NET Core (C#) – Version:</strong> 6.0 (or higher, see <code>Assurity.ECS.sln</code> for details)</li>
+                    <li><strong>ASP.NET Web API</strong> – for RESTful endpoints</li>
+                    <li><strong>Entity Framework Core</strong> – for database access</li>
+                    <li><strong>SQL Server</strong> – as the primary database</li>
+                    <li><strong>Authentication:</strong> JWT (JSON Web Token) Bearer authentication for secure API access</li>
+                    <li><strong>Authorization:</strong> Role-based access control (RBAC) for different user types</li>
+                    <li><strong>Caching:</strong> In-memory caching (MemoryCache) for performance optimization on frequently accessed data</li>
+                    <li><strong>Logging & Monitoring:</strong> New Relic, NLog for diagnostics and monitoring</li>
+                    <li><strong>Integration:</strong> Email and E-signature services</li>
+                </ul>
+                <p class="mt-3">
+                    <em>Want to learn more?</em> See the <code>README.md</code> or API documentation for details. For technical specifics, check the solution and project files in the repository.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
