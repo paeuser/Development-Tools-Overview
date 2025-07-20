@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ReactJS Cheat Sheet</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0 1em;
+            background: #f9f9f9;
+            color: #222;
+        }
+        .container {
+            max-width: 700px;
+            margin: 32px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px #e0e0e0;
+            padding: 2em 1.5em;
+        }
+        h1 {
+            text-align: center;
+            color: #61dafb;
+            margin-bottom: 0.5em;
+        }
+        ul {
+            padding-left: 1.2em;
+            margin-bottom: 1.5em;
+        }
+        li {
+            margin-bottom: 0.4em;
+            line-height: 1.6;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 1.5em;
+            color: #333;
+            font-size: 1.1em;
+        }
+        hr {
+            margin: 2em 0;
+            border: none;
+            border-top: 1px solid #eee;
+        }
+        .img-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .img-wrapper img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px #bbb;
+        }
+        .img-caption {
+            color: #555;
+            font-size: 0.97em;
+            margin-top: 0.5em;
+        }
+        pre {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 8px;
+            overflow-x: auto;
+        }
+        @media (max-width: 700px) {
+            .container {
+                padding: 1em 0.5em;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0.5em 0.2em;
+            }
+            .img-wrapper img {
+                border-radius: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ReactJS Cheat Sheet</h1>
+        <p>Mastering React isn't just about hooks and components — it’s about knowing when and why to use each concept.<br>
+        Here’s a quick React cheat sheet to help you stay sharp 👇</p>
+
+        <div class="section-title">📦 Core Concepts</div>
+        <ul>
+            <li>JSX syntax &amp; rules</li>
+            <li>Functional components &gt; Class components</li>
+            <li>Props vs State</li>
+            <li>Lifting state up</li>
+        </ul>
+
+        <div class="section-title">🔁 Hooks to Remember</div>
+        <ul>
+            <!-- Note: The following state is local to the component and will reset if the component unmounts or you navigate away. -->
+            <li><code>useState()</code> – for local component state
+                <pre><code>{`const [count, setCount] = useState(0);
+setCount(count + 1); // update state`}</code></pre>
+                <div style="color:#555;font-size:0.97em;margin-top:0.3em;">
+                  <b>Explanation:</b> <code>useState</code> is a React hook that lets you add state to functional components. <br>
+                  <code>const [count, setCount] = useState(0);</code> creates a state variable <code>count</code> (initialized to 0) and a function <code>setCount</code> to update it. <br>
+                  Calling <code>setCount(count + 1)</code> updates the value of <code>count</code> and causes the component to re-render with the new value.<br>
+                  <b>Note:</b> State created with <code>useState</code> is <u>local to the component</u>. If you navigate to another page or component, the state will not persist or be shared automatically—it will reset to its initial value unless you use a global state management solution (like Context or Redux) or lift the state up to a common parent.<br>
+                  <span style="color:#c00;"><b>Extra Note:</b> If you refresh the page, navigate away, or the component unmounts, the state will reset to its initial value. To persist state across page reloads, consider using <code>localStorage</code>, <code>sessionStorage</code>, or a global state manager.</span>
+                </div>
+            </li>
+            <li><code>useEffect()</code> – side effects (data fetching, timers)
+                <pre><code>{`useEffect(() => {
+  document.title = \`Count: ${count}\`;
+}, [count]); // runs when 'count' changes`}</code></pre>
+                <div style="color:#555;font-size:0.97em;margin-top:0.3em;">
+                  <b>Explanation:</b> <code>useEffect</code> lets you perform side effects in your component (like updating the document title, fetching data, or setting up a timer).<br>
+                  In this example, the effect runs <u>every time the <code>count</code> value changes</u> (because <code>count</code> is in the dependency array).<br>
+                  So, whenever you call <code>setCount</code> and <code>count</code> changes, the code inside <code>useEffect</code> will run again.
+                </div>
+            </li>
+            <li><code>useRef()</code> – mutable refs or DOM access
+                <pre><code>{`const inputRef = useRef();
+<input ref={inputRef} />
+inputRef.current.focus(); // focus input`}</code></pre>
+                <div style="color:#555;font-size:0.97em;margin-top:0.3em;">
+                  <b>Explanation:</b> <code>useRef</code> creates a mutable reference object whose <code>.current</code> property persists for the full lifetime of the component.<br>
+                  You can attach <code>ref=&#123;inputRef&#125;</code> to a DOM element (like an <code>&lt;input&gt;</code>), and then access or modify that element directly via <code>inputRef.current</code>.<br>
+                  In this example, <code>inputRef.current.focus()</code> will focus the input element. <code>useRef</code> is also useful for storing any mutable value that does not cause a re-render when changed.
+                  <br><b>Note:</b> The <code>.current</code> property of a ref is mutable and updating it <u>does not cause a re-render</u>. This makes <code>useRef</code> ideal for storing values that need to persist across renders but should not trigger UI updates, such as DOM nodes, timers, or previous values.
+                </div>
+            </li>
+            <li><code>useMemo()</code> &amp; <code>useCallback()</code> – performance optimizations
+                <pre><code>{`const expensiveValue = useMemo(() => computeExpensive(a, b), [a, b]);
+const memoizedCallback = useCallback(() => doSomething(a), [a]);`}</code></pre>
+            </li>
+            <li><code>useContext()</code> – global-like state
+                <pre><code>{`const value = useContext(MyContext);`}</code></pre>
+                <div style="color:#555;font-size:0.97em;margin-top:0.3em;">
+                  <b>Explanation:</b> <code>useContext</code> is a React hook that lets you access the value of a React Context directly inside your component.<br>
+                  First, you create a context with <code>const MyContext = React.createContext(defaultValue);</code> and provide a value using <code>&lt;MyContext.Provider value={...}&gt;</code> higher up in your component tree.<br>
+                  Any child component can then call <code>useContext(MyContext)</code> to read the current value of the context, without having to pass props down manually at every level (avoiding "prop drilling").<br>
+                  <b>Note:</b> When the context value changes, all components using <code>useContext</code> will re-render with the new value. Context is great for global-like state (such as theme, user, or language), but avoid overusing it for frequently changing data, as it can cause unnecessary re-renders.
+                </div>
+            </li>
+            <li><code>useReducer()</code> – for complex state logic
+                <pre><code>{`const [state, dispatch] = useReducer(reducer, initialState);
+dispatch({ type: 'increment' });`}</code></pre>
+            </li>
+        </ul>
+
+        <div class="section-title">📂 Component Patterns</div>
+        <ul>
+            <li>Controlled vs uncontrolled inputs</li>
+            <li>Conditional rendering</li>
+            <li>Lists and keys</li>
+            <li>Reusable components + props drilling</li>
+        </ul>
+
+        <div class="section-title">🧠 Advanced Tips</div>
+        <ul>
+            <li>Avoid prop drilling with Context</li>
+            <li>Prefer composition over inheritance</li>
+            <li>Code-splitting with <code>React.lazy()</code></li>
+            <li>Optimize with memoization</li>
+            <li>Clean up side effects in <code>useEffect()</code></li>
+            <li>Error boundaries for production resilience</li>
+        </ul>
+
+        <hr>
+        <div class="img-wrapper">
+            <img src="images/react-%20cheatsheet.jfif" alt="React Cheat Sheet">
+            <div class="img-caption">Visual React Cheat Sheet (responsive image)</div>
+        </div>
+    </div>
+</body>
+</html>

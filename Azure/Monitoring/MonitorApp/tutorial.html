@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure App Service + Application Insights Tutorial</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+        .container { max-width: 700px; margin: 40px auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.07); padding: 32px; }
+        h1, h2 { color: #2d5fa4; }
+        code, pre { background: #f0f0f0; border-radius: 4px; padding: 2px 6px; }
+        pre { padding: 12px; overflow-x: auto; }
+        @media (max-width: 600px) {
+            .container { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Deploying a Simple Python App to Azure App Service</h1>
+        <p>This tutorial guides you through creating a minimal Flask app, running it locally, and preparing it for deployment to Azure App Service with Application Insights for troubleshooting.</p>
+        <h2>1. Project Setup</h2>
+        <ul>
+            <li>Create a folder for your project (already done).</li>
+            <li>Add <code>app.py</code> with the following content:</li>
+        </ul>
+        <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+@app.route('/error')
+def error():
+    raise Exception('Intentional error for Application Insights demo!')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
+</code></pre>
+        <ul>
+            <li>Add <code>requirements.txt</code> with:</li>
+        </ul>
+        <pre><code>Flask==3.0.3
+</code></pre>
+        <h2>2. Python Environment</h2>
+        <ul>
+            <li>Create and activate a virtual environment (already configured).</li>
+            <li>Install dependencies:</li>
+        </ul>
+        <pre><code>pip install -r requirements.txt</code></pre>
+        <h2>3. Run Locally</h2>
+        <ul>
+            <li>Start the app:</li>
+        </ul>
+        <pre><code>python app.py</code></pre>
+        <ul>
+            <li>Visit <a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> for "Hello, World!".</li>
+            <li>Visit <a href="http://localhost:8000/error" target="_blank">http://localhost:8000/error</a> to trigger an intentional error.</li>
+        </ul>
+        <h2>4. Next Steps</h2>
+        <ul>
+            <li>Deploy to Azure App Service.</li>
+            <li>Enable Application Insights to monitor and troubleshoot errors.</li>
+        </ul>
+        <p><em>Continue with Azure deployment and Application Insights setup to complete your experiment.</em></p>
+    </div>
+
+
+
+    <h2>5. Azure CLI Deployment Output</h2>
+    <p>The following steps show the Azure CLI commands and their outputs for deploying your app:</p>
+
+    <div style="overflow-x:auto;">
+        <pre><code>
+    # Create a resource group
+    az group create --name MonitorApp-rg --location eastus
+
+    # Output:
+    {
+      "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/MonitorApp-rg",
+      "location": "eastus",
+      "managedBy": null,
+      "name": "MonitorApp-rg",
+      "properties": {
+        "provisioningState": "Succeeded"
+      },
+      "tags": null,
+      "type": "Microsoft.Resources/resourceGroups"
+    }
+
+    # Create an App Service plan
+    az appservice plan create --name MonitorApp-plan --resource-group MonitorApp-rg --sku FREE --is-linux
+
+    # Output:
+    {
+      "elasticScaleEnabled": false,
+      "geoRegion": "East US",
+      "id": ".../serverfarms/MonitorApp-plan",
+      "location": "eastus",
+      "name": "MonitorApp-plan",
+      "provisioningState": "Succeeded",
+      "reserved": true,
+      "resourceGroup": "MonitorApp-rg",
+      "sku": {
+        "name": "U13",
+        "tier": "LinuxFree"
+      },
+      ...
+    }
+
+    # Create the Web App
+    az webapp create --resource-group MonitorApp-rg --plan MonitorApp-plan --name MonitorApp-web --runtime "PYTHON|3.11"
+
+    # Output:
+    {
+      "defaultHostName": "monitorapp-web.azurewebsites.net",
+      "enabled": true,
+      "hostNames": [
+        "monitorapp-web.azurewebsites.net"
+      ],
+      "location": "East US",
+      "name": "MonitorApp-web",
+      "provisioningState": "Succeeded",
+      "resourceGroup": "MonitorApp-rg",
+      "state": "Running",
+      ...
+    }
+        </code></pre>
+    </div>
+    <p>
+        <strong>Note:</strong> You can now deploy your code to the created web app using <code>az webapp deploy</code> or via GitHub Actions/ZIP deployment.
+    </p>
+    <hr>
+    <h2>Step-by-Step: Publishing a Python Flask API to Azure App Service</h2>
+    <ol>
+      <li><strong>Project Setup</strong>
+        <ul>
+          <li>Create a folder for your project.</li>
+          <li>Add <code>app.py</code> with this code:<br>
+            <pre><code>from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello, World!'
+
+@app.route('/error')
+def error():
+    raise Exception('Intentional error for Application Insights demo!')
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8000)
+</code></pre>
+          </li>
+          <li>Add <code>requirements.txt</code> with:<br>
+            <pre><code>Flask==3.0.3
+gunicorn
+</code></pre>
+            <em>Gunicorn is required for production hosting on Azure App Service Linux.</em>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Local Testing</strong>
+        <ul>
+          <li>Install dependencies: <code>pip install -r requirements.txt</code></li>
+          <li>Run the app locally: <code>python app.py</code></li>
+          <li>Test in your browser:
+            <ul>
+              <li><a href="http://localhost:8000/" target="_blank">http://localhost:8000/</a> (should show "Hello, World!")</li>
+              <li><a href="http://localhost:8000/error" target="_blank">http://localhost:8000/error</a> (should show an error for monitoring test)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Prepare for Azure Deployment</strong>
+        <ul>
+          <li>Zip your app files (from the project folder):<br>
+            <code>Compress-Archive -Path * -DestinationPath deploy.zip -Force</code>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Azure Resource Setup (CLI or Cloud Shell)</strong>
+        <ul>
+          <li>Login and select your subscription/tenant as needed.</li>
+          <li>Create a resource group:<br>
+            <code>az group create --name MonitorApp-rg --location eastus</code>
+          </li>
+          <li>Create an App Service plan (Linux):<br>
+            <code>az appservice plan create --name MonitorApp-plan --resource-group MonitorApp-rg --sku FREE --is-linux</code><br>
+            <em>An App Service plan defines the region, features, and compute resources for your web app. The FREE tier is good for testing.</em>
+          </li>
+          <li>Create the Web App (Python 3.11):<br>
+            <code>az webapp create --resource-group MonitorApp-rg --plan MonitorApp-plan --name MonitorApp-web --runtime "PYTHON|3.11"</code>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Configure Startup Command</strong>
+        <ul>
+          <li>In the Azure Portal, go to your App Service (<strong>MonitorApp-web</strong>).</li>
+          <li>Navigate to <strong>Configuration</strong> &gt; <strong>General settings</strong>.</li>
+          <li>Set the <strong>Startup Command</strong> to:<br>
+            <code>gunicorn --bind=0.0.0.0 --timeout 600 app:app</code>
+          </li>
+          <li>Save and restart your App Service.</li>
+        </ul>
+      </li>
+      <li><strong>Deploy Your Code</strong>
+        <ul>
+          <li>Deploy the ZIP file:<br>
+            <code>az webapp deploy --resource-group MonitorApp-rg --name MonitorApp-web --src-path deploy.zip --type zip</code>
+          </li>
+        </ul>
+      </li>
+      <li><strong>Verify Deployment</strong>
+        <ul>
+          <li>Visit your app:<br>
+            <a href="https://monitorapp-web.azurewebsites.net/" target="_blank">https://monitorapp-web.azurewebsites.net/</a> (should show "Hello, World!")<br>
+            <a href="https://monitorapp-web.azurewebsites.net/error" target="_blank">https://monitorapp-web.azurewebsites.net/error</a> (should show an error for monitoring test)
+          </li>
+          <li>If you see the default Azure page or an error, check the <strong>Log stream</strong> in the Azure Portal for troubleshooting.</li>
+        </ul>
+      </li>
+    </ol>
+    <h2>What is an App Service Plan?</h2>
+    <p>An <strong>App Service plan</strong> in Azure defines the region (Datacenter), features, cost, and compute resources associated with your web app. It determines how much you pay and what features you get. The <strong>FREE</strong> tier is great for development and testing, but you can scale up for production workloads.</p>
+    <h2>Next Steps</h2>
+    <ul>
+      <li>Enable Application Insights for monitoring and diagnostics.</li>
+      <li>Test error handling and view logs in Azure Portal.</li>
+      <li>Set up CI/CD for automated deployments.</li>
+    </ul>
