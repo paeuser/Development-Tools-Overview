@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Reference Guide</title>
+    <!-- Tailwind CSS CDN for responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        /* Ensure consistent height for cards in a row */
+        .card {
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-8 sm:mb-12">
+            My Tech Stack Reference
+        </h1>
+
+        <!-- Grid Container for Technology Sections -->
+        <!-- Responsive grid: 1 column on small, 2 on medium, 3 on large screens -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- Vue.js Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-green-600 mb-4">Vue.js</h2>
+                    <div class="text-gray-700">
+                        SFC (Single File Components)<br>
+                        Composition API (Vue 3)<br>
+                        Options API (Vue 2 & 3)<br>
+                        Vue Router<br>
+                        Pinia (Vue 3) / Vuex (Vue 2 & 3)<br>
+                        Vite (Vue 3)<br>
+                        Nuxt.js<br>
+                        Vue CLI (Vue 2)<br>
+                        Reactivity System (Vue 2 & 3)<br>
+                        Teleport (Vue 3)<br>
+                        Fragments (Vue 3)<br>
+                        **Testing Frameworks:**<br>
+                        Jest<br>
+                        Vue Test Utils<br>
+                        Cypress (E2E)<br>
+                        Vitest
+                    </div>
+                </div>
+            </div>
+
+            <!-- React.js Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4">React.js</h2>
+                    <div class="text-gray-700">
+                        JSX<br>
+                        Hooks (useState, useEffect, etc.)<br>
+                        Context API<br>
+                        React Router<br>
+                        Redux / Zustand<br>
+                        Next.js<br>
+                        CRA / Vite<br>
+                        **Testing Frameworks:**<br>
+                        Jest<br>
+                        React Testing Library<br>
+                        Enzyme<br>
+                        Cypress (E2E)<br>
+                        Playwright (E2E)
+                    </div>
+                </div>
+            </div>
+
+            <!-- .NET Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-purple-600 mb-4">.NET</h2>
+                    <div class="text-gray-700">
+                        .NET Core / 8<br>
+                        ASP.NET Core<br>
+                        Entity Framework Core<br>
+                        Web API<br>
+                        SQL Server<br>
+                        **Testing Frameworks:**<br>
+                        NUnit<br>
+                        xUnit.net<br>
+                        MSTest<br>
+                        Moq (Mocking) <br>
+                        Middleware <br>
+                        feature flags
+                    </div>
+                </div>
+            </div>
+
+            <!-- C# Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-pink-600 mb-4">C#</h2>
+                    <div class="text-gray-700">
+                        Language Features (LINQ, Async/Await)<br>
+                        Generics<br>
+                        Delegates & Events<br>
+                        Reflection<br>
+                        Attributes<br>
+                        Garbage Collection<br>
+                        Exception Handling
+                    </div>
+                </div>
+            </div>
+
+            <!-- .NET Authentication & Authorization Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-fuchsia-600 mb-4">.NET Auth & Authz</h2>
+                    <div class="text-gray-700">
+                        ASP.NET Core Identity<br>
+                        JWT (JSON Web Tokens)<br>
+                        OAuth 2.0 protocol / OpenID Connect (Azure AD and PingOne)<br>
+                        OpenID Connect login endpoint. <br>
+                        Policy-Based Authorization<br>
+                        Role-Based Authorization<br>
+                        Claims-Based Authorization<br>
+                        IdentityServer<br>
+                        Bearer Tokens<br>
+                        Cookie Authentication<br>
+                        Authorization (policies ) <br>
+                        Session Cookie <br>
+                        Program.cs Configures dependency injection, CORS, Swagger, rate limiting, health checks, and middleware pipeline. <br>
+                        Middleware (AuthGuardMiddleware ,ApiRouteNotFoundMiddleware ,FeatureFlagMiddlewareHelper )<br>
+                        Microservices <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Azure Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-cyan-600 mb-4">Azure</h2>
+                    <div class="text-gray-700">
+                        Azure App Service<br>
+                        Azure Functions<br>
+                        Azure SQL Database<br>
+                        Azure Cosmos DB<br>
+                        Azure DevOps<br>
+                        Azure Virtual Machines<br>
+                        Azure Kubernetes Service (AKS)<br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kubernetes Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-orange-600 mb-4">Kubernetes</h2>
+                    <div class="text-gray-700">
+                        Pods<br>
+                        Deployments<br>
+                        Services<br>
+                        Ingress<br>
+                        Namespaces<br>
+                        kubectl<br>
+                        Helm<br>
+                        Kube-proxy<br>
+                        Kubelet <br>
+                    </div>
+                </div>
+            </div>
+
+            <!-- REST API Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-teal-600 mb-4">REST API</h2>
+                    <div class="text-gray-700">
+                        HTTP Methods (GET, POST, PUT, DELETE)<br>
+                        Statelessness<br>
+                        Client-Server Architecture<br>
+                        Uniform Interface<br>
+                        HATEOAS<br>
+                        Idempotence<br>
+                        JSON/XML Payloads<br>
+                        Authentication (OAuth, JWT)<br>
+                        Versioning
+                    </div>
+                </div>
+            </div>
+
+            <!-- DevOps Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-red-600 mb-4">DevOps</h2>
+                    <div class="text-gray-700">
+                        CI/CD<br>
+                        Docker<br>
+                        Terraform<br>
+                        Git<br>
+                        Monitoring (Prometheus, Grafana)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cloud (AWS) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-yellow-600 mb-4">Cloud (AWS)</h2>
+                    <div class="text-gray-700">
+                        EC2<br>
+                        S3<br>
+                        Lambda<br>
+                        RDS<br>
+                        VPC<br>
+                        IAM<br>
+                        CloudWatch
+                    </div>
+                </div>
+            </div>
+
+            <!-- Databases Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-indigo-600 mb-4">Databases</h2>
+                    <div class="text-gray-700">
+                        SQL (PostgreSQL, MySQL)<br>
+                        NoSQL (MongoDB, Cassandra)<br>
+                        Redis<br>
+                        Cosmos DB<br>
+                        Data Warehousing<br>
+                        ETL/ELT
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Fundamentals Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-emerald-600 mb-4">AI Fundamentals</h2>
+                    <div class="text-gray-700">
+                        Machine Learning (ML)<br>
+                        Deep Learning (DL)<br>
+                        Neural Networks<br>
+                        Supervised Learning<br>
+                        Unsupervised Learning<br>
+                        Reinforcement Learning<br>
+                        Natural Language Processing (NLP)<br>
+                        Computer Vision<br>
+                        Generative AI<br>
+                        Algorithms (Regression, Classification, Clustering)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Software Principles Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-lime-600 mb-4">Software Principles</h2>
+                    <div class="text-gray-700">
+                        SOLID Principles<br>
+                        DRY (Don't Repeat Yourself)<br>
+                        KISS (Keep It Simple, Stupid)<br>
+                        YAGNI (You Aren't Gonna Need It)<br>
+                        Separation of Concerns<br>
+                        Dependency Injection<br>
+                        Inversion of Control (IoC)<br>
+                        Design Patterns (e.g., Factory, Singleton, Observer)<br>
+                        Clean Code<br>
+                        Test-Driven Development (TDD)<br>
+                        Domain-Driven Design (DDD)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Angular Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-red-700 mb-4">Angular</h2>
+                    <div class="text-gray-700">
+                        Components<br>
+                        Modules (NgModules)<br>
+                        Directives<br>
+                        Services & Dependency Injection<br>
+                        Routing<br>
+                        Forms (Template-driven & Reactive)<br>
+                        RxJS<br>
+                        Change Detection<br>
+                        Angular CLI<br>
+                        NgRx (State Management)<br>
+                        **Testing Frameworks:**<br>
+                        Jasmine<br>
+                        Karma<br>
+                        Protractor (E2E - deprecated)<br>
+                        Cypress (E2E)<br>
+                        Playwright (E2E)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assurity Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-700 mb-4">Assurity</h2>
+                    <div class="text-gray-700">
+                        Life Insurance Systems<br>
+                        Annuity Products<br>
+                        Policy Administration<br>
+                        Claims Processing<br>
+                        Regulatory Compliance<br>
+                        Financial Reporting <br>
+                        Feature Flags: Dynamic Feature Management CRM directus <br>
+                        ABBYY Vantage <br>
+                        OCR ApiWrapper.Service <br>
+                       Assurity.Ocr.ReverseProxy <br>
+                        YARP (Yet Another Reverse Proxy).<br>
+                        It acts as a gateway for all OCR-related API requests, <BR>
+                            providing authentication, routing, rate limiting, and <BR>
+                                error handling for downstream services such as Assurity.ApiWrapper.Service.<br>
+                        <br>
+                        Rate Limiting <br>
+                        Implements IP-based rate limiting using AspNetCoreRateLimit to prevent abuse. <br>
+                        Limits are configurable in appsettings.json (e.g., 5 requests per 10 seconds). <br>
+                        API key must be provided in the api-Key header <BR>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

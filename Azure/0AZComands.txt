@@ -1,0 +1,20 @@
+az account show --output table
+
+
+how your current subscription
+
+az account show --query "{Name:name, Id:id}" --output table
+
+
+Here's the correct command to show Tenant and Subscription info with headers:
+az account show --query "{TenantId:tenantId, SubscriptionName:name, SubscriptionId:id}" --output table
+
+
+
+
+from vs code 
+Log in to Azure CLI with the specified tenant to access the correct subscription.
+az login --tenant 7a16bfae-5ad8-4333-ae59-bdd3df252e95
+
+press enter
+

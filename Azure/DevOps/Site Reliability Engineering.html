@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Reliability Engineering (SRE)</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 0 1em; }
+        .container { max-width: 800px; margin: 32px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px #e0e0e0; padding: 2em 1.5em; }
+        h1, h2 { color: #0078d4; }
+        ul, ol { margin-bottom: 1.5em; }
+        li { margin-bottom: 0.7em; line-height: 1.6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Site Reliability Engineering (SRE)</h1>
+    <p><b>Site Reliability Engineering (SRE)</b> is a discipline that applies software engineering principles to IT operations, with the goal of creating scalable and highly reliable software systems. SRE originated at Google and is now widely adopted across the industry.</p>
+
+    <h2>Key Concepts</h2>
+    <ul>
+        <li><b>Reliability:</b> Ensuring systems are available, performant, and resilient to failures.</li>
+        <li><b>Automation:</b> Reducing manual work through scripts, tools, and automated processes.</li>
+        <li><b>Monitoring & Observability:</b> Tracking system health, performance, and user experience using metrics, logs, and traces.</li>
+        <li><b>Incident Response:</b> Rapidly detecting, diagnosing, and resolving outages or degradations.</li>
+        <li><b>Service Level Objectives (SLOs):</b> Quantitative goals for reliability and performance, often tied to Service Level Agreements (SLAs).</li>
+        <li><b>Error Budgets:</b> Allowable threshold for unreliability, balancing innovation and stability.</li>
+        <li><b>Capacity Planning:</b> Ensuring resources scale to meet demand and avoid bottlenecks.</li>
+        <li><b>Change Management:</b> Safely rolling out updates and minimizing risk of disruptions.</li>
+    </ul>
+
+    <h2>SRE Practices</h2>
+    <ul>
+        <li>Automated deployment and rollback</li>
+        <li>Infrastructure as Code (IaC)</li>
+        <li>Proactive monitoring and alerting</li>
+        <li>Postmortems and blameless incident reviews</li>
+        <li>Chaos engineering and resilience testing</li>
+        <li>Capacity and performance testing</li>
+        <li>Collaboration between development and operations teams</li>
+    </ul>
+
+    <h2>Benefits of SRE</h2>
+    <ul>
+        <li>Improved reliability and uptime</li>
+        <li>Faster incident response and recovery</li>
+        <li>Reduced manual toil and increased automation</li>
+        <li>Better alignment between business goals and technical operations</li>
+        <li>Continuous improvement through data-driven decisions</li>
+    </ul>
+
+    <h2>SRE in Azure & DevOps</h2>
+    <ul>
+        <li>Use Azure Monitor, Application Insights, and Log Analytics for observability.</li>
+        <li>Automate deployments with Azure DevOps pipelines and Infrastructure as Code.</li>
+        <li>Set up SLOs and error budgets for cloud services.</li>
+        <li>Implement robust incident management and alerting.</li>
+        <li>Leverage Azure Automation and Functions for remediation tasks.</li>
+    </ul>
+
+    <p><b>Summary:</b> SRE bridges the gap between development and operations, driving reliability, scalability, and efficiency in modern cloud environments.</p>
+</div>
+
+<div class="container" style="margin-top:2em;">
+    <h2>What is Gremlin?</h2>
+    <p><b>Gremlin</b> is a popular chaos engineering platform used to improve system reliability by intentionally injecting failures and observing how systems respond. The goal is to identify weaknesses before they cause real outages, helping teams build more resilient applications and infrastructure.</p>
+    <ul>
+        <li><b>Chaos Engineering:</b> Gremlin enables controlled experiments that simulate outages, latency, resource exhaustion, and other failure scenarios.</li>
+        <li><b>Supported Attacks:</b> Includes CPU, memory, disk, network, shutdown, process kill, and more.</li>
+        <li><b>Safety Controls:</b> Gremlin provides safeguards to minimize risk, such as blast radius control and automatic rollback.</li>
+        <li><b>Integration:</b> Works with cloud, on-premises, containers, and Kubernetes environments.</li>
+        <li><b>Use Cases:</b> Test incident response, validate monitoring/alerting, improve recovery procedures, and ensure SLOs are met.</li>
+    </ul>
+    <p><b>Example:</b> You can use Gremlin to simulate a node failure in a Kubernetes cluster and verify that your application self-heals and remains available.</p>
+    <p><b>Summary:</b> Gremlin helps SRE and DevOps teams proactively find and fix reliability issues, making systems more robust against real-world failures.</p>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Web Servers Overview</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f9fa; margin: 0; padding: 0 1em; }
+        h1 { color: #1976d2; }
+        h2 { color: #17406a; margin-top: 1.5em; }
+        ul { margin-bottom: 1.5em; }
+        li { margin-bottom: 0.5em; }
+        .desc { color: #444; font-size: 0.97em; }
+    </style>
+</head>
+<body>
+    <h1>Microsoft Web Servers Overview</h1>
+    <h2>IIS (Internet Information Services)</h2>
+    <ul>
+        <li><span class="desc"><b>IIS</b> is Microsoft's full-featured, enterprise-grade web server for hosting websites, web applications, and services on Windows. It supports HTTP, HTTPS, FTP, FTPS, SMTP, and more.</span></li>
+        <li><span class="desc">Commonly used for ASP.NET, ASP.NET Core (in reverse proxy mode), classic ASP, PHP, and static content.</span></li>
+        <li><span class="desc">Provides advanced features: authentication, SSL, URL rewriting, logging, application pools, and more.</span></li>
+    </ul>
+
+    <h2>Kestrel</h2>
+    <ul>
+        <li><span class="desc"><b>Kestrel</b> is a cross-platform, high-performance web server for ASP.NET Core applications. It is included by default in ASP.NET Core projects.</span></li>
+        <li><span class="desc">Runs on Windows, Linux, and macOS. Designed for speed and lightweight hosting.</span></li>
+        <li><span class="desc">Often used behind a reverse proxy (like IIS, Nginx, or Apache) in production for security and advanced features.</span></li>
+        <li><span class="desc">Can also be used as a standalone web server for development or lightweight production scenarios.</span></li>
+    </ul>
+
+
+    <h2>Running and Configuring Kestrel Locally</h2>
+    <ul>
+        <li><span class="desc"><b>How to run:</b> When you run an ASP.NET Core app locally (e.g., <code>dotnet run</code> or from Visual Studio), Kestrel starts automatically and listens on the default port (usually <b>http://localhost:5000</b> and <b>https://localhost:5001</b>).</span></li>
+        <li><span class="desc"><b>Accessing your app:</b> Open a browser and go to <code>http://localhost:5000</code> or <code>https://localhost:5001</code> to access your running app.</span></li>
+        <li><span class="desc"><b>Configuring Kestrel:</b> You can configure endpoints, ports, and limits in <code>appsettings.json</code> or in code in <code>Program.cs</code> or <code>Startup.cs</code>.</span></li>
+        <li><span class="desc">Example <b>appsettings.json</b> configuration:</span>
+            <pre style="background:#f4f4f4; padding:8px; border-radius:6px; font-size:0.97em;">
+{
+  "Kestrel": {
+    "Endpoints": {
+      "Http": {
+        "Url": "http://localhost:6000"
+      },
+      "Https": {
+        "Url": "https://localhost:6001"
+      }
+    }
+  }
+}
+            </pre>
+        </li>
+        <li><span class="desc">You can also configure Kestrel in <code>Program.cs</code> (ASP.NET Core 6+):</span>
+            <pre style="background:#f4f4f4; padding:8px; border-radius:6px; font-size:0.97em;">
+var builder = WebApplication.CreateBuilder(args);
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    serverOptions.ListenAnyIP(7000); // HTTP
+    serverOptions.ListenAnyIP(7001, listenOptions => listenOptions.UseHttps()); // HTTPS
+});
+var app = builder.Build();
+// ...
+app.Run();
+            </pre>
+        </li>
+        <li><span class="desc">You can specify environment variables (e.g., <code>ASPNETCORE_URLS</code>) to override the default URLs: <code>ASPNETCORE_URLS="http://localhost:8080" dotnet run</code></span></li>
+        <li><span class="desc">Kestrel supports advanced options like request limits, HTTPS certificates, and more. See the <a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel" target="_blank">Kestrel docs</a> for details.</span></li>
+    </ul>
+    <h2>HTTP.sys</h2>
+    <ul>
+        <li><span class="desc"><b>HTTP.sys</b> is a Windows-only web server for ASP.NET Core, built on the Windows HTTP Server API.</span></li>
+        <li><span class="desc">Supports Windows authentication, direct kernel-mode SSL, and is suitable for Windows services or scenarios where IIS is not required.</span></li>
+    </ul>
+
+    <h2>Other Web Servers</h2>
+    <ul>
+        <li><span class="desc"><b>WebListener</b> (legacy): An older Windows-only web server for ASP.NET Core, replaced by HTTP.sys.</span></li>
+        <li><span class="desc"><b>Self-hosting</b>: .NET applications can self-host HTTP endpoints using HttpListener or OWIN/Katana for custom scenarios.</span></li>
+    </ul>
+
+    <h2>Typical Usage Patterns</h2>
+    <ul>
+        <li><span class="desc">On Windows, ASP.NET Core apps are often hosted with Kestrel behind IIS (IIS acts as a reverse proxy).</span></li>
+        <li><span class="desc">On Linux, Kestrel is commonly used behind Nginx or Apache as a reverse proxy.</span></li>
+        <li><span class="desc">For Windows services or specialized needs, HTTP.sys may be used directly.</span></li>
+    </ul>
+
+    <h2>References</h2>
+    <ul>
+        <li><a href="https://learn.microsoft.com/en-us/iis/" target="_blank">IIS Documentation (Microsoft Learn)</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/kestrel" target="_blank">Kestrel Web Server (Microsoft Learn)</a></li>
+        <li><a href="https://learn.microsoft.com/en-us/aspnet/core/fundamentals/servers/httpsys" target="_blank">HTTP.sys Web Server (Microsoft Learn)</a></li>
+    </ul>
+</body>
+</html>

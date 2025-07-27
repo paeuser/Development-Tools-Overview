@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET Framework and .NET Core Interview Questions</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f9fa; margin: 0; padding: 0 1em; }
+        h1 { color: #1976d2; }
+        h2 { color: #17406a; margin-top: 1.5em; }
+        .q { font-weight: bold; color: #17406a; margin-top: 1em; }
+        .a { color: #333; margin-bottom: 1em; }
+        ul { margin-bottom: 1.5em; }
+    </style>
+</head>
+<body>
+    <h1>.NET Framework and .NET Core Interview Questions & Answers</h1>
+    <ol>
+        <li><span class="q">What is the .NET Framework?</span><br><span class="a">A software development platform developed by Microsoft for building and running Windows applications. It includes the CLR, class libraries, and supports multiple languages.</span></li>
+        <li><span class="q">What is .NET Core?</span><br><span class="a">A cross-platform, open-source version of .NET for building applications that run on Windows, Linux, and macOS. Now part of .NET 5+ as ".NET".</span></li>
+        <li><span class="q">What is the CLR?</span><br><span class="a">The Common Language Runtime is the virtual machine component of .NET that manages memory, code execution, security, and more.</span></li>
+        <li><span class="q">What is the difference between .NET Framework and .NET Core?</span><br><span class="a">.NET Framework is Windows-only and mature; .NET Core is cross-platform, lightweight, and modern. .NET 5+ unifies both.</span></li>
+        <li><span class="q">What is the CTS?</span><br><span class="a">Common Type System defines how types are declared, used, and managed in the runtime, ensuring language interoperability.</span></li>
+        <li><span class="q">What is the CLS?</span><br><span class="a">Common Language Specification is a set of rules for .NET languages to ensure interoperability.</span></li>
+        <li><span class="q">What is the GAC?</span><br><span class="a">Global Assembly Cache is a machine-wide code cache for storing shared .NET assemblies.</span></li>
+        <li><span class="q">What is an assembly?</span><br><span class="a">A compiled code library used for deployment, versioning, and security. It can be a DLL or EXE.</span></li>
+        <li><span class="q">What is NuGet?</span><br><span class="a">NuGet is the package manager for .NET, used to share and consume reusable code.</span></li>
+        <li><span class="q">What is dependency injection?</span><br><span class="a">A design pattern for achieving Inversion of Control, where dependencies are provided to a class rather than created by it. Built-in in ASP.NET Core.</span></li>
+        <li><span class="q">What is ASP.NET Core?</span><br><span class="a">A cross-platform, high-performance framework for building modern web, cloud, and API applications.</span></li>
+        <li><span class="q">What is Entity Framework?</span><br><span class="a">An ORM (Object-Relational Mapper) for .NET, enabling developers to work with databases using .NET objects.</span></li>
+        <li><span class="q">What is middleware in ASP.NET Core?</span><br><span class="a">Software components that are assembled into an application pipeline to handle requests and responses.</span></li>
+        <li><span class="q">What is Kestrel?</span><br><span class="a">A cross-platform web server for ASP.NET Core applications.</span></li>
+        <li><span class="q">What is the difference between Task and Thread?</span><br><span class="a">A Thread is a lower-level OS construct; a Task is a higher-level abstraction for asynchronous programming in .NET.</span></li>
+        <li><span class="q">What is async/await?</span><br><span class="a">Keywords in C# for asynchronous programming, allowing non-blocking code execution.</span></li>
+        <li><span class="q">What is a delegate?</span><br><span class="a">A type that represents references to methods with a specific parameter list and return type.</span></li>
+        <li><span class="q">What is a lambda expression?</span><br><span class="a">An anonymous function that can contain expressions and statements, used to create delegates or expression tree types.</span></li>
+        <li><span class="q">What is LINQ?</span><br><span class="a">Language Integrated Query, a set of features for querying data from different sources in a consistent way.</span></li>
+        <li><span class="q">What is boxing and unboxing?</span><br><span class="a">Boxing is converting a value type to object; unboxing is extracting the value type from the object.</span></li>
+        <li><span class="q">What is garbage collection?</span><br><span class="a">Automatic memory management that frees unused objects to reclaim memory.</span></li>
+        <li><span class="q">What is a value type vs reference type?</span><br><span class="a">Value types store data directly; reference types store references to the data's memory address.</span></li>
+        <li><span class="q">What is a nullable type?</span><br><span class="a">A value type that can also represent null, e.g., int? in C#.</span></li>
+        <li><span class="q">What is a generic?</span><br><span class="a">A feature that allows classes and methods to operate on types specified by the programmer at compile time.</span></li>
+        <li><span class="q">What is reflection?</span><br><span class="a">The ability of a program to inspect and modify its own structure and behavior at runtime.</span></li>
+        <li><span class="q">What is a RESTful API?</span><br><span class="a">An API that follows REST principles, using HTTP methods for CRUD operations and stateless communication.</span></li>
+        <li><span class="q">What is JWT?</span><br><span class="a">JSON Web Token, a compact, URL-safe means of representing claims to be transferred between two parties, often used for authentication.</span></li>
+        <li><span class="q">What is SignalR?</span><br><span class="a">A library for ASP.NET that enables real-time web functionality, such as live chat or notifications.</span></li>
+        <li><span class="q">What is a microservice?</span><br><span class="a">An architectural style that structures an application as a collection of loosely coupled services.</span></li>
+        <li><span class="q">What is the difference between Web API and MVC?</span><br><span class="a">Web API is for building HTTP services; MVC is for building web applications with views and controllers.</span></li>
+        <li><span class="q">What is dependency inversion principle?</span><br><span class="a">A SOLID principle stating that high-level modules should not depend on low-level modules, but both should depend on abstractions.</span></li>
+        <li><span class="q">What is the difference between abstract class and interface?</span><br><span class="a">Abstract classes can have implementation; interfaces cannot (prior to C# 8). A class can implement multiple interfaces but inherit only one abstract class.</span></li>
+        <li><span class="q">What is a sealed class?</span><br><span class="a">A class that cannot be inherited.</span></li>
+        <li><span class="q">What is a static class?</span><br><span class="a">A class that cannot be instantiated and contains only static members.</span></li>
+        <li><span class="q">What is a partial class?</span><br><span class="a">A class whose definition can be split across multiple files.</span></li>
+        <li><span class="q">What is a singleton pattern?</span><br><span class="a">A design pattern that restricts a class to a single instance and provides a global point of access to it.</span></li>
+        <li><span class="q">What is the difference between IEnumerable and IQueryable?</span><br><span class="a">IEnumerable executes queries in memory; IQueryable can translate queries to the data source (e.g., SQL) for remote execution.</span></li>
+        <li><span class="q">What is middleware?</span><br><span class="a">Software that handles requests and responses in the ASP.NET Core pipeline.</span></li>
+        <li><span class="q">What is the Startup.cs file?</span><br><span class="a">A configuration file in ASP.NET Core that defines services and the app's request pipeline.</span></li>
+        <li><span class="q">What is appsettings.json?</span><br><span class="a">A configuration file in ASP.NET Core for storing settings like connection strings and app configuration.</span></li>
+        <li><span class="q">What is the difference between synchronous and asynchronous programming?</span><br><span class="a">Synchronous code blocks the thread until completion; asynchronous code allows other operations to run while waiting.</span></li>
+        <li><span class="q">What is a memory leak?</span><br><span class="a">A situation where memory that is no longer needed is not released, leading to increased memory usage.</span></li>
+        <li><span class="q">What is a deadlock?</span><br><span class="a">A situation where two or more threads are blocked forever, each waiting for the other to release a resource.</span></li>
+        <li><span class="q">What is a race condition?</span><br><span class="a">A situation where the outcome depends on the sequence or timing of uncontrollable events, often in multithreaded code.</span></li>
+        <li><span class="q">What is the difference between public, private, protected, and internal access modifiers?</span><br><span class="a">public: accessible everywhere; private: only within the class; protected: within the class and derived classes; internal: within the same assembly.</span></li>
+        <li><span class="q">What is a constructor?</span><br><span class="a">A special method called when an object is instantiated, used to initialize the object.</span></li>
+        <li><span class="q">What is method overloading and overriding?</span><br><span class="a">Overloading: same method name, different parameters; overriding: derived class provides a new implementation for a base class method.</span></li>
+        <li><span class="q">What is polymorphism?</span><br><span class="a">The ability of different classes to be treated as instances of the same base class, typically via interfaces or inheritance.</span></li>
+        <li><span class="q">What is encapsulation?</span><br><span class="a">The bundling of data and methods that operate on that data within a class, restricting direct access to some of the object's components.</span></li>
+        <li><span class="q">What is inheritance?</span><br><span class="a">A mechanism where a new class derives from an existing class, inheriting its members.</span></li>
+        <li><span class="q">What is a namespace?</span><br><span class="a">A container for classes and other types, used to organize code and prevent naming conflicts.</span></li>
+        <li><span class="q">What is a try-catch block?</span><br><span class="a">A construct for handling exceptions in .NET code.</span></li>
+    </ol>
+</body>
+</html>

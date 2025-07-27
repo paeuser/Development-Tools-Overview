@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infrastructure as Code: ARM, Bicep, Terraform</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 0 1em; }
+        .container { max-width: 800px; margin: 32px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px #e0e0e0; padding: 2em 1.5em; }
+        h1, h2 { color: #0078d4; }
+        ul, ol { margin-bottom: 1.5em; }
+        li { margin-bottom: 0.7em; line-height: 1.6; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Infrastructure as Code (IaC): ARM, Bicep, and Terraform</h1>
+    <p><b>Infrastructure as Code (IaC)</b> is the practice of managing and provisioning cloud resources using machine-readable configuration files, rather than manual processes. IaC enables automation, repeatability, version control, and consistency for cloud infrastructure deployments.</p>
+
+    <h2>Azure Resource Manager (ARM) Templates</h2>
+    <ul>
+        <li><b>What:</b> ARM templates are JSON files that define the resources and configurations to be deployed in Azure.</li>
+        <li><b>How:</b> You declare resources, parameters, variables, and outputs in a JSON structure.</li>
+        <li><b>Features:</b> Native to Azure, supports complex deployments, parameterization, and dependencies.</li>
+        <li><b>Pros:</b> Official Azure support, fine-grained control, integrates with Azure DevOps and CLI.</li>
+        <li><b>Cons:</b> Verbose syntax, harder to read and maintain for large deployments.</li>
+        <li><b>Example:</b>
+            <pre><code>{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2022-09-01",
+      "name": "mystorageaccount",
+      "location": "[resourceGroup().location]",
+      "sku": { "name": "Standard_LRS" },
+      "kind": "StorageV2",
+      "properties": {}
+    }
+  ]
+}</code></pre>
+        </li>
+    </ul>
+
+    <h2>Bicep</h2>
+    <ul>
+        <li><b>What:</b> Bicep is a domain-specific language (DSL) for deploying Azure resources, designed to simplify ARM template authoring.</li>
+        <li><b>How:</b> Uses a concise, declarative syntax that compiles to standard ARM JSON templates.</li>
+        <li><b>Features:</b> Easier to read/write, modular, supports parameters, variables, loops, and conditions.</li>
+        <li><b>Pros:</b> Cleaner syntax, better tooling, native Azure support, open source.</li>
+        <li><b>Cons:</b> Azure-only, must transpile to ARM JSON for deployment.</li>
+        <li><b>Example:</b>
+            <pre><code>resource stg 'Microsoft.Storage/storageAccounts@2022-09-01' = {
+  name: 'mystorageaccount'
+  location: resourceGroup().location
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+}</code></pre>
+        </li>
+    </ul>
+
+    <h2>Terraform</h2>
+    <ul>
+        <li><b>What:</b> Terraform is an open-source, cloud-agnostic IaC tool by HashiCorp that supports Azure, AWS, GCP, and more.</li>
+        <li><b>How:</b> Uses HashiCorp Configuration Language (HCL) to define resources and infrastructure in a declarative way.</li>
+        <li><b>Features:</b> State management, modules, providers for many clouds, plan/apply workflow.</li>
+        <li><b>Pros:</b> Multi-cloud support, reusable modules, strong community, mature ecosystem.</li>
+        <li><b>Cons:</b> Requires managing state files, learning HCL, and sometimes provider-specific quirks.</li>
+        <li><b>Example:</b>
+            <pre><code>resource "azurerm_storage_account" "example" {
+  name                     = "mystorageaccount"
+  resource_group_name      = azurerm_resource_group.example.name
+  location                 = azurerm_resource_group.example.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+}</code></pre>
+        </li>
+    </ul>
+
+    <h2>Summary Table</h2>
+    <table border="1" cellpadding="6" style="border-collapse:collapse; margin-bottom:2em;">
+        <tr style="background:#e6f7ff;"><th>Tool</th><th>Language</th><th>Cloud Support</th><th>Best For</th></tr>
+        <tr><td>ARM</td><td>JSON</td><td>Azure only</td><td>Official, complex Azure deployments</td></tr>
+        <tr><td>Bicep</td><td>Bicep DSL</td><td>Azure only</td><td>Simpler, modular Azure deployments</td></tr>
+        <tr><td>Terraform</td><td>HCL</td><td>Multi-cloud</td><td>Hybrid/multi-cloud, reusable modules</td></tr>
+    </table>
+
+    <p><b>Tip:</b> For new Azure projects, Bicep is recommended for its simplicity and native support. Use Terraform for multi-cloud or hybrid scenarios. ARM templates remain important for advanced Azure features and compatibility.</p>
+</div>
+</body>
+</html>

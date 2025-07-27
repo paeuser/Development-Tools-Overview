@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#317EFB" />
+    <link rel="manifest" href="manifest.json" />
+    <title>How Do You Create a PowerShell Module?</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #222; }
+        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        h1, h2 { color: #317EFB; }
+        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+        .section { margin-bottom: 2rem; }
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+        }
+        .note { background: #e0f7fa; padding: 1rem; border-radius: 6px; margin: 1rem 0; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f0f0f0; }
+    </style>
+</head>
+<body>
+<div class="container">
+<h1>🛠️ How Do You Create a PowerShell Module?</h1>
+<div class="note">
+  <strong>Local Project Path:</strong> <code>C:\Git\PowerShell\Create-a-PowerShell Module\MyTools</code>
+</div>
+<div class="section">
+<h2>1. Create a Script File with Functions</h2>
+<p>Start by writing one or more functions in a <code>.psm1</code> file:</p>
+<pre><code># MyTools.psm1
+function Say-Hello {
+    param($Name)
+    "Hello, $Name!"
+}
+
+function Add-Numbers {
+    param($a, $b)
+    return $a + $b
+}
+</code></pre>
+<p>You now have the code for your module.</p>
+</div>
+<div class="section">
+<h2>2. Create a Folder and Save the Module</h2>
+<p>Your module must go into a folder with the same name as the <code>.psm1</code> file:</p>
+<pre><code>MyTools\
+  └── MyTools.psm1
+</code></pre>
+<p>Now it's a valid PowerShell module.</p>
+</div>
+<div class="section">
+<h2>3. Use Your Module (Locally)</h2>
+<p>You can import and use it like this:</p>
+<pre><code>Import-Module "C:\Git\PowerShell\Create-a-PowerShell Module\MyTools\MyTools.psm1"
+
+Say-Hello -Name "Eric"
+Add-Numbers -a 3 -b 5
+</code></pre>
+<div class="note">✅ Locally installed means the module only lives on your machine.</div>
+</div>
+<div class="section">
+<h2>📦 How to Install Locally vs. Publishing to PowerShell Gallery</h2>
+<table>
+    <tr><th>Action</th><th>What it means</th><th>Example</th></tr>
+    <tr><td>Install Locally</td><td>You copy or use your module on your own PC</td><td><code>Import-Module</code> from a folder</td></tr>
+    <tr><td>Publish to Gallery</td><td>You upload your module so others can install it with <code>Install-Module</code></td><td>Use <code>Publish-Module</code></td></tr>
+</table>
+</div>
+<div class="section">
+<h2>🧭 What Is the PowerShell Gallery?</h2>
+<p>It’s an online store for modules — but everything is free.</p>
+<p><a href="https://www.powershellgallery.com" target="_blank">Visit PowerShell Gallery</a></p>
+</div>
+
+<div class="section">
+<h2>🚀 Publish Your Module to PowerShell Gallery</h2>
+<ol>
+  <li>Register for a free account at <a href="https://www.powershellgallery.com" target="_blank">PowerShell Gallery</a>.</li>
+  <li>Install the <code>PowerShellGet</code> module if needed:</li>
+  <pre><code>Install-Module -Name PowerShellGet -Force</code></pre>
+  <li>Save your module in a folder named after your module (e.g., <code>MyTools</code>).</li>
+  <li>Publish your module using:</li>
+  <pre><code>Publish-Module -Path "C:\Git\PowerShell\Create-a-PowerShell Module\MyTools" -NuGetApiKey "YOUR_API_KEY"</code></pre>
+  <div class="note">Project path: <code>C:\Git\PowerShell\Create-a-PowerShell Module\MyTools</code></div>
+</ol>
+<div class="note">
+  <strong>Tip:</strong> You need a NuGet API key from your PowerShell Gallery account. Keep it secret!<br />
+  <strong>Reminder:</strong> Your PowerShell Gallery username is <code>ericpowershell</code>.
+</div>
+</div>
+
+<!-- New Section Added Below -->
+<div class="section">
+  <h2>📤 How to Publish a Module from Local Machine to Gallery</h2>
+  <ol>
+    <li><strong>Create a Module Manifest:</strong> Use <code>New-ModuleManifest</code> to create a <code>.psd1</code> file with metadata.</li>
+    <li><strong>Ensure Your Module Folder Structure:</strong> Your folder (e.g., <code>MyTools</code>) contains <code>MyTools.psm1</code> and the manifest <code>MyTools.psd1</code>.</li>
+    <li><strong>Get a NuGet API Key:</strong> Sign into <a href="https://www.powershellgallery.com" target="_blank">PowerShell Gallery</a>, generate an API key, and keep it safe.</li>
+    <li><strong>Install or Update PowerShellGet:</strong> Run <code>Install-Module -Name PowerShellGet -Force</code> in an admin PowerShell.</li>
+    <li><strong>Publish the Module:</strong> Run <code>Publish-Module -Path "C:\Path\To\MyTools" -NuGetApiKey "YOUR_API_KEY"</code> replacing path and API key.</li>
+    <li><strong>List All Commands in Your Module:</strong> Run <code>Get-Command -Module MyTools</code> to see all available functions and cmdlets in your module.</li>
+    <li><strong>Verify Installation:</strong> On any machine, run <code>Install-Module -Name MyTools -Scope CurrentUser</code> to install your module.</li>
+  </ol>
+  <div class="note">
+    Following these steps will share your module with the PowerShell community via the Gallery!
+  </div>
+
+<div style="font-family: Arial, sans-serif; background: #f9f9f9; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; max-width: 700px; margin: 1rem auto;">
+  <h3 style="color: #317EFB; margin-top: 0;">💼 Resume Highlight</h3>
+  <p><strong>•</strong> Streamlined PowerShell scripts into a structured module, enabling better code reuse, testing, and documentation across projects.</p>
+  
+  <h4 style="color: #444; margin-top: 2rem;">🔹 Sample Interview Answer</h4>
+  <blockquote style="background: #eef4ff; padding: 1rem; border-left: 4px solid #317EFB; border-radius: 4px; margin: 0;">
+    <p style="margin: 0;">"Sure. In my previous role, I noticed we had a growing number of ad-hoc PowerShell scripts being used across teams — many of them doing similar tasks like user creation, log cleanup, or system checks. So, I consolidated the most commonly used logic into a structured PowerShell module.</p>
+    <p style="margin: 1rem 0 0 0;">I organized the functions with clear naming, added parameter validation, and created a manifest file for versioning. This made it easier to test and reuse the code in different projects or by other team members. It also helped reduce duplicated scripts and made onboarding new team members faster since they had a single, well-documented source."</p>
+  </blockquote>
+</div>
+
+<div style="font-family: Arial, sans-serif; background: #f9f9f9; border: 1px solid #ddd; padding: 1.5rem; border-radius: 8px; max-width: 700px; margin: 1rem auto;">
+  <h3 style="color: #317EFB; margin-top: 0;">💼 Resume Highlight</h3>
+  <p><strong>•</strong> Designed and documented a PowerShell module to assist junior team members with common administrative tasks.</p>
+  
+  <h4 style="color: #444; margin-top: 2rem;">🔹 Sample Interview Answer</h4>
+  <blockquote style="background: #eef4ff; padding: 1rem; border-left: 4px solid #317EFB; border-radius: 4px; margin: 0;">
+    <p style="margin: 0;">"In my previous role, I noticed junior team members often needed help with repetitive admin tasks like checking disk space, restarting services, or managing user permissions. To streamline their workflow and reduce dependency on senior staff, I designed a PowerShell module with simple, well-documented functions that covered these tasks.</p>
+    <p style="margin: 1rem 0 0 0;">I added usage examples and inline help to make each function easy to understand and use. This not only improved efficiency but also boosted the team’s confidence and independence when handling day-to-day operations."</p>
+  </blockquote>
+</div>
+
+
+<div>
+  <p><strong>Leveraged the Az PowerShell module to automate provisioning, configuration, and management of Azure resources for the site—including resource groups, virtual machines, and storage accounts—by creating and maintaining scripts that streamlined deployment workflows, enforced infrastructure-as-code best practices, and automated subscription and cross-tenant operations to enhance efficiency and reduce manual effort.</strong></p>
+
+  <div>
+    <h3>Interview Explanation (Detailed)</h3>
+    <p>In this role, I used the Az PowerShell module extensively to manage and automate Azure resources that were critical for the site’s infrastructure. This included tasks like creating and configuring resource groups, deploying virtual machines, and managing storage accounts, which are the foundational building blocks of most Azure environments.</p>
+    <p>To achieve this, I developed and maintained PowerShell scripts that automated repetitive and error-prone manual tasks. By doing so, I was able to streamline deployment workflows, ensuring that resource provisioning was consistent and repeatable—key aspects of infrastructure-as-code principles. This approach also helped reduce deployment times and human errors.</p>
+    <p>Additionally, I automated subscription management and cross-tenant operations. This was especially useful when dealing with multiple client environments or Azure tenants, as it allowed me to switch contexts, manage resources, and perform operations across subscriptions seamlessly from a single script, saving time and reducing complexity.</p>
+    <p>Using Az module cmdlets, I could perform complex queries, filter and select resource properties, and integrate the automation into CI/CD pipelines when needed. This not only improved operational efficiency but also enhanced governance and compliance by making sure environments were provisioned according to company standards.</p>
+    <p>If asked, I can dive deeper into specific commands I used (like <code>New-AzResourceGroup</code>, <code>Get-AzVM</code>, <code>Set-AzContext</code>), how I handled authentication with <code>Connect-AzAccount</code>, and how I implemented error handling and logging within the scripts to make them robust.</p>
+  </div>
+</div>
+
+
+
+</div>
+
+<script>
+// Register service worker for PWA
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('service-worker.js').then(function(registration) {
+      // Registration successful
+    }, function(err) {
+      // Registration failed
+    });
+  });
+}
+</script>
+</div>
+</body>
+</html>

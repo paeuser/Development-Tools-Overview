@@ -1,0 +1,53 @@
+
+az login --tenant 7a16bfae-5ad8-4333-ae59-bdd3df252e95
+
+az account show --output table
+
+
+how your current subscription
+
+az account show --query "{Name:name, Id:id}" --output table
+
+
+Here's the correct command to show Tenant and Subscription info with headers:
+az account show --query "{TenantId:tenantId, SubscriptionName:name, SubscriptionId:id}" --output table
+
+
+
+
+from vs code 
+Log in to Azure CLI with the specified tenant to access the correct subscription.
+az login --tenant 7a16bfae-5ad8-4333-ae59-bdd3df252e95
+
+press enter
+
+
+# here i use vs code to create the random number 
+# but i can use the batch  
+
+# 1. Generate a random number
+$RAND = Get-Random
+Write-Output "Random resource identifier will be: $RAND"
+
+# 2. Set location (choose a region that supports availability zones)
+$LOCATION = "eastus"
+Write-Output "Location set to: $LOCATION"
+
+# 3. Create a unique resource group name
+$RG_NAME = "myresourcegroup$RAND"
+Write-Output "Resource group name will be: $RG_NAME"
+
+# 4. Create the resource group in Azure
+az group create --name $RG_NAME --location $LOCATION
+
+# 5. Verify it was created
+az group show --name $RG_NAME --output table
+
+below resource was created 
+PS C:\Git\Microsoft\AKS-LABS\aks-labs> az group show --name $RG_NAME --output table        
+Location    Name
+----------  ------------------------
+eastus      myresourcegroup627133263
+PS C:\Git\Microsoft\AKS-LABS\aks-labs> 
+
+

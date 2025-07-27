@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Release Pipeline to IIS using PowerShell</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2, h3, h4 {
+      color: #004578;
+    }
+    code {
+      background: #f1f1f1;
+      color: #000;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    pre {
+      background: #f1f1f1;
+      color: #000;
+      padding: 15px;
+      overflow-x: auto;
+      border-radius: 5px;
+      font-size: 0.95rem;
+    }
+    .section {
+      margin-bottom: 40px;
+    }
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🚀 Release Pipeline to IIS using PowerShell</h1>
+
+  <div class="section">
+    <h2>🎯 Goal</h2>
+    <p>Deploy a web application to on-prem IIS servers using an Azure DevOps Release Pipeline and PowerShell scripting after the build completes.</p>
+  </div>
+
+  <div class="section">
+    <h2>🚀 Release Pipeline – Step-by-Step</h2>
+
+    <h3>1️⃣ Create a New Release Pipeline</h3>
+    <ul>
+      <li>Use Classic Editor or YAML pipeline</li>
+      <li>Link the artifact from your build pipeline</li>
+    </ul>
+
+    <h3>2️⃣ Add PowerShell Tasks to Your Pipeline</h3>
+
+    <h4>🛑 Stop IIS</h4>
+    <pre><code>Stop-Website -Name "MySite"
+Stop-WebAppPool -Name "MyAppPool"</code></pre>
+
+    <h4>📦 Deploy Files</h4>
+    <pre><code>Expand-Archive "$(Build.ArtifactStagingDirectory)\MyApp.zip" -DestinationPath "C:\inetpub\wwwroot\MyApp" -Force</code></pre>
+
+    <h4>✅ Start IIS</h4>
+    <pre><code>Start-WebAppPool -Name "MyAppPool"
+Start-Website -Name "MySite"</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>📄 Sample YAML Pipeline</h2>
+    <pre><code># Trigger the pipeline on changes to the 'main' branch
+trigger:
+- main
+
+# Define the agent pool where the pipeline will run.
+# This specifies the group of machines available to execute your pipeline jobs.
+# 'Self-Hosted-Agent' refers to an agent you've set up and manage on your own infrastructure.
+pool:
+  name: 'Self-Hosted-Agent'
+
+# Define variables used throughout the pipeline
+variables:
+  # Name of the IIS website
+  siteName: 'MySite'
+  # Name of the IIS application pool
+  appPool: 'MyAppPool'
+  # Destination path for deployment on the IIS server
+  deployPath: 'C:\inetpub\wwwroot\MyApp'
+
+# Define stages in the pipeline (Build and Deploy)
+stages:
+# Build stage
+- stage: Build
+  # Jobs within the Build stage
+  jobs:
+  - job: Build
+    # Steps within the Build job
+    steps:
+    # .NET Core CLI task for publishing the web project
+    - task: DotNetCoreCLI@2
+      inputs:
+        # Command to execute: publish
+        command: 'publish'
+        # Publish web projects (set to true)
+        publishWebProjects: true
+        # Arguments for the publish command, specifying release configuration and output directory
+        arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
+    # Task to publish build artifacts
+    - task: PublishBuildArtifacts@1
+      inputs:
+        # Path to the directory containing artifacts to publish
+        pathToPublish: '$(Build.ArtifactStagingDirectory)'
+        # Name of the artifact
+        artifactName: 'drop'
+
+# Deploy stage
+- stage: Deploy
+  # Jobs within the Deploy stage
+  jobs:
+  # Deployment job named IISDeployment
+  - deployment: IISDeployment
+    # Environment to deploy to (e.g., 'production')
+    environment: 'production'
+    # Strategy for deployment (runOnce means it runs once per deployment)
+    strategy:
+      runOnce:
+        # Steps to execute during the deploy phase
+        deploy:
+          steps:
+          # Download artifacts from the current pipeline run
+          - download: current
+            # Specify the artifact to download
+            artifact: drop
+
+          # PowerShell task to stop IIS services
+          - powershell: |
+              # Stop the application pool
+              Stop-WebAppPool -Name "$(appPool)"
+              # Stop the website
+              Stop-Website -Name "$(siteName)"
+            # Display name for this step in the pipeline logs
+            displayName: 'Stop IIS Services'
+
+          # PowerShell task to extract files
+          - powershell: |
+              # Expand the MyApp.zip archive to the deployment path, forcing overwrite
+              Expand-Archive "$(Pipeline.Workspace)\drop\MyApp.zip" -DestinationPath "$(deployPath)" -Force
+            # Display name for this step in the pipeline logs
+            displayName: 'Extract Files'
+
+          # PowerShell task to start IIS services
+          - powershell: |
+              # Start the application pool
+              Start-WebAppPool -Name "$(appPool)"
+              # Start the website
+              Start-Website -Name "$(siteName)"
+            # Display name for this step in the pipeline logs
+            displayName: 'Start IIS Services'</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>📌 Best Practices</h2>
+    <ul>
+      <li>Use deployment groups for on-prem agents</li>
+      <li>Mask credentials using pipeline secrets or variable groups</li>
+      <li>Include error handling in PowerShell scripts</li>
+      <li>Perform health checks post-deployment</li>
+    </ul>
+  </div>
+
+  <footer>
+    <hr />
+    <p>© 2025 Eric Cabrera – Deployment Automation Guide</p>
+  </footer>
+
+</body>
+</html>

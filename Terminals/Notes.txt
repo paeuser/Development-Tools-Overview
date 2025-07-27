@@ -1,0 +1,13 @@
+pwsh PowerShell 
+     #commands 
+     $PSVersionTable
+
+
+Git Bash is a Windows application that provides a Unix-style 
+command line environment with Git commands and Bash shell features.
+      #commands
+      $ git --version
+
+     
+Ubuntu WSL (Windows Subsystem for Linux running Ubuntu) gives you a full Linux environment inside Windows.
+   #commands

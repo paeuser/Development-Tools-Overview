@@ -232,371 +232,76 @@ them what is Azure monitor how does it
             </li>
         </ol>
         <b>Summary:</b> Use <b>Failures</b> for a visual overview, <b>Exceptions</b> for stack traces, and <b>Logs</b> for custom queries and deep troubleshooting.
+
     </div>
+
+    <div class="section-title">Application Insights Interview Questions and Answers</div>
+    <ol>
+        <li><b>What is Application Insights?</b><br>
+            <i>Application Insights is an Azure service for monitoring live applications, providing performance metrics, error tracking, usage analytics, and diagnostic information.</i>
+        </li>
+        <li><b>How do you enable Application Insights for an Azure Web App?</b><br>
+            <i>In the Azure Portal, go to your Web App, select Application Insights under Monitoring, and click Enable. You can link to an existing resource or create a new one.</i>
+        </li>
+        <li><b>What types of telemetry does Application Insights collect by default?</b><br>
+            <i>Requests, dependencies, exceptions, traces, custom events, metrics, and page views (for web apps).</i>
+        </li>
+        <li><b>How can you add custom telemetry to Application Insights?</b><br>
+            <i>By using the Application Insights SDK in your code to track custom events, metrics, or exceptions.</i>
+        </li>
+        <li><b>What is the difference between Application Insights and Azure Monitor?</b><br>
+            <i>Azure Monitor is the umbrella service for monitoring all Azure resources; Application Insights is focused on application-level monitoring and is a feature of Azure Monitor.</i>
+        </li>
+        <li><b>How do you view failed requests in Application Insights?</b><br>
+            <i>Go to the Failures blade in the Application Insights resource to see failed requests, error rates, and details.</i>
+        </li>
+        <li><b>What is KQL and how is it used in Application Insights?</b><br>
+            <i>KQL (Kusto Query Language) is used to query telemetry data in the Logs section for advanced analytics and troubleshooting.</i>
+        </li>
+        <li><b>How can you monitor application performance using Application Insights?</b><br>
+            <i>Use the Performance blade to view response times, dependencies, and identify slow operations or bottlenecks.</i>
+        </li>
+        <li><b>How do you set up alerts in Application Insights?</b><br>
+            <i>Go to the Alerts section, create a new alert rule, and define conditions (e.g., failed requests &gt; threshold) and actions (email, webhook, etc.).</i>
+        </li>
+        <li><b>What is an Instrumentation Key?</b><br>
+            <i>A unique key used by the Application Insights SDK/agent to send telemetry data to the correct resource.</i>
+        </li>
+        <li><b>How do you find the Instrumentation Key or Connection String?</b><br>
+            <i>In the Application Insights resource, go to Properties or Overview to view the Instrumentation Key and Connection String.</i>
+        </li>
+        <li><b>Can Application Insights monitor applications outside of Azure?</b><br>
+            <i>Yes, it can monitor on-premises, hybrid, or other cloud-hosted applications as long as the SDK/agent is configured.</i>
+        </li>
+        <li><b>How do you filter telemetry data in Application Insights?</b><br>
+            <i>Use the Logs (Analytics) feature with KQL queries or apply filters in the portal blades (Failures, Performance, etc.).</i>
+        </li>
+        <li><b>What is Live Metrics Stream?</b><br>
+            <i>A real-time dashboard in Application Insights showing live telemetry, request rates, failures, and performance without delay.</i>
+        </li>
+        <li><b>How can you reduce telemetry volume (and cost) in Application Insights?</b><br>
+            <i>By configuring sampling, filtering out unnecessary telemetry, or adjusting the data retention period.</i>
+        </li>
+        <li><b>What is dependency tracking in Application Insights?</b><br>
+            <i>It tracks calls from your app to external services (databases, APIs, etc.), showing duration, success/failure, and performance impact.</i>
+        </li>
+        <li><b>How do you diagnose exceptions using Application Insights?</b><br>
+            <i>Use the Exceptions blade to view exception details, stack traces, and related request context.</i>
+        </li>
+        <li><b>How do you export Application Insights data?</b><br>
+            <i>Export via Continuous Export, Diagnostic Settings to Log Analytics/Storage/Event Hub, or manually download query results.</i>
+        </li>
+        <li><b>What is the retention period for Application Insights data?</b><br>
+            <i>By default, 90 days, but it can be configured up to 2 years for some data types (with additional cost).</i>
+        </li>
+        <li><b>How do you integrate Application Insights with DevOps pipelines?</b><br>
+            <i>By adding deployment annotations, monitoring release health, and using the Application Insights REST API or Azure DevOps extensions.</i>
+        </li>
+        <li><b>How do you delete an Application Insights resource?</b><br>
+            <i>In the Azure Portal, select the resource, click Delete, and confirm. Ensure it’s not linked to active apps before deleting.</i>
+        </li>
+    </ol>
+
 </div>
 </body>
 </html>
-1:06
-users facing any errors and they are
-1:09
-facing any latency any slowdown in some
-1:14
-sometimes in your application and uh for
-1:17
-example users are using which features
-1:20
-the most okay so in short in order to
-1:24
-monitor all these things in the
-1:26
-production application you can use as
-1:28
-your monitor so it will help you to
-1:31
-monitor all the features of your
-1:33
-application okay so primarily two things
-1:36
-we monitor metrics and
-1:39
-logs now Azure monitor have many things
-1:43
-inside it for example there are many
-1:45
-tools in the Azure which you can use
-1:47
-these all are tools dashboard views
-1:49
-powerbi whatever analyze uh so I'm not
-1:52
-going to explain each and everything for
-1:55
-example if there are any errors you can
-1:57
-uh create alerts you can make alerts
-2:00
-that okay you will there if there is any
-2:02
-error in the production application some
-2:05
-alert some email will be generated and
-2:08
-will be sent to the developers like this
-2:10
-okay but out of these tools the most
-2:14
-important one are the this application
-2:17
-insight that that is very important to
-2:20
-analyze the network errors and any kinds
-2:24
-of errors okay but I will explain this
-2:27
-application inside in upcoming question
-2:29
-but before that here is
-2:31
-the definition of Azure monitor azure
-2:35
-monitor is a cloud-based monitoring and
-2:38
-observability service that collects
-2:40
-analyze and visualize performance data
-2:44
-logs metrics from Azure application and
-2:47
-environments okay so Azure mon monitor
-2:50
-is the overall thing and application
-2:52
-insight is the tool of Azure monitor
-2:56
-okay that's it what is Azure application
-What is Azure Application Insights
-3:00
-insight let me give you my own example
-3:03
-so when I was working with Azure my
-3:05
-company had many application in Azure
-3:08
-cloud like this okay so different
-3:10
-developers are working with different
-3:12
-applications now what happens whenever
-3:15
-the QA team reports a bug or they say
-3:19
-that a particular request is taking too
-3:21
-long time to you know get the response
-3:24
-or the application is slow or some
-3:27
-specific API like 500 error in the web
-3:31
-APIs so some users were getting uh
-3:34
-different output some uh testers are
-3:37
-getting different output then as a
-3:41
-developer I would open application
-3:43
-inside to analyze all the uh requests
-3:48
-and then uh because application insight
-3:51
-was logging and tracking and every
-3:54
-activity of whatever activity is
-3:56
-happening in my for in my applications
-3:59
-by the testers or the users so what all
-4:02
-that data is present inside the
-4:04
-application inside so like this we can
-4:08
-automate things for example so what
-4:10
-happened from application is ST I was
-4:13
-analyzing the application inside also I
-4:17
-can put the alerts for example if there
-4:20
-is a network error create an alert so
-4:22
-that kind of alert also you can set up
-4:25
-that kind of automation you can set up
-4:27
-with the application inside also so if
-4:30
-the users are you using this PowerBI
-4:32
-visual studio so these are the tools
-4:35
-which can extract information from the
-4:38
-application inside okay in short
-4:42
-application insight is a part of Azure
-4:45
-monitor it is written here is an
-4:48
-application performance monitoring
-4:50
-service that helps developers to detect
-4:53
-diagonalize and optimize application
-4:56
-performance in real time it's the part
-4:58
-of the as your monitor so in short as a
-5:03
-developer you have to use applicant
-5:05
-insight to analyze the request and uh
-5:09
-you know improve the performance of your
-5:12
-uh application based on that analysis
-5:15
-okay that's it quick update before the
-My Interview Course
-5:19
-next question i cracked as your
-5:21
-interview after facing many rejections
-5:23
-from that experience I created this
-5:26
-complete as your interview course this
-5:29
-course include five things number five
-5:32
-200 interview questions all topics step
-5:35
-by step even if you are an Azure
-5:37
-beginner fourth real scenario- based
-5:41
-questions just like in real interviews
-5:44
-third you can check your interview
-5:46
-preparation status by marking questions
-5:48
-prepared or not prepared second is this
-Quick Revision Book
-5:52
-PDF book for quick revision and first is
-5:56
-as your top 10 mock interviews many
-5:59
-student cracked interviews using my
-6:01
-courses you can be the next course and
-6:04
-book links are given in the description
-6:06
-if you are interested great if not no
-6:09
-worries let's continue with the next
-6:11
-question what types of application
-Application Issues
-6:14
-issues can you troubleshoot using Azure
-6:17
-application insights this can be a real
-6:20
-interview question where the interviewer
-6:23
-wants to know what kind of issues you
-6:26
-can fix with application insight because
-6:28
-that is practical right now I'm going to
-6:31
-share five application problems which
-6:33
-you can fix with the help of application
-6:36
-insight and you can share any two three
-6:39
-of them and uh interviewer will
-6:41
-understand that you have the practical
-6:43
-knowledge the first most common problem
-6:46
-you can solve is performance
-6:50
-problems like slow page loads delayed
-6:53
-API response and the QA team is
-6:56
-reporting the request and response are
-6:58
-very slow so that kind of performance
-7:01
-problem second problems are failure and
-7:05
-exception for example HTTP 500 error if
-7:08
-some uh QA tester is reporting or some
-7:11
-failed dependency calls okay then you
-7:16
-have third failed database calls also is
-7:19
-part of the failures exception okay
-7:22
-third is usage
-7:24
-anomalies for example suddenly the
-7:26
-application crashed or some unexpected
-7:29
-drops in user activity so that also you
-7:32
-can check in application insight okay
-7:35
-fourth kind is incorrect or inconsistent
-7:39
-outputs
-7:40
-meaning for the same input different
-7:44
-users are getting different outputs okay
-7:47
-that also you can check inside the
-7:50
-application inside and fifth is regional
-7:53
-or environment specific issues
-7:56
-so like in one region like in USA region
-8:00
-of Azure the application is working fine
-8:02
-but for India region the same
-8:05
-application is uh some good issues
-8:09
-timeouts happening something uh abnormal
-8:12
-happening okay so that's it and yes
-8:16
-there are many more more problems but
-8:18
-these are the special ones especially
-8:22
-the performance problem which you can
-8:24
-analyze with the help of application
-8:26
-inside okay great and everything I have
-8:30
-explained is written here inside the
-8:32
-book also in case if you need it for
-8:36
-later
-8:37
-revision your app is facing random
-8:40
-slowdowns which Azure service helps
-8:43
-recognize it oh this is the same
-8:44
-question okay so you know it answer
-8:47
-application insight that's the wrong
-8:49
-answer you have to just all that is the
-8:52
-correct answer but you have to just give
-8:54
-some more things like application inside
-8:56
-because it gets all the request
-8:58
-information fail dependency or anything
-9:01
-we want to check we can check it with
-9:04
-the application inside okay now if you
-KQL
-9:07
-understand app insight then there is one
-9:10
-more key concept which is KQL not SQL
-9:14
-KQL that this is looks like SQL but it's
-9:17
-not that I have explained in complete
-9:20
-Azure interview course
-Azure Interview Course
-9:23
-many of my students have already used my
-9:26
-courses to crack their interviews so if
-9:30
-you are also serious about cracking your
-9:32
-next as your interview and do not want
-9:35
-to miss a single question then check out
-9:38
-this course link and the PDF book link
-9:41
-in the description below

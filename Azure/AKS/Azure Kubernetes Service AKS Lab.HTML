@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Kubernetes Service (AKS) Lab</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 0 1em; }
+        .container { max-width: 700px; margin: 32px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px #e0e0e0; padding: 2em 1.5em; }
+        h1 { color: #0078d4; }
+        a { color: #005a9e; text-decoration: underline; word-break: break-all; }
+        .section { margin-bottom: 2em; }
+        @media (max-width: 700px) {
+            .container { padding: 1em 0.5em; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Azure Kubernetes Service (AKS) Lab</h1>
+    <div class="section">
+        <b>Source Video:</b><br>
+        <a href="https://www.youtube.com/watch?v=_JPZbNplWvc" target="_blank">https://www.youtube.com/watch?v=_JPZbNplWvc</a>
+    </div>
+    <div class="section">
+        <b>Lab Link:</b><br>
+        <a href="https://azure-samples.github.io/aks-labs/" target="_blank">https://azure-samples.github.io/aks-labs/</a>       
+
+    </div>
+    <div class="section">
+        <h2>Prerequisites</h2>
+        <ul>
+            <li><b>Visual Studio Code</b> with these extensions:
+                <ul>
+                    <li>Azure Kubernetes Service (AKS)</li>
+                    <li>Kubernetes</li>
+                    <li>Container Tools</li>
+                    <li>Docker</li>
+                    <li>Dev Containers</li>
+                </ul>
+            </li>
+            <li><b>Docker Desktop</b> (recommended) or <b>Podman Desktop</b> (with Docker compatibility enabled)</li>
+            <li><b>Azure CLI</b><br>
+                <ul>
+                    <li>Download and install from <a href="https://aka.ms/installazurecliwindows" target="_blank">https://aka.ms/installazurecliwindows</a></li>
+                    <li>Run the installer and follow the setup wizard.</li>
+                    <li>After installation, open a new command prompt or PowerShell and run <code>az --version</code> to verify.<br>
+                        <b>Expected output:</b> You should see the installed Azure CLI version and Python version listed. If you see an error, restart your terminal or check your PATH settings.
+                    </li>
+                    <li>For other platforms or advanced instructions, see <a href="https://docs.microsoft.com/cli/azure/install-azure-cli" target="_blank">Install Azure CLI Documentation</a></li>
+                </ul>
+            </li>
+            <li><b>kubectl</b><br>
+                <i>Kubectl is the command-line tool for interacting with Kubernetes clusters. It lets you deploy applications, inspect and manage cluster resources, and view logs and events.</i>
+                <ul>
+                    <li>Download from the official page: <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/" target="_blank">Install kubectl (Windows)</a></li>
+                    <li><b>Note:</b> You can also install kubectl using PowerShell or Command Prompt:<br>
+                        <code>curl.exe -LO "https://dl.k8s.io/release/v1.33.0/bin/windows/amd64/kubectl.exe"</code>
+                        <br>Then add the folder containing <code>kubectl.exe</code> to your PATH.
+                    </li>
+                    <li>Or install via Azure CLI: <code>az aks install-cli</code></li>
+                    <li>After installation, open a new command prompt or PowerShell and run <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">kubectl version --client</code> to verify.<br>
+                        <b>Expected output:</b> You should see the kubectl client version. If you see an error, restart your terminal or check your PATH settings.
+                        <br><b>Example output:</b>
+                        <pre style="background:#222;color:#fff;padding:10px;border-radius:6px;overflow-x:auto;"># Run in terminal
+PS C:\Git\paecllc@gmail.com\Development-Tools-Overview&gt; kubectl version --client
+Client Version: v1.32.2
+Kustomize Version: v5.5.0
+PS C:\Git\paecllc@gmail.com\Development-Tools-Overview&gt;
+# This shows kubectl and kustomize versions. If you see this, kubectl is installed correctly.
+
+# Verify Chocolatey installation
+PS C:\Git\paecllc@gmail.com\Development-Tools-Overview&gt; choco --version
+2.5.0
+# This shows Chocolatey is installed and ready to use.
+
+# Verify Helm installation
+PS C:\Windows\system32&gt; helm version
+version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
+PS C:\Windows\system32&gt;
+# This shows Helm is installed and ready to use.
+</pre>
+                    </li>
+                    <li>For other platforms, see <a href="https://kubernetes.io/docs/tasks/tools/" target="_blank">kubectl installation docs</a></li>
+                </ul>
+            </li>
+            <li><b>Helm</b><br>
+                <i>Helm is the package manager for Kubernetes. It helps you define, install, and upgrade complex Kubernetes applications using charts (pre-configured application resources).</i>
+                <ul>
+                    <li><b>What is Chocolatey (choco)?</b><br>
+                        <i>Chocolatey</i> is a popular package manager for Windows. It lets you install, update, and manage software from the command line using the <code>choco</code> command, similar to how <code>apt</code> works on Linux or <code>brew</code> on macOS. Chocolatey simplifies installing tools like Helm, kubectl, Git, and more, making setup and automation easier for developers and IT professionals.
+                    </li>
+                    <li>Download from the official page: <a href="https://helm.sh/docs/intro/install/" target="_blank">Install Helm</a></li>
+                    <li>Or install via Chocolatey (Windows): <code>choco install kubernetes-helm</code></li>
+                    <li><b>Troubleshooting:</b> If you see an error like <i>'choco' is not recognized</i>, Chocolatey is not installed. <br>
+                        <b>To install Chocolatey:</b><br>
+                        <ol>
+                            <li>Open PowerShell as Administrator.</li>
+                            <li>Run:<br>
+                                <code>Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</code>
+                            </li>
+                            <li>Close and reopen PowerShell, then run <code>choco --version</code> to verify installation.</li>
+                            <li>Now you can run <code>choco install kubernetes-helm</code> to install Helm.</li>
+                        </ol>
+                        <b>Reference:</b> <a href="https://chocolatey.org/install" target="_blank">Chocolatey Installation Docs</a>
+                    </li>
+                    <li>After installation, open a new command prompt or PowerShell and run <code>helm version</code> to verify.<br>
+                        <b>Expected output:</b> You should see the Helm client version. If you see an error, restart your terminal or check your PATH settings.
+                        <br><b>Example output:</b>
+                        <pre style="background:#222;color:#fff;padding:10px;border-radius:6px;overflow-x:auto;"># Run in terminal
+PS C:\Windows\system32&gt; helm version
+version.BuildInfo{Version:"v3.18.4", GitCommit:"d80839cf37d860c8aa9a0503fe463278f26cd5e2", GitTreeState:"clean", GoVersion:"go1.24.4"}
+PS C:\Windows\system32&gt;
+# This shows Helm is installed and ready to use.
+</pre>
+                    </li>
+                    <li>For other platforms, see <a href="https://helm.sh/docs/intro/install/" target="_blank">Helm installation docs</a></li>
+                </ul>
+            </li>
+            <li><b>Kustomize</b><br>
+                <i>A tool to manage Kubernetes YAML files for different environments. Kustomize lets you customize raw, template-free YAML files for multiple environments, making configuration management easier.</i>
+                <ul>
+                    <li><b>Note:</b> Kustomize is built into <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">kubectl</code> (no extra install needed if using kubectl v1.14+).</li>
+                    <li>If you need to install it separately:<br>
+                        <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">choco install kustomize</code>
+                    </li>
+                    <li>After installation, verify with:<br>
+                        <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">kustomize version</code>
+                        <br><b>Example output:</b>
+                        <pre style="background:#222;color:#fff;padding:10px;border-radius:6px;overflow-x:auto;">PS C:\Windows\system32&gt; kustomize version
+v5.5.0
+PS C:\Windows\system32&gt;
+# This shows Kustomize is installed and ready to use.
+</pre>
+                    </li>
+                </ul>
+            </li>
+            <li><b>Draft</b> or <b>Draft extension for AKS</b><br>
+                <i>A tool from Microsoft to help developers containerize and deploy applications to Azure Kubernetes Service (AKS).</i>
+                <ul>
+                    <li>Draft can automatically create <b>Dockerfiles</b>, <b>Helm charts</b>, and <b>GitHub workflows</b> for your application, streamlining the process of getting your code running on AKS.</li>
+                    <li>For more information and installation instructions, see the official documentation: <a href="https://github.com/Azure/draft" target="_blank">https://github.com/Azure/draft</a></li>
+                </ul>
+            </li>
+            <li><b>jq</b></li>
+            <li><b>POSIX-compliant shell</b> (bash, zsh, etc.)</li>
+            <li><b>Pre-provision Azure Resources</b> (resource group, AKS cluster, etc.)</li>
+            <li><b>WSL (Windows Subsystem for Linux)</b><br>
+                <i>WSL lets you run a Linux environment directly on Windows without needing a virtual machine.</i>
+                <ul>
+                    <li>You can run Linux command-line tools, utilities, and apps natively alongside your Windows apps.</li>
+                    <li>It’s great for developers who want Linux tools but work on Windows.</li>
+                    <li>For installation and more info, see: <a href="https://learn.microsoft.com/windows/wsl/" target="_blank">https://learn.microsoft.com/windows/wsl/</a></li>
+                </ul>
+            </li>
+        </ul>
+        <h3 style="margin-top:1.5em; color:#0078d4;">VS Code Extensions (Marketplace IDs)</h3>
+        <pre style="background:#f4f4f4; padding:8px; border-radius:6px;">
+aksdev.aksdev
+kubernetes
+kubernetes-tools.k8s
+ms-azuretools.vscode-docker
+ms-vscode-remote.remote-containers
+        </pre>
+        <ul style="margin-top:0.5em;">
+            <li><b>AKS Dev (aksdev.aksdev):</b> Adds AKS-specific developer tools and workflow support to VS Code.</li>
+            <li><b>Kubernetes (kubernetes):</b> Manage, deploy, and debug Kubernetes clusters and resources directly from VS Code.</li>
+            <li><b>Kubernetes Developer Tools (kubernetes-tools.k8s):</b> Provides YAML editing, validation, and other developer utilities for Kubernetes manifests.</li>
+            <li><b>Docker (ms-azuretools.vscode-docker):</b> Build, run, and manage Docker containers, images, and registries from within VS Code.</li>
+            <li><b>Dev Containers (ms-vscode-remote.remote-containers):</b> Open your project inside a containerized development environment for consistency and isolation.</li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

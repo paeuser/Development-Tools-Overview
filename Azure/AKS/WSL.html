@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSL (Windows Subsystem for Linux) - Quick Start & Info</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 0 1em; }
+        .container { max-width: 700px; margin: 32px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px #e0e0e0; padding: 2em 1.5em; }
+        h1 { color: #0078d4; }
+        h2 { color: #005a9e; }
+        pre { background: #222; color: #fff; padding: 12px; border-radius: 8px; overflow-x: auto; }
+        a { color: #005a9e; text-decoration: underline; }
+        .section { margin-bottom: 2em; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>WSL (Windows Subsystem for Linux)</h1>
+    <div class="section">
+        <b>What is WSL?</b><br>
+        <p>WSL (Windows Subsystem for Linux) lets you run a Linux environment directly on Windows without needing a virtual machine. You can run Linux command-line tools, utilities, and apps natively alongside your Windows apps. It’s great for developers who want Linux tools but work on Windows.</p>
+        <ul>
+            <li>Official docs: <a href="https://learn.microsoft.com/windows/wsl/" target="_blank">https://learn.microsoft.com/windows/wsl/</a></li>
+        </ul>
+    </div>
+    <div class="section">
+        <h2>Sample WSL Installation and First Launch</h2>
+        <pre>PS C:\Windows\system32&gt; wsl --install
+Ubuntu is already installed.
+Launching Ubuntu...
+Installing, this may take a few minutes...
+Please create a default UNIX user account. The username does not need to match your Windows username.
+For more information visit: https://aka.ms/wslusers
+Enter new UNIX username: eric
+New password: asdf1234@!
+Retype new password:
+passwd: password updated successfully
+Installation successful!
+To run a command as administrator (user "root"), use "sudo &lt;command&gt;".
+See "man sudo_root" for details.
+</pre>
+    </div>
+    <div class="section">
+        <h2>First Login to Ubuntu (WSL2)</h2>
+        <pre>Welcome to Ubuntu 24.04.1 LTS (GNU/Linux 5.15.146.1-microsoft-standard-WSL2 x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Jul 22 12:37:43 EDT 2025
+
+  System load:  0.0                 Processes:             46
+  Usage of /:   0.1% of 1006.85GB   Users logged in:       0
+  Memory usage: 3%                  IPv4 address for eth0: 172.29.155.195
+  Swap usage:   0%
+
+This message is shown once a day. To disable it please create the
+/home/eric/.hushlogin file.
+eric@eric:~$</pre>
+    </div>
+    <div class="section">
+        <h2>How to Open WSL (Ubuntu) Again After Closing</h2>
+        <ul>
+            <li><b>From Start Menu:</b>
+                <ul>
+                    <li>Click <b>Start</b> (Windows icon).</li>
+                    <li>Type <b>Ubuntu</b>.</li>
+                    <li>Click the <b>Ubuntu</b> app to open your WSL terminal.</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="section">
+        <h2>What is jq?</h2>
+        <p>jq is a lightweight and flexible command-line tool for processing JSON data.</p>
+        <ul>
+            <li><b>On Windows:</b> If you’re using WSL (Linux environment on Windows), you can install jq inside WSL with:
+                <br><code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">sudo apt update</code>
+                <br><code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">sudo apt install jq</code>
+            </li>
+            <li style="margin-top:1em;">
+                <img src="images/wsdl-unbunton-on-windows.jpg" alt="WSL Ubuntu on Windows screenshot" style="max-width:420px; width:100%; border-radius:8px; box-shadow:0 2px 8px #bbb;">
+            </li>
+        </ul>
+    </div>
+    <div class="section">
+        <h2>How to Install zsh (Z Shell) in WSL/Ubuntu</h2>
+        <p><b>Summary:</b><br>
+        <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">sudo apt install zsh</code> is a command used on Debian-based Linux systems (like Ubuntu) to install the Z Shell (zsh), a popular alternative to the default shell. The <b>sudo</b> part runs the command with administrator (root) privileges needed for installation. After installing, you can switch to zsh for a more powerful and customizable command-line experience.</p>
+        <b>How to install zsh:</b>
+        <ol>
+            <li>Open your terminal.</li>
+            <li>Run <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">sudo apt update</code> to refresh package lists.</li>
+            <li>Run <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">sudo apt install zsh</code> to install zsh.</li>
+            <li>After installation, start zsh by typing <code style="background:#222;color:#fff;padding:2px 6px;border-radius:4px;">zsh</code> in the terminal.</li>
+        </ol>
+    </div>
+    <div class="section" style="margin-top:2em;">
+        <a href="INDEX.HTML" style="font-weight:bold; color:#0078d4; font-size:1.1em;">&larr; Back to AKS Labs Index</a>
+    </div>
+</div>
+</body>
+</html>

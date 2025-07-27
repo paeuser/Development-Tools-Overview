@@ -1,0 +1,1245 @@
+eric@eric:~$ sudo ls
+[sudo] password for eric:
+Sorry, try again.
+[sudo] password for eric:
+Sorry, try again.
+[sudo] password for eric:
+eric@eric:~$ az login --tenant 7a16bfae-5ad8-4333-ae59-bdd3df252e95
+Select the account you want to log in with. For more information on login with Azure CLI, see https://go.microsoft.com/f
+wlink/?linkid=2271136
+
+Retrieving subscriptions for the selection...
+
+[Tenant and subscription selection]
+
+No     Subscription name         Subscription ID                       Tenant
+-----  ------------------------  ------------------------------------  ------------------------------------
+[1] *  Visual Studio Enterprise  f6ab9759-ffe4-4b77-81f6-e55987b84565  7a16bfae-5ad8-4333-ae59-bdd3df252e95
+
+The default is marked with an *; the default tenant is '7a16bfae-5ad8-4333-ae59-bdd3df252e95' and subscription is 'Visua
+l Studio Enterprise' (f6ab9759-ffe4-4b77-81f6-e55987b84565).
+
+Select a subscription and tenant (Type a number or Enter for no changes):
+
+Tenant: 7a16bfae-5ad8-4333-ae59-bdd3df252e95
+Subscription: Visual Studio Enterprise (f6ab9759-ffe4-4b77-81f6-e55987b84565)
+
+[Announcements]
+With the new Azure CLI login experience, you can select the subscription you want to use more easily. Learn more about i
+t and its configuration at https://go.microsoft.com/fwlink/?linkid=2271236
+
+If you encounter any problem, please open an issue at https://aka.ms/azclibug
+
+[Warning] The login output has been updated. Please be aware that it no longer displays the full list of available subsc
+riptions by default.
+
+eric@eric:~$ az deployment group create \
+> --resource-group $RG_NAME \
+> --name "${RG_NAME}-deployment" \
+> --template-uri https://raw.githubusercontent.com/Azure-Samples/aks-labs/refs/heads/main/docs/getting-started/assets/k8s-aks-fundamentals/main.json \
+> --parameters randomSeed=$RAND userObjectId=$(az ad signed-in-user show --query id -o tsv)
+argument --resource-group/-g: expected one argument
+
+Examples from AI knowledge base:
+az deployment group create --resource-group testrg --name rollout01 --template-file azuredeploy.json --parameters @param
+s.json --parameters https://mysite/params.json --parameters MyValue=This MyArray=@array.json
+Create a deployment at resource group from a local template, using a parameter file, a remote parameter file, and select
+ively overriding key/value pairs.
+
+az deployment group create --resource-group testrg --name rollout01 --template-uri https://myresource/azuredeploy.json -
+-parameters @myparameters.json
+Create a deployment at resource group from a remote template file, using parameters from a local JSON file.
+
+az deployment group create --resource-group testrg --name rollout01 --template-file azuredeploy.json --parameters '{ \"p
+olicyName\": { \"value\": \"policy2\" } }'
+Create a deployment at resource group from a local template file, using parameters from a JSON string.
+
+https://aka.ms/cli_ref
+Read more about the command in reference docs
+eric@eric:~$ az deployment group create \
+-resourc>   --resource-group $RG_NAME \
+>   --name "${RG_NAME}-deployment" \
+>   --template-uri https://raw.githubusercontent.com/Azure-Samples/aks-labs/main/docs/getting-started/assets/k8s-aks-fundamentals/main.json \
+ameters >   --parameters randomSeed=$RAND userObjectId=$(az ad signed-in-user show --query id -o tsv)
+
+argument --resource-group/-g: expected one argument
+
+Examples from AI knowledge base:
+az deployment group create --resource-group testrg --name rollout01 --template-file azuredeploy.json --parameters @param
+s.json --parameters https://mysite/params.json --parameters MyValue=This MyArray=@array.json
+Create a deployment at resource group from a local template, using a parameter file, a remote parameter file, and select
+ively overriding key/value pairs.
+
+az deployment group create --resource-group testrg --name rollout01 --template-uri https://myresource/azuredeploy.json -
+-parameters @myparameters.json
+Create a deployment at resource group from a remote template file, using parameters from a local JSON file.
+
+az deployment group create --resource-group testrg --name rollout01 --template-file azuredeploy.json --parameters '{ \"p
+olicyName\": { \"value\": \"policy2\" } }'
+Create a deployment at resource group from a local template file, using parameters from a JSON string.
+
+https://aka.ms/cli_ref
+Read more about the command in reference docs
+eric@eric:~$ echo $RG_NAME
+
+eric@eric:~$
+eric@eric:~$ export RG_NAME=myresourcegroup627133263
+eric@eric:~$ az deployment group create \
+>   --resource-group $RG_NAME \
+>   --name "${RG_NAME}-deployment" \
+>   --template-uri https://raw.githubusercontent.com/Azure-Samples/aks-labs/main/docs/getting-started/assets/k8s-aks-fundamentals/main.json \
+>   --parameters randomSeed=$RAND userObjectId=$(az ad signed-in-user show --query id -o tsv)
+
+{
+  "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Microsoft
+.Resources/deployments/myresourcegroup627133263-deployment",
+  "location": null,
+  "name": "myresourcegroup627133263-deployment",
+  "properties": {
+    "correlationId": "cc7e1526-e905-45ab-be41-51f1870de84e",
+    "debugSetting": null,
+    "dependencies": [
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Dashboard/grafana/mygrafanaevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "mygrafanaevj3",
+        "resourceType": "Microsoft.Dashboard/grafana"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Dashboard/grafana/mygrafanaevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mygrafanaevj3",
+            "resourceType": "Microsoft.Dashboard/grafana"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Dashboard/grafana/mygrafanaevj3/providers/Microsoft.Authorization/roleAssignments/b4a174c8-2aea-5b85-8488-24ee06d
+ad2e4",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "b4a174c8-2aea-5b85-8488-24ee06dad2e4",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Dashboard/grafana/mygrafanaevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mygrafanaevj3",
+            "resourceType": "Microsoft.Dashboard/grafana"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          },
+          {
+            "apiVersion": "2024-10-01",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Dashboard/grafana/mygrafanaevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mygrafanaevj3",
+            "resourceType": "Microsoft.Dashboard/grafana"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Monitor/accounts/myprometheusevj3/providers/Microsoft.Authorization/roleAssignments/1a27621e-f3d1-5cb2-ac4b-63ebb
+31f9503",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "1a27621e-f3d1-5cb2-ac4b-63ebb31f9503",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.OperationalInsights/workspaces/mylogsevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mylogsevj3",
+            "resourceType": "Microsoft.OperationalInsights/workspaces"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "myaksclusterevj3",
+        "resourceType": "Microsoft.ContainerService/managedClusters"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.DocumentDB/databaseAccounts/mymongoevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mymongoevj3",
+            "resourceType": "Microsoft.DocumentDB/databaseAccounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.DocumentDB/databaseAccounts/mymongoevj3/mongodbDatabases/test",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "mymongoevj3/test",
+        "resourceType": "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mymongoevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2024-10-01",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity/federatedIdentityCredentials/mymongoevj3-identity",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "mymongoevj3-identity/mymongoevj3-identity",
+        "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.DocumentDB/databaseAccounts/mymongoevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mymongoevj3",
+            "resourceType": "Microsoft.DocumentDB/databaseAccounts"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mymongoevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2023-07-31-preview",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mymongoevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.DocumentDB/databaseAccounts/mymongoevj3/providers/Microsoft.Authorization/roleAssignments/9b88ca0b-2454-5424-ac9b
+-6eac2788d16b",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "9b88ca0b-2454-5424-ac9b-6eac2788d16b",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mykeyvaultevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2024-10-01",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity/federatedIdentityCredentials/mykeyvaultevj3-identi
+ty",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "mykeyvaultevj3-identity/mykeyvaultevj3-identity",
+        "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.KeyVault/vaults/mykeyvaultevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mykeyvaultevj3",
+            "resourceType": "Microsoft.KeyVault/vaults"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mykeyvaultevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2023-07-31-preview",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mykeyvaultevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.KeyVault/vaults/mykeyvaultevj3/providers/Microsoft.Authorization/roleAssignments/666060a8-6372-504f-969f-63c718a9
+e279",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "666060a8-6372-504f-969f-63c718a9e279",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myappconfigevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2024-10-01",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity/federatedIdentityCredentials/myappconfigevj3-iden
+tity",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "myappconfigevj3-identity/myappconfigevj3-identity",
+        "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.AppConfiguration/configurationStores/myappconfigevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myappconfigevj3",
+            "resourceType": "Microsoft.AppConfiguration/configurationStores"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myappconfigevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          },
+          {
+            "apiVersion": "2023-07-31-preview",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myappconfigevj3-identity",
+            "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AppConfiguration/configurationStores/myappconfigevj3/providers/Microsoft.Authorization/roleAssignments/87dbbffa-0
+5be-5f03-a02a-387f74918c91",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "87dbbffa-05be-5f03-a02a-387f74918c91",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.KubernetesConfiguration/extensions/appconfi
+gurationkubernetesprovider",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "appconfigurationkubernetesprovider",
+        "resourceType": "Microsoft.KubernetesConfiguration/extensions"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerRegistry/registries/mycontainerregistryevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mycontainerregistryevj3",
+            "resourceType": "Microsoft.ContainerRegistry/registries"
+          },
+          {
+            "apiVersion": "2024-10-01",
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerRegistry/registries/mycontainerregistryevj3/providers/Microsoft.Authorization/roleAssignments/aec80052-7
+5bf-5509-9300-ec3df7b8351a",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "aec80052-75bf-5509-9300-ec3df7b8351a",
+        "resourceType": "Microsoft.Authorization/roleAssignments"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionEndpoints/MSProm-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "MSProm-eastus-myaksclusterevj3",
+        "resourceType": "Microsoft.Insights/dataCollectionEndpoints"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Insights/dataCollectionEndpoints/MSProm-eastus-myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "MSProm-eastus-myaksclusterevj3",
+            "resourceType": "Microsoft.Insights/dataCollectionEndpoints"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/con
+figurationAccessEndpoint",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "configurationAccessEndpoint",
+        "resourceType": "Microsoft.Insights/dataCollectionRuleAssociations"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.OperationalInsights/workspaces/mylogsevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "mylogsevj3",
+            "resourceType": "Microsoft.OperationalInsights/workspaces"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionRules/MSCI-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "MSCI-eastus-myaksclusterevj3",
+        "resourceType": "Microsoft.Insights/dataCollectionRules"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Insights/dataCollectionRules/MSCI-eastus-myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "MSCI-eastus-myaksclusterevj3",
+            "resourceType": "Microsoft.Insights/dataCollectionRules"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/MSC
+I-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "MSCI-eastus-myaksclusterevj3",
+        "resourceType": "Microsoft.Insights/dataCollectionRuleAssociations"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Insights/dataCollectionEndpoints/MSProm-eastus-myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "MSProm-eastus-myaksclusterevj3",
+            "resourceType": "Microsoft.Insights/dataCollectionEndpoints"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionRules/MSProm-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "MSProm-eastus-myaksclusterevj3",
+        "resourceType": "Microsoft.Insights/dataCollectionRules"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Insights/dataCollectionRules/MSProm-eastus-myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "MSProm-eastus-myaksclusterevj3",
+            "resourceType": "Microsoft.Insights/dataCollectionRules"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/MSP
+rom-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "MSProm-eastus-myaksclusterevj3",
+        "resourceType": "Microsoft.Insights/dataCollectionRuleAssociations"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/KubernetesRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "KubernetesRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceType": "Microsoft.AlertsManagement/prometheusRuleGroups"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/NodeRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "NodeRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceType": "Microsoft.AlertsManagement/prometheusRuleGroups"
+      },
+      {
+        "dependsOn": [
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.ContainerService/managedClusters/myaksclusterevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myaksclusterevj3",
+            "resourceType": "Microsoft.ContainerService/managedClusters"
+          },
+          {
+            "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers
+/Microsoft.Monitor/accounts/myprometheusevj3",
+            "resourceGroup": "myresourcegroup627133263",
+            "resourceName": "myprometheusevj3",
+            "resourceType": "Microsoft.Monitor/accounts"
+          }
+        ],
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/UXRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263",
+        "resourceName": "UXRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceType": "Microsoft.AlertsManagement/prometheusRuleGroups"
+      }
+    ],
+    "diagnostics": null,
+    "duration": "PT11M6.934652S",
+    "error": null,
+    "mode": "Incremental",
+    "onErrorDeployment": null,
+    "outputResources": [
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/KubernetesRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/NodeRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AlertsManagement/prometheusRuleGroups/UXRecordingRulesRuleGroup - myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AppConfiguration/configurationStores/myappconfigevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.AppConfiguration/configurationStores/myappconfigevj3/providers/Microsoft.Authorization/roleAssignments/87dbbffa-0
+5be-5f03-a02a-387f74918c91",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerRegistry/registries/mycontainerregistryevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerRegistry/registries/mycontainerregistryevj3/providers/Microsoft.Authorization/roleAssignments/aec80052-7
+5bf-5509-9300-ec3df7b8351a",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/con
+figurationAccessEndpoint",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/MSC
+I-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.Insights/dataCollectionRuleAssociations/MSP
+rom-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ContainerService/managedClusters/myaksclusterevj3/providers/Microsoft.KubernetesConfiguration/extensions/appconfi
+gurationkubernetesprovider",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Dashboard/grafana/mygrafanaevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Dashboard/grafana/mygrafanaevj3/providers/Microsoft.Authorization/roleAssignments/b4a174c8-2aea-5b85-8488-24ee06d
+ad2e4",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.DocumentDB/databaseAccounts/mymongoevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.DocumentDB/databaseAccounts/mymongoevj3/mongodbDatabases/test",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.DocumentDB/databaseAccounts/mymongoevj3/providers/Microsoft.Authorization/roleAssignments/9b88ca0b-2454-5424-ac9b
+-6eac2788d16b",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionEndpoints/MSProm-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionRules/MSCI-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Insights/dataCollectionRules/MSProm-eastus-myaksclusterevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.KeyVault/vaults/mykeyvaultevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.KeyVault/vaults/mykeyvaultevj3/providers/Microsoft.Authorization/roleAssignments/666060a8-6372-504f-969f-63c718a9
+e279",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/myappconfigevj3-identity/federatedIdentityCredentials/myappconfigevj3-iden
+tity",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mykeyvaultevj3-identity/federatedIdentityCredentials/mykeyvaultevj3-identi
+ty",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.ManagedIdentity/userAssignedIdentities/mymongoevj3-identity/federatedIdentityCredentials/mymongoevj3-identity",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Monitor/accounts/myprometheusevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.Monitor/accounts/myprometheusevj3/providers/Microsoft.Authorization/roleAssignments/1a27621e-f3d1-5cb2-ac4b-63ebb
+31f9503",
+        "resourceGroup": "myresourcegroup627133263"
+      },
+      {
+        "id": "/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresourcegroup627133263/providers/Mic
+rosoft.OperationalInsights/workspaces/mylogsevj3",
+        "resourceGroup": "myresourcegroup627133263"
+      }
+    ],
+    "outputs": {
+      "acName": {
+        "type": "String",
+        "value": "myappconfigevj3"
+      },
+      "acrName": {
+        "type": "String",
+        "value": "mycontainerregistryevj3"
+      },
+      "aksName": {
+        "type": "String",
+        "value": "myaksclusterevj3"
+      },
+      "aksNodeResourceGroupName": {
+        "type": "String",
+        "value": "MC_myresourcegroup627133263_myaksclusterevj3_eastus"
+      },
+      "akvName": {
+        "type": "String",
+        "value": "mykeyvaultevj3"
+      },
+      "mongoIdentityClientId": {
+        "type": "String",
+        "value": "0165732d-6c54-4f61-b5ea-d2d5fa07644e"
+      },
+      "mongoListConnectionStringUrl": {
+        "type": "String",
+        "value": "https://management.azure.com/subscriptions/f6ab9759-ffe4-4b77-81f6-e55987b84565/resourceGroups/myresou
+rcegroup627133263/providers/Microsoft.DocumentDB/databaseAccounts/mymongoevj3/listConnectionStrings?api-version=2021-04-
+15"
+      },
+      "mongoName": {
+        "type": "String",
+        "value": "mymongoevj3"
+      }
+    },
+    "parameters": {
+      "randomSeed": {
+        "type": "String",
+        "value": ""
+      },
+      "userObjectId": {
+        "type": "SecureString"
+      }
+    },
+    "parametersLink": null,
+    "providers": [
+      {
+        "id": null,
+        "namespace": "Microsoft.OperationalInsights",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "workspaces",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Monitor",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "accounts",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Dashboard",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "grafana",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Authorization",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "roleAssignments",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.ContainerService",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "managedClusters",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.DocumentDB",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "databaseAccounts",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "databaseAccounts/mongodbDatabases",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.ManagedIdentity",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "userAssignedIdentities",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "userAssignedIdentities/federatedIdentityCredentials",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.KeyVault",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "vaults",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.AppConfiguration",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "configurationStores",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.KubernetesConfiguration",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "extensions",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.ContainerRegistry",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "registries",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.Insights",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "dataCollectionEndpoints",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              null
+            ],
+            "properties": null,
+            "resourceType": "dataCollectionRuleAssociations",
+            "zoneMappings": null
+          },
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "dataCollectionRules",
+            "zoneMappings": null
+          }
+        ]
+      },
+      {
+        "id": null,
+        "namespace": "Microsoft.AlertsManagement",
+        "providerAuthorizationConsentState": null,
+        "registrationPolicy": null,
+        "registrationState": null,
+        "resourceTypes": [
+          {
+            "aliases": null,
+            "apiProfiles": null,
+            "apiVersions": null,
+            "capabilities": null,
+            "defaultApiVersion": null,
+            "locationMappings": null,
+            "locations": [
+              "eastus"
+            ],
+            "properties": null,
+            "resourceType": "prometheusRuleGroups",
+            "zoneMappings": null
+          }
+        ]
+      }
+    ],
+    "provisioningState": "Succeeded",
+    "templateHash": "15677141178783498104",
+    "templateLink": {
+      "contentVersion": "1.0.0.0",
+      "id": null,
+      "queryString": null,
+      "relativePath": null,
+      "uri": "https://raw.githubusercontent.com/Azure-Samples/aks-labs/main/docs/getting-started/assets/k8s-aks-fundamen
+tals/main.json"
+    },
+    "timestamp": "2025-07-25T19:01:26.659082+00:00",
+    "validatedResources": null,
+    "validationLevel": null
+  },
+  "resourceGroup": "myresourcegroup627133263",
+  "tags": null,
+  "type": "Microsoft.Resources/deployments"
+}
+eric@eric:~$
