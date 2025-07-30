@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Reference Guide</title>
-    <!-- Tailwind CSS CDN for responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a clean look */
@@ -24,17 +23,17 @@
             My Tech Stack Reference
         </h1>
 
-        <!-- Grid Container for Technology Sections -->
-        <!-- Responsive grid: 1 column on small, 2 on medium, 3 on large screens -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
-            <!-- Vue.js Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
-                    <h2 class="text-2xl font-bold text-green-600 mb-4">Vue.js</h2>
+                    <h2 class="text-2xl font-bold text-green-600 mb-4">
+                    <a href="../FronEnd/Vue/Terminology.html" target="_blank"> Vue.js</a>
+                    </h2>
                     <div class="text-gray-700">
                         SFC (Single File Components)<br>
                         Composition API (Vue 3)<br>
+                         improved performance, smaller bundle size, Teleport, Fragments, multiple root elements, and better TypeScript support<br>
                         Options API (Vue 2 & 3)<br>
                         Vue Router<br>
                         Pinia (Vue 3) / Vuex (Vue 2 & 3)<br>
@@ -48,12 +47,19 @@
                         Jest<br>
                         Vue Test Utils<br>
                         Cypress (E2E)<br>
-                        Vitest
+                        Vitest<br>
+                        ESlint(javascript  static code analysis , config .eslintrc.js ) <br>
+                        Prettier (Code Formatting)<br>
+                        vs code Extensions -> Vetur (highlight, code snipes ),
+                         Volar, Vue Devtools<br> 
+                        Vuetify play ground <br> 
+
+
+
                     </div>
                 </div>
             </div>
 
-            <!-- React.js Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-blue-600 mb-4">React.js</h2>
@@ -75,7 +81,6 @@
                 </div>
             </div>
 
-            <!-- .NET Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-purple-600 mb-4">.NET</h2>
@@ -96,7 +101,6 @@
                 </div>
             </div>
 
-            <!-- C# Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-pink-600 mb-4">C#</h2>
@@ -112,7 +116,6 @@
                 </div>
             </div>
 
-            <!-- .NET Authentication & Authorization Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-fuchsia-600 mb-4">.NET Auth & Authz</h2>
@@ -136,7 +139,6 @@
                 </div>
             </div>
 
-            <!-- Azure Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-cyan-600 mb-4">Azure</h2>
@@ -148,11 +150,19 @@
                         Azure DevOps<br>
                         Azure Virtual Machines<br>
                         Azure Kubernetes Service (AKS)<br>
+                        directives (v-for, v-show, v-if, v-else, v-bind, v-on)<br>
+                        Virtual DOM ( Document Object Model )<br>
+                        two-way communications: yes<br>
+                        v-bind (one-way data binding)<br>
+                        v-model (two-way data binding)<br>
+                        Mixin <br>
+                        conditional directives<br>
+                        v-if, v-else-if, v-else<br>
+                        array change detection, and mutation methods<br>
                     </div>
                 </div>
             </div>
 
-            <!-- Kubernetes Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-orange-600 mb-4">Kubernetes</h2>
@@ -170,7 +180,6 @@
                 </div>
             </div>
 
-            <!-- REST API Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-teal-600 mb-4">REST API</h2>
@@ -188,7 +197,6 @@
                 </div>
             </div>
 
-            <!-- DevOps Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-red-600 mb-4">DevOps</h2>
@@ -202,7 +210,6 @@
                 </div>
             </div>
 
-            <!-- Cloud (AWS) Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-yellow-600 mb-4">Cloud (AWS)</h2>
@@ -218,7 +225,6 @@
                 </div>
             </div>
 
-            <!-- Databases Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-indigo-600 mb-4">Databases</h2>
@@ -233,7 +239,6 @@
                 </div>
             </div>
 
-            <!-- AI Fundamentals Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-emerald-600 mb-4">AI Fundamentals</h2>
@@ -252,7 +257,6 @@
                 </div>
             </div>
 
-            <!-- Software Principles Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-lime-600 mb-4">Software Principles</h2>
@@ -272,7 +276,6 @@
                 </div>
             </div>
 
-            <!-- Angular Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-red-700 mb-4">Angular</h2>
@@ -297,7 +300,6 @@
                 </div>
             </div>
 
-            <!-- Assurity Section -->
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-gray-700 mb-4">Assurity</h2>
@@ -308,19 +310,81 @@
                         Claims Processing<br>
                         Regulatory Compliance<br>
                         Financial Reporting <br>
-                        Feature Flags: Dynamic Feature Management CRM directus <br>
+                        <br>
+
+                        upgrade/modernize a an agent portal mvc legacy system.<br>
+                        Agile methodology , and busines provide <b>Markcups</b> for new system.
+                        and we had go back and for and see how the existing systems work<br>
+                        <br>
+                        On-Prem
+                        <br>
+                        <b>Vue 3 </b><br>
+
+                        <br>
+                        .NET core restful API <br>
+                        Mentors other software engineers (ream me, videos , one on one ) <br>
+                        .NET <BR>
+                        .NET CORE <br>    
+                                                
+                        
+                        
+                        <br> 
+                        New Feature development  <br>
                         ABBYY Vantage <br>
-                        OCR ApiWrapper.Service <br>
-                       Assurity.Ocr.ReverseProxy <br>
+                        ABBYY Vantage is a is a leading <b>Intelligent Document Processing (IDP)</b> 
+                        platform that uses AI to understand, extract, and process data from documents<br>
+                        OCR ApiWrapper.Service <br><br>
+
+                        window.ABBYY.WebCapture.capture() <br>
+                        This function is part of the ABBYY Web Capture SDK, a browser-based tool that allows <br>
+                        users to capture high-quality document images directly from a mobile device camera or webcam.
+                        <br> add script , options , envoke startCapture <br>
+                        
+                        <br><br>
+
+                        Assurity.Ocr.ReverseProxy <br>
                         YARP (Yet Another Reverse Proxy).<br>
                         It acts as a gateway for all OCR-related API requests, <BR>
-                            providing authentication, routing, rate limiting, and <BR>
-                                error handling for downstream services such as Assurity.ApiWrapper.Service.<br>
+                        providing authentication, routing, rate limiting, and <BR>
+                        error handling for downstream services such as Assurity.ApiWrapper.Service.<br>
                         <br>
                         Rate Limiting <br>
                         Implements IP-based rate limiting using AspNetCoreRateLimit to prevent abuse. <br>
                         Limits are configurable in appsettings.json (e.g., 5 requests per 10 seconds). <br>
                         API key must be provided in the api-Key header <BR>
+                        EF Core - migrations <BR>
+                        LINQ , AUTOMAPPER <br>  
+                        ASP.NET Core MVC && Razor Pages <br> 
+                        NuGet for .NET, npm for Node.js, 
+                        Feature Flags: Dynamic Feature Management CRM directus <br><br>
+
+
+                        
+
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-purple-700 mb-4">Design Patterns</h2>
+                    <div class="text-gray-700">
+                        Gang of Four (GoF) Patterns<br>
+                        Creational Patterns: Singleton, Factory Method, Abstract Factory, Builder, Prototype<br>
+                        Structural Patterns: Adapter, Bridge, Composite, Decorator, Facade, Flyweight, Proxy<br>
+                        Behavioral Patterns: Chain of Responsibility, Command, Iterator, Mediator, Memento, Observer, State, Strategy, Template Method, Visitor<br>
+                        Enterprise Integration Patterns (EIP)<br>
+                        Messaging Patterns: Message Channel, Message Router, Message Translator, Message Endpoint<br>
+                        System Integration Patterns: File Transfer, Remote Procedure Invocation, Database Sharing<br>
+                        Microservices Design Patterns<br>
+                        Service Discovery, API Gateway, Circuit Breaker, Saga, Event Sourcing<br>
+                        Architectural Patterns<br>
+                        Layered, Client-Server, Master-Slave, Peer-to-Peer, Event-Driven, Microkernel, Space-Based, Broker<br>
+                        Cloud Design Patterns<br>
+                        Load Balancing, Caching, Sharding, Retry, Circuit Breaker, Throttling<br>
+                        Concurrency Patterns<br>
+                        Producer-Consumer, Read-Write Lock, Thread Pool, Future/Promise
                     </div>
                 </div>
             </div>

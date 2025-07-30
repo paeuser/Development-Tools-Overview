@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Interview Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 lg:p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-8 lg:p-10">
+        <h1 class="text-3xl sm:text-4xl font-bold text-center text-indigo-700 mb-8">
+            50 Vue 3 Interview Questions
+        </h1>
+
+        <div class="space-y-6">
+    <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+    <p class="font-semibold text-lg text-indigo-800 mb-2">1. What are the key differences between Vue 2 and Vue 3?</p>
+    <p class="text-gray-700">
+        <span class="font-medium">Answer:</span> Vue 3 introduces the Composition API, improved performance, smaller bundle size, Teleport, Fragments, multiple root elements, and better TypeScript support.
+    </p>
+    <div class="mt-4 p-3 bg-gray-100 rounded-md">
+        <p class="font-semibold text-md text-gray-800 mb-2">Sample Code (Illustrating a difference - Composition API vs. Options API):</p>
+        <p class="font-medium text-gray-700 mt-2">Vue 2 (Options API):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    increment() {
+      this.count++;
+    }
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+        <p class="font-medium text-gray-700 mt-4">Vue 3 (Composition API):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const count = ref(0);
+    const increment = () => {
+      count.value++;
+    };
+    return {
+      count,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+    </div>
+</div>
+
+<div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+    <p class="font-semibold text-lg text-indigo-800 mb-2">2. Explain the Composition API and why it was introduced.</p>
+    <p class="text-gray-700">
+        <span class="font-medium">Answer:</span> The Composition API is a set of APIs that allows us to compose component logic using imported functions. It was introduced to address the limitations of the Options API, particularly for large components, by improving code organization, reusability, and TypeScript support.
+    </p>
+    <div class="mt-4 p-3 bg-gray-100 rounded-md">
+        <p class="font-semibold text-md text-gray-800 mb-2">Sample Code (Logic Organization with Composition API):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Mouse X: {{ x }}&lt;/p&gt;
+    &lt;p&gt;Mouse Y: {{ y }}&lt;/p&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, onMounted, onUnmounted } from 'vue';
+
+// Reusable mouse tracking logic
+function useMouseTracker() {
+  const x = ref(0);
+  const y = ref(0);
+
+  const update = (e) => {
+    x.value = e.pageX;
+    y.value = e.pageY;
+  };
+
+  onMounted(() => window.addEventListener('mousemove', update));
+  onUnmounted(() => window.removeEventListener('mousemove', update));
+
+  return { x, y };
+}
+
+// Reusable counter logic
+function useCounter() {
+  const count = ref(0);
+  const increment = () => count.value++;
+  return { count, increment };
+}
+
+export default {
+  setup() {
+    const { x, y } = useMouseTracker();
+    const { count, increment } = useCounter();
+
+    return {
+      x,
+      y,
+      count,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+    </div>
+</div>
+
+<div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+    <p class="font-semibold text-lg text-indigo-800 mb-2">3. What is `ref` in Vue 3 and when would you use it?</p>
+    <p class="text-gray-700">
+        <span class="font-medium">Answer:</span> `ref` is used to create reactive primitive values (strings, numbers, booleans) and objects in the Composition API. It returns a reactive object with a `.value` property that holds the actual value. You use it when you need a reactive state that can be directly accessed and modified.
+    </p>
+    <div class="mt-4 p-3 bg-gray-100 rounded-md">
+        <p class="font-semibold text-md text-gray-800 mb-2">Sample Code (Usage of `ref`):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Message: {{ message }}&lt;/p&gt;
+    &lt;button @click="changeMessage"&gt;Change Message&lt;/button&gt;
+    &lt;p&gt;Active: {{ isActive }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const message = ref('Hello Vue 3!');
+    const isActive = ref(true);
+    const user = ref({ name: 'Alice', age: 30 }); // ref can also hold objects
+
+    const changeMessage = () => {
+      message.value = 'Message changed!';
+    };
+
+    // Accessing properties of a ref-wrapped object
+    console.log(user.value.name); // 'Alice'
+
+    return {
+      message,
+      isActive,
+      changeMessage,
+      user
+    };
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+    </div>
+</div>
+
+<div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+    <p class="font-semibold text-lg text-indigo-800 mb-2">4. What is `reactive` in Vue 3 and how does it differ from `ref`?</p>
+    <p class="text-gray-700">
+        <span class="font-medium">Answer:</span> `reactive` is used to create reactive objects (plain objects, arrays, Maps, Sets). It directly makes the object reactive. The main difference from `ref` is that `reactive` unwraps nested refs automatically and doesn't require `.value` access for its properties.
+    </p>
+    <div class="mt-4 p-3 bg-gray-100 rounded-md">
+        <p class="font-semibold text-md text-gray-800 mb-2">Sample Code (Usage of `reactive` vs. `ref`):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Using reactive:&lt;/h3&gt;
+    &lt;p&gt;User Name: {{ reactiveUser.name }}&lt;/p&gt;
+    &lt;p&gt;User Age: {{ reactiveUser.age }}&lt;/p&gt;
+    &lt;button @click="changeReactiveUser"&gt;Change Reactive User&lt;/button&gt;
+
+    &lt;h3 class="mt-4"&gt;Using ref with an object:&lt;/h3&gt;
+    &lt;p&gt;Another User Name: {{ refUser.name }}&lt;/p&gt;
+    &lt;p&gt;Another User Age: {{ refUser.age }}&lt;/p&gt;
+    &lt;button @click="changeRefUser"&gt;Change Ref User&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, reactive } from 'vue';
+
+export default {
+  setup() {
+    // Using reactive for an object
+    const reactiveUser = reactive({
+      name: 'Bob',
+      age: 25
+    });
+
+    const changeReactiveUser = () => {
+      reactiveUser.name = 'Robert';
+      reactiveUser.age = 26;
+    };
+
+    // Using ref for an object (requires .value access for the object itself)
+    const refUser = ref({
+      name: 'Charlie',
+      age: 35
+    });
+
+    const changeRefUser = () => {
+      refUser.value.name = 'Charles';
+      refUser.value.age = 36;
+    };
+
+    return {
+      reactiveUser,
+      changeReactiveUser,
+      refUser,
+      changeRefUser
+    };
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+    </div>
+</div>
+
+<div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+    <p class="font-semibold text-lg text-indigo-800 mb-2">5. Explain `setup()` in the Composition API.</p>
+    <p class="text-gray-700">
+        <span class="font-medium">Answer:</span> `setup()` is a new component option in Vue 3 that serves as the entry point for using the Composition API. It executes before the component is created and is responsible for setting up reactive state, computed properties, watchers, and lifecycle hooks. It returns an object whose properties are exposed to the template.
+    </p>
+    <div class="mt-4 p-3 bg-gray-100 rounded-md">
+        <p class="font-semibold text-md text-gray-800 mb-2">Sample Code (Basic `setup()` structure):</p>
+        <pre class="bg-gray-800 text-white p-2 rounded text-sm overflow-auto"><code>
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Greeting: {{ greeting }}&lt;/p&gt;
+    &lt;p&gt;Doubled Count: {{ doubledCount }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref, computed, watch, onMounted } from 'vue';
+
+export default {
+  props: {
+    initialMessage: String
+  },
+  setup(props, context) {
+    // 1. Reactive State
+    const count = ref(0);
+    const greeting = ref(props.initialMessage || 'Hello from setup!');
+
+    // 2. Computed Property
+    const doubledCount = computed(() => count.value * 2);
+
+    // 3. Watcher
+    watch(count, (newCount, oldCount) => {
+      console.log(`Count changed from ${oldCount} to ${newCount}`);
+    });
+
+    // 4. Method (function)
+    const increment = () => {
+      count.value++;
+    };
+
+    // 5. Lifecycle Hook
+    onMounted(() => {
+      console.log('Component mounted in setup!');
+    });
+
+    // Accessing attributes, slots, emit (via context)
+    // console.log(context.attrs);
+    // context.emit('my-event', 'some data');
+
+    // Return properties and methods to be exposed to the template
+    return {
+      count,
+      greeting,
+      doubledCount,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+        </code></pre>
+    </div>
+</div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">6. How do you define computed properties in Vue 3's Composition API?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You use the `computed` function. It takes a getter function as an argument and returns a reactive ref object.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>import { computed, ref } from 'vue';
+const count = ref(0);
+const doubledCount = computed(() => count.value * 2);</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">8. How do you define watchers in Vue 3's Composition API?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You use the `watch` function. It takes a source (ref, reactive object, or getter function), a callback function, and an optional options object.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>import { watch, ref } from 'vue';
+const count = ref(0);
+watch(count, (newValue, oldValue) => {
+  console.log('Count changed from', oldValue, 'to', newValue);
+});</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">9. What is `watchEffect` and how does it differ from `watch`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `watchEffect` is a simpler watcher that automatically tracks its dependencies and re-runs its callback whenever any of its dependencies change. Unlike `watch`, you don't explicitly specify the source; it infers them. It's useful for side effects that depend on reactive state.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">10. Explain the concept of "Reactivity Transform" (formerly `&lt;script setup&gt;` experimental feature).</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Reactivity Transform (now typically referred to as the sugar syntax for `&lt;script setup&gt;`) allows you to use reactive state directly without `.value` for refs and without explicit `ref()` or `reactive()` calls for local variables. It's a compile-time transform that simplifies the Composition API syntax. (Note: This feature's status has evolved; the core concept is the simplification provided by `&lt;script setup&gt;`).
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">11. What is `&lt;script setup&gt;` and its benefits?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `&lt;script setup&gt;` is a compile-time syntactic sugar for using the Composition API inside Single File Components (SFCs). It significantly reduces boilerplate by automatically exposing top-level imports and variables to the template, eliminating the need for a `setup()` function and explicit `return` statements.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">12. How do you define props in `&lt;script setup&gt;`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You use the `defineProps` macro.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>&lt;script setup&gt;
+const props = defineProps({
+  msg: String,
+  count: {
+    type: Number,
+    default: 0
+  }
+});
+&lt;/script&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">13. How do you emit events in `&lt;script setup&gt;`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You use the `defineEmits` macro to get an `emit` function.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>&lt;script setup&gt;
+const emit = defineEmits(['my-event', 'update:modelValue']);
+const handleClick = () => {
+  emit('my-event', 'some data');
+};
+&lt;/script&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">14. What is `Teleport` in Vue 3 and when would you use it?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `Teleport` is a built-in component that allows you to render a part of your component's template into a DOM node that exists outside the current component's DOM hierarchy. It's useful for modals, notifications, tooltips, or anything that needs to be rendered directly under `body` or another specific global element to avoid z-index or overflow issues.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">15. Explain `Fragments` in Vue 3.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Fragments allow a component to have multiple root nodes in its template without requiring a single wrapper element. In Vue 2, a component's template always needed a single root element. Vue 3 removes this restriction, making templates cleaner and reducing unnecessary DOM nodes.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">16. How has global API mounting changed in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> In Vue 3, global APIs like `Vue.component`, `Vue.directive`, `Vue.mixin`, etc., are no longer directly available on the global `Vue` object. Instead, they are chained to the application instance created by `createApp()`. This makes applications more isolated and less prone to global pollution.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// Vue 2: Vue.component('MyComponent', ...);
+// Vue 3: createApp(App).component('MyComponent', ...).mount('#app');</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">17. What is `provide`/`inject` and when would you use it?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `provide` and `inject` are used for dependency injection, allowing a parent component to "provide" data that can be "injected" by any descendant component, regardless of how deep it is in the component tree. This avoids "prop drilling" (passing props through many intermediate components).
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">18. How do you make `provide`/`inject` reactive?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You can provide a `ref` or a `reactive` object. The injected value will then be reactive.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// Parent
+import { provide, ref } from 'vue';
+const count = ref(0);
+provide('my-count', count);
+
+// Child
+import { inject } from 'vue';
+const count = inject('my-count'); // This 'count' is reactive</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">19. What are custom directives in Vue 3 and how do you create one?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Custom directives allow you to manipulate the DOM directly. You create them using the `directive` method on the app instance.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// main.js
+import { createApp } from 'vue';
+import App from './App.vue';
+
+const app = createApp(App);
+app.directive('focus', {
+  mounted(el) {
+    el.focus();
+  }
+});
+app.mount('#app');
+
+// In a component template: &lt;input v-focus /&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">20. Explain the new lifecycle hooks in Vue 3's Composition API.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> They are prefixed with `on` and imported from `vue`.
+                    <ul>
+                        <li>`onMounted()`: Called after the component has been mounted.</li>
+                        <li>`onUpdated()`: Called after the component has updated its DOM.</li>
+                        <li>`onUnmounted()`: Called after the component has been unmounted.</li>
+                        <li>`onBeforeMount()`: Called right before the component is mounted.</li>
+                        <li>`onBeforeUpdate()`: Called right before the component is updated.</li>
+                        <li>`onBeforeUnmount()`: Called right before the component is unmounted.</li>
+                        <li>`onErrorCaptured()`: Catches errors from descendant components.</li>
+                        <li>`onRenderTracked()`: Debugging hook, tracks reactive dependencies.</li>
+                        <li>`onRenderTriggered()`: Debugging hook, tracks when a re-render is triggered.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">21. How do you access a template ref in the Composition API?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You declare a `ref` with the same name as the `ref` attribute on the DOM element or component in the template. The ref will be populated after the component is mounted.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>&lt;template&gt;
+  &lt;input ref="myInput" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue';
+const myInput = ref(null);
+onMounted(() => {
+  myInput.value.focus();
+});
+&lt;/script&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">22. What is the purpose of `toRefs` and `toRef`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span>
+                    <ul>
+                        <li>`toRefs`: Converts a reactive object into a plain object where each property is a `ref` pointing to the original object's corresponding property. This is useful when destructuring a reactive object to maintain reactivity.</li>
+                        <li>`toRef`: Creates a ref that points to a property of a reactive object. It's useful when you only need to expose a single property as a ref.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">23. How does Vue 3 improve performance compared to Vue 2?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Vue 3 uses a Proxy-based reactivity system (instead of `Object.defineProperty`), which provides better performance and full reactivity for new properties and array index changes. It also features a compiler rewrite with "tree-shaking" support, optimized virtual DOM rendering (patch flags, static hoisting), and smaller bundle sizes.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">24. What is the `v-model` directive and how does it work in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `v-model` is a directive used for two-way data binding on form input elements or custom components. In Vue 3, `v-model` on a component defaults to binding to a `modelValue` prop and emitting an `update:modelValue` event. It also supports multiple `v-model` bindings on a single component.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">25. How do you implement multiple `v-model` bindings on a single component?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You can pass an argument to `v-model`, e.g., `v-model:title` and `v-model:description`. The component would then define `title` and `description` as props and emit `update:title` and `update:description` events respectively.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">26. Explain the concept of "Suspense" in Vue 3.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `Suspense` is an experimental built-in component that allows you to orchestrate asynchronous dependencies in your component tree. It provides a fallback content until all asynchronous components (e.g., components loaded with `defineAsyncComponent`) are resolved, improving user experience during loading states.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">27. What is `defineAsyncComponent`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `defineAsyncComponent` is a helper function that allows you to lazily load components. This means the component's code is only fetched and parsed when it's actually needed, which can significantly reduce the initial bundle size and improve load times.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">28. How does TypeScript support improve in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Vue 3 was rewritten in TypeScript, leading to much better native TypeScript support. The Composition API is designed with type inference in mind, and features like `defineProps` and `defineEmits` offer excellent type checking out of the box, making large-scale applications more maintainable.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">29. What is the purpose of `isRef`, `isReactive`, `isReadonly`, and `isProxy`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> These are utility functions to check the type of a reactive value:
+                    <ul>
+                        <li>`isRef()`: Checks if a value is a ref object.</li>
+                        <li>`isReactive()`: Checks if a value is a reactive object created by `reactive()`.</li>
+                        <li>`isReadonly()`: Checks if a value is a readonly proxy created by `readonly()`.</li>
+                        <li>`isProxy()`: Checks if a value is a reactive or readonly proxy.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">30. When would you use `readonly`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `readonly` takes an object (reactive or plain) and returns a readonly proxy to the original object. It's useful when you want to pass a reactive object down to a child component but prevent the child from modifying it directly, ensuring data flow is unidirectional.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">31. What is the difference between `shallowRef` and `ref`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span>
+                    <ul>
+                        <li>`ref`: Creates a deep reactive ref. If its value is an object, it will be deeply reactive.</li>
+                        <li>`shallowRef`: Creates a shallow reactive ref. Only the `.value` property itself is reactive. If the value is an object, its nested properties will NOT be reactive. Useful for performance optimization when you only care about the top-level assignment.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">32. What is the difference between `shallowReactive` and `reactive`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span>
+                    <ul>
+                        <li>`reactive`: Creates a deep reactive object. All nested properties will also be reactive.</li>
+                        <li>`shallowReactive`: Creates a shallow reactive object. Only the top-level properties of the object are reactive. Nested objects are not converted to reactive proxies. Useful for performance when you only need reactivity for the immediate properties.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">33. Explain the concept of "render functions" in Vue 3.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Render functions are an alternative to templates for defining a component's UI. They allow you to programmatically create virtual DOM nodes using JavaScript. They offer more programmatic control than templates and are useful for highly dynamic components or when integrating with third-party libraries that rely on programmatic DOM manipulation.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">34. How do you integrate Vue Router with Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You install `vue-router@4` and create a router instance using `createRouter`, `createWebHistory` (or `createWebHashHistory`), and `routes`. Then, you use `app.use(router)` to make it available to your Vue application. The router instance is accessible via `useRouter()` in the Composition API.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">35. How do you integrate Pinia (Vuex 5) with Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Pinia is the recommended state management library for Vue 3. You install `pinia`, create a Pinia instance using `createPinia()`, and then use `app.use(pinia)`. Stores are defined using `defineStore` and accessed in components using `useStore()`.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">36. What are slots in Vue 3 and how do they work?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Slots are a content distribution mechanism that allows you to compose components by injecting content into a child component's layout. They enable components to be more flexible and reusable. Vue 3 supports default slots, named slots, and scoped slots.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">37. Explain `scoped slots` in Vue 3.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Scoped slots allow the parent component to receive data from the child component's slot. The child component "provides" data to the slot, and the parent component "receives" it through a `v-slot` directive, allowing it to render the content based on the child's data.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">38. What is the purpose of `keep-alive`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `keep-alive` is a built-in component that allows you to conditionally cache component instances when they are dynamically switched. This prevents components from being destroyed and recreated, preserving their state and improving performance, especially in tabbed interfaces or dynamic routes.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">39. How do you handle errors in Vue 3 applications?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span>
+                    <ul>
+                        <li>`onErrorCaptured()` hook in Composition API.</li>
+                        <li>`errorCaptured` option in Options API.</li>
+                        <li>`app.config.errorHandler` for global error handling.</li>
+                        <li>`try...catch` blocks for asynchronous operations.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">40. What are mixins and why are composables generally preferred in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Mixins are a way to reuse component logic by merging options. However, they can lead to naming conflicts, unclear data sources, and difficult debugging. Composables (functions leveraging the Composition API) are preferred in Vue 3 because they offer better type inference, explicit dependency tracking, and avoid naming collisions, making code more readable and maintainable.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">41. What is a "composable" in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> A composable is a function that leverages Vue's Composition API to encapsulate and reuse stateful logic. It's a convention for organizing and sharing reusable features across components, often returning reactive state and functions.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">42. Give an example of a simple composable.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span>
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// useCounter.js
+import { ref, computed } from 'vue';
+
+export function useCounter(initialValue = 0) {
+  const count = ref(initialValue);
+  const increment = () => count.value++;
+  const decrement = () => count.value--;
+  const isEven = computed(() => count.value % 2 === 0);
+
+  return { count, increment, decrement, isEven };
+}
+
+// In a component:
+// &lt;script setup&gt;
+// import { useCounter } from './useCounter';
+// const { count, increment } = useCounter(10);
+// &lt;/script&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">43. How do you handle form input and validation in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Form input is handled using `v-model` for two-way data binding. Validation can be implemented manually using computed properties or watchers, or by integrating with third-party libraries like Vuelidate or VeeValidate, which now have Vue 3 compatible versions.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">44. What are Vue 3's new compiler optimizations?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Vue 3's compiler performs several optimizations:
+                    <ul>
+                        <li><strong>Patch Flags:</strong> Marks static nodes or nodes whose properties won't change, allowing the virtual DOM diffing algorithm to skip them.</li>
+                        <li><strong>Static Hoisting:</strong> Hoists static content out of the render function, so it's only created once.</li>
+                        <li><strong>Block Trees:</strong> Divides the template into "blocks" to optimize updates within dynamic parts of the template.</li>
+                        <li><strong>Tree-shaking:</strong> Unused features of Vue are automatically removed from the final bundle, leading to smaller file sizes.</li>
+                    </ul>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">45. Explain the `v-memo` directive.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> `v-memo` is a built-in directive introduced in Vue 3 that allows you to memoize a subtree of your template. If the dependencies specified in `v-memo` do not change, Vue will skip updating that part of the DOM, which can provide performance improvements for large, static, or rarely changing content.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">46. How do you use `Fragments` in templates?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> In Vue 3, you simply omit a single root element.
+                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>&lt;template&gt;
+  &lt;p&gt;First paragraph&lt;/p&gt;
+  &lt;p&gt;Second paragraph&lt;/p&gt;
+&lt;/template&gt;</code></pre>
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">47. What is the role of the `key` attribute in `v-for`?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> The `key` attribute is crucial when using `v-for` to maintain the identity of each node. It helps Vue efficiently update the virtual DOM by allowing it to track each node's position and reuse or reorder existing elements instead of recreating them. Using unique and stable keys prevents unexpected behavior and improves performance.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">48. How do you integrate third-party libraries (e.g., D3.js, Chart.js) with Vue 3 components?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> You typically integrate them within lifecycle hooks (`onMounted` or `onUpdated`) to ensure the DOM element is available. You can use template refs to get a direct reference to the DOM element where the library should render. Data updates can be managed by watching reactive data and updating the library's instance accordingly.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">49. What are "render hints" in Vue 3?</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> "Render hints" refer to the compiler's ability to analyze the template and generate more optimized render functions. This includes the aforementioned Patch Flags, Static Hoisting, and Block Trees, which provide the runtime with hints about how to efficiently update the virtual DOM, significantly improving rendering performance.
+                </p>
+            </div>
+
+            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+                <p class="font-semibold text-lg text-indigo-800 mb-2">50. Describe the transition system in Vue 3.</p>
+                <p class="text-gray-700">
+                    <span class="font-medium">Answer:</span> Vue 3 provides a built-in `&lt;Transition&gt;` component for animating elements or components when they are inserted, updated, or removed from the DOM. It automatically applies CSS classes at different stages of the transition, allowing you to define CSS transitions or animations. For group transitions, `&lt;TransitionGroup&gt;` is used. It works seamlessly with conditional rendering (`v-if`, `v-show`) and list rendering (`v-for`).
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

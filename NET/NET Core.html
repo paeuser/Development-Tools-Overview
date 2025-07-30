@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET Core Interview Questions</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #e5e7eb; /* Light border for table cells */
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #1f2937; /* Darker background for table header */
+            color: #ffffff; /* White text for header */
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        tr:nth-child(even) {
+            background-color: #f9fafb; /* Slightly darker row for even rows */
+        }
+        tr:hover {
+            background-color: #e0e7ff; /* Light blue on hover */
+        }
+        /* Responsive table behavior */
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #e5e7eb;
+                margin-bottom: 10px;
+                border-radius: 8px; /* Rounded corners for mobile rows */
+                overflow: hidden;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #e5e7eb;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td:last-child {
+                border-bottom: 0;
+            }
+            td:before {
+                content: attr(data-label);
+                position: absolute;
+                left: 0;
+                width: 45%;
+                padding-left: 15px;
+                font-weight: 600;
+                text-align: left;
+                color: #4b5563; /* Darker gray for labels */
+            }
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-6xl mx-auto bg-white p-6 sm:p-8 rounded-lg shadow-xl">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-800">.NET Core Interview Questions</h1>
+
+        <div class="overflow-x-auto rounded-lg shadow">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="rounded-tl-lg">Concept</th>
+                        <th class="rounded-tr-lg">Explanation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="Concept">Universal Windows Platform (UWP) Apps</td>
+                        <td data-label="Explanation">UWP apps are a type of application that can run on all Windows devices (PC, Xbox, HoloLens, etc.) using a single codebase. In .NET Core, UWP apps leverage the .NET Native toolchain for ahead-of-time compilation, resulting in faster startup times and improved performance. They are built using XAML and C# or F#.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Program to calculate the addition of two numbers</td>
+                        <td data-label="Explanation">
+                            <pre class="bg-gray-100 p-3 rounded text-sm overflow-x-auto"><code>using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        Console.WriteLine("Enter first number:");
+        if (double.TryParse(Console.ReadLine(), out double num1))
+        {
+            Console.WriteLine("Enter second number:");
+            if (double.TryParse(Console.ReadLine(), out double num2))
+            {
+                double sum = num1 + num2;
+                Console.WriteLine($"The sum is: {sum}");
+            }
+            else
+            {
+                Console.WriteLine("Invalid second number.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Invalid first number.");
+        }
+    }
+}</code></pre>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET Core Components</td>
+                        <td data-label="Explanation">Key components include CoreCLR (the runtime), CoreFX (the foundational libraries), Roslyn (the C# and VB.NET compilers), ASP.NET Core (for web development), Entity Framework Core (for data access), and the .NET Core SDK (for development tools).</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Middleware in .NET Core</td>
+                        <td data-label="Explanation">Middleware in ASP.NET Core is software assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request to the next component in the pipeline, perform work before or after the next component, or short-circuit the pipeline. Examples include authentication, routing, and static file serving.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Differentiate .NET Core vs .NET Framework</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>.NET Core:</strong> Cross-platform (Windows, Linux, macOS), open-source, modular, high performance, side-by-side installation, command-line tooling. Ideal for microservices, cloud-native apps, and cross-platform development.</li>
+                                <li><strong>.NET Framework:</strong> Windows-only, proprietary, monolithic, older, typically full installations. Ideal for existing Windows desktop applications (WPF, WinForms) and large enterprise applications tied to Windows.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Explicit Compilation (Ahead-Of-Time/AOT Compilation)</td>
+                        <td data-label="Explanation">AOT compilation is the process of compiling code into native machine code before execution, rather than at runtime (JIT). In .NET Core, particularly with .NET Native for UWP or CoreRT, AOT compilation can lead to faster startup times, reduced memory footprint, and smaller deployment sizes by eliminating the need for a JIT compiler at runtime.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Managed Extensibility Framework (MEF)</td>
+                        <td data-label="Explanation">MEF is a library for creating lightweight, extensible applications. It allows developers to discover and compose extensions without requiring configuration. While primarily associated with .NET Framework, .NET Core has a compatible version (System.Composition) for building modular applications.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET Core and .NET Standard Class Library Usage</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>.NET Core Class Library:</strong> Used when the library is specifically targeting .NET Core applications and does not need to be consumed by .NET Framework applications. It can use .NET Core specific APIs.</li>
+                                <li><strong>.NET Standard Class Library:</strong> Used when the library needs to be shared across different .NET implementations (e.g., .NET Core, .NET Framework, Xamarin, UWP). It targets a specific version of .NET Standard, which defines a set of APIs that all compliant .NET implementations must support.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">CoreRT</td>
+                        <td data-label="Explanation">CoreRT is an experimental, ahead-of-time (AOT) compiling .NET runtime optimized for native code generation. It aims to produce self-contained, high-performance executables with minimal dependencies, making it suitable for scenarios like IoT, embedded systems, and serverless functions where small footprint and fast startup are critical.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET Core SDK</td>
+                        <td data-label="Explanation">The .NET Core SDK (Software Development Kit) is a set of tools and libraries that developers use to create, build, and run .NET Core applications. It includes the .NET Core runtime, the .NET Core CLI (Command Line Interface) tools, and the .NET Core host.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Docker (in .NET Core context)</td>
+                        <td data-label="Explanation">Docker is a platform for developing, shipping, and running applications in containers. In .NET Core, Docker is widely used to package applications and their dependencies into portable, isolated containers, ensuring consistent deployment across different environments (development, testing, production) and facilitating microservices architectures.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Xamarin (in .NET Core context)</td>
+                        <td data-label="Explanation">Xamarin is a Microsoft-owned framework for building cross-platform mobile applications (iOS, Android, Windows) using C# and .NET. While it has its own runtime, it leverages the .NET ecosystem and shares much of the .NET Standard libraries, allowing developers to reuse code between mobile, web, and desktop applications. (Note: Xamarin.Forms has evolved into .NET MAUI).</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Differentiate ASP.NET Core from .NET Core</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>.NET Core:</strong> The foundational, general-purpose, cross-platform runtime and framework for building various types of applications (console, desktop, web, cloud, IoT).</li>
+                                <li><strong>ASP.NET Core:</strong> A specific framework built <em>on top</em> of .NET Core for building modern, cloud-based, internet-connected applications (web apps, APIs, microservices). It provides features like MVC, Razor Pages, SignalR, etc.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">MSBuild in the .NET Core</td>
+                        <td data-label="Explanation">MSBuild is the build platform for Microsoft and .NET. It defines an XML-based project file format that controls how the build process transforms source code into executable applications. In .NET Core, MSBuild is the underlying build engine used by the .NET CLI (`dotnet build` command) to compile projects and manage dependencies.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Debug vs. Trace (in .NET)</td>
+                        <td data-label="Explanation">No, `Debug` and `Trace` are not the same, though both are used for diagnostics.
+                            <ul class="list-disc list-inside">
+                                <li>`Debug`: Primarily used during development for conditional compilation and assertions. `Debug.WriteLine()` calls are typically compiled out of release builds.</li>
+                                <li>`Trace`: Intended for production-level logging and diagnostics. `Trace.WriteLine()` calls are usually included in release builds and can be configured to output to various listeners (e.g., file, event log).</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Transfer-encoding (HTTP)</td>
+                        <td data-label="Explanation">`Transfer-encoding` is an HTTP header that specifies how the payload body of an HTTP message has been encoded to safely transfer it over HTTP. Common values include `chunked` (for streaming data of unknown length), `gzip`, and `compress`. It's not specific to .NET Core but is fundamental to how web applications (including ASP.NET Core apps) communicate over HTTP.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Differentiate .NET Core and Mono</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>.NET Core:</strong> Microsoft's official, modern, cross-platform, open-source .NET implementation, designed for cloud-native and high-performance applications.</li>
+                                <li><strong>Mono:</strong> An open-source implementation of .NET Framework, primarily used for cross-platform applications before .NET Core, and notably powers Xamarin. Mono aims for compatibility with .NET Framework APIs, while .NET Core focuses on a modular, performance-oriented approach.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Common Type System (CTS) Types</td>
+                        <td data-label="Explanation">The Common Type System (CTS) defines how types are declared, used, and managed in the .NET runtime. It supports two main categories of types:
+                            <ul class="list-disc list-inside">
+                                <li><strong>Value Types:</strong> Store their data directly (e.g., `int`, `char`, `struct`). They are allocated on the stack (or inline in an object) and are copied when passed as arguments.</li>
+                                <li><strong>Reference Types:</strong> Store a reference (memory address) to their data (e.g., `class`, `string`, `array`). They are allocated on the heap, and only the reference is copied when passed as arguments.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Generating SQL Scripts in .NET Core (Entity Framework Core)</td>
+                        <td data-label="Explanation">In .NET Core, particularly with Entity Framework Core (EF Core) migrations, generating SQL scripts allows developers to create or update a database schema based on the application's EF Core model. This is useful for:
+                            <ul class="list-disc list-inside">
+                                <li>Deploying database changes to production environments without installing EF Core tools.</li>
+                                <li>Version controlling database schema changes.</li>
+                                <li>Applying migrations to databases that are not directly accessible by the application.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">IGCToCLR interface</td>
+                        <td data-label="Explanation">The `IGCToCLR` interface is an internal, undocumented interface within the .NET runtime (specifically related to the garbage collector and Common Language Runtime). It's part of the low-level communication between the garbage collector and other parts of the CLR. It's not something typically interacted with by application developers.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">CoreFx</td>
+                        <td data-label="Explanation">CoreFx is the foundational set of .NET libraries that implement the .NET Standard. It includes types for collections, file systems, console, XML, JSON, networking, and other fundamental components. It provides the core APIs that applications built on .NET Core use.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Zero Garbage Collectors</td>
+                        <td data-label="Explanation">The term "Zero Garbage Collectors" is not a standard, official garbage collection mode or type in .NET. It might refer to highly optimized scenarios where memory allocations are minimized to reduce GC pressure, or perhaps a misunderstanding of how GC works. .NET always uses a garbage collector (like the Workstation GC or Server GC) to manage memory automatically. While there are techniques to reduce GC impact, a "zero" GC is not a current feature.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">webHostBuilder() in ASP.NET Core</td>
+                        <td data-label="Explanation">`WebHostBuilder()` is a class in ASP.NET Core used to configure and create a web host. It provides a fluent API to set up the web server (e.g., Kestrel), configure services, define the application's startup class (`Startup.cs`), and specify other host-related settings. It's the entry point for building an ASP.NET Core web application. (Note: In newer .NET versions, `Host.CreateDefaultBuilder()` and `WebApplication.CreateBuilder()` are more common).</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">CoreCLR</td>
+                        <td data-label="Explanation">CoreCLR is the runtime engine for .NET Core. It includes the JIT (Just-In-Time) compiler, garbage collector, type system, and other low-level components responsible for executing .NET applications. It's cross-platform and open-source, forming the core execution environment for .NET Core.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">C# and F#</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>C# (C-sharp):</strong> A modern, object-oriented, type-safe programming language developed by Microsoft. It's the primary language for .NET development, widely used for web, desktop, mobile, and game development.</li>
+                                <li><strong>F# (F-sharp):</strong> A functional-first, object-oriented, and imperative programming language for .NET. It emphasizes immutability and concise code, often used for data science, financial modeling, and complex domain modeling.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET Core Use Cases</td>
+                        <td data-label="Explanation">.NET Core is used for building a wide range of modern applications, including:
+                            <ul class="list-disc list-inside">
+                                <li>Cross-platform web applications and APIs (using ASP.NET Core)</li>
+                                <li>Microservices</li>
+                                <li>Cloud-native applications</li>
+                                <li>Console applications</li>
+                                <li>Desktop applications (with WPF/WinForms on Windows, or cross-platform with Avalonia/MAUI)</li>
+                                <li>IoT applications</li>
+                                <li>Machine learning models</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET Core</td>
+                        <td data-label="Explanation">.NET Core is a free, open-source, cross-platform (Windows, macOS, Linux) managed software framework for developing modern, cloud-based, and internet-connected applications. It is a re-architecture of .NET Framework, designed for modularity, high performance, and flexible deployment.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">.NET MCQ</td>
+                        <td data-label="Explanation">This is a placeholder for Multiple Choice Questions related to .NET, typically used for assessment.</td>
+                    </tr>
+                    <!-- New questions added below -->
+                    <tr>
+                        <td data-label="Concept">Dependency Injection (DI) in .NET Core</td>
+                        <td data-label="Explanation">Dependency Injection is a design pattern used to achieve Inversion of Control (IoC) between classes and their dependencies. In .NET Core, DI is a first-class citizen, built into the framework. It allows for loose coupling, easier testing, and better maintainability by providing dependencies to a class rather than the class creating them itself. Services are typically registered in the `Startup.cs` file.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Kestrel Web Server</td>
+                        <td data-label="Explanation">Kestrel is a cross-platform web server for ASP.NET Core. It's a lightweight, high-performance HTTP server that runs on Windows, macOS, and Linux. Kestrel is typically used as the edge server for ASP.NET Core applications, often behind a reverse proxy server like IIS, Nginx, or Apache for additional features like load balancing and SSL termination.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Entity Framework Core (EF Core)</td>
+                        <td data-label="Explanation">Entity Framework Core is a lightweight, extensible, and cross-platform version of the popular Entity Framework data access technology. It's an Object-Relational Mapper (ORM) that enables .NET developers to work with a database using .NET objects, eliminating the need for most of the data-access code that developers usually need to write. It supports various databases like SQL Server, SQLite, PostgreSQL, MySQL, etc.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">ASP.NET Core MVC vs. Razor Pages</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>ASP.NET Core MVC:</strong> Follows the Model-View-Controller pattern, separating concerns into distinct components. Best for applications with complex UI interactions, multiple views, and where a clear separation of concerns is highly valued.</li>
+                                <li><strong>Razor Pages:</strong> A page-based model for building web UI, simplifying the development of page-focused scenarios. Each page is self-contained with its view and code-behind file. Ideal for simpler web pages and form-based applications where the UI logic is tightly coupled to the page.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Global Tools in .NET Core</td>
+                        <td data-label="Explanation">Global Tools are special NuGet packages that contain console applications. They can be installed globally on your machine and invoked from any directory using the `dotnet` command. Examples include `dotnet-ef` (Entity Framework Core command-line tools) and `dotnet-watch` (for automatic recompilation on file changes). They extend the functionality of the .NET Core CLI.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">`appsettings.json` in .NET Core</td>
+                        <td data-label="Explanation">`appsettings.json` is a configuration file in ASP.NET Core applications used to store application settings, connection strings, logging configurations, and other key-value pairs. It supports hierarchical configuration and can be overridden by environment variables or command-line arguments, providing a flexible way to manage settings across different environments.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">In-memory database in .NET Core (for testing)</td>
+                        <td data-label="Explanation">An in-memory database, like the one provided by Entity Framework Core, is a temporary database that exists only in RAM and is discarded when the application stops. It's primarily used for unit and integration testing of data access logic, as it provides a fast and isolated environment without the overhead of a real database.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Authentication vs. Authorization in ASP.NET Core</td>
+                        <td data-label="Explanation">
+                            <ul class="list-disc list-inside">
+                                <li><strong>Authentication:</strong> The process of verifying who a user is (e.g., username/password, OAuth, JWT). ASP.NET Core provides various authentication schemes (Cookie, JWT Bearer, OpenID Connect).</li>
+                                <li><strong>Authorization:</strong> The process of determining what an authenticated user is allowed to do (e.g., access a specific resource, perform an action). ASP.NET Core supports role-based, claims-based, and policy-based authorization.</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Background Services in .NET Core</td>
+                        <td data-label="Explanation">Background Services in .NET Core allow you to run long-running tasks or background processes within your application. They are implemented using the `IHostedService` interface, which provides `StartAsync` and `StopAsync` methods. This is useful for tasks like processing queues, sending emails, or performing scheduled jobs without blocking the main application thread.</td>
+                    </tr>
+                    <tr>
+                        <td data-label="Concept">Blazor</td>
+                        <td data-label="Explanation">Blazor is a free and open-source web framework that enables developers to create interactive web UIs using C# instead of JavaScript. It allows for full-stack web development with .NET. Blazor can run client-side in the browser via WebAssembly (Blazor WebAssembly) or server-side (Blazor Server), where UI updates are handled over a SignalR connection.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

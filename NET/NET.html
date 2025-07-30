@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.NET Interview Questions and Answers</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-6xl mx-auto bg-white shadow-xl rounded-xl p-6 sm:p-8 md:p-10 lg:p-12">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-indigo-700 mb-10 leading-tight">
+            <span class="block">.NET Interview Questions & Answers</span>
+            <span class="block text-xl sm:text-2xl text-gray-500 mt-2">Comprehensive Guide for Your Interview</span>
+        </h1>
+
+        <!-- .NET Framework Questions Section -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 border-b-2 border-indigo-300 pb-2">.NET Framework Interview Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Question 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">1. How does the .NET framework work?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The .NET Framework is a software development platform for building and running applications on Windows. It consists of the Common Language Runtime (CLR), which handles execution, memory management, and security, and the Framework Class Library (FCL), a vast collection of reusable classes, interfaces, and value types.</p>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">2. Explain about major components of the .NET framework.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>Major components include:</p>
+                        <ul>
+                            <li><strong>Common Language Runtime (CLR):</strong> The execution engine that provides services like garbage collection, security, and exception handling.</li>
+                            <li><strong>Framework Class Library (FCL):</strong> A comprehensive, object-oriented collection of reusable types that provides functionality for various tasks.</li>
+                            <li><strong>Common Type System (CTS):</strong> Defines how types are declared, used, and managed in the CLR.</li>
+                            <li><strong>Common Language Specification (CLS):</strong> A set of rules that define the minimum features required for .NET languages to interoperate.</li>
+                            <li><strong>Metadata and Assemblies:</strong> Assemblies are the fundamental units of deployment, versioning, reuse, and security in .NET. Metadata describes the types defined within an assembly.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">3. What is an EXE and a DLL?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>EXE (Executable):</strong> A file that contains an application's executable code. It has an entry point (e.g., `Main` method) and can be run directly.</li>
+                            <li><strong>DLL (Dynamic Link Library):</strong> A library file that contains code and data that can be used by multiple programs simultaneously. It does not have an entry point and cannot be run directly. DLLs promote code reuse.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">4. What is CTS?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CTS (Common Type System)</strong> is a standard that specifies how types are declared, used, and managed in the Common Language Runtime (CLR). It ensures that types defined in different .NET languages can interoperate with each other by providing a common set of data types and operations.</p>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">5. Explain CLS</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CLS (Common Language Specification)</strong> is a subset of the Common Type System (CTS) that defines a set of rules and guidelines that language compilers must follow to produce code that can interoperate with other .NET languages. It ensures cross-language compatibility.</p>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">6. What is JIT?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>JIT (Just-In-Time) compiler</strong> is a component of the Common Language Runtime (CLR) that converts Microsoft Intermediate Language (MSIL) code into native machine code at runtime, just before the code is executed. This allows for platform independence and optimized execution for the specific CPU architecture.</p>
+                    </div>
+                </div>
+                <!-- Question 7 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">7. What is the difference between int and Int32?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong><code>int</code>:</strong> This is a C# keyword (an alias) for the `System.Int32` type. Its actual size (32-bit or 64-bit) depends on the underlying system and the .NET version, but in modern .NET, it typically maps to `Int32`.</li>
+                            <li><strong><code>Int32</code>:</strong> This is the actual .NET Framework type (`System.Int32`) that represents a 32-bit signed integer. It has a fixed size across all .NET languages.</li>
+                        </ul>
+                        <p>In most practical scenarios, they are interchangeable in C#, but `Int32` is the explicit type from the FCL, while `int` is a language-specific shortcut.</p>
+                    </div>
+                </div>
+                <!-- Question 8 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">8. Explain the differences between value type and reference type.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Value Type:</strong> Stores its data directly in its own memory allocation (usually on the stack). When a value type is assigned to another variable, its value is copied. Examples: `int`, `char`, `struct`, `enum`.</li>
+                            <li><strong>Reference Type:</strong> Stores a reference (memory address) to its data, which is stored on the heap. When a reference type is assigned to another variable, only the reference is copied, pointing to the same data in memory. Examples: `class`, `string`, `array`, `delegate`.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 9 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">9. What is the difference between managed and unmanaged code?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Managed Code:</strong> Code that is executed and managed by the Common Language Runtime (CLR). The CLR provides services like automatic garbage collection, type safety, and security. Most C#, VB.NET code is managed.</li>
+                            <li><strong>Unmanaged Code:</strong> Code that is executed directly by the operating system, outside the control of the CLR. It requires manual memory management and can be less secure. Examples include C++ code, Win32 APIs, and COM components.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 10 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">10. Explain Microsoft Intermediate Language</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Microsoft Intermediate Language (MSIL)</strong>, also known as Common Intermediate Language (CIL), is a CPU-independent instruction set that .NET language compilers (like C#, VB.NET) translate source code into. This intermediate code is then compiled into native machine code by the JIT compiler at runtime, enabling platform independence.</p>
+                    </div>
+                </div>
+                <!-- Question 11 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">11. What is an assembly?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>An <strong>assembly</strong> is the fundamental unit of deployment, versioning, reuse, activation scope, and security in .NET. It's a compiled code library that can be either an executable file (.exe) or a dynamic link library (.dll). An assembly contains MSIL code, metadata, and optional resources.</p>
+                    </div>
+                </div>
+                <!-- Question 12 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">12. Is ASP.NET different from ASP? If yes, explain how?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>ASP (Active Server Pages):</strong> An older, interpreted, server-side scripting environment (using VBScript or JScript) for building dynamic web pages. It's procedural and less structured.</li>
+                            <li><strong>ASP.NET:</strong> A compiled, object-oriented framework for building dynamic web applications and web services. It's part of the .NET Framework, offering better performance, security, and a rich set of controls and features (like Web Forms, MVC, Web API).</li>
+                        </ul>
+                        <p>ASP.NET is a complete rewrite and significant advancement over classic ASP.</p>
+                    </div>
+                </div>
+                <!-- Question 13 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">13. Explain role-based security in .NET.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Role-based security</strong> in .NET allows you to control access to resources (methods, files, etc.) based on the roles (groups) that a user belongs to, rather than individual user identities. For example, you can specify that only users in the "Administrators" role can access certain functions.</p>
+                    </div>
+                </div>
+                <!-- Question 14 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">14. Explain the different types of assembly.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Private Assemblies:</strong> Assemblies that are deployed with a specific application and are only accessible by that application. They are typically stored in the application's base directory.</li>
+                            <li><strong>Shared Assemblies (Strong-Named Assemblies):</strong> Assemblies that can be shared by multiple applications. They are installed in the Global Assembly Cache (GAC) and have a strong name (name, version, culture, public key token) to ensure uniqueness and prevent conflicts.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 15 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">15. What is the order of the events in a page life cycle?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The typical order of events in an ASP.NET page life cycle is:</p>
+                        <ol>
+                            <li><strong>Page_PreInit:</strong> Raised before the `Init` event.</li>
+                            <li><strong>Page_Init:</strong> Initializes controls.</li>
+                            <li><strong>Page_InitComplete:</strong> Raised after all controls are initialized.</li>
+                            <li><strong>Page_PreLoad:</strong> Raised before `Load` event, after postback data is loaded.</li>
+                            <li><strong>Page_Load:</strong> Main event for page processing.</li>
+                            <li><strong>Control Events:</strong> Events for individual controls (e.g., `Button_Click`).</li>
+                            <li><strong>Page_LoadComplete:</strong> Raised after all control events are handled.</li>
+                            <li><strong>Page_PreRender:</strong> Raised before the page content is rendered.</li>
+                            <li><strong>Page_PreRenderComplete:</strong> Raised after all controls are pre-rendered.</li>
+                            <li><strong>Page_SaveStateComplete:</strong> State is saved.</li>
+                            <li><strong>Page_Render:</strong> Generates the HTML output.</li>
+                            <li><strong>Page_Unload:</strong> Final cleanup.</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- Question 16 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">16. What is a garbage collector?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The <strong>Garbage Collector (GC)</strong> is a component of the Common Language Runtime (CLR) that automatically manages memory allocation and deallocation for managed objects. It frees up memory occupied by objects that are no longer referenced by the application, preventing memory leaks and simplifying memory management for developers.</p>
+                    </div>
+                </div>
+                <!-- Question 17 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">17. What is caching?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Caching</strong> is a technique used to store frequently accessed data or computed results in a temporary storage location (cache) so that future requests for that data can be served more quickly, without needing to re-fetch or re-compute it. This improves application performance and reduces load on backend systems.</p>
+                    </div>
+                </div>
+                <!-- Question 18 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">18. Can we apply themes to ASP.NET applications?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>Yes, you can apply themes to ASP.NET applications. Themes are collections of properties, style sheets, and images that define the appearance of a web page or control. They provide a consistent look and feel across an application and can be easily switched.</p>
+                    </div>
+                </div>
+                <!-- Question 19 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">19. Explain MVC.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>MVC (Model-View-Controller)</strong> is an architectural pattern that separates an application into three main components:</p>
+                        <ul>
+                            <li><strong>Model:</strong> Represents the application's data, business logic, and rules.</li>
+                            <li><strong>View:</strong> Displays the data from the model to the user.</li>
+                            <li><strong>Controller:</strong> Handles user input, interacts with the model, and selects the appropriate view to display.</li>
+                        </ul>
+                        <p>This separation of concerns improves maintainability, testability, and scalability.</p>
+                    </div>
+                </div>
+                <!-- Question 20 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">20. What is cross-page posting?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Cross-page posting</strong> in ASP.NET allows a form on one web page to be submitted to a different web page. This is useful when you want to process form data on a separate page, for example, a confirmation page or a payment processing page.</p>
+                    </div>
+                </div>
+                <!-- Question 21 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">21. What is a delegate in .NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>A <strong>delegate</strong> in .NET is a type-safe function pointer. It holds a reference to a method (or methods) and can be used to invoke that method indirectly. Delegates are fundamental to event handling and callback mechanisms in .NET.</p>
+                    </div>
+                </div>
+                <!-- Question 22 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">22. What are security controls available on ASP.NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>ASP.NET provides several security controls and features, including:</p>
+                        <ul>
+                            <li><strong>Authentication:</strong> Forms Authentication, Windows Authentication.</li>
+                            <li><strong>Authorization:</strong> URL Authorization, File Authorization, Role-Based Authorization.</li>
+                            <li><strong>Membership and Role Management:</strong> Built-in providers for managing users and roles.</li>
+                            <li><strong>Login Controls:</strong> Pre-built controls like `Login`, `LoginView`, `LoginStatus`, `CreateUserWizard`, `PasswordRecovery`.</li>
+                            <li><strong>Code Access Security (CAS):</strong> (Less common in modern .NET, more in Framework) Restricts what code can do based on its origin.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 23 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">23. What is boxing and unboxing in .NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Boxing:</strong> The process of converting a value type (e.g., `int`) to a reference type (`object` or any interface type implemented by the value type). This involves wrapping the value type in an `object` on the heap.</li>
+                            <li><strong>Unboxing:</strong> The explicit process of converting an `object` type back to a value type. This involves extracting the value from the object on the heap.</li>
+                        </ul>
+                        <p>Both operations can incur performance overhead.</p>
+                    </div>
+                </div>
+                <!-- Question 24 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">24. What is MIME in .NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>MIME (Multipurpose Internet Mail Extensions)</strong> is a standard that describes the type of content being transmitted over the internet (e.g., `text/html`, `image/jpeg`, `application/json`). In .NET (especially in web applications), MIME types are used to inform browsers or other clients how to interpret the data sent from the server.</p>
+                    </div>
+                </div>
+                <!-- Question 25 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">25. What is the use of manifest in the .NET framework?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The <strong>manifest</strong> in a .NET assembly is a block of metadata that describes the assembly itself. It contains information such as the assembly's identity (name, version, culture, public key), a list of all files in the assembly, references to other assemblies, and security permissions required by the assembly.</p>
+                    </div>
+                </div>
+                <!-- Question 26 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">26. Explain different types of cookies available in ASP.NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>ASP.NET primarily uses two types of cookies:</p>
+                        <ul>
+                            <li><strong>Session Cookies:</strong> These are temporary cookies that exist only for the duration of a user's session. They are stored in the browser's memory and are deleted when the browser is closed.</li>
+                            <li><strong>Persistent Cookies:</strong> These cookies have an expiration date and are stored on the user's hard drive. They persist across browser sessions and are used for "remember me" functionality, tracking, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 27 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">27. What is the meaning of CAS in .NET?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CAS (Code Access Security)</strong> in .NET Framework is a security mechanism that restricts the ability of managed code to access protected resources and operations based on the code's identity (e.g., where it originated from, who published it). While largely deprecated in modern .NET Core/5+, it was a key security feature in the full .NET Framework.</p>
+                    </div>
+                </div>
+                <!-- Question 28 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">28. What is the appSettings section in the web.config file?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The <strong><code>appSettings</code> section</strong> in the `web.config` file is used to store custom application-specific configuration settings as key-value pairs. This allows developers to easily change application behavior without recompiling the code (e.g., database connection strings, API keys, feature flags).</p>
+                    </div>
+                </div>
+                <!-- Question 29 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">29. What is the difference between an abstract class and an interface?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Abstract Class:</strong> Can have abstract (unimplemented) and concrete (implemented) methods. Can have fields, properties, constructors. Supports single inheritance. Used for "is-a" relationships where some implementation is shared.</li>
+                            <li><strong>Interface:</strong> Can only declare methods, properties, events, and indexers (no implementation until C# 8 default interface methods). Cannot have fields or constructors. Supports multiple inheritance. Used for "can-do" relationships, defining a contract.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 30 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">30. What are the types of memories supported in the .NET framework?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The .NET Framework primarily uses two types of memory:</p>
+                        <ul>
+                            <li><strong>Stack:</strong> Used for storing value types, method parameters, and local variables. Memory is allocated and deallocated in a LIFO (Last-In, First-Out) manner.</li>
+                            <li><strong>Heap:</strong> Used for storing reference types (objects). Memory is allocated dynamically and managed by the Garbage Collector.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 31 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">31. Explain localization and globalization.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>Globalization:</strong> The process of designing and developing applications that support multiple cultures and regions. This involves designing the application to handle different date/time formats, number formats, currency, sorting rules, etc.</li>
+                            <li><strong>Localization:</strong> The process of adapting a globalized application to a specific culture or region. This involves translating UI text, images, and other resources to the target language and culture.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 32 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">32. What are the parameters that control the connection pooling behaviors?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>Connection pooling in ADO.NET is controlled by parameters in the connection string, such as:</p>
+                        <ul>
+                            <li><code>Pooling=true/false</code>: Enables/disables pooling.</li>
+                            <li><code>Min Pool Size</code>: Minimum number of connections to keep in the pool.</li>
+                            <li><code>Max Pool Size</code>: Maximum number of connections allowed in the pool.</li>
+                            <li><code>Connection Lifetime</code>: Maximum time (in seconds) a connection can live in the pool.</li>
+                            <li><code>Load Balance Timeout</code>: Time (in seconds) after which a connection is removed from the pool if it has been idle.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 33 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">33. What are MDI and SDI?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>MDI (Multiple Document Interface):</strong> An application design where a single parent window contains multiple child windows. Each child window can display a different document or view (e.g., older versions of Microsoft Word with multiple document windows inside one main window).</li>
+                            <li><strong>SDI (Single Document Interface):</strong> An application design where each document or view is opened in a separate, independent top-level window (e.g., modern web browsers, Notepad).</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 34 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">34. Explain the different parts of an Assembly.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>An assembly in .NET typically consists of four main parts:</p>
+                        <ul>
+                            <li><strong>Manifest:</strong> Contains metadata about the assembly itself (identity, files, referenced assemblies, security permissions).</li>
+                            <li><strong>Metadata:</strong> Describes the types (classes, interfaces, structs, enums) and members (methods, properties, fields) defined within the assembly.</li>
+                            <li><strong>MSIL (Microsoft Intermediate Language):</strong> The platform-independent executable code.</li>
+                            <li><strong>Resources:</strong> Non-executable data like images, strings, XML files, etc., embedded within the assembly.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- .NET Core Questions Section -->
+        <section>
+            <h2 class="text-3xl font-bold text-indigo-600 mb-6 border-b-2 border-indigo-300 pb-2">.NET Core Interview Questions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Question 1 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">1. What are Universal Windows Platform (UWP) Apps in .Net Core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>UWP (Universal Windows Platform) Apps</strong> are applications that run on all Windows-powered devices, including PCs, Xbox, HoloLens, and Surface Hub, using a single codebase. While UWP apps can leverage .NET Core components, they are primarily built using the Windows SDK and XAML, and are distributed via the Microsoft Store.</p>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">2. Write a program to calculate the addition of two numbers.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>Here's a simple C# program:</p>
+                        <pre><code class="language-csharp">
+using System;
+
+public class Addition
+{
+    public static void Main(string[] args)
+    {
+        int num1 = 10;
+        int num2 = 20;
+        int sum = num1 + num2;
+        Console.WriteLine($"The sum of {num1} and {num2} is: {sum}");
+    }
+}
+                        </code></pre>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">3. Explain about .NET Core Components.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>.NET Core (now simply .NET) components include:</p>
+                        <ul>
+                            <li><strong>.NET Runtime (CoreCLR):</strong> The execution engine, providing services like garbage collection, JIT compilation, and type system.</li>
+                            <li><strong>ASP.NET Core:</strong> A cross-platform framework for building modern web apps and APIs.</li>
+                            <li><strong>Entity Framework Core:</strong> An ORM for data access.</li>
+                            <li><strong>.NET SDK:</strong> A set of tools and libraries for developing, building, and running .NET applications.</li>
+                            <li><strong>Base Class Library (BCL):</strong> A subset of the FCL, providing fundamental types and functionality.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">4. What is middleware in .NET core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Middleware</strong> in ASP.NET Core is software that is assembled into an application pipeline to handle requests and responses. Each component chooses whether to pass the request to the next component in the pipeline, or short-circuit the pipeline. Examples include authentication, routing, and error handling middleware.</p>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">5. Differentiate .NET Core vs .NET framework.</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>.NET Framework:</strong> Windows-only, older, larger, full FCL, primarily for desktop and web (ASP.NET Web Forms/MVC 5).</li>
+                            <li><strong>.NET Core (now .NET):</strong> Cross-platform (Windows, Linux, macOS), open-source, modular, smaller footprint, command-line tooling, optimized for modern cloud-native apps, microservices, and containers.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">6. Explain Explicit Compilation (Ahead Of Time compilation).</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Ahead-Of-Time (AOT) compilation</strong> is a process where code is compiled into native machine code before runtime, typically during the build process. This contrasts with JIT compilation, which happens at runtime. AOT compilation can result in faster startup times and smaller deployment sizes, as the compilation overhead is removed from the runtime. .NET Native (for UWP) and Blazor WebAssembly use AOT.</p>
+                    </div>
+                </div>
+                <!-- Question 7 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">7. What is MEF?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>MEF (Managed Extensibility Framework)</strong> is a library for creating lightweight, extensible applications. It allows developers to discover and use extensions without configuration. It's often used for plugin architectures and dependency injection, though its use has somewhat declined with the rise of built-in DI containers in .NET Core.</p>
+                    </div>
+                </div>
+                <!-- Question 8 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">8. In what situations .NET Core and .NET Standard Class Library project types will be used?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>.NET Core Project:</strong> Used for building executable applications (console, web, desktop) that target a specific .NET Core version and runtime.</li>
+                            <li><strong>.NET Standard Class Library:</strong> Used for building reusable libraries that can be consumed by any .NET implementation (e.NET Framework, .NET Core, Xamarin, Unity) that supports the targeted .NET Standard version. It defines a set of APIs that all .NET implementations must provide.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 9 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">9. What is CoreRT?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CoreRT</strong> was an experimental .NET runtime optimized for AOT compilation scenarios, aiming to produce self-contained, native executables with minimal dependencies. It was part of the .NET Native toolchain and has largely evolved into the AOT capabilities now integrated directly into .NET (e.g., for Blazor WebAssembly and native AOT publishing).</p>
+                    </div>
+                </div>
+                <!-- Question 10 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">10. What is .NET Core SDK?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The <strong>.NET Core SDK (Software Development Kit)</strong> is a set of tools and libraries that developers use to create, build, and run .NET Core applications. It includes the .NET CLI (Command-Line Interface), the .NET runtime, libraries, and compilers.</p>
+                    </div>
+                </div>
+                <!-- Question 11 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">11. What is Docker?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Docker</strong> is a platform that uses OS-level virtualization to deliver software in packages called containers. Containers are isolated, lightweight, and portable environments that bundle an application and all its dependencies, ensuring it runs consistently across different environments. .NET Core applications are often deployed in Docker containers.</p>
+                    </div>
+                </div>
+                <!-- Question 12 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">12. What is Xamarin?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Xamarin</strong> is a Microsoft-owned framework for building cross-platform mobile applications (iOS, Android, UWP) using C# and .NET. It allows developers to share a significant portion of their codebase across platforms while still providing access to native APIs and UI elements.</p>
+                    </div>
+                </div>
+                <!-- Question 13 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">13. How can you differentiate ASP.NET Core from .NET Core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>.NET Core (now .NET):</strong> This is the general-purpose, cross-platform runtime and framework for building various types of applications (console, desktop, web, cloud).</li>
+                            <li><strong>ASP.NET Core:</strong> This is a specific web framework built on top of .NET Core. It provides tools and libraries specifically for building modern, cloud-enabled, internet-connected applications like web apps, APIs, and real-time services.</li>
+                        </ul>
+                        <p>So, ASP.NET Core is a part of the broader .NET (Core) ecosystem, focused on web development.</p>
+                    </div>
+                </div>
+                <!-- Question 14 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">14. What is MSBuild in the .NET Core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>MSBuild</strong> is the build platform for Microsoft and .NET. In .NET Core, it's used to build projects by processing project files (e.g., `.csproj`). It defines an XML schema for a project file and a set of tools for building software, including compiling source code, packaging, and deployment.</p>
+                    </div>
+                </div>
+                <!-- Question 15 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">15. Whether ‘debug’ and ‘trace’ are the same?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>No, `Debug` and `Trace` are not the same, though they are both used for diagnostics in .NET:</p>
+                        <ul>
+                            <li><strong><code>Debug</code>:</strong> Primarily used for debugging purposes during development. `Debug` statements are typically compiled only in debug builds and are removed in release builds to optimize performance.</li>
+                            <li><strong><code>Trace</code>:</strong> Used for logging and tracing application behavior, often in production environments. `Trace` statements are usually compiled into both debug and release builds, allowing for monitoring and diagnostics in deployed applications.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 16 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">16. What is Transfer-encoding?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>Transfer-encoding</strong> is an HTTP header that indicates how the payload body of a message has been encoded to safely transfer it over HTTP. Common values include `chunked` (for streaming data) and `gzip` (for compression). It's distinct from `Content-Encoding`, which describes the encoding of the content itself.</p>
+                    </div>
+                </div>
+                <!-- Question 17 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">17. Give the differences between .NET Core and Mono?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>.NET Core (now .NET):</strong> Microsoft's official open-source, cross-platform, modular .NET implementation. Designed for modern cloud and containerized applications.</li>
+                            <li><strong>Mono:</strong> An older, open-source implementation of the .NET Framework, initially developed by Xamarin (now Microsoft). It aims to provide a cross-platform runtime for .NET Framework applications. While it shares similarities, it's a separate project with its own ecosystem, often used for games (Unity) and mobile apps (Xamarin before .NET MAUI).</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 18 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">18. Explain about types of Common Type System (CTS).</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The Common Type System (CTS) defines two main categories of types:</p>
+                        <ul>
+                            <li><strong>Value Types:</strong> Directly contain their data. Stored on the stack (for local variables) or inline within other types. Examples: `int`, `struct`, `enum`.</li>
+                            <li><strong>Reference Types:</strong> Store a reference to their data, which is allocated on the heap. Examples: `class`, `string`, `array`, `delegate`.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 19 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">19. What is the use of generating SQL scripts in the .NET core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>In .NET Core (especially with Entity Framework Core), generating SQL scripts is useful for:</p>
+                        <ul>
+                            <li><strong>Database Migrations:</strong> Creating or updating database schemas based on your EF Core model.</li>
+                            <li><strong>Version Control:</strong> Storing database schema changes in source control.</li>
+                            <li><strong>Deployment:</strong> Applying schema changes to production databases in a controlled manner.</li>
+                            <li><strong>Review:</strong> Allowing DBAs to review the SQL before applying changes.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 20 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">20. What is the IGCToCLR interface?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The <strong><code>IGCToCLR</code> interface</strong> is an internal interface within the .NET runtime, primarily used for communication between the Garbage Collector (GC) and other parts of the Common Language Runtime (CLR). It's not an interface that developers typically interact with directly, but it's crucial for the internal workings of memory management.</p>
+                    </div>
+                </div>
+                <!-- Question 21 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">21. What is CoreFx?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CoreFX</strong> was the repository for the foundational class libraries for .NET Core (now simply .NET). It contained the implementation of the Base Class Library (BCL) and other core libraries that provide fundamental types, APIs, and functionalities used across all .NET applications. Its components are now part of the main `dotnet/runtime` repository.</p>
+                    </div>
+                </div>
+                <!-- Question 22 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">22. What is Zero Garbage Collectors?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>The term "Zero Garbage Collector" often refers to a garbage collection strategy (or lack thereof) where an application avoids allocating any managed memory on the heap, thus eliminating the need for GC pauses. This is typically achieved through careful memory management, using value types, stack allocation, or native memory directly, common in highly performance-critical or embedded systems. It's not a specific GC implementation in .NET but a design approach.</p>
+                    </div>
+                </div>
+                <!-- Question 23 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">23. What is the purpose of webHostBuilder()?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>In older ASP.NET Core applications (before .NET 6 minimal APIs), <strong><code>WebHostBuilder()</code></strong> was used to configure and build the web host. Its purpose was to define the server (e.g., Kestrel), configure middleware, set up the application's startup class, and integrate with logging and configuration systems. In modern .NET, much of this is simplified or handled implicitly by `WebApplication.CreateBuilder()`.</p>
+                    </div>
+                </div>
+                <!-- Question 24 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">24. What is CoreCLR?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>CoreCLR</strong> is the runtime component of .NET Core (now simply .NET). It's a cross-platform, open-source, and modular implementation of the Common Language Runtime (CLR). It includes the JIT compiler, garbage collector, type system, and other runtime services, enabling .NET applications to run on Windows, Linux, and macOS.</p>
+                    </div>
+                </div>
+                <!-- Question 25 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">25. What are C# and F#?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <ul>
+                            <li><strong>C#:</strong> A modern, object-oriented, type-safe programming language developed by Microsoft, widely used for building a variety of applications on the .NET platform, including web, desktop, mobile, and games.</li>
+                            <li><strong>F#:</strong> A functional-first programming language that also supports object-oriented and imperative programming. It's part of the .NET ecosystem and is known for its conciseness, powerful type inference, and suitability for data-intensive and concurrent applications.</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 26 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">26. What is Dot NET Core used for?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p>.NET Core (now .NET) is used for building a wide range of modern applications, including:</p>
+                        <ul>
+                            <li>Cross-platform web applications and APIs (ASP.NET Core)</li>
+                            <li>Microservices</li>
+                            <li>Cloud-native applications</li>
+                            <li>Console applications</li>
+                            <li>Desktop applications (WPF, Windows Forms, MAUI)</li>
+                            <li>Machine learning and AI applications</li>
+                            <li>IoT applications</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Question 27 -->
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md flex flex-col">
+                    <p class="font-semibold text-lg text-gray-800 mb-3">27. What is .NET core?</p>
+                    <div class="prose prose-sm text-gray-700 max-w-none">
+                        <p><strong>.NET Core (now simply .NET)</strong> is a free, open-source, cross-platform managed framework for building modern, cloud-based, internet-connected applications. It's a re-imagining of the .NET Framework, designed to be modular, lightweight, and performant, supporting Windows, Linux, and macOS.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

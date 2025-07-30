@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Principles Guide</title>
+    <!-- Tailwind CSS CDN for responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        /* Ensure consistent height for cards, especially in a grid layout */
+        .card {
+            height: auto; /* Allow height to adjust based on content */
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content {
+            flex-grow: 1; /* Allows content area to take up available space */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-8 sm:mb-12">
+            Essential Software Principles
+        </h1>
+
+        <!-- Grid Container for Software Principles -->
+        <!-- Responsive grid: 1 column on small, 2 on medium, 3 on large screens -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+            <!-- SOLID Principles Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-blue-700 mb-4">SOLID Principles</h2>
+                    <div class="text-gray-700">
+                        <ul class="list-disc list-inside space-y-2">
+                            <li><strong>S - Single Responsibility Principle (SRP):</strong> A class should have only one reason to change.</li>
+                            <li><strong>O - Open/Closed Principle (OCP):</strong> Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.</li>
+                            <li><strong>L - Liskov Substitution Principle (LSP):</strong> Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.</li>
+                            <li><strong>I - Interface Segregation Principle (ISP):</strong> Clients should not be forced to depend on interfaces they do not use.</li>
+                            <li><strong>D - Dependency Inversion Principle (DIP):</strong> High-level modules should not depend on low-level modules. Both should depend on abstractions. Abstractions should not depend on details. Details should depend on abstractions.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DRY (Don't Repeat Yourself) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-green-700 mb-4">DRY (Don't Repeat Yourself)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">This principle states that "Every piece of knowledge must have a single, unambiguous, authoritative representation within a system."</p>
+                        <p>It aims to reduce repetition of software patterns, replacing them with abstractions or data normalization to avoid redundancy and make systems easier to maintain and extend.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- KISS (Keep It Simple, Stupid) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-purple-700 mb-4">KISS (Keep It Simple, Stupid)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">The KISS principle advocates for simplicity in design and development. It suggests that most systems work best if they are kept simple rather than made complex.</p>
+                        <p>Simplicity should be a key goal in design, and unnecessary complexity should be avoided. This often leads to more robust, maintainable, and understandable code.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- YAGNI (You Aren't Gonna Need It) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-red-700 mb-4">YAGNI (You Aren't Gonna Need It)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">This agile principle states that you should not add functionality until it's actually required.</p>
+                        <p>It discourages developers from writing code that they *think* might be useful in the future but isn't needed for the current requirements. This helps prevent over-engineering and reduces wasted effort.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Separation of Concerns Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-indigo-700 mb-4">Separation of Concerns (SoC)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">SoC is a design principle for separating a computer program into distinct sections, such that each section addresses a separate concern.</p>
+                        <p>A "concern" is a set of information that affects the program's code. This leads to modularity, making it easier to develop and maintain software by dividing it into smaller, more manageable parts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dependency Injection (DI) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-teal-700 mb-4">Dependency Injection (DI)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">DI is a technique whereby one object supplies the dependencies of another object.</p>
+                        <p>It's a way to implement Inversion of Control (IoC) for software engineering. It helps in creating loosely coupled, testable, and maintainable code by externalizing the creation and management of dependencies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Inversion of Control (IoC) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-orange-700 mb-4">Inversion of Control (IoC)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">IoC is a programming principle where the control of objects or portions of a program is transferred to a container or framework.</p>
+                        <p>Instead of the application calling the framework, the framework calls the application. This makes the system more modular, extensible, and easier to test.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clean Code Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-lime-700 mb-4">Clean Code</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">Clean code is code that is easy to understand, easy to change, and easy to extend.</p>
+                        <p>It emphasizes readability, maintainability, and testability. Principles like meaningful names, small functions, clear comments (when necessary), and avoiding duplication contribute to clean code.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test-Driven Development (TDD) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-pink-700 mb-4">Test-Driven Development (TDD)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">TDD is a software development process where tests are written *before* the code they are testing.</p>
+                        <p>The cycle is: Red (write a failing test), Green (write just enough code to make the test pass), Refactor (improve the code while keeping tests green). This leads to higher quality code, fewer bugs, and better design.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domain-Driven Design (DDD) Section -->
+            <div class="card bg-white rounded-xl shadow-lg p-6 transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div class="card-content">
+                    <h2 class="text-2xl font-bold text-fuchsia-700 mb-4">Domain-Driven Design (DDD)</h2>
+                    <div class="text-gray-700">
+                        <p class="mb-2">DDD is an approach to software development that centers the development on a rich understanding of the domain (the subject area of the software).</p>
+                        <p>It involves creating a "Ubiquitous Language" shared by developers and domain experts, and focusing on core domain logic. This helps in building complex systems that accurately model real-world business processes.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

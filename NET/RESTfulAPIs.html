@@ -65,6 +65,82 @@
             <td>What is an API key?</td>
             <td class="answer">An API key is a unique identifier used to authenticate and authorize access to an API, ensuring secure communication between the client and the server.</td>
         </tr>
+        <tr>
+            <td>Define Messaging in terms of RESTful web services.</td>
+            <td class="answer">Messaging refers to the exchange of information: the client sends an HTTP request, and the server responds with an HTTP Response, both containing data and metadata.</td>
+        </tr>
+        <tr>
+            <td>Can you tell the disadvantages of RESTful web services?</td>
+            <td class="answer">Disadvantages include challenges in maintaining sessions due to statelessness (client responsibility) and the need for explicit implementation of security measures as REST itself doesn't impose them.</td>
+        </tr>
+        <tr>
+            <td>What are HTTP Status codes?</td>
+            <td class="answer">HTTP Status codes are standard numerical codes indicating the outcome of an HTTP request (e.g., 200 OK for success, 404 Not Found for client error, 500 Internal Server Error for server error).</td>
+        </tr>
+        <tr>
+            <td>What do you understand by JAX-RS?</td>
+            <td class="answer">JAX-RS (Java API for RESTful Web Services) is a Java-based specification defined by Java EE for implementing RESTful services, simplifying development through annotations.</td>
+        </tr>
+        <tr>
+            <td>What are the features of RESTful Web Services?</td>
+            <td class="answer">Features include client-server model, HTTP protocol usage, messaging, URI-identified resources, statelessness, cacheability, layered system, and a uniform interface.</td>
+        </tr>
+        <tr>
+            <td>What is URI?</td>
+            <td class="answer">URI (Uniform Resource Identifier) is a string of characters used to identify a resource on the internet. It can be a URN (name-based) or a URL (location-based).</td>
+        </tr>
+        <tr>
+            <td>Differentiate between SOAP and REST.</td>
+            <td class="answer">SOAP is a protocol (strict, XML-only, less flexible) while REST is an architectural style (flexible, supports various formats like JSON, uses standard HTTP, generally faster).</td>
+        </tr>
+        <tr>
+            <td>While creating URI for web services, what are the best practices that needs to be followed?</td>
+            <td class="answer">Best practices include using plural nouns for collections, hyphens for readability, lowercase, maintaining backward compatibility, using appropriate HTTP methods (not in URI), and forward slashes for hierarchy.</td>
+        </tr>
+        <tr>
+            <td>What are the best practices to develop RESTful web services?</td>
+            <td class="answer">Key practices involve preferring JSON for data exchange, setting appropriate Content-Type headers, proper use of HTTP methods, implementing robust error handling with status codes, and security.</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color:#e0e0e0; text-align:center;"><strong>ASP.NET and APIs Specific Questions</strong></td>
+        </tr>
+        <tr>
+            <td>What is ASP.NET Web API?</td>
+            <td class="answer">ASP.NET Web API is a framework for building HTTP services that can be consumed by a broad range of clients including browsers, mobile devices, and other applications. It is an ideal platform for building RESTful applications on the .NET Framework (or .NET Core/.NET).</td>
+        </tr>
+        <tr>
+            <td>How does ASP.NET Web API differ from ASP.NET MVC?</td>
+            <td class="answer">ASP.NET Web API is designed specifically for building HTTP services that return data, typically in JSON or XML, making it ideal for APIs. ASP.NET MVC is primarily for building web applications that return views (HTML) to the browser, though it can also return data. In ASP.NET Core, the two frameworks are unified into a single framework.</td>
+        </tr>
+        <tr>
+            <td>Explain routing in ASP.NET Web API.</td>
+            <td class="answer">Routing in ASP.NET Web API maps incoming HTTP requests to specific controller actions. This can be achieved through convention-based routing (defining patterns in a routing table) or attribute routing (decorating controller actions directly with route attributes like `[Route("api/products")]`).</td>
+        </tr>
+        <tr>
+            <td>How do you handle authentication and authorization in ASP.NET Web API?</td>
+            <td class="answer">Authentication (verifying user identity) and authorization (determining user permissions) in ASP.NET Web API can be handled using various mechanisms:
+                <ul>
+                    <li>**Authentication:** Bearer tokens (JWT), OAuth 2.0, API keys, Cookies.</li>
+                    <li>**Authorization:** `[Authorize]` attributes (role-based, policy-based), custom authorization filters.</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>What is Dependency Injection in ASP.NET Core Web API?</td>
+            <td class="answer">Dependency Injection (DI) is a software design pattern where components declare their dependencies rather than creating them directly. ASP.NET Core has a built-in DI container that manages the lifetime and creation of services, making APIs more modular, testable, and maintainable.</td>
+        </tr>
+        <tr>
+            <td>How can you consume a RESTful API in an ASP.NET application?</td>
+            <td class="answer">A RESTful API can be consumed in an ASP.NET application primarily using the `HttpClient` class. This class provides methods for sending HTTP requests (GET, POST, PUT, DELETE) and handling responses asynchronously. Libraries like Newtonsoft.Json are often used for JSON serialization/deserialization.</td>
+        </tr>
+        <tr>
+            <td>What is Swagger/OpenAPI, and how is it used with ASP.NET Web API?</td>
+            <td class="answer">Swagger (now part of OpenAPI Specification) is a framework of API development tools for describing, producing, consuming, and visualizing RESTful web services. With ASP.NET Web API (especially ASP.NET Core), tools like Swashbuckle.AspNetCore are used to automatically generate OpenAPI documentation from your API code, which can then be used to create interactive API reference pages (Swagger UI).</td>
+        </tr>
+        <tr>
+            <td>Explain the use of `HttpClient` in .NET for consuming APIs.</td>
+            <td class="answer">`HttpClient` is a class in .NET used to send HTTP requests and receive HTTP responses from a resource identified by a URI. It provides methods like `GetAsync()`, `PostAsJsonAsync()`, `PutAsJsonAsync()`, and `DeleteAsync()` for interacting with RESTful APIs, often used within a `using` statement or as a singleton instance to manage connections efficiently.</td>
+        </tr>
     </table>
 </body>
 </html>

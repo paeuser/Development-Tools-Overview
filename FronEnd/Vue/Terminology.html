@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js Ecosystem Overview & Version Comparison</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for better aesthetics */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Basic table styling for better readability */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1.5rem;
+        }
+        th, td {
+            border: 1px solid #e2e8f0; /* Tailwind's gray-200 */
+            padding: 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f8fafc; /* Tailwind's gray-50 */
+            font-weight: bold;
+            color: #1a202c; /* Tailwind's gray-900 */
+        }
+        td {
+            background-color: #ffffff;
+            color: #4a5568; /* Tailwind's gray-700 */
+        }
+        pre {
+            background-color: #f3f4f6; /* Tailwind's gray-100 */
+            padding: 0.75rem;
+            border-radius: 0.375rem; /* Tailwind's rounded-md */
+            overflow-x: auto;
+            font-size: 0.875rem; /* Tailwind's text-sm */
+            line-height: 1.5;
+            color: #2d3748; /* Tailwind's gray-800 */
+        }
+        code {
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', 'Monaco', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-6xl mx-auto bg-white shadow-lg rounded-lg p-6 sm:p-8 md:p-10">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center">
+            Vue.js Ecosystem Overview
+        </h1>
+
+        <!-- Vue.js -->
+        <div class="mb-8 p-4 bg-blue-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-blue-700 mb-3">Vue.js</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vue.js is a progressive JavaScript framework for building user interfaces. It's designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and it's easy to pick up and integrate with other libraries or existing projects. Vue is known for its gentle learning curve, excellent documentation, and performance.
+            </p>
+        </div>
+
+        <!-- SFC (Single File Components) -->
+        <div class="mb-8 p-4 bg-green-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-green-700 mb-3">SFC (Single File Components)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Single File Components (SFCs) are a defining feature of Vue.js, allowing you to encapsulate the template (HTML), script (JavaScript), and style (CSS) of a component within a single <code>.vue</code> file. This promotes better organization, readability, and maintainability by keeping related concerns together.
+            </p>
+        </div>
+
+        <!-- Composition API (Vue 3) -->
+        <div class="mb-8 p-4 bg-purple-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-purple-700 mb-3">Composition API (Vue 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Introduced in Vue 3, the Composition API is a set of APIs that allows for more flexible and powerful component logic organization. It enables developers to compose reactive logic using functions, making it easier to reuse code, manage complex components, and improve TypeScript support, especially for larger applications.
+            </p>
+        </div>
+
+        <!-- Options API (Vue 2 & 3) -->
+        <div class="mb-8 p-4 bg-yellow-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-yellow-700 mb-3">Options API (Vue 2 & 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                The Options API is the traditional way of writing Vue components, used in both Vue 2 and Vue 3. It organizes component logic into options like <code>data</code>, <code>methods</code>, <code>computed</code>, <code>watch</code>, and lifecycle hooks. While still fully supported in Vue 3, the Composition API offers more flexibility for complex scenarios.
+            </p>
+        </div>
+
+        <!-- Vue Router -->
+        <div class="mb-8 p-4 bg-red-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-red-700 mb-3">Vue Router</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vue Router is the official routing library for Vue.js. It allows you to build Single Page Applications (SPAs) with multiple views, enabling client-side navigation without full page reloads. It provides features like nested routes, programmatic navigation, and route guards.
+            </p>
+        </div>
+
+        <!-- Pinia (Vue 3) / Vuex (Vue 2 & 3) -->
+        <div class="mb-8 p-4 bg-indigo-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-indigo-700 mb-3">Pinia (Vue 3) / Vuex (Vue 2 & 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                These are state management libraries for Vue.js applications. <strong>Vuex</strong> is the official state management library for Vue 2 and is still compatible with Vue 3. <strong>Pinia</strong> is the new recommended state management solution for Vue 3, offering a simpler, more intuitive API with full TypeScript support and better performance. Both help manage shared application state in a predictable way.
+            </p>
+        </div>
+
+        <!-- Vite (Vue 3) -->
+        <div class="mb-8 p-4 bg-pink-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-pink-700 mb-3">Vite (Vue 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vite is a next-generation frontend tooling that provides an extremely fast development experience for Vue 3 projects (and other frameworks). It leverages native ES modules to offer instant server start, lightning-fast Hot Module Replacement (HMR), and optimized build processes, significantly improving developer productivity.
+            </p>
+        </div>
+
+        <!-- Nuxt.js -->
+        <div class="mb-8 p-4 bg-teal-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-teal-700 mb-3">Nuxt.js</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Nuxt.js is a powerful, open-source framework built on top of Vue.js that simplifies the development of universal (server-side rendered), static generated, and single-page Vue applications. It provides conventions for routing, state management, and server-side rendering, allowing developers to focus more on application logic.
+            </p>
+        </div>
+
+        <!-- Vue CLI (Vue 2) -->
+        <div class="mb-8 p-4 bg-orange-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-orange-700 mb-3">Vue CLI (Vue 2)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vue CLI is a standard tooling baseline for Vue.js development, primarily associated with Vue 2. It provides a full system for rapid Vue.js development, including project scaffolding, hot-reloading, linting on save, and a build system for production. While still usable with Vue 3, Vite is generally preferred for new Vue 3 projects.
+            </p>
+        </div>
+
+        <!-- Reactivity System (Vue 2 & 3) -->
+        <div class="mb-8 p-4 bg-cyan-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-cyan-700 mb-3">Reactivity System (Vue 2 & 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vue's reactivity system automatically tracks changes to data and efficiently updates the DOM. In Vue 2, it uses getters/setters and property-level tracking. Vue 3 introduced a new proxy-based reactivity system, offering better performance, more comprehensive change detection (including for new properties and array mutations), and improved TypeScript support.
+            </p>
+        </div>
+
+        <!-- Teleport (Vue 3) -->
+        <div class="mb-8 p-4 bg-lime-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-lime-700 mb-3">Teleport (Vue 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Teleport is a new feature in Vue 3 that allows you to render a component's content into a different part of the DOM tree, outside of its parent component's hierarchy. This is particularly useful for modals, tooltips, and notifications, ensuring they are correctly positioned and styled without being affected by parent component styling or overflow issues.
+            </p>
+        </div>
+
+        <!-- Fragments (Vue 3) -->
+        <div class="mb-8 p-4 bg-fuchsia-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-fuchsia-700 mb-3">Fragments (Vue 3)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                In Vue 3, components can now have multiple root nodes in their templates without requiring a single wrapper element. This feature, known as Fragments, simplifies component structure and can reduce unnecessary DOM elements, leading to cleaner HTML output and potentially better performance.
+            </p>
+        </div>
+
+        <h2 class="text-3xl font-bold text-gray-800 mb-4 text-center mt-10">Testing Frameworks</h2>
+
+        <!-- Jest -->
+        <div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">Jest</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Jest is a popular JavaScript testing framework developed by Meta (Facebook). It's widely used for unit and integration testing of JavaScript applications, including Vue.js projects. Jest offers a comprehensive testing solution with features like snapshot testing, mocking, and a fast test runner.
+            </p>
+        </div>
+
+        <!-- Vue Test Utils -->
+        <div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">Vue Test Utils</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vue Test Utils is the official unit testing utility library for Vue.js. It provides a set of helper functions and methods specifically designed to simplify testing Vue components. It allows you to mount components, interact with them, and assert their behavior in isolation.
+            </p>
+        </div>
+
+        <!-- Cypress (E2E) -->
+        <div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">Cypress (E2E)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Cypress is a next-generation front-end testing tool built for the modern web. It's primarily used for end-to-end (E2E) testing, allowing you to simulate user interactions and test the entire application flow directly in the browser. Cypress provides a fast, reliable, and developer-friendly testing experience.
+            </p>
+        </p>
+        </div>
+
+        <!-- Vitest -->
+        <div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">Vitest</h2>
+            <p class="text-gray-700 leading-relaxed">
+                Vitest is a new, fast, and opinionated unit testing framework that leverages Vite's infrastructure. It's designed to be compatible with Jest's API, making it easy for developers to migrate. Vitest offers a seamless integration with Vite projects, providing a rapid testing experience with features like instant hot module reloading for tests.
+            </p>
+        </div>
+
+        <!-- ESLint -->
+        <div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+            <h2 class="text-2xl font-bold text-gray-700 mb-3">ESLint</h2>
+            <p class="text-gray-700 leading-relaxed">
+                ESLint is a popular static code analysis tool for identifying problematic patterns found in JavaScript code. It helps enforce coding standards, catch potential errors, and improve code quality and consistency across a project. It's highly configurable and can be integrated into development workflows for real-time feedback.
+            </p>
+        </div>
+
+
+<div class="mb-8 p-4 bg-gray-50 rounded-lg shadow-sm">
+    <h2 class="text-2xl font-bold text-gray-700 mb-3">What Is Prettier?</h2>
+    <p class="text-gray-700 leading-relaxed mb-2">
+        Prettier is an opinionated code formatter. It automatically formats your code to look consistent across your entire project, regardless of how you or your team wrote it.
+    </p>
+    <h3 class="text-lg font-semibold text-gray-800 mb-2">✅ What Prettier Does</h3>
+    <ul class="list-disc list-inside text-gray-700 space-y-1">
+        <li>Fixes indentation</li>
+        <li>Adds/removes spaces</li>
+        <li>Adds/removes semicolons</li>
+        <li>Breaks long lines</li>
+        <li>Sorts attributes in HTML/JSX</li>
+        <li>Formats JS, TS, JSON, HTML, CSS, Vue, etc.</li>
+    </ul>
+</div>
+
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 text-center mt-12">
+            Vue 2 vs Vue 3: Key Differences
+        </h1>
+
+        <table class="min-w-full divide-y divide-gray-200 rounded-lg overflow-hidden">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Feature</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vue 2</th>
+                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Vue 3</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                <!-- Reactivity System -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">Reactivity System</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Based on <code>Object.defineProperty</code>. Limitations include inability to detect property addition/deletion and array index mutations directly.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> In Vue 2, when you change data, Vue needs to know to update the screen. It watches for changes using a method that's a bit like putting a tiny sensor on each piece of data. If you add a *new* piece of data to an existing list, or change an item in a list using its number (like <code>myList[0] = 'new item'</code>), Vue might not notice the change automatically. You'd have to use special Vue commands to make it aware.
+                        </p>
+                        <pre><code>
+// Vue 2 reactivity example
+data() {
+  return {
+    message: 'Hello Vue 2!',
+    items: ['apple', 'banana']
+  };
+},
+methods: {
+  // Adding a new property directly won't be reactive
+  addProperty() {
+    this.newProp = 'I am new'; // Not reactive
+    // To make it reactive: Vue.set(this, 'newProp', 'I am new');
+  },
+  // Mutating array by index won't be reactive
+  updateItem() {
+    this.items[0] = 'orange'; // Not reactive
+    // To make it reactive: this.items.splice(0, 1, 'orange');
+  }
+}
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Based on ES2015 Proxies. Provides full reactivity for property addition/deletion and array index mutations.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Vue 3 uses a more modern and powerful way to track changes, like having a "smart wrapper" around your data. This wrapper instantly knows if you add new data, remove data, or change items in a list in any way. This makes it much easier to work with data without worrying about special commands, and it's generally faster too.
+                        </p>
+                        <pre><code>
+// Vue 3 reactivity example
+import { ref, reactive } from 'vue';
+
+const message = ref('Hello Vue 3!'); // For simple values
+const items = reactive(['apple', 'banana']); // For objects/arrays
+
+// Adding a new property is reactive
+items.newProp = 'I am new'; // Reactive
+
+// Mutating array by index is reactive
+items[0] = 'orange'; // Reactive
+                        </code></pre>
+                    </td>
+                </tr>
+
+                <!-- API Style -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">API Style</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Primarily uses the Options API, where component logic is organized into options (<code>data</code>, <code>methods</code>, <code>computed</code>, <code>watch</code>, etc.).</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Think of the Options API like filling out a form for your component. You have specific boxes for "data" (what information your component holds), "methods" (what actions your component can do), "computed" (values that are calculated from other data), and so on. It's very structured and easy to understand for smaller components.
+                        </p>
+                        <pre><code>
+// Vue 2 Options API example
+export default {
+  data() { // Box for all your component's data
+    return {
+      count: 0
+    };
+  },
+  methods: { // Box for all your component's functions
+    increment() {
+      this.count++;
+    }
+  },
+  computed: { // Box for values calculated from data
+    doubleCount() {
+      return this.count * 2;
+    }
+  }
+};
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-700 mb-2">Introduced the Composition API, allowing logic to be organized by feature. Options API is still fully supported.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> The Composition API is like having a toolkit where you can grab specific tools (functions) to build your component's logic. Instead of putting all your data in one "data" box and all your methods in one "methods" box, you group related pieces of logic together. For example, all the code related to a "counter" feature (its data, its increment function, its doubled value) can live together. This makes large components easier to read and allows you to reuse parts of your logic across different components.
+                        </p>
+                        <pre><code>
+// Vue 3 Composition API example
+import { ref, computed } from 'vue';
+
+export default {
+  setup() { // This is where you "set up" your component's logic
+    const count = ref(0); // A reactive piece of data
+    const increment = () => { // A function to change data
+      count.value++;
+    };
+    const doubleCount = computed(() => count.value * 2); // A calculated value
+
+    return { // What your component makes available to its template
+      count,
+      increment,
+      doubleCount
+    };
+  }
+};
+                        </code></pre>
+                    </td>
+                </tr>
+
+                <!-- Multiple Root Nodes (Fragments) -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">Multiple Root Nodes (Fragments)</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Requires a single root element in component templates.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> In Vue 2, every component's HTML (its template) had to be wrapped inside a single main HTML tag, like a <code>&lt;div&gt;</code>. It was like putting all your groceries into one big shopping bag. If you had a heading and a paragraph, they both needed to be inside one parent <code>&lt;div&gt;</code>.
+                        </p>
+                        <pre><code>
+&lt;!-- Vue 2 template example --&gt;
+&lt;template&gt;
+  &lt;div&gt; &lt;!-- Single root element required --&gt;
+    &lt;h1&gt;My Title&lt;/h1&gt;
+    &lt;p&gt;Some content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Supports multiple root nodes (Fragments) in component templates, reducing unnecessary DOM elements.</p>
+                        <p class="text-700 mb-2">
+                            <strong>For Beginners:</strong> Vue 3 introduced "Fragments," which means your component's HTML can have multiple top-level tags without needing a single wrapper. It's like being able to carry your groceries in multiple smaller bags instead of one big one. This can make your HTML cleaner and sometimes perform a tiny bit better because there are fewer unnecessary <code>&lt;div&gt;</code> elements.
+                        </p>
+                        <pre><code>
+&lt;!-- Vue 3 template example --&gt;
+&lt;template&gt;
+  &lt;h1&gt;My Title&lt;/h1&gt; &lt;!-- Multiple root elements allowed --&gt;
+  &lt;p&gt;Some content&lt;/p&gt;
+&lt;/template&gt;
+                        </code></pre>
+                    </td>
+                </tr>
+
+                <!-- Teleport -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">Teleport</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Not available natively. Workarounds often involved manually appending elements to the DOM.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> In Vue 2, if you wanted a pop-up window (like a modal) to appear over everything else, even if the button that opened it was deep inside another part of your page, it was tricky. You'd often have to write extra JavaScript to manually move that pop-up's HTML to a different, higher-up spot in your webpage's structure.
+                        </p>
+                        <pre><code>
+// Vue 2 workaround for modals (conceptual)
+// Requires custom logic to move elements outside component scope using JavaScript.
+// For example, finding an element and using document.body.appendChild(modalElement);
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Introduced as a built-in feature to render content into a different part of the DOM tree.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Imagine you have a small pop-up window (like a "modal") that needs to appear over everything else on your webpage, even if the button that opens it is deep inside another part of your page. Normally, the modal would be restricted by its parent's styling. Teleport lets you "teleport" this modal's content directly to the <code>&lt;body&gt;</code> of your HTML document, ensuring it always appears on top and behaves correctly, regardless of where its trigger button is located. In the code below, when you click "Open Modal", the modal content (the div with "This is a modal!") is moved to be a direct child of the <code>&lt;body&gt;</code> tag.
+                        </p>
+                        <pre><code>
+&lt;!-- Vue 3 Teleport example --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="showModal = true"&gt;Open Modal&lt;/button&gt;
+    &lt;Teleport to="body"&gt; &lt;!-- Teleport content to the body --&gt;
+      &lt;div v-if="showModal" class="modal"&gt;
+        &lt;p&gt;This is a modal!&lt;/p&gt;
+        &lt;button @click="showModal = false"&gt;Close&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/Teleport&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+                        </code></pre>
+                    </td>
+                </tr>
+
+                <!-- State Management -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">State Management</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Primarily uses Vuex as the official state management library.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> For larger Vue 2 apps, when many components need to share the same information (like a user's login status or items in a shopping cart), Vuex was the go-to tool. It acts like a central bank for your app's data, ensuring everyone gets the same, consistent information.
+                        </p>
+                        <pre><code>
+// Vuex store example (conceptual)
+// new Vuex.Store({
+//   state: { count: 0 }, // The shared data
+//   mutations: {
+//     increment(state) { state.count++ } // How to change the shared data
+//   }
+// });
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Pinia is the new recommended state management solution, offering a simpler API and full TypeScript support. Vuex is still compatible.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Pinia is the newer, simpler, and often preferred way to manage shared data in Vue 3 apps. It's like a lighter, more intuitive version of Vuex. It still acts as a central place for your app's data, but it's easier to set up and use, especially with modern JavaScript features and TypeScript.
+                        </p>
+                        <pre><code>
+// stores/counter.js
+import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', {
+  state: () => ({
+    count: 0,
+  }),
+  actions: {
+    increment() {
+      this.count++
+    },
+  },
+})
+  </code></pre>
+
+  <pre><code>
+// main.js
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const app = createApp(App)
+app.use(createPinia())
+app.mount('#app')
+  </code></pre>
+
+  <pre><code>
+<!-- MyComponent.vue -->
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ counter.count }}&lt;/p&gt;
+    &lt;button @click="counter.increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { useCounterStore } from '@/stores/counter'
+
+const counter = useCounterStore()
+&lt;/script&gt;
+  </code></pre>
+<script setup>
+import { useCounterStore } from '@/stores/counter'
+
+const counter = useCounterStore()
+</script>
+
+                        </code></pre>
+                    </td>
+                </tr>
+
+                <!-- Tooling -->
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">Tooling</td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Vue CLI is the standard build tool.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Vue CLI was the main "project builder" for Vue 2. It helped you set up new Vue projects quickly, handled things like making your code work in older browsers, and automatically reloaded your app in the browser as you made changes. It was a complete package for getting started.
+                        </p>
+                        <pre><code>
+# Vue CLI command to create a new project
+vue create my-app
+                        </code></pre>
+                    </td>
+                    <td class="px-6 py-4">
+                        <p class="text-gray-700 mb-2">Vite is the recommended next-generation build tool, offering significantly faster development experience.</p>
+                        <p class="text-gray-700 mb-2">
+                            <strong>For Beginners:</strong> Vite is a super-fast new "project builder" for Vue 3 (and other frameworks). It starts your development server almost instantly and updates your browser with changes incredibly quickly. It uses modern browser features to achieve this speed, making the development process much smoother and more enjoyable.
+                        </p>
+                        <pre><code>
+# Vite command to create a new Vue project
+npm init vue@latest
+                        </code></pre>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

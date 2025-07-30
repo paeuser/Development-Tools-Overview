@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Design Simplified</title>
+    <!-- Tailwind CSS CDN for responsive styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font for a clean look */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+        /* Basic card styling for sections */
+        .section-card {
+            background-color: white;
+            border-radius: 0.75rem; /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        .section-card h2 {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: bold; /* font-bold */
+            color: #1f2937; /* gray-900 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .section-card h3 {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: bold; /* font-bold */
+            color: #374151; /* gray-700 */
+            margin-bottom: 0.75rem; /* mb-3 */
+        }
+        .section-card p, .section-card ul {
+            color: #4b5563; /* gray-700 */
+            margin-bottom: 0.5rem; /* mb-2 */
+        }
+        .section-card ul {
+            list-style-type: disc;
+            margin-left: 1.25rem; /* ml-5 */
+            padding-left: 0;
+        }
+        .section-card ul ul { /* Nested lists */
+            list-style-type: circle;
+            margin-left: 1.25rem;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8 lg:p-10">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-8 sm:mb-12">
+            System Design & Interview Prep: Simplified
+        </h1>
+
+        <!-- System Design Section -->
+        <div class="section-card">
+            <h2 class="text-blue-800">System Design: How We Build Big Software</h2>
+            <p class="mb-4">Imagine you want to build a big house. You don't just start nailing boards together. First, you need a plan, right? System design is like creating that detailed plan for building a big software system. It's about figuring out all the parts, how they connect, and how they'll work together to do what you want.</p>
+
+            <h3 class="text-blue-700">Key Parts of Designing Software:</h3>
+            <ol class="list-decimal list-inside space-y-3">
+                <li>
+                    <strong>Figure out what's needed:</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>What it does:</strong> What exactly should the software do? (e.g., "It needs to let people send messages.")</li>
+                        <li><strong>How well it does it:</strong> How fast should it be? How many people can use it at once? Will it always be working? Is it safe? (e.g., "Messages must be sent instantly, even if a million people are chatting.")</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Big Picture Plan (High-Level Design):</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Choose the main style:</strong> Decide on the basic way the software will be built. Will it be one big program (like a single block building) or many small, connected programs (like many small houses in a village)?</li>
+                        <li><strong>Identify main parts:</strong> Break the big software into smaller, understandable pieces (e.g., "We need a part for users, a part for messages, and a part for saving data.").</li>
+                        <li><strong>Show how data moves:</strong> Draw lines to show how information flows from one part to another.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Detailed Plan (Low-Level Design):</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Design each part:</strong> Go into detail for each small piece of the software. How will it work inside?</li>
+                        <li><strong>Database blueprint:</strong> Design how the information will be stored, like drawing out the rooms and closets in your house plan for where to put things.</li>
+                        <li><strong>Communication rules (APIs):</strong> Set clear rules for how different parts of the software talk to each other, like a standard language they all understand.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Making it Handle More (Scalability):</strong> How to make the system work well even if many, many more people start using it.
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Add more machines:</strong> Instead of making one machine super powerful, add more regular machines to share the work.</li>
+                        <li><strong>Make one machine stronger:</strong> Improve a single machine (e.g., give it more memory or a faster processor).</li>
+                        <li><strong>Split the data:</strong> Divide the data across many databases so no single one gets overloaded.</li>
+                        <li><strong>Quick access (Caching):</strong> Store copies of frequently used information closer to the users so they get it faster without bothering the main storage.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Keeping it Running (Reliability & Availability):</strong> Making sure the software almost never breaks and is always ready to use.
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Have backups:</strong> Make extra copies of important parts so if one fails, another can take over.</li>
+                        <li><strong>Handle problems gracefully:</strong> Design the system so it can deal with errors without completely crashing.</li>
+                        <li><strong>Recovery plan:</strong> Have a plan to get everything back up and running quickly after a big problem.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Making it Fast (Performance):</strong> Making the software respond quickly.
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Share the work (Load Balancing):</strong> Send incoming requests to different servers so no single server gets too busy.</li>
+                        <li><strong>Deliver content fast (CDN):</strong> Store website pictures and videos closer to users around the world so they load quickly.</li>
+                        <li><strong>Database tricks:</strong> Make the database find information faster.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Keeping it Safe (Security):</strong> Protecting the software from bad guys and accidents.
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Who are you? (Authentication):</strong> Make sure only real users can get in.</li>
+                        <li><strong>What can you do? (Authorization):</strong> Make sure users can only do what they're allowed to.</li>
+                        <li><strong>Scramble data (Encryption):</strong> Protect information when it's moving around or being stored.</li>
+                        <li><strong>Limit requests:</strong> Stop people from sending too many requests at once, which could be an attack.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Easy to Change & Grow (Maintainability & Extensibility):</strong> Making it simple to fix bugs, add new features, and update the software later.
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Small, separate pieces:</strong> Break the software into independent parts that are easier to work on.</li>
+                        <li><strong>Don't rely too much:</strong> Make sure parts of the software don't depend too heavily on each other.</li>
+                        <li><strong>See what's happening (Observability):</strong> Set up ways to watch how the system is working, like logs and performance charts, so you know if something's wrong.</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+
+        <!-- System Design Interview Questions Section -->
+        <div class="section-card">
+            <h2 class="text-green-800">System Design Interview Questions: What They Ask and How to Answer</h2>
+            <p class="mb-4">System design interviews are where interviewers check if you can plan and build big software systems. They want to see how you think about problems and make smart choices, because there's usually no single "perfect" answer.</p>
+
+            <h3 class="text-green-700">Common Topics & What to Study:</h3>
+            <ol class="list-decimal list-inside space-y-3">
+                <li>
+                    <strong>Understand the Problem:</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Ask questions:</strong> Don't just start! Ask things like, "How many users will this have?" "How fast does it need to be?" "How much data will it store?"</li>
+                        <li><strong>Define what's important:</strong> Figure out the main things the software *must* do first.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Big Picture Plan:</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Main parts:</strong> Point out the key pieces, like the user's device, the main server, the database, and any special helpers (like a "cache" for quick data).</li>
+                        <li><strong>Main actions:</strong> Describe the main things users will do (e.g., "Users can upload photos, view friends' photos.").</li>
+                        <li><strong>Basic data:</strong> Briefly describe what information needs to be stored.</li>
+                        <li><strong>Good choices vs. bad choices:</strong> Talk about why you picked a certain way to build it (e.g., "I chose small, separate programs because we expect a lot of growth, even though it's more complex to start.").</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Detailed Plan (Digging Deeper):</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>Database details:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>How tables or data collections will look.</li>
+                                <li>Why you chose one type of database over another (e.g., "SQL is good here because the relationships between data are clear," or "NoSQL is better for fast, flexible data.").</li>
+                                <li>How to make the database handle lots of data (e.g., "We'll split the data across multiple databases.").</li>
+                            </ul>
+                        </li>
+                        <li><strong>Caching (for speed):</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>Where to put the quick-access data (e.g., "Right on the user's phone," or "On a special fast server.").</li>
+                                <li>How to make sure the quick-access data is up-to-date.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Load Balancing (sharing work):</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>How to send user requests evenly to different servers.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Message Queues (for background tasks):</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>When to use them (e.g., "When we don't need an instant reply, like sending an email notification.").</li>
+                                <li>Examples of tools: Kafka, RabbitMQ.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Handling Growth & Problems:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>How to handle millions of users.</li>
+                                <li>How to make sure one part failing doesn't break everything.</li>
+                                <li>How to spread the system across different locations for better reliability.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Security:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>How to check who a user is and what they can do.</li>
+                                <li>How to keep data secret.</li>
+                                <li>How to stop too many requests from one person.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Monitoring:</strong>
+                            <ul class="list-circle list-inside ml-4 space-y-1">
+                                <li>How to see if the system is healthy and if there are problems.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Practice with Examples:</strong> Be ready to design common apps like:
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>A link shortener (like bit.ly)</li>
+                        <li>A social media feed (like Facebook's news feed)</li>
+                        <li>A chat app (like WhatsApp)</li>
+                        <li>A simple online store</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>Refine & Think About Tricky Parts:</strong>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li><strong>What if things go wrong?</strong> How do you handle errors and retries?</li>
+                        <li><strong>Data consistency:</strong> When is it okay for data to be slightly out of sync for a moment, and when does it need to be perfectly accurate right away?</li>
+                        <li><strong>Multiple users at once:</strong> How do you handle many people trying to change the same thing at the same time?</li>
+                        <li><strong>Rough cost:</strong> Have an idea of how much resources (servers, storage) your design might need.</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3 class="text-green-700">How to Approach an Interview Question:</h3>
+            <ol class="list-decimal list-inside space-y-3">
+                <li><strong>Understand:</strong> Ask lots of questions to be super clear on what they want.</li>
+                <li><strong>Estimate:</strong> Think about how big the system needs to be (users, data).</li>
+                <li><strong>Draw a Simple Picture:</strong> Sketch out the main boxes and arrows of your system.</li>
+                <li><strong>Pick a Few Areas to Detail:</strong> Choose 2-3 important parts and explain how they'd work in more detail.</li>
+                <li><strong>Point out Problems & Fixes:</strong> Say what could go wrong and how your design handles it.</li>
+                <li><strong>Talk about Choices:</strong> Explain why you chose one solution over another (e.g., "I picked X because it's simpler for now, but we could switch to Y later if we need more speed.").</li>
+                <li><strong>Wrap Up:</strong> Briefly summarize your plan and ask if they want to discuss anything specific.</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
