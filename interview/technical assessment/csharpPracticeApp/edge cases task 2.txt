@@ -1,0 +1,213 @@
+﻿Great! You're working on the Codility array rotation task. Let's walk through it step by step, showing both the code and explanations for each part. Then we’ll rewrite it as a simple C# console app version so you can practice editing the logic.
+🧠 Goal Recap
+
+You're given:
+
+    An array A of integers.
+
+    An integer K, the number of right-rotations to apply.
+
+A right rotation shifts each element to the right by one index, and the last element moves to the front.
+✅ Step-by-Step Solution with Explanations
+🔹 Step 1: Handle edge cases
+
+if (A.Length == 0)
+    return A;
+
+Explanation:
+
+    If the array is empty, return it immediately. Nothing to rotate.
+
+🔹 Step 2: Use modulo to avoid extra rotations
+
+K = K % A.Length;
+
+Explanation:
+
+    If the array has 4 elements and you rotate 4 times, it ends up the same.
+
+    So, rotating K times is the same as rotating K % A.Length.
+
+🔹 Step 3: Perform the rotation using slicing
+
+int[] result = new int[A.Length];
+Array.Copy(A, A.Length - K, result, 0, K);        // copy last K items to start
+Array.Copy(A, 0, result, K, A.Length - K);        // copy first N-K items after
+return result;
+
+Explanation:
+
+    First Array.Copy() moves the last K items to the front.
+
+    Second Array.Copy() moves the first N-K items after them.
+
+🧾 Final Clean Solution (Minimal Code)
+
+class Solution {
+    public int[] solution(int[] A, int K) {
+        if (A.Length == 0) return A;
+        K = K % A.Length;
+        int[] result = new int[A.Length];
+        Array.Copy(A, A.Length - K, result, 0, K);
+        Array.Copy(A, 0, result, K, A.Length - K);
+        return result;
+    }
+}
+
+🖥 Convert This into a C# Console App
+
+You wanted the same logic in a Console App version where you practice updating the method yourself.
+🔄 Simplified Console App Format
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] A = { 3, 8, 9, 7, 6 };
+        int K = 3;
+
+        int[] rotated = RotateArray(A, K);
+
+        Console.WriteLine("[" + string.Join(", ", rotated) + "]");
+    }
+
+    static int[] RotateArray(int[] A, int K)
+    {
+        if (A.Length == 0) return A;
+        K = K % A.Length;
+        int[] result = new int[A.Length];
+        Array.Copy(A, A.Length - K, result, 0, K);
+        Array.Copy(A, 0, result, K, A.Length - K);
+        return result;
+    }
+}
+
+🎯 Your Practice Version
+
+I’ve kept everything short and clean.
+
+Here's your version to edit for practice:
+
+class Solution {
+    public int solution(int N) {
+        // You can modify this logic step by step
+        return N;
+    }
+}
+
+You can now take what we did above and try updating the solution(int N) method to do something like a rotation or any other logic you want.
+
+Would you like a similar step-by-step task (e.g., reversing an array, counting elements, etc.) next to keep practicing?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+✅ Basic Interview Questions & Answers
+1. What does rotating an array to the right by K positions mean?
+
+Answer:
+Rotating an array to the right by K means shifting each element K positions to the right. The elements that fall off the end are wrapped around to the beginning.
+
+Example:
+[1, 2, 3, 4] rotated 1 time → [4, 1, 2, 3]
+Rotated 2 times → [3, 4, 1, 2]
+2. What happens if K is 0? What if K is equal to the array length?
+
+Answer:
+
+    If K = 0, the array remains unchanged.
+
+    If K = A.Length, the array also remains unchanged because it completes a full rotation cycle.
+
+3. Why do we use K = K % A.Length in the solution?
+
+Answer:
+This ensures we don’t perform unnecessary rotations. For example, rotating a 5-element array 7 times is the same as rotating it 2 times (7 % 5 = 2).
+4. What does Array.Copy() do in this solution?
+
+Answer:
+Array.Copy(source, sourceIndex, destination, destinationIndex, length) copies a part of one array into another.
+
+In the solution:
+
+Array.Copy(A, A.Length - K, result, 0, K);     // Copy last K items to start
+Array.Copy(A, 0, result, K, A.Length - K);     // Copy first N-K items after
+
+🧠 Intermediate Questions & Answers
+5. Could you write this function without using Array.Copy() — maybe using a loop?
+
+Answer:
+Yes. Here's a simple loop-based version:
+
+int[] result = new int[A.Length];
+for (int i = 0; i < A.Length; i++) {
+    result[(i + K) % A.Length] = A[i];
+}
+
+This shifts each element to its new position directly.
+6. What’s the time and space complexity of this solution?
+
+Answer:
+
+    Time Complexity: O(N) — we touch each element once.
+
+    Space Complexity: O(N) — we use a new array to store the result.
+
+7. Can you rotate the array in-place (i.e., without using a new array)?
+
+Answer:
+Yes, using the reverse method:
+
+    Reverse the whole array.
+
+    Reverse the first K elements.
+
+    Reverse the remaining N−K elements.
+
+Example:
+
+void RotateInPlace(int[] A, int K) {
+    K %= A.Length;
+    Reverse(A, 0, A.Length - 1);
+    Reverse(A, 0, K - 1);
+    Reverse(A, K, A.Length - 1);
+}
+
+8. What edge cases should you test?
+
+Answer:
+
+    Empty array
+
+    K = 0
+
+    K = A.Length
+
+    K > A.Length
+
+    Array with one element
+
+    Negative or invalid values (if not restricted)
+
+💬 Behavioral-Style Answer
+
+    “If a teammate said this solution works but feels too complex, how would you explain or simplify it for them?”
+
+Answer:
+I’d walk them through a small example visually and explain that we're just splitting the array and rejoining the parts. If Array.Copy seems too abstract, we can use loops to manually copy the pieces, which sometimes feels clearer for debugging and learning.
+
+Would you like a PDF version of these Q&A notes for printing or practice sheets?

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event-Driven Architecture (EDA) Concepts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+            background-color: #f8fafc;
+            color: #1f2937;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 lg:p-12">
+    <div class="container mx-auto max-w-5xl bg-white rounded-lg shadow-xl p-6 md:p-10">
+
+        <!-- Main Title -->
+        <h1 class="text-3xl md:text-4xl font-extrabold text-indigo-800 mb-6 border-b-2 border-indigo-200 pb-2">
+            Event-Driven Architecture (EDA) Concepts
+        </h1>
+        <p class="mb-8 text-lg text-gray-700">
+            Event-Driven Architecture (EDA) is a software design pattern where the communication and flow of a system are based on the production, detection, and consumption of events. This approach is highly effective for building scalable, decoupled, and responsive systems.
+        </p>
+
+        <!-- What is an Event? Section -->
+        <section class="mb-8">
+            <h3 class="text-2xl font-bold text-indigo-600 mb-4">1. What is an Event?</h3>
+            <p class="mb-4">
+                An <strong class="text-purple-700">Event</strong> is a significant change in state within the system. It is a record of something that has happened. Events are often simple objects or messages that contain information about the change that occurred. They are immutable and represent a historical fact.
+            </p>
+            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                <p class="font-bold text-indigo-800 mb-2">Example:</p>
+                <ul class="list-disc list-inside space-y-1">
+                    <li>An <code class="bg-gray-200 px-1 rounded">OrderPlaced</code> event is triggered when a customer completes a purchase.</li>
+                    <li>A <code class="bg-gray-200 px-1 rounded">UserSignedUp</code> event occurs when a new user registers on a website.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Event Producers & Consumers Section -->
+        <section class="mb-8">
+            <h3 class="text-2xl font-bold text-indigo-600 mb-4">2. Event Producers and Consumers</h3>
+            <p class="mb-4">
+                In EDA, the system is made up of two main types of components:
+            </p>
+            <ul class="list-disc list-inside space-y-2 mb-4">
+                <li><strong class="text-purple-700">Event Producers (Publishers):</strong> These are components that detect an event and publish it to the system. They don't care who or what is listening for the event; they just announce that something happened.</li>
+                <li><strong class="text-purple-700">Event Consumers (Subscribers):</strong> These are components that are interested in specific events. They subscribe to an event stream or topic and react to events when they are published. A single event can be consumed by multiple consumers, each performing a different action.</li>
+            </ul>
+        </section>
+
+        <!-- Event Broker Section -->
+        <section class="mb-8">
+            <h3 class="text-2xl font-bold text-indigo-600 mb-4">3. Event Broker (Bus)</h3>
+            <p class="mb-4">
+                The <strong class="text-purple-700">Event Broker</strong> (also known as an event bus or message queue) is the central component that mediates communication between producers and consumers. It receives events from producers and ensures they are delivered to all interested consumers. This is a crucial element for decoupling, as it means producers and consumers never need to know about each other.
+            </p>
+            <!-- Graphic for Event Flow -->
+            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                <p class="font-bold text-indigo-800 mb-2 text-center">Event Flow: Producer → Broker → Consumer</p>
+                <div class="flex justify-center items-center">
+                    <svg width="400" height="150" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feDropShadow dx="2" dy="2" stdDeviation="2" flood-color="#a0aec0" flood-opacity="0.5"/>
+                            </filter>
+                            <marker id="arrowhead" markerWidth="5" markerHeight="5" refX="2" refY="2.5" orient="auto">
+                                <polygon points="0 0, 5 2.5, 0 5" fill="#1d4ed8" />
+                            </marker>
+                        </defs>
+
+                        <!-- Producer Box -->
+                        <rect x="10" y="50" width="100" height="50" rx="8" ry="8" fill="#a5b4fc" filter="url(#shadow)"/>
+                        <text x="60" y="75" font-family="Inter" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle" dominant-baseline="middle">Producer</text>
+
+                        <!-- Event Broker Box -->
+                        <rect x="150" y="40" width="100" height="70" rx="12" ry="12" fill="#dbeafe" stroke="#60a5fa" stroke-width="2" filter="url(#shadow)"/>
+                        <text x="200" y="75" font-family="Inter" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="middle" dominant-baseline="middle">Event Broker</text>
+                        <text x="200" y="95" font-family="Inter" font-size="10" fill="#2563eb" text-anchor="middle">"OrderPlaced" topic</text>
+
+                        <!-- Consumer 1 Box -->
+                        <rect x="290" y="20" width="100" height="50" rx="8" ry="8" fill="#fbcfe8" filter="url(#shadow)"/>
+                        <text x="340" y="45" font-family="Inter" font-size="12" font-weight="bold" fill="#9d174d" text-anchor="middle" dominant-baseline="middle">Inventory</text>
+                        <text x="340" y="65" font-family="Inter" font-size="10" fill="#9d174d" text-anchor="middle">Consumer</text>
+
+
+                        <!-- Consumer 2 Box -->
+                        <rect x="290" y="80" width="100" height="50" rx="8" ry="8" fill="#d1fae5" filter="url(#shadow)"/>
+                        <text x="340" y="105" font-family="Inter" font-size="12" font-weight="bold" fill="#047857" text-anchor="middle" dominant-baseline="middle">Billing</text>
+                        <text x="340" y="125" font-family="Inter" font-size="10" fill="#047857" text-anchor="middle">Consumer</text>
+
+                        <!-- Arrows -->
+                        <line x1="110" y1="75" x2="150" y2="75" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="130" y="65" font-family="Inter" font-size="10" fill="#1d4ed8" text-anchor="middle">Publishes</text>
+
+                        <line x1="250" y1="75" x2="290" y2="45" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="270" y="30" font-family="Inter" font-size="10" fill="#1d4ed8" text-anchor="middle">Subscribes</text>
+
+                        <line x1="250" y1="75" x2="290" y2="105" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <text x="270" y="140" font-family="Inter" font-size="10" fill="#1d4ed8" text-anchor="middle">Subscribes</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Benefits Section -->
+        <section>
+            <h3 class="text-2xl font-bold text-indigo-600 mb-4">4. Key Benefits of EDA</h3>
+            <ul class="list-disc list-inside space-y-4">
+                <li><strong class="font-semibold text-purple-700">Decoupling:</strong> Producers and consumers are independent. This allows for services to be developed, deployed, and scaled without affecting other components.</li>
+                <li><strong class="font-semibold text-purple-700">Scalability:</strong> Since services are decoupled, you can easily scale individual parts of the system independently. For example, if you have a high volume of orders, you can scale up the Inventory and Billing services without changing the Order service.</li>
+                <li><strong class="font-semibold text-purple-700">Real-time responsiveness:</strong> Events are processed as they happen, enabling systems to react instantly to changes and provide a better user experience.</li>
+                <li><strong class="font-semibold text-purple-700">Fault Tolerance:</strong> The event broker can persist events, ensuring that if a consumer is temporarily unavailable, it can process the events it missed once it comes back online.</li>
+            </ul>
+        </section>
+
+    </div>
+</body>
+</html>

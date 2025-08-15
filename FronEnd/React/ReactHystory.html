@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History of React</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 600px;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      border: 1px solid #ccc;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f4f4f4;
+    }
+
+    @media (max-width: 600px) {
+      table, thead, tbody, th, td, tr {
+        display: block;
+      }
+
+      thead tr {
+        display: none;
+      }
+
+      td {
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+      }
+
+      td::before {
+        position: absolute;
+        left: 16px;
+        width: 45%;
+        white-space: nowrap;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      td:nth-of-type(1)::before { content: "Year"; }
+      td:nth-of-type(2)::before { content: "Event / Version"; }
+      td:nth-of-type(3)::before { content: "Description"; }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>History of React (Timeline)</h2>
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Year</th>
+          <th>Event / Version</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2011</td>
+          <td>Internal Development</td>
+          <td>Jordan Walke creates React at Facebook to manage complex UIs.</td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td>Open-Sourced</td>
+          <td>React is released at JSConf US with JSX and Virtual DOM.</td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td>React Native & Redux</td>
+          <td>React Native launches; Redux introduced for state management.</td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td>React 15</td>
+          <td>Improved SVG support and performance enhancements.</td>
+        </tr>
+        <tr>
+          <td>2017</td>
+          <td>React 16 (Fiber)</td>
+          <td>Major rewrite with Fiber architecture, better error handling, portals.</td>
+        </tr>
+        <tr>
+          <td>2018</td>
+          <td>Hooks Announced</td>
+          <td>Hooks allow functional components to manage state and side effects.</td>
+        </tr>
+        <tr>
+          <td>2019</td>
+          <td>React 16.8</td>
+          <td>Hooks become part of stable release. Shift away from class components.</td>
+        </tr>
+        <tr>
+          <td>2020</td>
+          <td>React 17</td>
+          <td>No new features; improved gradual upgrade support.</td>
+        </tr>
+        <tr>
+          <td>2022</td>
+          <td>React 18</td>
+          <td>Introduced concurrent features, automatic batching, streaming SSR.</td>
+        </tr>
+        <tr>
+          <td>2023–2025</td>
+          <td>Server Components & Edge</td>
+          <td>Adoption of React Server Components and edge rendering (e.g. with Next.js).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+managing cheese inventory at a company called “Software Cheesemongers.
+
+
+
+The Problem Summary:
+
+    Every cheese has:
+
+        ValidByDays: days until expiration
+
+        Quality: an integer representing how good the cheese is
+
+    Each day:
+
+        Both ValidByDays and Quality decrease by 1
+
+        Once ValidByDays < 0, the Quality degrades 5× faster
+
+    Special cheeses behave differently:
+
+        Parmigiano Reggiano increases in quality
+
+        Caciocavallo Podolico never decreases in quality
+
+        Tasting with Chef Massimo: a timed event cheese whose Quality:
+
+            Increases by 1 each day
+
+            Increases by +3 when 14 days or fewer remain
+
+            Increases by +5 when 7 days or fewer remain
+
+            Drops to 0 after the event
+
+    A new cheese called "Ricotta" has been added
+
+        Its Quality degrades 3× faster than normal cheeses

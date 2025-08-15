@@ -1,0 +1,15 @@
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.AssemblyInfoInputs.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.AssemblyInfo.cs
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.csproj.CoreCompileInputs.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.sourcelink.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\bin\Debug\net8.0\Cheesemongers.exe
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\bin\Debug\net8.0\Cheesemongers.deps.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\bin\Debug\net8.0\Cheesemongers.runtimeconfig.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\bin\Debug\net8.0\Cheesemongers.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\bin\Debug\net8.0\Cheesemongers.pdb
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\refint\Cheesemongers.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.pdb
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\Cheesemongers.genruntimeconfig.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\Cheesemongers\Cheesemongers\obj\Debug\net8.0\ref\Cheesemongers.dll

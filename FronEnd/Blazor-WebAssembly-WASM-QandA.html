@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blazor WebAssembly Q&A</title>
 </head>
-<body>
-    <header>
+<body style="font-family: sans-serif; margin: 0; padding: 0;">
+    <header style="background-color: #f4f4f4; padding: 20px; text-align: center;">
         <h1>Blazor WebAssembly (WASM) Q&amp;A</h1>
     </header>
-    <main>
+    <main style="padding: 20px;">
         <section>
-            <table border="1" style="width: 100%; border-collapse: collapse;">
+            <table border="1" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                 <style>
-                    table td {
+                    table td, table th {
                         padding: 10px;
+                        text-align: left;
                     }
                 </style>
                 <tr>
@@ -89,12 +90,7 @@
         </section>
         <section>
             <h2>Blazor vs React</h2>
-            <table border="1" style="width: 100%; border-collapse: collapse;">
-                <style>
-                    table td {
-                        padding: 10px;
-                    }
-                </style>
+            <table border="1" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                 <tr>
                     <th>Feature</th>
                     <th>Blazor</th>
@@ -144,12 +140,7 @@
         </section>
         <section>
             <h2>Blazor vs Angular</h2>
-            <table border="1" style="width: 100%; border-collapse: collapse;">
-                <style>
-                    table td {
-                        padding: 10px;
-                    }
-                </style>
+            <table border="1" style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
                 <tr>
                     <th>Feature</th>
                     <th>Blazor</th>
@@ -197,8 +188,63 @@
                 </tr>
             </table>
         </section>
+        <section>
+            <h2>30 General Blazor Interview Questions</h2>
+            <ul>
+                <li><strong>What is Blazor and its two hosting models?</strong><p>Blazor is a web framework for building interactive client-side web UI with .NET. The two hosting models are Blazor Server and Blazor WebAssembly. Blazor Server runs on the server and uses a SignalR connection to handle UI updates, while Blazor WebAssembly runs entirely in the browser on WebAssembly.</p></li>
+                <li><strong>Explain the role of WebAssembly in Blazor WebAssembly.</strong><p>WebAssembly (WASM) is a binary instruction format for a stack-based virtual machine. In Blazor WebAssembly, it allows .NET code (C#) to be compiled and executed directly in the browser, providing near-native performance without the need for browser plugins like Flash or Silverlight.</p></li>
+                <li><strong>How does Blazor handle UI updates without using JavaScript?</strong><p>Blazor uses a virtual DOM (Document Object Model) concept. It tracks changes to the component state and creates a render tree. When a state change occurs, it re-renders the component to a new render tree and then compares it to the previous one. It then applies only the necessary changes to the actual DOM, which is more efficient than re-rendering the entire page.</p></li>
+                <li><strong>What are Razor components? How do they differ from Razor Pages?</strong><p>Razor components are the building blocks of Blazor applications. They are reusable pieces of UI and logic, defined using the `.razor` file extension. They differ from Razor Pages in that they are client-side components that can manage their own state and render dynamic content, whereas Razor Pages are server-side pages that generate HTML on the server.</p></li>
+                <li><strong>Explain the Blazor component lifecycle. What is the difference between OnInitialized and OnParametersSet?</strong><p>Blazor components have a series of lifecycle methods, including `OnInitialized`, `OnParametersSet`, and `OnAfterRender`. `OnInitialized` is called once when the component is first initialized, while `OnParametersSet` is called whenever a parent component provides parameters to the child component, including the first time it is initialized. This is useful when you need to re-fetch data based on a changed parameter value.</p></li>
+                <li><strong>How do you perform client-side routing in Blazor?</strong><p>Blazor uses a router to handle client-side routing. The `@page` directive in a component's `.razor` file specifies the URL template for that component. When the user navigates to a URL, the router matches the URL to the appropriate component and renders it.</p></li>
+                <li><strong>What is dependency injection in Blazor? How do you register and use services?</strong><p>Dependency injection (DI) is a design pattern used to provide services to components and classes. You can register services in the `Program.cs` file using methods like `builder.Services.AddSingleton`, `AddScoped`, or `AddTransient`. You can then inject a service into a component using the `@inject` directive or by using the `[Inject]` attribute on a property.</p></li>
+                <li><strong>How do you call JavaScript from Blazor and vice-versa?</strong><p>You can call JavaScript from Blazor using the `IJSRuntime` service, which allows you to invoke JavaScript functions. To call C# from JavaScript, you can use JavaScript Interop to reference .NET methods and invoke them. This is useful for interacting with browser APIs or third-party JavaScript libraries.</p></li>
+                <li><strong>What are cascading parameters and when would you use them?</strong><p>Cascading parameters are a way to pass data down a component hierarchy without having to manually pass it as a parameter to each child component. You would use them when you have data that needs to be shared across a tree of components, such as a user's authentication state or an application's theme.</p></li>
+                <li><strong>Describe the purpose of the `wwwroot` folder.</strong><p>The `wwwroot` folder is the web root directory for a Blazor application. It contains all the static files that are served to the browser, such as CSS stylesheets, JavaScript files, images, and other assets. The contents of this folder are accessible from the browser via the application's root URL.</p></li>
+                <li><strong>How do you handle forms and user input in Blazor?</strong><p>Blazor provides built-in components like `EditForm`, `InputText`, and `ValidationMessage` to handle forms and user input. The `EditForm` component creates a data context for a model, and the other components are used to bind the input to the model's properties. This approach simplifies data validation and handling form submissions.</p></li>
+                <li><strong>Explain the role of the `_Imports.razor` file.</strong><p>The `_Imports.razor` file is used to specify common using directives that apply to all `.razor` components within a folder and its subfolders. This eliminates the need to manually add the same `using` directives to every component file, improving code organization and reducing repetition.</p></li>
+                <li><strong>How do you perform asynchronous operations in Blazor components?</strong><p>You can perform asynchronous operations in Blazor components using `async` and `await`. You should override lifecycle methods like `OnInitializedAsync` to perform tasks like fetching data from an API. This allows the UI to remain responsive while waiting for the asynchronous operation to complete.</p></li>
+                <li><strong>What is the purpose of the `@inject` directive?</strong><p>The `@inject` directive is a way to inject a service into a Blazor component. It's a shorthand for a property with a `[Inject]` attribute and is commonly used to access services registered in the dependency injection container, such as `IJSRuntime` or `IHttpClientFactory`.</p></li>
+                <li><strong>How can you implement authentication and authorization in a Blazor application?</strong><p>Blazor provides a flexible authentication and authorization system. You can use services like `AuthenticationStateProvider` to manage the user's authentication state. For authorization, you can use the `[Authorize]` attribute on components or routes to restrict access based on a user's role or policy.</p></li>
+                <li><strong>What are render fragments and why are they useful?</strong><p>A render fragment is a piece of reusable UI logic that can be passed as a parameter to another component. They are useful for creating flexible and customizable components. For example, a `Card` component could accept a `Header` and `Body` render fragment, allowing the parent component to define the content of those sections.</p></li>
+                <li><strong>Explain how event handling works in Blazor.</strong><p>In Blazor, events are handled using C# event handlers. You can bind to an event, such as `onclick`, using the `@on` prefix (e.g., `@onclick`). When the event is triggered in the browser, Blazor invokes the corresponding C# method, which can then update the component's state and trigger a UI re-render.</p></li>
+                <li><strong>How do you create a custom component in Blazor?</strong><p>To create a custom component, you create a new `.razor` file. The component's name is derived from the file name (e.g., `MyButton.razor`). You can add C# logic within an `@code` block and use HTML and Razor syntax to define the component's UI. You can then use this component in other parts of your application by its name.</p></li>
+                <li><strong>What is state management, and what are some ways to implement it in Blazor?</strong><p>State management is the process of managing the data that determines the current state of the UI. In Blazor, you can manage state using a few methods: passing data down a component hierarchy with parameters, using cascading parameters for shared state, or using a dedicated service registered with dependency injection to hold and share state across the entire application.</p></li>
+                <li><strong>Discuss the advantages and disadvantages of Blazor Server vs. Blazor WebAssembly.</strong><p>Blazor Server has a smaller initial download size and faster startup, but it requires a constant SignalR connection to the server. Blazor WebAssembly, on the other hand, runs completely in the browser, allowing it to work offline, but it has a larger initial download size because it needs to download the .NET runtime.</p></li>
+                <li><strong>How would you improve the startup performance of a Blazor WebAssembly app?</strong><p>You can improve startup performance by using Ahead-of-Time (AOT) compilation, which compiles the C# code to WebAssembly at build time. This can lead to faster execution but increases the download size. You can also use lazy loading to only load components when they are needed.</p></li>
+                <li><strong>What are component parameters and how do you define them?</strong><p>Component parameters are a way to pass data from a parent component to a child component. You define a parameter by adding a public property to your component and decorating it with the `[Parameter]` attribute. The parent component can then set the value of this property when it renders the child component.</p></li>
+                <li><strong>How can you pass data from a child component to a parent component?</strong><p>You can pass data from a child to a parent component using callbacks. The child component can expose an `EventCallback` parameter. The parent component can then bind to this event and provide a method that the child can invoke to pass data back up the component tree.</p></li>
+                <li><strong>What is `IJSRuntime` and how is it used?</strong><p>`IJSRuntime` is a service that allows you to call JavaScript functions from C# in Blazor. You can inject it into a component and use its `InvokeAsync` method to execute a JavaScript function. This is useful for tasks like interacting with browser APIs, manipulating the DOM, or integrating with third-party JavaScript libraries.</p></li>
+                <li><strong>Describe how Blazor interacts with the DOM.</strong><p>Blazor does not directly interact with the browser's DOM. Instead, it uses a concept of a render tree, which is an in-memory representation of the component's UI. When a state change occurs, Blazor diffs the new render tree with the old one and only applies the necessary changes to the browser's DOM. This is much more efficient and faster than full DOM manipulation.</p></li>
+                <li><strong>What is `IHttpClientFactory` and why is it recommended for making HTTP requests?</strong><p>`IHttpClientFactory` is a service that provides a centralized way to configure and manage `HttpClient` instances. It is recommended because it handles the lifetime of `HttpClient` instances, preventing common issues like socket exhaustion. It also allows you to configure named clients for different APIs, which makes the code more manageable.</p></li>
+                <li><strong>How do you handle errors and exceptions in Blazor?</strong><p>You can handle errors and exceptions in Blazor using `try-catch` blocks within your C# code. Blazor also has a built-in mechanism for handling unhandled exceptions. You can also create an `ErrorBoundary` component to gracefully handle errors within a specific part of your application's UI.</p></li>
+                <li><strong>What is the difference between `@bind` and `@onchange`?</strong><p>`@bind` provides two-way data binding, meaning it both sets the value of a property and updates it when the user changes the input. `@onchange` only binds to the `onchange` event, so you need to manually update the property value in the event handler. `@bind` is a convenient shortcut for this common pattern.</p></li>
+                <li><strong>How do you share code and logic between Blazor components?</strong><p>You can share code and logic between components by creating a base component class. This base class can contain common properties, methods, and lifecycle logic. Child components can then inherit from this base class to reuse the shared functionality. You can also create reusable Razor components and place them in a shared library.</p></li>
+                <li><strong>What are Blazor templates and what is their role?</strong><p>Blazor templates are a feature that allows you to use a `RenderFragment` with a specific parameter type, enabling you to pass in a template for a list of items. This is useful for creating flexible components like a list or table that can be customized by the parent component.</p></li>
+            </ul>
+        </section>
+        <section>
+            <h2>15 Blazor E-commerce Interview Questions</h2>
+            <ul>
+                <li><strong>How would you build a product catalog page in Blazor that fetches data from an API?</strong><p>I would create a `ProductService` that uses `IHttpClientFactory` to make an asynchronous HTTP request to the product API. In the catalog component, I would inject this service and call the method to fetch the products within the `OnInitializedAsync` lifecycle method. The component would then use a `foreach` loop to render a list of products, each as a separate `ProductCard` component.</p></li>
+                <li><strong>Describe your approach to implementing a shopping cart with Blazor, including state management.</strong><p>I would use a service-based approach for state management. A `CartService` would be registered as a singleton with dependency injection to ensure a single instance is shared across the application. This service would hold the list of cart items and methods to add, remove, and update products. Other components, like the "Add to Cart" button and the cart summary, would inject and interact with this service to manage the cart's state.</p></li>
+                <li><strong>How can you handle user authentication for an e-commerce site using Blazor?</strong><p>I would use Blazor's built-in authentication features, leveraging a hosted model with an Identity provider. I would use the `AuthenticationStateProvider` to check the user's authentication status and roles. I would use the `[Authorize]` attribute to protect routes and components that require a user to be logged in, such as the checkout or order history pages.</p></li>
+                <li><strong>How would you implement a product search feature with real-time filtering in a Blazor app?</strong><p>I would create a search input component that uses `@bind` to a search term property. As the user types, the `@bind` would update the property. A debounce mechanism could be used to prevent excessive API calls. The search component would then pass the search term to a `ProductService`, which would fetch the filtered data from the API and update the product list, triggering a UI re-render.</p></li>
+                <li><strong>What are the considerations for handling payment gateways and secure transactions in a Blazor e-commerce application?</strong><p>Since Blazor WebAssembly runs on the client, it is not safe to handle sensitive data like API keys directly in the component. Instead, I would use a secure, server-side API (e.g., a Blazor Server or ASP.NET Core API) to process payments. The Blazor WebAssembly client would only communicate with this secure API, passing the necessary payment information without exposing sensitive credentials.</p></li>
+                <li><strong>How would you manage different product variants (e.g., size, color) within a Blazor component?</strong><p>I would use `select` or `radio` input components to let the user choose variants. The selected variant would be bound to a property in the component. Based on the selected variant, I would update the displayed image, price, and other details. The "Add to Cart" button would use the selected variant when adding the product to the shopping cart service.</p></li>
+                <li><strong>Explain how you would use Blazor components to build a reusable "Add to Cart" button.</strong><p>I would create a reusable `AddToCartButton.razor` component that accepts a `Product` object as a parameter. The button's `@onclick` event handler would call a method to interact with the `CartService` (injected via DI) and add the product. This component would be used across the application on every product card or detail page, ensuring consistent behavior.</p></li>
+                <li><strong>How do you handle the display of dynamic product images and descriptions?</strong><p>Product images and descriptions would be part of the product model fetched from the API. The `src` attribute of the `img` tag would be data-bound to the product's image URL property (`<img src="@product.ImageUrl" />`), and the description would be rendered using `@product.Description`. This allows for dynamic content rendering without writing extra code.</p></li>
+                <li><strong>What is the best way to handle asynchronous API calls for fetching product data to avoid UI blocking?</strong><p>The best way is to perform API calls within the `OnInitializedAsync` lifecycle method using `async` and `await`. During the asynchronous operation, the component can display a loading indicator or a skeleton UI to provide a good user experience and prevent the UI from freezing. When the data is received, the UI is updated automatically.</p></li>
+                <li><strong>How would you implement a review and rating system for products in a Blazor application?</strong><p>I would create a dedicated `ProductReview` component to display a single review. On the product detail page, I would fetch reviews from a secure API and render them using a `foreach` loop. A separate `AddReview` component would be used for user input, and the form submission would trigger a call to a server-side API to securely save the review data.</p></li>
+                <li><strong>Discuss how to optimize a Blazor e-commerce site for performance, particularly with a large product catalog.</strong><p>Performance can be optimized by implementing pagination or infinite scrolling for the product catalog. Lazy loading of components can also reduce initial load time. Using a CDN for static assets like images and CSS can improve delivery speed. Additionally, client-side caching of product data can reduce the number of API calls for frequently viewed items.</p></li>
+                <li><strong>How would you use Blazor's dependency injection to manage a shared `CartService`?</strong><p>I would register the `CartService` as a singleton in the `Program.cs` file using `builder.Services.AddSingleton<CartService>()`. This ensures that all components receive the same instance of the service. Components that need access to the cart state, such as `ProductCard` or `Checkout`, would then inject the `CartService` and interact with it to update the cart state, ensuring consistency across the application.</p></li>
+                <li><strong>Describe how to implement order tracking and user order history.</strong><p>The `OrderHistory` page would be a component that is protected by the `[Authorize]` attribute. This component would inject an `OrderService` that fetches order data from a secure, authenticated API. The component would then use a `foreach` loop to render a list of the user's past orders, with each order potentially being a nested component.</p></li>
+                <li><strong>How would you handle URL routing for product detail pages (e.g., `products/product-name`)?</strong><p>The product detail component would have a route parameter defined using the `@page` directive, such as `@page "/products/{productName}"`. When a user navigates to this URL, the component receives the `productName` as a parameter. It would then use this parameter to fetch the specific product details from the API.</p></li>
+                <li><strong>What measures would you take to secure a Blazor e-commerce application against common web vulnerabilities?</strong><p>I would use Blazor's built-in authentication and authorization features to protect sensitive pages. For forms, I would use the `EditContext` and `ValidationMessage` components to prevent XSS attacks. I would also use a secure server-side API for handling sensitive data like payments and user data, ensuring that no sensitive credentials are exposed on the client. Additionally, I would use HTTPS for all communication to encrypt data in transit.</p></li>
+            </ul>
+        </section>
     </main>
-    <footer>
+    <footer style="background-color: #f4f4f4; padding: 20px; text-align: center; margin-top: 20px;">
         <p>&copy; 2023 Blazor WebAssembly Q&amp;A</p>
     </footer>
 </body>

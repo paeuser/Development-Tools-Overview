@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Worldwide Application Security Project (OWASP) Overview</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            color: #1a237e;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1a237e;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a target="_blank" href="https://www.owasptopten.org/">https://www.owasptopten.org/</a>
+
+        <h1>Open Worldwide Application Security Project (OWASP)</h1>
+        <p>
+            The **Open Worldwide Application Security Project (OWASP)** is a non-profit foundation that works to improve the security of software. Through its community-led open-source projects, hundreds of chapters worldwide, and educational materials, OWASP provides developers and organizations with the tools and knowledge needed to build and maintain secure applications.
+        </p>
+
+        <p>
+            OWASP's mission is to make software security visible, so that individuals and organizations can make informed decisions about application security risks. Its resources are available free and open to anyone interested in improving their security practices.
+        </p>
+
+        <h2>Key OWASP Projects and Resources</h2>
+        <p>
+            OWASP is best known for several influential projects that have become industry standards for application security.
+        </p>
+        <ul>
+            <li>
+                <strong>OWASP Top 10:</strong> This is a powerful awareness document for web application security. It represents a broad consensus of the most critical security risks facing web applications today. The Top 10 list is updated periodically to reflect changes in the threat landscape and is a crucial starting point for developers and security teams.
+            </li>
+            <li>
+                <strong>OWASP ZAP (Zed Attack Proxy):</strong> ZAP is a popular, free, and open-source penetration testing tool used for finding vulnerabilities in web applications. It can be used by developers for manual and automated security testing.
+            </li>
+            <li>
+                <strong>OWASP Cheat Sheet Series:</strong> This is a collection of concise, high-value information on specific application security topics. These cheat sheets provide quick guidance for developers on how to implement security controls correctly.
+            </li>
+            <li>
+                <strong>OWASP Mobile Top 10:</strong> Similar to the flagship Top 10 list, this project specifically identifies the most common and critical security risks in mobile applications.
+            </li>
+        </ul>
+        
+        <h2>OWASP Top 10 - 2021</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Term</th>
+                    <th>Simple Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>A01:2021-Broken Access Control</td>
+                    <td>Fails to properly restrict what a user can do. It's the most common and serious security risk.</td>
+                </tr>
+                <tr>
+                    <td>A02:2021-Cryptographic Failures</td>
+                    <td>Issues with protecting sensitive data, often due to poor encryption. This can lead to data exposure.</td>
+                </tr>
+                <tr>
+                    <td>A03:2021-Injection</td>
+                    <td>Attacker sends malicious data to the application to trick it into running unintended commands. Includes SQL Injection and Cross-site Scripting.</td>
+                </tr>
+                <tr>
+                    <td>A04:2021-Insecure Design</td>
+                    <td>Flaws in the application's design or architecture. Security controls were never planned or designed correctly.</td>
+                </tr>
+                <tr>
+                    <td>A05:2021-Security Misconfiguration</td>
+                    <td>Misconfigured security settings, such as using default passwords or having unnecessary features enabled.</td>
+                </tr>
+                <tr>
+                    <td>A06:2021-Vulnerable and Outdated Components</td>
+                    <td>Using software libraries or components with known security flaws that have not been updated.</td>
+                </tr>
+                <tr>
+                    <td>A07:2021-Identification and Authentication Failures</td>
+                    <td>Weaknesses in user login and session management, allowing attackers to compromise accounts.</td>
+                </tr>
+                <tr>
+                    <td>A08:2021-Software and Data Integrity Failures</td>
+                    <td>Assuming data or software is trustworthy without verifying it. This can lead to code running from untrusted sources.</td>
+                </tr>
+                <tr>
+                    <td>A09:2021-Security Logging and Monitoring Failures</td>
+                    <td>Lack of proper logging and monitoring, making it difficult to detect, track, or respond to security incidents.</td>
+                </tr>
+                <tr>
+                    <td>A10:2021-Server-Side Request Forgery (SSRF)</td>
+                    <td>A vulnerability that allows an attacker to make a server-side request to an unintended location, accessing internal resources.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>
+            By leveraging these projects and engaging with the OWASP community, organizations can significantly strengthen their application security posture, moving from a reactive to a proactive security model.
+        </p>
+    </div>
+
+</body>
+</html>

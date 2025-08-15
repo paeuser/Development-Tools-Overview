@@ -1,0 +1,83 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BBFA84B8-26E9-4AC6-B011-417781C9C7C9}|CheeseMongers.Tests\\CheeseMongers.Tests.csproj|c:\\git\\paec9@outlook.com2\\development-tools-overview\\interview\\technical assessment\\cheesemongers\\cheesemongers.tests\\obligatorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBFA84B8-26E9-4AC6-B011-417781C9C7C9}|CheeseMongers.Tests\\CheeseMongers.Tests.csproj|solutionrelative:cheesemongers.tests\\obligatorytest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13CA5A66-B20D-4D3A-B19D-49E8AFC35DBA}|Cheesemongers\\Cheesemongers.csproj|c:\\git\\paec9@outlook.com2\\development-tools-overview\\interview\\technical assessment\\cheesemongers\\cheesemongers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{13CA5A66-B20D-4D3A-B19D-49E8AFC35DBA}|Cheesemongers\\Cheesemongers.csproj|solutionrelative:cheesemongers\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{13CA5A66-B20D-4D3A-B19D-49E8AFC35DBA}|Cheesemongers\\Cheesemongers.csproj|c:\\git\\paec9@outlook.com2\\development-tools-overview\\interview\\technical assessment\\cheesemongers\\cheesemongers\\notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{13CA5A66-B20D-4D3A-B19D-49E8AFC35DBA}|Cheesemongers\\Cheesemongers.csproj|solutionrelative:cheesemongers\\notes.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{131369f2-062d-44a2-8671-91ff31efb4f4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Notes.txt",
+              "DocumentMoniker": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\Cheesemongers\\Notes.txt",
+              "RelativeDocumentMoniker": "Cheesemongers\\Notes.txt",
+              "ToolTip": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\Cheesemongers\\Notes.txt",
+              "RelativeToolTip": "Cheesemongers\\Notes.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-08-03T14:29:14.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ObligatoryTest.cs",
+              "DocumentMoniker": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\CheeseMongers.Tests\\ObligatoryTest.cs",
+              "RelativeDocumentMoniker": "CheeseMongers.Tests\\ObligatoryTest.cs",
+              "ToolTip": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\CheeseMongers.Tests\\ObligatoryTest.cs",
+              "RelativeToolTip": "CheeseMongers.Tests\\ObligatoryTest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T13:58:59.38Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\Cheesemongers\\Program.cs",
+              "RelativeDocumentMoniker": "Cheesemongers\\Program.cs",
+              "ToolTip": "C:\\Git\\paec9@outlook.com2\\Development-Tools-Overview\\interview\\technical assessment\\Cheesemongers\\Cheesemongers\\Program.cs",
+              "RelativeToolTip": "Cheesemongers\\Program.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAAwI8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T13:46:41.496Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

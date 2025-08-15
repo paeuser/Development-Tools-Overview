@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Reference Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Custom font for a clean look */
@@ -25,15 +28,65 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
 
+               <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-blue-600 mb-4"> 
+                        <a href="../FronEnd/React/React.html"><b>React.js</b></a>
+                    </h2>
+                    <div class="text-gray-700">
+                        JSX<br>
+                        Hooks (useState, useEffect, etc.)<br>
+                        Context API<br>
+                        React Router<br>
+                        Redux / Zustand<br>
+                        Next.js<br>
+                        CRA / Vite<br>
+                        <b>Testing Frameworks:</b><br>
+                        Jest<br>
+                        React Testing Library<br>
+                        Enzyme<br>
+                        Cypress (E2E)<br>
+                        Playwright (E2E)
+                        Scaffolding the App (Vite) npx create-vite@latest . --template react-ts<br>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-red-700 mb-4"> <a href="../FronEnd/Angular/Angular.html" ><b>Angular</b></a></h2>
+                    <div class="text-gray-700">
+                        Components<br>
+                        Modules (NgModules)<br>
+                        Directives<br>
+                        Services & Dependency Injection<br>
+                        Routing<br>
+                        Forms (Template-driven & Reactive)<br>
+                        RxJS<br>
+                        Change Detection<br>
+                        Angular CLI<br>
+                        NgRx (State Management)<br>
+                        <b>Testing Frameworks:</b><br>
+                        Jasmine<br>
+                        Karma<br>
+                        Protractor (E2E - deprecated)<br>
+                        Cypress (E2E)<br>
+                        Playwright (E2E)
+                    </div>
+                </div>
+            </div>
+
+            
+            
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-green-600 mb-4">
-                    <a href="../FronEnd/Vue/Terminology.html" target="_blank"> Vue.js</a>
+                        <a href="../FronEnd/Vue/Terminology.html" target="_blank"> Vue.js</a>
                     </h2>
                     <div class="text-gray-700">
                         SFC (Single File Components)<br>
                         Composition API (Vue 3)<br>
-                         improved performance, smaller bundle size, Teleport, Fragments, multiple root elements, and better TypeScript support<br>
+                        improved performance, smaller bundle size, Teleport, Fragments, multiple root elements, and better TypeScript support<br>
                         Options API (Vue 2 & 3)<br>
                         Vue Router<br>
                         Pinia (Vue 3) / Vuex (Vue 2 & 3)<br>
@@ -43,40 +96,41 @@
                         Reactivity System (Vue 2 & 3)<br>
                         Teleport (Vue 3)<br>
                         Fragments (Vue 3)<br>
-                        **Testing Frameworks:**<br>
+                        <b>Testing Frameworks:</b><br>
                         Jest<br>
                         Vue Test Utils<br>
                         Cypress (E2E)<br>
                         Vitest<br>
-                        ESlint(javascript  static code analysis , config .eslintrc.js ) <br>
+                        ESlint(javascript static code analysis , config .eslintrc.js ) <br>
                         Prettier (Code Formatting)<br>
                         vs code Extensions -> Vetur (highlight, code snipes ),
-                         Volar, Vue Devtools<br> 
-                        Vuetify play ground <br> 
-
-
-
+                        Volar, Vue Devtools<br>
+                        Vuetify play ground <br>
                     </div>
                 </div>
             </div>
 
+         
+            
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
-                    <h2 class="text-2xl font-bold text-blue-600 mb-4">React.js</h2>
+                    <h2 class="text-2xl font-bold text-orange-500 mb-4">Blazor</h2>
                     <div class="text-gray-700">
-                        JSX<br>
-                        Hooks (useState, useEffect, etc.)<br>
-                        Context API<br>
-                        React Router<br>
-                        Redux / Zustand<br>
-                        Next.js<br>
-                        CRA / Vite<br>
-                        **Testing Frameworks:**<br>
-                        Jest<br>
-                        React Testing Library<br>
-                        Enzyme<br>
-                        Cypress (E2E)<br>
-                        Playwright (E2E)
+                        Blazor WebAssembly (WASM)<br>
+                        Blazor Server<br>
+                        Razor Components<br>
+                        Component Lifecycle (OnInitialized, OnParametersSet)<br>
+                        Dependency Injection<br>
+                        State Management (Services, Cascading Parameters)<br>
+                        Razor Syntax<br>
+                        JavaScript Interop (IJSRuntime)<br>
+                        Client-side Routing<br>
+                        Forms & Validation<br>
+                        Authentication & Authorization<br>
+                        .NET and C#<br>
+                        <b>Testing Frameworks:</b><br>
+                        bUnit<br>
+                        MSTest / NUnit / xUnit.net<br>
                     </div>
                 </div>
             </div>
@@ -90,7 +144,7 @@
                         Entity Framework Core<br>
                         Web API<br>
                         SQL Server<br>
-                        **Testing Frameworks:**<br>
+                        <b>Testing Frameworks:</b><br>
                         NUnit<br>
                         xUnit.net<br>
                         MSTest<br>
@@ -112,8 +166,8 @@
                         Reflection<br>
                         Attributes<br>
                         Garbage Collection<br>
-                        Exception Handling
-                        .net version features  
+                        Exception Handling<br>
+                        .net version features
                     </div>
                 </div>
             </div>
@@ -122,6 +176,8 @@
                 <div>
                     <h2 class="text-2xl font-bold text-fuchsia-600 mb-4">.NET Auth & Authz</h2>
                     <div class="text-gray-700">
+                        <a href="../Security/Open-Worldwide-Application-Security-Project.html">OWASP</a><br>
+
                         ASP.NET Core Identity<br>
                         JWT (JSON Web Tokens)<br>
                         OAuth 2.0 protocol / OpenID Connect (Azure AD and PingOne)<br>
@@ -184,7 +240,9 @@
 
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
-                    <h2 class="text-2xl font-bold text-teal-600 mb-4">REST API</h2>
+                    <h2 class="text-2xl font-bold text-teal-600 mb-4">
+                        <a href="../NET/RESTfulAPIs.html" target="_blank">REST API</a>
+                    </h2>
                     <div class="text-gray-700">
                         HTTP Methods (GET, POST, PUT, DELETE)<br>
                         Statelessness<br>
@@ -197,6 +255,27 @@
                         Versioning<br>
                         API keyS<br>
                         resource <BR>
+                            Async Logging<br>
+                            Effective Caching ( in-memory caching (Redis, Memcached) or HTTP cache headers)<br>
+                            Compress Data Payloads<br>
+                            Connection Pooling(connection pools to reuse open connections.)<br>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-indigo-700 mb-4">gRPC</h2>
+                    <div class="text-gray-700">
+                        Protocol Buffers (Protobuf)<br>
+                        HTTP/2<br>
+                        Service Definition<br>
+                        Unary RPC<br>
+                        Server Streaming<br>
+                        Client Streaming<br>
+                        Bidirectional Streaming<br>
+                        gRPC-web<br>
+                        Transcoding
                     </div>
                 </div>
             </div>
@@ -208,6 +287,7 @@
                         CI/CD<br>
                         Docker<br>
                         Terraform<br>
+                        Bicep (define and deploy cloud infrastructure)<br>
                         Git<br>
                         Monitoring (Prometheus, Grafana)
                     </div>
@@ -233,17 +313,33 @@
                 <div>
                     <h2 class="text-2xl font-bold text-indigo-600 mb-4">Databases</h2>
                     <div class="text-gray-700">
-                        SQL (PostgreSQL, MySQL)<br>
-                        NoSQL (MongoDB, Cassandra)<br>
-                        Redis<br>
-                        Cosmos DB<br>
-                        Data Warehousing<br>
-                        ETL/ELT <BR>
-
-                        EF CORE (Entity Framework Core?)<BR>
-                        LINQ (Language Integrated Query)<BR>
-
-
+                        Relational Databases (e.g., PostgreSQL, SQL)<br>
+                        Concepts: ACID, Normalization, Joins, Transactions, Indexes, Stored Procedures, Triggers<br>
+                        Relational Schema: Tables, Columns, Rows, Primary Key, Foreign Key, Views<br>
+                        SQL Statements: SELECT, INSERT, UPDATE, DELETE, CREATE, ALTER, DROP<br>
+                        NoSQL Databases<br>
+                        Document: MongoDB, Couchbase (Collections, Documents, JSON)<br>
+                        Key-Value: Redis, DynamoDB (Keys, Values)<br>
+                        Column-Family: Cassandra, HBase (Keyspaces, Column Families, Rows, Columns)<br>
+                        Graph: Neo4j, Amazon Neptune (Nodes, Edges, Properties)<br>
+                        Database Architectures<br>
+                        Data Warehousing: Star Schema, Snowflake Schema, ETL (Extract, Transform, Load)<br>
+                        Data Lakes: Raw Data, Schema-on-Read<br>
+                        Distributed Databases: Sharding, Replication, Consistency Models (CAP Theorem)<br>
+                        Concurrency Control<br>
+                        Locking: Shared Locks, Exclusive Locks, Deadlocks<br>
+                        Isolation Levels: Read Uncommitted, Read Committed, Repeatable Read, Serializable<br>
+                        Replication Techniques<br>
+                        Master-Slave, Master-Master, Snapshot Replication, Transactional Replication<br>
+                        <br>
+                        <h3 class="text-xl font-semibold text-purple-600 mb-2">PostgreSQL</h3>
+                        <div class="text-gray-700">
+                            Data Types: JSONB, Hstore, UUID, Arrays, Custom Types<br>
+                            Features: Table Partitioning, Foreign Data Wrappers (FDW), Point-in-Time Recovery (PITR), Logical Replication, MVCC (Multi-Version Concurrency Control)<br>
+                            Objects: Schemas, Roles, Tablespaces, Extensions, Sequences<br>
+                            Tools: psql, pgAdmin, pg_dump, pg_restore, VACUUM, ANALYZE<br>
+                            Advanced Concepts: Window Functions, Common Table Expressions (CTEs), Subqueries, GIN/GiST Indexes
+                        </div>
                     </div>
                 </div>
             </div>
@@ -261,7 +357,8 @@
                         Natural Language Processing (NLP)<br>
                         Computer Vision<br>
                         Generative AI<br>
-                        Algorithms (Regression, Classification, Clustering)
+                        Algorithms (Regression, Classification, Clustering)<br>
+                        <a href="../AI/Interview_Questions.html" target="_blank">Team Interview Kickstart Questions</a><br>
                     </div>
                 </div>
             </div>
@@ -285,30 +382,7 @@
                 </div>
             </div>
 
-            <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
-                <div>
-                    <h2 class="text-2xl font-bold text-red-700 mb-4">Angular</h2>
-                    <div class="text-gray-700">
-                        Components<br>
-                        Modules (NgModules)<br>
-                        Directives<br>
-                        Services & Dependency Injection<br>
-                        Routing<br>
-                        Forms (Template-driven & Reactive)<br>
-                        RxJS<br>
-                        Change Detection<br>
-                        Angular CLI<br>
-                        NgRx (State Management)<br>
-                        **Testing Frameworks:**<br>
-                        Jasmine<br>
-                        Karma<br>
-                        Protractor (E2E - deprecated)<br>
-                        Cypress (E2E)<br>
-                        Playwright (E2E)
-                    </div>
-                </div>
-            </div>
-
+           
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-gray-700 mb-4">Assurity</h2>
@@ -320,37 +394,29 @@
                         Regulatory Compliance<br>
                         Financial Reporting <br>
                         <br>
-
                         upgrade/modernize a an agent portal mvc legacy system.<br>
-                        Agile methodology , and busines provide <b>Markcups</b> for new system.
+                        Agile methodology , and busines provide <b>Markcups</b> for new system.<br>
                         and we had go back and for and see how the existing systems work<br>
                         <br>
-                        On-Prem
+                        On-Prem<br>
                         <br>
                         <b>Vue 3 </b><br>
-
                         <br>
                         .NET core restful API <br>
                         Mentors other software engineers (ream me, videos , one on one ) <br>
                         .NET <BR>
-                        .NET CORE <br>    
-                                                
-                        
-                        
-                        <br> 
+                        .NET CORE <br>       
+                        <br>
                         New Feature development  <br>
                         ABBYY Vantage <br>
-                        ABBYY Vantage is a is a leading <b>Intelligent Document Processing (IDP)</b> 
+                        ABBYY Vantage is a is a leading <b>Intelligent Document Processing (IDP)</b>
                         platform that uses AI to understand, extract, and process data from documents<br>
                         OCR ApiWrapper.Service <br><br>
-
                         window.ABBYY.WebCapture.capture() <br>
                         This function is part of the ABBYY Web Capture SDK, a browser-based tool that allows <br>
-                        users to capture high-quality document images directly from a mobile device camera or webcam.
+                        users to capture high-quality document images directly from a mobile device camera or webcam.<br>
                         <br> add script , options , envoke startCapture <br>
-                        
                         <br><br>
-
                         Assurity.Ocr.ReverseProxy <br>
                         YARP (Yet Another Reverse Proxy).<br>
                         It acts as a gateway for all OCR-related API requests, <BR>
@@ -362,19 +428,14 @@
                         Limits are configurable in appsettings.json (e.g., 5 requests per 10 seconds). <br>
                         API key must be provided in the api-Key header <BR>
                         EF Core - migrations <BR>
-                        LINQ , AUTOMAPPER <br>  
-                        ASP.NET Core MVC && Razor Pages <br> 
-                        NuGet for .NET, npm for Node.js, 
+                        LINQ , AUTOMAPPER <br>    
+                        ASP.NET Core MVC && Razor Pages <br>
+                        NuGet for .NET, npm for Node.js,
                         Feature Flags: Dynamic Feature Management CRM directus <br><br>
-
-
-                        
-
-                        
                     </div>
                 </div>
             </div>
-            
+
             <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-purple-700 mb-4">Design Patterns</h2>
@@ -398,7 +459,102 @@
                 </div>
             </div>
 
+ <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+                    <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                        <a target="_blank" href="../Development%20Methodologies/Domain-Driven-Design-DDD.html"> Domain-Driven Design (DDD)</a></h2>
+                    <div class="text-gray-700">
+                  <ul class="list-none space-y-1">
+                    <li>Ubiquitous Language</li>
+                    <li>Bounded Context</li>
+                    <li>Entities</li>
+                    <li>Value Objects</li>
+                    <li>Aggregates</li>
+                    <li>Aggregate Root</li>
+                    <li>Repositories</li>
+                    <li>Domain Events</li>
+                </ul>
+            </div>
+                </div>
+    </div>
+
+     <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Development%20Methodologies/Event-Driven-Architecture.html">Event-Driven Architecture (EDA)</a>
+            </h2>
+            <div class="text-gray-700">
+                <ul class="list-none space-y-1">
+                    <li>Event Producers</li>
+                    <li>Event Consumers</li>
+                    <li>Event Broker (Bus)</li>
+                    <li>Decoupling</li>
+                    <li>Scalability</li>
+                    <li>Real-time responsiveness</li>
+                    <li>Fault Tolerance</li>
+<li>An event is a record of something that happened at a specific time.</li>
+ <li>events in traditional databases can be cumbersome</li> 
+ <li>Kafka uses a log</li>
+  <li>Apache Kafka manages these logs using <b>topics</b></li>
+   <li>small services : real-time analysis</li>
+   <li>Confluent offers <b>KSQL</b>, a SQL-like language for querying Kafka topics.</li>
+   <li><br>Confluent Platform is a distribution of Kafka with extra tools and managed services, including Confluent Cloud for serverless Kafka in the cloud.</li>
+
+   <br>
+   Message Models: <br> 
+   Queue-based,Pub/Sub (Publish/Subscribe):
+   <br>
+   Kafka broker running locally. Using Docker 
+   <br>
+   Since the introduction of KRaft Kafka no longer requires Apache ZooKeeper® for managing cluster metadata
+                </ul>
+            </div>
         </div>
+    </div>
+    
+ <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Development%20Methodologies/Event-Driven-Architecture.html">Microservices</a>
+            </h2>
+            <div class="text-gray-700">
+                <ul class="list-none space-y-1">
+                    <li>Monolithic to Microservice Architecture</li>
+                    <li>3 tier architecture app</li>
+                    <li>Big Bang approach</li>
+                    <li>Incremental & continuous</li>
+                    <li>IMPACT</li>
+                    <li>Operational Readiness (infrastructure (traffic, servers storage) , application , deployment (devops))</li>
+                    <li>using cloud Paas: disaster recovery , scalability and hight availability 
+                        <br>
+                        azure <br>
+                        kubernetes registry  <br>
+                        container registry (docker)<br>
+                        event-driven functions <br>
+                        app service 
+                        <br>
+                    </li>
+                    <li>API Gateway</li>
+                    <li>Service Discovery</li>    
+                    <li>Load Balancing</li>
+                    <li>Service Mesh</li>   
+                    <li>Design Patterns
+                        <br>
+                        strangle <br>
+                        ddd (Domain-Driven-Design-DDD <br>
+                        api gateway <br>
+
+                     </li>      
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+ </div>
     </div>
 </body>
 </html>

@@ -1,0 +1,153 @@
+<pre>
+
+C# CODILITY CHEATSHEET WITH EXAMPLES
+=====================================
+
+1. CLASS & METHOD STRUCTURE
+----------------------------
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // Example: rotate array K times
+        int N = A.Length;
+        int[] result = new int[N];
+        for (int i = 0; i < N; i++) {
+            result[(i + K) % N] = A[i];
+        }
+        return result;
+    }
+}
+
+2. VARIABLES & DATA TYPES
+--------------------------
+int x = 10;
+long big = 10000000000L;
+bool isValid = true;
+string name = "Codility";
+
+3. ARRAYS & LISTS
+-------------------
+int[] arr = {1, 2, 3};
+List<int> list = new List<int>() {1, 2, 3};
+list.Add(4);           // [1, 2, 3, 4]
+int len = arr.Length;  // 3
+
+4. STRINGS
+-----------
+string s = "codility";
+char[] chars = s.ToCharArray();  // ['c','o','d',...]
+string part = s.Substring(0, 3); // "cod"
+bool found = s.Contains("lit"); // true
+
+5. LOOPS & CONDITIONALS
+-------------------------
+for (int i = 0; i < 3; i++) Console.WriteLine(i);
+foreach (char c in "abc") Console.WriteLine(c);
+if (x > 0) Console.WriteLine("Positive");
+
+6. FUNCTIONS & RECURSION
+-------------------------
+int Add(int a, int b) {
+    return a + b;
+}
+int Factorial(int n) {
+    if (n == 1) return 1;
+    return n * Factorial(n - 1);
+}
+
+7. OPERATORS & PRECEDENCE
+---------------------------
+int a = 5 + 2 * 3; // 11
+bool check = (a > 10) && (a < 15); // true
+
+8. DICTIONARIES & SETS
+------------------------
+Dictionary<int, int> dict = new Dictionary<int, int>();
+dict[1] = 100;
+bool hasKey = dict.ContainsKey(1); // true
+
+HashSet<int> set = new HashSet<int>();
+set.Add(5);
+bool exists = set.Contains(5); // true
+
+9. MATH UTILITIES
+-------------------
+int max = Math.Max(10, 20); // 20
+int abs = Math.Abs(-5);     // 5
+double sqrt = Math.Sqrt(16); // 4.0
+
+10. SORTING & SEARCHING
+-------------------------
+int[] nums = {3, 1, 2};
+Array.Sort(nums); // [1, 2, 3]
+
+int BinarySearch(int[] A, int target) {
+    int l = 0, r = A.Length - 1;
+    while (l <= r) {
+        int m = (l + r) / 2;
+        if (A[m] == target) return m;
+        if (A[m] < target) l = m + 1;
+        else r = m - 1;
+    }
+    return -1;
+}
+
+11. LINQ (IF ALLOWED)
+----------------------
+int[] A = {1, 2, 2, 3};
+int max = A.Max();             // 3
+int[] distinct = A.Distinct().ToArray(); // [1, 2, 3]
+
+12. COMMON ALGORITHMS
+-----------------------
+int Fib(int n) {
+    if (n <= 1) return n;
+    int a = 0, b = 1;
+    for (int i = 2; i <= n; i++) {
+        int temp = a + b;
+        a = b;
+        b = temp;
+    }
+    return b;
+}
+
+int[] PrefixSum(int[] A) {
+    int[] P = new int[A.Length + 1];
+    for (int i = 0; i < A.Length; i++)
+        P[i+1] = P[i] + A[i];
+    return P;
+}
+
+13. EDGE CASES TO CONSIDER
+---------------------------
+- Empty: new int[0]
+- One element: new int[] {5}
+- Negatives: new int[] {-1, -2}
+- Large values: use `long`
+- Repeating: new int[] {1, 1, 1}
+
+14. USEFUL CODE PATTERNS
+--------------------------
+FREQUENCY COUNTER:
+Dictionary<int, int> freq = new Dictionary<int, int>();
+foreach (int num in A) {
+    if (!freq.ContainsKey(num)) freq[num] = 0;
+    freq[num]++;
+}
+
+TWO POINTERS:
+int left = 0, right = A.Length - 1;
+while (left < right) {
+    // logic
+    left++;
+    right--;
+}
+
+SLIDING WINDOW:
+int sum = 0, k = 3;
+for (int i = 0; i < A.Length; i++) {
+    sum += A[i];
+    if (i >= k) sum -= A[i - k];
+}
+
+
+</pre>

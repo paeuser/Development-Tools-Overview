@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIQ #2 – This Week’s Questions</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        strong {
+            color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AIQ #2 – This Week’s Questions</h1>
+
+    <h2>What are the tradeoffs in latency, cost, and control when selecting a model provider?</h2>
+    <p>
+        When selecting a model provider, you must balance three key tradeoffs: <strong>latency</strong>, <strong>cost</strong>, and <strong>control</strong>.
+    </p>
+    <ul>
+        <li>
+            <strong>Latency</strong> is the time it takes for a model to respond. Cloud-based providers like OpenAI and Claude generally have optimized infrastructure, but you're still subject to network latency. Self-hosting an open-source model can offer lower latency if your infrastructure is physically close to your application, but you're responsible for all the hardware and optimization.
+        </li>
+        <li>
+            <strong>Cost</strong> with managed providers is typically based on usage (e.g., per token or API call), which can be predictable but may get expensive as you scale. Open-source models are "free" in terms of licensing, but you incur significant costs for hardware (like GPUs), maintenance, and the operational overhead of running the models yourself.
+        </li>
+        <li>
+            <strong>Control</strong> is the degree of influence you have over the model. Managed services offer less control over the model's architecture, fine-tuning, and deployment. Open-source models, conversely, give you complete control over the entire stack, enabling deep customization, but they require a lot of expertise and resources.
+        </li>
+    </ul>
+
+    <h2>How do you orchestrate multi-agent workflows (e.g., using LangGraph)?</h2>
+    <p>
+        You can orchestrate multi-agent workflows using a framework like <strong>LangGraph</strong>, which is a stateful library built on LangChain. It allows you to create a graph of interconnected agents and tools, defining the flow of information and actions between them.
+    </p>
+    <p>
+        The process typically involves:
+    </p>
+    <ol>
+        <li>
+            <strong>Defining a shared state:</strong> This is a central object that all agents can read from and write to, containing information like the user's initial prompt and intermediate results.
+        </li>
+        <li>
+            <strong>Creating nodes:</strong> Each node in the graph represents a single agent or a specific function.
+        </li>
+        <li>
+            <strong>Defining the workflow:</strong> You use LangGraph's <code>StateGraph</code> to connect these nodes. You specify the entry point, the nodes, and the edges that determine the flow of execution.
+        </li>
+        <li>
+            <strong>Adding conditional logic:</strong> A key part of multi-agent systems is conditional routing. With LangGraph, you can define conditional edges that decide which agent to hand off to next based on the current state or an agent's output. For example, if a "researcher agent" finds a definitive answer, the graph might route to a "summarizer agent" and skip further research steps.
+        </li>
+        <li>
+            <strong>Compiling and running:</strong> The graph is compiled into a single, executable object. You then invoke it with an initial state, and LangGraph manages the execution flow until the final state is reached.
+        </li>
+    </ol>
+
+    <h2>How do you choose between OpenAI, Claude, Cohere, or open-source LLMs?</h2>
+    <p>
+        The choice depends on your project's specific needs regarding <strong>performance</strong>, <strong>cost</strong>, <strong>data privacy</strong>, and <strong>customization</strong>.
+    </p>
+    <ul>
+        <li>
+            <strong>OpenAI</strong> is a great choice for general-purpose tasks requiring top-tier performance and versatility. Its GPT models are often considered state-of-the-art for many applications, though it can be more expensive with less data control.
+        </li>
+        <li>
+            <strong>Claude (Anthropic)</strong> is known for its strong performance, especially with long context windows, and its focus on safety and helpfulness. It's a good alternative to OpenAI, particularly for applications where ethical considerations and long-form content are a priority.
+        </li>
+        <li>
+            <strong>Cohere</strong> specializes in enterprise solutions and excels at tasks like text classification, summarization, and RAG. It's often a strong choice for businesses with specific, defined use cases.
+        </li>
+        <li>
+            <strong>Open-source LLMs</strong> (like Llama 3 or Mistral) are ideal for projects that require full control, data privacy, and extensive customization. While they may require more work to deploy and maintain, they allow you to fine-tune the model on proprietary data to achieve superior results for niche applications.
+        </li>
+    </ul>
+
+    <h2>How do you run sprint planning when working with prompt-based or non-deterministic features?</h2>
+    <p>
+        Planning for non-deterministic features requires a shift in focus from <strong>predictable outcomes to predictable processes</strong>.
+    </p>
+    <ul>
+        <li>
+            <strong>Focus on the Process, Not the Output:</strong> Instead of a story like "the model will generate a perfect summary," a better approach is "the team will experiment with three different prompting strategies to improve summary quality." The goal is to define the methodology for iteration and improvement.
+        </li>
+        <li>
+            <strong>Establish Success Metrics:</strong> Define clear, measurable metrics to evaluate the feature's performance. These can be quantitative (e.g., accuracy, user satisfaction ratings) or qualitative. This helps in making objective decisions during the sprint.
+        </li>
+        <li>
+            <strong>Allocate Time for Experimentation:</strong> Dedicate specific time in the sprint for <strong>prompt engineering</strong>, <strong>A/B testing</strong>, and <strong>model fine-tuning</strong>. These are core activities for improving non-deterministic features.
+        </li>
+        <li>
+            <strong>Iterate and Refine:</strong> Acknowledge the inherent unpredictability of LLMs and treat these features as living components. Each sprint should build on the learnings of the previous one, allowing for continuous refinement.
+        </li>
+    </ul>
+
+    <h2>How do you structure prompt versioning in a production pipeline?</h2>
+    <p>
+        Structuring prompt versioning is crucial for reproducibility and debugging in production. You should treat prompts with the same care as application code.
+    </p>
+    <ol>
+        <li>
+            <strong>Use a Version Control System:</strong> Store all your prompts in a Git repository. This gives you a clear history of changes and allows you to easily roll back to previous versions if needed.
+        </li>
+        <li>
+            <strong>Add Version Identifiers:</strong> Assign a unique identifier and version number to each prompt (e.g., <code>summary_prompt_v1</code>, <code>email_draft_v2</code>). This makes it simple to track which version is being used in different parts of your application.
+        </li>
+        <li>
+            <strong>Use Configuration Management:</strong> Separate your prompts from your application code using a configuration file (like YAML or JSON). This allows you to update or switch prompt versions at runtime without needing to redeploy the entire application.
+        </li>
+        <li>
+            <strong>Integrate with CI/CD:</strong> Include prompt changes in your CI/CD pipeline. When a new prompt version is committed, the pipeline can run automated tests to ensure it doesn't negatively impact the application's performance or output.
+        </li>
+        <li>
+            <strong>Log Everything:</strong> Log the prompt version used for every API call. This is essential for debugging issues, conducting A/B tests, and analyzing how different prompt versions perform in production.
+        </li>
+    </ol>
+
+</body>
+</html>

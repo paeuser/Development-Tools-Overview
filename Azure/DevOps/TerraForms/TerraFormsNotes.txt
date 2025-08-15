@@ -1,0 +1,8 @@
+Official Hands‑On Tutorials (HashiCorp)
+HashiCorp, the creators of Terraform, offer free official tutorials on their site covering 
+AWS, Azure, GCP, Docker, Oracle Cloud, and more. These include interactive, 
+step-by-step CLI walkthroughs and beginner-friendly learning paths to get started quickly
+
+
+
+https://developer.hashicorp.com/terraform/tutorials/azure-get-started/infrastructure-as-code

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algorithms & Data Structures Cheat Sheet for Beginners (C#)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    pre {
+      background-color: #eaeaea;
+      padding: 1rem;
+      overflow-x: auto;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    code {
+      font-family: Consolas, monospace;
+      color: #c7254e;
+      background-color: #f9f2f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+    .tip {
+      background-color: #fff3cd;
+      border-left: 5px solid #ffeeba;
+      padding: 1rem;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+    ul {
+      margin-left: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Algorithms & Data Structures Cheat Sheet for Beginners (C#)</h1>
+
+  <p>Welcome! This beginner-friendly guide covers core concepts and examples from Codility Developer Training, using <strong>C#</strong> samples you can run and practice.</p>
+
+  <hr />
+
+  <h2>1. Iterations (Loops)</h2>
+  <p>Loops repeat code multiple times, commonly using <code>for</code> or <code>while</code>.</p>
+  <pre><code>// Print numbers 1 to 5
+for (int i = 1; i <= 5; i++)
+{
+    Console.WriteLine(i);
+}
+</code></pre>
+  <p><strong>Tip:</strong> Always ensure loops will end to avoid infinite loops.</p>
+
+  <hr />
+
+  <h2>2. Arrays</h2>
+  <p>Arrays hold multiple values of the same type and use zero-based indexing.</p>
+  <pre><code>int[] numbers = { 2, 4, 6, 8 };
+Console.WriteLine(numbers[2]); // Output: 6
+</code></pre>
+  <p>You can access or update values by their index.</p>
+
+  <hr />
+
+  <h2>3. Time Complexity (Big O)</h2>
+  <p><strong>What is it?</strong> Big O notation tells you how your program’s runtime increases when input size (<code>N</code>) grows.</p>
+
+  <p>Common cases:</p>
+  <ul>
+    <li><code>O(1)</code> — Constant time: same time regardless of input size.</li>
+    <li><code>O(N)</code> — Linear time: time grows proportionally to input size.</li>
+    <li><code>O(N²)</code> — Quadratic time: time grows proportional to square of input size, usually slow.</li>
+  </ul>
+
+  <h3>Examples:</h3>
+
+  <pre><code>// O(1) - Constant time example
+int GetFirst(int[] A)
+{
+    return A[0]; // Direct access, no loop
+}
+</code></pre>
+
+  <pre><code>// O(N) - Linear time example
+int Sum(int[] A)
+{
+    int sum = 0;
+    for (int i = 0; i &lt; A.Length; i++)
+    {
+        sum += A[i];
+    }
+    return sum;
+}
+</code></pre>
+
+  <pre><code>// O(N²) - Quadratic time example
+bool HasPairSumZero(int[] A)
+{
+    for (int i = 0; i &lt; A.Length; i++)
+    {
+        for (int j = 0; j &lt; A.Length; j++)
+        {
+            if (A[i] + A[j] == 0) return true;
+        }
+    }
+    return false;
+}
+</code></pre>
+
+  <div class="tip">
+    <strong>Tip:</strong> Avoid nested loops when possible. Aim for linear or better time complexity.
+  </div>
+
+  <hr />
+
+  <h2>4. Counting Elements (Distinct Values)</h2>
+  <p>Use <code>HashSet&lt;T&gt;</code> to keep track of unique values efficiently.</p>
+  <pre><code>public int CountDistinct(int[] A)
+{
+    var seen = new HashSet&lt;int&gt;();
+    foreach (var item in A)
+    {
+        seen.Add(item);
+    }
+    return seen.Count;
+}
+</code></pre>
+
+  <p>This runs in <code>O(N)</code> time, which is efficient.</p>
+
+  <hr />
+
+  <h2>5. Prefix Sums</h2>
+  <p>Calculate cumulative sums to quickly find sums over any sub-range.</p>
+  <pre><code>int[] prefix = new int[A.Length + 1];
+for (int i = 1; i <= A.Length; i++)
+{
+    prefix[i] = prefix[i - 1] + A[i - 1];
+}
+
+// Sum from index l to r: prefix[r + 1] - prefix[l]
+</code></pre>
+
+  <hr />
+
+  <h2>6. Sorting</h2>
+  <p>Sort arrays easily with built-in functions:</p>
+  <pre><code>Array.Sort(A);</code></pre>
+  <p>Sorting usually takes <code>O(N log N)</code> time.</p>
+
+  <hr />
+
+  <h2>7. Stacks and Queues</h2>
+  <p><strong>Stacks:</strong> Last-In-First-Out (LIFO)</p>
+  <pre><code>Stack&lt;int&gt; stack = new Stack&lt;int&gt;();
+stack.Push(10);
+stack.Push(20);
+int top = stack.Pop(); // top = 20
+</code></pre>
+
+  <p><strong>Queues:</strong> First-In-First-Out (FIFO)</p>
+  <pre><code>Queue&lt;int&gt; queue = new Queue&lt;int&gt;();
+queue.Enqueue(10);
+queue.Enqueue(20);
+int front = queue.Dequeue(); // front = 10
+</code></pre>
+
+  <hr />
+
+  <h2>8. Sample Problem: Frog Jumps</h2>
+  <p>Find the minimal number of jumps from position <code>X</code> to a position ≥ <code>Y</code>, with fixed jump length <code>D</code>.</p>
+  <pre><code>public int FrogJumps(int X, int Y, int D)
+{
+    int distance = Y - X;
+    // (distance + D - 1) / D does integer ceiling division for jumps count
+    return (distance + D - 1) / D;
+}
+</code></pre>
+
+  <hr />
+
+  <h2>9. Sample Problem: Count Divisible Numbers</h2>
+  <p>Count how many numbers between <code>A</code> and <code>B</code> (inclusive) are divisible by <code>K</code>.</p>
+  <pre><code>public int CountDivisible(int A, int B, int K)
+{
+    return (B / K) - ((A - 1) / K);
+}
+</code></pre>
+
+  <hr />
+
+  <h2>10. What Not to Do</h2>
+  <ul>
+    <li><strong>Don't</strong> write unnecessary nested loops (avoid <code>O(N²)</code> if possible).</li>
+    <li><strong>Don't</strong> forget edge cases like empty arrays or zero values.</li>
+    <li><strong>Don't</strong> ignore performance; test with big inputs.</li>
+  </ul>
+
+  <hr />
+
+  <h2>11. Quick Tips</h2>
+  <ul>
+    <li>Use <code>HashSet&lt;T&gt;</code> to track unique items efficiently.</li>
+    <li>Remember, <code>O(1)</code> &lt; <code>O(log N)</code> &lt; <code>O(N)</code> &lt; <code>O(N²)</code> in speed.</li>
+    <li>Use prefix sums for quick range sum queries.</li>
+  </ul>
+
+  <hr />
+
+  <p>Keep practicing with Codility lessons and challenges. Happy coding!</p>
+</body>
+</html>

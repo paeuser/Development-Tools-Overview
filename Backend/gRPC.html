@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding gRPC: A Comparison with REST</title>
+    <!-- Use a modern font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2d3748;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4a5568;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #718096;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased leading-relaxed">
+
+    <main class="container mx-auto p-4 md:p-8 lg:p-12">
+        <!-- Title Section -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500">
+                Understanding gRPC
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                A modern approach to building efficient, high-performance APIs.
+            </p>
+        </header>
+
+        <!-- Main Concepts of gRPC -->
+        <section class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6 border-b-2 border-teal-400 pb-2">Main Concepts</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Concept 1: Protocol Buffers -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-teal-500/20 transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold mb-2 text-teal-300">Protocol Buffers (Protobuf)</h3>
+                    <p class="text-gray-300">
+                        gRPC uses Protobuf for data serialization. It's a binary, language-agnostic format that is
+                        significantly smaller and faster to serialize and deserialize than text-based formats like JSON or XML.
+                        This reduces network overhead and improves performance.
+                    </p>
+                </div>
+                <!-- Concept 2: HTTP/2 -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-teal-500/20 transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold mb-2 text-teal-300">HTTP/2</h3>
+                    <p class="text-gray-300">
+                        Unlike REST, which primarily uses HTTP/1.1, gRPC is built on HTTP/2. This enables features like
+                        multiplexing multiple requests over a single TCP connection, header compression, and server push,
+                        which all contribute to lower latency and better efficiency.
+                    </p>
+                </div>
+                <!-- Concept 3: Service Definition -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-teal-500/20 transition-shadow duration-300">
+                    <h3 class="text-2xl font-bold mb-2 text-teal-300">Service Definition</h3>
+                    <p class="text-gray-300">
+                        gRPC uses a `.proto` file to define the service interface and the structure of the data
+                        (messages). This contract-first approach ensures strong typing and enables the automatic generation
+                        of client and server stubs in various programming languages.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- gRPC vs. REST: Key Differences Table -->
+        <section class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6 border-b-2 border-teal-400 pb-2">gRPC vs. REST: A Quick Look</h2>
+            <p class="text-gray-300 mb-6">
+                This table provides a simple overview of the key differences between gRPC and REST APIs.
+            </p>
+            <figure class="bg-gray-800 rounded-xl p-4 shadow-lg hover:shadow-blue-500/20 transition-shadow duration-300">
+                <img src="images/table-grpc = rest.jpg" alt="A table comparing key features of gRPC and REST APIs." class="w-full h-auto rounded-lg shadow-md mb-4">
+                <figcaption class="text-center text-sm italic text-gray-400">
+                    A table outlining the main differences in features, such as protocol, data format, speed, and streaming support.
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- Comparison Section using the REST vs gRPC diagram -->
+        <section class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6 border-b-2 border-teal-400 pb-2">gRPC vs. REST: A Visual Flow</h2>
+            <p class="text-gray-300 mb-6">
+                This diagram illustrates the internal workings of REST and gRPC when two services communicate.
+            </p>
+            
+            <!-- The image and its explanation -->
+            <figure class="bg-gray-800 rounded-xl p-4 shadow-lg hover:shadow-blue-500/20 transition-shadow duration-300">
+                <img src="images/grpc-vs-rest.jpg" alt="A diagram comparing REST and gRPC architectures. REST uses HTTP/1.1, JSON for serialization, and has high latency. gRPC uses HTTP/2, Protocol Buffers for serialization, and supports various streaming types." class="w-full h-auto rounded-lg shadow-md mb-4">
+                <figcaption class="text-center text-sm italic text-gray-400">
+                    Diagram comparing the core components and communication flow of REST and gRPC.
+                </figcaption>
+            </figure>
+            
+            <div class="mt-8 space-y-8">
+                <!-- Comparison Point 1: Data Serialization -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2 text-blue-300">1. Data Serialization</h3>
+                    <p class="text-gray-300">
+                        The diagram shows REST APIs use text-based formats like <code class="text-sm font-mono text-pink-400 bg-gray-700 rounded px-1">JSON</code>. Think of this as sending a full letter that needs to be read and understood. gRPC uses <code class="text-sm font-mono text-pink-400 bg-gray-700 rounded px-1">Protobuf</code>, which is a compressed, binary format. This is like sending a tightly packed box of parts with a blueprint, which is much faster to ship and assemble.
+                    </p>
+                </div>
+                <!-- Comparison Point 2: Communication Protocol -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-2 text-blue-300">2. Communication Protocol</h3>
+                    <p class="text-gray-300">
+                        REST uses <code class="text-sm font-mono text-pink-400 bg-gray-700 rounded px-1">HTTP/1.1</code>, which waits for one request to finish before starting another. gRPC uses <code class="text-sm font-mono text-pink-400 bg-gray-700 rounded px-1">HTTP/2</code>, which allows multiple conversations to happen at the same time over a single connection, making it more efficient and reducing latency.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- gRPC Communication Patterns -->
+        <section class="mb-12">
+            <h2 class="text-3xl md:text-4xl font-semibold mb-6 border-b-2 border-teal-400 pb-2">gRPC Communication Patterns</h2>
+            <p class="text-gray-300 mb-6">
+                This image illustrates the four different ways a client and server can talk to each other using gRPC.
+            </p>
+            <figure class="bg-gray-800 rounded-xl p-4 shadow-lg hover:shadow-blue-500/20 transition-shadow duration-300">
+                <img src="images/grpc-comunication-paterns.jpg" alt="A diagram showing gRPC communication patterns: Unary, Server Streaming, Client Streaming, and Bidirectional Streaming." class="w-full h-auto rounded-lg shadow-md mb-4">
+                <figcaption class="text-center text-sm italic text-gray-400">
+                    The four types of streaming supported by gRPC for flexible communication.
+                </figcaption>
+            </figure>
+            <div class="mt-8 space-y-8">
+                 <!-- Explanation of communication patterns -->
+                <div class="bg-gray-800 p-6 rounded-xl shadow-lg">
+                    <ul class="list-disc list-inside space-y-4">
+                        <li>
+                            <strong class="text-teal-300">Unary:</strong> A simple request and response, just like a traditional REST call. You send one message, and the server sends one back.
+                        </li>
+                        <li>
+                            <strong class="text-teal-300">Server Streaming:</strong> The client sends one request, and the server responds with a continuous stream of messages. This is great for things like real-time stock updates or a long-running process where the server sends status updates.
+                        </li>
+                        <li>
+                            <strong class="text-teal-300">Client Streaming:</strong> The client sends a series of messages as a stream to the server, and the server sends back a single response after it's received everything. An example would be uploading a large file in small chunks.
+                        </li>
+                        <li>
+                            <strong class="text-teal-300">Bidirectional Streaming:</strong> Both the client and the server can send a stream of messages to each other at the same time. This is perfect for real-time applications like chat apps or live collaboration tools.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <footer class="mt-12 text-center text-gray-500">
+            <p>
+                In conclusion, while REST remains a popular choice for its simplicity and browser compatibility, gRPC
+                offers a more modern, performant, and efficient alternative for building microservices, mobile backends,
+                and real-time communication systems by leveraging modern protocols and advanced communication patterns.
+            </p>
+        </footer>
+    </main>
+
+</body>
+</html>

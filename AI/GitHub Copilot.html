@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Copilot – Resume, History & Interview Q&A</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f9;
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #0366d6;
+    }
+    .section-title {
+      font-size: 1.2em;
+      color: #222;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      font-weight: bold;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .resume-line {
+      background: #e8f0fe;
+      padding: 15px;
+      border-left: 4px solid #0366d6;
+      border-radius: 5px;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .qa, .history-item {
+      background: #ffffff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+    .question {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+    .answer {
+      color: #444;
+      line-height: 1.6;
+    }
+    .history-date {
+      font-weight: bold;
+      color: #0366d6;
+      margin-bottom: 5px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>GitHub Copilot – Resume, History & Interview Q&A</h1>
+
+    <div class="section-title">📌 Resume Line</div>
+    <div class="resume-line">
+      Leveraged GitHub Copilot in Visual Studio, Visual Studio Code, and VS Code Insiders to accelerate development of .NET Core APIs and Blazor components, reducing coding time and improving code quality.
+    </div>
+
+    <div class="section-title">📅 GitHub Copilot History</div>
+
+    <div class="history-item">
+      <div class="history-date">June 2021 – Technical Preview</div>
+      <div class="answer">
+        GitHub Copilot was first released as a technical preview, powered by OpenAI Codex, trained on a large corpus of public source code and natural language.
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">July 2022 – General Availability</div>
+      <div class="answer">
+        GitHub Copilot became a paid product for individuals. It was officially integrated into Visual Studio Code and Visual Studio for mainstream use.
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">February 2023 – Copilot for Business</div>
+      <div class="answer">
+        GitHub launched a business version with organization-level features like policy control, better security, and team-based licensing.
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">November 2023 – Copilot Chat (Beta)</div>
+      <div class="answer">
+        GitHub introduced Copilot Chat, a conversational interface inside the IDE, enabling developers to ask questions about code, generate tests, and debug interactively.
+      </div>
+    </div>
+
+    <div class="history-item">
+      <div class="history-date">2024 – Copilot Enterprise & Upgrades</div>
+      <div class="answer">
+        GitHub expanded Copilot with features like context-aware pull request suggestions, test generation, and deeper integration with Azure, GitHub Actions, and organizational policy enforcement.
+      </div>
+    </div>
+
+    <div class="section-title">💬 Interview Questions & Answers</div>
+
+    <div class="qa">
+      <div class="question">1. How have you integrated GitHub Copilot into your development workflow?</div>
+      <div class="answer">
+        I integrated GitHub Copilot directly into Visual Studio, Visual Studio Code, and VS Code Insiders. I used Copilot’s AI suggestions to scaffold .NET Core REST APIs and Blazor components. In the Insiders version, I tested early features like Copilot Chat and inline assistance. Copilot significantly sped up repetitive tasks like writing model classes, controller logic, and configuration scripts.
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="question">2. Can you give a specific example where GitHub Copilot helped speed up your work?</div>
+      <div class="answer">
+        While building the FTPS transaction background processor for a PaaS Azure App, Copilot helped me scaffold the logic for parsing incoming transaction files and inserting data into the database. It provided working patterns based on a few comments I wrote, saving hours of boilerplate code writing.
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="question">3. What are some limitations you’ve noticed while using GitHub Copilot?</div>
+      <div class="answer">
+        Copilot is excellent for suggestions, but it doesn’t always follow the latest best practices, especially for security. For instance, when generating authentication or crypto code, I double-checked everything against official Microsoft docs and OWASP guidelines. It also occasionally suggested code that wouldn’t compile or wasn’t aligned with our coding standards.
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="question">4. How do you validate the code suggestions from Copilot?</div>
+      <div class="answer">
+        I validate them by writing unit tests, using static analysis tools, and conducting peer code reviews. If it’s a suggestion for something like an API controller or PowerShell script, I manually inspect the logic and test it in staging before pushing it to production. I also cross-check sensitive code against official documentation or proven libraries.
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="question">5. Has GitHub Copilot helped in writing Azure automation scripts?</div>
+      <div class="answer">
+        Yes, definitely. While working with the Az PowerShell module to manage Azure resources, Copilot helped generate initial script templates—for example, creating resource groups, configuring storage accounts, or setting up role assignments. It made scripting faster and more consistent, especially when handling subscription-level tasks and cross-tenant configurations.
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="question">6. Did GitHub Copilot assist you in generating documentation or tests?</div>
+      <div class="answer">
+        Yes. I used Copilot to generate XML documentation comments for .NET Core API endpoints and to scaffold unit tests using xUnit. While I still had to fine-tune the documentation and write more complex test logic myself, Copilot saved time by giving me a good starting point.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

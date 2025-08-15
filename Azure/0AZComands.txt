@@ -1,3 +1,8 @@
+az login --use-device-code
+     https://microsoft.com/devicelogin  and add the code
+
+
+
 az account show --output table
 
 
@@ -18,3 +23,17 @@ az login --tenant 7a16bfae-5ad8-4333-ae59-bdd3df252e95
 
 press enter
 
+
+
+
+#deploy using bicep:
+
+ # run the main.bicep passing variable name : MyResourceGroup
+ az deployment sub create --location eastus --template-file c:\Git\Veronica\AzureContainerAppBicep\deploy\main.bicep --parameters resourceGroupName=MyResourceGroup
+
+
+ #This will remove the resource group and everything inside it. Replace MyResourceGroup with your actual resource group name if different. Let me know if you want to run this command now!
+ az group delete --name MyResourceGroup --yes --no-wait
+
+ run to check the status, because the above command uses the flag now wait which returns right away 
+ az group show --name MyResourceGroup

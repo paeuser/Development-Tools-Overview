@@ -1,0 +1,23 @@
+
+
+
+https://www.youtube.com/watch?v=4xpjlqIlfY8&t=1220s
+
+
+
+
+
+The Confluent .NET Client for Apache Kafka™ is a high-performance, fully-featured .NET client built and maintained by Confluent for interacting with Apache Kafka. It provides APIs for both producers and consumers,
+ supporting features like Avro/Protobuf/JSON Schema serialization, transactions, exactly-once semantics, and more.
+
+https://github.com/confluentinc/confluent-kafka-dotnet
+
+
+ KafkaFlow
+
+ What is KafkaFlow?
+
+KafkaFlow is an open-source, .NET-based framework built on top of Confluent’s Kafka client. It offers a structured, maintainable way to build Kafka producers and consumers 
+in .NET applications, with a middleware-centric architecture that simplifies authorization, serialization, error handling, and more
+
+https://github.com/Farfetch/kafkaflow?utm_source=chatgpt.com

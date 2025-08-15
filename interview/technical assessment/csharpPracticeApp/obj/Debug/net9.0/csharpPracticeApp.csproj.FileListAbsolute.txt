@@ -1,0 +1,15 @@
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\bin\Debug\net9.0\csharpPracticeApp.exe
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\bin\Debug\net9.0\csharpPracticeApp.deps.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\bin\Debug\net9.0\csharpPracticeApp.runtimeconfig.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\bin\Debug\net9.0\csharpPracticeApp.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\bin\Debug\net9.0\csharpPracticeApp.pdb
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.AssemblyInfoInputs.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.AssemblyInfo.cs
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.csproj.CoreCompileInputs.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.sourcelink.json
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\refint\csharpPracticeApp.dll
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.pdb
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\csharpPracticeApp.genruntimeconfig.cache
+C:\Git\paec9@outlook.com2\Development-Tools-Overview\interview\technical assessment\csharpPracticeApp\obj\Debug\net9.0\ref\csharpPracticeApp.dll

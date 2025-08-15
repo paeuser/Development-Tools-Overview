@@ -1,0 +1,43 @@
+https://app.codility.com/c/run/trainingUX258D-KAZ/
+solution.cs
+class Solution {
+    public int[] solution(int[] A, int K) {
+        // Implement your solution here
+    }
+}
+
+	
+test-input.txt
+	when i click the play (run button) 
+	currect ouput should be 20 
+
+
+Using the codility attached image task question
+
+Describe the solution step
+By step.  In each step, display  the code and brievve explanation
+If language metho is used, explain  it
+
+1
+2
+3
+
+Then, update to be run in
+C# eith a console app:
+
+Class solution{
+Funtion int solution (int n)
+
+}
+
+The goal is for me to provide
+A problem and based on your solution steps will update the method solution by hand so I can practice.
+
+After the steps display your final
+Solution to be run.
+Try to use the less amount
+Of code as possible
+While being as simple as you can be
+
+please don't do anything untill i copy the problem as text or as image
+

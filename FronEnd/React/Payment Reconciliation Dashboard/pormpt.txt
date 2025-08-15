@@ -1,0 +1,183 @@
+Create a complete React application called **"Payment Reconciliation Dashboard"** using **React 16.8** with **only functional components** and **React Hooks** (`useState`, `useEffect`, `useContext`). Do not use class components or React features from later versions.
+
+🔐 Add **JWT Authentication with Refresh Tokens** using a **fake/mock authentication service** (no real backend). The auth flow should:
+
+- Provide a login form that accepts username and password
+- On submit, call a fake async service that returns:
+  - An access token (JWT string)
+  - A refresh token (string)
+- Store the access token securely (in memory or React state)
+- Store the refresh token in memory or HttpOnly cookie simulation (for demo, store in memory)
+- Automatically refresh the access token before it expires using the refresh token
+- Protect the main dashboard route: redirect unauthenticated users to login
+- Provide a logout button that clears tokens and redirects to login
+
+🧩 UI Library:
+Use **Material-UI v4** (`@material-ui/core@4.12.4`) for all UI components, including the login form, buttons, tables, modals, filters, and dialogs.
+
+📁 Project Requirements:
+
+1. ✅ **Static Data Loading**:
+   - Place a file called `reconciliation.json` inside the `public/data/` folder.
+   - Load this data in the app using `fetch()` or `axios` from `public/data/reconciliation.json`.
+
+2. ✅ **Layout and Components**:
+   - Create a top app bar titled "Payment Reconciliation Dashboard" using `AppBar`, `Toolbar`, and `Typography` from MUI.
+   - Show a data table with the following columns:
+     - Merchant Name
+     - Payment Provider
+     - Amount (USD)
+     - Date
+     - Status (Matched / Mismatch)
+   - Highlight rows with status `"Mismatch"` using red text or an error icon.
+
+3. ✅ **Filtering Features**:
+   - Add a Date Picker (using MUI TextField or appropriate picker)
+   - Add a dropdown (`Select`) for filtering by Payment Provider
+   - Add a toggle switch to show only records with status `"Mismatch"`
+
+4. ✅ **Row Detail View**:
+   - When a table row is clicked, open a modal or drawer to show the reconciliation details:
+     - Transaction ID
+     - Merchant Amount
+     - Processor Amount
+     - Status
+
+5. ✅ **CSV Export Button**:
+   - Add a button to export the current filtered data as a `.csv` file using plain JavaScript or a helper library.
+
+6. ✅ **Component Breakdown**:
+   - Organize the code into components:
+     - `Header.js`
+     - `ReconciliationTable.js`
+     - `Filters.js`
+     - `DetailModal.js`
+     - `Login.js`
+     - `AuthProvider.js` (to provide auth context and handle tokens)
+     - `PrivateRoute.js` (to protect dashboard routes)
+
+7. ✅ **Sample Data in `reconciliation.json`**:
+```json
+[
+  {
+    "id": 1,
+    "merchant": "CoffeeExpress",
+    "provider": "WorldPay",
+    "amount": 150.00,
+    "date": "2025-08-01",
+    "status": "Matched",
+    "details": {
+      "transactionId": "TX12345",
+      "processorAmount": 150.00,
+      "merchantAmount": 150.00
+    }
+  },
+  {
+    "id": 2,
+    "merchant": "UrbanOutfit",
+    "provider": "Stripe",
+    "amount": 249.99,
+    "date": "2025-08-02",
+    "status": "Mismatch",
+    "details": {
+      "transactionId": "TX12346",
+      "processorAmount": 249.99,
+      "merchantAmount": 0.00
+    }
+  }
+]
+
+    ✅ README.md File:
+    Generate a README.md in the root of the project with the following sections:
+
+    Project Title: Payment Reconciliation Dashboard
+
+    Description: A React 16.8 app with JWT Authentication and a dashboard to monitor reconciliation records between merchants and payment providers.
+
+    Technologies Used:
+
+        React 16.8
+
+        React Hooks
+
+        Material-UI v4
+
+        Axios or Fetch
+
+        Static JSON data
+
+        JWT Authentication with Refresh Tokens (fake/mock service)
+
+    Features:
+
+        Login with JWT and refresh tokens
+
+        Protected routes
+
+        Data table with conditional styling
+
+        Filters: Date, Provider, Mismatch toggle
+
+        Detail modal
+
+        CSV export
+
+    Installation:
+
+        Clone the repository
+
+        Run npm install
+
+        Run npm start
+
+    Usage:
+
+        Navigate to the login page, enter any username and password to log in (since auth is mocked)
+
+        After login, view and filter reconciliation data on the dashboard
+
+        Click rows to see details
+
+        Use the export button to download CSV of filtered data
+
+        Use the logout button to end session
+
+    Folder Structure:
+
+        src/components/ - React components including Login and Auth context
+
+        public/data/reconciliation.json - static data file
+
+    License (Optional)
+
+📌 Final Notes:
+
+    The app must function fully offline with no backend
+
+    Simulate the JWT auth and refresh token process in a fake async service inside the React app
+
+    Use clear comments to explain the auth flow and React Hooks usage
+
+    Keep UI responsive and user-friendly
+
+
+
+In real-life payment reconciliation systems, editing directly in the reconciliation dashboard is generally very limited or avoided because:
+
+Data integrity and audit trails are critical — changing transaction records manually can cause serious accounting issues.
+
+Source of truth usually resides in backend systems or databases controlled by payment processors, banks, or ERP software.
+
+Corrections typically happen via separate workflows, like issuing refunds, chargebacks, or adjusting accounting entries — not by editing raw transaction records in the dashboard itself.
+
+Users mostly review, investigate mismatches, and trigger downstream processes (e.g., alerts, reports, or tickets) rather than edit data directly.
+
+So, what happens in real systems?
+
+The reconciliation dashboard is mainly read-only and used for monitoring and investigation.
+
+When a mismatch is found, users initiate a process outside the dashboard to correct or resolve issues.
+
+Some advanced systems allow annotations, comments, or status updates to track investigations, but not direct edits to financial data.
+
+Final data updates happen in the authoritative backend systems, with strict controls and audit logging.
