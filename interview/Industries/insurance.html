@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Industry Terms</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .term-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .term-table th, .term-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .term-table th {
+            background-color: #2c5282;
+            color: white;
+            font-weight: 600;
+        }
+        .term-table tbody tr:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        .term-table tbody tr:hover {
+            background-color: #e2e8f0;
+        }
+        @media (max-width: 640px) {
+            .term-table, .term-table thead, .term-table tbody, .term-table th, .term-table td, .term-table tr { 
+                display: block; 
+            }
+            .term-table thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .term-table tr { 
+                border: 1px solid #ccc; 
+                margin-bottom: 0.5rem;
+                border-radius: 0.5rem;
+            }
+            .term-table td { 
+                border: none;
+                position: relative;
+                padding-left: 50%; 
+                text-align: right;
+            }
+            .term-table td:before { 
+                position: absolute;
+                left: 6px;
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            .term-table td:before { content: attr(data-label); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container bg-white rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Common Insurance Industry Terms</h2>
+        <p class="text-gray-600 mb-8">This table includes key terms used within the insurance industry, from policies to claims.</p>
+        <table class="term-table">
+            <thead>
+                <tr>
+                    <th class="px-4 py-3">Term</th>
+                    <th class="px-4 py-3">Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Term"><strong>Policy</strong></td>
+                    <td data-label="Explanation">A legal contract between an insurance company and the policyholder, defining the terms of coverage.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Premium</strong></td>
+                    <td data-label="Explanation">The amount of money the policyholder pays to the insurance company for coverage.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Deductible</strong></td>
+                    <td data-label="Explanation">The amount the policyholder must pay out of pocket before the insurance company pays for a covered loss.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Claim</strong></td>
+                    <td data-label="Explanation">A formal request to an insurance company for payment under the terms of the insurance policy.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Underwriting</strong></td>
+                    <td data-label="Explanation">The process of evaluating the risk of insuring a person or asset and determining the premium and coverage.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Policyholder</strong></td>
+                    <td data-label="Explanation">The individual or entity who owns the insurance policy.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Coverage</strong></td>
+                    <td data-label="Explanation">The amount of risk or liability covered for an individual or entity under the terms of the insurance policy.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Exclusion</strong></td>
+                    <td data-label="Explanation">A specific provision in a policy that states what the insurer will not cover.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Actuary</strong></td>
+                    <td data-label="Explanation">A business professional who deals with the measurement and management of risk and uncertainty.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Rider</strong></td>
+                    <td data-label="Explanation">An optional add-on to an insurance policy that provides additional coverage or benefits for an extra cost.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Liability Insurance</strong></td>
+                    <td data-label="Explanation">Insurance that protects the policyholder against claims of a third party for injury or property damage.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

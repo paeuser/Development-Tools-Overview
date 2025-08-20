@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Preparation - BHG Financial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            min-height: 100vh;
+        }
+
+        .left {
+            flex: 0 0 360px;
+            background: #fff;
+            padding: 32px 24px;
+            box-sizing: border-box;
+            border-right: 1px solid #dcdfe4;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+        }
+
+        .right {
+            flex: 1 1 0%;
+            padding: 32px 32px;
+            overflow-y: auto;
+            background: #f7f9fc;
+            min-width: 0;
+            line-height: 1.6;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #2980b9;
+            font-weight: 600;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 8px;
+            margin-bottom: 24px;
+        }
+
+        .job-details div {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .label {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-right: 8px;
+        }
+
+        .label i {
+            margin-right: 5px;
+            color: #3498db;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0;
+        }
+        
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        ul li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #2ecc71;
+        }
+
+        .notes-area {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .notes-area p {
+            margin-top: 0;
+            font-style: italic;
+            color: #888;
+        }
+
+        .notes-area strong {
+            color: #34495e;
+        }
+        
+        .notes-area h3 {
+            color: #34495e;
+            font-size: 1.25rem;
+            border-bottom: 1px solid #bdc3c7;
+            padding-bottom: 4px;
+            margin-top: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .notes-area ul {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 8px;
+        }
+        
+        .notes-area ul li::before {
+            content: none;
+        }
+        
+        .notes-area .tech-stack-overview {
+            background: #eaf4f7;
+            padding: 20px;
+            border-left: 5px solid #3498db;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        
+        .notes-area .tech-stack-overview h4 {
+            margin-top: 0;
+            color: #2c3e50;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .left {
+                flex: none;
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #dcdfe4;
+                padding: 20px;
+            }
+
+            .right {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <!-- Company Details Section -->
+            <h2><i class="fas fa-briefcase"></i> Company Details</h2>
+            <div class="job-details">
+                <div><span class="label">Job Title:</span> Senior Software Engineer</div>
+                <div><span class="label">Company:</span> BHG Financial</div>
+                <div><span class="label">Location:</span> Remote (South Florida preferred)</div>
+                <div><span class="label">Tech Stack:</span> C#, .Net Core 8+, Angular 19/20 or React, Azure, Kafka, SQL, REST, JSON. (MongoDB is a plus)</div>
+                <div><span class="label">Recruiter:</span> Eva Gonzalez</div>
+                <div><span class="label">Contact:</span> Eva.Gonzalez@InsightGlobal.com</div>
+                <div><span class="label">Phone:</span> 561.708.8499</div>
+            </div>
+            
+            <!-- Notes Section -->
+            <div style="margin-top: 24px;">
+                <span class="label">Recruiter Notes:</span>
+                <ul>
+                    <li>Position is a Senior-level Full-Stack Developer</li>
+                    <li>The role involves mentoring and architectural guidance</li>
+                    <li>Focus on data-driven solutions in the financial industry</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="right">
+            <!-- Interview Preparation Notes Section -->
+            <h2><i class="fas fa-clipboard-list"></i> Interview Preparation Notes</h2>
+            <div class="notes-area">
+                <p>Add your notes here as you prepare for the interview. This area scrolls independently for easy reference during prep or live calls.</p>
+                
+                <h3>Key Tech Stack Components</h3>
+                <div class="tech-stack-overview">
+                    <h4>C# & .NET Core 8+</h4>
+                    <p>This is the backbone. Review recent features like C# 12, async/await patterns, and dependency injection. Be ready to discuss how you would design a clean, maintainable backend service.</p>
+                    
+                    <h4>Frontend (Angular or React)</h4>
+                    <p>Focus on your chosen framework. For a senior role, this means not just syntax but design patterns (e.g., component hierarchy, state management like Redux or NgRx), performance optimization, and testing.</p>
+
+                    <h4>Azure & Kafka</h4>
+                    <p>This is a critical combination. Prepare to discuss how you'd use Kafka for event-driven architecture within an Azure environment. Think about scenarios like real-time data processing, decoupling microservices, or handling large volumes of financial transactions.</p>
+                </div>
+                
+                <h3>Sample Questions to Prepare For</h3>
+                <ul>
+                    <li><strong>Technical:</strong> "Describe the architecture of an application you built using .NET and a modern frontend framework. How did you handle data streaming or event messaging?"</li>
+                    <li><strong>Behavioral:</strong> "Tell me about a time you mentored a junior developer. What was the outcome?"</li>
+                    <li><strong>Design:</strong> "How would you design a system to process a high volume of financial transactions reliably using Kafka?"</li>
+                </ul>
+                
+                <h3>Questions to Ask Them</h3>
+                <ul>
+                    <li>"What does the day-to-day collaboration look like for the development team?"</li>
+                    <li>"Could you walk me through the typical lifecycle of a new feature from the product backlog to deployment?"</li>
+                    <li>"What are the biggest technical challenges the team is currently facing?"</li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

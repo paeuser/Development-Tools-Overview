@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>JavaScript DOM Manipulation Tutorial</title>
+	<style>
+		body { font-family: Arial, sans-serif; margin: 2em; }
+		#output { margin-top: 1em; padding: 1em; background: #f0f0f0; }
+		button { margin-right: 1em; }
+	</style>
+</head>
+<body>
+	<h1>JavaScript DOM Manipulation Tutorial</h1>
+	<p>This tutorial demonstrates native DOM methods: <code>querySelector</code>, <code>appendChild</code>, <code>addEventListener</code>, and element manipulation.</p>
+
+	<input type="text" id="inputText" placeholder="Type something...">
+	<button id="addBtn">Add Text</button>
+	<button id="clearBtn">Clear</button>
+	<div id="output"></div>
+
+	<script>
+		// Select elements using querySelector
+		const addBtn = document.querySelector('#addBtn');
+		const clearBtn = document.querySelector('#clearBtn');
+		const inputText = document.querySelector('#inputText');
+		const output = document.querySelector('#output');
+
+		// Add event listeners
+		addBtn.addEventListener('click', function() {
+			if (inputText.value.trim() !== '') {
+				// Create a new paragraph element
+				const p = document.createElement('p');
+				p.textContent = inputText.value;
+				// Append the new element to the output div
+				output.appendChild(p);
+				inputText.value = '';
+			}
+		});
+
+		clearBtn.addEventListener('click', function() {
+			// Remove all child elements from output div
+			output.innerHTML = '';
+		});
+
+		// --- Sample: appendChild ---
+		// Create a new div and append it to the body
+		const sampleDiv = document.createElement('div');
+		sampleDiv.textContent = 'This div was added using appendChild!';
+		sampleDiv.style.background = '#d0f0d0';
+		sampleDiv.style.padding = '0.5em';
+		sampleDiv.style.marginTop = '1em';
+		document.body.appendChild(sampleDiv);
+	</script>
+</body>
+</html>

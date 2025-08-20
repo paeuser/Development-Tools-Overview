@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript Number Conversion Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .method {
+      background: #fff;
+      border-left: 4px solid #007BFF;
+      margin: 20px 0;
+      padding: 15px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+
+    .method h2 {
+      margin-top: 0;
+      color: #007BFF;
+    }
+
+    .example {
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+      font-family: monospace;
+      word-wrap: break-word;
+    }
+
+    .result {
+      color: #222;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+<pre>
+  JavaScript data types:
+
+1. Primitive Types
+Type	Description	Example
+Number	Represents numeric values (integers and floats)	42, 3.14, NaN, Infinity
+String	Represents text	"hello", 'world'
+Boolean	Represents true or false	true, false
+Undefined	Represents a variable that has not been assigned a value	undefined
+Null	Represents the intentional absence of any object value	null
+Symbol	Represents a unique and immutable identifier	Symbol('id')
+BigInt	Represents integers with arbitrary precision (big integers)	123456789012345678901234567890n
+
+
+2. Non-Primitive (Reference) Types
+Type	Description	Example
+Object	Collection of key-value pairs	{name: "Alice", age: 25}
+Array	Ordered list of values	[1, 2, 3, 4]
+Function	Callable objects	function() { return 1; }
+Date	Represents dates and times	new Date()
+RegExp	Regular expressions	/abc/i
+...	Many more built-in objects	
+</pre>
+
+  <h1>JavaScript Number Conversion Methods</h1>
+  <div class="container" id="output"></div>
+
+  <script>
+    const output = document.getElementById('output');
+
+    function showMethod(title, description, examples) {
+      let html = `<div class="method">
+        <h2>${title}</h2>
+        <p>${description}</p>`;
+      
+      examples.forEach(ex => {
+        html += `
+          <div class="example">
+            <div><code>${ex.code}</code></div>
+            <div class="result">→ ${ex.result}</div>
+          </div>`;
+      });
+
+      html += '</div>';
+      output.innerHTML += html;
+    }
+
+    const values = [
+      `"123"`,
+      `"123.45"`,
+      `"abc"`,
+      `1.2`,
+      `100`,
+      `true`,
+      `false`,
+      `null`,
+      `undefined`,
+      `{}`,
+      `[]`,
+      `["5"]`
+    ];
+
+    // Number()
+    showMethod('Number(value)', 'Converts a value to a number. Returns NaN if conversion fails.', 
+      values.map(v => ({
+        code: `Number(${v})`,
+        result: Number(eval(v))
+      }))
+    );
+
+    // parseInt()
+    showMethod('parseInt(value)', 'Parses a string and returns an integer.', 
+      values.map(v => ({
+        code: `parseInt(${v})`,
+        result: parseInt(eval(v))
+      }))
+    );
+
+    // parseFloat()
+    showMethod('parseFloat(value)', 'Parses a string and returns a floating-point number.', 
+      values.map(v => ({
+        code: `parseFloat(${v})`,
+        result: parseFloat(eval(v))
+      }))
+    );
+
+    // parseInt with radix
+    showMethod('parseInt(value, radix)', 'Parses a string with a given radix (base).',
+      [
+        { code: 'parseInt("1010", 2)', result: parseInt("1010", 2) },
+        { code: 'parseInt("1A", 16)', result: parseInt("1A", 16) },
+        { code: 'parseInt("77", 8)', result: parseInt("77", 8) }
+      ]
+    );
+
+    // valueOf()
+    showMethod('valueOf()', 'Returns the primitive value of a Number object.', [
+      { code: 'new Number(42).valueOf()', result: (new Number(42)).valueOf() },
+      { code: 'new Number("123").valueOf()', result: (new Number("123")).valueOf() }
+    ]);
+
+    // toFixed()
+    showMethod('toFixed(digits)', 'Formats a number using fixed-point notation.', [
+      { code: '(12.3456).toFixed(2)', result: (12.3456).toFixed(2) },
+      { code: '(5).toFixed(3)', result: (5).toFixed(3) },
+      { code: '(123.1).toFixed(0)', result: (123.1).toFixed(0) }
+    ]);
+
+    // toString()
+    showMethod('toString()', 'Converts a number to a string.', [
+      { code: '(255).toString()', result: (255).toString() },
+      { code: '(255).toString(16)', result: (255).toString(16) },
+      { code: '(10).toString(2)', result: (10).toString(2) }
+    ]);
+
+    // Math.floor()
+    showMethod('Math.floor(value)', 'Rounds down to the nearest integer.', [
+      { code: 'Math.floor(4.7)', result: Math.floor(4.7) },
+      { code: 'Math.floor(-4.7)', result: Math.floor(-4.7) },
+      { code: 'Math.floor(1.99)', result: Math.floor(1.99) }
+    ]);
+
+    // Math.ceil()
+    showMethod('Math.ceil(value)', 'Rounds up to the nearest integer.', [
+      { code: 'Math.ceil(4.1)', result: Math.ceil(4.1) },
+      { code: 'Math.ceil(-4.1)', result: Math.ceil(-4.1) },
+      { code: 'Math.ceil(0.001)', result: Math.ceil(0.001) }
+    ]);
+
+    // Math.round()
+    showMethod('Math.round(value)', 'Rounds to the nearest integer.', [
+      { code: 'Math.round(4.4)', result: Math.round(4.4) },
+      { code: 'Math.round(4.5)', result: Math.round(4.5) },
+      { code: 'Math.round(-4.5)', result: Math.round(-4.5) }
+    ]);
+  </script>
+
+</body>
+</html>

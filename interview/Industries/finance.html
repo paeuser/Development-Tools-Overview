@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Terms</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+        }
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .term-table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+        .term-table th, .term-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .term-table th {
+            background-color: #2c5282;
+            color: white;
+            font-weight: 600;
+        }
+        .term-table tbody tr:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        .term-table tbody tr:hover {
+            background-color: #e2e8f0;
+        }
+        @media (max-width: 640px) {
+            .term-table, .term-table thead, .term-table tbody, .term-table th, .term-table td, .term-table tr { 
+                display: block; 
+            }
+            .term-table thead tr { 
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            .term-table tr { 
+                border: 1px solid #ccc; 
+                margin-bottom: 0.5rem;
+                border-radius: 0.5rem;
+            }
+            .term-table td { 
+                border: none;
+                position: relative;
+                padding-left: 50%; 
+                text-align: right;
+            }
+            .term-table td:before { 
+                position: absolute;
+                left: 6px;
+                width: 45%; 
+                padding-right: 10px; 
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+            }
+            .term-table td:before { content: attr(data-label); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container bg-white rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-blue-500 pb-2">Common Financial Terms</h2>
+        <p class="text-gray-600 mb-8">This table includes key financial terms that may be useful for your interview preparation at BHG Financial.</p>
+        <table class="term-table">
+            <thead>
+                <tr>
+                    <th class="px-4 py-3">Term</th>
+                    <th class="px-4 py-3">Explanation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="Term"><strong>Asset</strong></td>
+                    <td data-label="Explanation">Anything of value owned by an individual or company that is expected to provide a future benefit.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Liability</strong></td>
+                    <td data-label="Explanation">A financial debt or obligation that arises during business operations.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Equity</strong></td>
+                    <td data-label="Explanation">The value of a company or asset after all liabilities have been paid off.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Credit Score</strong></td>
+                    <td data-label="Explanation">A numerical rating used by lenders to assess a person's creditworthiness and likelihood of repaying debt.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Secured Loan</strong></td>
+                    <td data-label="Explanation">A loan that is backed by collateral, such as a house or car.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Unsecured Loan</strong></td>
+                    <td data-label="Explanation">A loan not backed by collateral. Lending is based on the borrower's creditworthiness.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Principal</strong></td>
+                    <td data-label="Explanation">The original amount of money borrowed, separate from any interest or fees.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Interest</strong></td>
+                    <td data-label="Explanation">The cost of borrowing money, usually expressed as a percentage of the principal.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Default</strong></td>
+                    <td data-label="Explanation">The failure to repay a debt according to the loan agreement terms.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Underwriting</strong></td>
+                    <td data-label="Explanation">The process of evaluating a loan applicant's creditworthiness and risk.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Loan Origination</strong></td>
+                    <td data-label="Explanation">The end-to-end process of a borrower applying for a loan and the lender processing it.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Recourse Loan</strong></td>
+                    <td data-label="Explanation">A loan that allows the lender to seize both the collateral and other personal assets if the borrower defaults.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Creditworthiness</strong></td>
+                    <td data-label="Explanation">A lender's assessment of how likely an individual or business is to repay debts.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Collateral</strong></td>
+                    <td data-label="Explanation">An asset (e.g., property, equipment) pledged by a borrower to a lender to secure a loan.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>Yield</strong></td>
+                    <td data-label="Explanation">The income returned on an investment. For a loan, it's the total return a lender earns.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>APV (Annual Percentage Yield)</strong></td>
+                    <td data-label="Explanation">The real rate of return earned on an investment, taking into account the effect of compounding interest.</td>
+                </tr>
+                <tr>
+                    <td data-label="Term"><strong>SBA 7(a) Loan</strong></td>
+                    <td data-label="Explanation">A small business loan guaranteed by the Small Business Administration (SBA), a common product for a lender like BHG.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
