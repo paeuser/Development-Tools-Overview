@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript & DOM Cheat Sheet</title>
+  <style>
+    /* Mobile‑first & responsive layout */
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0 1rem;
+      color: #333;
+    }
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    section {
+      margin-bottom: 1.5rem;
+    }
+    code {
+      display: block;
+      background: #f4f4f4;
+      padding: 0.5rem;
+      border-radius: 4px;
+      white-space: pre-wrap;
+      overflow-x: auto;
+    }
+    button, input {
+      padding: 0.5rem;
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+    @media (min-width: 600px) {
+      body {
+        padding: 0 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>JavaScript &amp; DOM Cheat Sheet</h1>
+    <p>Quick Reference for Technical Assessments</p>
+  </header>
+
+  <!-- Section: Variable Declarations -->
+  <section>
+    <h2>Variable Declarations</h2>
+    <code>
+      // 'let' allows reassignment
+      let count = 0;
+
+      // 'const' is read‑only after assignment
+      const maxCount = 5;
+    </code>
+  </section>
+
+  <!-- Section: Function Definitions -->
+  <section>
+    <h2>Function Definitions</h2>
+    <code>
+      // Traditional function
+      function greet(name) {
+        return 'Hello, ' + name + '!';
+      }
+
+      // Arrow function (ES6+)
+      const add = (a, b) => a + b;
+    </code>
+  </section>
+
+  <!-- Section: DOM Elements & Event Listeners -->
+  <section>
+    <h2>DOM &amp; Event Listeners</h2>
+    <code>
+      // Select elements
+      const btn = document.getElementById('myButton');
+      const txtInput = document.querySelector('.my-input');
+
+      // Add a 'click' event listener
+      btn.addEventListener('click', () =&gt; {
+        // On click, grab input value
+        const value = txtInput.value;
+        // Update output display
+        document.getElementById('output').textContent =
+          'You typed: ' + value;
+      });
+    </code>
+  </section>
+
+  <!-- Section: Basic Interactive Example -->
+  <section>
+    <h2>Interactive Example</h2>
+    <p>Type something and click the button to see it below:</p>
+    <input type="text" class="my-input" placeholder="Write here...">
+    <button id="myButton">Show Value</button>
+    <p id="output" style="font-weight: bold;"></p>
+
+    <script>
+      // Grab elements
+      const btn = document.getElementById('myButton');
+      const txtInput = document.querySelector('.my-input');
+
+      // Wire up the click listener
+      btn.addEventListener('click', () => {
+        const value = txtInput.value; // Read user input
+        const outputEl = document.getElementById('output');
+        outputEl.textContent = 'You typed: ' + value; // Update DOM
+      });
+    </script>
+  </section>
+
+  <!-- Section: Inline Commentary -->
+  <section>
+    <h2>Inline Comments: What’s Going On?</h2>
+    <code>
+      // let x = 10;               – declare a variable you can reassign
+      // const y = 'Hello';       – declare a constant whose reference won’t change
+      // function foo() { … }     – define a named function
+      // const bar = () =&gt; { }  – define an arrow (anonymous) function
+      // document.getElementById() – grab an element by its ID
+      // document.querySelector()  – select element using any CSS selector
+      // element.addEventListener() – listen for events like 'click'
+      // element.textContent        – set or retrieve text inside an element
+   
+   
+      function vowelsAndConsonants(s) {
+            const vowels = ['a', 'e', 'i', 'o', 'u'];
+            let consonants = [];
+
+            // First, print vowels
+            for (let char of s) {
+                if (vowels.includes(char)) {
+                    console.log(char);
+                } else {
+                    consonants.push(char);
+                }
+            }
+
+            // Then, print consonants
+            for (let char of consonants) {
+                console.log(char);
+            }
+        }
+
+        vowelsAndConsonants('taeur');
+
+
+            function isPositive(a) {
+                if (a > 0) {
+                    // If 'a' is positive, return "YES"
+                    return "YES";
+                } else if (a === 0) {
+                    // If 'a' is zero, throw an Error with message "Zero Error"
+                    throw new Error("Zero Error");
+                } else {
+                    // If 'a' is negative, throw an Error with message "Negative Error"
+                    throw new Error("Negative Error");
+                }
+            }
+            
+
+            // console.log(isPositive(3)); // Output: "YES"
+            // console.log(isPositive(0)); // Throws "Zero Error"
+            console.log(isPositive(-3)); // Throws "Negative Error"
+
+
+
+            // ... allows as interval such as 
+// array or string to be expanded
+// into separate elements   
+// (unpack the elements )
+
+
+let numbers = [1,2,3,4,5];
+
+// Use spread operator to pass array elements as arguments
+//we can't use spread with the array directly
+// let maximum = Math.max(numbers);
+//but if we use spread operator
+// it will unpack the elements of the array
+// and pass them as individual arguments to the function    
+let maximum = Math.max(...numbers);
+let minimum = Math.min(...numbers);
+console.log('Numbers:', numbers);
+console.log('Minimum:', minimum);
+console.log('Maximum:', maximum);
+
+
+let username ="eric cabrera";
+let letters = [...username].join("-");    ;
+console.log('Letters:', letters);
+
+
+let fruits = ['apple', 'banana', 'cherry'];
+// Use spread operator to create a new array with additional elements
+console.log(fruits);
+//shallow copy of the array
+let newFruits = [...fruits];
+console.log('New Fruits:', newFruits);
+
+
+let vegetables = ['carrot', 'broccoli', 'spinach'];
+// Use spread operator to combine two arrays
+let combined = [...fruits, ...vegetables , "eggs","tomato"];
+console.log('Combined:', combined);
+
+   function getSecondLargest(nums) {
+    // Remove duplicates by converting to a Set, then back to array
+    let uniqueNums = [...new Set(nums)];
+    
+    // Sort the array in descending order
+    uniqueNums.sort((a, b) => b - a);
+    
+    // Return the second largest number (index 1)
+    return uniqueNums[1];
+}
+
+
+function modifyArray(nums) {
+    // Use map to create a new array where
+    // even numbers are doubled and odd numbers are tripled
+    return nums.map(num => (num % 2 === 0 ? num * 2 : num * 3));
+}
+
+
+
+let result = getSecondLargest([2, 3, 6, 6, 5]);
+console.log(result); // Output: 5   
+
+console.log(modifyArray([1, 2, 3, 4, 5])); // Output: [3, 4, 9, 8, 15]
+
+
+<section>
+  <h2>Function Practice: Logic Problems</h2>
+  <code>
+// Sum all numbers in an array
+function sumArray(arr) {
+  return arr.reduce((total, num) => total + num, 0);
+}
+
+// Reverse a string
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+// Filter array to only even numbers
+function filterEvens(arr) {
+  return arr.filter(num => num % 2 === 0);
+}
+
+// Check if a string is a palindrome (reads same forwards & backwards)
+function isPalindrome(str) {
+  const cleaned = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return cleaned === cleaned.split('').reverse().join('');
+}
+
+// Find max number in an array
+function findMax(arr) {
+  return Math.max(...arr);
+}
+
+// Example usage
+console.log(sumArray([1,2,3,4]));          // 10
+console.log(reverseString('hello'));       // 'olleh'
+console.log(filterEvens([1,2,3,4,5,6]));   // [2,4,6]
+console.log(isPalindrome('Racecar'));       // true
+console.log(findMax([10,5,8,22,3]));       // 22
+  </code>
+</section>
+
+    </code>
+  </section>
+</body>
+</html>
