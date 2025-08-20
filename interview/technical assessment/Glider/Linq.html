@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Glider Technical Assessment Index</title>
+	<style>
+		body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+		.container { max-width: 800px; margin: 2em auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2em; }
+		h1 { font-size: 1.5em; margin-bottom: 1em; text-align: center; }
+		pre { background: #f4f4f4; padding: 1em; overflow-x: auto; border-radius: 4px; font-size: 0.9em; line-height: 1.5; }
+		code { font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+		@media (max-width: 700px) {
+			.container { max-width: 95vw; padding: 1em; }
+			h1 { font-size: 1.2em; }
+			pre { font-size: 0.85em; }
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>LinQ</h1>
+		<pre><code>
+List&lt;int&gt; numbers = new List&lt;int&gt; { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+
+static void FilterEvenNumbers(List&lt;int&gt; numbers)
+{
+    var evenNumbers = numbers.Where(n =&gt; n % 2 == 0);
+    Console.WriteLine("Even numbers:");
+    foreach (var num in evenNumbers) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Filter Even Numbers");
+FilterEvenNumbers(numbers);
+
+static void FilterOddNumbers(List&lt;int&gt; numbers)
+{
+    var oddNumbers = numbers.Where(n =&gt; n % 2 != 0);
+    Console.WriteLine("Odd numbers:");
+    foreach (var num in oddNumbers) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Filter Odd Numbers");
+FilterOddNumbers(numbers);
+
+static void MultiplyNumbersByTwo(List&lt;int&gt; numbers)
+{
+    var doubledNumbers = numbers.Select(n =&gt; n * 2);
+    Console.WriteLine("Numbers multiplied by 2:");
+    foreach (var num in doubledNumbers) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Multiply Numbers by 2");
+MultiplyNumbersByTwo(numbers);
+
+static void SortNumbersAscending(List&lt;int&gt; numbers)
+{
+    var sortedNumbers = numbers.OrderBy(n =&gt; n);
+    Console.WriteLine("Numbers sorted ascending:");
+    foreach (var num in sortedNumbers) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Sort Numbers Ascending");
+SortNumbersAscending(numbers);
+
+static void GetFirstNumberGreaterThanFive(List&lt;int&gt; numbers)
+{
+    var firstNumber = numbers.First(n =&gt; n &gt; 4);
+    Console.WriteLine("First number greater than 4:");
+    Console.WriteLine(firstNumber);
+}
+
+Console.WriteLine("LINQ Tutorial - First Number Greater Than 4");
+GetFirstNumberGreaterThanFive(numbers);
+
+static void GroupNumbersByEvenOdd(List&lt;int&gt; numbers)
+{
+    var grouped = numbers.GroupBy(n =&gt; n % 2 == 0 ? "Even" : "Odd");
+    foreach (var group in grouped)
+    {
+        Console.WriteLine($"{group.Key} numbers:");
+        foreach (var num in group) { Console.Write(num + " "); }
+        Console.WriteLine();
+    }
+}
+
+Console.WriteLine("LINQ Tutorial - Group Numbers By Even or Odd");
+GroupNumbersByEvenOdd(numbers);
+
+static void CheckIfAnyNumberGreaterThanSeven(List&lt;int&gt; numbers)
+{
+    bool anyGreaterThanSeven = numbers.Any(n =&gt; n &gt; 7);
+    Console.WriteLine("Is there any number greater than 7?");
+    Console.WriteLine(anyGreaterThanSeven);
+}
+
+Console.WriteLine("LINQ Tutorial - Any Number Greater Than 7");
+CheckIfAnyNumberGreaterThanSeven(numbers);
+
+static void CheckIfAllNumbersLessThanTwenty(List&lt;int&gt; numbers)
+{
+    bool allLessThanTwenty = numbers.All(n =&gt; n &lt; 20);
+    Console.WriteLine("Are all numbers less than 20?");
+    Console.WriteLine(allLessThanTwenty);
+}
+
+Console.WriteLine("LINQ Tutorial - All Numbers Less Than 20");
+CheckIfAllNumbersLessThanTwenty(numbers);
+
+static void CountNumbersGreaterThanFive(List&lt;int&gt; numbers)
+{
+    int count = numbers.Count(n =&gt; n &gt; 5);
+    Console.WriteLine("Count of numbers greater than 5:");
+    Console.WriteLine(count);
+}
+
+Console.WriteLine("LINQ Tutorial - Count Numbers Greater Than 5");
+CountNumbersGreaterThanFive(numbers);
+
+static void ShowDistinctNumbers(List&lt;int&gt; numbers)
+{
+    var distinctNumbers = numbers.Distinct();
+    Console.WriteLine("Distinct numbers:");
+    foreach (var num in distinctNumbers) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Distinct Numbers");
+ShowDistinctNumbers(numbers);
+
+static void SkipFirstThreeNumbers(List&lt;int&gt; numbers)
+{
+    var skipped = numbers.Skip(3);
+    Console.WriteLine("Numbers after skipping first 3:");
+    foreach (var num in skipped) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Skip First 3 Numbers");
+SkipFirstThreeNumbers(numbers);
+
+static void TakeFirstFiveNumbers(List&lt;int&gt; numbers)
+{
+    var taken = numbers.Take(5);
+    Console.WriteLine("First 5 numbers:");
+    foreach (var num in taken) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Take First 5 Numbers");
+TakeFirstFiveNumbers(numbers);
+
+static void SumNumbers(List&lt;int&gt; numbers)
+{
+    int total = numbers.Sum();
+    Console.WriteLine("Sum of all numbers:");
+    Console.WriteLine(total);
+}
+
+Console.WriteLine("LINQ Tutorial - Sum of Numbers");
+SumNumbers(numbers);
+
+static void AverageNumbers(List&lt;int&gt; numbers)
+{
+    double avg = numbers.Average();
+    Console.WriteLine("Average of numbers:");
+    Console.WriteLine(avg);
+}
+
+Console.WriteLine("LINQ Tutorial - Average of Numbers");
+AverageNumbers(numbers);
+
+static void MaxNumber(List&lt;int&gt; numbers)
+{
+    int max = numbers.Max();
+    Console.WriteLine("Maximum number:");
+    Console.WriteLine(max);
+}
+
+Console.WriteLine("LINQ Tutorial - Max Number");
+MaxNumber(numbers);
+
+static void ReverseNumbers(List&lt;int&gt; numbers)
+{
+    var reversed = numbers.AsEnumerable().Reverse();
+    Console.WriteLine("Numbers reversed:");
+    foreach (var num in reversed) { Console.Write(num + " "); }
+    Console.WriteLine();
+}
+
+Console.WriteLine("LINQ Tutorial - Reverse Numbers");
+ReverseNumbers(numbers);
+
+List&lt;Person&gt; people = new List&lt;Person&gt;
+{
+    new Person { Name = "Alice", Age = 30, CityId = 1 },
+    new Person { Name = "Bob", Age = 25, CityId = 2 },
+    new Person { Name = "Charlie", Age = 35, CityId = 1 },
+};
+
+var adults = people.Where(p =&gt; p.Age &gt; 28);
+Console.WriteLine("People older than 28:");
+foreach (var person in adults)
+{
+    Console.WriteLine($"{person.Name}, Age {person.Age}");
+}
+
+List&lt;City&gt; cities = new List&lt;City&gt;
+{
+    new City { Id = 1, Name = "New York" },
+    new City { Id = 2, Name = "London" },
+    new City { Id = 3, Name = "Tokyo" }
+};
+
+var peopleWithCities = people.Join(
+    cities,
+    person =&gt; person.CityId,
+    city =&gt; city.Id,
+    (person, city) =&gt; new
+    {
+        person.Name,
+        person.Age,
+        CityName = city.Name
+    });
+
+
+    var peopleWithCities = from person in people
+                       join city in cities on person.CityId equals city.Id
+                       select new
+                       {
+                           person.Name,
+                           person.Age,
+                           CityName = city.Name
+                       };
+
+
+Console.WriteLine("People with their cities:");
+foreach (var item in peopleWithCities)
+{
+    Console.WriteLine($"{item.Name}, Age {item.Age}, City: {item.CityName}");
+}
+
+Console.ReadLine();
+		</code></pre>
+	</div>
+</body>
+</html>
