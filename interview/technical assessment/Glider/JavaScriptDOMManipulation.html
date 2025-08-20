@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>DOM Manipulation Tutorial</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 2em;
+			white-space: pre-wrap;
+			background-color: #fdfdfd;
+		}
+		code {
+			display: block;
+			background-color: #f5f5f5;
+			padding: 1em;
+			border-radius: 8px;
+			border: 1px solid #ddd;
+			overflow-x: auto;
+		}
+	</style>
+</head>
+<body>
+
+<h1>DOM Manipulation Tutorial</h1>
+<p>The following is all the code wrapped inside <code>&lt;code&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/code&gt;</code>:</p>
+
+<code><pre>
+	&lt;h1&gt;JavaScript DOM Manipulation Tutorial&lt;/h1&gt;
+	&lt;p&gt;This tutorial demonstrates native DOM methods: &lt;code&gt;querySelector&lt;/code&gt;, &lt;code&gt;appendChild&lt;/code&gt;, &lt;code&gt;addEventListener&lt;/code&gt;, and element manipulation.&lt;/p&gt;
+
+	&lt;input type="text" id="inputText" placeholder="Type something..."&gt;
+	&lt;button id="addBtn"&gt;Add Text&lt;/button&gt;
+	&lt;button id="clearBtn"&gt;Clear&lt;/button&gt;
+	&lt;div id="output"&gt;&lt;/div&gt;
+
+	&lt;script&gt;
+		// Select elements using querySelector
+		const addBtn = document.querySelector('#addBtn');
+		const clearBtn = document.querySelector('#clearBtn');
+		const inputText = document.querySelector('#inputText');
+		const output = document.querySelector('#output');
+
+		// Add event listeners for button clicks
+		addBtn.addEventListener('click', function() {
+			// Check if the input field has a value
+			if (inputText.value.trim() !== '') {
+				// Create a new paragraph element
+				const p = document.createElement('p');
+				// Set the text content of the new paragraph to the input value
+				p.textContent = inputText.value;
+				// Append the new paragraph to the output div, making it visible on the page
+				output.appendChild(p);
+				// Clear the input field for the next entry
+				inputText.value = '';
+			}
+		});
+
+		clearBtn.addEventListener('click', function() {
+			// Set the innerHTML of the output div to an empty string to remove all its children
+			output.innerHTML = '';
+		});
+
+		// --- Another sample using appendChild ---
+		// Create a new div and append it to the body when the page loads
+		const sampleDiv = document.createElement('div');
+		sampleDiv.textContent = 'This div was added dynamically using appendChild!';
+		sampleDiv.style.background = '#d0f0d0';
+		sampleDiv.style.padding = '0.75em';
+		sampleDiv.style.borderRadius = '8px';
+		sampleDiv.style.marginTop = '1em';
+		sampleDiv.style.border = '1px solid #a0d0a0';
+		document.body.appendChild(sampleDiv);
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></code>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SQL Querying Cheatsheet</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    pre {
+      background: #eee;
+      padding: 0.75rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    b {
+      color: #c0392b;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #ccc;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 0.5rem;
+      }
+      pre {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SQL Querying Cheatsheet</h1>
+
+  <section>
+    <h2><b>SELECT</b> Basic Query</h2>
+    <pre><code><b>SELECT</b> * <b>FROM</b> employees;</code></pre>
+    <table>
+      <thead>
+        <tr><th>employee_id</th><th>first_name</th><th>last_name</th><th>department_id</th><th>hire_date</th><th>salary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Alice</td><td>Smith</td><td>1</td><td>2020-01-15</td><td>85000</td></tr>
+        <tr><td>102</td><td>Bob</td><td>Johnson</td><td>1</td><td>2021-03-22</td><td>95000</td></tr>
+        <tr><td>103</td><td>Carol</td><td>Williams</td><td>2</td><td>2019-07-10</td><td>65000</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><b>BETWEEN</b> Clause</h2>
+    <pre><code><b>SELECT</b> * <b>FROM</b> employees 
+<b>WHERE</b> salary <b>BETWEEN</b> 70000 <b>AND</b> 90000;</code></pre>
+    <table>
+      <thead>
+        <tr><th>employee_id</th><th>first_name</th><th>salary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>101</td><td>Alice</td><td>85000</td></tr>
+        <tr><td>105</td><td>Eve</td><td>88000</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><b>UPDATE</b> Statement</h2>
+    <pre><code><b>UPDATE</b> employees 
+<b>SET</b> salary = 92000 
+<b>WHERE</b> employee_id = 105;</code></pre>
+    <p>✅ Updates Eve's salary to 92000.</p>
+  </section>
+
+  <section>
+    <h2><b>DELETE</b> Statement</h2>
+    <pre><code><b>DELETE FROM</b> employees 
+<b>WHERE</b> employee_id = 104;</code></pre>
+    <p>🗑️ Deletes David Brown from the employees table.</p>
+  </section>
+
+  <section>
+    <h2><b>RANK()</b> with <b>PARTITION BY</b></h2>
+    <pre><code><b>SELECT</b> 
+  employee_id,
+  department_id,
+  salary,
+  <b>RANK()</b> <b>OVER</b> (<b>PARTITION BY</b> department_id <b>ORDER BY</b> salary <b>DESC</b>) AS salary_rank
+<b>FROM</b> employees;</code></pre>
+    <table>
+      <thead>
+        <tr><th>employee_id</th><th>department_id</th><th>salary</th><th>salary_rank</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>102</td><td>1</td><td>95000</td><td>1</td></tr>
+        <tr><td>105</td><td>1</td><td>88000</td><td>2</td></tr>
+        <tr><td>101</td><td>1</td><td>85000</td><td>3</td></tr>
+        <tr><td>103</td><td>2</td><td>65000</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Moving Average with <b>ROWS BETWEEN</b></h2>
+    <pre><code><b>SELECT</b> 
+  employee_id,
+  salary,
+  <b>AVG</b>(salary) <b>OVER</b> (
+    <b>ORDER BY</b> salary
+    <b>ROWS BETWEEN</b> 1 <b>PRECEDING</b> <b>AND</b> 1 <b>FOLLOWING</b>
+  ) AS moving_avg_salary
+<b>FROM</b> employees;</code></pre>
+    <table>
+      <thead>
+        <tr><th>employee_id</th><th>salary</th><th>moving_avg_salary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>103</td><td>65000</td><td>74000</td></tr>
+        <tr><td>104</td><td>72000</td><td>77333.33</td></tr>
+        <tr><td>101</td><td>85000</td><td>85000</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Running Average with <b>RANGE</b></h2>
+    <pre><code><b>SELECT</b> 
+  employee_id,
+  salary,
+  <b>AVG</b>(salary) <b>OVER</b> (
+    <b>ORDER BY</b> salary
+    <b>RANGE BETWEEN</b> <b>UNBOUNDED PRECEDING</b> <b>AND</b> <b>CURRENT ROW</b>
+  ) AS running_avg_salary
+<b>FROM</b> employees;</code></pre>
+    <table>
+      <thead>
+        <tr><th>employee_id</th><th>salary</th><th>running_avg_salary</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>103</td><td>65000</td><td>65000</td></tr>
+        <tr><td>104</td><td>72000</td><td>68500</td></tr>
+        <tr><td>101</td><td>85000</td><td>74000</td></tr>
+        <tr><td>105</td><td>88000</td><td>77500</td></tr>
+        <tr><td>102</td><td>95000</td><td>81000</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</body>
+</html>

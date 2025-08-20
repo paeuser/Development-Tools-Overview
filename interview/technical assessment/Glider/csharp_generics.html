@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C# Generics and LINQ</title>
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+
+            pre {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>C# Generics and LINQ</h1>
+
+        <div class="section">
+            <h2>What are Generics?</h2>
+            <p>Generics allow you to write type-safe, reusable code. Instead of writing the same logic for multiple data types, you write it once using a placeholder (like <code>&lt;T&gt;</code>) and use it for any type.</p>
+        </div>
+
+        <div class="section">
+            <h2>Generic Function Example: PrintValue</h2>
+            <pre><code class="language-csharp">
+// Prints any value and its type
+PrintValue&lt;int&gt;(123);
+PrintValue&lt;string&gt;("Hello, Generics!");
+PrintValue&lt;double&gt;(45.67);
+
+void PrintValue&lt;T&gt;(T value)
+{
+    Console.WriteLine($"Value: {value} | Type: {typeof(T)}");
+}
+            </code></pre>
+        </div>
+
+        <div class="section">
+            <h2>Generic Swap Function</h2>
+            <pre><code class="language-csharp">
+int a = 5;
+int b = 10;
+Console.WriteLine($"\nBefore Swap: a = {a}, b = {b}");
+SwapValues&lt;int&gt;(ref a, ref b);
+Console.WriteLine($"After Swap: a = {a}, b = {b}");
+
+string str1 = "Apple", str2 = "Banana";
+Console.WriteLine($"\nBefore Swap (string): str1 = {str1}, str2 = {str2}");
+SwapValues&lt;string&gt;(ref str1, ref str2);
+Console.WriteLine($"After Swap (string): str1 = {str1}, str2 = {str2}");
+
+void SwapValues&lt;T&gt;(ref T x, ref T y)
+{
+    T temp = x;
+    x = y;
+    y = temp;
+}
+            </code></pre>
+        </div>
+
+        <div class="section">
+            <h2>Generic Class Example: Box&lt;T&gt;</h2>
+            <pre><code class="language-csharp">
+Box&lt;int&gt; intBox = new Box&lt;int&gt; { Value = 99 };
+intBox.Show();
+
+Box&lt;string&gt; strBox = new Box&lt;string&gt; { Value = "Hello, Box!" };
+strBox.Show();
+
+class Box&lt;T&gt;
+{
+    public T Value;
+
+    public void Show()
+    {
+        Console.WriteLine($"Box contains: {Value} | Type: {typeof(T)}");
+    }
+}
+            </code></pre>
+        </div>
+    </div>
+
+    <!-- Prism.js Syntax Highlighter -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-csharp.min.js"></script>
+</body>
+</html>

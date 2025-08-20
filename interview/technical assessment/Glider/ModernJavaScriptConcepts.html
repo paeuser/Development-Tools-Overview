@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern JavaScript Concepts</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+    }
+
+    section {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    pre {
+      background: #eee;
+      padding: 0.75rem;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+    }
+
+    code {
+      font-family: monospace;
+    }
+
+    b {
+      color: #c0392b;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 0.5rem;
+      }
+      pre {
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Modern JavaScript Concepts Cheatsheet</h1>
+
+  <section>
+    <h2><b>props</b> in React</h2>
+    <p>Props (short for “properties”) are used to pass data from a parent component to a child component.</p>
+    <pre><code>function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+
+// Usage
+&lt;Welcome name="Alice" /&gt;</code></pre>
+    <p>✅ Output: <code>&lt;h1&gt;Hello, Alice&lt;/h1&gt;</code></p>
+  </section>
+
+  <section>
+    <h2><b>Spread Syntax</b> (<code>...</code>)</h2>
+    <p>Used to copy, merge, or expand arrays or objects.</p>
+    <pre><code>const arr1 = [1, 2];
+const arr2 = [...arr1, 3, 4]; // [1, 2, 3, 4]
+
+const obj1 = { a: 1 };
+const obj2 = { ...obj1, b: 2 }; // { a: 1, b: 2 }</code></pre>
+    <p>✅ Output:</p>
+    <pre><code>arr2 = [1, 2, 3, 4]
+obj2 = { a: 1, b: 2 }</code></pre>
+  </section>
+
+  <section>
+    <h2><b>Currying</b> (Functions Returning Functions)</h2>
+    <p>Transforms a function with multiple arguments into a series of nested functions.</p>
+    
+    
+    
+    
+    <pre><code>// Currying: This function takes one argument (a) and returns another function that takes a 
+// second argument (b).
+// The returned function multiplies a and b. This allows you to create specialized 
+// functions like double or triple.
+
+// If you pass 2 to multiply(a), you get back a new function that expects a value for b. 
+//The value of b is whatever you pass when you call that returned function.
+function multiply(a) {
+  return function(b) {
+    return a * b;
+  };
+}
+
+// Here, multiply(2) returns a function that multiplies any input by 2.
+// We assign this function to 'doubleNumber', so doubleNumber(5) calculates 2 * 5.
+const doubleNumber = multiply(2);
+console.log(double(5)); // 10
+
+// You can also use it for other values
+const tripleNumber = multiply(3);
+console.log(triple(5)); // 15</code></pre>
+    <p>✅ Output: <code>10</code></p>
+
+
+
+
+
+  </section>
+
+  <section>
+    <h2><b>Array.map()</b></h2>
+    <p>Creates a new array by applying a function to each element.</p>
+    <pre><code>const nums = [1, 2, 3];
+const squares = nums.map(n => n * n);</code></pre>
+    <p>✅ Output: <code>[1, 4, 9]</code></p>
+  </section>
+
+  <section>
+    <h2><b>Array.filter()</b></h2>
+    <p>Filters an array based on a condition.</p>
+    <pre><code>const nums = [1, 2, 3, 4];
+const even = nums.filter(n => n % 2 === 0);</code></pre>
+    <p>✅ Output: <code>[2, 4]</code></p>
+  </section>
+
+  <section>
+    <h2><b>Array.reduce()</b></h2>
+    <p>Reduces an array to a single value.</p>
+    <pre><code>const nums = [1, 2, 3, 4];
+const sum = nums.reduce((acc, val) => acc + val, 0);</code></pre>
+    <p>✅ Output: <code>10</code></p>
+  </section>
+
+</body>
+</html>
