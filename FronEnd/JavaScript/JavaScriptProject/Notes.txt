@@ -1,1 +1,11 @@
 node performOperation.js
+
+
+type JavaScript
+npm install -g typescript ts-node
+
+When you run npm start, it triggers the script "start": "ts-node src/index.ts" 
+in your package.json, which uses ts-node to compile and execute the TypeScript 
+file src/index.ts directly without needing to manually compile it to JavaScript first.
+ This setup works because ts-node runs your .ts file on the fly by compiling it in memory, 
+then running it with Node.js, allowing you to see output like Hello, Eric! immediately.

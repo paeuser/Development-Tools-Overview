@@ -1,0 +1,29 @@
+// Import the lodash library and assign it to the variable _
+const _ = require('lodash');
+
+// Define a class named Greeter
+class Greeter {
+    // Declare a property 'greeting' of type string
+    greeting: string;
+
+    // Constructor method that initializes the greeting property
+    constructor(message: string) {
+        // Assign the value of message to the greeting property
+        this.greeting = message;
+    }
+
+    // Method to return a greeting message
+    greet() {
+        // Return the string "Hello, " concatenated with the greeting property
+        return "Hello, " + this.greeting;
+    }
+}
+
+// Create a new instance of Greeter with the message "world"
+let greeter = new Greeter("world");
+
+// Use lodash's times function to run a loop 4 times
+_.times(4, () => 
+    // Inside the loop, call greeter.greet() and print the result to the console
+    console.log(greeter.greet())
+);

@@ -1,0 +1,43 @@
+-- INNER JOIN: only employees with a department
+
+SELECT      e.first_name, e.last_name, d.name
+FROM        employees e
+INNER JOIN  departments d ON e.department_id = d.id;
+
+--select employee with out projects 
+
+select * from employees e 
+left join departments d on e.department_id = d.id
+where e.department_id is null
+
+
+-- LEFT JOIN: all employees, even if they have no department
+
+SELECT       e.first_name, e.last_name, d.name
+FROM         employees e
+LEFT JOIN departments d ON e.department_id = d.id;
+
+or
+
+ select e.*,d.name from employees e 
+ left JOIN departments d on e.department_id = d.id
+
+
+
+
+'It returns all projects with employee first names where 
+'assigned, or NULL if no employees are assigned.
+
+select  p.title, e.first_name   from projects p
+left join  employees_projects ep on p.id = ep.project_id 
+left  join employees e on ep.employee_id = e.id
+
+
+
+'This will return only the projects with no employees assigned.
+
+select p.title, e.first_name
+from projects p
+left join employees_projects ep on p.id = ep.project_id
+left join employees e on ep.employee_id = e.id
+where e.first_name is null;

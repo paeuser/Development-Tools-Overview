@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxJS Interview Questions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-lg p-6 sm:p-10 border border-gray-200">
+        <!-- Header Section -->
+        <header class="text-center mb-10">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">RxJS Interview Questions</h1>
+            <p class="text-gray-500 text-lg">A quick-reference guide for common questions and concepts.</p>
+        </header>
+
+        <!-- Main Content: Questions and Answers -->
+        <div class="space-y-12">
+
+            <!-- Section: Core Concepts -->
+            <section>
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-6 border-b-2 border-indigo-200 pb-2">1. Core Concepts</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">What is RxJS?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code sequences. It is often used to handle events, HTTP requests, and other asynchronous data streams.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">What is an Observable?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            An Observable is a representation of a stream of data over time. It is "lazy," meaning it doesn't execute or emit values until a subscriber is attached. Observables can emit zero, one, or multiple values over their lifetime, and can either complete or error out.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">What is a Subscriber?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            A Subscriber, also known as an Observer, is an object with three methods: <code>next()</code>, <code>error()</code>, and <code>complete()</code>. It is the consumer of the values emitted by an Observable. When you call <code>subscribe()</code> on an Observable, you provide an Observer.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Operators -->
+            <section>
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-6 border-b-2 border-indigo-200 pb-2">2. Operators</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">What are RxJS Operators?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Operators are pure functions that take an Observable as input and return a new Observable. They enable powerful transformations, filtering, and combinations of data streams without modifying the original source Observable. Operators are typically chained together using the <code>pipe()</code> method.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Difference between `map` and `switchMap`?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <code>map</code> transforms each value emitted by a source Observable and returns a new value. <code>switchMap</code> is a flattening operator. It maps each value to an inner Observable and then "switches" to the latest inner Observable, unsubscribing from the previous one. This is useful for scenarios like a search bar, where you only care about the result of the most recent query.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Explain `mergeMap` vs. `concatMap`.</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            <code>mergeMap</code> (or <code>flatMap</code>) subscribes to all inner Observables immediately and emits their values as they arrive. This can lead to concurrent operations. <code>concatMap</code> subscribes to the inner Observables one after another in a sequential order, waiting for each one to complete before subscribing to the next. This ensures order but can be slower.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section: Subjects -->
+            <section>
+                <h2 class="text-2xl font-semibold text-indigo-600 mb-6 border-b-2 border-indigo-200 pb-2">3. Subjects</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">What is a Subject?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            A Subject is a special type of Observable that can multicast, meaning it can emit values to multiple Observers simultaneously. It is also an Observer itself, so you can subscribe to it and also use its <code>next()</code>, <code>error()</code>, and <code>complete()</code> methods to manually control the stream.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">Difference between `Subject` and `BehaviorSubject`?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            A regular <code>Subject</code> does not have an initial value and only emits new values to subscribers who have subscribed after the value is emitted. A <code>BehaviorSubject</code> requires an initial value and will immediately emit the last known value (its initial value or the last emitted value) to any new subscriber.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-700 mb-2">When would you use `ReplaySubject`?</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            A <code>ReplaySubject</code> can replay a specified number of old values to new subscribers. For example, a <code>ReplaySubject(3)</code> would emit the last three values it received to any new subscriber. This is useful when you want new subscribers to have access to historical data from the stream.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</body>
+</html>

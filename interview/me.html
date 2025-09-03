@@ -1,10 +1,169 @@
-<h1>About Me</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use Inter font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>About Me</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .section-header {
+            border-bottom: 2px solid theme('colors.gray.200');
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex items-center justify-center min-h-screen p-4">
+    <div class="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-2xl p-8 md:p-12 text-center transform transition-transform duration-500 hover:scale-105">
+        <h1 class="text-4xl md:text-5xl font-bold mb-8 animate-fade-in-down">
+            About Me
+        </h1>
 
-<b>Present: Where I Am Now</b>
-<p>Full Stack Developer. Vue.js expert. .NET Core. Scalable systems. Modern UI tools. OCR technologies. MongoDB. CI/CD pipelines. Azure DevOps.</p>
+        <!-- Content for About Me sections -->
+        <div class="text-left space-y-8 md:space-y-12">
+            <!-- New Interview Section -->
+            <div class="space-y-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 section-header">
+                    Interview: My Pitch
+                </h2>
+                <div class="space-y-6">
+                    <!-- Tell Me About Yourself -->
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+                            The "Tell Me About Yourself" Question BHG Financial
+                             </h3>
 
-<b>Past: Where I Have Been in the Past</b>
-<p>Over the years, I have contributed to diverse projects, including modernizing legacy systems, developing secure platforms, and integrating advanced technologies like OCR and AI tools. My experience spans industries such as insurance, fintech, and payment processing, where I have consistently delivered high-quality software solutions.</p>
+                          <p>                            
+I've been a <b>successful</b> full-stack developer for several years, 
+working with fintech and insurance companies. 
+<br>
+&nbsp;&nbsp;&nbsp;where I've delivered significant results
 
-<b>Future: What Value Can I Bring to This Role</b>
-<p>As a Vue.js Subject Matter Expert, I bring a deep understanding of front-end development, coupled with robust backend expertise in .NET and SQL. My ability to integrate cutting-edge technologies and optimize workflows ensures I can add significant value to any team, driving innovation and efficiency in software development.</p>
+                          </p>
+
+                          <p>
+<br>
+My biggest strengths are:
+<ul class="list-disc list-inside space-y-2 text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300 pl-4">
+    <li><span class="font-semibold">Technical Expertise:</span> 
+        <br>&nbsp;&nbsp;&nbsp;A proven track record with .NET Core and front end UI tools</li>
+
+<br>Cloud Readiness – Knowledge of Azure (Functions, Logic Apps, DevOps).
+<br>2️⃣ Modern Frontend – Angular / React to build powerful UIs.
+<br>3️⃣ APIs & Microservices – Designing scalable, reusable, secure APIs.
+<br>4️⃣ Data & AI – Leveraging SQL, NoSQL, and integrating AI with .NET.
+<br>5️⃣ DevOps Practices – CI/CD pipelines, containerization, and monitoring.
+<br>6️⃣ Soft Skills – Problem-solving, communication, and collaboration.     
+ <br>
+    <li><span class="font-semibold">Problem-Solving:</span> 
+        <br>&nbsp;&nbsp;&nbsp;
+        The ability to modernize legacy systems and integrate advanced technologies.</li>
+    <li><span class="font-semibold">Impactful Results:</span>br&nbsp;&nbsp;&nbsp;
+        <br>>&nbsp;&nbsp;&nbsp; A history of delivering high-quality software solutions across 
+         these industries.</li>
+</ul>
+<BR>
+
+
+
+<hr class="my-8 border-t-2 border-gray-300 dark:border-gray-700">
+
+
+
+
+<br>
+
+                    <!-- Why Do You Want to Work Here? -->
+                    <div class="space-y-2">
+                        <h3 class="text-xl md:text-2xl font-semibold text-gray-700 dark:text-gray-300">
+                            The "Why Here?" Question (using the 3R Framework)
+                        </h3>
+                        <p class="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                            The reason I'm applying for this opportunity is based on the following framework:
+                        </p>
+                        <ul class="list-disc list-inside space-y-4 text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300 pl-4">
+                            <li>
+                                <span class="font-semibold">1) Reason:</span> "When I looked at your website, you mentioned a mission statement about X, and that deeply resonated with me."
+                            </li>
+                            <li>
+                                <span class="font-semibold">2) Recognition:</span> "I love the fact that your company values Y, and I have always strived to embody that value in my own work."
+                            </li>
+                            <li>
+                                <span class="font-semibold">3) Right Fit:</span> "This makes me a right fit for the role because my experience in Z directly aligns with your needs, and I am excited to contribute to a company that shares my values."
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Existing Present Section -->
+            <div class="space-y-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-blue-600 dark:text-blue-400 section-header">
+                    Present: Where I Am Now
+                </h2>
+                <p class="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                    A dedicated **Full Stack Developer** and a **Vue.js expert**, I specialize in building scalable systems with **.NET Core**. My work integrates modern UI tools and cutting-edge technologies like **OCR** and **MongoDB**. I am also proficient in setting up robust **CI/CD pipelines** using **Azure DevOps**, ensuring efficient and continuous delivery.
+                </p>
+            </div>
+
+            <!-- Existing Past Section -->
+            <div class="space-y-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-green-600 dark:text-green-400 section-header">
+                    Past: Where I Have Been
+                </h2>
+                <p class="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                    Over the years, I have contributed to diverse projects, including modernizing legacy systems, developing secure platforms, and integrating advanced technologies like **OCR** and **AI tools**. My experience spans industries such as insurance, fintech, and payment processing, where I have consistently delivered high-quality software solutions.
+                </p>
+            </div>
+
+            <!-- Existing Future Section -->
+            <div class="space-y-4">
+                <h2 class="text-2xl md:text-3xl font-semibold text-purple-600 dark:text-purple-400 section-header">
+                    Future: What Value I Can Bring
+                </h2>
+                <p class="text-base md:text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                    As a **Vue.js Subject Matter Expert**, I bring a deep understanding of front-end development, coupled with robust backend expertise in **.NET** and **SQL**. My ability to integrate cutting-edge technologies and optimize workflows ensures I can add significant value to any team, driving innovation and efficiency in software development.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Simple animation for a more dynamic look -->
+    <style>
+        @keyframes fade-in-down {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-fade-in-down {
+            animation: fade-in-down 1s ease-out;
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 1s ease-out;
+        }
+    </style>
+</body>
+</html>

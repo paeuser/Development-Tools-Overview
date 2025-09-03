@@ -1,0 +1,113 @@
+customers
+claims (claim_id,customer_id)
+payments (payment_id,claim_id)
+
+
+
+Find customers with > 3 claims in last year.
+
+
+select c.first_name , c.last_name  from customers c 
+where c.customer_id in (
+
+select customer_id from claims 
+group  by customer_id
+having count(*) >1)
+
+_______________________________________________________
+
+This will return total payouts per insurer, ordered from 
+highest to lowest.
+
+SELECT i.name AS insurer_name,
+       SUM(p.payment_amount) AS total_payout
+FROM payments p
+JOIN claims c ON p.claim_id = c.claim_id
+JOIN insurers i ON c.insurer_id = i.id
+GROUP BY i.name
+ORDER BY total_payout DESC;
+
+_______________________________________________________	
+Join users, claims, and payments to show claim status 
+and amount.
+
+
+SELECT 
+    c.customer_id,
+    c.first_name,
+    c.last_name,
+    cl.claim_id,
+    cl.status,
+    cl.claim_amount,
+    COALESCE(SUM(p.payment_amount), 0) AS total_paid
+FROM customers c
+JOIN claims cl ON c.customer_id = cl.customer_id
+LEFT JOIN payments p ON cl.claim_id = p.claim_id
+GROUP BY 
+    c.customer_id, c.first_name, c.last_name,
+    cl.claim_id, cl.status, cl.claim_amount;
+
+
+_______________________________________________________
+
+
+Find customers who have more than 1 claim
+   i can see count per customers  
+   select customer_id , count(*) from claims
+   group by customer_id
+
+
+select c.first_name,c.last_name from customers c
+where c.customer_id IN (
+
+select customer_id  from claims
+group by customer_id
+having count(*) > 1
+)
+
+
+_______________________________________________________
+
+List all claims where the total payments 
+are less than the claim amount
+his SQL query finds all claims that have not been fully 
+paid — i.e., claims where the total payments made are less than the claim amount.
+
+SELECT claim_id, claim_amount
+FROM claims
+WHERE claim_amount > (
+    SELECT COALESCE(SUM(payment_amount), 0)
+    FROM payments
+    WHERE payments.claim_id = claims.claim_id
+);
+
+
+
+_______________________________________________________
+
+
+Return all customers who have at least one "Open" claim
+
+SELECT *
+FROM customers
+WHERE customer_id IN (
+    SELECT customer_id
+    FROM claims
+    WHERE status = 'Open'
+);
+
+
+_______________________________________________________
+
+
+Show each claim along with total payments (if any)
+
+SELECT 
+    claim_id, 
+    claim_amount,
+    (SELECT SUM(payment_amount) 
+     FROM payments p 
+     WHERE p.claim_id = c.claim_id) AS total_paid
+FROM claims c;
+
+

@@ -1,0 +1,128 @@
+
+
+
+function greet(name: string): string {
+  return `Hello, ${name}!`;
+}
+
+
+const greet = function(name: string): string {
+  return `Hello, ${name}!`;
+};
+
+const greet = (name: string): string => {
+  return `Hello, ${name}!`;
+};
+
+
+console.log(greet("Eric"));
+
+Why Use Interfaces?
+Safety: Prevent bugs by catching bad data early.
+Autocomplete: IDEs suggest correct properties and types.
+Documentation: Code is self-explanatory about data shape.
+Refactoring: Easier to change and maintain.
+
+
+// Union type for strict status values
+	interface Claim {
+  		id: number;
+  		amount: number;
+  		status: "Open" | "Closed";  }
+
+
+How to Use This Interface
+
+
+	const claim1: Claim = {
+  	id: 101,
+  	amount: 1500,
+  	status: "Open"
+	};
+
+
+Filter open claims from an array:
+This function takes an array of Claim 
+objects and returns a new array containing 
+only the claims where the status is "Open".
+
+const filterOpenClaims = (claims: Claim[]): Claim[] => {
+  return claims.filter(claim => claim.status === "Open");
+};
+
+
+Write a function that takes an array of Claim and returns only those with amount > 1000.
+
+
+interface Claim {
+  id: number;
+  amount: number;
+  status: "Open" | "Closed";
+}
+
+function filterHighAmountClaims(claims: Claim[]): Claim[] {
+  return claims.filter(claim => claim.amount > 1000);
+}
+
+// Example usage:
+const claims: Claim[] = [
+  { id: 1, amount: 1000, status: "Open" },
+  { id: 2, amount: 2000, status: "Closed" },
+  { id: 3, amount: 1500, status: "Open" },
+  { id: 4, amount: 500, status: "Open" }
+];
+
+console.log(filterHighAmountClaims(claims));
+// Output: [
+//   { id: 2, amount: 2000, status: "Closed" },
+//   { id: 3, amount: 1500, status: "Open" }
+// ]
+
+
+Async example: Fetch claim data (mocked with Promise.resolve) and log statuses.
+
+interface Claim {
+  id: number;
+  amount: number;
+  status: "Open" | "Closed";
+}
+
+// Mock async function that "fetches" claim data
+function fetchClaims(): Promise<Claim[]> {
+  const mockData: Claim[] = [
+    { id: 1, amount: 1000, status: "Open" },
+    { id: 2, amount: 2000, status: "Closed" },
+    { id: 3, amount: 1500, status: "Open" },
+  ];
+  return Promise.resolve(mockData);
+}
+
+// Async function to get claims and log their statuses
+async function logClaimStatuses() {
+  const claims = await fetchClaims();
+  claims.forEach(claim => {
+    console.log(`Claim ID: ${claim.id}, Status: ${claim.status}`);
+  });
+}
+
+logClaimStatuses();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

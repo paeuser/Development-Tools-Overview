@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angular Interview Questions & Answers</title>
+  <!-- Materialize CSS CDN for styling -->
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      padding: 2rem;
+      background-color: #f5f5f5;
+      font-family: 'Roboto', sans-serif;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    }
+    h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #dd0031; /* Angular red */
+    }
+    .question {
+      margin-top: 1.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      background: #e8e8e8;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      font-weight: 600;
+      color: #333;
+    }
+    .question:hover {
+      background: #d0d0d0;
+    }
+    .answer {
+      margin-top: 0.5rem;
+      padding-left: 1rem;
+      display: none;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #444;
+    }
+    .active .answer {
+      display: block;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    a {
+      color: #dd0031;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Angular Interview Questions & Answers</h1>
+
+    <section id="faq">
+      <div class="qa-item">
+        <div class="question">1. What is Angular?</div>
+        <div class="answer">
+          Angular is a TypeScript-based open-source front-end web application framework led by the Angular Team at Google. It enables developers to build dynamic single-page applications using components, services, and a modular architecture.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">2. What are components in Angular?</div>
+        <div class="answer">
+          Components are the fundamental building blocks of Angular applications. Each component consists of an HTML template, a CSS stylesheet, and a TypeScript class that controls a part of the user interface.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">3. What is Angular CLI?</div>
+        <div class="answer">
+          Angular CLI is a command-line interface tool that helps automate development tasks such as project creation, configuration, building, testing, and deployment of Angular applications.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">4. What is data binding in Angular?</div>
+        <div class="answer">
+          Data binding in Angular is the synchronization between the model (component class) and the view (HTML template). It includes interpolation, property binding, event binding, and two-way binding using <code>[(ngModel)]</code>.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">5. What are directives in Angular?</div>
+        <div class="answer">
+          Directives are classes that add additional behavior to elements in Angular applications. Structural directives like <code>*ngIf</code> and <code>*ngFor</code> change the DOM layout, while attribute directives like <code>ngClass</code> and <code>ngStyle</code> change the appearance or behavior of an element.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">6. Explain Angular modules (NgModules).</div>
+        <div class="answer">
+          NgModules are containers that group components, directives, pipes, and services that are related. The root module is usually <code>AppModule</code>, which bootstraps the Angular application.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">7. What is Dependency Injection (DI) in Angular?</div>
+        <div class="answer">
+          Dependency Injection is a design pattern Angular uses to supply components or services with dependencies they require. It promotes modularity and ease of testing by managing the creation and sharing of service instances.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">8. What is RxJS and how is it used in Angular?</div>
+        <div class="answer">
+          RxJS (Reactive Extensions for JavaScript) is a library for reactive programming using Observables. Angular uses RxJS extensively for asynchronous operations such as HTTP requests and event handling.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">9. What are Angular lifecycle hooks?</div>
+        <div class="answer">
+          Lifecycle hooks are methods that Angular calls at specific points in a component's lifecycle, such as <code>ngOnInit()</code>, <code>ngOnChanges()</code>, <code>ngOnDestroy()</code>, allowing developers to perform actions during those stages.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">10. How does Angular handle forms?</div>
+        <div class="answer">
+          Angular supports two types of forms: Template-driven forms (simple forms with directives in templates) and Reactive forms (more powerful, with explicit form model and validation logic in the component class).
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">11. What is Angular Router?</div>
+        <div class="answer">
+          Angular Router enables navigation from one view to another within a single-page application. It supports features like lazy loading, route guards, and parameterized routes.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">12. What is the difference between Observable and Promise?</div>
+        <div class="answer">
+          A Promise handles a single event when an async operation completes or fails, whereas an Observable can handle zero or more events over time, supports operators, and can be cancelled.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">13. What is Angular Universal?</div>
+        <div class="answer">
+          Angular Universal is a technology for server-side rendering of Angular applications, improving performance and SEO by rendering pages on the server before sending them to the client.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">14. How do you optimize an Angular application?</div>
+        <div class="answer">
+          Techniques include Ahead-of-Time (AOT) compilation, lazy loading modules, using OnPush change detection strategy, minimizing bundle size with tree shaking, and avoiding unnecessary change detection cycles.
+        </div>
+      </div>
+
+      <div class="qa-item">
+        <div class="question">15. What are Angular Pipes?</div>
+        <div class="answer">
+          Pipes transform data in templates. Angular provides built-in pipes like <code>date</code>, <code>uppercase</code>, and custom pipes can be created to format data display.
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      Angular Interview Questions & Answers | Responsive HTML Version
+    </footer>
+  </div>
+
+  <script>
+    // Accordion toggle logic
+    document.querySelectorAll(".question").forEach((questionEl) => {
+      questionEl.addEventListener("click", () => {
+        questionEl.parentNode.classList.toggle("active");
+      });
+    });
+  </script>
+
+  <!-- Materialize JS (optional here) -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    defer
+  ></script>
+</body>
+</html>

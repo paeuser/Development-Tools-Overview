@@ -1,0 +1,6 @@
+💡 Conceptual Overview:
+Entity	Description
+Customer:       The person who owns the insurance policy and files a claim.
+Claim : 	A request made by the customer to the insurer for compensation.
+Insurer:	The company responsible for reviewing and paying out claims.
+Payment:	The actual amount paid out by the insurer in response to a claim.

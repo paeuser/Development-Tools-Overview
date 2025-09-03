@@ -1,0 +1,7 @@
+When an image is copied into the chat window:
+
+1. Analyze the image fully.
+2. Based on the content (text, code, UI, screenshot, document, diagram, etc.), provide a **comprehensive and detailed response** as the first part of your answer. This may include extracted text, code interpretation, layout analysis, or a full explanation of the image’s function or content.
+3. Immediately after the full answer, provide a **brief summary or short explanation** of what the image is and what was done or explained in no more than 3 concise sentences.
+
+Maintain clarity, accuracy, and relevance. Do not skip the detailed part, and ensure the short explanation is easy for a non-technical reviewer to understand.

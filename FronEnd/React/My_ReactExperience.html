@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My React Experience</title>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f3f4f6;
+      color: #1f2937;
+    }
+  </style>
+</head>
+<body class="antialiased bg-gray-100 font-sans text-gray-900">
+  <div class="container mx-auto px-4 py-8 md:px-6 lg:px-8 max-w-5xl">
+    <!-- Header Section -->
+    <header class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">My React Experience</h1>
+      <p class="text-gray-600 max-w-xl mx-auto">
+        Detailed summary of my professional journey using React across multiple projects and companies.
+      </p>
+    </header>
+
+    <!-- Experience Section -->
+    <section class="space-y-12">
+
+      <!-- QPAY Experience -->
+      <article>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">QPAY, Miami, FL</h2>
+        <p class="italic text-gray-600 mb-4">Full-Stack Software Engineer — Jan 2008 – May 2015</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Extended and maintained an ASP.NET MVC4 payment UI application by integrating ReactJS (versions 0.12–0.14) using nugget packages and React scripts.</li>
+          <li>Developed React JSX class components and rendered them within Razor views, specifically for dynamic payment terms and conditions.</li>
+          <li>Utilized React.Web and React.Core libraries to enable smooth integration of React components into the .NET MVC pipeline.</li>
+          <li>Leveraged JavaScriptEngineSwitcher.v8 for efficient JavaScript execution within the .NET environment, supporting server-side rendering and interaction.</li>
+          <li>Implemented dynamic CSS class updates through JavaScript event handlers to enhance UI responsiveness and user experience.</li>
+          <li>Collaborated across frontend and backend teams to deliver seamless payment processing interfaces with clean, maintainable code.</li>
+        </ul>
+        <p class="mt-4 font-semibold">React version context:</p>
+        <p class="text-gray-700">
+          React was open-sourced in 2013. At that time, no Hooks or functional components existed yet. Integration was done into an existing ASP.NET MVC4 Razor environment using React.NET tooling (React.Web, React.Core), supporting JSX, class components, and Virtual DOM, but lacking modern features like hooks or concurrent mode.
+        </p>
+        <p class="mt-2 font-semibold">Key learnings:</p>
+        <ul class="list-disc list-inside space-y-1 text-gray-700">
+          <li>JSX syntax for writing component templates.</li>
+          <li>Virtual DOM rendering principles.</li>
+          <li>Handling JavaScript event handlers to dynamically update UI and CSS classes.</li>
+          <li>Server-side JavaScript execution within .NET.</li>
+        </ul>
+      </article>
+
+      <!-- InComm Agent Solutions Experience -->
+      <article>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">InComm Agent Solutions, Miami, FL</h2>
+        <p class="italic text-gray-600 mb-4">Full-Stack Software Engineer — May 2015 – May 2020</p>
+        <p class="mb-4">
+          React 16 was released in September 2017, introducing the Fiber architecture. Next.js 4 was released in late 2017, enhancing static export support. This project was developed in 2018.
+        </p>
+        <p class="mb-4 font-semibold">Project Summary:</p>
+        <p class="mb-2">Developed a one-time online application form for MetroPCS authorized dealers to request PCCS access, built using React and Next.js with form validation, conditional logic, and secure submission to internal APIs.</p>
+
+        <p class="mb-2 font-semibold">Multi-Step Form Architecture:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700 mb-4">
+          <li>Implemented a multi-step form where each step collected specific data like owner info and business address.</li>
+          <li>Navigation controlled via "Next" button; final step had a "Submit" button to send data securely to backend.</li>
+          <li>Performed validation at each step before advancing.</li>
+          <li>Centralized form data in state slices (useReducer, Context API, or Redux) to persist across steps.</li>
+          <li>Securely submitted all validated data via POST to internal API.</li>
+        </ul>
+
+        <p class="mb-4 font-semibold">Why Next.js?</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Server-Side Rendering (SSR) for better performance and SEO.</li>
+          <li>File-based routing replaced React Router.</li>
+          <li>Created app using <code>npx create-next-app</code>.</li>
+          <li>Used Redux for state management and Axios for secure API requests.</li>
+        </ul>
+
+        <p class="mb-4 font-semibold">Technical Highlights:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>React (v16+), Next.js (v6–8), JavaScript, CSS Modules.</li>
+          <li>Multi-step form with input validation and centralized state.</li>
+          <li>File-based routing and conditional rendering.</li>
+          <li>API integration using fetch() for final submission.</li>
+        </ul>
+
+        <p class="mb-4 font-semibold">Why React?</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Component-Based Architecture for modular and scalable UI.</li>
+          <li>Virtual DOM for efficient UI updates.</li>
+          <li>JSX for declarative UI descriptions.</li>
+          <li>Next.js SSR for SEO and performance.</li>
+          <li>Rich ecosystem of libraries for forms, validation, and state management.</li>
+          <li>Improved collaboration and maintainability.</li>
+        </ul>
+      </article>
+
+      <!-- Fidelity FIS/WorldPay Experience -->
+      <article>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-2">Fidelity FIS/WorldPay, Jacksonville, FL</h2>
+        <a href="https://www.fisglobal.com" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline mb-2 inline-block">https://www.fisglobal.com</a>
+        <p class="italic text-gray-600 mb-4">Full-Stack Software Engineer</p>
+        <p class="mb-4">
+          Built a React 16.8 Payment Reconciliation Dashboard with JWT authentication and Material-UI (MUI) v4, simulating real-world auditing workflows; reduced demo setup time by 50% and supported training for 20+ team members.
+        </p>
+
+        <p class="mb-4 font-semibold">Business Context:</p>
+        <p class="mb-4 text-gray-700">
+          Fidelity FIS/WorldPay processes massive payment transactions daily with challenges in reconciliation and discrepancy detection. The finance, audit, and compliance teams needed a centralized, read-only dashboard for transaction visibility.
+        </p>
+
+        <p class="mb-4 font-semibold">UI Implementation:</p>
+        <ul class="list-disc list-inside space-y-2 text-gray-700">
+          <li>Used Material-UI (MUI) components: Table, Card, TextField, Select, Button, Grid, Box.</li>
+          <li>Styled with makeStyles and custom themes for branding.</li>
+          <li>React functional components with Hooks for lifecycle and state management.</li>
+          <li>Conditional rendering for loading and empty states.</li>
+        </ul>
+
+        <p class="mb-4 font-semibold">State Management:</p>
+        <p class="text-gray-700 mb-4">
+          Data fetched from backend APIs was stored in React component state and managed globally via Context API for consistent UI rendering and performance.
+        </p>
+
+        <p class="mb-4 font-semibold">About HttpClient in React/JavaScript:</p>
+        <p class="text-gray-700">
+          Unlike .NET environments, React/browser JavaScript does not have a built-in HttpClient. Common choices are native <code>fetch()</code> API or third-party libraries like Axios.
+        </p>
+      </article>
+
+    </section>
+  </div>
+</body>
+</html>

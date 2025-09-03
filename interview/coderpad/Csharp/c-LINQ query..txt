@@ -1,0 +1,210 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+// Define the Claim class
+public class Claim
+{
+    public int Id { get; set; }
+    public double Amount { get; set; }
+    public string Status { get; set; } // "Open" or "Closed"
+    public string Insurer { get; set; } // e.g. "AllState", "Geico"
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Sample list of claims
+        List<Claim> claims = new List<Claim>
+        {
+            new Claim { Id = 1, Amount = 1200, Status = "Open", Insurer = "AllState" },
+            new Claim { Id = 2, Amount = 800, Status = "Closed", Insurer = "Geico" },
+            new Claim { Id = 3, Amount = 1500, Status = "Open", Insurer = "AllState" },
+            new Claim { Id = 4, Amount = 600, Status = "Closed", Insurer = "Geico" },
+            new Claim { Id = 5, Amount = 2000, Status = "Open", Insurer = "StateFarm" },
+        };
+
+        // 🔍 LINQ: Filter open claims and group by insurer with total amount
+        var openClaimTotals = claims
+            .Where(c => c.Status == "Open")
+            .GroupBy(c => c.Insurer)
+            .Select(group => new
+            {
+                Insurer = group.Key,
+                TotalAmount = group.Sum(c => c.Amount)
+            });
+
+        // Display results
+        foreach (var item in openClaimTotals)
+        {
+            Console.WriteLine($"Insurer: {item.Insurer}, Total Open Claim Amount: {item.TotalAmount}");
+        }
+    }
+}
+
+
+                                              Filter the list so you only work with claims that are marked as "Open".
+                                             .Where(c => c.Status == "Open")
+                                             Group the filtered open claims by their Insurer.
+                                             .GroupBy(c => c.Insurer)
+
+
+
+public static string ReverseString(string input)
+{
+    char[] charArray = input.ToCharArray(); // Convert string to character array
+    Array.Reverse(charArray);               // Reverse the array
+    return new string(charArray);           // Convert back to string
+}
+
+
+
+Given a list of claims, return only those marked “open.”
+
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+// To execute C#, please define "static void Main" on a class
+// named Solution.
+
+class Solution
+{
+    
+        public string ReverseString(string input)
+        {
+            char[] charArray = input.ToCharArray(); // Convert string to character array
+            Array.Reverse(charArray);               // Reverse the array
+            return new string(charArray);           // Convert back to string
+        }
+
+        public List<Claim> GetOpenClaims(List<Claim> claims)
+            {
+                return claims
+                    .Where(c => c.Status == "Open")
+                    .ToList();
+            }
+
+
+    static void Main(string[] args)
+    {
+       Claim[] claims = new Claim[] {
+            new Claim { Id = 1, Amount = 1000, Status = "Open" },
+            new Claim { Id = 2, Amount = 500, Status = "Closed" },
+            new Claim { Id = 3, Amount = 1500, Status = "Open" }
+        };
+
+        foreach (var claim in claims) {
+            if (claim.Amount > 1000) {
+                Console.WriteLine($"Claim {claim.Id} is greater than 1000: {claim.Amount}");
+            }
+        }
+        var solution = new Solution();
+        Console.WriteLine(solution.ReverseString("eric").ToString());
+
+        var allClaims = new List<Claim>
+        {
+            new Claim { Id = 1, Amount = 1000, Status = "Open" },
+            new Claim { Id = 2, Amount = 500, Status = "Closed" },
+            new Claim { Id = 3, Amount = 750, Status = "Open" }
+        };
+
+       
+       var openClaims = solution.GetOpenClaims(allClaims);
+
+        Console.WriteLine("Open Claims:");
+        foreach (var claim in openClaims)
+        {
+             bool IsHighValue = claim.IsHighValue();
+            Console.WriteLine($"Id: {claim.Id}, Amount: {claim.Amount}, Status: {claim.Status}, IsHighValue: {IsHighValue}");
+        }
+
+ 	 var totals = Claim.GetTotalsByInsurer(allClaims);
+
+        Console.WriteLine("\nTotals by Insurer:");
+        foreach (var entry in totals)
+        {
+            Console.WriteLine($"Insurer: {entry.GetType().GetProperty("Insurer")?.GetValue(entry)}, " +
+                            $"TotalAmount: {entry.GetType().GetProperty("TotalAmount")?.GetValue(entry)}");
+        }
+
+
+
+
+    }
+}
+
+class Claim {
+    public int Id { get; set; }
+    public double Amount { get; set; }
+    public string Status { get; set; }
+
+  public bool IsHighValue()
+    {
+        return Amount > 10000;
+    }
+
+ public static IEnumerable<object> GetTotalsByInsurer(List<Claim> claims)
+    {
+        return claims
+            .GroupBy(c => c.Insurer)
+            .Select(group => new
+            {
+                Insurer = group.Key,
+                TotalAmount = group.Sum(c => c.Amount)
+            });
+    }
+
+}
+	
+
+•	Write a Claim class with properties (Id, Amount, Status) and a method to calculate if it’s “high value.”
+
+
+•	Use LINQ to group claims by insurer and total the amounts.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        var claims = new List<Claim>
+        {
+            new Claim { Id = 1, Amount = 1000, Status = "Open", Insurer = "AllState" },
+            new Claim { Id = 2, Amount = 500, Status = "Closed", Insurer = "Liberty" },
+            new Claim { Id = 3, Amount = 1500, Status = "Open", Insurer = "AllState" },
+            new Claim { Id = 4, Amount = 750, Status = "Closed", Insurer = "Liberty" },
+            new Claim { Id = 5, Amount = 2000, Status = "Open", Insurer = "Geico" }
+        };
+
+        var totalsByInsurer = claims
+            .GroupBy(c => c.Insurer)
+            .Select(group => new
+            {
+                Insurer = group.Key,
+                TotalAmount = group.Sum(c => c.Amount)
+            });
+
+        foreach (var entry in totalsByInsurer)
+        {
+            Console.WriteLine($"{entry.Insurer}: ${entry.TotalAmount}");
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+                    

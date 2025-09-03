@@ -1,0 +1,17 @@
+Aggregations (COUNT, SUM, GROUP BY).
+
+Write a query to find how many employees work 
+in each department. 
+Show department name and the employee count.
+
+
+select d.name , count(*) as '# of employees'  from departments d
+inner join employees e on d.id = e.department_id
+group by d.name 
+
+Write a query to find the total salary paid per department. 
+Show the department name and the total salary.
+
+select d.name, sum(e.salary) as total_salary from departments d 
+inner join employees e on d.id = e.department_id
+group by d.name

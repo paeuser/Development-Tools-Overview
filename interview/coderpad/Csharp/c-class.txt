@@ -1,0 +1,25 @@
+public class Person
+{
+    // Auto-implemented properties
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    // Constructor to initialize properties
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Method to display a greeting
+    public void Greet()
+    {
+        Console.WriteLine($"Hello, my name is {Name} and I am {Age} years old.");
+    }
+
+    // Method to check if the person is an adult
+    public bool IsAdult()
+    {
+        return Age >= 18;
+    }
+}

@@ -1,0 +1,75 @@
+
+
+int[] numbers = { 1,2,3,4};
+Console.WriteLine(string.Join(",",numbers));
+
+
+// Declare an array of integers with 5 elements
+        int[] numbers = new int[5];
+        numbers[0] = 10;
+        numbers[1] = 20;
+        Console.WriteLine(string.Join(", ", numbers));
+
+
+
+// Initialize array with values
+string[] fruits = { "Apple", "Banana", "Cherry" };
+
+
+fruits[0] = "Apricot";    // Change first element
+Console.WriteLine(fruits[1]);  // Output: Banana
+
+
+for (int i = 0; i < fruits.Length; i++) {
+    Console.WriteLine(fruits[i]);
+}
+
+// Or using foreach loop
+foreach (string fruit in fruits) {
+    Console.WriteLine(fruit);
+}
+
+
+
+using System;
+
+// To execute C#, please define "static void Main" on a class
+// named Solution.
+
+class Solution
+{
+    
+     public string ReverseString(string input)
+        {
+            char[] charArray = input.ToCharArray(); // Convert string to character array
+            Array.Reverse(charArray);               // Reverse the array
+            return new string(charArray);           // Convert back to string
+        }
+
+
+    static void Main(string[] args)
+    {
+       Claim[] claims = new Claim[] {
+            new Claim { Id = 1, Amount = 1000, Status = "Open" },
+            new Claim { Id = 2, Amount = 500, Status = "Closed" },
+            new Claim { Id = 3, Amount = 1500, Status = "Open" }
+        };
+
+        foreach (var claim in claims) {
+            if (claim.Amount > 1000) {
+                Console.WriteLine($"Claim {claim.Id} is greater than 1000: {claim.Amount}");
+            }
+                
+          var solution = new Solution();
+          Console.WriteLine(solution.ReverseString("eric").ToString());
+
+        }
+    }
+}
+
+class Claim {
+    public int Id { get; set; }
+    public double Amount { get; set; }
+    public string Status { get; set; }
+}
+

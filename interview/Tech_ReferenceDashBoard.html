@@ -31,7 +31,7 @@
                <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
                 <div>
                     <h2 class="text-2xl font-bold text-blue-600 mb-4"> 
-                        <a href="../FronEnd/React/React.html"><b>React.js</b></a>
+                        <a href="../FronEnd/React/ReactInterviewQuestions.html"><b>React.js</b></a>
                     </h2>
                     <div class="text-gray-700">
                         JSX<br>
@@ -48,6 +48,34 @@
                         Cypress (E2E)<br>
                         Playwright (E2E)
                         Scaffolding the App (Vite) npx create-vite@latest . --template react-ts<br>
+                          
+                         <br><br><b>FIS 2020 2022</b>  
+
+                        <br>Built a React 16.8 Payment Reconciliation Dashboard<br>
+                        <pr>Payment settlements: big topic. buyers , payment processor and bank </pr>
+                        <br>real-world auditing of credit card transactions.
+                        <br>and additional transaction data from World Pay 
+                        <br>batches to Fis.
+                        <br>intuitive UI to show sortable transaction tables using 
+                        <br><b>Material US datagrid</b>, 
+                        <br>detailed audit trails
+                        <br>used by products owners to create user stroies for the new system.
+                        <br> here is used <b>Enterprise level industry packages</b>
+                        <br>used <b>axios</b> inside <b>useEffect hooks</b> hooks to fetch data
+                         <br><br>
+                        <b>InComm Agent Solutions </b>
+                        <br>one-time application form using React and Next.js to streamline onboarding for new 
+                        dealers across the U.S.; 
+                        <br>why next.js?
+                        <br>1 Fast Performance via Static Generation
+                        <br>2 Simply routing 
+                        <br>Next.js makes it easy to ensure the form is indexable by search engines,
+                        <br>the app used : Reusable input component for text fields
+                        <br> Form Validation Logic handel by Yup + react-hook-form.
+                        <br> Material UI or Tailwind CSS for faster layout and responsive design
+                        <br><br>SEO refers to techniques that make your web 
+                        <br>pages discoverable and rank higher in search engines like Google or Bing.
+
                     </div>
                 </div>
             </div>
@@ -62,8 +90,25 @@
                         Services & Dependency Injection<br>
                         Routing<br>
                         Forms (Template-driven & Reactive)<br>
-                        RxJS<br>
-                        Change Detection<br>
+                        <a href="../FronEnd/Angular/RXJS.html"><b>RxJS</b></a><br>
+                           <ui>
+                            <li>library for reactive programming using Observables</li>
+                            <li>Observable  emit  values only when you subscribe to it</li>
+                            <li>A Subscriber, also known as an Observer methods(next error() complete())</li>
+                            <li>Operators are pure functions return a new Observable. allow operation and transformation</li>
+
+                               <br>
+                                 <b>Promise:</b>  A Promise is designed to handle a single future value. are <b>eager</b>.
+                                 This means that as soon as you create a Promise, it starts executing the asynchronous task,
+                                 <br> <b>Observable:</b> An Observable is designed to handle a stream of multiple values over time.
+                                   Observable: Observables are <b> lazy</b>
+                           </ui>
+                        <br/><br>
+                        <b>Change Detection</b><br>
+                           <BR>
+                         <b> Zone.js</b> old way to render . not efficient  <BR>   
+                        <b>Signal </b>(new way to work with detention and rendering) work like RXJS 
+                             <BR>
                         Angular CLI<br>
                         NgRx (State Management)<br>
                         <b>Testing Frameworks:</b><br>
@@ -72,6 +117,32 @@
                         Protractor (E2E - deprecated)<br>
                         Cypress (E2E)<br>
                         Playwright (E2E)
+
+                <br><br>
+<b>Angular (Version 14)</b> Assurity ECS (June 2023):
+
+<br><br>
+<b>Angular (Version 11/12)</b> Fidelity FIS/WorldPay (June 2020)
+
+<br>Reusable Angular components packaged as self-contained
+<br><b>custom elements</b> (web components) for seamless integration
+
+<br>Embeddable scripts that merchants could include on their sites,
+
+<br>Enabling dynamic instantiation of <b>payment pop-up</b>
+
+<br>Using PayPal proprietary scripts.
+
+
+
+
+
+
+
+
+
+                         
+                        
                     </div>
                 </div>
             </div>
@@ -484,46 +555,64 @@
                 <a target="_blank" href="../Development%20Methodologies/Event-Driven-Architecture.html">Event-Driven Architecture (EDA)</a>
             </h2>
             <div class="text-gray-700">
-                <ul class="list-none space-y-1">
-                    <li>Event Producers</li>
-                    <li>Event Consumers</li>
-                    <li>Event Broker (Bus)</li>
-                    <li>Decoupling</li>
-                    <li>Scalability</li>
-                    <li>Real-time responsiveness</li>
-                    <li>Fault Tolerance</li>
-<li>An event is a record of something that happened at a specific time.</li>
- <li>events in traditional databases can be cumbersome</li> 
- <li>Kafka uses a log</li>
-  <li>Apache Kafka manages these logs using <b>topics</b></li>
-   <li>small services : real-time analysis</li>
-   <li>Confluent offers <b>KSQL</b>, a SQL-like language for querying Kafka topics.</li>
-   <li><br>Confluent Platform is a distribution of Kafka with extra tools and managed services, including Confluent Cloud for serverless Kafka in the cloud.</li>
+                
+                <b>Assurity Kafka:</b>
+                
+                <br>uses a publish/subscribe (Pub/Sub) model with Kafka <br>
+                
+                 <br> database  where good  store things. but not events because when it grou it is complex to undrstand.
+                  <br> kafka is grate to create logs of events which represent something that happen in the business
+                <br>
+                 <br><b>A Kafka log </b>is an append-only, ordered sequence of events. Each event has a timestamp and a description.
+                  <br><br>
+                <b>Kafka Connect</b> can bring data from (existing database or a SaaS product) into Kafka topics, making it available for new services to consume <br><br>
+  <br>
+                <B>Producer: </B> service or connector publishes an event to a Kafka topic
+                <br /> 
+                <BR><B>Consumer:</B>  background service It listens (subscribes) to the Kafka topic for new events.<br>
+                 after receiving and processing the event, enriches the data if needed and then writes the final processed record to MongoDB.
+  
+                 <br>
+                 New relic errors logs <br>
+                 1) Problem: Kafka consumer loses connection to the <b>broker.</b> <BR>
+                 Solution: found the error in logs and network team adders the issue. <BR>
 
-   <br>
-   Message Models: <br> 
-   Queue-based,Pub/Sub (Publish/Subscribe):
-   <br>
-   Kafka broker running locally. Using Docker 
-   <br>
-   Since the introduction of KRaft Kafka no longer requires Apache ZooKeeper® for managing cluster metadata
+                 2) Problem: MongoDB records are incomplete after processing. <br>
+                 Solution: Review and fix the data enrichment logic in the consumer application.
 
-   <br> <br>
-   <b>Confluent Cloud kafka :</b>
-    <br>
-    Confluent Cloud API Key <br>
-    Producer : (Sent a test message:
-this is my first kafka message)
-    <br>
-    Consumer    
-    <br>
-    Kafka Topic in Confluent Cloud
+                 <br><br>
+                 To deepen my understanding, I took the initiative to set up a 
+                 <b>Kafka cluster </b> using Confluent and experimented 
+                 with Kafka running in <b>Docker</b> on my own time
+
+                  <br>Run <b>kafka broker locally</b> as image in docker
 
 
+                 <br><br>
+                 <b>Sample event flow of a loan processing system:</b> <br>
+                 
+                    [Loan Application Service] <br>
+                        └── produces → topic: loan.application.submitted<br><br>
 
+                    [Credit Check Service]<br>
+                        └── consumes loan.application.submitted<br>
+                        └── produces → topic: loan.credit.checked<br><br>
 
-                </ul>
-            </div>
+                    [Underwriting Service]<br>
+                        └── consumes loan.credit.checked<br>
+                        └── produces → topic: loan.underwriting.completed<br><br>
+
+                    [Loan Approval Service]<br>
+                        └── consumes loan.underwriting.completed<br>
+                        └── produces → topic: loan.approval.finalized<br><br>
+
+                    [Disbursement Service]<br>
+                        └── consumes loan.approval.finalized<br><br>
+
+                 
+
+                       
+            </div>  
         </div>
     </div>
     
@@ -539,7 +628,34 @@ this is my first kafka message)
                     <li>Big Bang approach</li>
                     <li>Incremental & continuous</li>
                     <li>IMPACT</li>
-                    <li>Operational Readiness (infrastructure (traffic, servers storage) , application , deployment (devops))</li>
+                    <li><b>Operational Readiness </b>(infrastructure (traffic, servers storage) , application , deployment (devops))</li>
+                    
+                    <li>
+                       <b>Best practices for decomposition </b>    
+                         <br> deconstruct into well defined  concepts <br>
+
+                         <b>decouple capabilities </b> <br>
+                         extract existing code or rewrite capability 
+
+                         <br> <b>Migration to microservice </b> 
+                         the last face is the migration to  microservices <br>
+                         redirect all users to the new system <br>
+                         decommission the old system <br> <br>
+
+<br>
+<b>Strangler Pattern: </b>Gradually replacing legacy systems with new microservices.
+<br><br>
+<b>Domain Driven Design Decomposition: </b>. Organizing microservices around business domains
+<br><br>
+<b>API Gateway Integration Pattern: </b>. A single entry point for all client requests, routing them to the appropriate microservices.
+
+<br><br>
+<b>SAGA Design Pattern: : </b>. Managing long-running transactions across multiple microservices.
+
+<br><br>
+
+                  
+                    
                     <li>using cloud Paas: disaster recovery , scalability and hight availability 
                         <br>
                         azure <br>
@@ -565,6 +681,136 @@ this is my first kafka message)
             </div>
         </div>
     </div>
+
+
+    <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Development%20Methodologies/Event-Driven-Architecture.html">Design and architectural patterns</a>
+            </h2>
+            <div class="text-gray-700">
+              <B>MVVM (Model-View-ViewModel) Pattern </B><BR>
+              <BR>Why use it?
+              <BR>Clean separation of concerns.
+              <BR>Two-way data binding simplifies UI updates.
+            <br><br>
+            <b>Component-Based Architecture</b>
+            <br>Break UI into small, reusable components.
+            <br>Each component handles its own logic, markup, and style.
+
+            <br><br><b>Flux / Redux Pattern (Unidirectional Data Flow)</b>
+            <br>Actions → Reducers → Store → View
+            <br>Centralized state store (Redux, Zustand, etc.)
+
+            <br><br><b>Service Layer / Repository Pattern</b>
+             <br>Keep all API calls and business logic separate from the UI.
+             <br><code>export function getUserById(id) {
+                return axios.get(`/api/users/${id}`);
+                }</code>
+
+           <br><br><b>Routing Pattern (Nested Routes)</b><br>
+            <code>
+                &lt;Route path="/dashboard" element=&#123;&lt;DashboardLayout /&gt;&#125;&gt;<br>
+                &nbsp;&nbsp;&lt;Route path="analytics" element=&#123;&lt;AnalyticsPage /&gt;&#125; /&gt;<br>
+                &lt;/Route&gt;
+            </code>
+
+
+            </div>
+        </div>
+    </div>
+
+
+       <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Security/Common_vulnerabilitiesXSSCSRFSQLinjection.html">Cybersecurity</a>
+            </h2>
+            <div class="text-gray-700">
+            <b>Popular Static Code Analysis Tools:</b>
+            <br>Checkmarx :
+            <br> Snyk : www.snyk.io , find and fix vulnerabilities in your code.
+            <br>also can scan dependencies
+            <BR>it can connect yo your github 
+            <br><b>NPM audit fix</b>   
+            <br>Snyk has a vs code extension 
+           
+            <br>diagnoses vulnerabilities
+            <br>learn how to exploit so it can be fixed
+            <br>Cross-Site Scripting (XSS)
+            <br>Cross-Site Request Forgery (CSRF)
+            <br>SQL Injection
+            <br>Use CodeRabbit
+              (
+                real time code review 
+                <br>detect bugs and fix code smells missed unit test , security vulnerabilities  
+              )
+
+            </div>
+        </div>
+    </div>
+
+
+      <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Security/Common_vulnerabilitiesXSSCSRFSQLinjection.html">AI</a>
+            </h2>
+            <div class="text-gray-700">
+                Python <br>
+
+                oracle AI fundamentals <br>
+                <br>Artificial Intelligence (AI) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>Machine Learning (ML)</b> (learn from data , perdition without being programed)<br>  
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>Depp learning</b> (use neural network to learn from data) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;<b>Generative AI (text ,video,..)</b> <br>    
+                <br>
+                <b>Natural Language Processing (NLP): </b>Techniques for enabling machines to understand and process human language.
+                <br><b>Supervised Learning:</b> A type of machine learning where the model is trained on labeled data.
+                 <br><b>Unsupervised Learning: </b>A type of machine learning that identifies patterns in data without labeled examples.
+                 <br>
+               <br><b>MCP:Model Context Protocol </b>
+                <BR>Unlike one-off API integrations, MCP offers a common interface so that AI models can interact with multiple external systems using the same protocol
+                <BR><B>RAG </B> Retrieval-Augmented Generation</BR>
+                A method that improves AI answers by retrieving real data before generating a response.
+                <BR><BR>Key Acronyms in RAG:
+
+                <BR><B>LLM</B> Large Language Model (e.g. GPT-4)
+
+                <BR><B>DB Vector Database</B> (e.g. Pinecone, FAISS)
+
+                <BR><B>EMB Embedding </B> (turns text into vectors)
+
+                <BR><B>CTX Context</B> (the info retrieved and passed to the model)
+
+                <BR><B>QA</B> Question Answering (main use case)
+            </div>
+        </div>
+    </div>
+
+
+    <div class="card bg-white rounded-xl shadow-lg p-6 flex flex-col justify-between transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+                <div>
+            <h2 class="text-2xl font-bold text-purple-700 mb-4">
+                <a target="_blank" href="../Security/Common_vulnerabilitiesXSSCSRFSQLinjection.html">Azure DevOps</a>
+            </h2>
+            <div class="text-gray-700">
+        <b>CI/CD</b><br>
+        <b>Pipeline</b><br>
+        <b>YAML pipeline</b><br>
+        <b>Build</b><br>
+        <b>Release</b><br>
+        <b>Artifact</b>: An artifact is a file or set of files produced by a build, used as input for deployments.<br>
+        <b>Trigger</b> a pipeline automatically<br>
+        <b>Job</b> in a pipeline, <b>Steps</b><br>
+        <b>Environment</b><br>
+        <b>Self-hosted agent</b>: An agent provided and managed by Microsoft or GitHub, running in the cloud.<br>
+        <b>Deploy to Azure</b> from a pipeline (By using Azure CLI, ARM/Bicep templates, or built-in Azure deployment tasks/actions.)<br>
+        <b>IaC</b> (Infrastructure as Code) with <b>Terraform</b> or <b>Bicep</b><br>
+        <b>Deployment slot</b><br>
+
+            </div>
+        </div>
 
     </div>
 

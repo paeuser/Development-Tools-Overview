@@ -1,0 +1,39 @@
+let priceInCents: number = 350; // $3.50 = 350 cents
+
+// Basic Types
+let str: string = "Hello";
+let num: number = 42;
+let bool: boolean = true;
+
+// Arrays
+let arr1: number[] = [1, 2, 3];
+let arr2: Array<string> = ["a", "b", "c"];
+
+// Tuple
+let tuple: [number, string] = [1, "one"];
+
+// Enum
+enum Direction { Up, Down, Left, Right }
+let dir: Direction = Direction.Left;
+
+// Any and Unknown
+let anyVal: any = 5;
+anyVal = "anything";
+let unknownVal: unknown = 10;
+
+// Void (function with no return)
+function log(msg: string): void {
+  console.log(msg);
+}
+
+// Null and Undefined
+let u: undefined = undefined;
+let n: null = null;
+
+// Object
+let obj: object = { name: "Alice", age: 30 };
+
+// Never (function that never returns)
+function fail(): never {
+  throw new Error("Error!");
+}
