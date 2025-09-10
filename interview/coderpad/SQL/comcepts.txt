@@ -1,6 +1,466 @@
 💡 Conceptual Overview:
 Entity	Description
-Customer:       The person who owns the insurance policy and files a claim.
+Customer:   The person who owns the insurance policy and files a claim.
 Claim : 	A request made by the customer to the insurer for compensation.
 Insurer:	The company responsible for reviewing and paying out claims.
 Payment:	The actual amount paid out by the insurer in response to a claim.
+
+
+SELECT, WHERE, ORDER BY, GROUP BY, HAVING
+Aggregate functions: SUM, AVG, COUNT, MIN, MAX
+Filtering: IN, BETWEEN, LIKE, IS NULL
+Aliasing: AS
+
+
+
+A Stored Procedure: 
+is a saved SQL block that you can call by name. 
+Think of it like a function in programming.
+
+Why Use Stored Procedures?
+Benefit	Description
+🔁 Reusability	Write once, use many times
+🔒 Security	Hide logic from end users
+🚀 Performance	Execution plans are cached
+✅ Validation	Use parameters to control inputs
+🛠️ Maintainability	Centralize logic in one place
+
+
+CREATE PROCEDURE GetEmployeesByDepartment
+    @DeptId INT
+AS
+BEGIN
+    SELECT first_name, last_name, salary
+    FROM employees
+    WHERE department_id = @DeptId;
+END;
+
+execute by right clicking in ui 
+	USE [CompanyDB]
+	GO
+
+	DECLARE	@return_value int
+
+	EXEC	@return_value = [dbo].[GetEmployeesByDepartment]
+			@DeptId = 1
+
+	SELECT	'Return Value' = @return_value
+
+	GO
+or
+
+exec GetEmployeesByDepartment @DeptId =1
+
+
+CREATE FUNCTION dbo.GetSalaryLevel (@Salary INT)
+RETURNS VARCHAR(10)
+AS
+BEGIN
+    DECLARE @Result VARCHAR(10)
+
+    IF @Salary > 50000
+        SET @Result = 'HIGH'
+    ELSE IF @Salary >= 20000
+        SET @Result = 'MEDIUM'
+    ELSE
+        SET @Result = 'LOW'
+
+    RETURN @Result
+END;
+
+
+
+select dbo.GetSalaryLevel(60000)
+select * , dbo.GetSalaryLevel(salary) from employees
+
+
+🧾 UDF Table Type (aka User-Defined Table Type)
+📌 Summary from the image:
+Point	Description
+✅ Represents Tabular Info	These types define a structured 
+   table format (like a table schema).
+✅ Used as Parameters	Can be passed to Stored 
+   Procedures or User-Defined Functions (UDFs) 
+   as Table-Valued Parameters.
+⚠️ Cannot Be Altered	
+   Once created, you cannot modify a table type — 
+   you must drop and recreate it.
+🔁 Pass Multiple IDs
+   Useful for passing multiple rows (e.g., a list of employee
+   IDs) in a single call.
+   
+   
+   
+   The table type itself does not hold data.
+   It’s just a definition — like a blueprint or template.
+   
+   Create a Table Type
+   CREATE TYPE dbo.IDList AS TABLE (
+    ID INT
+   );
+   
+   USE [coderpadDB];
+	GO
+
+	DROP PROCEDURE IF EXISTS [dbo].[GetEmployeesByID];
+	GO
+
+	CREATE PROCEDURE [dbo].[GetEmployeesByID]
+		@IDs dbo.IDList READONLY
+	AS
+	BEGIN
+		SELECT first_name, last_name, salary
+		FROM employees
+		WHERE id IN (SELECT ID FROM @IDs);
+	END;
+	GO
+
+
+   DECLARE @IDs dbo.IDList;     -- Declare table variable
+   
+   The values VALUES (1), (3), (5); inserted into @IDs 
+   are stored in memory, not in a physical table on disk.  
+   
+   INSERT INTO @IDs (ID) VALUES (1), (3), (5);  -- Populate it
+   
+   SELECT * FROM employees
+   WHERE id IN (SELECT ID FROM @IDs);
+   EXEC dbo.GetEmployeesByID @IDs = @IDs;       -- Pass it to your proc
+
+   
+   
+   Table Type with 2 Columns
+   CREATE TYPE dbo.EmployeeIDAndName AS TABLE
+	(
+		ID INT,
+		FirstName VARCHAR(100)
+	);
+
+
+
+	CREATE PROCEDURE dbo.GetEmployeesByIDAndName
+		@EmpList dbo.EmployeeIDAndName READONLY
+	AS
+	BEGIN
+		SELECT e.id, e.first_name, e.last_name, e.salary
+		FROM employees e
+		INNER JOIN @EmpList 
+		el ON e.id = el.ID AND e.first_name = el.FirstName;
+	END;
+	
+	Declare and Populate the Table Variable
+	
+	
+	DECLARE @MyEmployees dbo.EmployeeIDAndName;
+      INSERT INTO @MyEmployees (ID, FirstName)
+      VALUES 
+    	(1, 'John'),
+		(3, 'Cailin'),
+		(5, 'Ian');
+
+    -- Call the procedure
+    EXEC dbo.GetEmployeesByIDAndName @EmpList = @MyEmployees;
+
+
+What is Dapper?
+
+Dapper is a small and fast library for .NET that 
+helps you run SQL queries easily and turn the 
+results into C# objects — without the complexity 
+of bigger frameworks. It works by extending 
+your database connection so you can write raw 
+SQL but get clean, typed results quickly.
+
+public class Customer
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Email { get; set; }
+}
+
+
+using System.Data.SqlClient;
+using Dapper;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        string connectionString = 
+		"your_connection_string_here";
+
+        using (var connection = 
+		new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            // Run SQL query and map results to Customer objects
+            IEnumerable<Customer> customers = 
+			connection.
+			Query<Customer>
+			("SELECT Id, Name, Email FROM Customers");
+
+            foreach (var customer in customers)
+            {
+                Console.WriteLine($"{customer.Id}: 
+				{customer.Name} ({customer.Email})");
+            }
+        }
+    }
+}
+
+
+using System.Data.SqlClient;
+using Dapper;
+
+class Program
+{
+    static void Main()
+    {
+        string connectionString = 
+		"your_connection_string_here";
+
+        using (var connection = 
+		new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            var newCustomer = new Customer
+            {
+                Name = "Alice Johnson",
+                Email = "alice.johnson@example.com"
+            };
+
+            string insertQuery = 
+			"INSERT INTO Customers 
+			(Name, Email) VALUES (@Name, @Email)";
+
+            int rowsAffected = 
+			connection.
+			Execute(insertQuery, newCustomer);
+
+            Console.WriteLine($"{rowsAffected} 
+			row(s) inserted.");
+        }
+    }
+}
+
+
+
+Here’s the entire EF Core setup and usage explained 
+inside a single code block with comments for every step:
+
+using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
+// Define your data model representing a table in the database
+public class Product
+{
+    // Primary key column
+    public int Id { get; set; }
+    
+    // Product name column
+    public string Name { get; set; }
+    
+    // Product price column
+    public decimal Price { get; set; }
+}
+
+// DbContext manages the connection to the database and provides access to tables
+public class AppDbContext : DbContext
+{
+    // Represents the Products table in the database
+    public DbSet<Product> Products { get; set; }
+
+    // Configure the database provider and connection string
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        // Use SQL Server with the provided connection string
+        // Replace with your actual database connection string here
+        optionsBuilder.UseSqlServer("your_connection_string_here");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Create a new instance of the database context
+        using (var context = new AppDbContext())
+        {
+            // Create a new product object to insert
+            var product = new Product 
+            { 
+                Name = "Apple", 
+                Price = 0.5m // decimal value for price
+            };
+
+            // Add the new product to the context's Products table
+            context.Products.Add(product);
+
+            // Save all changes made in this context to the database
+            context.SaveChanges();
+
+            // Retrieve all products from the Products table
+            var products = context.Products.ToList();
+
+            // Loop through the list and print each product's details
+            foreach (var p in products)
+            {
+                Console.WriteLine($"{p.Id}: {p.Name} - ${p.Price}");
+            }
+        }
+    }
+}
+
+/*
+==============================================
+Commands to run in terminal (outside your code):
+==============================================
+
+1. Add a migration:
+   dotnet ef migrations add InitialCreate
+
+   - This generates a migration file based on your model classes
+   - It defines how to create the database schema (e.g., Products table)
+
+2. Update the database:
+   dotnet ef database update
+
+   - This applies the migration to your database
+   - It creates the tables and schema defined in the migration
+   - Your database is now ready to store Product data
+*/
+
+
+
+
+Here's a complete minimal 
+ASP.NET Core Web API example with EF Core, 
+all in one code block, including:
+
+Model (Product.cs)
+DbContext (AppDbContext.cs)
+Controller (ProductsController.cs)
+Program setup (Program.cs) with 
+connection string from appsettings.json
+
+
+// appsettings.json (put this file in your project root)
+/*
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=your_server_name;Database=YourDbName;Trusted_Connection=True;"
+  }
+}
+*/
+
+// Product.cs (Model)
+public class Product
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+}
+
+// AppDbContext.cs
+using Microsoft.EntityFrameworkCore;
+
+// This class represents the EF Core database context.
+// It manages the connection to the database and provides 
+// access to the database tables as properties.
+// The DbContextOptions are passed via dependency 
+// injection to configure the connection and other settings.
+public class AppDbContext : DbContext
+{
+    // Constructor accepts options and passes 
+	// them to the base DbContext class.
+    public AppDbContext
+	(DbContextOptions<AppDbContext> options) : base(options)
+    {
+    }
+
+    // This property represents the "Products"
+	// table in the database.  It allows querying 
+	/ and saving instances of the Product class.
+    public DbSet<Product> Products { get; set; }
+}
+
+
+// ProductsController.cs
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+
+[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    //asign only ones 
+	private readonly AppDbContext _context;
+
+    public ProductsController(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    // GET: api/products
+    [HttpGet]
+    public ActionResult<IEnumerable<Product>> GetProducts()
+    {
+        return _context.Products.ToList();
+    }
+
+    // POST: api/products
+    [HttpPost]
+    public ActionResult<Product> CreateProduct(Product product)
+    {
+        _context.Products.Add(product);
+        _context.SaveChanges();
+        return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
+    }
+}
+
+// Program.cs (Minimal hosting model)
+using Microsoft.EntityFrameworkCore;
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add DbContext with SQL Server connection from appsettings.json
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.MapControllers();
+
+app.Run();
+
+/*
+==============================================
+Commands to run in terminal (in project folder):
+==============================================
+
+1. Add migration:
+   dotnet ef migrations add InitialCreate
+
+   - Creates migration files based on your models (Product class)
+   - Prepares SQL to create Products table
+
+2. Update database:
+   dotnet ef database update
+
+   - Applies migration to database (creates the table)
+
+Now you can run the Web API and use:
+
+- GET /api/products  to list products
+- POST /api/products with JSON body { "name": "Apple", "price": 0.5 } to add a product
+
+*/
+
+

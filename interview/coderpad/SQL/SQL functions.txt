@@ -1,0 +1,89 @@
+SQL Server - Built-in Functions Cheat Sheet
+===========================================
+
+🧮 1. Aggregate Functions
+-------------------------
+COUNT()       - Counts rows
+SUM()         - Total of numeric values
+AVG()         - Average of numeric values
+MIN()         - Minimum value
+MAX()         - Maximum value
+
+🔤 2. String/Text Functions
+----------------------------
+LEN(string)                - Length of the string (excluding trailing spaces)
+LEFT(string, n)            - First n characters from the left
+RIGHT(string, n)           - Last n characters from the right
+SUBSTRING(s, start, length)- Substring from position
+CHARINDEX(substr, str)     - Finds position of substring
+REPLACE(str, old, new)     - Replace text
+LTRIM() / RTRIM()          - Removes spaces from left/right
+LOWER() / UPPER()          - Changes case
+CONCAT()                   - Concatenates strings
+
+📅 3. Date and Time Functions
+-----------------------------
+GETDATE()                 - Current date and time
+GETUTCDATE()              - Current UTC date/time
+DATEADD(part, n, date)    - Add time to a date
+DATEDIFF(part, start, end)- Difference between two dates
+DATEPART(part, date)      - Extract part (year, month, etc.)
+FORMAT(date, format)      - Format a date (SQL Server 2012+)
+EOMONTH(date)             - End of month
+ISDATE(expression)        - Returns 1 if valid date
+
+🔢 4. Mathematical Functions
+-----------------------------
+ABS(number)        - Absolute value
+CEILING(number)    - Rounds up
+FLOOR(number)      - Rounds down
+ROUND(number, n)   - Round to n decimal places
+POWER(x, y)        - x raised to power y
+SQRT(number)       - Square root
+RAND()             - Random number
+
+🧠 5. Logical & Control Functions
+---------------------------------
+ISNULL(expr1, expr2)      - If expr1 is NULL, returns expr2
+COALESCE(expr1, ..., n)   - First non-null value
+CASE WHEN ... THEN ...    - Conditional logic (like IF-ELSE)
+IIF(condition, a, b)      - Shorthand IF (SQL Server 2012+)
+
+🔄 6. Type Conversion Functions
+-------------------------------
+CAST(expr AS type)        - Convert data type
+CONVERT(type, expr[, style]) - Convert with optional formatting
+
+🧍 7. System / Metadata Functions
+---------------------------------
+SCOPE_IDENTITY()          - Last identity value inserted in current scope
+@@IDENTITY                - Last identity value for any session
+@@ROWCOUNT                - Rows affected by last query
+@@ERROR                   - Error code from last statement
+OBJECT_ID('table')        - Object ID of a table
+DB_NAME()                 - Current database name
+
+💡 Example Queries
+------------------
+-- Total salary in Engineering department
+SELECT SUM(salary)
+FROM employees
+WHERE department_id = (
+    SELECT id FROM departments WHERE name = 'Engineering'
+);
+
+-- Get employee name in UPPERCASE
+SELECT UPPER(first_name + ' ' + last_name) FROM employees;
+
+-- Add 7 days to today's date
+SELECT DATEADD(day, 7, GETDATE());
+
+-- Custom salary bracket using CASE
+SELECT first_name,
+       salary,
+       CASE 
+           WHEN salary > 50000 THEN 'High'
+           WHEN salary BETWEEN 20000 AND 50000 THEN 'Medium'
+           ELSE 'Low'
+       END AS salary_bracket
+FROM employees;

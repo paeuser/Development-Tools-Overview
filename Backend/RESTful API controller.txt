@@ -1,0 +1,105 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+
+// Simple data model representing an "Item" with Id and Name properties
+public class Item
+{
+    public int Id { get; set; }    // Unique identifier for the item
+    public string Name { get; set; } // Name of the item
+}
+
+/*
+ Defines the base URL route for this controller's actions.
+ [controller] is a placeholder replaced by the controller class name without the "Controller" suffix.
+ So if the class is named "ItemsController", [controller] becomes "items".
+ 
+ Therefore, the base route for this controller is:
+ http://localhost:3000/api/items
+*/
+[Route("api/[controller]")]
+[ApiController] // Marks the class as an API controller
+public class ItemsController : ControllerBase
+{
+    // Simulated in-memory data store for demonstration purposes
+    private static List<Item> _items = new List<Item>
+    {
+        new Item { Id = 1, Name = "Item One" },
+        new Item { Id = 2, Name = "Item Two" }
+    };
+
+    // GET api/items
+    // Local URL: http://localhost:3000/api/items
+    [HttpGet]
+    public ActionResult<IEnumerable<Item>> GetAll()
+    {
+        return Ok(_items);
+    }
+
+    // GET api/items/1
+    // Local URL: http://localhost:3000/api/items/{id}
+    [HttpGet("{id}")]
+    public ActionResult<Item> GetById(int id)
+    {
+        var item = _items.FirstOrDefault(i => i.Id == id);
+        if (item == null)
+            return NotFound();
+        return Ok(item);
+    }
+
+    // POST api/items
+    // Local URL: http://localhost:3000/api/items
+    [HttpPost]
+    public ActionResult<Item> Create(Item newItem)
+    {
+        newItem.Id = _items.Any() ? _items.Max(i => i.Id) + 1 : 1;
+        _items.Add(newItem);
+
+        return CreatedAtAction(nameof(GetById), new { id = newItem.Id }, newItem);
+    }
+
+    // PUT api/items/1
+    // Local URL: http://localhost:3000/api/items/{id}
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Item updatedItem)
+    {
+        var item = _items.FirstOrDefault(i => i.Id == id);
+        if (item == null)
+            return NotFound();
+
+        item.Name = updatedItem.Name;
+        return NoContent();
+    }
+
+    // DELETE api/items/1
+    // Local URL: http://localhost:3000/api/items/{id}
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var item = _items.FirstOrDefault(i => i.Id == id);
+        if (item == null)
+            return NotFound();
+
+        _items.Remove(item);
+        return NoContent();
+    }
+}
+
+/*
+=========================================
+Summary:
+
+Base URL: http://localhost:3000/api/items
+
+Endpoints:
+- GET all items:     http://localhost:3000/api/items
+- GET item by id:    http://localhost:3000/api/items/{id}
+- POST create item:  http://localhost:3000/api/items
+- PUT update item:   http://localhost:3000/api/items/{id}
+- DELETE item:       http://localhost:3000/api/items/{id}
+
+Routing uses [Route("api/[controller]")] where [controller] = "items" (controller class name minus "Controller").
+
+Each method has an HTTP verb attribute that defines how it handles requests.
+
+*/

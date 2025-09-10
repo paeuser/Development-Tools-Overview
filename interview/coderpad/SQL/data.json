@@ -1,0 +1,39 @@
+{
+  "employee": {
+    "id": 101,
+    "name": "John Doe",
+    "age": 35,
+    "isActive": true,
+    "contact": { "email": "john.doe@example.com", "phone": "+1-555-1234" },
+    "address": {
+      "street": "456 Market St",
+      "city": "San Francisco",
+      "zip": "94111",
+      "state": "CA",
+      "country": { "name": "United States", "code": "US" }
+    },
+    "skills": ["SQL", "Python", "Azure", "Docker", "Kubernetes", "Power BI"],
+    "certifications": [
+      { "name": "Azure Administrator", "year": 2021, "issuer": "Microsoft" },
+      { "name": "Data Analyst Associate", "year": 2022, "issuer": "Microsoft" }
+    ],
+    "projects": [
+      {
+        "title": "Sales Dashboard",
+        "techStack": ["Power BI", "DAX", "SQL Server"],
+        "durationMonths": 4,
+        "status": "Completed"
+      },
+      {
+        "title": "Cloud Infrastructure",
+        "techStack": ["Azure", "Terraform", "Bicep"],
+        "durationMonths": 8,
+        "status": "In Progress"
+      }
+    ],
+    "performance": {
+      "2022": { "rating": "Excellent", "bonus": 5000 },
+      "2023": { "rating": "Outstanding", "bonus": 7000 }
+    }
+  }
+}

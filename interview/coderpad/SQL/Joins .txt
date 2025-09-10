@@ -1,3 +1,14 @@
+INNER JOIN – common rows
+
+LEFT JOIN – all from left + matches
+
+RIGHT JOIN – all from right + matches
+
+FULL OUTER JOIN – all from both sides
+
+
+
+
 -- INNER JOIN: only employees with a department
 
 SELECT      e.first_name, e.last_name, d.name
@@ -22,15 +33,6 @@ or
  select e.*,d.name from employees e 
  left JOIN departments d on e.department_id = d.id
 
-
-
-
-'It returns all projects with employee first names where 
-'assigned, or NULL if no employees are assigned.
-
-select  p.title, e.first_name   from projects p
-left join  employees_projects ep on p.id = ep.project_id 
-left  join employees e on ep.employee_id = e.id
 
 
 
