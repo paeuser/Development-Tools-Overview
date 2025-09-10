@@ -1,0 +1,587 @@
+Shubham Kulkarni
+💡 [Top 10 Advanced React Interview Questions with Answers]
+✅ 1. What is React Fiber and how does it differ from the old reconciliation
+algorithm?
+React Fiber is a complete rewrite of React’s core rendering engine introduced around React 16. Its main job
+is to break rendering work into small chunks and prioritize tasks based on urgency, which allows
+smoother rendering — especially in large apps.
+In older versions of React, the rendering process was synchronous and blocking. So if the UI update was
+heavy, the browser could freeze.
+But Fiber makes rendering interruptible — React can pause work, do something more urgent like
+handling user input, then come back and continue where it left off.
+👉 In short: Fiber brings asynchronous rendering, prioritization, and better user experience.
+
+
+
+✅ 2. How does React determine when to re-render a component?
+React re-renders a component when:
+Its state or props change
+Its parent component re-renders, unless it’s memoized
+But here’s the twist: React doesn’t do deep comparisons by default. So even if an object or array looks
+“the same”, if the reference changes, React treats it as different.
+That’s why techniques like:
+React.memo()
+useMemo()
+useCallback() are important in performance tuning — they help you avoid unnecessary renders
+when data hasn’t really changed.
+🧠 Bonus: The key prop also plays a role in determining if elements inside a list need to be re-rendered or
+not.
+
+             
+							/**
+							 * SUMMARY:
+							 * React re-renders child components when the parent renders,
+							 * even if the child’s props haven’t changed.
+							 * React.memo() prevents this by memoizing the child component,
+							 * so it only re-renders if its props actually change.
+							 */
+
+							import React, { useState, memo } from 'react';
+
+							// Memoized Child Component
+							const CounterDisplay = memo(({ count }) => {
+							  console.log('Rendering CounterDisplay');
+							  return <h2>Count: {count}</h2>;
+							});
+
+							const App = () => {
+							  const [count, setCount] = useState(0);
+							  const [text, setText] = useState('');
+
+							  return (
+								<div>
+								  <CounterDisplay count={count} />
+								  <button onClick={() => setCount(c => c + 1)}>Increment</button>
+								  <br />
+								  <input
+									type="text"
+									placeholder="Type something"
+									value={text}
+									onChange={e => setText(e.target.value)}
+								  />
+								</div>
+							  );
+							};
+
+							export default App;
+							
+							
+							
+							/**
+								 * SUMMARY:
+								 * useMemo() memoizes the result of a calculation.
+								 * React will only recompute the value if the dependencies change.
+								 * This prevents unnecessary recalculations on every render.
+								 */
+
+								import React, { useState, useMemo } from 'react';
+
+								const App = () => {
+								  const [count, setCount] = useState(0);
+								  const [text, setText] = useState('');
+
+								  // Simulate an expensive calculation
+								  const expensiveCalculation = (num) => {
+									console.log('Calculating...');
+									let result = 0;
+									for (let i = 0; i < 1e7; i++) {
+									  result += num;
+									}
+									return result;
+								  };
+
+								  // useMemo memoizes the result unless `count` changes
+								  const calculatedValue = useMemo(() => expensiveCalculation(count), [count]);
+
+								  return (
+									<div>
+									  <h2>Expensive Calculation Result: {calculatedValue}</h2>
+									  <button onClick={() => setCount(c => c + 1)}>Increment Count</button>
+									  <br />
+									  <input
+										type="text"
+										placeholder="Type something"
+										value={text}
+										onChange={e => setText(e.target.value)}
+									  />
+									</div>
+								  );
+								};
+
+								export default App;
+
+
+								/**
+							 * SUMMARY:
+							 * useCallback() returns a memoized version of a function
+							 * that only changes if its dependencies change.
+							 * Even if we’re not using it with memoized children,
+							 * it’s useful to prevent recreating functions on every render.
+							 */
+
+							import React, { useState, useCallback } from 'react';
+
+							const App = () => {
+							  const [count, setCount] = useState(0);
+							  const [text, setText] = useState('');
+
+							  // Memoized function with no dependencies — created only once
+							  const handleClick = useCallback(() => {
+								console.log('Button clicked!');
+								setCount(c => c + 1);
+							  }, []);
+
+							  return (
+								<div>
+								  <h2>Count: {count}</h2>
+								  <button onClick={handleClick}>Increment</button>
+								  <br />
+								  <input
+									type="text"
+									placeholder="Type something"
+									value={text}
+									onChange={e => setText(e.target.value)}
+								  />
+								</div>
+							  );
+							};
+
+							export default App;
+
+
+
+
+
+
+
+✅ 3. What are concurrent features in React and how do they help?
+Concurrent features — introduced in React 18 — allow React to prepare multiple versions of the UI at the
+same time.
+Let’s say a user is typing a search query and you’re fetching filtered results. Without concurrency, the UI
+could feel laggy. But with concurrent rendering, React can keep the UI responsive while preparing the
+new result list in the background.
+📦 Features like startTransition , useDeferredValue , and automatic batching allow this.
+So, concurrent features are like giving React multitasking superpowers — it can prioritize urgent updates
+like user input over non-urgent tasks like data fetching.
+
+
+								/**
+						 * SUMMARY:
+						 * React 18’s concurrent feature `startTransition` lets you mark
+						 * some state updates as "non-urgent" so React can keep the UI responsive.
+						 * 
+						 * HOW TO USE:
+						 * Wrap slow or heavy state updates inside `startTransition(() => { ... })`.
+						 * React will prioritize urgent updates (like typing) and run non-urgent
+						 * updates (like filtering data) in the background.
+						 * 
+						 * WHY IT HELPS:
+						 * Without `startTransition`, slow updates block urgent ones,
+						 * causing laggy typing or frozen UI.
+						 * With it, React multitasks: fast input updates happen immediately,
+						 * and heavy processing happens without freezing the UI.
+						 */
+
+						import React, { useState, useTransition } from 'react';
+
+						export default function App() {
+						  // Urgent update: input text state
+						  const [text, setText] = useState('');
+
+						  // Non-urgent update: processed text state
+						  const [slowText, setSlowText] = useState('');
+
+						  // Hook to mark non-urgent updates and track if pending
+						  const [isPending, startTransition] = useTransition();
+
+						  // Handle typing
+						  const handleChange = (e) => {
+							// Update input immediately (urgent)
+							setText(e.target.value);
+
+							// Update processed text in the background (non-urgent)
+							startTransition(() => {
+							  setSlowText(e.target.value);
+							});
+						  };
+
+						  return (
+							<div>
+							  {/* Text input */}
+							  <input value={text} onChange={handleChange} />
+
+							  {/* Show loading while slow update is running */}
+							  {isPending && <p>Updating...</p>}
+
+							  {/* Show processed result */}
+							  <p>Processed Text: {slowText}</p>
+							</div>
+						  );
+						}
+
+
+
+
+✅ 4. Explain React's batching behavior and what changed in React 18.
+Batching means React groups multiple state updates into one render to improve performance.
+Before React 18, batching only worked inside React event handlers. If you updated state inside a
+setTimeout or fetch().then() , those updates triggered multiple renders.
+React 18 introduced automatic batching — so now, even updates inside promises, setTimeout , or
+native events are batched by default.
+This means fewer renders, better performance, and more predictable behavior across async code.
+
+
+						
+				/**
+				 * SUMMARY:
+				 * React 18 automatically batches state updates,
+				 * even inside async functions like setTimeout or fetch().
+				 * 
+				 * Before React 18: two state updates = two renders (in async code)
+				 * After React 18: two state updates = one render (batched automatically)
+				 */
+
+					import React, { useState } from 'react';
+
+					export default function App() {
+					  const [count1, setCount1] = useState(0);
+					  const [count2, setCount2] = useState(0);
+
+					  const handleAsyncUpdate = () => {
+						// Async update (e.g. simulating a delayed action)
+						setTimeout(() => {
+						  // These two state updates will be batched into one render in React 18+
+						  setCount1(c => c + 1);
+						  setCount2(c => c + 1);
+
+						  console.log('Both updates triggered');
+						}, 1000);
+					  };
+
+					  return (
+						<div>
+						  <p>Count 1: {count1}</p>
+						  <p>Count 2: {count2}</p>
+
+						  <button onClick={handleAsyncUpdate}>
+							Increment Both (Async - Batched in React 18)
+						  </button>
+						</div>
+					  );
+					}
+
+
+
+
+
+✅ 5. What is the difference between useMemo and useCallback, and when not
+to use them?
+useMemo is used to memoize values
+useCallback is used to memoize functions
+They both prevent re-creation on every render, but people often overuse them.
+Here’s the deal: if the memoization is more expensive than recalculating the value, you're actually hurting
+performance. Only use them if:
+The value/function is heavy to compute
+It causes unnecessary re-renders in children
+Think of them as performance tools, not default habits.
+
+
+
+
+✅ 6. How does Suspense work, and what are some real use cases beyond lazy
+loading?
+React.Suspense lets you wait for something — like a lazy-loaded component or even data fetching
+(when used with libraries like React Query, Relay, or SWR).
+You wrap a component with <Suspense fallback={<Loading />}> , and while the content is loading,
+React shows the fallback.
+Beyond just lazy loading:
+You can use it with streaming SSR (in Next.js)
+You can coordinate parallel data loading
+You can delay transitions to avoid layout shifts
+It’s about better UX during loading states, not just code splitting.
+
+
+
+
+					Lazy loading is a performance optimization technique where components or resources are 
+					loaded only when needed, rather than at the initial page load. This helps reduce 
+					the initial bundle size, leading to faster page loads and better performance.
+					In React, lazy loading of components was officially introduced in React v16.6 (October 2018) via:
+					React.lazy() — for dynamic component import.
+					<Suspense> — to show fallback content while the component is loading.
+
+
+					import React, { Suspense, useState } from 'react';
+
+					// Lazy load the component
+					const LazyComponent = React.lazy(() => import('./LazyComponent'));
+
+					function App() {
+					  const [showComponent, setShowComponent] = useState(false);
+
+					  return (
+						<div style={{ padding: 20 }}>
+						  <h1>React Lazy Loading Example</h1>
+						  <button onClick={() => setShowComponent(true)}>
+							Load Lazy Component
+						  </button>
+
+						  {showComponent && (
+						  // 🔽 Suspense is a React component that lets you show a fallback (like a loading spinner or text)
+                          // while a lazy-loaded component (or any async component) is being loaded in the background.
+                          // In this case, it will display <div>Loading...</div> until LazyComponent is ready.
+  
+						  
+							<Suspense fallback={<div>Loading...</div>}>
+							  <LazyComponent />
+							</Suspense>
+						  )}
+						</div>
+					  );
+					}
+
+					export default App;
+
+
+
+
+
+
+✅ 7. What is useImperativeHandle and when should you use it?
+This one’s niche, but powerful.
+useImperativeHandle is used with forwardRef to expose custom methods from a child component
+to a parent, instead of exposing the full DOM ref.
+For example: You have a custom Input component and you want to expose a focus() method to the
+parent. Instead of giving full DOM access, you expose just that method through useImperativeHandle .
+🛡 It’s a way to keep encapsulation, while still giving the parent controlled access.
+
+					/**
+						 * SUMMARY:
+						 * `useImperativeHandle` is a React hook used with `forwardRef`.
+						 * It allows a child component to expose **only specific methods or values**
+						 * to the parent — instead of exposing the entire ref object or DOM node.
+						 * 
+						 * WHY USE IT:
+						 * - To keep component internals encapsulated and safe
+						 * - To give parent controlled access to things like `.focus()`, `.scrollTo()`, etc.
+						 * 
+						 * WHEN TO USE:
+						 * - You have a custom component (e.g., custom Input, Modal, or Tooltip)
+						 * - The parent needs to trigger actions inside it (like focusing or resetting)
+						 * - You want to avoid giving full DOM access
+						 
+						 In this sample, the user sees a custom input and a button that says "Focus the Input". 
+						 When the user clicks the button, the input field gets focused (the cursor appears inside it).
+                         Behind the scenes, the parent doesn’t directly control the input. Instead, 
+						 the child component (MyInput) only exposes a focus() method using useImperativeHandle. 
+						 This gives the parent limited, safe access — it can focus the input, but not touch anything else inside the child.
+						 This keeps the component encapsulated while still allowing useful interaction.
+						 
+						 
+						 */
+
+					import React, { useRef, useImperativeHandle, forwardRef } from 'react';
+
+					// Custom Input component using forwardRef
+					const MyInput = forwardRef((props, ref) => {
+					  const inputRef = useRef(); // internal ref to the DOM input
+
+					  // Expose only the focus method to the parent
+					  useImperativeHandle(ref, () => ({
+						focus: () => {
+						  inputRef.current.focus();
+						}
+					  }));
+
+					    // SUMMARY:
+						// This input element uses an internal ref (`inputRef`) to access the actual DOM node.
+						// This allows the child component to perform actions like `.focus()` on the input,
+						// and selectively expose those actions to the parent using `useImperativeHandle`.
+					    return <input ref={inputRef} placeholder="I am a custom input" />;
+					});
+
+					// Parent component
+					function App() {
+					  const inputRef = useRef(); // ref to access methods exposed by MyInput
+
+					  const handleFocus = () => {
+						inputRef.current.focus(); // Call the exposed focus method
+					  };
+
+					  return (
+						<div style={{ padding: 20 }}>
+						  <h1>useImperativeHandle Demo</h1>
+						  <MyInput ref={inputRef} />
+						  <br /><br />
+						  <button onClick={handleFocus}>Focus the Input</button>
+						</div>
+					  );
+					}
+
+					export default App;
+
+
+
+
+✅ 8. How do you optimize large lists in React?
+Rendering thousands of items can crash the browser.
+To solve this:
+Use windowing libraries like react-window or react-virtualized
+Render only the visible portion of the list
+Use key props properly
+Combine with memoization (e.g., React.memo ) to avoid re-rendering unchanged items
+Think of it like a Netflix carousel — you only render what the user sees. This saves memory, time, and
+power.
+
+
+
+						/**
+						 * SUMMARY:
+						 * This example shows rendering a large list of 10,000 items without any optimization.
+						 * All items are rendered into the DOM at once, which can cause performance issues
+						 * such as slow rendering or freezing in the browser.
+						 */
+
+						import React from 'react';
+
+						export default function LargeList() {
+					    // Create an array with 10,000 elements.
+						// Array.from() creates a new array of given length (10000).
+						// The second argument is a map function that runs for each index `i`.
+						// For each element, it returns a string "Item " followed by the item number (i + 1).
+						// So the array will look like ["Item 1", "Item 2", ..., "Item 10000"].
+						  
+						  const items = Array.from({ length: 10000 }, (_, i) => `Item ${i + 1}`);
+
+						  return (
+							// Container div with fixed height and vertical scroll enabled
+							<div style={{ height: 300, overflowY: 'scroll', border: '1px solid black' }}>
+							  {
+								// Render every item in the list as a div
+								items.map(item => (
+								  // Each item has a unique key and some padding and bottom border for separation
+								  <div key={item} style={{ padding: 5, borderBottom: '1px solid #ccc' }}>
+									{item}  {/* Display the item text */}
+								  </div>
+								))
+							  }
+							</div>
+						  );
+						}
+
+
+
+					/**
+					 * SUMMARY:
+					 * This example uses the `react-window` library to efficiently render a large list of 10,000 items.
+					 * Instead of rendering all items at once, it only renders the visible items within a fixed container height.
+					 * As the user scrolls, new items are rendered dynamically, keeping the app performant and responsive.
+					 * 
+					 * HOW IT WORKS FOR THE USER:
+					 * The user sees a scrollable list with 10,000 items but only experiences smooth, lag-free scrolling.
+					 * Even though the list is huge, the browser doesn’t freeze because only a small subset of items are in the DOM at any time.
+					 */
+
+					import React from 'react';
+					import { FixedSizeList as List } from 'react-window';
+
+					// Row component renders a single item in the list.
+					// The style prop is required for positioning and virtualization by react-window.
+					const Row = ({ index, style }) => (
+					  <div style={style}>
+						Item {index + 1}  {/* Display item number, starting from 1 */}
+					  </div>
+					);
+
+					export default function VirtualizedList() {
+					  return (
+						// List component sets up a fixed-size scrollable container
+						<List
+						  height={300}       // Height of the visible container in pixels
+						  itemCount={10000}  // Total number of items in the list
+						  itemSize={35}      // Fixed height of each list item in pixels
+						  width={300}        // Width of the list container in pixels
+						>
+						  {Row}  {/* Render each visible row using the Row component */}
+						</List>
+					  );
+					}
+
+
+
+
+
+9. How does useRef differ from useState?
+useRef holds a mutable value that doesn’t cause re-renders when it changes. useState holds values
+that do trigger re-renders.
+Use useRef for:
+DOM refs ( ref={myRef} )
+Storing timers, counters, or previous values
+Avoiding re-renders on updates
+So:
+useState = React cares when it changes
+useRef = React ignores the change
+
+
+							/**
+							 * useState vs useRef – Beginner Explanation
+							 * 
+							 * 🔹 useState:
+							 *    - Stores a value that React watches
+							 *    - When it changes, React re-renders the component
+							 *
+							 * 🔹 useRef:
+							 *    - Stores a value that can change without causing a re-render
+							 *    - Good for things like DOM access, timers, or tracking values silently
+							 *
+							 * This example shows how clicking a button updates both useState and useRef,
+							 * but only useState causes the screen to update.
+							 */
+
+							import React, { useState, useRef } from 'react';
+
+							function StateVsRefExample() {
+							  // useState: tracked by React; re-renders the component on change
+							  const [stateCount, setStateCount] = useState(0);
+
+							  // useRef: NOT tracked for re-renders; value changes silently
+							  const refCount = useRef(0);
+
+							  const handleClick = () => {
+								// Increase the state count (this triggers a re-render)
+								setStateCount(prev => prev + 1);
+
+								// Increase the ref count (this does NOT trigger a re-render)
+								refCount.current += 1;
+
+								// Log both values to see the updates in console
+								console.log("State Count:", stateCount + 1);     // visible on screen
+								console.log("Ref Count:", refCount.current);     // updated, but not shown in UI unless forced
+							  };
+
+							  return (
+								<div style={{ fontFamily: 'Arial', padding: '20px' }}>
+								  <h2>useState Count (Triggers UI update): {stateCount}</h2>
+								  <h2>useRef Count (Does NOT trigger UI update): {refCount.current}</h2>
+
+								  <button onClick={handleClick}>Increment Counters</button>
+								</div>
+							  );
+							}
+
+							export default StateVsRefExample;
+
+
+
+
+✅ 10. How does React handle hydration in SSR, and what problems can arise?
+Hydration is the process where React attaches event listeners to server-rendered HTML on the client.
+The problem is — if the HTML rendered on the server doesn’t match what the client renders, you get a
+hydration mismatch warning.
+Common causes:
+Using random values (like Math.random() ) during render
+Accessing window or localStorage on the server
+Not wrapping async components in <Suspense>
+Hydration issues are subtle but can break your UI in production — so always test SSR apps thoroughly.
+https://www.youtube.com/@shubhamkulkarni_official • @shubhamkulkarni_insta
+Exclusively
