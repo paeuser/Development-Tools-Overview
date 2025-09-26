@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Server Performance Questions & Answers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        ul {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        .question {
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 4px solid #3498db;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .answer {
+            display: none;
+            margin-top: 8px;
+            padding: 10px;
+            background-color: #dff9fb;
+            border-left: 4px solid #2ecc71;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>20 Tricky SQL Server Performance Questions & Answers</h1>
+    <ul>
+        <li>
+    <div class="question">22. What is the difference between a Stored Procedure and a Function in SQL Server?</div>
+    <div class="answer">
+        <strong>Stored Procedure:</strong><br>
+        - Performs actions or series of operations.<br>
+        - Can modify data (INSERT, UPDATE, DELETE).<br>
+        - Can return multiple values using OUTPUT parameters or RETURN (integer only).<br>
+        - Cannot be used directly in SELECT, WHERE, or JOIN.<br>
+        - Can use transactions (BEGIN TRAN, COMMIT, ROLLBACK).<br><br>
+        <strong>Function:</strong><br>
+        - Returns a single value (scalar) or a table (table-valued function).<br>
+        - Generally does not modify database state.<br>
+        - Can be used in SELECT, WHERE, JOIN, or inside another function.<br>
+        - Cannot include transaction control statements.<br><br>
+        <strong>Key Takeaway:</strong> Use stored procedures for actions and business logic; use functions to return reusable values in queries.
+    </div>
+</li>
+
+            <li>
+        <div class="question">21. What does the NOLOCK hint do, and what are its risks?</div>
+        <div class="answer">
+            The NOLOCK hint allows reading data without acquiring shared locks, which reduces blocking and can improve read performance in high-concurrency systems. 
+            <br><strong>Risks:</strong> Can read uncommitted (dirty) data, potentially returning inconsistent results, phantom reads, or duplicate rows.
+        </div>
+    </li>
+
+        <li>
+            <div class="question">1. What is the impact of using SELECT * vs specifying columns explicitly in large tables?</div>
+            <div class="answer">Using SELECT * retrieves unnecessary data, increasing I/O, network traffic, and reducing query performance. Always specify needed columns.</div>
+        </li>
+        <li>
+            <div class="question">2. How does indexing affect write-heavy tables, and when can indexes hurt performance?</div>
+            <div class="answer">Indexes improve read performance but slow down INSERT, UPDATE, DELETE operations because indexes need to be maintained. Too many indexes on write-heavy tables hurt performance.</div>
+        </li>
+        <li>
+            <div class="question">3. What is the difference between clustered and non-clustered indexes in query performance?</div>
+            <div class="answer">Clustered index defines physical order of data (good for range queries). Non-clustered indexes are separate structures, useful for lookups. Wrong choice can cause scans.</div>
+        </li>
+        <li>
+            <div class="question">4. How does parameter sniffing affect query execution plans?</div>
+            <div class="answer">SQL Server may optimize queries based on first parameter value. If later values are different, performance may degrade. Use OPTION (RECOMPILE) or plan guides to mitigate.</div>
+        </li>
+        <li>
+            <div class="question">5. What is the role of execution plans, and how can you analyze a slow query?</div>
+            <div class="answer">Execution plans show how SQL Server executes a query. Analyze Index Seek vs Scan, joins, costs. Use SET STATISTICS IO/TIME or execution plan in SSMS.</div>
+        </li>
+        <li>
+            <div class="question">6. How does using temporary tables vs table variables impact performance?</div>
+            <div class="answer">Temp tables can have indexes and statistics; better for large datasets. Table variables have no statistics, may lead to suboptimal plans for big data.</div>
+        </li>
+        <li>
+            <div class="question">7. What are the effects of excessive joins on large tables?</div>
+            <div class="answer">Too many joins increase query complexity, memory usage, and can cause table scans. Use proper indexing, consider splitting queries.</div>
+        </li>
+        <li>
+            <div class="question">8. When is using a CTE (Common Table Expression) worse for performance?</div>
+            <div class="answer">CTEs are good for readability but may re-evaluate each reference in recursive or complex queries. Temp tables can be more efficient.</div>
+        </li>
+        <li>
+            <div class="question">9. How does statistics update affect query optimization?</div>
+            <div class="answer">Outdated statistics can lead to bad execution plans. SQL Server uses statistics to estimate row counts; update them for better query performance.</div>
+        </li>
+        <li>
+            <div class="question">10. What are the dangers of using cursors for data processing?</div>
+            <div class="answer">Cursors process row by row (slow). They increase memory and CPU usage. Use set-based operations instead.</div>
+        </li>
+        <li>
+            <div class="question">11. How does database fragmentation affect read/write operations?</div>
+            <div class="answer">Fragmented indexes cause more I/O and slower reads. Regular index rebuilds or reorganizations improve performance.</div>
+        </li>
+        <li>
+            <div class="question">12. What is the difference between covering indexes and included columns?</div>
+            <div class="answer">Covering index includes all columns needed for a query (avoiding lookups). Included columns store extra columns in the index leaf for better performance.</div>
+        </li>
+        <li>
+            <div class="question">13. How does using OR conditions vs UNION ALL affect performance?</div>
+            <div class="answer">OR in WHERE can prevent index usage. Splitting queries with UNION ALL often improves performance.</div>
+        </li>
+        <li>
+            <div class="question">14. What is the impact of large IN lists in queries?</div>
+            <div class="answer">Large IN lists can slow queries. Using temp tables or joins is better for performance.</div>
+        </li>
+        <li>
+            <div class="question">15. How can blocking and deadlocks be minimized in high-concurrency environments?</div>
+            <div class="answer">Use proper indexing, smaller transactions, row-level locking, and avoid long-running transactions.</div>
+        </li>
+        <li>
+            <div class="question">16. What are the best practices for avoiding table scans in large tables?</div>
+            <div class="answer">Create appropriate indexes, filter using indexed columns, avoid functions on indexed columns.</div>
+        </li>
+        <li>
+            <div class="question">17. How does the use of functions in WHERE clauses affect indexing?</div>
+            <div class="answer">Using functions on indexed columns disables index usage. Rewrite queries to avoid functions on the column.</div>
+        </li>
+        <li>
+            <div class="question">18. What is the difference between eager vs lazy loading in SQL Server?</div>
+            <div class="answer">Eager loads data upfront (less round-trips). Lazy loads only when needed (less initial load). Choose based on query pattern to avoid unnecessary reads.</div>
+        </li>
+        <li>
+            <div class="question">19. How does row-level locking vs page-level locking affect performance?</div>
+            <div class="answer">Row-level reduces contention but more overhead. Page-level is faster but can block unrelated rows. SQL Server chooses automatically.</div>
+        </li>
+        <li>
+            <div class="question">20. When should you use tempdb efficiently to avoid performance bottlenecks?</div>
+            <div class="answer">Tempdb is shared for temp tables, table variables, sorts. Avoid excessive temp objects, spread across multiple files, monitor for contention.</div>
+        </li>
+    </ul>
+
+    <script>
+        const questions = document.querySelectorAll('.question');
+        questions.forEach(q => {
+            q.addEventListener('click', () => {
+                const answer = q.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+</body>
+</html>

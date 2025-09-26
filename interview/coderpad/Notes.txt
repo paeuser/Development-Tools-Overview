@@ -1,0 +1,62 @@
+solved
+using System;
+
+// Write a program in C# that asks the user to input a string, and then outputs the reversed version of that string.
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Enter a string");
+		string input  = Console.ReadLine();
+		
+		string str = ReverseString(input);
+		Console.WriteLine(str);
+						  
+						  
+	}
+	
+	// Reverse String 
+	
+	public static string ReverseString (string str)
+	{
+	    char[] chartArray = str.ToCharArray();
+		
+		Array.Reverse(chartArray);
+		
+		return new string(chartArray);
+		
+	}
+}
+remainder
+n % 2 == 0  →  n is even
+n % 2 != 0  →  n is odd
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+// You are given a list of integers.
+// Find all even numbers from the list and print them in ascending order using LINQ.
+					
+public class Program
+{
+	public static void Main()
+	{
+		List<int> numbers = new List<int> {1,2,3,4,5,6,7};
+		
+		
+		var evenNumbers = numbers.Where(n=> n%2 != 0)
+			  .OrderBy(n=>n);
+		
+		foreach (var number in evenNumbers)
+		{
+		Console.WriteLine(number);
+		
+		}
+						  
+	}
+	
+	
+}

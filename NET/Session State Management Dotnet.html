@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session and State Management in .NET - Examples</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; }
+        h2 { color: #34495e; }
+        code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        .note { background-color: #e8f0fe; padding: 10px; border-left: 4px solid #1a73e8; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>Session and State Management in .NET</h1>
+
+    <h2>1. Introduction</h2>
+    <p>Web applications are stateless, meaning the server does not automatically remember user interactions across HTTP requests. <strong>State management</strong> allows data to persist across multiple requests.</p>
+
+    <h2>2. Client-Side State Management</h2>
+
+    <h3>a) Cookies</h3>
+    <pre><code>// Set a cookie
+Response.Cookies["UserName"].Value = "Eric";
+Response.Cookies["UserName"].Expires = DateTime.Now.AddDays(1);
+
+// Read a cookie
+string user = Request.Cookies["UserName"]?.Value;</code></pre>
+
+    <h3>b) Query Strings</h3>
+    <pre><code>// URL: www.example.com/page.aspx?userid=123
+string userId = Request.QueryString["userid"];</code></pre>
+
+    <h3>c) Hidden Fields</h3>
+    <pre><code>&lt;asp:HiddenField ID="hdnValue" runat="server" Value="123" /&gt;
+
+// Read value in code-behind
+string val = hdnValue.Value;</code></pre>
+
+    <h3>d) Local Storage / Session Storage (JavaScript)</h3>
+    <pre><code>// Set value
+localStorage.setItem('UserName', 'Eric');
+
+// Get value
+var user = localStorage.getItem('UserName');</code></pre>
+
+    <h2>3. Server-Side State Management</h2>
+
+    <h3>a) Session State</h3>
+    <pre><code>// Store data in session
+Session["UserName"] = "Eric";
+
+// Retrieve data from session
+string user = Session["UserName"]?.ToString();</code></pre>
+
+    <h3>b) Application State</h3>
+    <pre><code>// Store data in application
+Application["TotalUsers"] = 100;
+
+// Retrieve data
+int total = (int)Application["TotalUsers"];</code></pre>
+
+    <h3>c) Cache</h3>
+    <pre><code>// Store data in cache
+Cache["Products"] = productList;
+
+// Retrieve data
+var products = Cache["Products"] as List&lt;Product&gt;;</code></pre>
+
+    <h2>4. Session Modes in ASP.NET</h2>
+    <pre><code>// Web.config example for InProc session mode
+&lt;sessionState mode="InProc" timeout="20" /&gt;
+
+// StateServer mode
+&lt;sessionState mode="StateServer" stateConnectionString="tcpip=127.0.0.1:42424" timeout="20" /&gt;
+
+// SQLServer mode
+&lt;sessionState mode="SQLServer" sqlConnectionString="data source=127.0.0.1;user id=sa;password=yourpassword" timeout="20" /&gt;</code></pre>
+
+    <h2>5. Session Expiration and Security</h2>
+    <pre><code>// Set session timeout in minutes
+Session.Timeout = 30;
+
+// Always use HTTPS and secure cookies for sensitive data</code></pre>
+
+    <h2>6. Full ASP.NET Example: Saving User Name in Session</h2>
+    <pre><code>&lt;%@ Page Language="C#" AutoEventWireup="true" CodeFile="SessionExample.aspx.cs" Inherits="SessionExample" %&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;form id="form1" runat="server"&gt;
+    &lt;asp:Label ID="lblMessage" runat="server" Text="" /&gt;&lt;br /&gt;
+    &lt;asp:TextBox ID="txtName" runat="server" /&gt;&lt;br /&gt;
+    &lt;asp:Button ID="btnSave" runat="server" Text="Save" OnClick="btnSave_Click" /&gt;
+&lt;/form&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+// Code-behind (SessionExample.aspx.cs)
+protected void btnSave_Click(object sender, EventArgs e)
+{
+    Session["UserName"] = txtName.Text;
+    lblMessage.Text = "Name saved in session!";
+}
+
+protected void Page_Load(object sender, EventArgs e)
+{
+    if(Session["UserName"] != null)
+        lblMessage.Text = "Hello, " + Session["UserName"].ToString();
+}</code></pre>
+
+</body>
+</html>

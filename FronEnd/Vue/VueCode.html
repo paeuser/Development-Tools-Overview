@@ -1,0 +1,4318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vue Code</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      line-height: 1.6;
+    }
+    .nav {
+      position: sticky;
+      top: 0;
+      background: #f3f4f6;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+    }
+    .nav a {
+      margin-right: 1rem;
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    pre {
+      background: #f1f5f9;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+    code {
+      font-family: monospace;
+    }
+    section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Keyword List -->
+  <div class="nav">
+    <a href="#options-api">Vue 2 Options API</a>
+    <a href="#composition-api">Vue 3 Composition API</a> 
+    <a href="#vuex">Vuex</a>
+    <a href="#function">Function</a>
+     <a href="#lifecycle">Lifecycle Hooks</a>
+     <a href="#reactive">Reactive</a>
+     <a href="#ref">Ref</a>
+     <a href="#reactive-vs-ref">Reactive vs Ref</a>
+     <a href="#watcher">Watcher</a>
+     <a href="#watcheffect">watchEffect</a>
+     <a href="#computed">Computed</a>
+     <a href="#reactivity-transform">Reactivity Transform</a>
+     <a href="#script-setup">&lt;script setup&gt;</a>
+     <a href="#props">Props</a>
+     <a href="#emit-events">&lt;script setup&gt; — Emit Events</a>
+    <a href="#emit-dynamic">emit dynamic</a>
+    <a href="#teleport">Teleport</a>
+    <a href="#fragments">Fragments</a>
+    <a href="#global-api-mounting">Global API Mounting</a>
+    <a href="#provide-inject">Provide / Inject</a>
+    <a href="#custom-directives">Custom Directives</a>
+    <a href="#template-refs">Template Refs</a>
+    <a href="#toRefs-toRef">toRefs / toRef</a>
+    <a href="#v-model">v-model</a>
+    <a href="#multiple-v-model">multiple-v-model</a>
+    <a href="#suspense">Suspense</a>
+    <a href="#define-async-component">defineAsyncComponent</a>
+    <a href="#shallowref-vs-ref">shallowRef vs ref</a>
+    <a href="#shallowreactive-vs-reactive">shallowReactive vs reactive</a>
+    <a href="#render-functions">Render Functions</a>
+    <a href="#vue-router">Vue Router</a>
+    <a href="#pinia-integration">Pinia Integration</a>
+    <a href="#slots">Slots</a>
+    <a href="#scoped-slots">Scoped Slots</a>
+    <a href="#error-handling">Error Handling</a>
+    <a href="#mixins-vs-composables">Mixins vs Composables</a>
+    <a href="#mixins">Mixins</a>
+    <a href="#composables">Composables</a>
+    <a href="#form-validation">Form Input and Validation</a>
+    <a href="#v-memo">v-memo</a>
+    <a href="#v-for-key">v-for Key</a>
+    <a href="#third-party-libraries">Third-Party Libraries</a>
+    <a href="#render-hints">Render Hints</a>
+    <a href="#vue3-transition">Transition System</a>
+    <a href="#v-on">Go to v-on Example</a>
+   
+    
+
+
+    <br>
+    <a href="#reactivity-caveats">Vue 3 Reactivity Caveats</a>
+<a href="#advanced-component-communication">Advanced Component Communication</a>
+<a href="#vue-3-teleport-portals">Vue 3 Teleport & Portals</a>
+<a href="#vue-3-directives">Vue 3 Directives</a>
+<a href="#testing-vue-3-components">Testing Vue 3 Components</a>
+<a href="#performance-optimization">Performance Optimization</a>
+<a href="#typescript-in-vue-3">TypeScript in Vue 3</a>
+<a href="#vue-3-router-advanced-usage">Vue 3 Router Advanced Usage</a>
+<a href="#common-vue-3-design-patterns">Common Vue 3 Design Patterns</a>
+
+
+<br>
+<!-- Additional Vue Concepts -->
+<a href="#vue3-ssr-nuxt">Vue 3 SSR & Nuxt</a>
+<a href="#vue3-auth-integration">Authentication Integration</a>
+<a href="#vue3-accessibility">Accessibility & UX Best Practices</a>
+<a href="#vue3-api-cms-integration">Integration with APIs & CMS (AEP / AEM)</a>
+<a href="#vue3-devtools-debugging">Vue Devtools & Debugging</a>
+<a href="#vue3-css-styling">CSS & Styling in Vue</a>
+<a href="#vue3-form-validation">Form Validation Libraries</a>
+<a href="#vue3-component-patterns">Vue Component Design Patterns</a>
+<a href="#vue3-transitions-animations">Vue Transitions & Animations</a>
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <!-- Vue 2 Options API -->
+  <section id="options-api">
+    <h2>Vue 2 Options API</h2>
+    <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    increment() {
+      this.count++;
+    }
+  }
+};
+&lt;/script&gt;
+</code></pre>
+  </section>
+
+  <!-- Vue 3 Composition API -->
+  <section id="composition-api">
+    <h2>Vue 3 Composition API</h2>
+    <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { ref } from 'vue';
+
+export default {
+  setup() {
+    const count = ref(0);
+    const increment = () =&gt; {
+      count.value++;
+    };
+    return {
+      count,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+  </section>
+
+  <!-- Function Example -->
+  <section id="function">
+                <h2>Function (&lt;script setup&gt;)</h2>
+                <pre><code>&lt;template&gt;
+            &lt;div&gt;
+                &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+                &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;/template&gt;
+
+            &lt;script setup&gt;
+            import { ref } from 'vue'
+
+            const count = ref(0)
+
+            function increment() {
+            count.value++
+            }
+            &lt;/script&gt;
+            </code></pre>
+  </section>
+
+
+<section id="lifecycle">
+
+  <table border="1" cellspacing="0" cellpadding="8">
+  <thead>
+    <tr>
+      <th>Lifecycle Phase</th>
+      <th>Options API</th>
+      <th>Composition API</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Before component is created</td>
+      <td><code>beforeCreate()</code></td>
+      <td><em>Not available</em></td>
+      <td>Called before reactive state and props are set up. No access to data/props yet.</td>
+    </tr>
+    <tr>
+      <td>After component is created</td>
+      <td><code>created()</code></td>
+      <td><em>Not available</em></td>
+      <td>Called after reactive state is ready, but before DOM is mounted.</td>
+    </tr>
+    <tr>
+      <td>Before mounting to DOM</td>
+      <td><code>beforeMount()</code></td>
+      <td><code>onBeforeMount()</code></td>
+      <td>Runs after the template is compiled but before it's inserted into the DOM.</td>
+    </tr>
+    <tr>
+      <td>After mounting to DOM</td>
+      <td><code>mounted()</code></td>
+      <td><code>onMounted()</code></td>
+      <td>DOM is available. Use to access or modify real DOM elements (e.g., via <code>ref</code>).
+      <br>
+      here i can do somthing like this "
+      <br>
+      <code>onMounted(() => {
+       timer.value = window.setInterval(() => {
+       count.value++
+          }, 1000)
+           })
+
+      </code>
+      </td>
+    </tr>
+    <tr>
+      <td>Before DOM updates</td>
+      <td><code>beforeUpdate()</code></td>
+      <td><code>onBeforeUpdate()</code></td>
+      <td>Runs before the virtual DOM re-renders due to reactive data changes.</td>
+    </tr>
+    <tr>
+      <td>After DOM updates</td>
+      <td><code>updated()</code></td>
+      <td><code>onUpdated()</code></td>
+      <td>Runs after the DOM has been updated with new data.</td>
+    </tr>
+    <tr>
+      <td>Before component unmounts</td>
+      <td><code>beforeUnmount()</code></td>
+      <td><code>onBeforeUnmount()</code></td>
+      <td>Runs before the component is removed from the DOM. Use for cleanup.</td>
+    </tr>
+    <tr>
+      <td>After component unmounts</td>
+      <td><code>unmounted()</code></td>
+      <td><code>onUnmounted()</code></td>
+      <td>Runs after the component is unmounted. Final cleanup can be done here.
+than here i can do somthing like this 
+      <br>
+      <code>onUnmounted(() => {
+  clearInterval(timer.value)
+})</code>
+
+      </td>
+    </tr>
+    <tr>
+      <td>Activated via <code>&lt;keep-alive&gt;</code></td>
+      <td><code>activated()</code></td>
+      <td><code>onActivated()</code></td>
+      <td>Called when a cached component is reactivated (made visible again).</td>
+    </tr>
+    <tr>
+      <td>Deactivated via <code>&lt;keep-alive&gt;</code></td>
+      <td><code>deactivated()</code></td>
+      <td><code>onDeactivated()</code></td>
+      <td>Called when a cached component is deactivated (hidden but not destroyed).</td>
+    </tr>
+    <tr>
+      <td>Error captured from child</td>
+      <td><code>errorCaptured()</code></td>
+      <td><code>onErrorCaptured()</code></td>
+      <td>Catches runtime errors in child components during rendering or lifecycle.</td>
+    </tr>
+    <tr>
+      <td>Track reactive dependencies (debug)</td>
+      <td><em>Not available</em></td>
+      <td><code>onRenderTracked()</code></td>
+      <td>Debug hook to track which reactive dependencies were accessed during render.</td>
+    </tr>
+    <tr>
+      <td>Trigger re-render info (debug)</td>
+      <td><em>Not available</em></td>
+      <td><code>onRenderTriggered()</code></td>
+      <td>Debug hook to identify which dependency caused a component to re-render.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</section>
+
+
+<section id="reactive-vs-ref">
+  <h2>Reactive vs Ref (Vue 3 Composition API)</h2>
+  <p><strong>Explanation:</strong></p>
+  <ul>
+    <li><code>ref()</code> is for a single primitive value (like <code>number</code>, <code>string</code>, etc.)</li>
+    <li><code>reactive()</code> is for reactive objects (with multiple properties)</li>
+    <li>You must use <code>.value</code> when working with <code>ref</code> in JavaScript</li>
+    <li>Template automatically unwraps <code>ref</code> and <code>reactive</code></li>
+  </ul>
+
+  <pre><code>&lt;script setup&gt;
+import { ref, reactive } from 'vue'
+
+// ref example (primitive)
+const count = ref(0)
+function incrementRef() {
+  count.value++
+}
+
+// reactive example (object)
+const state = reactive({
+  count: 0
+})
+function incrementReactive() {
+  state.count++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div style="display: flex; gap: 2rem;"&gt;
+
+    &lt;!-- Ref Section --&gt;
+    &lt;div&gt;
+      &lt;h3&gt;Using ref()&lt;/h3&gt;
+      &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+      &lt;button @click="incrementRef"&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Reactive Section --&gt;
+    &lt;div&gt;
+      &lt;h3&gt;Using reactive()&lt;/h3&gt;
+      &lt;p&gt;Count: {{ state.count }}&lt;/p&gt;
+      &lt;button @click="incrementReactive"&gt;Increment&lt;/button&gt;
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</section>
+
+
+
+
+
+<section id="computed">
+  <h2>Computed Properties (Vue 3 Composition API)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    Computed properties are reactive values derived from other reactive sources.
+    They cache their results and only re-evaluate when dependencies change.
+  </p>
+  <p>You define them using the <code>computed()</code> function, passing a getter function.</p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref, computed } from 'vue'
+
+const count = ref(0)
+
+// Simple computed property
+const doubled = computed(() =&gt; count.value * 2)
+
+// Computed with a function inside
+const greeting = computed(() =&gt; {
+  function getMessage() {
+    return count.value &gt; 5 ? 'High count' : 'Low count'
+  }
+  return getMessage()
+})
+
+// External function used by computed
+function evaluateCount(value) {
+  if (value &gt; 10) return 'Very High'
+  if (value &gt; 5) return 'High'
+  return 'Low'
+}
+
+const externalGreeting = computed(() =&gt; evaluateCount(count.value))
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;p&gt;Doubled: {{ doubled }}&lt;/p&gt;
+    &lt;p&gt;Greeting (internal fn): {{ greeting }}&lt;/p&gt;
+    &lt;p&gt;Greeting (external fn): {{ externalGreeting }}&lt;/p&gt;
+    &lt;button @click="count++"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+
+<pre>
+  <code>
+export default {
+  data() {
+    return {
+      firstName: 'John',
+      lastName: 'Doe'
+    }
+  },
+  computed: {
+    fullName() {
+      return this.firstName + ' ' + this.lastName
+    }
+  }
+}
+
+  </code>
+</pre>
+
+</section>
+
+<section id="watcher">
+  <h2>Watcher (Vue 3 Composition API)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>A <code>watch</code> function observes reactive data sources (like refs or reactive objects) and runs a callback when the data changes. It's useful for performing side effects in response to state changes.
+If count changes 4 times, your watch callback will run 4 times, and you’ll see 4 console messages, one for each change.
+</p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref, watch } from 'vue'
+
+const count = ref(0)
+
+watch(count, (newValue, oldValue) =&gt; {
+  console.log(`Count changed from ${oldValue} to ${newValue}`)
+})
+
+function increment() {
+  count.value++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</section>
+
+<section id="watcheffect">
+  <h2>watchEffect (Vue 3 Composition API)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    <code>watchEffect</code> runs a function immediately and automatically tracks its reactive dependencies.
+    Whenever any dependency changes, it re-runs the function.
+    Unlike <code>watch</code>, you don’t specify the source explicitly.
+    Useful for running side effects reactively without manually listing dependencies.
+  </p>
+  <p>
+    Here’s when watchEffect runs:
+
+Immediately as soon as it’s registered (runs the effect function once right away).
+
+Every time any reactive dependency used inside the effect function changes afterward.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref, watchEffect } from 'vue'
+
+const count = ref(0)
+const doubled = ref(0)
+
+watchEffect(() =&gt; {
+  doubled.value = count.value * 2
+  console.log(`Count is ${count.value}, doubled is ${doubled.value}`)
+})
+
+function increment() {
+  count.value++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;p&gt;Doubled: {{ doubled }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+</section>
+
+
+<section id="reactivity-transform">
+  <h2>Reactivity Transform (Vue 3)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    Reactivity Transform is a Vue 3 feature (enabled with <code>reactivityTransform: true</code> in Vue CLI or Vite config)
+    that lets you use reactive state without calling <code>ref()</code> or accessing <code>.value</code>.
+    You can declare reactive variables with <code>$</code> prefix and use them directly.
+  </p>
+  <p>This makes code simpler and less verbose.</p>
+
+  <pre><code>&lt;script setup&gt;
+// Reactivity Transform enabled in your build setup
+let $count = 0
+
+function increment() {
+  $count++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{$count}}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p><em>Note:</em> This requires enabling Reactivity Transform in your Vue setup (Vue CLI or Vite).</p>
+</section>
+
+
+
+<section id="script-setup">
+  <h2>&lt;script setup&gt; (Vue 3 Composition API)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    The <code>&lt;script setup&gt;</code> is a new, simpler syntax for using the Composition API in Vue 3.
+    It lets you write less boilerplate and automatically exposes variables and functions to the template.
+  </p>
+  <p>Key points:</p>
+  <ul>
+    <li>No need to return variables/functions explicitly from <code>setup()</code>.</li>
+    <li>Imports are scoped automatically.</li>
+    <li>Cleaner and more concise component code.</li>
+    <li>Supports TypeScript naturally.</li>
+  </ul>
+
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const count = ref(0)
+
+function increment() {
+  count.value++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    Compared to the classic Composition API, you don’t need to write and export a <code>setup()</code> function manually.
+  </p>
+</section>
+
+
+<section id="props">
+  <h2>Props in Vue 3 (&lt;script setup&gt;)</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    Props are how parent components pass data to child components.
+    In Vue 3 with <code>&lt;script setup&gt;</code>, you define props by declaring a <code>defineProps</code> macro.
+  </p>
+  <p>This is simpler and more concise than the Options API.</p>
+
+  <pre><code>&lt;script setup&gt;
+const props = defineProps({
+  message: String,
+  count: {
+    type: Number,
+    required: true
+  }
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Message: {{ message }}&lt;/p&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    The parent component passes these props like this:
+  </p>
+
+  <pre><code>&lt;ChildComponent message="Hello" :count="5" /&gt;</code></pre>
+</section>
+
+<section id="emit-events">
+  <h2>Emit Events in &lt;script setup&gt;</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    In Vue 3's &lt;script setup&gt;, you use the <code>defineEmits</code> macro to declare which events a component can emit.
+    It returns an <code>emit</code> function that you use to send events to the parent component.
+  </p>
+  <p>This replaces the Options API's <code>this.$emit</code> method with a simpler, more explicit syntax.</p>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;script setup&gt;
+const emit = defineEmits(['my-event'])
+
+function handleClick() {
+  emit('my-event', 'Hello from Child!')
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="handleClick"&gt;Click Me&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;script setup&gt;
+import { ref } from 'vue'
+import ChildComponent from './ChildComponent.vue'
+
+const message = ref('')
+
+function handleMyEvent(payload) {
+  message.value = payload
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ChildComponent @my-event="handleMyEvent" /&gt;
+    &lt;p&gt;Message from child: {{ message }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    When the button in <code>ChildComponent</code> is clicked, it emits <code>my-event</code> with a message.
+    The <code>ParentComponent</code> listens for this event and updates its local <code>message</code> reactive variable, which is displayed.
+  </p>
+</section>
+
+<section id="emit-dynamic">
+  <h2>Emit Dynamic Data from Child to Parent</h2>
+  <p><strong>Explanation:</strong></p>
+  <p>
+    You can emit data that changes — like a user's input or a counter value. 
+    In this example, the child collects user input and emits it to the parent.
+  </p>
+
+  <p><strong>ChildComponent.vue:</strong></p>
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const emit = defineEmits(['send-message'])
+
+const inputText = ref('')
+
+function sendToParent() {
+  emit('send-message', inputText.value)
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;input v-model="inputText" placeholder="Type something..." /&gt;
+    &lt;button @click="sendToParent"&gt;Send&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p><strong>ParentComponent.vue:</strong></p>
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+import ChildComponent from './ChildComponent.vue'
+
+const receivedMessage = ref('')
+
+function handleMessage(payload) {
+  receivedMessage.value = payload
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;ChildComponent @send-message="handleMessage" /&gt;
+    &lt;p&gt;Received from child: {{ receivedMessage }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    When the user types into the input and clicks "Send", the current text is emitted to the parent and displayed.
+  </p>
+</section>
+
+<section id="teleport">
+  <h2>&lt;Teleport&gt; in Vue 3</h2>
+
+  <p><strong>Explanation:</strong></p>
+  <p>
+    <code>&lt;Teleport&gt;</code> is a built-in Vue 3 component that lets you move a part of your component’s template to somewhere else in the DOM — outside of the current parent component.
+  </p>
+  <p>
+    It’s commonly used for modals, tooltips, dropdowns, or overlays — any content that needs to be rendered outside of its logical location in the component tree.
+  </p>
+
+  <p><strong>Basic Syntax:</strong></p>
+  <pre><code>&lt;Teleport to="selector"&gt;
+  ... content to teleport ...
+&lt;/Teleport&gt;</code></pre>
+
+  <p><strong>Example:</strong></p>
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Main Component&lt;/h1&gt;
+    &lt;button @click="show = !show"&gt;Toggle Modal&lt;/button&gt;
+
+    &lt;Teleport to="body"&gt;
+      &lt;div v-if="show" class="modal"&gt;
+        &lt;div class="modal-content"&gt;
+          &lt;p&gt;This modal is teleported to &lt;code&gt;&lt;body&gt;&lt;/code&gt;&lt;/p&gt;
+          &lt;button @click="show = false"&gt;Close&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/Teleport&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+const show = ref(false)
+&lt;/script&gt;
+
+&lt;style&gt;
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 5px;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <p><strong>How it works:</strong></p>
+  <ul>
+    <li><code>&lt;Teleport to="body"&gt;</code> moves the modal content into the actual &lt;body&gt; tag.</li>
+    <li>It still behaves like part of your Vue component — it stays reactive.</li>
+  </ul>
+</section>
+
+<section id="fragments">
+  <h2>Fragments in Vue 3</h2>
+  <p>
+    Vue 3 allows components to have multiple root elements, called 
+    <a href="#fragments">Fragments</a>. This means you no longer need to wrap sibling elements in a single parent element like a <code>&lt;div&gt;</code>.
+  </p>
+
+  <p><strong>Example:</strong></p>
+  <pre><code>&lt;template&gt;
+  &lt;header&gt;Header Content&lt;/header&gt;
+  &lt;main&gt;Main Content&lt;/main&gt;
+  &lt;footer&gt;Footer Content&lt;/footer&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    This component returns multiple root nodes, which is supported natively by Vue 3.
+  </p>
+</section>
+
+<section id="global-api-mounting">
+  <h2>Global API Mounting Changes in Vue 3</h2>
+  <p>
+    In Vue 2, you created a Vue instance by calling <code>new Vue()</code> and mounting it directly:
+  </p>
+  <pre><code>new Vue({
+  el: '#app',
+  render: h =&gt; h(App)
+})
+</code></pre>
+
+  <p>
+    In Vue 3, the global API has changed. Instead of creating a new Vue instance, you create an <code>app</code> instance by calling <code>createApp()</code>, and then mount it explicitly with <code>app.mount()</code>:
+  </p>
+
+  <pre><code>import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+app.mount('#app')
+</code></pre>
+
+  <p>
+    This new approach enables more flexible app instances, supports multiple Vue apps on the same page, and improves plugin and component registration.
+  </p>
+</section>
+
+
+
+<section id="provide-inject">
+  <h2>What is <code>provide</code> / <code>inject</code> and When to Use It?</h2>
+  <p>
+    <code>provide</code> and <code>inject</code> are a pair of Vue 3 APIs that allow you to pass data or dependencies from an ancestor component down to deeply nested child components without prop drilling (passing props through every intermediate component).
+  </p>
+
+  <p>
+    Use <code>provide</code> in a parent component to "provide" data, and <code>inject</code> in any descendant to "inject" or access that data.
+  </p>
+
+<p>
+    How does the child receive the injected data?
+
+The key is that:
+
+ParentComponent uses provide('theme', theme) to make theme available to all of its descendants (children, grandchildren, etc.).
+
+ChildComponent uses inject('theme') to access that provided value.
+
+ChildComponent needs to be rendered inside ParentComponent's template (either directly or via slots).
+</p>
+
+
+  <p><strong>Example:</strong></p>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;script setup&gt;
+import { provide, ref } from 'vue'
+
+const theme = ref('dark')
+provide('theme', theme)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot /&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;!-- ChildComponent.vue --&gt;
+&lt;script setup&gt;
+import { inject } from 'vue'
+
+const theme = inject('theme', ref('light')) // default to 'light' if not provided
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;p&gt;Current theme is: {{ theme }}&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    This avoids the need to pass the <code>theme</code> prop through every component in between.
+  </p>
+
+  <p>
+    <strong>When to use it:</strong>  
+    Use <code>provide</code>/<code>inject</code> when you need to share data or services (like global settings, plugins, or state) across many nested components without prop drilling.
+  </p>
+</section>
+
+
+<section id="custom-directives">
+  <h2>Custom Directives in Vue 3</h2>
+  <p>
+    Vue 3 allows you to create your own custom directives to manipulate the DOM directly. Custom directives are useful when you need low-level DOM access or want to encapsulate reusable DOM behavior.
+  </p>
+
+  <p>
+    Unlike built-in directives like <code>v-if</code> or <code>v-model</code>, custom directives let you define your own behavior for elements.
+  </p>
+
+  <p><strong>Creating a simple custom directive:</strong></p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref, onMounted } from 'vue'
+
+// Define the directive
+const focus = {
+  mounted(el) {
+    el.focus()
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+  <p><strong>Using the directive in the template:</strong></p>
+
+  <pre><code>&lt;template&gt;
+  &lt;input v-focus placeholder="Input will be focused on mount" /&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    To use the directive globally, you can register it on the app instance:
+  </p>
+
+  <pre><code>import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+
+app.directive('focus', {
+  mounted(el) {
+    el.focus()
+  }
+})
+
+app.mount('#app')
+</code></pre>
+
+  <p><strong>What the user experiences:</strong></p>
+  <p>
+    When the page loads, the cursor automatically appears inside the input box. This means the user can start typing immediately without clicking the input first. This makes the form feel quicker and easier to use.
+  </p>
+</section>
+
+
+<section id="template-refs">
+  <h2>Accessing Template Refs in the Composition API</h2>
+  <p>
+    In Vue 3's Composition API, you can use the <code>ref</code> function together with the <code>ref</code> attribute in the template to get a direct reference to a DOM element or a child component instance.
+  </p>
+
+  <p>
+    This is useful when you want to manipulate the DOM directly or call methods on a child component.
+  </p>
+
+  <p><strong>Example: Accessing a DOM element with a template ref</strong></p>
+
+  <pre><code>&lt;template&gt;
+  &lt;input ref="inputRef" placeholder="Focus me with button" /&gt;
+  &lt;button @click="focusInput"&gt;Focus Input&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+// Create a template ref
+const inputRef = ref(null)
+
+// Define a method to focus the input element
+function focusInput() {
+  if (inputRef.value) {
+    inputRef.value.focus()
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    In this example, <code>inputRef</code> is linked to the <code>&lt;input&gt;</code> element via the <code>ref</code> attribute. When the button is clicked, the <code>focusInput</code> method calls the native <code>focus()</code> method on the input element.
+  </p>
+</section>
+
+
+<section id="toRefs-toRef">
+  <h2>What is the Purpose of <code>toRefs</code> and <code>toRef</code>?</h2>
+  <p>
+    In Vue 3's Composition API, <code>toRefs</code> and <code>toRef</code> are utility functions that help you convert reactive objects or specific properties into refs. This is useful for better reactivity and destructuring.
+  </p>
+
+  <h3><code>toRefs</code></h3>
+  <p>
+    When you have a reactive object (created by <code>reactive()</code>), destructuring it directly breaks reactivity. To avoid this, use <code>toRefs</code> to convert each property into a ref, so reactivity is preserved.
+  </p>
+
+  <pre><code>import { reactive, toRefs } from 'vue'
+
+const state = reactive({
+  count: 0,
+  name: 'Vue'
+})
+
+// Without toRefs, destructuring breaks reactivity
+const { count, name } = toRefs(state)
+
+// Now count and name are refs you can use in the template or watch
+</code></pre>
+
+  <h3><code>toRef</code></h3>
+  <p>
+    Use <code>toRef</code> when you want to create a ref for a single property of a reactive object.
+  </p>
+
+  <pre><code>import { reactive, toRef } from 'vue'
+
+const state = reactive({
+  count: 0,
+  name: 'Vue'
+})
+
+const countRef = toRef(state, 'count')
+
+// countRef.value will stay reactive and reflect changes in state.count
+</code></pre>
+
+  <p>
+    These utilities help maintain reactivity when working with destructured reactive objects.
+  </p>
+</section>
+
+
+<section id="v-model">
+  <h2>Understanding <code>v-model</code> in Vue 3</h2>
+
+  <p><code>v-model</code> enables two-way data binding between parent and child components.</p>
+
+  <p><strong>Example with a parent and a child component:</strong></p>
+
+  <pre><code>&lt;!-- UsingVModel.vue (Child Component) --&gt;
+&lt;template&gt;
+  &lt;input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+    placeholder="Type here..."
+  /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps(['modelValue'])
+&lt;/script&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;template&gt;
+  &lt;p&gt;Using v-model with a child component:&lt;/p&gt;
+  &lt;UsingVModel v-model="message" /&gt;
+  &lt;p&gt;Message is: {{ message }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+import UsingVModel from './UsingVModel.vue'  &lt;!-- adjust path if needed --&gt;
+
+const message = ref('Hello from parent!')
+&lt;/script&gt;
+</code></pre>
+
+<p>This is inside the child component's input element. Here's what's happening:
+
+@input is Vue shorthand for listening to the native input event on the input element. This event fires every time the user types or changes the value in the input box.
+
+When the input event fires, the handler runs this expression:</p>
+
+
+  <p>This setup binds the parent’s <code>message</code> ref to the child’s input, keeping both in sync automatically.</p>
+</section>
+
+
+<section id="multiple-v-model">
+  <h2>Multiple <code>v-model</code> Bindings in Vue 3</h2>
+
+  <p>Vue 3 allows multiple <code>v-model</code> bindings on a single component by specifying argument names for each binding.</p>
+
+  <p><strong>Example with a parent and a child component using multiple <code>v-model</code>:</strong></p>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;input
+      type="text"
+      :value="title"
+      @input="$emit('update:title', $event.target.value)"
+      placeholder="Title"
+    /&gt;
+    &lt;textarea
+      :value="content"
+      @input="$emit('update:content', $event.target.value)"
+      placeholder="Content"
+    &gt;&lt;/textarea&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps(['title', 'content'])
+&lt;/script&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;template&gt;
+  &lt;ChildComponent v-model:title="postTitle" v-model:content="postContent" /&gt;
+  &lt;p&gt;Title: {{ postTitle }}&lt;/p&gt;
+  &lt;p&gt;Content: {{ postContent }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+import ChildComponent from './ChildComponent.vue'
+
+const postTitle = ref('Hello')
+const postContent = ref('This is content')
+&lt;/script&gt;
+</code></pre>
+
+  <p>This setup binds the parent's <code>postTitle</code> and <code>postContent</code> refs to the child's <code>title</code> and <code>content</code> props, respectively. When the child emits <code>update:title</code> or <code>update:content</code>, the parent's state updates automatically, enabling two-way binding on multiple values.</p>
+
+</section>
+
+
+<section id="suspense">
+  <h2><code>&lt;Suspense&gt;</code> in Vue 3</h2>
+
+  <p>
+    The <code>&lt;Suspense&gt;</code> component in Vue 3 is used to handle components that rely on asynchronous data or setup. It allows you to show a fallback UI (like a loading spinner or message) while waiting for async components or data to be ready.
+  </p>
+
+  <p><strong>Use cases:</strong></p>
+  <ul>
+    <li>Lazy-loaded components</li>
+    <li>Components using <code>async setup()</code></li>
+    <li>Waiting for external data sources before rendering</li>
+  </ul>
+
+  <p><strong>Syntax:</strong></p>
+
+  <pre><code>&lt;Suspense&gt;
+  &lt;template #default&gt;
+    &lt;AsyncComponent /&gt;
+  &lt;/template&gt;
+
+  &lt;template #fallback&gt;
+    &lt;div&gt;Loading...&lt;/div&gt;
+  &lt;/template&gt;
+&lt;/Suspense&gt;
+</code></pre>
+
+  <p>
+    In this example, while <code>&lt;AsyncComponent&gt;</code> is still loading or resolving asynchronous setup code, Vue will display the <code>fallback</code> template ("Loading...").
+  </p>
+
+  <p><strong>Full example with <code>async setup()</code>:</strong></p>
+
+  <pre><code>&lt;!-- AsyncComponent.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;Async data: {{ data }}&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+const data = ref(null)
+
+await new Promise(resolve =&gt; setTimeout(resolve, 2000)) // Simulate async delay
+data.value = 'Loaded after 2 seconds'
+&lt;/script&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- Parent.vue --&gt;
+&lt;template&gt;
+  &lt;Suspense&gt;
+    &lt;template #default&gt;
+      &lt;AsyncComponent /&gt;
+    &lt;/template&gt;
+    &lt;template #fallback&gt;
+      &lt;div&gt;Loading async component...&lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/Suspense&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import AsyncComponent from './AsyncComponent.vue'
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    This setup ensures that while the async component is resolving, the user sees a loading message. Once resolved, the component renders normally.
+  </p>
+
+  <p><a href="#suspense">Back to Suspense</a></p>
+</section>
+
+
+<section id="define-async-component">
+  <h2><code>defineAsyncComponent</code> in Vue 3</h2>
+
+  <p>
+    <code>defineAsyncComponent</code> is a Vue 3 utility that lets you load components lazily — only when they are needed. This helps reduce the size of your initial JavaScript bundle and improves performance, especially in large applications.
+  </p>
+
+  <p><strong>Why use it?</strong></p>
+  <ul>
+    <li>Faster initial page load</li>
+    <li>Load components only when they are required</li>
+    <li>Useful for large or rarely-used components (like modals, routes, dashboards, etc.)</li>
+  </ul>
+
+  <p><strong>Basic usage example:</strong></p>
+
+  <pre><code>&lt;!-- Parent.vue --&gt;
+&lt;template&gt;
+  &lt;Suspense&gt;
+    &lt;template #default&gt;
+      &lt;AsyncComponent /&gt;
+    &lt;/template&gt;
+    &lt;template #fallback&gt;
+      &lt;div&gt;Loading async component...&lt;/div&gt;
+    &lt;/template&gt;
+  &lt;/Suspense&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { defineAsyncComponent } from 'vue'
+
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./components/HeavyComponent.vue')
+)
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    In this setup, the <code>HeavyComponent.vue</code> file is only fetched from the server when it’s needed, reducing the initial bundle size.
+  </p>
+
+  <p><strong>With options (error + delay handling):</strong></p>
+
+  <pre><code>const AsyncComponent = defineAsyncComponent({
+  loader: () =&gt; import('./components/HeavyComponent.vue'),
+  delay: 200, // show fallback after 200ms
+  timeout: 3000, // fail after 3 seconds
+  errorComponent: ErrorComponent,
+  loadingComponent: LoadingSpinner
+})</code></pre>
+
+  <p>
+    This version gives you full control over loading behavior — with loading states, timeouts, and error fallback.
+  </p>
+
+  <p><a href="#define-async-component">Back to defineAsyncComponent</a></p>
+</section>
+
+<section id="shallowref-vs-ref">
+  <h2><code>shallowRef</code> vs <code>ref</code> in Vue 3</h2>
+
+  <p>
+    Both <code>ref</code> and <code>shallowRef</code> are used to create reactive references in Vue 3, but they differ in how deeply they track reactivity.
+  </p>
+
+  <h3><code>ref</code></h3>
+  <p>
+    Creates a deep reactive reference. If you pass an object or array, Vue makes all its nested properties reactive too.
+  </p>
+
+  <pre><code>import { ref } from 'vue'
+
+const state = ref({ count: 0 })
+
+state.value.count++  // triggers reactivity updates</code></pre>
+
+  <h3><code>shallowRef</code></h3>
+  <p>
+    Creates a shallow reactive reference. Only the top-level value is reactive; nested properties are <em>not</em> reactive.
+  </p>
+
+  <pre><code>import { shallowRef } from 'vue'
+
+const state = shallowRef({ count: 0 })
+
+state.value.count++  // will <strong>NOT</strong> trigger reactivity updates</code></pre>
+
+  <p>
+    Use <code>shallowRef</code> when you want to avoid deep reactivity for performance reasons or when dealing with large objects that rarely change deeply.
+  </p>
+
+  <p><strong>Example comparing both:</strong></p>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Using ref&lt;/h3&gt;
+    &lt;p&gt;Count: {{ deepState.count }}&lt;/p&gt;
+    &lt;button @click="deepState.count++"&gt;Increment deep&lt;/button&gt;
+
+    &lt;h3&gt;Using shallowRef&lt;/h3&gt;
+    &lt;p&gt;Count: {{ shallowState.value.count }}&lt;/p&gt;
+    &lt;button @click="shallowState.value.count++"&gt;Increment shallow&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, shallowRef } from 'vue'
+
+const deepState = ref({ count: 0 })
+const shallowState = shallowRef({ count: 0 })
+&lt;/script&gt;</code></pre>
+
+  <p><a href="#shallowref-vs-ref">Back to shallowRef vs ref</a></p>
+</section>
+
+
+<section id="shallowreactive-vs-reactive">
+  <h2><code>shallowReactive</code> vs <code>reactive</code> in Vue 3</h2>
+
+  <p>
+    Both <code>reactive</code> and <code>shallowReactive</code> create reactive objects, but differ in how deeply they track reactivity.
+  </p>
+
+  <h3><code>reactive</code></h3>
+  <p>
+    Creates a deeply reactive proxy. All nested properties inside the object are also made reactive.
+  </p>
+
+  <pre><code>import { reactive } from 'vue'
+
+const state = reactive({
+  nested: {
+    count: 0
+  }
+})
+
+state.nested.count++  // triggers reactivity updates</code></pre>
+
+  <h3><code>shallowReactive</code></h3>
+  <p>
+    Creates a shallow reactive proxy. Only the root-level properties are reactive, but nested objects are left as normal non-reactive objects.
+  </p>
+
+  <pre><code>import { shallowReactive } from 'vue'
+
+const state = shallowReactive({
+  nested: {
+    count: 0
+  }
+})
+
+state.nested.count++  // will <strong>NOT</strong> trigger reactivity updates</code></pre>
+
+  <p>
+    Use <code>shallowReactive</code> when you want to optimize performance by avoiding deep reactivity, or when nested objects don’t need to be reactive.
+  </p>
+
+  <p><strong>Example comparing both:</strong></p>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Using reactive&lt;/h3&gt;
+    &lt;p&gt;Nested Count: {{ stateReactive.nested.count }}&lt;/p&gt;
+    &lt;button @click="stateReactive.nested.count++"&gt;Increment reactive&lt;/button&gt;
+
+    &lt;h3&gt;Using shallowReactive&lt;/h3&gt;
+    &lt;p&gt;Nested Count: {{ stateShallow.nested.count }}&lt;/p&gt;
+    &lt;button @click="stateShallow.nested.count++"&gt;Increment shallowReactive&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { reactive, shallowReactive } from 'vue'
+
+const stateReactive = reactive({
+  nested: { count: 0 }
+})
+
+const stateShallow = shallowReactive({
+  nested: { count: 0 }
+})
+&lt;/script&gt;</code></pre>
+
+  <p><a href="#shallowreactive-vs-reactive">Back to shallowReactive vs reactive</a></p>
+</section>
+
+<section id="render-functions">
+  <h2>Render Functions in Vue 3</h2>
+
+  <p>
+    Render functions provide a programmatic way to describe what the UI should look like instead of using templates. They return Virtual DOM nodes (VNode) directly.
+  </p>
+
+  <p>
+    While templates are easier and more declarative, render functions offer more flexibility and control — useful for advanced dynamic rendering or when you want to write JSX/TSX.
+  </p>
+
+  <h3>Basic render function example</h3>
+
+  <pre><code>import { h } from 'vue'
+
+export default {
+  // Instead of using template, define a render function
+  render() {
+    // 'h' is the hyperscript helper function to create VNodes
+    return h('div', { class: 'my-div' }, [
+      h('h1', 'Hello from render function!'),
+      h('button', {
+        onClick: () =&gt; alert('Clicked!')
+      }, 'Click me')
+    ])
+  }
+}
+</code></pre>
+
+  <p>
+    In this example:
+  </p>
+  <ul>
+    <li><code>h</code> creates virtual nodes.</li>
+    <li>We create a <code>&lt;div&gt;</code> with a class and children elements.</li>
+    <li>The button has an event listener for clicks.</li>
+  </ul>
+
+  <h3>Render function using <code>&lt;script setup&gt;</code> with JSX (optional)</h3>
+
+  <pre><code lang="tsx">&lt;script setup lang="tsx"&gt;
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  setup() {
+    return () =&gt; (
+      &lt;div class="my-div"&gt;
+        &lt;h1&gt;Hello from JSX render!&lt;/h1&gt;
+        &lt;button onClick={() =&gt; alert('Clicked!')}&gt;Click me&lt;/button&gt;
+      &lt;/div&gt;
+    )
+  }
+})
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    This JSX syntax requires additional tooling but is supported and allows a more familiar way to write render functions.
+  </p>
+
+  <p><a href="#render-functions">Back to render functions</a></p>
+</section>
+
+
+<section id="vue-router">
+  <h2>Integrating Vue Router with Vue 3</h2>
+
+  <p>
+    <strong>Vue Router</strong> is the official router for Vue.js. It allows you to create single-page applications (SPAs) with navigation between different views or pages.
+  </p>
+
+  <h3>Steps to integrate Vue Router in Vue 3</h3>
+
+  <ol>
+    <li>Install Vue Router:
+      <pre><code>npm install vue-router@4</code></pre>
+    </li>
+    <li>Create a router configuration file, e.g., <code>src/router/index.js</code> or <code>.ts</code>:</li>
+  </ol>
+
+  <pre><code>import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+
+const routes = [
+  { path: '/', name: 'Home', component: Home },
+  { path: '/about', name: 'About', component: About }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+})
+
+export default router
+</code></pre>
+
+  <ol start="3">
+    <li>Use the router in your main app entry file, e.g., <code>main.js</code> or <code>main.ts</code>:</li>
+  </ol>
+
+  <pre><code>import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+const app = createApp(App)
+
+app.use(router)  // install the router
+
+app.mount('#app')
+</code></pre>
+
+  <h3>Using router in components</h3>
+
+  <p>
+    Use the <code>&lt;router-view&gt;</code> component to display matched routes, and <code>&lt;router-link&gt;</code> to create navigation links.
+  </p>
+
+  <pre><code>&lt;template&gt;
+  &lt;nav&gt;
+    &lt;router-link to="/"&gt;Home&lt;/router-link&gt; |
+    &lt;router-link to="/about"&gt;About&lt;/router-link&gt;
+  &lt;/nav&gt;
+
+  &lt;router-view /&gt;  &lt;!-- renders the matched component --&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Example Home.vue</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Home Page&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Example About.vue</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;About Page&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    Now your Vue 3 app supports routing and navigation between pages!
+  </p>
+
+  <p><a href="#vue-router">Back to Vue Router</a></p>
+</section>
+
+
+<section id="pinia-integration">
+  <h2>Integrating Pinia (Vuex 5) with Vue 3</h2>
+
+  <p>
+    <strong>Pinia</strong> is the official state management library for Vue 3, replacing Vuex 4. It is simpler, modular, and designed with the Composition API in mind.
+  </p>
+
+  <h3>Steps to integrate Pinia in Vue 3</h3>
+
+  <ol>
+    <li>Install Pinia:
+      <pre><code>npm install pinia</code></pre>
+    </li>
+    <li>Create a Pinia store, e.g., <code>src/stores/counter.js</code> or <code>.ts</code>:</li>
+  </ol>
+
+  <pre><code>import { defineStore } from 'pinia'
+
+export const useCounterStore = defineStore('counter', {
+  state: () => ({
+    count: 0
+  }),
+  actions: {
+    increment() {
+      this.count++
+    }
+  }
+})
+</code></pre>
+
+  <ol start="3">
+    <li>Set up Pinia in your main app entry file, e.g., <code>main.js</code> or <code>main.ts</code>:</li>
+  </ol>
+
+  <pre><code>import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+
+const app = createApp(App)
+const pinia = createPinia()
+
+app.use(pinia)  // install Pinia plugin
+app.mount('#app')
+</code></pre>
+
+  <h3>Using the store in components</h3>
+
+  <pre><code>&lt;script setup&gt;
+import { useCounterStore } from '../stores/counter'
+
+const counter = useCounterStore()
+
+function incrementCounter() {
+  counter.increment()
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ counter.count }}&lt;/p&gt;
+    &lt;button @click="incrementCounter"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    This example shows a simple counter store and how to use it in a Vue 3 component.
+  </p>
+
+  <p><a href="#pinia-integration">Back to Pinia Integration</a></p>
+</section>
+
+<section id="slots">
+  <h2>Slots in Vue 3</h2>
+
+  <p>
+    <strong>Slots</strong> in Vue 3 allow you to pass content from a parent component into a child component, enabling flexible and reusable components.
+  </p>
+
+  <h3>Types of slots</h3>
+  <ul>
+    <li><strong>Default slot:</strong> The simplest slot without a name.</li>
+    <li><strong>Named slots:</strong> Multiple slots identified by names.</li>
+    <li><strong>Scoped slots:</strong> Slots that pass data from child to parent via slot props.</li>
+  </ul>
+
+  <h3>Example: Default and Named Slots</h3>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;header&gt;
+      &lt;slot name="header"&gt;Default Header&lt;/slot&gt;
+    &lt;/header&gt;
+    &lt;main&gt;
+      &lt;slot&gt;Default Content&lt;/slot&gt;  &lt;!-- default slot --&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+      &lt;slot name="footer"&gt;Default Footer&lt;/slot&gt;
+    &lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Usage in Parent</h3>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;template&gt;
+  &lt;ChildComponent&gt;
+    &lt;template #header&gt;
+      &lt;h1&gt;Custom Header Content&lt;/h1&gt;
+    &lt;/template&gt
+
+    &lt;p&gt;Custom main content goes here.&lt;/p&gt;
+
+    &lt;template #footer&gt;
+      &lt;small&gt;Custom Footer Content&lt;/small&gt;
+    &lt;/template&gt;
+  &lt;/ChildComponent&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Example: Scoped Slot</h3>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot :user="{ name: 'Alice', age: 25 }"&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;template&gt;
+  &lt;ChildComponent v-slot="{ user }"&gt;
+    &lt;p&gt;User name: {{ user.name }}, age: {{ user.age }}&lt;/p&gt;
+  &lt;/ChildComponent&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    Scoped slots allow the child to provide data to the parent, which can then be rendered in the slot.
+  </p>
+
+  <p><a href="#slots">Back to Slots</a></p>
+</section>
+
+<section id="scoped-slots">
+  <h2>Scoped Slots in Vue 3</h2>
+
+  <p>
+    <strong>Scoped slots</strong> allow a child component to pass data back to the parent component through a slot. This gives the parent access to the child’s data or methods within the slot’s scope.
+  </p>
+
+  <h3>How scoped slots work</h3>
+  <p>
+    The child defines a slot and binds data to it using <code>v-bind</code> (or shorthand <code>:</code>), exposing that data as slot props.
+    The parent then accesses these props inside the slot using <code>v-slot</code> or the shorthand <code>#</code>.
+  </p>
+
+  <h3>Example: Scoped Slot Passing User Data</h3>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;slot :user="{ name: 'Alice', age: 30 }"&gt;&lt;/slot&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;template&gt;
+  &lt;ChildComponent v-slot="{ user }"&gt;
+    &lt;p&gt;User Name: {{ user.name }}, Age: {{ user.age }}&lt;/p&gt;
+  &lt;/ChildComponent&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Key points:</h3>
+  <ul>
+    <li>The child provides data with <code>v-bind</code> on the slot (e.g., <code>:user="{ name: 'Alice', age: 30 }"</code>).</li>
+    <li>The parent uses <code>v-slot="{ user }"</code> to receive and destructure the passed data.</li>
+    <li>This pattern improves component flexibility and reusability by allowing dynamic content with child data.</li>
+  </ul>
+
+  <p><a href="#scoped-slots">Back to Scoped Slots</a></p>
+</section>
+
+<section id="error-handling">
+  <h2>Error Handling in Vue 3</h2>
+
+  <p>
+    Handling errors properly in Vue 3 helps improve the user experience by gracefully managing unexpected failures.
+  </p>
+
+  <h3>Global Error Handling</h3>
+
+  <p>
+    Vue 3 provides a global error handler using <code>app.config.errorHandler</code>, where you can catch uncaught errors from components.
+  </p>
+
+  <pre><code>import { createApp } from 'vue'
+import App from './App.vue'
+
+const app = createApp(App)
+
+app.config.errorHandler = (err, instance, info) =&gt; {
+  console.error('Global error handler:', err)
+  // You can log errors to an external service here
+}
+
+app.mount('#app')
+</code></pre>
+
+  <h3>Component-Level Error Handling: errorCaptured Hook</h3>
+
+  <p>
+    Components can capture errors from their child components using the <code>errorCaptured</code> lifecycle hook.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { onErrorCaptured } from 'vue'
+
+onErrorCaptured((err, instance, info) =&gt; {
+  console.error('Captured in component:', err)
+  // Return false to prevent the error from propagating further
+  return false
+})
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Try-Catch in Async Functions</h3>
+
+  <p>
+    When dealing with async operations, use <code>try-catch</code> blocks inside your methods to catch and handle errors.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const data = ref(null)
+const error = ref(null)
+
+async function fetchData() {
+  try {
+    const res = await fetch('https://api.example.com/data')
+    data.value = await res.json()
+  } catch (err) {
+    error.value = 'Failed to fetch data: ' + err.message
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Error Boundaries (Vue 3.3+)</h3>
+
+  <p>
+    Vue 3.3 introduced native <code>&lt;ErrorBoun
+
+
+<section id="mixins-vs-composables">
+  <h2>Mixins vs Composables in Vue 3</h2>
+
+  <h3>What are Mixins?</h3>
+  <p>
+    Mixins are a way to reuse logic across multiple components in Vue 2 and Vue 3. You define reusable methods, data, or lifecycle hooks in a mixin object and include it in components.
+  </p>
+
+  <pre><code>// exampleMixin.js
+export default {
+  data() {
+    return {
+      count: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.count++
+    }
+  }
+}
+
+// In a component
+import exampleMixin from './exampleMixin.js'
+
+export default {
+  mixins: [exampleMixin],
+  created() {
+    this.increment()
+  }
+}
+</code></pre>
+
+  <h3>Why Are Composables Preferred in Vue 3?</h3>
+  <p>
+    Vue 3 introduced the Composition API, which allows encapsulating and reusing logic via composable functions. Composables are preferred because they:
+  </p>
+  <ul>
+    <li>Encapsulate logic in plain functions, improving code readability and type inference (especially with TypeScript).</li>
+    <li>Avoid issues like name collisions common in mixins.</li>
+    <li>Provide better explicitness and flexibility in logic reuse.</li>
+    <li>Are easier to test and maintain.</li>
+  </ul>
+
+  <h3>Example of a Composable</h3>
+
+  <pre><code>// useCounter.js
+import { ref } from 'vue'
+
+export function useCounter() {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+  return { count, increment }
+}
+
+// In a component
+import { useCounter } from './useCounter.js'
+
+export default {
+  setup() {
+    const { count, increment } = useCounter()
+    increment()
+    return { count, increment }
+  }
+}
+</code></pre>
+
+  <p>
+    Composables keep logic modular and easy to share across components without the downsides of mixins.
+  </p>
+
+  <p><a href="#mixins-vs-composables">Back to Mixins vs Composables</a></p>
+</section>
+
+<section id="mixins">
+  <h2>Mixins in Vue 3</h2>
+
+  <p>
+    Mixins are a way to share reusable logic across multiple Vue components. They allow you to define component options (like data, methods, lifecycle hooks) in a mixin object and include them in any component that needs that behavior.
+  </p>
+
+  <h3>How Mixins Work</h3>
+  <p>
+    When a component uses a mixin, Vue merges the mixin’s options with the component’s own options. This means the component inherits the data properties, methods, and lifecycle hooks defined in the mixin.
+  </p>
+
+  <h3>Example of a Mixin</h3>
+
+  <pre><code>// myMixin.js
+export default {
+  data() {
+    return {
+      mixinCount: 0
+    }
+  },
+  methods: {
+    incrementMixinCount() {
+      this.mixinCount++
+    }
+  },
+  created() {
+    console.log('Mixin created hook called')
+  }
+}
+
+// In a Vue component
+import myMixin from './myMixin.js'
+
+export default {
+  mixins: [myMixin],
+  created() {
+    console.log('Component created hook called')
+    this.incrementMixinCount()
+  }
+}
+</code></pre>
+
+  <h3>What to watch out for</h3>
+  <ul>
+    <li>Mixins can lead to naming conflicts if multiple mixins or component methods/data share the same name.</li>
+    <li>They can make code harder to understand and maintain, especially when many mixins are combined.</li>
+  </ul>
+
+  <p>
+    Because of these drawbacks, Vue 3 encourages using <strong>composables</strong> (Composition API) as a more flexible and readable alternative for code reuse.
+  </p>
+
+  <p><a href="#mixins">Back to Mixins</a></p>
+</section>
+
+<section id="composables">
+  <h2>What is a "Composable" in Vue 3?</h2>
+
+  <p>
+    A <strong>composable</strong> is a reusable function that leverages Vue 3’s Composition API to encapsulate and share reactive state and logic between components.
+  </p>
+
+  <p>
+    Composables help you organize your code by extracting logic into functions that can be imported and used wherever needed.
+  </p>
+
+  <h3>Benefits of Composables</h3>
+  <ul>
+    <li>Encapsulate logic cleanly and reuse it across multiple components.</li>
+    <li>Improve code readability and maintainability.</li>
+    <li>Provide better TypeScript support and autocomplete.</li>
+    <li>Avoid problems like naming collisions that mixins sometimes cause.</li>
+  </ul>
+
+  <p>the useCounter.js is the composable function.</p>
+
+  <h3>Simple Example of a Composable</h3>
+
+  <pre><code>// useCounter.js
+import { ref } from 'vue'
+
+export function useCounter() {
+  const count = ref(0)
+  function increment() {
+    count.value++
+  }
+  return { count, increment }
+}
+
+// In a component
+import { useCounter } from './useCounter.js'
+
+export default {
+  setup() {
+    const { count, increment } = useCounter()
+    return { count, increment }
+  }
+}
+</code></pre>
+
+  <p>
+    In this example, <code>useCounter</code> is a composable that manages a counter state and exposes an increment function.
+  </p>
+
+  <p><a href="#composables">Back to Composables</a></p>
+</section>
+
+<section id="form-validation">
+  <h2>Handling Form Input and Validation in Vue 3</h2>
+
+  <p>
+    Vue 3 makes handling form inputs straightforward with two-way binding via <code>v-model</code>. For validation, you can write custom logic or use libraries like <code>Vuelidate</code> or <code>vee-validate</code>.
+  </p>
+
+  <h3>Basic Form Input Handling with Validation Example</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;form @submit.prevent="handleSubmit"&gt;
+    &lt;div&gt;
+      &lt;label for="email"&gt;Email:&lt;/label&gt;
+      &lt;input
+        id="email"
+        type="email"
+        v-model="email"
+        @blur="validateEmail"
+      /&gt;
+      &lt;span style="color: red;" v-if="errors.email"&gt;{{ errors.email }}&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div&gt;
+      &lt;label for="password"&gt;Password:&lt;/label&gt;
+      &lt;input
+        id="password"
+        type="password"
+        v-model="password"
+        @blur="validatePassword"
+      /&gt;
+      &lt;span style="color: red;" v-if="errors.password"&gt;{{ errors.password }}&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, reactive } from 'vue'
+
+const email = ref('')
+const password = ref('')
+
+const errors = reactive({
+  email: '',
+  password: ''
+})
+
+function validateEmail() {
+  errors.email = ''
+  if (!email.value) {
+    errors.email = 'Email is required.'
+  } else if (!/\S+@\S+\.\S+/.test(email.value)) {
+    errors.email = 'Email must be valid.'
+  }
+}
+
+function validatePassword() {
+  errors.password = ''
+  if (!password.value) {
+    errors.password = 'Password is required.'
+  } else if (password.value.length < 6) {
+    errors.password = 'Password must be at least 6 characters.'
+  }
+}
+
+function handleSubmit() {
+  // Validate all fields before submitting
+  validateEmail()
+  validatePassword()
+
+  if (!errors.email && !errors.password) {
+    alert('Form submitted successfully!')
+    // Proceed with form submission logic here
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Explanation:</h3>
+  <ul>
+    <li><code>v-model</code> binds input values to reactive refs.</li>
+    <li><code>@blur</code> triggers validation functions when the user leaves an input field.</li>
+    <li>Validation functions update the <code>errors</code> reactive object with messages if inputs are invalid.</li>
+    <li>The form submission handler runs all validations and proceeds only if no errors exist.</li>
+  </ul>
+
+  <p>
+    This approach gives you full control over validation logic. For larger projects, consider validation libraries like <code>vee-validate</code> or <code>Vuelidate</code> for more features and easier validation handling.
+  </p>
+
+  <p><a href="#form-validation">Back to Form Input and Validation</a></p>
+</section>
+
+<section id="v-memo">
+  <h2>Understanding the <code>v-memo</code> Directive in Vue 3</h2>
+
+  <p>
+    The <code>v-memo</code> directive is a new performance optimization feature introduced in Vue 3.3+. It allows Vue to skip re-rendering parts of the template when certain reactive dependencies haven’t changed.
+  </p>
+
+  <h3>What does <code>v-memo</code> do?</h3>
+  <p>
+    When used on an element or component, <code>v-memo</code> takes an array of reactive dependencies as its argument. Vue will only re-render that element if one or more of these dependencies have changed since the last render.
+  </p>
+
+  <h3>Why use <code>v-memo</code>?</h3>
+  <ul>
+    <li>Improve rendering performance by avoiding unnecessary updates.</li>
+    <li>Fine-tune reactive updates inside your templates.</li>
+  </ul>
+
+  <h3>Example Usage</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p v-memo="[count]"&gt;Count: {{ count }}&lt;/p&gt;
+
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+const count = ref(0)
+
+function increment() {
+  count.value++
+}
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    In this example, the &lt;p&gt; element with <code>v-memo="[count]"</code> will only re-render when <code>count</code> changes. If other unrelated reactive state changes, Vue skips re-rendering this element.
+  </p>
+
+  <p><a href="#v-memo">Back to v-memo</a></p>
+</section>
+
+<section id="v-for-key">
+  <h2>The Role of the <code>key</code> Attribute in <code>v-for</code></h2>
+
+  <p>
+    When rendering lists with <code>v-for</code>, the <code>key</code> attribute is essential for Vue’s virtual DOM to efficiently track and update individual list items.
+  </p>
+
+  <h3>Why is <code>key</code> important?</h3>
+  <ul>
+    <li>It provides a unique identifier for each item in the list.</li>
+    <li>Helps Vue detect which items have changed, been added, or removed.</li>
+    <li>Prevents unnecessary re-renders and preserves component state.</li>
+  </ul>
+
+  <h3>Example:</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;ul&gt;
+    &lt;li v-for="item in items" :key="item.id"&gt;
+      {{ item.name }}
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+const items = ref([
+  { id: 1, name: 'Apple' },
+  { id: 2, name: 'Banana' },
+  { id: 3, name: 'Cherry' }
+])
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    In this example, <code>:key="item.id"</code> assigns a unique key for each list item based on its <code>id</code>. This allows Vue to track each <code>&lt;li&gt;</code> individually during updates.
+  </p>
+
+  <p>
+    Without keys, Vue uses an inefficient "patch by index" strategy, which can cause bugs and performance issues especially when list order changes or items are inserted/removed.
+  </p>
+
+  <p><a href="#v-for-key">Back to v-for Key</a></p>
+</section>
+
+<section id="third-party-libraries">
+  <h2>Integrating Third-Party Libraries with Vue 3 Components</h2>
+
+  <p>
+    Vue 3 is flexible and works well with third-party libraries such as <code>D3.js</code>, <code>Chart.js</code>, or any other JavaScript library. The general approach is to initialize the library in Vue’s lifecycle hooks or the <code>&lt;script setup&gt;</code> block using <code>onMounted</code>.
+  </p>
+
+  <h3>Key points:</h3>
+  <ul>
+    <li>Use <code>ref</code> to get a DOM element reference where the library will render.</li>
+    <li>Initialize or update the library inside <code>onMounted</code> (or watch/reactive hooks if needed).</li>
+    <li>Clean up on <code>onUnmounted</code> if the library requires it.</li>
+  </ul>
+
+  <h3>Example: Integrating Chart.js in Vue 3</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;canvas ref="chartCanvas" width="400" height="400"&gt;&lt;/canvas&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref, onMounted, onUnmounted } from 'vue'
+import Chart from 'chart.js/auto'
+
+const chartCanvas = ref(null)
+let chartInstance = null
+
+onMounted(() =&gt; {
+  chartInstance = new Chart(chartCanvas.value, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5],
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.5)',
+          'rgba(54, 162, 235, 0.5)',
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(75, 192, 192, 0.5)'
+        ],
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  })
+})
+
+onUnmounted(() =&gt; {
+  if (chartInstance) {
+    chartInstance.destroy() // Clean up to avoid memory leaks
+  }
+})
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    This example creates a bar chart on the &lt;canvas&gt; element using Chart.js when the component mounts, and cleans up the chart instance when the component unmounts.
+  </p>
+
+  <p>
+    For libraries like <code>D3.js</code>, you’d similarly select the element via a ref and then apply your D3 code inside <code>onMounted</code>.
+  </p>
+
+  <p><a href="#third-party-libraries">Back to Third-Party Libraries</a></p>
+</section>
+
+<section id="render-hints">
+  <h2>Understanding Render Hints in Vue 3</h2>
+
+  <p>
+    Render hints in Vue 3 are special directives or patterns that help Vue optimize rendering by giving it extra information about how components or elements should behave during updates.
+  </p>
+
+  <h3>What are Render Hints?</h3>
+  <p>
+    Render hints inform Vue about whether it should re-render, patch, or skip certain parts of the DOM tree during the virtual DOM diffing process.
+  </p>
+
+  <h3>Common Render Hints in Vue 3</h3>
+  <ul>
+    <li><code>v-once</code>: Render an element or component only once and skip future updates.</li>
+    <li><code>v-memo</code>: Render an element only when specified reactive dependencies change.</li>
+    <li><code>key</code> attribute: Helps Vue track elements/components in lists efficiently.</li>
+  </ul>
+
+  <h3>Example of <code>v-once</code> as a Render Hint:</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;p v-once&gt;This text will never update, even if reactive data changes.&lt;/p&gt;
+
+  &lt;p&gt;Regular reactive text: {{ count }}&lt;/p&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+
+const count = ref(0)
+
+setInterval(() =&gt; {
+  count.value++
+}, 1000)
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    In this example, the first paragraph with <code>v-once</code> renders only once and doesn’t update as <code>count</code> changes, acting as a render hint to Vue.
+  </p>
+
+  <p><a href="#render-hints">Back to Render Hints</a></p>
+</section>
+<section id="vue3-transition">
+  <h2>The Transition System in Vue 3</h2>
+
+  <p>
+    Vue 3 provides a powerful and flexible transition system to apply animations and effects when elements or components enter, leave, or change state in the DOM.
+  </p>
+
+  <h3>Core Concepts</h3>
+  <ul>
+    <li>
+      The <code>&lt;transition&gt;</code> component wraps elements or components to enable enter/leave transitions.
+    </li>
+    <li>
+      Vue applies CSS classes automatically at different stages of the transition:
+      <ul>
+        <li><code>v-enter-from</code>, <code>v-enter-active</code>, <code>v-enter-to</code></li>
+        <li><code>v-leave-from</code>, <code>v-leave-active</code>, <code>v-leave-to</code></li>
+      </ul>
+    </li>
+    <li>
+      You can define these classes in CSS or use JavaScript hooks for more control.
+    </li>
+  </ul>
+
+  <h3>Basic Example</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;button @click="show = !show"&gt;Toggle&lt;/button&gt;
+
+  &lt;transition name="fade"&gt;
+    &lt;p v-if="show"&gt;Hello with fade transition!&lt;/p&gt;
+  &lt;/transition&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const show = ref(true)
+&lt;/script&gt;
+
+&lt;style&gt;
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <p>
+    Here, the paragraph smoothly fades in and out when toggled because of the CSS classes automatically applied by the <code>&lt;transition&gt;</code> wrapper.
+  </p>
+
+  <h3>Additional Features</h3>
+  <ul>
+    <li><code>&lt;transition-group&gt;</code>: For list transitions with multiple elements.</li>
+    <li>JavaScript hooks for custom enter/leave behavior.</li>
+    <li>Support for CSS animations or third-party animation libraries.</li>
+  </ul>
+
+  <p><a href="#vue3-transition">Back to Transition System</a></p>
+</section>
+
+<section id="reactivity-caveats">
+  <h2>Vue 3 Reactivity Caveats</h2>
+
+  <p>
+    Vue 3's reactivity system is powerful but there are some important caveats to keep in mind when working with reactive data.
+  </p>
+
+  <h3>1. Reactivity on New Properties</h3>
+  <p>
+    Adding new properties to a reactive object after its creation is <strong>not reactive</strong> by default. You need to use <code>Vue.set</code> in Vue 2 or create reactive objects properly in Vue 3.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { reactive } from 'vue'
+
+const state = reactive({ count: 0 })
+
+// Adding a new property after creation won't be reactive:
+state.newProp = 'hello' // This won't trigger reactivity
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    To make new properties reactive, initialize them upfront or use <code>ref</code> or <code>reactive</code> properly.
+  </p>
+
+  <h3>2. Reactivity Does Not Track Array Index Changes</h3>
+  <p>
+    Modifying array elements by direct index assignment does not trigger reactivity.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { reactive } from 'vue'
+
+const arr = reactive([1, 2, 3])
+
+arr[0] = 10 // Vue won't detect this change reactively
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    Use array methods like <code>push</code>, <code>splice</code>, or replace the entire array to trigger updates.
+  </p>
+
+  <h3>3. Using <code>ref</code> for Primitive Values</h3>
+  <p>
+    Primitive values like strings, numbers, booleans must be wrapped with <code>ref</code> to be reactive.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const count = ref(0)
+
+count.value++ // Updating count with .value triggers reactivity
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    Remember to access and update the value via <code>.value</code> when using refs.
+  </p>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Initialize all reactive properties upfront for reactivity.</li>
+    <li>Use Vue's reactive array methods to update arrays.</li>
+    <li>Use <code>ref</code> for primitives and access with <code>.value</code>.</li>
+  </ul>
+
+  <p><a href="#reactivity-caveats">Back to Reactivity Caveats</a></p>
+</section>
+
+
+<section id="advanced-component-communication">
+  <h2>Advanced Component Communication</h2>
+
+  <p>
+    In Vue 3, components communicate in several ways beyond simple prop passing and event emitting. Understanding these advanced techniques helps build scalable and maintainable apps.
+  </p>
+
+  <h3>1. Provide / Inject</h3>
+  <p>
+    The <code>provide</code> and <code>inject</code> API allows passing data deeply into the component tree without prop drilling.
+  </p>
+
+  <pre><code>&lt;!-- ParentComponent.vue --&gt;
+&lt;script setup&gt;
+import { provide, ref } from 'vue'
+
+const theme = ref('dark')
+provide('theme', theme)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;ChildComponent /&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>&lt;!-- ChildComponent.vue --&gt;
+&lt;script setup&gt;
+import { inject } from 'vue'
+
+const theme = inject('theme')
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;p&gt;Current theme: {{ theme }}&lt;/p&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    This lets child components access shared data without props or events.
+  </p>
+
+  <h3>2. Using <code>emits</code> for Custom Events</h3>
+  <p>
+    Define emitted events explicitly using the <code>emits</code> option to improve component type safety.
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+const emit = defineEmits(['update'])
+
+function updateValue(val) {
+  emit('update', val)
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>3. Using a Global Event Bus</h3>
+  <p>
+    Although not recommended for most cases, a global event bus can be used to facilitate communication between distant components.
+  </p>
+
+  <pre><code>&lt;!-- eventBus.js --&gt;
+import mitt from 'mitt'
+export const eventBus = mitt()
+</code></pre>
+
+  <pre><code>&lt;!-- ComponentA.vue --&gt;
+import { eventBus } from './eventBus'
+
+function sendMessage() {
+  eventBus.emit('message', 'Hello from Component A')
+}
+</code></pre>
+
+  <pre><code>&lt;!-- ComponentB.vue --&gt;
+import { eventBus } from './eventBus'
+
+eventBus.on('message', (msg) =&gt; {
+  console.log('Received:', msg)
+})
+</code></pre>
+
+  <p>
+    This pattern is handy for cross-cutting concerns but can complicate state tracking.
+  </p>
+
+  <h3>4. Using Vuex or Pinia for State Management</h3>
+  <p>
+    For large applications, consider centralized state management libraries like Vuex or Pinia for component communication and shared state.
+  </p>
+
+  <p>
+    These libraries provide a predictable and structured way to manage app-wide state.
+  </p>
+
+  <h3>Summary</h3>
+  <ul>
+    <li><strong>Provide/Inject:</strong> Pass data down without props.</li>
+    <li><strong>Emits:</strong> Explicit event declarations for type safety.</li>
+    <li><strong>Event Bus:</strong> Communicate globally but use sparingly.</li>
+    <li><strong>State Management:</strong> Vuex or Pinia for complex app state.</li>
+  </ul>
+
+  <p><a href="#advanced-component-communication">Back to Advanced Component Communication</a></p>
+</section>
+
+
+<section id="vue-3-teleport-portals">
+  <h2>Vue 3 Teleport & Portals</h2>
+
+  <p>
+    Vue 3 introduces the <code>&lt;teleport&gt;</code> component, which allows you to render a part of your component’s template somewhere else in the DOM, outside of the parent hierarchy. This is particularly useful for modals, tooltips, or any UI element that needs to break out of the normal DOM flow.
+  </p>
+
+  <h3>Basic Usage</h3>
+  <pre><code>&lt;template&gt;
+  &lt;teleport to="body"&gt;
+    &lt;div class="modal"&gt;
+      This modal is rendered outside the app root.
+    &lt;/div&gt;
+  &lt;/teleport&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    In this example, the modal's DOM is moved directly under the <code>&lt;body&gt;</code>, regardless of where the parent component is located.
+  </p>
+
+  <h3>Why Use Teleport?</h3>
+  <ul>
+    <li>Prevent CSS or layout conflicts by moving elements outside of overflow-hidden containers.</li>
+    <li>Ensure modals, popups, or tooltips overlay other content properly.</li>
+    <li>Maintain logical component structure in Vue while managing DOM placement.</li>
+  </ul>
+
+  <h3>Teleport Target</h3>
+  <p>
+    The <code>to</code> attribute accepts any valid CSS selector to specify where the content should be teleported.
+  </p>
+
+  <pre><code>&lt;teleport to="#some-element"&gt;
+  &lt;!-- content --&gt;
+&lt;/teleport&gt;
+</code></pre>
+
+  <h3>Teleport with Conditional Rendering</h3>
+  <pre><code>&lt;template&gt;
+  &lt;button @click="show = !show"&gt;Toggle Modal&lt;/button&gt;
+
+  &lt;teleport to="body"&gt;
+    &lt;div v-if="show" class="modal"&gt;
+      This modal appears outside of the normal DOM flow.
+    &lt;/div&gt;
+  &lt;/teleport&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const show = ref(false)
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Summary</h3>
+  <ul>
+    <li><code>&lt;teleport&gt;</code> moves part of your template to another place in the DOM.</li>
+    <li>Use it for UI elements like modals, tooltips, dropdowns to avoid layout issues.</li>
+    <li>The <code>to</code> prop accepts any CSS selector.</li>
+  </ul>
+
+  <p><a href="#vue-3-teleport-portals">Back to Vue 3 Teleport & Portals</a></p>
+</section>
+
+<section id="vue-3-directives">
+  <h2>Vue 3 Directives</h2>
+
+  <p>
+    Directives are special attributes with the <code>v-</code> prefix that provide reactive behavior to the DOM. Vue 3 continues to support core directives and introduces improvements.
+  </p>
+
+  <h3>Core Built-in Directives</h3>
+  <ul>
+    <li><code>v-bind</code>: Bind attributes or props dynamically.</li>
+    <li><code>v-model</code>: Create two-way binding on form inputs.</li>
+    <li><code>v-if</code>, <code>v-else-if</code>, <code>v-else</code>: Conditional rendering.</li>
+    <li><code>v-for</code>: List rendering.</li>
+    <li><code>v-on</code>: Listen to DOM events.</li>
+  </ul>
+
+  <h3>Example: Using Common Directives</h3>
+  <pre><code>&lt;template&gt;
+  &lt;input v-model="text" placeholder="Type something" /&gt;
+  &lt;p v-if="text"&gt;You typed: {{ text }}&lt;/p&gt;
+  &lt;button @click="clear"&gt;Clear&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const text = ref('')
+function clear() {
+  text.value = ''
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Custom Directives</h3>
+  <p>
+    Vue 3 allows you to create your own directives for reusable DOM manipulations.
+  </p>
+
+  <pre><code>&lt;script&gt;
+export default {
+  directives: {
+    focus: {
+      mounted(el) {
+        el.focus()
+      }
+    }
+  }
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;input v-focus /&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <p>
+    Here, <code>v-focus</code> is a custom directive that autofocuses the input when mounted.
+  </p>
+
+  <h3>Directive Lifecycle Hooks</h3>
+  <p>
+    Custom directives have lifecycle hooks similar to components:
+  </p>
+  <ul>
+    <li><code>created</code>: Called before element is inserted.</li>
+    <li><code>beforeMount</code>: Called before mounting.</li>
+    <li><code>mounted</code>: Called when element is mounted.</li>
+    <li><code>beforeUpdate</code>: Called before the containing component updates.</li>
+    <li><code>updated</code>: Called after the containing component updates.</li>
+    <li><code>beforeUnmount</code>: Called before unmounting.</li>
+    <li><code>unmounted</code>: Called after unmounting.</li>
+  </ul>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Built-in directives cover most reactive DOM needs.</li>
+    <li>Custom directives are great for low-level DOM manipulation.</li>
+    <li>Directive hooks let you hook into element lifecycle.</li>
+  </ul>
+
+  <p><a href="#vue-3-directives">Back to Vue 3 Directives</a></p>
+</section>
+
+<section id="testing-vue-3-components">
+  <h2>Testing Vue 3 Components</h2>
+
+  <p>
+    Testing is essential to ensure your Vue 3 components work correctly. The most common tools are <code>@vue/test-utils</code> and <code>Jest</code> or <code>Vitest</code>.
+  </p>
+
+  <h3>Setup</h3>
+  <p>
+    Install the Vue Test Utils and a test runner like Jest:
+  </p>
+  <pre><code>npm install --save-dev @vue/test-utils jest</code></pre>
+
+  <h3>Basic Test Example</h3>
+  <p>Here’s how to test a simple component:</p>
+
+  <pre><code>// HelloWorld.vue
+&lt;template&gt;
+  &lt;div&gt;Hello, {{ name }}!&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+defineProps(['name'])
+&lt;/script&gt;
+</code></pre>
+
+  <pre><code>// HelloWorld.spec.js
+import { mount } from '@vue/test-utils'
+import HelloWorld from './HelloWorld.vue'
+
+test('renders greeting with name', () => {
+  const wrapper = mount(HelloWorld, {
+    props: {
+      name: 'Vue'
+    }
+  })
+  expect(wrapper.text()).toContain('Hello, Vue!')
+})
+</code></pre>
+
+  <h3>Testing Events</h3>
+  <p>To test emitted events:</p>
+
+  <pre><code>// Button.vue
+&lt;template&gt;
+  &lt;button @click="$emit('click')"&gt;Click me&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>// Button.spec.js
+import { mount } from '@vue/test-utils'
+import Button from './Button.vue'
+
+test('emits click event when clicked', async () => {
+  const wrapper = mount(Button)
+  await wrapper.trigger('click')
+  expect(wrapper.emitted()).toHaveProperty('click')
+})
+</code></pre>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Use <code>@vue/test-utils</code> to mount components and inspect output.</li>
+    <li>Test rendered text, attributes, props, and emitted events.</li>
+    <li>Combine with Jest or Vitest for running tests and assertions.</li>
+  </ul>
+
+  <p><a href="#testing-vue-3-components">Back to Testing Vue 3 Components</a></p>
+</section>
+
+
+<section id="performance-optimization">
+  <h2>Performance Optimization</h2>
+
+  <p>
+    Optimizing performance in Vue 3 helps your app run faster and smoother, especially as it scales. Here are key techniques and best practices.
+  </p>
+
+  <h3>1. Lazy Loading Components</h3>
+  <p>
+    Load components only when needed using dynamic imports to reduce initial bundle size.
+  </p>
+  <pre><code>&lt;script setup&gt;
+import { defineAsyncComponent } from 'vue'
+
+const AsyncComponent = defineAsyncComponent(() =>
+  import('./MyComponent.vue')
+)
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;AsyncComponent /&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>2. Use <code>v-memo</code> (Vue 3.3+)</h3>
+  <p>
+    The <code>v-memo</code> directive skips re-rendering parts of the template when dependencies haven't changed.
+  </p>
+  <pre><code>&lt;template&gt;
+  &lt;div v-memo="[props.id]"&gt;
+    &lt;p&gt;This content only re-renders when props.id changes.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>3. Avoid Unnecessary Reactive Dependencies</h3>
+  <p>
+    Keep reactive state minimal and avoid deep watchers unless necessary.
+  </p>
+
+  <h3>4. Use <code>shallowReactive</code> and <code>shallowRef</code> When Appropriate</h3>
+  <p>
+    These create reactive objects/refs without making nested properties reactive, reducing overhead.
+  </p>
+
+  <h3>5. Optimize Event Listeners and Watchers</h3>
+  <ul>
+    <li>Debounce or throttle expensive handlers.</li>
+    <li>Use <code>watchEffect</code> carefully to avoid unnecessary runs.</li>
+  </ul>
+
+  <h3>6. Keep Template Simple</h3>
+  <p>
+    Complex expressions in templates can slow down rendering. Move logic to computed properties or methods.
+  </p>
+
+  <h3>7. Use Devtools Profiler</h3>
+  <p>
+    Vue Devtools includes a profiler to identify slow components and unnecessary re-renders.
+  </p>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Lazy load components to reduce initial load.</li>
+    <li>Use <code>v-memo</code> to skip unneeded re-renders.</li>
+    <li>Keep reactive dependencies minimal.</li>
+    <li>Profile performance using Vue Devtools.</li>
+  </ul>
+
+  <p><a href="#performance-optimization">Back to Performance Optimization</a></p>
+</section>
+
+
+<section id="typescript-in-vue-3">
+  <h2>TypeScript in Vue 3</h2>
+
+  <p>
+    Vue 3 offers first-class support for TypeScript, allowing you to write safer, more maintainable code with type checking and better IDE integration.
+  </p>
+
+  <h3>Using TypeScript with <code>&lt;script setup&gt;</code></h3>
+  <p>
+    Simply add the <code>lang="ts"</code> attribute to your script block:
+  </p>
+
+  <pre><code>&lt;script setup lang="ts"&gt;
+import { ref } from 'vue'
+
+const count = ref&lt;number&gt;(0)
+
+function increment(): void {
+  count.value++
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;button @click="increment"&gt;Count: {{ count }}&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Typing Props</h3>
+  <p>
+    Define props with explicit types:
+  </p>
+
+  <pre><code>&lt;script setup lang="ts"&gt;
+import { defineProps } from 'vue'
+
+interface Props {
+  name: string
+  age?: number
+}
+
+const props = defineProps&lt;Props&gt;()
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Typing Emits</h3>
+  <p>
+    You can type emitted events for better type safety:
+  </p>
+
+  <pre><code>&lt;script setup lang="ts"&gt;
+const emit = defineEmits&lt;{
+  (e: 'update', value: string): void
+}&gt;()
+
+function updateValue(val: string) {
+  emit('update', val)
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Benefits of Using TypeScript in Vue 3</h3>
+  <ul>
+    <li>Early detection of errors with static type checking.</li>
+    <li>Improved auto-completion and code navigation in IDEs.</li>
+    <li>Better documentation and self-explanatory code.</li>
+    <li>Easier refactoring and maintenance.</li>
+  </ul>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Add <code>lang="ts"</code> to your <code>&lt;script setup&gt;</code> to enable TypeScript.</li>
+    <li>Use interfaces or types to declare props and emits.</li>
+    <li>Take advantage of TypeScript tooling to improve code quality.</li>
+  </ul>
+
+  <p><a href="#typescript-in-vue-3">Back to TypeScript in Vue 3</a></p>
+</section>
+
+<section id="vue-3-router-advanced-usage">
+  <h2>Vue 3 Router Advanced Usage</h2>
+
+  <p>
+    Vue Router is the official router for Vue.js that deeply integrates with Vue 3’s core. Beyond basic routing, Vue Router offers advanced features to build complex applications.
+  </p>
+
+  <h3>1. Dynamic Route Matching</h3>
+  <p>
+    Define routes with dynamic segments to match URLs with parameters.
+  </p>
+
+  <pre><code>const routes = [
+  {
+    path: '/user/:id',
+    component: UserProfile
+  }
+]
+</code></pre>
+
+  <p>
+    Access the parameter in the component:
+  </p>
+
+  <pre><code>import { useRoute } from 'vue-router'
+
+const route = useRoute()
+console.log(route.params.id)
+</code></pre>
+
+  <h3>2. Route Props</h3>
+  <p>
+    Pass route params as props for cleaner components.
+  </p>
+
+  <pre><code>const routes = [
+  {
+    path: '/user/:id',
+    component: UserProfile,
+    props: true
+  }
+]
+</code></pre>
+
+  <h3>3. Named Views</h3>
+  <p>
+    Render multiple views/components in the same route.
+  </p>
+
+  <pre><code>const routes = [
+  {
+    path: '/dashboard',
+    components: {
+      default: DashboardMain,
+      sidebar: DashboardSidebar
+    }
+  }
+]
+</code></pre>
+
+  <h3>4. Navigation Guards</h3>
+  <p>
+    Control access or run logic before navigation.
+  </p>
+
+  <pre><code>router.beforeEach((to, from, next) =&gt; {
+  if (to.meta.requiresAuth &amp;&amp; !isAuthenticated()) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+</code></pre>
+
+  <h3>5. Lazy Loading Routes</h3>
+  <p>
+    Improve app performance by lazy-loading route components.
+  </p>
+
+  <pre><code>const routes = [
+  {
+    path: '/settings',
+    component: () =&gt; import('./Settings.vue')
+  }
+]
+</code></pre>
+
+  <h3>6. Programmatic Navigation</h3>
+  <p>
+    Navigate via code using the router instance.
+  </p>
+
+  <pre><code>import { useRouter } from 'vue-router'
+const router = useRouter()
+router.push('/home')
+</code></pre>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Use dynamic routes for URL parameters.</li>
+    <li>Pass route params as props for cleaner code.</li>
+    <li>Leverage named views for complex layouts.</li>
+    <li>Protect routes with navigation guards.</li>
+    <li>Lazy load route components for performance.</li>
+    <li>Navigate programmatically as needed.</li>
+  </ul>
+
+  <p><a href="#vue-3-router-advanced-usage">Back to Vue 3 Router Advanced Usage</a></p>
+</section>
+
+<section id="common-vue-3-design-patterns">
+  <h2>Common Vue 3 Design Patterns</h2>
+
+  <p>
+    Using established design patterns helps create maintainable, scalable Vue 3 applications. Here are some of the most common patterns.
+  </p>
+
+  <h3>1. Composition API for Logic Reuse</h3>
+  <p>
+    Extract reusable logic into composable functions to share across components.
+  </p>
+
+  <pre><code>// useCounter.js
+import { ref } from 'vue'
+
+export function useCounter() {
+  const count = ref(0)
+  const increment = () => count.value++
+  return { count, increment }
+}
+
+// In component
+import { useCounter } from './useCounter'
+
+const { count, increment } = useCounter()
+</code></pre>
+
+  <h3>2. Provide / Inject</h3>
+  <p>
+    Pass data or functions deep into the component tree without props drilling.
+  </p>
+
+  <pre><code>// Provider.vue
+import { provide } from 'vue'
+
+provide('theme', 'dark')
+
+// Consumer.vue
+import { inject } from 'vue'
+
+const theme = inject('theme')
+</code></pre>
+
+  <h3>3. Renderless Components</h3>
+  <p>
+    Components that provide behavior or logic but render no markup, allowing flexibility for UI.
+  </p>
+
+  <pre><code>// ClickTracker.vue
+&lt;script setup&gt;
+import { ref } from 'vue'
+const count = ref(0)
+function increment() { count.value++ }
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;slot :count="count" :increment="increment" /&gt;
+&lt;/template&gt;
+
+// Usage
+&lt;ClickTracker v-slot="{ count, increment }"&gt;
+  &lt;button @click="increment"&gt;Clicked {{ count }} times&lt;/button&gt;
+&lt;/ClickTracker&gt;
+</code></pre>
+
+  <h3>4. Dynamic & Async Components</h3>
+  <p>
+    Dynamically load or render components based on conditions.
+  </p>
+
+  <pre><code>&lt;component :is="currentComponent" /&gt;
+
+const currentComponent = ref('MyComponent')
+
+// Or async
+const AsyncComp = defineAsyncComponent(() => import('./MyComponent.vue'))
+</code></pre>
+
+  <h3>5. Slots for Flexible Layouts</h3>
+  <p>
+    Use slots to create reusable and customizable components.
+  </p>
+
+  <pre><code>&lt;MyModal&gt;
+  &lt;template #header&gt;Custom Header&lt;/template&gt;
+  &lt;template #footer&gt;Custom Footer&lt;/template&gt;
+&lt;/MyModal&gt;
+</code></pre>
+
+  <h3>Summary</h3>
+  <ul>
+    <li>Use Composition API composables to share logic.</li>
+    <li>Use Provide/Inject to avoid prop drilling.</li>
+    <li>Renderless components enable logic reuse without UI constraints.</li>
+    <li>Dynamic components and async loading improve flexibility and performance.</li>
+    <li>Slots allow customizable component layouts.</li>
+  </ul>
+
+  <p><a href="#common-vue-3-design-patterns">Back to Common Vue 3 Design Patterns</a></p>
+</section>
+
+<section id="vue3-ssr-nuxt">
+  <h2>Vue 3 SSR & Nuxt</h2>
+
+  <p>
+    Server-Side Rendering (SSR) improves performance, SEO, and perceived load time by rendering HTML on the server before sending it to the client.
+    Vue 3 supports SSR natively, but <strong>Nuxt 3</strong> is the most powerful framework for building SSR-ready Vue apps with minimal config.
+  </p>
+
+  <h3>Nuxt 3 Overview</h3>
+  <ul>
+    <li>Built on Vue 3 + Vite</li>
+    <li>Supports hybrid rendering: SSR, SSG, CSR, and ISR</li>
+    <li>File-based routing system</li>
+    <li>Built-in support for composables, layouts, middleware, and more</li>
+  </ul>
+
+  <h3>Getting Started with Nuxt 3</h3>
+
+  <pre><code># Create a new Nuxt 3 app
+npx nuxi init my-nuxt-app
+cd my-nuxt-app
+npm install
+npm run dev
+</code></pre>
+
+  <p>This will start a development server with SSR enabled out of the box.</p>
+
+  <h3>Basic SSR Example</h3>
+
+  <p>Here's a complete example of a minimal SSR-ready Nuxt app.</p>
+
+  <pre><code>// pages/index.vue
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;Welcome to Nuxt 3 SSR Example&lt;/h1&gt;
+    &lt;p&gt;Current Time: {{ now }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+const now = new Date().toLocaleTimeString()
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    This content will be rendered on the server and delivered as pre-hydrated HTML, making it SEO-friendly and faster to display.
+  </p>
+
+  <h3>SSR Rendering Output (Simulated)</h3>
+  <pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;h1&gt;Welcome to Nuxt 3 SSR Example&lt;/h1&gt;
+      &lt;p&gt;Current Time: 9:30:21 AM&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+  <h3>Deployment Options</h3>
+  <ul>
+    <li>Node.js server (for full SSR)</li>
+    <li>Static hosting with pre-rendering (SSG)</li>
+    <li>Edge deployments (Vercel, Netlify)</li>
+  </ul>
+
+  <p><a href="#vue3-ssr-nuxt">Back to Vue 3 SSR & Nuxt</a></p>
+</section>
+
+<section id="vue3-accessibility">
+  <h2>Accessibility & UX Best Practices</h2>
+
+  <p>
+    Accessibility (often abbreviated as <strong>a11y</strong>) ensures your Vue applications are usable by people with a wide range of abilities, including users relying on screen readers or keyboard navigation. Building accessible apps is not only inclusive — it's also required by many compliance standards like WCAG, ADA, and Section 508.
+  </p>
+
+  <h3>Core Accessibility Guidelines</h3>
+  <ul>
+    <li>Use <strong>semantic HTML</strong> elements: <code>&lt;button&gt;</code>, <code>&lt;label&gt;</code>, <code>&lt;nav&gt;</code>, etc.</li>
+    <li>Ensure all interactive elements are <strong>keyboard accessible</strong>.</li>
+    <li>Add descriptive <code>alt</code> attributes to all images.</li>
+    <li>Use <strong>ARIA attributes</strong> only when native elements aren’t sufficient.</li>
+    <li>Maintain high contrast and sufficient font sizes for readability.</li>
+  </ul>
+
+  <h3>Vue-Specific Considerations</h3>
+  <p>
+    Vue makes it easy to bind accessibility attributes dynamically using <code>v-bind</code> and control focus/reactivity with its reactivity system.
+  </p>
+
+  <pre><code>&lt;template&gt;
+  &lt;button
+    :aria-expanded="isOpen.toString()"
+    @click="isOpen = !isOpen"
+  &gt;
+    Toggle Menu
+  &lt;/button&gt;
+
+  &lt;div v-if="isOpen" role="menu"&gt;
+    &lt;a href="#" role="menuitem"&gt;Item 1&lt;/a&gt;
+    &lt;a href="#" role="menuitem"&gt;Item 2&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const isOpen = ref(false)
+&lt;/script&gt;
+</code></pre>
+
+  <h3>Keyboard Navigation</h3>
+  <ul>
+    <li>Use <code>tabindex</code> to make non-interactive elements focusable (when appropriate).</li>
+    <li>Handle keyboard events like <code>keydown</code> to support arrow key navigation in menus, modals, and dropdowns.</li>
+    <li>Manage focus when rendering modals or dynamic content (e.g., focus the first interactive element).</li>
+  </ul>
+
+  <h3>Testing Tools</h3>
+  <ul>
+    <li><strong>Chrome Lighthouse</strong>: Built-in accessibility audits</li>
+    <li><strong>Axe DevTools</strong>: Browser extension for deep a11y testing</li>
+    <li><strong>NVDA, JAWS, or VoiceOver</strong>: Screen readers for testing real-world behavior</li>
+    <li><strong>Keyboard only</strong>: Test apps without a mouse to catch focus traps</li>
+  </ul>
+
+  <h3>Best UX Practices to Combine with a11y</h3>
+  <ul>
+    <li>Provide clear and visible focus indicators (e.g., <code>:focus-visible</code>)</li>
+    <li>Respect user preferences like <code>prefers-reduced-motion</code></li>
+    <li>Use consistent, meaningful labels for buttons and form elements</li>
+    <li>Announce errors or messages with ARIA live regions</li>
+  </ul>
+
+  <h3>Example: Accessible Form Field</h3>
+  <pre><code>&lt;label for="email"&gt;Email Address&lt;/label&gt;
+&lt;input id="email" type="email" required aria-required="true" /&gt;
+&lt;span role="alert"&gt;This field is required.&lt;/span&gt;
+</code></pre>
+
+  <p>
+    Vue can dynamically manage states like <code>aria-invalid</code> and toggle messages based on user input.
+  </p>
+
+  <p><a href="#vue3-accessibility">Back to Accessibility & UX Best Practices</a></p>
+</section>
+
+
+<section id="vue3-api-cms-integration">
+  <h2>Integration with APIs & CMS (AEP / AEM)</h2>
+
+  <p>
+    Vue 3 makes it simple to integrate with headless APIs, including Adobe Experience Platform (AEP) and Adobe Experience Manager (AEM). These services typically expose RESTful or GraphQL APIs that you consume within your components or composables.
+  </p>
+
+  <h3>Basic API Integration with Axios</h3>
+  <pre><code>// api/client.js
+import axios from 'axios'
+
+const apiClient = axios.create({
+  baseURL: 'https://api.aep.example.com',
+  headers: {
+    Authorization: `Bearer ${yourToken}`
+  }
+})
+
+export default apiClient
+</code></pre>
+
+  <pre><code>// components/UserProfile.vue
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue'
+import apiClient from '../api/client'
+
+const userProfile = ref(null)
+const loading = ref(true)
+const error = ref(null)
+
+onMounted(async () =&gt; {
+  try {
+    const response = await apiClient.get('/user/profile')
+    userProfile.value = response.data
+  } catch (err) {
+    error.value = err.message
+  } finally {
+    loading.value = false
+  }
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div v-if="loading"&gt;Loading...&lt;/div&gt;
+  &lt;div v-else-if="error"&gt;Error: {{ error }}&lt;/div&gt;
+  &lt;div v-else&gt;
+    &lt;h3&gt;Welcome, {{ userProfile.name }}&lt;/h3&gt;
+    &lt;p&gt;Email: {{ userProfile.email }}&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>Calling AEM JSON Content APIs</h3>
+  <p>
+    AEM often exposes structured content via JSON endpoints (e.g., `/content/my-site/home.model.json`). You can fetch and render this dynamically in Vue.
+  </p>
+
+  <pre><code>// Example: Fetching AEM content
+const { data } = await axios.get('https://cms.example.com/content/home.model.json')
+</code></pre>
+
+  <h3>Best Practices for API Integration</h3>
+  <ul>
+    <li>Use <code>async/await</code> with error handling</li>
+    <li>Show loading and error states for better UX</li>
+    <li>Use environment variables for base URLs and auth tokens</li>
+    <li>Abstract API calls into composables or service modules</li>
+  </ul>
+
+  <h3>Handling Authentication</h3>
+  <p>
+    For secure APIs like AEP, implement OAuth or JWT flows. Store tokens securely in memory or cookies (not localStorage for sensitive data).
+  </p>
+
+  <h3>CMS Integration Patterns</h3>
+  <ul>
+    <li>Use props to pass CMS content into components</li>
+    <li>Use slots or render functions for dynamic content</li>
+    <li>Use SSR (Nuxt) for preloading CMS data for SEO</li>
+  </ul>
+
+  <h3>Optional: Use Fetch Composables (Nuxt or VueUse)</h3>
+  <pre><code>// Nuxt 3 example using useFetch
+const { data, error } = await useFetch('/api/my-endpoint')
+</code></pre>
+
+  <p><a href="#vue3-api-cms-integration">Back to API & CMS Integration</a></p>
+</section>
+
+<section id="vue3-devtools-debugging">
+  <h2>Vue Devtools & Debugging</h2>
+
+  <p>
+    <strong>Vue Devtools</strong> is an essential tool for debugging and inspecting Vue 3 applications. It provides a visual interface for tracking component state, events, props, and the Vuex/Pinia store in real time.
+  </p>
+
+  <h3>Installing Vue Devtools</h3>
+  <ul>
+    <li><strong>Browser Extension:</strong> Available for Chrome, Firefox, and Edge.</li>
+    <li><strong>Standalone App:</strong> Use when working in environments like Electron or non-browser platforms.</li>
+  </ul>
+
+  <pre><code># Chrome Web Store
+https://chrome.google.com/webstore/detail/vue-js-devtools/nhdogjmejiglipccpnnnanhbledajbpd
+</code></pre>
+
+  <p>
+    Make sure you're running the app in development mode and that the Vue Devtools are enabled:
+  </p>
+
+  <pre><code>// main.js or main.ts
+app.config.devtools = true
+</code></pre>
+
+  <h3>What You Can Debug with Devtools</h3>
+  <ul>
+    <li>View component hierarchy and inspect props/reactive state</li>
+    <li>Track emitted events and handlers</li>
+    <li>Edit component state live to test changes</li>
+    <li>Inspect and time-travel through Pinia or Vuex store changes</li>
+    <li>Watch reactivity and performance metrics</li>
+  </ul>
+
+  <h3>Example Debug Flow</h3>
+  <p>
+    Suppose you have a component where a `ref` is not updating correctly. Open Devtools and:
+  </p>
+  <ol>
+    <li>Find the component in the <strong>Component tree</strong></li>
+    <li>Inspect the <strong>Refs</strong> section to confirm value changes</li>
+    <li>Use the <strong>Console tab</strong> in Devtools to call/update state directly</li>
+  </ol>
+
+  <h3>Logging Reactivity</h3>
+  <pre><code>&lt;script setup&gt;
+import { ref, watch } from 'vue'
+
+const count = ref(0)
+
+watch(count, (newVal) =&gt; {
+  console.log('Count changed:', newVal)
+})
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    Combine Devtools with <code>watch()</code>, <code>console.log()</code>, and breakpoints to pinpoint issues faster.
+  </p>
+
+  <h3>Other Debugging Strategies</h3>
+  <ul>
+    <li><strong>Breakpoints:</strong> Use your browser’s devtools to pause execution at key points</li>
+    <li><strong>Error Handling:</strong> Use <code>errorCaptured</code> or global error handlers to catch component errors</li>
+    <li><strong>Network Tab:</strong> Check API responses and payloads</li>
+    <li><strong>Vue Warnings:</strong> Watch the browser console for helpful Vue warnings and messages</li>
+  </ul>
+
+  <h3>Helpful Tips</h3>
+  <ul>
+    <li>Ensure you're using the correct Devtools version for Vue 3 (v6+)</li>
+    <li>Use <code>defineExpose()</code> to debug internal values in <code>&lt;script setup&gt;</code></li>
+    <li>For Nuxt 3: use <code>nuxt devtools</code> for server/client inspection</li>
+  </ul>
+
+  <h3>Example: Debugging with defineExpose()</h3>
+  <pre><code>&lt;script setup&gt;
+const secretValue = 'debug me'
+defineExpose({ secretValue })
+&lt;/script&gt;
+</code></pre>
+  <p>Now you can access <code>$vm.secretValue</code> in Devtools.</p>
+
+  <p><a href="#vue3-devtools-debugging">Back to Vue Devtools & Debugging</a></p>
+</section>
+
+<section id="vue3-css-styling">
+  <h2>CSS & Styling in Vue</h2>
+
+  <p>
+    Vue 3 supports flexible styling approaches, from scoped CSS in single-file components to global styles, utility-first frameworks like TailwindCSS, and CSS-in-JS libraries.
+  </p>
+
+  <h3>1. Scoped Styles in Single File Components (SFC)</h3>
+  <p>
+    Use the <code>scoped</code> attribute to limit styles to the current component.
+  </p>
+
+  <pre><code>&lt;template&gt;
+  &lt;div class="box"&gt;Hello Scoped CSS&lt;/div&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.box {
+  background: lightblue;
+  padding: 1rem;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <p>
+    Scoped styles are compiled with unique attributes to prevent leakage (e.g., <code>data-v-abc123</code>).
+  </p>
+
+  <h3>2. Global Styles</h3>
+  <p>
+    You can define global styles in your <code>main.css</code> or <code>App.vue</code> without the <code>scoped</code> attribute.
+  </p>
+
+  <pre><code>// main.js
+import './assets/styles.css'
+</code></pre>
+
+  <pre><code>// App.vue
+&lt;style&gt;
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <h3>3. Preprocessors: SCSS / Less / Stylus</h3>
+  <p>
+    Vue supports pre-processors out of the box. Just add the correct lang attribute:
+  </p>
+
+  <pre><code>&lt;style lang="scss" scoped&gt;
+$primary: #42b983;
+
+button {
+  background-color: $primary;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <p>Make sure your project has the appropriate loaders installed:</p>
+  <pre><code>npm install -D sass</code></pre>
+
+  <h3>4. Utility-First: Tailwind CSS</h3>
+  <p>
+    Tailwind works well with Vue. It provides a utility-first approach to building UIs.
+  </p>
+
+  <pre><code>// tailwind.config.js (basic example)
+module.exports = {
+  content: ['./index.html', './src/**/*.{vue,js,ts}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+</code></pre>
+
+  <pre><code>// main.js
+import './assets/tailwind.css'
+</code></pre>
+
+  <pre><code>&lt;template&gt;
+  &lt;div class="p-4 bg-green-100 text-green-800"&gt;
+    Styled with Tailwind
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>5. CSS Modules (Optional)</h3>
+  <p>
+    With Vue CLI or Vite, you can use CSS Modules to scope classes locally without the <code>scoped</code> attribute.
+  </p>
+
+  <pre><code>&lt;style module&gt;
+.title {
+  color: red;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <pre><code>&lt;template&gt;
+  &lt;h1 :class="$style.title"&gt;Hello Modules&lt;/h1&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>6. Styling Best Practices</h3>
+  <ul>
+    <li>Use <code>:class</code> and <code>:style</code> bindings for dynamic styling</li>
+    <li>Prefer scoped or module-based styles for maintainability</li>
+    <li>Use utility frameworks like Tailwind for consistent design</li>
+    <li>Split global styles (reset, themes, typography) from component styles</li>
+    <li>Co-locate styles with components for readability</li>
+  </ul>
+
+  <h3>Example: Dynamic Class Binding</h3>
+  <pre><code>&lt;template&gt;
+  &lt;button :class="isActive ? 'active' : 'inactive'"&gt;Click Me&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const isActive = ref(false)
+&lt;/script&gt;
+
+&lt;style scoped&gt;
+.active {
+  background: green;
+  color: white;
+}
+.inactive {
+  background: gray;
+  color: white;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <p><a href="#vue3-css-styling">Back to CSS & Styling in Vue</a></p>
+</section>
+
+<section id="vue3-form-validation">
+  <h2>Form Validation Libraries</h2>
+
+  <p>
+    Vue 3 applications often require robust form validation — especially in healthcare, finance, and enterprise apps. While native HTML validation is helpful, Vue integrates well with libraries like <strong>VeeValidate</strong>, <strong>yup</strong>, and composable-based solutions.
+  </p>
+
+  <h3>1. Native HTML Validation (Baseline)</h3>
+  <p>
+    You can always use built-in browser validation for simple forms:
+  </p>
+
+  <pre><code>&lt;form @submit.prevent="submitForm"&gt;
+  &lt;input type="email" v-model="email" required /&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const email = ref('')
+const submitForm = () =&gt; {
+  console.log('Submitted:', email.value)
+}
+&lt;/script&gt;
+</code></pre>
+
+  <p>However, complex validations often need custom libraries.</p>
+
+  <h3>2. VeeValidate + Yup Example</h3>
+  <p><a href="https://vee-validate.logaretm.com/v4/" target="_blank">VeeValidate</a> is the most mature validation library for Vue 3, supporting schemas, field-level validation, and composables.</p>
+
+  <pre><code>npm install vee-validate yup</code></pre>
+
+  <pre><code>&lt;script setup&gt;
+import { useForm, useField } from 'vee-validate'
+import * as yup from 'yup'
+
+const schema = yup.object({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).required()
+})
+
+const { handleSubmit } = useForm({ validationSchema: schema })
+const { value: email, errorMessage: emailError } = useField('email')
+const { value: password, errorMessage: passwordError } = useField('password')
+
+const onSubmit = handleSubmit((values) =&gt; {
+  console.log('Form Submitted:', values)
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;form @submit.prevent="onSubmit"&gt;
+    &lt;label&gt;Email:&lt;/label&gt;
+    &lt;input v-model="email" type="email" /&gt;
+    &lt;span class="error"&gt;{{ emailError }}&lt;/span&gt;
+
+    &lt;label&gt;Password:&lt;/label&gt;
+    &lt;input v-model="password" type="password" /&gt;
+    &lt;span class="error"&gt;{{ passwordError }}&lt;/span&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/template&gt;
+
+&lt;style scoped&gt;
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <h3>3. Custom Validation with Composables</h3>
+  <p>
+    For lightweight use-cases, you can use your own composables to handle validation:
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { ref } from 'vue'
+
+const email = ref('')
+const error = ref('')
+
+const validate = () =&gt; {
+  error.value = email.value.includes('@') ? '' : 'Invalid email'
+}
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;input v-model="email" @blur="validate" /&gt;
+  &lt;span class="error"&gt;{{ error }}&lt;/span&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>4. VeeValidate with Schema-less Fields</h3>
+  <p>
+    You can also define per-field validation inline using rules:
+  </p>
+
+  <pre><code>&lt;script setup&gt;
+import { useField } from 'vee-validate'
+
+const { value: name, errorMessage } = useField('name', val =&gt; {
+  if (!val) return 'Name is required'
+  if (val.length &lt; 2) return 'Too short'
+  return true
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;input v-model="name" /&gt;
+  &lt;span&gt;{{ errorMessage }}&lt;/span&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>5. Recommended Libraries</h3>
+  <ul>
+    <li><strong>VeeValidate</strong>: Most feature-rich and Vue-idiomatic</li>
+    <li><strong>VueUse</strong>: Has <code>useForm</code> and <code>useField</code> in some extensions</li>
+    <li><strong>Yup</strong>: Great for schema validation (used with VeeValidate)</li>
+    <li><strong>Zod</strong>: Alternative to Yup with strong TypeScript support</li>
+  </ul>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>Use schema-based validation for consistency and scalability</li>
+    <li>Validate both client-side and server-side (especially for security)</li>
+    <li>Show clear, contextual error messages</li>
+    <li>Debounce validations for better UX in real-time forms</li>
+    <li>Support accessibility (ARIA + keyboard interactions)</li>
+  </ul>
+
+  <p><a href="#vue3-form-validation">Back to Form Validation Libraries</a></p>
+</section>
+
+<section id="vue3-component-patterns">
+  <h2>Vue Component Design Patterns</h2>
+
+  <p>
+    Well-structured Vue components improve readability, reusability, testability, and maintainability. These patterns become especially important in large-scale enterprise applications.
+  </p>
+
+  <h3>1. Presentational vs Container Components</h3>
+  <p>
+    Separate UI components (dumb) from logic components (smart). This improves testability and reuse.
+  </p>
+
+  <pre><code>// PresentationalButton.vue
+&lt;template&gt;
+  &lt;button class="primary"&gt;&lt;slot /&gt;&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>// Container.vue
+&lt;template&gt;
+  &lt;PresentationalButton @click="handleClick"&gt;Submit&lt;/PresentationalButton&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import PresentationalButton from './PresentationalButton.vue'
+
+const handleClick = () =&gt; {
+  console.log('Submitted!')
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>2. Composable Functions (Logic Reuse)</h3>
+  <p>
+    Extract logic into reusable composables using the Composition API.
+  </p>
+
+  <pre><code>// useAuth.js
+import { ref } from 'vue'
+
+export function useAuth() {
+  const isAuthenticated = ref(false)
+
+  const login = () =&gt; {
+    // Logic here...
+    isAuthenticated.value = true
+  }
+
+  return { isAuthenticated, login }
+}
+</code></pre>
+
+  <pre><code>// LoginForm.vue
+&lt;script setup&gt;
+import { useAuth } from '@/composables/useAuth'
+
+const { isAuthenticated, login } = useAuth()
+&lt;/script&gt;
+</code></pre>
+
+  <p>This pattern helps reduce duplication and improves unit testability.</p>
+
+  <h3>3. Slots for Flexible Content</h3>
+  <p>
+    Use slots to allow custom rendering from parent components.
+  </p>
+
+  <pre><code>&lt;template&gt;
+  &lt;div class="card"&gt;
+    &lt;header&gt;&lt;slot name="header" /&gt;&lt;/header&gt;
+    &lt;main&gt;&lt;slot /&gt;&lt;/main&gt;
+    &lt;footer&gt;&lt;slot name="footer" /&gt;&lt;/footer&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>// Usage
+&lt;Card&gt;
+  &lt;template #header&gt;Title&lt;/template&gt;
+  Hello!
+  &lt;template #footer&gt;Footer text&lt;/template&gt;
+&lt;/Card&gt;
+</code></pre>
+
+  <h3>4. Provide / Inject Pattern</h3>
+  <p>
+    Share state across deeply nested components without prop drilling.
+  </p>
+
+  <pre><code>// Parent
+&lt;script setup&gt;
+import { provide, ref } from 'vue'
+const theme = ref('dark')
+provide('theme', theme)
+&lt;/script&gt;
+</code></pre>
+
+  <pre><code>// Deep Child
+&lt;script setup&gt;
+import { inject } from 'vue'
+const theme = inject('theme')
+&lt;/script&gt;
+</code></pre>
+
+  <h3>5. Renderless Components</h3>
+  <p>
+    These components expose logic via slots or scoped slots but don’t render markup themselves.
+  </p>
+
+  <pre><code>// MouseTracker.vue
+&lt;script setup&gt;
+import { ref, onMounted } from 'vue'
+const x = ref(0)
+const y = ref(0)
+
+onMounted(() =&gt; {
+  window.addEventListener('mousemove', (e) =&gt; {
+    x.value = e.clientX
+    y.value = e.clientY
+  })
+})
+defineExpose({ x, y })
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;slot :x="x" :y="y" /&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <pre><code>// Usage
+&lt;MouseTracker v-slot="{ x, y }"&gt;
+  Mouse is at ({{ x }}, {{ y }})
+&lt;/MouseTracker&gt;
+</code></pre>
+
+  <h3>6. Functional (Stateless) Components</h3>
+  <p>
+    Lightweight components without reactive state or lifecycle hooks.
+  </p>
+
+  <pre><code>
+// FunctionalButton.vue
+defineProps(['label'])
+
+&lt;template functional&gt;
+  &lt;button&gt;{{ label }}&lt;/button&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>7. Directory/Folder Pattern</h3>
+  <ul>
+    <li>Group files: `MyComponent.vue`, `MyComponent.test.js`, `MyComponent.styles.css`</li>
+    <li>Use `index.js` or `index.ts` for clean imports</li>
+  </ul>
+
+  <h3>Best Practices</h3>
+  <ul>
+    <li>Co-locate styles, tests, and logic near components</li>
+    <li>Keep components small and focused (1 responsibility)</li>
+    <li>Use Composition API + Composables for logic reuse</li>
+    <li>Prefer `defineExpose` for debugging internal state</li>
+    <li>Use named slots and slot props for flexible reuse</li>
+    <li>Document prop types and expected slot behavior</li>
+  </ul>
+
+  <p><a href="#vue3-component-patterns">Back to Vue Component Design Patterns</a></p>
+</section>
+
+<section id="vue3-transitions-animations">
+  <h2>Vue Transitions & Animations</h2>
+
+  <p>
+    Vue 3 provides a powerful transition system that lets you animate elements or components when they enter, leave, or update in the DOM.
+    You can apply simple CSS classes, use JavaScript hooks, or integrate animation libraries like <strong>GSAP</strong> or <strong>Anime.js</strong>.
+  </p>
+
+  <h3>1. Basic CSS Transition with &lt;transition&gt;</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;button @click="show = !show"&gt;Toggle Message&lt;/button&gt;
+
+  &lt;transition name="fade"&gt;
+    &lt;p v-if="show"&gt;Hello with a fade animation!&lt;/p&gt;
+  &lt;/transition&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+const show = ref(true)
+&lt;/script&gt;
+
+&lt;style&gt;
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
+}
+&lt;/style&gt;
+</code></pre>
+
+  <h3>2. Transition Modes</h3>
+  <p>Use <code>mode="out-in"</code> to control transition timing between elements.</p>
+
+  <pre><code>&lt;transition name="fade" mode="out-in"&gt;
+  &lt;component :is="view" /&gt;
+&lt;/transition&gt;
+</code></pre>
+
+  <h3>3. JavaScript Hooks for Complex Transitions</h3>
+
+  <pre><code>&lt;transition
+  @before-enter="beforeEnter"
+  @enter="enter"
+  @leave="leave"
+&gt;
+  &lt;div v-if="show"&gt;Animated with JS Hooks&lt;/div&gt;
+&lt;/transition&gt;
+
+&lt;script setup&gt;
+const beforeEnter = (el) =&gt; {
+  el.style.opacity = 0
+}
+const enter = (el, done) =&gt; {
+  setTimeout(() =&gt; {
+    el.style.transition = 'opacity 1s'
+    el.style.opacity = 1
+    done()
+  }, 10)
+}
+const leave = (el, done) =&gt; {
+  el.style.transition = 'opacity 1s'
+  el.style.opacity = 0
+  setTimeout(done, 1000)
+}
+&lt;/script&gt;
+</code></pre>
+
+  <h3>4. &lt;transition-group&gt; for Lists</h3>
+  <p>Applies transitions to elements added/removed from a list.</p>
+
+  <pre><code>&lt;template&gt;
+  &lt;button @click="addItem"&gt;Add Item&lt;/button&gt;
+  &lt;transition-group name="list" tag="ul"&gt;
+    &lt;li v-for="item in items" :key="item.id"&gt;{{ item.text }}&lt;/li&gt;
+  &lt;/transition-group&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { ref } from 'vue'
+let id = 1
+const items = ref([{ id: 0, text: 'Initial Item' }])
+const addItem = () =&gt; {
+  items.value.push({ id: id++, text: 'New Item ' + id })
+}
+&lt;/script&gt;
+
+&lt;style&gt;
+.list-enter-active, .list-leave-active {
+  transition: all 0.3s ease;
+}
+.list-enter-from, .list-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+&lt;/style&gt;
+</code></pre>
+
+  <h3>5. Integrating GSAP or Anime.js</h3>
+  <p>For advanced animations, use libraries like GSAP:</p>
+
+  <pre><code>npm install gsap</code></pre>
+
+  <pre><code>&lt;script setup&gt;
+import gsap from 'gsap'
+import { onMounted } from 'vue'
+
+onMounted(() =&gt; {
+  gsap.from('.animated-box', {
+    duration: 1,
+    x: -100,
+    opacity: 0,
+    ease: 'bounce.out'
+  })
+})
+&lt;/script&gt;
+
+&lt;template&gt;
+  &lt;div class="animated-box"&gt;I bounce in!&lt;/div&gt;
+&lt;/template&gt;
+</code></pre>
+
+  <h3>6. Transition Best Practices</h3>
+  <ul>
+    <li>Always use <code>key</code> when transitioning between conditional elements</li>
+    <li>Use <code>transition-group</code> for lists with keys</li>
+    <li>Keep transitions performant — avoid layout thrashing (e.g., transform instead of top/left)</li>
+    <li>Combine with <code>v-show</code> if you want to keep DOM but toggle visibility</li>
+    <li>Use <code>requestAnimationFrame</code> or <code>nextTick</code> if animation timing is off</li>
+  </ul>
+
+  <p><a href="#vue3-transitions-animations">Back to Vue Transitions & Animations</a></p>
+</section>
+
+<section id="vue3-auth-integration">
+  <h2>Authentication Integration</h2>
+
+  <p>
+    In modern Vue 3 apps, authentication often involves integrating with external identity providers (e.g., Okta, Auth0, Azure AD) using OAuth 2.0 or OpenID Connect (OIDC).
+    Vue handles authentication by managing access tokens, redirecting users, and securing routes with navigation guards or composables.
+  </p>
+
+  <h3>1. Token-Based Authentication (Overview)</h3>
+  <ul>
+    <li>Frontend handles login redirect and receives access/ID tokens (JWT)</li>
+    <li>Tokens stored in <code>memory</code> or <code>secure cookies</code></li>
+    <li>Tokens sent via <code>Authorization: Bearer</code> in API requests</li>
+  </ul>
+
+  <h3>2. Example: OAuth / OIDC with vue3-oidc-client</h3>
+  <p>Here’s a real-world integration using the <code>vue3-oidc-client</code> library with OpenID Connect:</p>
+
+  <pre><code>npm install oidc-client-ts</code></pre>
+
+  <pre><code>// auth.js (service for OIDC)
+import { UserManager } from 'oidc-client-ts'
+
+export const oidc = new UserManager({
+  authority: 'https://your-identity-provider.com',
+  client_id: 'your-client-id',
+  redirect_uri: 'http://localhost:3000/callback',
+  response_type: 'code',
+  scope: 'openid profile email',
+  post_logout_redirect_uri: 'http://localhost:3000'
+})
+
+export const login = () =&gt; oidc.signinRedirect()
+export const logout = () =&gt; oidc.signoutRedirect()
+export const getUser = () =&gt; oidc.getUser()
+</code></pre>
+
+  <pre><code>// main.js
+import { createApp } from 'vue'
+import App from './App.vue'
+import router from './router'
+
+createApp(App).use(router).mount('#app')
+</code></pre>
+
+  <h3>3. Router Guard for Protected Routes</h3>
+
+  <pre><code>// router/index.js
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
+import Dashboard from '../views/Dashboard.vue'
+import { getUser } from '../auth'
+
+const routes = [
+  { path: '/', name: 'Home', component: Home },
+  { 
+    path: '/dashboard', 
+    name: 'Dashboard', 
+    component: Dashboard,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/callback',
+    name: 'Callback',
+    beforeEnter: async (to, from, next) =&gt; {
+      await oidc.signinRedirectCallback()
+      next('/')
+    }
+  }
+]
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+})
+
+router.beforeEach(async (to, from, next) =&gt; {
+  if (to.meta.requiresAuth) {
+    const user = await getUser()
+    if (!user || user.expired) {
+      return login()
+    }
+  }
+  next()
+})
+
+export default router
+</code></pre>
+
+  <h3>4. Protected API Requests with Axios</h3>
+
+  <pre><code>// axios.js
+import axios from 'axios'
+import { getUser } from './auth'
+
+const api = axios.create({
+  baseURL: 'https://api.yourdomain.com'
+})
+
+api.interceptors.request.use(async (config) =&gt; {
+  const user = await getUser()
+  if (user &amp;&amp; user.access_token) {
+    config.headers.Authorization = `Bearer ${user.access_token}`
+  }
+  return config
+})
+
+export default api
+</code></pre>
+
+  <h3>5. UI Integration</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;button @click="login"&gt;Login&lt;/button&gt;
+    &lt;button @click="logout"&gt;Logout&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import { login, logout } from '../auth'
+&lt;/script&gt;
+</code></pre>
+
+  <h3>6. Best Practices</h3>
+  <ul>
+    <li>Never store tokens in localStorage (vulnerable to XSS)</li>
+    <li>Use memory, HTTP-only cookies, or session management via a backend</li>
+    <li>Protect routes with `beforeEach` guards or layout-based auth wrappers</li>
+    <li>Refresh tokens securely via silent auth or refresh token flow</li>
+    <li>Use HTTPS in all environments with authentication</li>
+  </ul>
+
+  <h3>7. Libraries for Auth in Vue</h3>
+  <ul>
+    <li><strong>vue3-oidc-client</strong> — Official OIDC integration</li>
+    <li><strong>vue-authenticate</strong> — OAuth2 wrapper</li>
+    <li><strong>Auth0 Vue SDK</strong> — If using Auth0 platform</li>
+    <li><strong>Supabase/Firebase</strong> — Integrated auth platforms</li>
+  </ul>
+
+  <p><a href="#vue3-auth-integration">Back to Authentication Integration</a></p>
+</section>
+
+
+
+<section id="v-on">
+  <h2>Event Handling with <code>v-on</code></h2>
+
+  <p>
+    The <code>v-on</code> directive in Vue.js is used to listen for DOM events, such as clicks or input,
+    and execute a method or JavaScript expression when the event occurs. This allows you to make your app interactive.
+    You can also use the shorthand <code>@</code>, for example, <code>@click</code> instead of <code>v-on:click</code>.
+  </p>
+
+  <h3>Example: Button Click Counter</h3>
+
+  <!-- Vue 2 Options API code snippet -->
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Button clicked: {{ count }} times&lt;/p&gt;
+    &lt;button @click="increment"&gt;Click Me&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      count: 0
+    };
+  },
+  methods: {
+    increment() {
+      this.count++;
+    }
+  }
+};
+&lt;/script&gt;
+  </code></pre>
+
+  <!-- Live Vue 3 Composition API demo -->
+  <h3>Live Vue 3 Composition API Demo</h3>
+  <div id="v-on-demo">
+    <p>Button clicked: <strong>{{ count }}</strong> times</p>
+    <button @click="increment">Click Me</button>
+  </div>
+
+  <script src="https://unpkg.com/vue@3.4.18/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
+
+    createApp({
+      setup() {
+        const count = ref(0);
+        const increment = () => {
+          count.value++;
+        };
+        return { count, increment };
+      }
+    }).mount('#v-on-demo');
+  </script>
+</section>
+
+<section id="vuex">
+  <h2>State Management with Vuex</h2>
+
+  <p>
+    Vuex is a state management library for Vue.js applications. It helps you
+    manage shared state across multiple components in a centralized store,
+    making it easier to maintain and debug large applications.
+  </p>
+
+  <p>
+    Instead of passing data through many layers of components, Vuex allows
+    you to keep the state in one place and access or modify it from anywhere
+    in your app using actions, mutations, and getters.
+  </p>
+
+  <h3>Simple Vuex Store Example</h3>
+
+  <pre><code>// store.js
+import { createStore } from 'vuex';
+
+export const store = createStore({
+  state() {
+    return {
+      count: 0
+    };
+  },
+  mutations: {
+    increment(state) {
+      state.count++;
+    }
+  },
+  actions: {
+    increment({ commit }) {
+      commit('increment');
+    }
+  },
+  getters: {
+    count(state) {
+      return state.count;
+    }
+  }
+});
+</code></pre>
+
+  <h3>Using Vuex in a Vue 3 Component</h3>
+
+  <pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;p&gt;Count: {{ count }}&lt;/p&gt;
+    &lt;button @click="increment"&gt;Increment&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+export default {
+  setup() {
+    const store = useStore();
+
+    const count = computed(() => store.getters.count);
+
+    const increment = () => {
+      store.dispatch('increment');
+    };
+
+    return {
+      count,
+      increment
+    };
+  }
+};
+&lt;/script&gt;
+</code></pre>
+
+  <p>
+    This example shows how Vuex stores the count state centrally and how the component
+    accesses and updates that state using getters and actions.
+  </p>
+</section>
+
+
+</body>
+</html>

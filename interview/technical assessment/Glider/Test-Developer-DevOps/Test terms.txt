@@ -1,0 +1,79 @@
+✅ What is WhiteSource?
+
+WhiteSource (now known as Mend) is a software composition analysis (SCA) tool. It helps organizations manage the security, licensing, and quality of open-source components used in their applications.
+
+🔧 What does WhiteSource do?
+
+Scans your code for open-source components.
+
+Detects vulnerabilities, outdated packages, and license risks.
+
+Runs continuously in the background (CI/CD pipelines, IDEs, build tools).
+
+Integrates with Microsoft tools like Azure DevOps (VSTS/TFS), GitHub, Jenkins, etc.
+
+🛡️ Key Features
+Feature	Description
+Security Alerts	Detects known vulnerabilities (CVEs) in dependencies.
+License Compliance	Flags usage of risky or incompatible open-source licenses.
+Policy Enforcement	Stops builds if they violate security or license rules.
+DevOps Integration	Works with CI/CD tools to automate scanning and approvals.
+💡 Simple Example
+
+If your app uses a library like log4j, WhiteSource will:
+
+Check if it's secure.
+
+Check if its license is safe to use in your company.
+
+Alert you or block the release if there's a known vulnerability.
+
+Let me know if you'd like a visual or real-world example.
+
+
+
+✅ What is VSTS?
+
+VSTS stands for Visual Studio Team Services.
+
+It was a Microsoft cloud-based DevOps platform used for:
+
+Source control (code repositories)
+
+Build automation
+
+Release pipelines
+
+Work item tracking
+
+Collaboration tools
+
+🔄 Update: VSTS is now Azure DevOps
+
+In 2018, Microsoft renamed VSTS to Azure DevOps Services.
+
+🧰 What did VSTS include?
+Feature	Purpose
+Version Control	Git or TFVC for code storage
+Build Pipelines	Automated build processes
+Release Pipelines	Deployment automation (CI/CD)
+Work Items / Boards	Track tasks, bugs, user stories
+Test Plans	Manual and automated testing
+Dashboards & Reporting	Project insights and status
+🔗 Example Use
+
+In a typical software project, VSTS (now Azure DevOps) would:
+
+Store your code (Git).
+
+Build it automatically when changes are pushed.
+
+Run tests.
+
+Deploy the app to Azure or other environments.
+
+Track bugs and tasks with boards.
+
+Let me know if you want to see the difference between VSTS and Azure DevOps or how it integrates with WhiteSource.
+
+Get smarter responses, upload files

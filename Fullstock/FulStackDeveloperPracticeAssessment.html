@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack Developer Practice Assessment</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            font-style: italic;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        
+        .question:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .question h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        
+        .options {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        
+        .options li {
+            margin: 8px 0;
+            padding: 10px 15px;
+            background: white;
+            border: 2px solid #ecf0f1;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .options li:hover {
+            border-color: #3498db;
+            background: #ebf3fd;
+            transform: translateX(5px);
+        }
+        
+        .options input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            margin: 30px 0 10px 0;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+        }
+        
+        .submit-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        .progress {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .question {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Full Stack Developer Practice Assessment</h1>
+        <p class="subtitle">Vue.js • .NET • Node.js • Database • Security • OOP Design Patterns</p>
+        
+        <div class="progress">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        
+        <form id="quizForm">
+
+        <!-- VUE.JS SECTION -->
+        <div class="section-header">Vue.js Framework (Questions 1-10)</div>
+
+        <div class="question">
+            <h3>1. What is the primary purpose of the Vue.js framework?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q1" value="a"> Building server-side applications</li>
+                <li><input type="radio" name="q1" value="b"> Building user interfaces and single-page applications</li>
+                <li><input type="radio" name="q1" value="c"> Managing databases</li>
+                <li><input type="radio" name="q1" value="d"> Creating mobile applications only</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>2. Which directive is used for two-way data binding in Vue.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q2" value="a"> v-bind</li>
+                <li><input type="radio" name="q2" value="b"> v-model</li>
+                <li><input type="radio" name="q2" value="c"> v-show</li>
+                <li><input type="radio" name="q2" value="d"> v-if</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>3. What is the Vue.js lifecycle hook that runs after the component is mounted?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q3" value="a"> created()</li>
+                <li><input type="radio" name="q3" value="b"> beforeMount()</li>
+                <li><input type="radio" name="q3" value="c"> mounted()</li>
+                <li><input type="radio" name="q3" value="d"> updated()</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>4. In Vue.js, what is the purpose of the 'key' attribute in v-for?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q4" value="a"> To style the elements</li>
+                <li><input type="radio" name="q4" value="b"> To provide unique identification for efficient re-rendering</li>
+                <li><input type="radio" name="q4" value="c"> To bind data</li>
+                <li><input type="radio" name="q4" value="d"> To handle events</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>5. What is Vuex primarily used for?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q5" value="a"> Routing</li>
+                <li><input type="radio" name="q5" value="b"> State management</li>
+                <li><input type="radio" name="q5" value="c"> HTTP requests</li>
+                <li><input type="radio" name="q5" value="d"> Component styling</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>6. Which method is used to define computed properties in Vue.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q6" value="a"> methods</li>
+                <li><input type="radio" name="q6" value="b"> computed</li>
+                <li><input type="radio" name="q6" value="c"> watch</li>
+                <li><input type="radio" name="q6" value="d"> props</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>7. What is the correct way to pass data from parent to child component in Vue.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q7" value="a"> Using events</li>
+                <li><input type="radio" name="q7" value="b"> Using props</li>
+                <li><input type="radio" name="q7" value="c"> Using slots</li>
+                <li><input type="radio" name="q7" value="d"> Using mixins</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>8. In Vue.js Server-Side Rendering (SSR), what is the main benefit?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q8" value="a"> Faster client-side rendering</li>
+                <li><input type="radio" name="q8" value="b"> Better SEO and initial page load performance</li>
+                <li><input type="radio" name="q8" value="c"> Smaller bundle size</li>
+                <li><input type="radio" name="q8" value="d"> Easier debugging</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>9. What is the purpose of Vue Router?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q9" value="a"> State management</li>
+                <li><input type="radio" name="q9" value="b"> HTTP client</li>
+                <li><input type="radio" name="q9" value="c"> Client-side routing for single-page applications</li>
+                <li><input type="radio" name="q9" value="d"> Component testing</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>10. Which Vue.js feature allows you to reuse logic across components?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q10" value="a"> Filters</li>
+                <li><input type="radio" name="q10" value="b"> Mixins or Composition API</li>
+                <li><input type="radio" name="q10" value="c"> Directives only</li>
+                <li><input type="radio" name="q10" value="d"> Templates</li>
+            </ul>
+        </div>
+
+        <!-- .NET SECTION -->
+        <div class="section-header">.NET Framework (Questions 11-20)</div>
+
+        <div class="question">
+            <h3>11. What is the Common Language Runtime (CLR) in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q11" value="a"> A code editor</li>
+                <li><input type="radio" name="q11" value="b"> The runtime environment that executes .NET applications</li>
+                <li><input type="radio" name="q11" value="c"> A database connection</li>
+                <li><input type="radio" name="q11" value="d"> A web server</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>12. What is the difference between value types and reference types in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q12" value="a"> No difference</li>
+                <li><input type="radio" name="q12" value="b"> Value types are stored on the stack, reference types on the heap</li>
+                <li><input type="radio" name="q12" value="c"> Value types are slower</li>
+                <li><input type="radio" name="q12" value="d"> Reference types can't be null</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>13. What is dependency injection in .NET Core?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q13" value="a"> A design pattern for managing object dependencies</li>
+                <li><input type="radio" name="q13" value="b"> A way to inject SQL queries</li>
+                <li><input type="radio" name="q13" value="c"> A method to compress files</li>
+                <li><input type="radio" name="q13" value="d"> A security feature</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>14. Which attribute is used to create a Web API controller in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q14" value="a"> [WebMethod]</li>
+                <li><input type="radio" name="q14" value="b"> [ApiController]</li>
+                <li><input type="radio" name="q14" value="c"> [Controller]</li>
+                <li><input type="radio" name="q14" value="d"> [Route]</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>15. What is Entity Framework in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q15" value="a"> A web framework</li>
+                <li><input type="radio" name="q15" value="b"> An Object-Relational Mapping (ORM) framework</li>
+                <li><input type="radio" name="q15" value="c"> A testing framework</li>
+                <li><input type="radio" name="q15" value="d"> A logging framework</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>16. What is the purpose of async/await in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q16" value="a"> To handle exceptions</li>
+                <li><input type="radio" name="q16" value="b"> To enable asynchronous programming</li>
+                <li><input type="radio" name="q16" value="c"> To create loops</li>
+                <li><input type="radio" name="q16" value="d"> To manage memory</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>17. What is middleware in ASP.NET Core?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q17" value="a"> Components that handle HTTP requests and responses in the pipeline</li>
+                <li><input type="radio" name="q17" value="b"> Database connection strings</li>
+                <li><input type="radio" name="q17" value="c"> Configuration files</li>
+                <li><input type="radio" name="q17" value="d"> CSS frameworks</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>18. What is the purpose of Program.cs in .NET 6+?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q18" value="a"> To store configuration</li>
+                <li><input type="radio" name="q18" value="b"> The application entry point and configuration</li>
+                <li><input type="radio" name="q18" value="c"> To define models</li>
+                <li><input type="radio" name="q18" value="d"> To create views</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>19. What is the difference between IEnumerable and IQueryable in .NET?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q19" value="a"> No difference</li>
+                <li><input type="radio" name="q19" value="b"> IQueryable supports LINQ to SQL and deferred execution</li>
+                <li><input type="radio" name="q19" value="c"> IEnumerable is faster</li>
+                <li><input type="radio" name="q19" value="d"> IQueryable is only for arrays</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>20. What is the purpose of the [HttpPost] attribute in Web API?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q20" value="a"> To get data</li>
+                <li><input type="radio" name="q20" value="b"> To specify that the action handles HTTP POST requests</li>
+                <li><input type="radio" name="q20" value="c"> To delete data</li>
+                <li><input type="radio" name="q20" value="d"> To update data partially</li>
+            </ul>
+        </div>
+
+        <!-- NODE.JS SECTION -->
+        <div class="section-header">Node.js & TypeScript (Questions 21-30)</div>
+
+        <div class="question">
+            <h3>21. What is Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q21" value="a"> A web browser</li>
+                <li><input type="radio" name="q21" value="b"> A JavaScript runtime built on Chrome's V8 engine</li>
+                <li><input type="radio" name="q21" value="c"> A database</li>
+                <li><input type="radio" name="q21" value="d"> A CSS framework</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>22. What is npm in Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q22" value="a"> A text editor</li>
+                <li><input type="radio" name="q22" value="b"> Node Package Manager - a package management system</li>
+                <li><input type="radio" name="q22" value="c"> A database driver</li>
+                <li><input type="radio" name="q22" value="d"> A web server</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>23. Which method is used to create a web server in Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q23" value="a"> http.createServer()</li>
+                <li><input type="radio" name="q23" value="b"> server.create()</li>
+                <li><input type="radio" name="q23" value="c"> node.server()</li>
+                <li><input type="radio" name="q23" value="d"> web.createServer()</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>24. What is the purpose of package.json in Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q24" value="a"> To store user data</li>
+                <li><input type="radio" name="q24" value="b"> To define project metadata and dependencies</li>
+                <li><input type="radio" name="q24" value="c"> To create databases</li>
+                <li><input type="radio" name="q24" value="d"> To style web pages</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>25. What is Express.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q25" value="a"> A database</li>
+                <li><input type="radio" name="q25" value="b"> A fast, minimalist web framework for Node.js</li>
+                <li><input type="radio" name="q25" value="c"> A CSS library</li>
+                <li><input type="radio" name="q25" value="d"> A testing tool</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>26. What is TypeScript?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q26" value="a"> A JavaScript superset that adds static typing</li>
+                <li><input type="radio" name="q26" value="b"> A database query language</li>
+                <li><input type="radio" name="q26" value="c"> A web server</li>
+                <li><input type="radio" name="q26" value="d"> A CSS preprocessor</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>27. What is the purpose of middleware in Express.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q27" value="a"> To store data</li>
+                <li><input type="radio" name="q27" value="b"> Functions that execute during the request-response cycle</li>
+                <li><input type="radio" name="q27" value="c"> To create HTML pages</li>
+                <li><input type="radio" name="q27" value="d"> To manage databases</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>28. How do you handle asynchronous operations in Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q28" value="a"> Using callbacks, Promises, or async/await</li>
+                <li><input type="radio" name="q28" value="b"> Using loops only</li>
+                <li><input type="radio" name="q28" value="c"> Using synchronous methods</li>
+                <li><input type="radio" name="q28" value="d"> Using HTML</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>29. What is the event loop in Node.js?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q29" value="a"> A database connection</li>
+                <li><input type="radio" name="q29" value="b"> The mechanism that handles asynchronous callbacks</li>
+                <li><input type="radio" name="q29" value="c"> A web framework</li>
+                <li><input type="radio" name="q29" value="d"> A testing library</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>30. What is the purpose of TypeScript interfaces?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q30" value="a"> To create databases</li>
+                <li><input type="radio" name="q30" value="b"> To define the structure of objects and ensure type safety</li>
+                <li><input type="radio" name="q30" value="c"> To style components</li>
+                <li><input type="radio" name="q30" value="d"> To handle HTTP requests</li>
+            </ul>
+        </div>
+
+        <!-- DATABASE SECTION -->
+        <div class="section-header">Database Theory & SQL (Questions 31-40)</div>
+
+        <div class="question">
+            <h3>31. What is the primary purpose of a primary key in a database table?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q31" value="a"> To sort data</li>
+                <li><input type="radio" name="q31" value="b"> To uniquely identify each record in a table</li>
+                <li><input type="radio" name="q31" value="c"> To create relationships</li>
+                <li><input type="radio" name="q31" value="d"> To store large data</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>32. What is the difference between INNER JOIN and LEFT JOIN?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q32" value="a"> No difference</li>
+                <li><input type="radio" name="q32" value="b"> INNER JOIN returns only matching records, LEFT JOIN returns all left table records</li>
+                <li><input type="radio" name="q32" value="c"> LEFT JOIN is faster</li>
+                <li><input type="radio" name="q32" value="d"> INNER JOIN includes NULL values</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>33. What is database normalization?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q33" value="a"> Making databases larger</li>
+                <li><input type="radio" name="q33" value="b"> The process of organizing data to minimize redundancy</li>
+                <li><input type="radio" name="q33" value="c"> Deleting data</li>
+                <li><input type="radio" name="q33" value="d"> Creating backups</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>34. What is a foreign key?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q34" value="a"> A key from another country</li>
+                <li><input type="radio" name="q34" value="b"> A field that creates a link between two tables</li>
+                <li><input type="radio" name="q34" value="c"> A primary key</li>
+                <li><input type="radio" name="q34" value="d"> An encrypted key</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>35. Which SQL command is used to modify existing records?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q35" value="a"> INSERT</li>
+                <li><input type="radio" name="q35" value="b"> UPDATE</li>
+                <li><input type="radio" name="q35" value="c"> SELECT</li>
+                <li><input type="radio" name="q35" value="d"> CREATE</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>36. What is an index in a database?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q36" value="a"> A table of contents</li>
+                <li><input type="radio" name="q36" value="b"> A data structure that improves query performance</li>
+                <li><input type="radio" name="q36" value="c"> A backup file</li>
+                <li><input type="radio" name="q36" value="d"> A user account</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>37. What does ACID stand for in database transactions?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q37" value="a"> Atomicity, Consistency, Isolation, Durability</li>
+                <li><input type="radio" name="q37" value="b"> Access, Control, Integration, Data</li>
+                <li><input type="radio" name="q37" value="c"> Authentication, Certification, Identity, Database</li>
+                <li><input type="radio" name="q37" value="d"> Application, Connection, Interface, Design</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>38. What is the difference between SQL Server and PostgreSQL?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q38" value="a"> No difference</li>
+                <li><input type="radio" name="q38" value="b"> SQL Server is Microsoft's RDBMS, PostgreSQL is open-source</li>
+                <li><input type="radio" name="q38" value="c"> PostgreSQL is only for web applications</li>
+                <li><input type="radio" name="q38" value="d"> SQL Server doesn't support SQL</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>39. What is a stored procedure?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q39" value="a"> A backup method</li>
+                <li><input type="radio" name="q39" value="b"> A precompiled collection of SQL statements</li>
+                <li><input type="radio" name="q39" value="c"> A data type</li>
+                <li><input type="radio" name="q39" value="d"> A table relationship</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>40. What is the purpose of the GROUP BY clause in SQL?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q40" value="a"> To sort results</li>
+                <li><input type="radio" name="q40" value="b"> To group rows that have the same values in specified columns</li>
+                <li><input type="radio" name="q40" value="c"> To join tables</li>
+                <li><input type="radio" name="q40" value="d"> To filter results</li>
+            </ul>
+        </div>
+
+        <!-- SECURITY & AUTHENTICATION SECTION -->
+        <div class="section-header">Authentication & Security (Questions 41-45)</div>
+
+        <div class="question">
+            <h3>41. What is JWT (JSON Web Token)?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q41" value="a"> A database format</li>
+                <li><input type="radio" name="q41" value="b"> A compact, URL-safe means of representing claims between two parties</li>
+                <li><input type="radio" name="q41" value="c"> A web server</li>
+                <li><input type="radio" name="q41" value="d"> A programming language</li>
+            </ul>
+        </div>
+
+        <div class="question">
+            <h3>42. What is OAuth 2.0?</h3>
+            <ul class="options">
+                <li><input type="radio" name="q42" value="a"> A database protocol</li>
+                <li><input type="radio" name="q42" value="b"> An authorization framework</li>
+                <li><input type="radio" name="q42" value="c"> A web framework</li>
+                <li><input type="radio" name="q42" value="d"> A testing tool</li>
+            </ul>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bottleneck Research Study Sheet</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; background: #f9fafb; color: #333; }
+    h1 { color: #2c3e50; text-align: center; }
+    h2 { color: #34495e; margin-top: 30px; }
+    .diagram {
+      background: #fff;
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      font-family: monospace;
+      white-space: pre;
+    }
+    .section {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 20px 0;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    }
+    ul { margin-left: 20px; }
+    .highlight { background: #e8f4fd; padding: 3px 6px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <h1>🔎 Researching Bottlenecks (Angular + SQL Server)</h1>
+
+  <div class="diagram">
+[ Angular (Frontend) ] ---> [ API / Backend ] ---> [ SQL Server (Database) ] 
+       |                          |                           |
+Tools: DevTools,          Tools: Logging, APM        Tools: Profiler, 
+Lighthouse, Network Tab   (App Insights, etc.)      Query Store, Execution Plans
+  </div>
+
+  <div class="section">
+    <h2>1️⃣ Angular (Frontend)</h2>
+    <ul>
+      <li><strong>Where issues show:</strong> Slow load, large bundle, redundant API calls, laggy rendering.</li>
+      <li><strong>Tools:</strong> <span class="highlight">Lighthouse</span> (First Contentful Paint, Time to Interactive),
+          <span class="highlight">Network Tab</span> (TTFB, waterfall, parallel calls).</li>
+      <li><strong>Optimizations:</strong> Lazy loading, bundle size analysis (<code>ng build --stats-json</code>), trackBy in *ngFor.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2️⃣ API / Backend</h2>
+    <ul>
+      <li><strong>Where issues show:</strong> Slow endpoints, inefficient logic, missing caching.</li>
+      <li><strong>Tools:</strong> Logging elapsed times, APM tools (Application Insights, New Relic, Dynatrace).</li>
+      <li><strong>Checks:</strong> Endpoint response times, CPU/memory usage, caching strategy.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>3️⃣ SQL Server (Database)</h2>
+    <ul>
+      <li><strong>Where issues show:</strong> Slow queries, missing indexes, locking/blocking.</li>
+      <li><strong>Tools:</strong> SQL Profiler, Extended Events, Query Store, Execution Plans, DMVs.</li>
+      <li><strong>Optimizations:</strong> Add indexes, update statistics, tune joins, optimize stored procs.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>🚀 Example Interview Summary</h2>
+    <p>
+      “I research bottlenecks across the whole stack. On the Angular side, I start with Chrome DevTools and
+      Lighthouse to measure load times and API call efficiency. If APIs are slow, I trace them with logging
+      or APM tools to check backend performance. If backend points to SQL, I profile queries with Query Store
+      and execution plans. This lets me pinpoint whether the bottleneck is frontend rendering, API logic,
+      or database performance.”
+    </p>
+  </div>
+</body>
+</html>

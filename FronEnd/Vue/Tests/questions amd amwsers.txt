@@ -1,0 +1,145 @@
+Vue 3 Practice Question #1:
+Add a reactive counter to your existing Vue app. The counter should:
+Start at 0
+Have a "+" button that increments the counter by 1
+Have a "-" button that decrements the counter by 1
+Display the current count value
+The decrement button should be disabled when the counter reaches 0
+Update your template and script to implement this functionality alongside your existing "Hello World" message and input.
+
+
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0);
+
+const increment = () => {
+  count.value++;
+}
+
+const decrement = () => {
+  count.value--;
+}
+</script>
+
+<template>
+  <h1>Counter app: {{count}}</h1>
+  <div class="counter">
+    <button @click="increment">Increment</button>
+    <button @click="decrement" :disabled="count === 0">Decrement</button>
+  </div>
+</template>
+
+<style scoped>
+button {
+  color: red;
+  padding: 8px 12px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.counter {
+  gap: 10px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+</style>
+
+Vue 3 Practice Question #2:
+Add a todo list feature to your existing app. Implement the following functionality:
+Create a text input field where users can type new todo items
+Add an "Add Todo" button that adds the entered text to a list of todos
+Display all todos in an unordered list below the input
+Each todo item should have a "Delete" button next to it that removes that specific todo from the list
+Clear the input field after successfully adding a todo
+If the input is empty, the "Add Todo" button should be disabled
+Keep your existing counter functionality and add this todo list below it. Use Vue 3's reactivity system with ref() for managing the todo list state.
+Complete this implementation, then let me know when you're ready for review and the next question.
+
+
+<script setup>
+import { ref } from 'vue'
+
+const count = ref(0);
+const todos = ref([])
+const newTodo =ref('')
+
+const increment = () => {
+  count.value++;
+}
+
+const decrement = () => {
+  count.value--;
+}
+
+const addTodo = () => {
+  if (newTodo)
+  {
+      todos.value.push(newTodo.value)
+      newTodo.value=''
+  }
+}
+
+
+const  deleteTodo = (index) => {
+  todos.value.splice(index,1)
+
+}
+</script>
+
+<template>
+  <h1>Counter app: {{count}}</h1>
+  <div class="counter">
+    <button @click="increment">Increment</button>
+    <button @click="decrement" :disabled="count === 0">Decrement</button>
+  </div>
+
+  <!-- Move this OUTSIDE the counter div -->
+  <div class="todo-section">
+    <input
+      type="text"
+      v-model="newTodo"
+      placeholder="Enter a to do"
+      @keyup.enter="addTodo"
+    />
+    <button @click="addTodo">Add todo</button>
+
+    <ul v-if="todos.length > 0">
+      <li v-for="(todo, index) in todos" :key="index">
+        {{ todo }}
+        <button @click="deleteTodo(index)">Delete</button>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<style scoped>
+button {
+  color: red;
+  padding: 8px 12px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.counter {
+  gap: 10px;
+  margin: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.todo-section {
+  display: block;
+  margin-top: 15px;
+}
+</style>
+
+Retry
+

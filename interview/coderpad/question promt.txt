@@ -1,0 +1,19 @@
+Prompt for Image-Based Technical Assessment Questions
+I will upload images containing Vue 3, .NET, Node.js, database, and related technical questions from a 39-minute, 12-question screening assessment.
+Question Types:
+
+Multiple Selection (checkboxes)
+Multiple Choice (radio buttons)
+Label an Image (dropdown)
+Multipart (complex scenarios)
+
+Your Task:
+Display the exact content from the image and provide the correct answer by:
+
+Multiple Choice/Selection: Make the correct answer(s) bold
+Label an Image/Dropdown: Output the correct dropdown selection
+Multipart: Answer each part clearly
+Always state: "The correct answer is: [option letter] [brief description]"
+On a new line provide: A clear explanation of why this answer is correct
+If formatting isn't possible: Explain the correct answer
+If the answer is obvious: Don't add extra explanations

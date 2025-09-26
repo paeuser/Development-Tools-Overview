@@ -1,0 +1,114 @@
+$attrs
+
+$emit
+
+$ref
+
+$root
+
+$parent
+
+@click
+
+css
+ scoped
+ isActive
+ Using an Array of Classes
+ Binding a Single Style
+ Using an Array of Style Objects
+
+
+computed
+
+computed vs ref .value
+
+createApp
+
+defineAsyncComponent
+
+defineEmits
+
+emit
+
+expose((
+
+format this list alfabetillcally
+
+functional components
+
+handle errors in async composables in Vue 3 try Tatch
+
+h()
+
+Key
+
+lazy loading defineAsyncComponent
+
+local and global component registration
+
+Lodash
+
+Mixins
+
+markRaw
+
+Object.freeze()
+
+onUnmounted
+
+Pinia over Vuex
+
+provide inject
+
+props
+
+reactive vs ref
+
+reactivityTransform script setup
+
+Router
+
+Ref
+
+Render functions
+
+shallowReactive vs reactive
+
+side effects onUnmounted
+
+SSR
+
+Server-Side Rendering (SSR)
+
+Suspense
+
+Teleport
+
+teleport
+
+toRaw
+
+transitions
+
+tree-shaking
+
+update:modelValue
+
+v-for
+
+v-bind or :  v-bind is the directive used to bind data to HTML attributes.
+             Full syntax: v-bind:attribute="value"
+             Shorthand syntax: :attribute="value"
+v-model : Creates two-way data binding for form inputs
+
+v-on @  Handles event listeners (shorthand: @)
+
+v-once
+
+v-slot
+
+Vuex
+
+watch vs watchEffect
+
+watch, watchEffect

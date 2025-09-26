@@ -333,12 +333,23 @@ watch(count, (newValue, oldValue) => {
                 </p>
             </div>
 
-            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
-                <p class="font-semibold text-lg text-indigo-800 mb-2">9. What is `watchEffect` and how does it differ from `watch`?</p>
-                <p class="text-gray-700">
-                    <span class="font-medium">Answer:</span> `watchEffect` is a simpler watcher that automatically tracks its dependencies and re-runs its callback whenever any of its dependencies change. Unlike `watch`, you don't explicitly specify the source; it infers them. It's useful for side effects that depend on reactive state.
-                </p>
-            </div>
+           <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+  <p class="font-semibold text-lg text-indigo-800 mb-2">
+    9. What is <code>watchEffect</code> and how does it differ from <code>watch</code>?
+  </p>
+  <p class="text-gray-700">
+    <span class="font-medium">Answer:</span> <code>watchEffect</code> is a simpler watcher that automatically tracks its dependencies and re-runs its callback whenever any of its dependencies change. Unlike <code>watch</code>, you don't explicitly specify the source; it infers them. It's useful for side effects that depend on reactive state.
+    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>import { ref, watchEffect } from 'vue';
+
+const count = ref(0);
+
+watchEffect(() => {
+  console.log('The count is:', count.value);
+});
+</code></pre>
+  </p>
+</div>
+
 
             <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
                 <p class="font-semibold text-lg text-indigo-800 mb-2">10. Explain the concept of "Reactivity Transform" (formerly `&lt;script setup&gt;` experimental feature).</p>
@@ -370,18 +381,41 @@ const props = defineProps({
                 </p>
             </div>
 
-            <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
-                <p class="font-semibold text-lg text-indigo-800 mb-2">13. How do you emit events in `&lt;script setup&gt;`?</p>
-                <p class="text-gray-700">
-                    <span class="font-medium">Answer:</span> You use the `defineEmits` macro to get an `emit` function.
-                    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>&lt;script setup&gt;
-const emit = defineEmits(['my-event', 'update:modelValue']);
-const handleClick = () => {
-  emit('my-event', 'some data');
+        <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
+  <p class="font-semibold text-lg text-indigo-800 mb-2">
+    13. How do you emit events in <code>&lt;script setup&gt;</code>?
+  </p>
+  <p class="text-gray-700">
+    <span class="font-medium">Answer:</span> You use the <code>defineEmits</code> macro to get an <code>emit</code> function, which you can then use to send custom events from the child component to the parent. Here's an example of a child emitting an event, and a parent listening to it.
+
+    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// ChildComponent.vue
+&lt;template&gt;
+  &lt;button @click="handleClick"&gt;Click Me&lt;/button&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+const emit = defineEmits(['my-event']);
+
+const handleClick = () =&gt; {
+  emit('my-event', 'Hello from child!');
 };
 &lt;/script&gt;</code></pre>
-                </p>
-            </div>
+
+    <pre class="bg-gray-200 p-2 rounded mt-2 text-sm"><code>// ParentComponent.vue
+&lt;template&gt;
+  &lt;ChildComponent @my-event="handleMyEvent" /&gt;
+&lt;/template&gt;
+
+&lt;script setup&gt;
+import ChildComponent from './ChildComponent.vue';
+
+function handleMyEvent(payload) {
+  console.log('Event received from child:', payload);
+}
+&lt;/script&gt;</code></pre>
+  </p>
+</div>
+
 
             <div class="bg-indigo-50 p-4 rounded-lg shadow-sm">
                 <p class="font-semibold text-lg text-indigo-800 mb-2">14. What is `Teleport` in Vue 3 and when would you use it?</p>

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Web Development Concepts Explorer</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1, h2 {
+    color: #2c3e50;
+  }
+  h1 {
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 0.5rem;
+    text-align: center;
+  }
+  .question {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border-left: 5px solid #2980b9;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  }
+  .question h3 {
+    margin: 0 0 0.5rem 0;
+    font-weight: normal;
+    color: #2980b9;
+    cursor: pointer;
+  }
+  .answer {
+    background: #ecf0f1;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+    display: none;
+  }
+  .question.active .answer {
+    display: block;
+  }
+  .search-box {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+  }
+  .search-box input {
+    width: 100%;
+    max-width: 500px;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  .categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+  }
+  .category-btn {
+    padding: 6px 12px;
+    background-color: #e4e9f0;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  .category-btn:hover {
+    background-color: #3498db;
+    color: white;
+  }
+  .category-btn.active {
+    background-color: #2980b9;
+    color: white;
+  }
+  pre {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+    margin: 10px 0;
+  }
+  code {
+    font-family: 'Consolas', monospace;
+  }
+  footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+  }
+</style>
+</head>
+<body>
+  <h1>Web Development Concepts Explorer</h1>
+
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search concepts...">
+  </div>
+
+  <div class="categories">
+    <button class="category-btn active" data-category="all">All</button>
+    <button class="category-btn" data-category="dotnet">.NET</button>
+    <button class="category-btn" data-category="web">Web APIs</button>
+    <button class="category-btn" data-category="security">Security</button>
+    <button class="category-btn" data-category="data">Data Access</button>
+  </div>
+
+  <section>
+    <h2>.NET Concepts</h2>
+
+    <div class="question" data-categories="dotnet">
+      <h3>ADO.NET</h3>
+      <div class="answer">
+ADO.NET is a data access technology from Microsoft that provides communication between relational and non-relational systems through a common set of components.
+
+// Example of using ADO.NET to query a database
+using (SqlConnection connection = new SqlConnection(connectionString))
+{
+    SqlCommand command = new SqlCommand("SELECT * FROM Customers", connection);
+    connection.Open();
+    SqlDataReader reader = command.ExecuteReader();
+    
+    while (reader.Read())
+    {
+        Console.WriteLine(reader["CompanyName"]);
+    }
+    reader.Close();
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="dotnet">
+      <h3>Dependency Injection</h3>
+      <div class="answer">
+Dependency Injection (DI) is a design pattern that implements Inversion of Control (IoC) between classes and their dependencies.
+
+// Example of dependency injection in ASP.NET Core
+public void ConfigureServices(IServiceCollection services)
+{
+    // Register services for DI
+    services.AddScoped<IMyService, MyService>();
+    services.AddControllers();
+}
+
+// Using DI in a controller
+public class MyController : Controller
+{
+    private readonly IMyService _myService;
+    
+    public MyController(IMyService myService)
+    {
+        _myService = myService;
+    }
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="dotnet">
+      <h3>Entity Framework Core (EF Core)</h3>
+      <div class="answer">
+Entity Framework Core is a lightweight, extensible, open source, and cross-platform version of Entity Framework data access technology.
+
+// Example of using EF Core to query data
+public class BloggingContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+    public DbSet<Post> Posts { get; set; }
+}
+
+// Querying data
+using (var context = new BloggingContext())
+{
+    var blogs = context.Blogs
+        .Where(b => b.Rating > 3)
+        .OrderBy(b => b.Url)
+        .ToList();
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="dotnet">
+      <h3>Middleware</h3>
+      <div class="answer">
+Middleware is software that's assembled into an application pipeline to handle requests and responses in ASP.NET Core.
+
+// Example of custom middleware in ASP.NET Core
+public class CustomMiddleware
+{
+    private readonly RequestDelegate _next;
+
+    public CustomMiddleware(RequestDelegate next)
+    {
+        _next = next;
+    }
+
+    public async Task InvokeAsync(HttpContext context)
+    {
+        // Do something before the request
+        await _next(context);
+        // Do something after the request
+    }
+}
+
+// Registering middleware in Startup.cs
+public void Configure(IApplicationBuilder app)
+{
+    app.UseMiddleware<CustomMiddleware>();
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="dotnet">
+      <h3>DTO</h3>
+      <div class="answer">
+DTO (Data Transfer Object) is a design pattern used to transfer data between software application subsystems.
+
+// Example of a DTO class
+public class UserDto
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    
+    // Unlike the User entity, the DTO might exclude sensitive data like passwords
+}
+
+// Using DTO in a controller
+[HttpGet("{id}")]
+public ActionResult<UserDto> GetUser(int id)
+{
+    var user = _userRepository.GetUser(id);
+    var userDto = _mapper.Map<UserDto>(user);
+    return Ok(userDto);
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="dotnet">
+      <h3>Unit Testing</h3>
+      <div class="answer">
+Unit testing is a software testing method where individual units/components of software are tested in isolation from the rest of the system.
+
+// Example unit test with xUnit
+public class CalculatorTests
+{
+    [Fact]
+    public void Add_TwoNumbers_ReturnsSum()
+    {
+        // Arrange
+        var calculator = new Calculator();
+        
+        // Act
+        var result = calculator.Add(3, 5);
+        
+        // Assert
+        Assert.Equal(8, result);
+    }
+}
+
+// Example of a class being tested
+public class Calculator
+{
+    public int Add(int a, int b) => a + b;
+}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Web API Concepts</h2>
+
+    <div class="question" data-categories="web">
+      <h3>REST</h3>
+      <div class="answer">
+REST (Representational State Transfer) is an architectural style for designing networked applications.
+
+RESTful systems typically communicate over HTTP with these principles:
+- Client-server architecture
+- Statelessness
+- Cacheability
+- Uniform interface
+- Layered system
+
+REST APIs use HTTP methods (GET, POST, PUT, DELETE) to perform operations on resources identified by URLs.
+      </div>
+    </div>
+
+    <div class="question" data-categories="web">
+      <h3>HTTP Status Codes</h3>
+      <div class="answer">
+HTTP status codes are three-digit numbers returned by servers to indicate the result of a client's request.
+
+Common categories include:
+- 1xx (Informational): Request received, continuing process
+- 2xx (Success): Action successfully received, understood, and accepted
+- 3xx (Redirection): Further action needs to be taken to complete the request
+- 4xx (Client Error): Request contains bad syntax or cannot be fulfilled
+- 5xx (Server Error): Server failed to fulfill a valid request
+
+Common status codes: 200 (OK), 201 (Created), 400 (Bad Request), 401 (Unauthorized), 404 (Not Found), 500 (Internal Server Error).
+      </div>
+    </div>
+
+    <div class="question" data-categories="web">
+      <h3>API Gateway</h3>
+      <div class="answer">
+An API Gateway acts as a reverse proxy, handling requests routing, auth, rate limiting, caching, and aggregating services.
+
+// Example of API Gateway configuration (pseudo-code)
+apiGateway
+  .route('/users/*')
+  .authenticate()
+  .rateLimit(100req/hour)
+  .cache(5min)
+  .forwardTo('user-service');
+      </div>
+    </div>
+
+    <div class="question" data-categories="web">
+      <h3>Webhook</h3>
+      <div class="answer">
+User-defined HTTP callbacks triggered by events, allowing real-time notifications to clients.
+
+// Example of handling a webhook in ASP.NET Core
+[HttpPost("webhook")]
+public IActionResult HandleWebhook([FromBody] WebhookPayload payload)
+{
+    // Process the webhook payload
+    _backgroundJobService.ProcessWebhook(payload);
+    
+    return Ok();
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="web">
+      <h3>OpenAPI</h3>
+      <div class="answer">
+OpenAPI specification is a standard format to describe REST APIs, enabling automated documentation and client generation.
+
+// Example OpenAPI snippet
+openapi: 3.0.0
+info:
+  title: Sample API
+  version: 1.0.0
+paths:
+  /users:
+    get:
+      summary: Returns a list of users
+      responses:
+        '200':
+          description: A list of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Security Concepts</h2>
+
+    <div class="question" data-categories="security">
+      <h3>JSON Web Token (JWT)</h3>
+      <div class="answer">
+JWT is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object.
+
+// Example JWT structure
+// Header: {"alg": "HS256", "typ": "JWT"}
+// Payload: {"sub": "1234567890", "name": "John Doe", "iat": 1516239022}
+// Signature: HMACSHA256(base64UrlEncode(header) + "." + base64UrlEncode(payload), secret)
+
+// Example of creating a JWT in C#
+var tokenHandler = new JwtSecurityTokenHandler();
+var key = Encoding.ASCII.GetBytes("your-secret-key");
+var tokenDescriptor = new SecurityTokenDescriptor
+{
+    Subject = new ClaimsIdentity(new[] { new Claim("id", "user123") }),
+    Expires = DateTime.UtcNow.AddHours(1),
+    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+};
+var token = tokenHandler.CreateToken(tokenDescriptor);
+var jwt = tokenHandler.WriteToken(token);
+      </div>
+    </div>
+
+    <div class="question" data-categories="security">
+      <h3>CORS</h3>
+      <div class="answer">
+CORS (Cross-Origin Resource Sharing) is a mechanism that allows restricted resources on a web page to be requested from another domain outside the domain from which the first resource was served.
+
+// Example of enabling CORS in ASP.NET Core
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddCors(options =>
+    {
+        options.AddPolicy("AllowMyOrigin",
+            builder => builder.WithOrigins("http://example.com")
+                              .AllowAnyHeader()
+                              .AllowAnyMethod());
+    });
+}
+
+public void Configure(IApplicationBuilder app)
+{
+    app.UseCors("AllowMyOrigin");
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="security">
+      <h3>OAuth 2.0</h3>
+      <div class="answer">
+OAuth 2.0 is an authorization framework that allows clients limited access to user resources via tokens.
+
+// OAuth 2.0 flow example
+1. Client redirects user to authorization server
+2. User authenticates and grants permission
+3. Authorization server redirects back to client with authorization code
+4. Client exchanges authorization code for access token
+5. Client uses access token to access protected resources
+      </div>
+    </div>
+
+    <div class="question" data-categories="security">
+      <h3>Authentication</h3>
+      <div class="answer">
+Authentication verifies user identity; authorization determines what they're allowed to do.
+
+// Example of authentication in ASP.NET Core
+[HttpPost("login")]
+public async Task<IActionResult> Login([FromBody] LoginModel model)
+{
+    var user = await _userManager.FindByNameAsync(model.Username);
+    if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+    {
+        var token = await GenerateJwtToken(user);
+        return Ok(new { Token = token });
+    }
+    return Unauthorized();
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="security">
+      <h3>Authorization</h3>
+      <div class="answer">
+Authorization determines what a user is allowed to do after authentication.
+
+// Example of authorization in ASP.NET Core
+[Authorize(Roles = "Administrator")]
+[HttpGet("admin-data")]
+public IActionResult GetAdminData()
+{
+    // Only users with Administrator role can access this
+    return Ok(adminData);
+}
+
+[Authorize(Policy = "RequireEditorRole")]
+[HttpPost("edit-content")]
+public IActionResult EditContent([FromBody] ContentModel content)
+{
+    // Only users satisfying the policy can access this
+    return Ok();
+}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Data Access Concepts</h2>
+
+    <div class="question" data-categories="data">
+      <h3>DbContext</h3>
+      <div class="answer">
+DbContext is a primary class in Entity Framework that represents a session with the database and provides APIs for data operations.
+
+// Example of DbContext usage
+public class AppDbContext : DbContext
+{
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("YourConnectionString");
+    }
+}
+
+// Using DbContext in a repository
+public class ProductRepository
+{
+    private readonly AppDbContext _context;
+    
+    public ProductRepository(AppDbContext context)
+    {
+        _context = context;
+    }
+    
+    public async Task<Product> GetProductById(int id)
+    {
+        return await _context.Products.FindAsync(id);
+    }
+}
+      </div>
+    </div>
+
+    <div class="question" data-categories="data">
+      <h3>Disconnected Architecture</h3>
+      <div class="answer">
+Disconnected Architecture in ADO.NET refers to working with data offline using DataSet and DataAdapter objects.
+
+// Example of disconnected architecture
+var adapter = new SqlDataAdapter("SELECT * FROM Products", connection);
+var dataSet = new DataSet();
+
+adapter.Fill(dataSet, "Products");
+
+// Work with data offline
+foreach (DataRow row in dataSet.Tables["Products"].Rows)
+{
+    Console.WriteLine(row["ProductName"]);
+}
+
+// Later, update the database with changes
+adapter.Update(dataSet, "Products");
+      </div>
+    </div>
+
+    <div class="question" data-categories="data">
+      <h3>PostgreSQL</h3>
+      <div class="answer">
+PostgreSQL is a powerful, open source object-relational database system.
+
+// Example of using PostgreSQL with EF Core
+services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(Configuration.GetConnectionString("PostgresConnection")));
+
+// PostgreSQL specific query
+var results = await _context.Products
+    .FromSqlRaw("SELECT * FROM products WHERE price > {0}", 50)
+    .ToListAsync();
+      </div>
+    </div>
+
+    <div class="question" data-categories="data">
+      <h3>SQL Server</h3>
+      <div class="answer">
+Microsoft SQL Server is a relational database management system developed by Microsoft.
+
+// Example of using SQL Server with EF Core
+services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+// SQL Server specific query using LIKE
+var results = await _context.Products
+    .Where(p => EF.Functions.Like(p.Name, "%search%"))
+    .ToListAsync();
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Web Development Concepts Explorer &copy; 2023
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const questions = document.querySelectorAll('.question');
+        const searchInput = document.getElementById('searchInput');
+        const categoryButtons = document.querySelectorAll('.category-btn');
+        
+        // Toggle answer visibility
+        questions.forEach(question => {
+            const title = question.querySelector('h3');
+            title.addEventListener('click', () => {
+                question.classList.toggle('active');
+            });
+        });
+        
+        // Search functionality
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+            
+            questions.forEach(question => {
+                const title = question.querySelector('h3').textContent.toLowerCase();
+                const answer = question.querySelector('.answer').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || answer.includes(searchTerm)) {
+                    question.style.display = 'block';
+                } else {
+                    question.style.display = 'none';
+                }
+            });
+        });
+        
+        // Category filtering
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const category = button.getAttribute('data-category');
+                
+                // Update active button
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Show/hide questions based on category
+                questions.forEach(question => {
+                    const categories = question.getAttribute('data-categories');
+                    
+                    if (category === 'all' || categories.includes(category)) {
+                        question.style.display = 'block';
+                    } else {
+                        question.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPA Refresh and State Behavior</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+
+<h1>What Happens When You Refresh a SPA</h1>
+
+<p>Refreshing a Single Page Application (SPA) reloads the JavaScript context, which affects state differently depending on how it is stored:</p>
+
+<table>
+    <tr>
+        <th>State Type</th>
+        <th>Behavior on Refresh</th>
+    </tr>
+    <tr>
+        <td>In-Memory State (JS Variables, Redux, Vuex)</td>
+        <td>Lost on refresh because the JavaScript memory is reset.</td>
+    </tr>
+    <tr>
+        <td>SessionStorage</td>
+        <td>Persists across refresh in the same tab. Cleared if the tab is closed.</td>
+    </tr>
+    <tr>
+        <td>LocalStorage</td>
+        <td>Persists even after refresh or closing/reopening the browser.</td>
+    </tr>
+    <tr>
+        <td>Cookies</td>
+        <td>Persist based on expiration settings. Refresh does not clear them.</td>
+    </tr>
+    <tr>
+        <td>Token-based Authentication (JWT)</td>
+        <td>If stored in memory, lost on refresh. If stored in localStorage or cookies, it remains.</td>
+    </tr>
+</table>
+
+<p><strong>Summary:</strong> Refreshing a SPA resets in-memory state. Persistent storage mechanisms like sessionStorage, localStorage, and cookies survive the refresh according to their rules.</p>
+<h2>10 Tricky SPA/State Management Interview Questions</h2>
+<table>
+    <tr>
+        <th>Question</th>
+        <th>Answer</th>
+    </tr>
+    <tr>
+        <td>What happens to Redux state if the page is refreshed?</td>
+        <td>Redux state stored in memory is lost on refresh unless persisted to localStorage or sessionStorage.</td>
+    </tr>
+    <tr>
+        <td>Can you rely solely on localStorage for storing sensitive user tokens?</td>
+        <td>No, localStorage is vulnerable to XSS attacks; HTTP-only cookies are safer for sensitive data.</td>
+    </tr>
+    <tr>
+        <td>What is the difference between sessionStorage and localStorage?</td>
+        <td>sessionStorage persists only for the tab session, while localStorage persists across browser sessions.</td>
+    </tr>
+    <tr>
+        <td>Why SPAs are considered stateless on the server?</td>
+        <td>SPAs maintain state on the client-side; the server does not retain session info unless explicitly managed.</td>
+    </tr>
+    <tr>
+        <td>How can you persist in-memory state across page refresh?</td>
+        <td>By saving it to localStorage, sessionStorage, or a backend server and rehydrating on load.</td>
+    </tr>
+    <tr>
+        <td>What is the risk of storing JWT in localStorage?</td>
+        <td>XSS attacks can access the token since it is readable by JavaScript.</td>
+    </tr>
+    <tr>
+        <td>If a user opens the SPA in a new tab, what happens to sessionStorage?</td>
+        <td>SessionStorage is not shared across tabs; a new tab starts with empty sessionStorage.</td>
+    </tr>
+    <tr>
+        <td>How would you handle token expiration in a SPA?</td>
+        <td>Implement a refresh token mechanism or force re-login when the token expires.</td>
+    </tr>
+    <tr>
+        <td>Can cookies be used to share state between server and SPA?</td>
+        <td>Yes, HTTP-only cookies can store session info accessible by the server but not JavaScript.</td>
+    </tr>
+    <tr>
+        <td>What is the difference between in-memory state and state managed by Redux or Vuex?</td>
+        <td>In-memory state can be any JS variable; Redux/Vuex provides a centralized, structured, and predictable way to manage state.</td>
+    </tr>
+</table>
+
+
+<h1>SPA Refresh and State Handling</h1>
+
+
+<div class="info-box">
+<h2>Handling User Refresh in a SPA</h2>
+<p>When a user refreshes a Single Page Application, the JavaScript context is reloaded and in-memory state is lost. To handle this, persistent storage or server-side session can be used.</p>
+<h3>1. Persist State in LocalStorage or SessionStorage</h3>
+<pre><code>// Save state
+localStorage.setItem('user', JSON.stringify({ name: 'Eric', token: 'abc123' }));
+
+
+// Restore state on page load
+const user = JSON.parse(localStorage.getItem('user'));
+if (user) {
+console.log('Welcome back,', user.name);
+}</code></pre>
+
+
+<h3>2. Use Cookies for Authentication</h3>
+<p>Store authentication tokens securely in HTTP-only cookies that persist across refreshes.</p>
+
+
+<h3>3. Token Rehydration on Load</h3>
+<pre><code>const token = localStorage.getItem('accessToken');
+if (token) {
+fetch('/api/user', {
+headers: { 'Authorization': 'Bearer ' + token }
+})
+.then(res => res.json())
+.then(userData => console.log('User restored:', userData));
+}</code></pre>
+
+
+<h3>4. Server-Side Session</h3>
+<p>Minimal client state can be stored while the server manages the session. On refresh, the client queries the server using a session ID stored in a cookie to restore state.</p>
+
+
+<p><strong>Summary:</strong> Persist critical state in localStorage, sessionStorage, or cookies, and rehydrate it after a refresh to maintain the user's session and data.</p>
+</div>
+
+</body>
+</html>

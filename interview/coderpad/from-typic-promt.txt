@@ -1,0 +1,12 @@
+Updated Prompt for Code Examples:
+When I provide a topic for Vue.js, .NET C#, or SQL:
+
+Provide a simple, practical code sample
+Give a one-sentence explanation for each item/section in the sample
+At the end, add 4-5 sentences about the key topic/concept being demonstrated
+
+Format:
+
+Code sample with clear sections
+Explanations: bullet points with one sentence each
+About [Topic Name]: 4-5 informative sentences about the concept

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Clean Architecture Explained</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            line-height: 1.6;
+            padding: 0 1rem;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+        ul {
+            margin-top: 0;
+        }
+        .layer {
+            background-color: #dceefc;
+            border-left: 4px solid #007acc;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Clean Architecture Explained</h1>
+
+    <p>
+        <strong>Clean Architecture</strong> is a software design philosophy introduced by Robert C. Martin (Uncle Bob).
+        It emphasizes separation of concerns, making software easier to maintain, test, and scale.
+    </p>
+
+    <h2>Core Principles</h2>
+    <ul>
+        <li><strong>Independence of Frameworks:</strong> Architecture does not depend on any particular framework.</li>
+        <li><strong>Testability:</strong> Business rules can be tested without UI, database, or external devices.</li>
+        <li><strong>UI-agnostic:</strong> The UI can change easily without changing the rest of the system.</li>
+        <li><strong>Independent of Database:</strong> The system can work with any database or none at all.</li>
+        <li><strong>Independent of External Agencies:</strong> Business rules are not affected by external factors.</li>
+    </ul>
+
+    <h2>Layered Structure</h2>
+
+    <div class="layer">
+        <h3>1. Entities</h3>
+        <p>Enterprise-wide business rules. These are the core objects of the system and contain the most general and high-level rules.</p>
+    </div>
+
+    <div class="layer">
+        <h3>2. Use Cases (Application Layer)</h3>
+        <p>Application-specific business rules that orchestrate the flow of data to and from the entities, implementing the business logic.</p>
+    </div>
+
+    <div class="layer">
+        <h3>3. Interface Adapters</h3>
+        <p>Convert data from the format most convenient for the use cases and entities to the format convenient for external agencies such as the database or the web.</p>
+    </div>
+
+    <div class="layer">
+        <h3>4. Frameworks & Drivers</h3>
+        <p>Details like UI, database, frameworks, and other external tools. This is the outermost layer and can be changed without affecting the inner layers.</p>
+    </div>
+
+    <h2>Dependency Rule</h2>
+    <p>Source code dependencies must point inward, toward higher-level policies. Inner layers should not know anything about outer layers.</p>
+
+    <h2>Summary</h2>
+    <p>
+        Clean Architecture promotes building software with clear separation between business rules and external concerns.
+        This leads to flexible, maintainable, and testable software systems.
+    </p>
+
+<h2>Where to Place CQRS and MediatR in Clean Architecture?</h2>
+<div class="layer">
+    <h3>1. CQRS (Command Query Responsibility Segregation)</h3>
+    <p><strong>Category:</strong> Typically fits in the <em>Use Cases (Application Layer)</em></p>
+    <p><strong>Why?</strong><br>
+    CQRS separates commands (write operations) from queries (read operations), focusing on how business logic is executed and data is accessed. Since it deals with orchestrating business rules and application workflows, it lives in the Application Layer.</p>
+    <p><strong>What it does:</strong><br>
+    It structures the application by splitting the write and read concerns, often improving scalability and clarity in business logic implementation.</p>
+</div>
+
+
+<div class="layer">
+    <h3>2. MediatR</h3>
+    <p><strong>Category:</strong> Primarily an <em>Interface Adapter</em> / <em>Application Layer</em> helper</p>
+    <p><strong>Why?</strong><br>
+    MediatR is a mediator pattern implementation for .NET, used to decouple the sender and receiver of requests. It helps to handle commands, queries, and notifications without tight coupling.</p>
+    <p><strong>How it fits:</strong><br>
+    It acts as a message dispatcher inside the Application Layer, routing commands and queries to handlers.</p>
+    <p>
+        Sometimes considered part of the Interface Adapters because it adapts requests between UI or API layers and the core business logic.
+    </p>
+</div>
+
+
+<table style="width:100%; border-collapse: collapse; margin-top:2rem;">
+    <caption style="font-weight:bold; margin-bottom:0.5rem;">Summary Table</caption>
+    <thead>
+        <tr style="background-color:#dceefc;">
+            <th style="border:1px solid #007acc; padding:8px;">Concept</th>
+            <th style="border:1px solid #007acc; padding:8px;">Clean Architecture Layer</th>
+            <th style="border:1px solid #007acc; padding:8px;">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border:1px solid #007acc; padding:8px;">CQRS</td>
+            <td style="border:1px solid #007acc; padding:8px;">Use Cases (Application Layer)</td>
+            <td style="border:1px solid #007acc; padding:8px;">Organizes commands and queries (business rules orchestration)</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid #007acc; padding:8px;">MediatR</td>
+            <td style="border:1px solid #007acc; padding:8px;">Application Layer / Interface Adapters</td>
+            <td style="border:1px solid #007acc; padding:8px;">Handles message routing between layers (decoupling components)</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="layer">
+    <h3>Extra Tip</h3>
+    <p>
+        <strong>CQRS</strong> is a pattern for separating reads and writes in your application, improving clarity and scalability.
+    </p>
+    <p>
+        <strong>MediatR</strong> is a library/tool that implements messaging between parts of your app, often used to organize CQRS handlers and decouple components.
+    </p>
+
+    <div style="margin-top:1rem;">
+        <h4>Step 1: Simple Business Case</h4>
+        <p><strong>Business Case:</strong><br>
+        You want to build a simple app where users can add tasks to a to-do list and also get the list of tasks.</p>
+        <ul>
+            <li>Users can add a task (<strong>write operation</strong>).</li>
+            <li>Users can view tasks (<strong>read operation</strong>).</li>
+        </ul>
+        <p>This is a classic example for CQRS:</p>
+        <ul>
+            <li>Adding a task is a <strong>Command</strong> (it changes data).</li>
+            <li>Getting tasks is a <strong>Query</strong> (it just reads data).</li>
+        </ul>
+    <h4>Step 2: Write Operation – Adding a Task (Command)</h4>
+    <ul>
+        <li><strong>Scenario:</strong> A user wants to add a new task.</li>
+        <li>The UI sends a request with task details (e.g., title).</li>
+        <li>This request is represented as an <code>AddTaskCommand</code>.</li>
+        <li><strong>MediatR</strong> receives the command and dispatches it to an <code>AddTaskCommandHandler</code>.</li>
+        <li>The handler executes business logic to create and save the new task.</li>
+        <li>The handler uses a repository interface (e.g., <code>ITaskRepository</code>) to persist the task (database, memory, etc.).</li>
+        <li>The handler returns a result, such as the new task's ID or a success message.</li>
+    </ul>
+
+
+
+
+<pre><code>
+// 1. The Command
+public record AddTaskCommand(string Title) : IRequest&lt;int&gt;;
+
+// 2. The Command Handler
+public class AddTaskCommandHandler : IRequestHandler&lt;AddTaskCommand, int&gt;
+{
+    private readonly ITaskRepository _repository;
+
+    public AddTaskCommandHandler(ITaskRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task&lt;int&gt; Handle(AddTaskCommand request, CancellationToken cancellationToken)
+    {
+        var task = new TaskItem { Title = request.Title };
+        await _repository.AddTaskAsync(task);
+        return task.Id;  // Return new task's ID
+    }
+}
+
+// 3. Repository Interface
+public interface ITaskRepository
+{
+    Task AddTaskAsync(TaskItem task);
+}
+
+// 4. Task entity
+public class TaskItem
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+}
+</code></pre>
+
+
+<h4>Step 3: Read Operation – Getting Tasks (Query)</h4>
+<ul>
+    <li><strong>Scenario:</strong> A user wants to view their tasks.</li>
+    <li>The UI sends a request to get the list of tasks.</li>
+    <li>This request is represented as a <code>GetTasksQuery</code>.</li>
+    <li><strong>MediatR</strong> receives the query and dispatches it to a <code>GetTasksQueryHandler</code>.</li>
+    <li>The handler uses the repository interface (<code>ITaskRepository</code>) to fetch the list of tasks from storage.</li>
+    <li>The handler returns the list of tasks to the user.</li>
+</ul>
+<p>
+    <strong>Why is this part of Clean Architecture?</strong><br>
+    The query and query handler live in the Application Layer, keeping business rules separate from UI or database.<br>
+    The repository interface hides the storage details.<br>
+    MediatR keeps the query sender and handler decoupled, improving maintainability.
+</p>
+<p>Simple example in code (C# style):</p>
+<pre><code>
+// 1. The Query
+public record GetTasksQuery() : IRequest&lt;List&lt;TaskItem&gt;&gt;;
+
+// 2. The Query Handler
+public class GetTasksQueryHandler : IRequestHandler&lt;GetTasksQuery, List&lt;TaskItem&gt;&gt;
+{
+    private readonly ITaskRepository _repository;
+
+    public GetTasksQueryHandler(ITaskRepository repository)
+    {
+        _repository = repository;
+    }
+
+    public async Task&lt;List&lt;TaskItem&gt;&gt; Handle(GetTasksQuery request, CancellationToken cancellationToken)
+    {
+        return await _repository.GetTasksAsync();
+    }
+}
+
+// 3. Update Repository Interface to include GetTasks
+public interface ITaskRepository
+{
+    Task AddTaskAsync(TaskItem task);
+    Task&lt;List&lt;TaskItem&gt;&gt; GetTasksAsync();
+}
+</code></pre>
+</div>
+
+</body>
+</html>

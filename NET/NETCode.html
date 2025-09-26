@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>.NET</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 1rem;
+      margin: 0;
+      background-color: #f9f9f9;
+    }
+    h2 {
+      color: #2c3e50;
+      margin-top: 2rem;
+      font-size: 1.8rem;
+    }
+    p {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+    pre {
+      background-color: #272822;
+      color: #f8f8f2;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: Consolas, monospace;
+    }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      h2 { font-size: 1.5rem; }
+      p { font-size: 0.95rem; }
+    }
+    @media (max-width: 480px) {
+      h2 { font-size: 1.2rem; }
+      p { font-size: 0.9rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Net</h2>
+  <ul id="topics-list">
+    <li><a href="#NetCore">Net Core</a></li>
+        <li><a href="#asyncawait">async/await</a></li>
+        <li><a href="#DependencyInjection">Dependency Injection</a></li>
+        <li><a href="#servicelivetime">Transient</a></li>
+        <li><a href="#servicelivetime">Scope</a></li>
+        <li><a href="#servicelivetime">Singleton</a></li>
+        <li><a href="#generics">generics</a></li>
+        <li><a href="#LINQ">LINQ</a></li>
+        <li><a href="#IEnumerableIQueryable">IEnumerable </a></li>
+        <li><a href="#IEnumerableIQueryable">IQueryable</a></li>
+        <li><a href="#CORS">CORS</a></li>
+        <li><a href="#MIDIATOR">MIDIATOR</a></li>
+        <li><a href="#CleanArchitecture">Clean Architecture</a></li>
+        <li><a href="#extensionmethod ">extension method </a></li>
+        <li><a href="#optimizememory ">optimize Memory .NET</a></li>
+        <li><a href="#stackheap">stack</a></li>
+        <li><a href="#stackheap">heap</a></li>
+        <li><a href="#optimizememory">StringBuilder</a></li>
+        <li><a href="#garbagecollector">garbage collector</a></li>
+
+        
+    </ul>
+
+  <hr>
+
+  <h2 id="NetCore">Net Core</h2>
+  <p><strong>.Net Core</strong></p>
+  <p>
+    .NET Core is a cross-platform, high-performance framework for building modern applications.
+    It supports web, desktop, cloud, and microservices architectures.
+  </p>
+
+<h2 id="asyncawait">async/await (.NET / C#)</h2>
+<p>
+  In C#, <strong>async/await</strong> is used to write asynchronous code that is easy to read and maintain.  
+  It allows tasks to run without blocking the main thread, which is especially useful for I/O operations, web requests, or database calls.
+</p>
+
+<h3>Why use async/await?</h3>
+<ul>
+  <li>Keeps the UI responsive in desktop or web applications</li>
+  <li>Makes asynchronous code look like synchronous code</li>
+  <li>Provides simple error handling with <code>try/catch</code></li>
+</ul>
+
+<h3>Basic Example:</h3>
+<pre>
+// Example: Fetching data asynchronously
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        try
+        {
+            string result = await GetDataAsync();
+            Console.WriteLine(result);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Error: " + ex.Message);
+        }
+    }
+
+    static async Task&lt;string&gt; GetDataAsync()
+    {
+        using HttpClient client = new HttpClient();
+        string response = await client.GetStringAsync("https://api.example.com/data");
+        return response;
+    }
+}
+</pre>
+
+<h3>Explanation:</h3>
+<ul>
+  <li><code>async</code> marks a method as asynchronous.</li>
+  <li><code>await</code> pauses the execution until the awaited task completes.</li>
+  <li>Tasks (<code>Task</code>) represent asynchronous operations.</li>
+  <li>Errors can be handled with <code>try/catch</code> like synchronous code.</li>
+</ul>
+
+
+<h2 id="DependencyInjection">Dependency Injection</h2>
+<p>
+  <strong>Dependency Injection (DI)</strong> is a design pattern used to provide a class with its dependencies rather than creating them itself.  
+  In Angular, DI allows you to inject services or other classes into components, making your code more modular, testable, and maintainable.
+</p>
+
+<h3>Why use Dependency Injection?</h3>
+<ul>
+  <li>Reduces tight coupling between components and services</li>
+  <li>Makes it easier to reuse and test code</li>
+  <li>Provides a centralized way to manage services
+
+
+<h2 id="servicelivetime">Service Lifetimes in .NET</h2>
+<p>
+  In .NET (ASP.NET Core), services can have different lifetimes depending on how long their instances are kept.  
+  Choosing the right lifetime is important for performance and managing state.
+</p>
+
+<h3>1. Transient</h3>
+<p>
+  A <strong>Transient</strong> service is created **every time it is requested**. Use it for lightweight, stateless services.
+</p>
+<pre>
+// Register service
+services.AddTransient&lt;IGreetingService, GreetingService&gt;();
+
+// Service implementation
+public class GreetingService : IGreetingService
+{
+    public Guid Id { get; } = Guid.NewGuid();
+    public string Greet() =&gt; $"Hello! Service ID: {Id}";
+}
+</pre>
+
+<h3>2. Scoped</h3>
+<p>
+  A <strong>Scoped</strong> service is created **once per request**. All components within the same HTTP request share the same instance.
+</p>
+<pre>
+// Register service
+services.AddScoped&lt;IGreetingService, GreetingService&gt;();
+</pre>
+
+<h3>3. Singleton</h3>
+<p>
+  A <strong>Singleton</strong> service is created **once for the entire application** and shared across all requests.
+</p>
+<pre>
+// Register service
+services.AddSingleton&lt;IGreetingService, GreetingService&gt;();
+</pre>
+
+<h3>Example Usage in a Controller</h3>
+<pre>
+public class HomeController : Controller
+{
+    private readonly IGreetingService _service;
+
+    public HomeController(IGreetingService service)
+    {
+        _service = service;
+    }
+
+    public IActionResult Index()
+    {
+        return Content(_service.Greet());
+    }
+}
+</pre>
+
+<h3>Summary</h3>
+<ul>
+  <li><strong>Transient:</strong> New instance every injection.</li>
+  <li><strong>Scoped:</strong> One instance per HTTP request.</li>
+  <li><strong>Singleton:</strong> One instance for the entire application.</li>
+</ul>
+
+    
+<table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; width: 100%; background: #fff;">
+    <thead>
+        <tr style="background: #f0f0f0;">
+            <th>Lifetime</th>
+            <th>Meaning</th>
+            <th>Real-world Examples</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><strong>Singleton</strong></td>
+            <td>One instance for the whole app</td>
+            <td>
+                <ul>
+                    <li>ConfigurationService – app settings</li>
+                    <li>LoggingService – centralized logging</li>
+                    <li>CacheService – memory cache</li>
+                    <li>TelemetryService – analytics</li>
+                    <li>EmailSenderService – SMTP client shared across app</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Scoped</strong></td>
+            <td>One instance per request (good for web APIs)</td>
+            <td>
+                <ul>
+                    <li>UserService – current user context</li>
+                    <li>OrderService – handles order per request</li>
+                    <li>ShoppingCartService – tracks items per session</li>
+                    <li>ClaimService – processes insurance claim per request</li>
+                    <li>PaymentService – validates and processes payment per request</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Transient</strong></td>
+            <td>New instance every time it’s requested</td>
+            <td>
+                <ul>
+                    <li>RandomNumberService</li>
+                    <li>EmailTemplateService – lightweight, stateless</li>
+                    <li>NotificationBuilder – build notifications dynamically</li>
+                    <li>ReportGeneratorService</li>
+                    <li>ParserService – parses input per call</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h2 id="generics">Generics</h2>
+<p>
+  <strong>Generics</strong> allow you to define classes, methods, or interfaces with a placeholder for the type they store or use.  
+  This enables type safety, code reuse, and avoids boxing/unboxing for value types.
+</p>
+
+<h3>Why use Generics?</h3>
+<ul>
+  <li>Type safety at compile time</li>
+  <li>Code reuse for multiple types</li>
+  <li>Improved performance by avoiding casting or boxing</li>
+</ul>
+
+<h3>Example: Generic Class</h3>
+<pre>
+public class Repository&lt;T&gt;
+{
+    private List&lt;T&gt; items = new List&lt;T&gt;();
+
+    public void Add(T item)
+    {
+        items.Add(item);
+    }
+
+    public T Get(int index)
+    {
+        return items[index];
+    }
+}
+
+// Usage
+var intRepo = new Repository&lt;int&gt;();
+intRepo.Add(42);
+Console.WriteLine(intRepo.Get(0)); // Output: 42
+
+var stringRepo = new Repository&lt;string&gt;();
+stringRepo.Add("Hello");
+Console.WriteLine(stringRepo.Get(0)); // Output: Hello
+</pre>
+
+<h3>Example: Generic Method</h3>
+<pre>
+public void Swap&lt;T&gt;(ref T a, ref T b)
+{
+    T temp = a;
+    a = b;
+    b = temp;
+}
+
+// Usage
+int x = 1, y = 2;
+Swap(ref x, ref y);
+Console.WriteLine($"{x}, {y}"); // Output: 2, 1
+</pre>
+
+<h3>Summary</h3>
+<ul>
+  <li>Generics allow type-agnostic code that is safe and reusable.</li>
+  <li>They work for classes, methods, interfaces, and delegates.</li>
+  <li>Helps avoid runtime errors by catching type issues at compile time.</li>
+</ul>
+
+
+<h2 id="LINQ">LINQ</h2>
+<p>
+  <strong>LINQ (Language Integrated Query)</strong> is a feature in C# that allows you to query collections (arrays, lists, databases, etc.) in a concise and readable way using SQL-like syntax or method chains.
+</p>
+
+<h3>Why use LINQ?</h3>
+<ul>
+  <li>Simplifies querying collections</li>
+  <li>Readable and maintainable code</li>
+  <li>Supports filtering, ordering, grouping, and projection</li>
+</ul>
+
+<h3>Example 1: LINQ with Arrays</h3>
+<pre>
+using System;
+using System.Linq;
+
+int[] numbers = { 1, 2, 3, 4, 5, 6 };
+
+// Query even numbers
+var evens = numbers.Where(n =&gt; n % 2 == 0);
+
+foreach (var n in evens)
+{
+    Console.WriteLine(n); // Output: 2, 4, 6
+}
+</pre>
+
+<h3>Example 2: LINQ with Objects</h3>
+<pre>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+public class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+List&lt;Person&gt; people = new List&lt;Person&gt;
+{
+    new Person { Name = "Alice", Age = 25 },
+    new Person { Name = "Bob", Age = 30 },
+    new Person { Name = "Charlie", Age = 20 }
+};
+
+// Get names of people older than 20
+var result = people.Where(p =&gt; p.Age &gt; 20).Select(p =&gt; p.Name);
+
+foreach (var name in result)
+{
+    Console.WriteLine(name); // Output: Alice, Bob
+}
+</pre>
+
+<h3>Example 3: LINQ Query Syntax vs Method Syntax</h3>
+<pre>
+// Method Syntax
+var adults = people.Where(p =&gt; p.Age &gt;= 21).Select(p =&gt; p.Name);
+
+// Query Syntax
+var adultsQuery = from p in people
+                  where p.Age &gt;= 21
+                  select p.Name;
+</pre>
+
+<h3>Summary</h3>
+<ul>
+  <li>LINQ makes querying collections simple and expressive.</li>
+  <li>Supports both <strong>method syntax</strong> and <strong>query syntax</strong>.</li>
+  <li>Useful for filtering, selecting, ordering, and grouping data.</li>
+</ul>
+
+<h2 id="IEnumerableIQueryable">IEnumerable vs IQueryable</h2>
+<p>
+  Both <strong>IEnumerable</strong> and <strong>IQueryable</strong> are used to work with collections in C#, but they differ in **where and how the query is executed**.
+</p>
+
+<h3>IEnumerable&lt;T&gt;</h3>
+<ul>
+  <li>Used for in-memory collections like arrays, lists, etc.</li>
+  <li>Query execution happens <strong>in memory</strong> (client-side).</li>
+  <li>Supports forward-only iteration.</li>
+</ul>
+
+<h4>Example:</h4>
+<pre>
+List&lt;int&gt; numbers = new List&lt;int&gt; { 1, 2, 3, 4, 5 };
+
+// IEnumerable example
+IEnumerable&lt;int&gt; evenNumbers = numbers.Where(n =&gt; n % 2 == 0);
+
+foreach (var n in evenNumbers)
+{
+    Console.WriteLine(n); // Output: 2, 4
+}
+</pre>
+
+<h3>IQueryable&lt;T&gt;</h3>
+<ul>
+  <li>Used for querying external data sources like databases (Entity Framework).</li>
+  <li>Query execution happens <strong>on the server</strong>, fetching only required data.</li>
+  <li>Supports building dynamic queries with deferred execution.</li>
+</ul>
+
+<h4>Example:</h4>
+<pre>
+using (var context = new AppDbContext())
+{
+    IQueryable&lt;Person&gt; adults = context.People.Where(p =&gt; p.Age &gt;= 21);
+
+    foreach (var person in adults)
+    {
+        Console.WriteLine(person.Name);
+    }
+}
+// The database executes the query; only filtered results are returned.
+</pre>
+
+<h3>Key Differences</h3>
+<ul>
+  <li><strong>Execution:</strong> IEnumerable - in memory; IQueryable - server-side.</li>
+  <li><strong>Data Source:</strong> IEnumerable - in-memory collections; IQueryable - external sources (DB).</li>
+  <li><strong>Performance:</strong> IQueryable is more efficient for large datasets because filtering happens on the server.</li>
+</ul>
+
+
+
+
+
+<h2 id="CORS">CORS (Cross-Origin Resource Sharing)</h2>
+<p>
+  <strong>CORS</strong> is a security feature in web browsers that controls how resources on your server can be accessed by web pages from different origins (domains).  
+  It is mainly used in **web API / client-server architecture** to allow or restrict access from external domains.
+</p>
+
+<h3>Why use CORS?</h3>
+<ul>
+  <li>Enables secure cross-domain requests</li>
+  <li>Prevents unauthorized access to your API</li>
+</ul>
+
+<h3>Example: Enabling CORS in ASP.NET Core</h3>
+<pre>
+// Program.cs
+var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+builder.Services.AddCors(options =&gt;
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =&gt;
+                      {
+                          policy.WithOrigins("https://example.com")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
+
+var app = builder.Build();
+
+app.UseCors(MyAllowSpecificOrigins);
+
+app.MapControllers();
+
+app.Run();
+</pre>
+
+<h3>Explanation:</h3>
+<ul>
+  <li>In a client-server architecture, CORS allows specific front-end domains to call your back-end API safely.</li>
+  <li>It prevents unauthorized websites from making requests to your API.</li>
+</ul>
+
+<hr>
+
+<h2 id="MIDIATOR">MediatR</h2>
+<p>
+  <strong>MediatR</strong> is a .NET library implementing the **Mediator pattern**. It is used in **Clean Architecture / CQRS (Command-Query Responsibility Segregation)** to decouple request handling from request sending.  
+  This helps keep your code modular, testable, and reduces direct dependencies between components.
+</p>
+
+<h3>Why use MediatR?</h3>
+<ul>
+  <li>Decouples request senders and handlers</li>
+  <li>Makes the application more maintainable and testable</li>
+  <li>Useful for implementing CQRS pattern (separating commands and queries)</li>
+</ul>
+
+<h3>Example: Using MediatR</h3>
+<pre>
+// Install-Package MediatR
+using MediatR;
+
+// Define a request (command)
+public record CreateUserCommand(string Name, string Email) : IRequest&lt;bool&gt;;
+
+// Define a handler
+public class CreateUserHandler : IRequestHandler&lt;CreateUserCommand, bool&gt;
+{
+    public Task&lt;bool&gt; Handle(CreateUserCommand request, CancellationToken cancellationToken)
+    {
+        Console.WriteLine($"Creating user: {request.Name}, {request.Email}");
+        return Task.FromResult(true);
+    }
+}
+
+// Usage in Controller
+public class UsersController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public UsersController(IMediator mediator)
+    {
+        _mediator = mediator;
+    }
+
+    [HttpPost("create")]
+    public async Task&lt;IActionResult&gt; CreateUser([FromBody] CreateUserCommand command)
+    {
+        var result = await _mediator.Send(command);
+        return Ok(result);
+    }
+}
+</pre>
+
+<h3>Explanation:</h3>
+<ul>
+  <li>The controller sends a request via <code>_mediator.Send()</code> instead of directly calling a service.</li>
+  <li>The handler receives the request and executes business logic.</li>
+  <li>This is commonly used in **Clean Architecture** to separate controllers, business logic, and infrastructure.</li>
+</ul>
+
+
+<h2 id="CleanArchitecture">Clean Architecture</h2>
+<p>
+  <strong>Clean Architecture</strong> is a software design approach that separates an application into distinct layers to improve maintainability, testability, and flexibility.  
+  It enforces a rule: **inner layers should not depend on outer layers**, but outer layers can depend on inner layers.
+</p>
+
+<h3>Layers in Clean Architecture</h3>
+<ul>
+  <li><strong>Entities / Domain:</strong> Core business models and rules (no dependencies on other layers).</li>
+  <li><strong>Use Cases / Application:</strong> Business logic, commands, and queries. Depends only on Entities.</li>
+  <li><strong>Interface / Web / API:</strong> Controllers, API endpoints, UI. Depends on Application layer.</li>
+  <li><strong>Infrastructure:</strong> Database, external services, repositories. Implements interfaces from Application layer.</li>
+</ul>
+
+<h3>Benefits</h3>
+<ul>
+  <li>Independent of frameworks and UI.</li>
+  <li>Easier to test.</li>
+  <li>Supports multiple front-ends (web, desktop, mobile) with the same core logic.</li>
+</ul>
+
+<h3>Typical File Structure</h3>
+<pre>
+MyProject/
+│
+├── MyProject.Domain/          # Entities, domain models
+│   └── Person.cs
+│
+├── MyProject.Application/     # Use cases, commands, queries, interfaces
+│   ├── Interfaces/
+│   │   └── IUserRepository.cs
+│   └── Services/
+│       └── UserService.cs
+│
+├── MyProject.Infrastructure/  # Database, external APIs, repository implementations
+│   └── Repositories/
+│       └── UserRepository.cs
+│
+├── MyProject.API/             # Controllers, API endpoints
+│   └── Controllers/
+│       └── UsersController.cs
+│
+└── MyProject.Tests/           # Unit and integration tests
+    └── UserServiceTests.cs
+</pre>
+
+<h3>How It Works</h3>
+<ul>
+  <li>Controllers in API layer call services in Application layer.</li>
+  <li>Application layer calls domain entities and interfaces.</li>
+  <li>Infrastructure layer implements these interfaces (e.g., database access).</li>
+  <li>Inner layers never depend on outer layers; dependencies point inward.</li>
+</ul>
+
+
+<h2 id="extensionmethod">Extension Method</h2>
+<p>
+  <strong>Extension Methods</strong> allow you to add new methods to existing types (classes, interfaces, structs) 
+  <strong>without modifying their source code</strong> or creating a new derived type. They are commonly used 
+  for utility methods, helper functions, and LINQ.
+</p>
+
+<h3>How to Define an Extension Method</h3>
+<ul>
+  <li>Must be defined in a <strong>static class</strong>.</li>
+  <li>The method itself must be <strong>static</strong>.</li>
+  <li>The first parameter specifies the type being extended and must be prefixed with <code>this</code>.</li>
+</ul>
+
+<h3>Example: String Extension</h3>
+<pre>
+using System;
+
+public static class StringExtensions
+{
+    // Extension method to capitalize the first letter of a string
+    public static string CapitalizeFirstLetter(this string str)
+    {
+        if (string.IsNullOrEmpty(str))
+            return str;
+
+        return char.ToUpper(str[0]) + str.Substring(1);
+    }
+}
+
+// Usage
+class Program
+{
+    static void Main()
+    {
+        string name = "eric";
+        string capitalized = name.CapitalizeFirstLetter();
+        Console.WriteLine(capitalized); // Output: Eric
+    }
+}
+</pre>
+
+<h3>Key Points</h3>
+<ul>
+  <li>You can call the extension method as if it were a method of the type itself.</li>
+  <li>Works with both built-in types (like <code>string</code>) and custom classes.</li>
+  <li>Helps keep utility methods organized without cluttering the original class.</li>
+</ul>
+
+
+<h2 id="optimizememory">Optimize Memory in .NET</h2>
+<p>
+  Memory optimization in .NET is about managing how your application allocates, uses, and releases memory to improve performance and reduce memory-related issues like leaks or excessive garbage collection.
+</p>
+
+<h3>Key Techniques:</h3>
+<ul>
+  <li><strong>Use value types wisely:</strong> Value types (structs) are stored on the stack and reduce heap allocations compared to reference types.</li>
+  <li><strong>Dispose objects properly:</strong> Implement <code>IDisposable</code> and use <code>using</code> statements for objects holding unmanaged resources (e.g., file handles, database connections).</li>
+  <li><strong>String optimization:</strong> Use <code>StringBuilder</code> for repeated string concatenation instead of using <code>+</code> operator.</li>
+  <li><strong>Use memory-efficient collections:</strong> Choose <code>Span&lt;T&gt;</code>, <code>Memory&lt;T&gt;</code>, or <code>ArrayPool&lt;T&gt;</code> for large datasets.</li>
+  <li><strong>Minimize large object heap (LOH) fragmentation:</strong> Avoid creating many large objects repeatedly; reuse buffers when possible.</li>
+</ul>
+
+<h3>Example: Using StringBuilder</h3>
+<pre>
+using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i &lt; 1000; i++)
+        {
+            sb.Append("Line " + i + Environment.NewLine);
+        }
+
+        string result = sb.ToString();
+        Console.WriteLine(result.Substring(0, 50) + "...");
+    }
+}
+</pre>
+
+<h3>Example: Properly disposing objects</h3>
+<pre>
+using (var file = new System.IO.StreamWriter("log.txt"))
+{
+    file.WriteLine("Log entry");
+} // StreamWriter automatically disposed here
+</pre>
+
+<h3>Summary</h3>
+<ul>
+  <li>Reduce unnecessary heap allocations.</li>
+  <li>Dispose unmanaged resources promptly.</li>
+  <li>Use memory-efficient types and collections.</li>
+  <li>Consider performance profiling to identify memory hotspots.</li>
+</ul>
+
+
+<h2 id="stackheap">Stack vs Heap</h2>
+<p>
+  In .NET, memory is managed in two main areas: the <strong>stack</strong> and the <strong>heap</strong>.  
+  Understanding the difference helps write more efficient and performant code.
+</p>
+
+<h3>Stack</h3>
+<ul>
+  <li>Stores value types (like <code>int</code>, <code>bool</code>, <code>struct</code>) and references to objects.</li>
+  <li>Memory is automatically managed with a Last-In-First-Out (LIFO) structure.</li>
+  <li>Fast allocation and deallocation.</li>
+  <li>Limited size; suitable for small, short-lived data.</li>
+</ul>
+
+<h4>Example:</h4>
+<pre>
+int a = 10;   // 'a' stored on the stack
+int b = 20;   // 'b' stored on the stack
+int sum = a + b;
+Console.WriteLine(sum); // Output: 30
+</pre>
+
+<h3>Heap</h3>
+<ul>
+  <li>Stores reference types (like <code>class</code> objects) and large objects.</li>
+  <li>Memory is managed by the garbage collector (GC) in .NET.</li>
+  <li>Slower allocation and deallocation compared to stack.</li>
+  <li>Suitable for objects that live longer or need to be shared.</li>
+</ul>
+
+<h4>Example:</h4>
+<pre>
+class Person
+{
+    public string Name { get; set; }
+}
+
+Person p = new Person(); // Object allocated on the heap
+p.Name = "Eric";
+Console.WriteLine(p.Name); // Output: Eric
+</pre>
+
+<h3>Key Differences</h3>
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Feature</th>
+    <th>Stack</th>
+    <th>Heap</th>
+  </tr>
+  <tr>
+    <td>Data Stored</td>
+    <td>Value types, references</td>
+    <td>Reference type objects</td>
+  </tr>
+  <tr>
+    <td>Lifetime</td>
+    <td>Short-lived, automatic</td>
+    <td>Managed by GC, longer-lived</td>
+  </tr>
+  <tr>
+    <td>Access Speed</td>
+    <td>Fast</td>
+    <td>Slower</td>
+  </tr>
+  <tr>
+    <td>Size</td>
+    <td>Limited</td>
+    <td>Large</td>
+  </tr>
+</table>
+
+<h2 id="garbagecollector">Garbage Collector</h2>
+<p>
+  The <strong>Garbage Collector (GC)</strong> in .NET automatically manages memory by reclaiming memory occupied by objects 
+  that are no longer in use. This helps prevent memory leaks and reduces the need for manual memory management.
+</p>
+
+<h3>How it works:</h3>
+<ul>
+  <li>Allocates memory for objects on the heap.</li>
+  <li>Tracks which objects are still in use and which are no longer referenced.</li>
+  <li>Automatically frees memory for objects that are unreachable.</li>
+  <li>Runs periodically in the background to optimize performance.</li>
+</ul>
+
+<h3>Example:</h3>
+<pre>
+class Program
+{
+    static void Main()
+    {
+        // Create a new object
+        Person p = new Person();
+        p.Name = "Eric";
+
+        // After this block, 'p' goes out of scope and can be collected by GC
+    }
+}
+
+class Person
+{
+    public string Name { get; set; }
+}
+</pre>
+
+<h3>Key Points:</h3>
+<ul>
+  <li>Developers do not need to manually free memory for managed objects.</li>
+  <li>For unmanaged resources (like file handles, database connections), always implement <code>IDisposable</code> and use <code>using</code>.</li>
+  <li>Excessive object creation can trigger frequent GC runs, affecting performance.</li>
+  <li>Understanding GC generations (0, 1, 2) can help optimize memory usage for long-lived objects.</li>
+</ul>
+
+
+
+</body>
+</html>
+
+
+
+<script>
+  // Select the UL
+  const ul = document.getElementById('topics-list');
+  // Convert HTMLCollection to an array
+  const lis = Array.from(ul.getElementsByTagName('li'));
+  
+  // Sort the list items alphabetically by their <a> text
+  lis.sort((a, b) => {
+    const textA = a.querySelector('a').textContent.trim().toLowerCase();
+    const textB = b.querySelector('a').textContent.trim().toLowerCase();
+    return textA.localeCompare(textB);
+  });
+
+  // Remove existing items and append sorted items
+  ul.innerHTML = '';
+  lis.forEach(li => ul.appendChild(li));
+</script>

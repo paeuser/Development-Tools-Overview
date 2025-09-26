@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>.NET Interview Questions & Answers</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1, h2 {
+    color: #2c3e50;
+  }
+  h1 {
+    border-bottom: 2px solid #2980b9;
+    padding-bottom: 0.5rem;
+  }
+  .question {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #fff;
+    border-left: 5px solid #2980b9;
+    box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  }
+  .question h3 {
+    margin: 0 0 0.5rem 0;
+    font-weight: normal;
+    color: #2980b9;
+  }
+  .answer {
+    background: #ecf0f1;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    white-space: pre-wrap;
+    font-family: Consolas, monospace;
+  }
+</style>
+</head>
+<body>
+   <h2>.NET Core / ASP.NET Core General</h2>
+
+<div class="question">
+  <h3>1. What is CORS in .NET?</h3>
+  <div class="answer">
+CORS (Cross-Origin Resource Sharing) is a browser security feature that controls which websites (origins) can make requests to your web API or server. By default, browsers block cross-origin requests. CORS allows the server to explicitly permit specific origins.  
+
+<strong>How it works:</strong>
+- <strong>Origin:</strong> Protocol + domain + port (e.g., https://example.com:443).  
+- <strong>Preflight request:</strong> Browsers send an OPTIONS request for certain HTTP methods (PUT, DELETE) or custom headers.  
+- <strong>CORS headers:</strong> Server responds with headers like:
+  - Access-Control-Allow-Origin → allowed domains
+  - Access-Control-Allow-Methods → allowed HTTP methods
+  - Access-Control-Allow-Headers → allowed headers  
+
+<strong>CORS in .NET Core / .NET 5+ example:</strong>
+<pre>
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin",
+        builder => builder
+            .WithOrigins("https://example.com")
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+app.UseCors("AllowSpecificOrigin");
+</pre>
+
+<strong>CORS in ASP.NET Web API (Framework):</strong>
+<pre>
+using System.Web.Http.Cors;
+
+var cors = new EnableCorsAttribute("https://example.com", "*", "*");
+config.EnableCors(cors);
+
+[EnableCors(origins: "https://example.com", headers: "*", methods: "*")]
+public class MyApiController : ApiController { }
+</pre>
+
+<strong>Key points:</strong>  
+- CORS is enforced by browsers, not the server.  
+- Limit allowed origins in production for security.  
+- Preflight OPTIONS requests are handled automatically by the middleware.
+  </div>
+</div>
+
+
+
+  <div class="question">
+  <h3>7. What is the difference between AddSingleton, AddScoped, and AddTransient?</h3>
+  <div class="answer">
+    <p><strong>AddSingleton:</strong> A single instance is created and shared for the entire application lifetime.  
+    <em>Examples:</em></p>
+    <ul>
+      <li><code>services.AddSingleton&lt;ILoggingService, LoggingService&gt;();</code></li>
+      <li><code>services.AddSingleton&lt;IConfigurationService, ConfigurationService&gt;();</code></li>
+      <li><code>services.AddSingleton&lt;ICacheService, MemoryCacheService&gt;();</code></li>
+    </ul>
+
+    <p><strong>AddScoped:</strong> A new instance is created once per HTTP request. Within the same request, all usages share the same instance.  
+    <em>Examples:</em></p>
+    <ul>
+      <li><code>services.AddScoped&lt;IUserService, UserService&gt;();</code></li>
+      <li><code>services.AddScoped&lt;IOrderService, OrderService&gt;();</code></li>
+      <li><code>services.AddScoped&lt;IDbContext, ApplicationDbContext&gt;();</code></li>
+    </ul>
+
+    <p><strong>AddTransient:</strong> A new instance is created every time the service is requested. Even within the same HTTP request, multiple injections will produce different objects.  
+    <em>Examples:</em></p>
+    <ul>
+      <li><code>services.AddTransient&lt;IEmailService, EmailService&gt;();</code></li>
+      <li><code>services.AddTransient&lt;INotificationService, NotificationService&gt;();</code></li>
+      <li><code>services.AddTransient&lt;IReportGenerator, ReportGenerator&gt;();</code></li>
+    </ul>
+
+    <p><strong>Summary:</strong></p>
+    <ul>
+      <li><b>Singleton</b>: One for the whole app (best for logging, caching, configuration).</li>
+      <li><b>Scoped</b>: One per request (best for database contexts, user/session data).</li>
+      <li><b>Transient</b>: Always new (best for lightweight, stateless operations like sending emails).</li>
+    </ul>
+  </div>
+</div>
+
+
+
+  <section>
+ 
+
+    <div class="question">
+      <h3>1. What is the difference between .NET Framework and .NET Core?</h3>
+      <div class="answer">
+.NET Framework is Windows-only and mature, while .NET Core is cross-platform, open-source, and modular for modern cloud and microservices apps.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>2. What are the main benefits of ASP.NET Core over ASP.NET MVC 5?</h3>
+      <div class="answer">
+ASP.NET Core is cross-platform, faster, has built-in dependency injection, better modularity via middleware, and supports side-by-side versioning.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>3. What are middleware components in ASP.NET Core, and how are they configured?</h3>
+      <div class="answer">
+Middleware are software components forming a pipeline to handle HTTP requests/responses. Configured in Startup.cs using IApplicationBuilder's Use methods.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>4. Explain the difference between IApplicationBuilder and IServiceCollection.</h3>
+      <div class="answer">
+IServiceCollection registers services for dependency injection. IApplicationBuilder configures middleware components in the HTTP request pipeline.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>5. What is dependency injection, and how is it implemented in ASP.NET Core?</h3>
+      <div class="answer">
+DI is a pattern that provides objects their dependencies instead of creating them. ASP.NET Core has built-in DI container configured via IServiceCollection.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>6. How do you configure app settings across environments (e.g., dev, staging, prod)?</h3>
+      <div class="answer">
+Using appsettings.json files (e.g., appsettings.Development.json) combined with environment variables and IConfiguration to load settings per environment.
+      </div>
+    </div>
+
+ 
+
+    <div class="question">
+      <h3>8. How does model binding work in ASP.NET Core MVC?</h3>
+      <div class="answer">
+It maps HTTP request data (query, route, form, body) to action method parameters or model properties automatically.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>9. How do you handle validation in a Web API controller?</h3>
+      <div class="answer">
+Using data annotations on models, then checking ModelState.IsValid in controller actions to return 400 Bad Request on validation failure.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>10. What’s the role of Startup.cs in ASP.NET Core apps?</h3>
+      <div class="answer">
+Startup.cs configures services (DI) and the HTTP request pipeline (middleware) for the app.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Web API & REST</h2>
+
+    <div class="question">
+      <h3>11. How do you build a RESTful Web API in ASP.NET Core?</h3>
+      <div class="answer">
+By creating controllers deriving from ControllerBase, using routing, returning IActionResult, and following REST conventions with HTTP verbs.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>12. How do you version a Web API?</h3>
+      <div class="answer">
+Using URL segments (e.g., /api/v1/), query strings, headers, or Microsoft.AspNetCore.Mvc.Versioning package.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>13. How do you return custom HTTP responses or error codes?</h3>
+      <div class="answer">
+Using IActionResult return types like BadRequest(), NotFound(), Created(), or custom ObjectResult with status codes.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>14. What is the difference between [FromBody], [FromQuery], and [FromRoute]?</h3>
+      <div class="answer">
+They specify where the parameter value comes from: body payload, query string, or route URL segment respectively.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>15. How do you implement authentication/authorization in ASP.NET Core Web APIs?</h3>
+      <div class="answer">
+Configure authentication schemes (JWT, OAuth), add [Authorize] attribute, and configure policies and middleware.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>16. What are filters (e.g., action, result, exception) in Web APIs?</h3>
+      <div class="answer">
+Filters are components to run code before/after controller actions for cross-cutting concerns like logging, authorization, and error handling.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>17. How do you handle global exception handling in ASP.NET Core?</h3>
+      <div class="answer">
+Using middleware like UseExceptionHandler or custom middleware to catch and respond to unhandled exceptions globally.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>18. How do you implement pagination in a RESTful API?</h3>
+      <div class="answer">
+Using query params for page size and number, returning paged results with metadata like total count and links.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>19. How do you protect APIs using OAuth 2.0 or OpenID Connect?</h3>
+      <div class="answer">
+By validating access tokens issued by identity providers on each request and enforcing scopes/claims.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>20. How would you implement API rate limiting?</h3>
+      <div class="answer">
+Using middleware or third-party libraries to limit requests per IP/user over a time window.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>.NET Security</h2>
+
+    <div class="question">
+      <h3>21. How do you implement JWT authentication in ASP.NET Core?</h3>
+      <div class="answer">
+Configure JwtBearer authentication in Startup.cs, validate tokens in middleware, and protect routes using [Authorize].
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>22. What are data protection APIs in ASP.NET Core?</h3>
+      <div class="answer">
+APIs to encrypt/decrypt sensitive data like cookies or tokens, ensuring security at rest and in transit.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>23. How do you prevent CSRF and XSS in a .NET web app?</h3>
+      <div class="answer">
+Use anti-forgery tokens for CSRF; encode output and validate input to prevent XSS.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>24. How would you handle secrets in .NET apps in production?</h3>
+      <div class="answer">
+Use Azure Key Vault, AWS Secrets Manager, environment variables, or user secrets in development.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>25. What is the purpose of HTTPS and how to enforce it in ASP.NET Core?</h3>
+      <div class="answer">
+HTTPS encrypts data in transit. Use UseHttpsRedirection middleware and HSTS headers.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Databases & ORM</h2>
+
+    <div class="question">
+      <h3>26. What is Entity Framework Core?</h3>
+      <div class="answer">
+EF Core is a lightweight, cross-platform ORM for .NET to work with databases using LINQ and models.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>27. Explain Code First vs Database First approaches.</h3>
+      <div class="answer">
+Code First: Create models then generate DB.
+Database First: Use existing DB to generate models.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>28. How do you configure migrations in EF Core?</h3>
+      <div class="answer">
+Using CLI commands like dotnet ef migrations add and dotnet ef database update.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>29. How do you improve performance of EF Core queries?</h3>
+      <div class="answer">
+Use eager loading, compiled queries, no-tracking queries, and optimize LINQ expressions.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>30. How do you handle concurrency conflicts in EF Core?</h3>
+      <div class="answer">
+Use concurrency tokens with [Timestamp] attribute and handle DbUpdateConcurrencyException.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Microservices & Architecture</h2>
+
+    <div class="question">
+      <h3>31. What are microservices, and how do they differ from monolithic apps?</h3>
+      <div class="answer">
+Microservices are small, independent services communicating over APIs. Monoliths are a single unified app.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>32. How do you build and deploy microservices using .NET Core?</h3>
+      <div class="answer">
+Develop separate .NET Core apps, containerize with Docker, orchestrate with Kubernetes, and use REST/gRPC for communication.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>33. What is the role of API Gateway in microservices?</h3>
+      <div class="answer">
+Acts as a single entry point, routing requests, handling auth, throttling, and aggregating responses.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>34. Explain CQRS and event sourcing concepts.</h3>
+      <div class="answer">
+CQRS separates read/write models; event sourcing persists state changes as events.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>35. What are common patterns to ensure data consistency across microservices?</h3>
+      <div class="answer">
+Use eventual consistency, distributed transactions (sagas), or message queues.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Testing & CI/CD</h2>
+
+    <div class="question">
+      <h3>36. How do you unit test ASP.NET Core controllers?</h3>
+      <div class="answer">
+Using xUnit or NUnit with mocks for dependencies to isolate controller logic.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>37. What are integration tests and how do they differ from unit tests?</h3>
+      <div class="answer">
+Integration tests check multiple components working together, while unit tests isolate single units.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>38. How do you mock dependencies in .NET tests?</h3>
+      <div class="answer">
+Using mocking frameworks like Moq or NSubstitute to create fake implementations.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>39. How do you implement continuous integration and deployment for .NET apps?</h3>
+      <div class="answer">
+Use Azure DevOps, GitHub Actions, or Jenkins pipelines to build, test, and deploy automatically on commits.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>40. How do you measure code coverage in .NET?</h3>
+      <div class="answer">
+Using tools like Coverlet integrated with test runners and reporting coverage in CI.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Advanced Topics</h2>
+
+    <div class="question">
+      <h3>41. What is async/await in C# and why is it important?</h3>
+      <div class="answer">
+Allows asynchronous programming without blocking threads, improving scalability and responsiveness.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>42. What are Span&lt;T&gt; and Memory&lt;T&gt; in .NET?</h3>
+      <div class="answer">
+They are structs for efficient memory handling and slicing without allocations.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>43. What is the difference between Task and Thread?</h3>
+      <div class="answer">
+Task is an abstraction for asynchronous work; Thread is an OS-level thread.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>44. Explain the IDisposable interface and when to use it.</h3>
+      <div class="answer">
+IDisposable allows releasing unmanaged resources deterministically with Dispose method.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>45. What is reflection and how is it used?</h3>
+      <div class="answer">
+Reflection lets you inspect and manipulate metadata and types at runtime.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>46. What are extension methods?</h3>
+      <div class="answer">
+Static methods that add functionality to existing types without inheritance.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>47. How do you handle configuration in .NET Core apps?</h3>
+      <div class="answer">
+Using IConfiguration with appsettings.json, environment variables, and custom providers.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>48. What is the difference between synchronous and asynchronous streams?</h3>
+      <div class="answer">
+Synchronous streams yield values synchronously; asynchronous streams use async enumeration (IAsyncEnumerable).
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>49. How do you optimize memory usage in .NET applications?</h3>
+      <div class="answer">
+Avoid unnecessary allocations, use structs/Span, dispose resources, and profile memory.
+      </div>
+    </div>
+
+    <div class="question">
+      <h3>50. What is a garbage collector and how does it work?</h3>
+      <div class="answer">
+Automatically frees unused managed memory via generational collection to improve app performance.
+      </div>
+    </div>
+
+  </section>
+</body>
+</html>

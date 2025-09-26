@@ -1,0 +1,57 @@
+Vue 2 (just display message)
+
+Summary:
+Aspect	                Vue 2	                                                         Vue 3
+Initialization	        new Vue({ el, data })	                                         createApp({ setup() }).mount()
+Reactive Data	        data object	                                                     ref() and reactive APIs
+API Style	            Options API (data, methods, etc.)	                             Composition API (setup() function)
+Mounting	            Implicit by el option	                                         Explicit with .mount()
+
+<!-- Vue 2 simple -->
+
+				<div id="app">
+					  {{ message }}
+					  <button @click="reverseMessage">Reverse</button>
+					</div>
+
+					<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+					<script>
+					  new Vue({
+						el: '#app',
+						data: {
+						  message: 'Hello Vue 2'
+						},
+						methods: {
+						  reverseMessage() {
+							this.message = this.message.split('').reverse().join('')
+						  }
+						}
+					  })
+                   </script>
+
+
+
+Vue 3 (just display message)
+
+
+	           <div id="app">
+				  {{ message }}
+				  <button @click="reverseMessage">Reverse</button>
+				</div>
+
+				<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+				<script>
+				  const { createApp, ref } = Vue
+
+				  createApp({
+					setup() {
+					  const message = ref('Hello Vue 3')
+
+					  function reverseMessage() {
+						message.value = message.value.split('').reverse().join('')
+					  }
+
+					  return { message, reverseMessage }
+					}
+				  }).mount('#app')
+				</script>

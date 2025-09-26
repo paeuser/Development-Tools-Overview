@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Routing in .NET — Explained</title>
+  <style>
+    body { font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; margin: 0; padding: 32px; background: #f7fafc; color: #0f172a; }
+    header { margin-bottom: 20px; }
+    h1 { font-size: 28px; margin: 0 0 8px; }
+    p.lead { margin: 0 0 18px; color: #334155; }
+    .card { background: white; border-radius: 12px; box-shadow: 0 6px 18px rgba(15,23,42,0.06); padding: 22px; margin-bottom: 18px; }
+    pre { background: #0b1220; color: #e6eef6; padding: 14px; border-radius: 8px; overflow: auto; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace; }
+    ul { margin: 8px 0 16px 20px; }
+    .small { font-size: 13px; color: #475569; }
+    .example { border-left: 3px solid #60a5fa; padding-left: 12px; background: #f0f9ff; border-radius: 6px; margin: 12px 0; }
+    footer { margin-top: 18px; font-size: 13px; color: #64748b; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Routing in .NET — Explained</h1>
+    <p class="lead">A concise guide with examples for ASP.NET Core (conventional, attribute, and Minimal API routing). Works with .NET 6, 7, 8 and later.</p>
+  </header>
+
+  <section class="card">
+    <h2>What is routing?</h2>
+    <p class="small">Routing maps incoming HTTP requests (URL + verb) to code that handles them (controllers, actions, or minimal API delegates).</p>
+    <ul>
+      <li><strong>Path matching:</strong> which URL pattern should trigger which handler.</li>
+      <li><strong>Verb matching:</strong> GET, POST, PUT, DELETE, etc.</li>
+      <li><strong>Parameter binding:</strong> extract values from the path, query string, headers, or body.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Classic pipeline (Startup/Program)</h2>
+    <p class="small">In modern ASP.NET Core the order is important. Typical setup (Program.cs):</p>
+    <pre><code>// Program.cs (minimal template)
+var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+
+var app = builder.Build();
+
+app.UseRouting();              // sets up routing middleware
+app.UseAuthorization();       // optional
+
+app.MapControllers();         // map controller endpoints
+app.Run();
+</code></pre>
+    <p class="small">In older templates you might see <code>UseEndpoints(endpoints =&gt; { endpoints.MapControllers(); })</code>. Under the hood that's endpoint routing.</p>
+  </section>
+
+  <section class="card">
+    <h2>Conventional routing (MVC-style)</h2>
+    <p class="small">Define patterns that controllers follow. Typical default route:</p>
+    <pre><code>// inside Program.cs or UseEndpoints
+app.MapControllerRoute(
+  name: "default",
+  pattern: "{controller=Home}/{action=Index}/{id?}");
+</code></pre>
+    <p class="small">Examples:</p>
+    <div class="example small">
+      <strong>/Products/Details/5</strong> &rarr; <code>ProductsController.Details(int id)</code>
+      <br>
+      <strong>/</strong> &rarr; <code>HomeController.Index()</code> (because of defaults)
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Attribute routing</h2>
+    <p class="small">Decorate controllers and actions with routes — gives fine-grained control and is common in APIs.</p>
+    <pre><code>[ApiController]
+[Route("api/[controller]")]
+public class ProductsController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult GetAll() => Ok(...);
+
+    [HttpGet("{id:int}")]
+    public IActionResult GetById(int id) => Ok(...);
+
+    [HttpPost]
+    public IActionResult Create(Product p) => CreatedAtAction(nameof(GetById), new { id = p.Id }, p);
+}
+</code></pre>
+    <p class="small">Route tokens: <code>[controller]</code>, <code>[action]</code>. Constraints like <code>:int</code>, <code>:guid</code>, <code>:alpha</code> help ensure proper matching.</p>
+  </section>
+
+  <section class="card">
+    <h2>Minimal APIs (MapGet / MapPost)</h2>
+    <p class="small">Introduced in .NET 6 — create lightweight endpoints without controllers.</p>
+    <pre><code>// Program.cs
+var app = WebApplication.CreateBuilder(args).Build();
+
+app.MapGet("/hello", () =&gt; "Hello world!");
+app.MapGet("/orders/{id:int}", (int id) =&gt; $"Order {id}");
+
+app.Run();
+</code></pre>
+    <p class="small">You can also add filters, minimal DI, and produce OpenAPI docs with <code>builder.Services.AddEndpointsApiExplorer()</code>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Route parameters &amp; special patterns</h2>
+    <ul class="small">
+      <li><strong>Optional parameter:</strong> <code>{id?}</code></li>
+      <li><strong>Default value:</strong> <code>{page=1}</code></li>
+      <li><strong>Catch-all:</strong> <code>{*slug}</code> captures the rest of the path (including slashes)</li>
+      <li><strong>Constraints:</strong> <code>{id:int}</code>, <code>{guid:guid}</code>, <code>{name:alpha}</code></li>
+    </ul>
+
+    <pre><code>// examples
+app.MapControllerRoute("blog",
+  "blog/{year:int}/{month:int}/{slug}",
+  new { controller = "Blog", action = "Post" });
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Route precedence &amp; matching</h2>
+    <p class="small">Routing chooses the first endpoint that matches. Be careful with broad catch-all routes; register more-specific routes before broader ones.</p>
+    <ul class="small">
+      <li>Attribute routes are considered before convention routes when mapping controllers.</li>
+      <li>When using <code>MapGet/MapPost</code>, the order you call them in Program.cs matters for ambiguous paths.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Link generation</h2>
+    <p class="small">Routing is reversible — you can generate URLs from route names or action/controller names:</p>
+    <pre><code>// inside a controller
+var url = Url.Action("Details", "Products", new { id = 5 });
+
+// with endpoints & minimal APIs you can name routes:
+app.MapGet("/users/{id}", GetUser).WithName("GetUserById");
+// later
+var urlHelper = app.Services.GetRequiredService<LinkGenerator>();
+var link = urlHelper.GetPathByName("GetUserById", new { id = 42 });
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Common pitfalls &amp; tips</h2>
+    <ul class="small">
+      <li>Missing <code>app.UseRouting()</code> or calling <code>UseEndpoints</code> before authentication/authorization can break route-based policies.</li>
+      <li>Route constraints are matched after splitting — if you expect a GUID, use <code>:guid</code> to avoid model-binding errors.</li>
+      <li>Be careful with overlapping routes — prefer specific patterns first.</li>
+      <li>Use <code>app.MapFallback</code> for SPA fallback (serve index.html for unknown routes).</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Quick reference: Examples in one place</h2>
+    <pre><code>// Attribute routing (Controller)
+[Route("api/[controller]")]
+public class PeopleController : ControllerBase
+{
+    [HttpGet]
+    public IActionResult List() => Ok();
+
+    [HttpGet("{id:int}")]
+    public IActionResult Get(int id) => Ok();
+}
+
+// Conventional route
+app.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+// Minimal API
+app.MapGet("/products/{id:int}", (int id) => Results.Ok(new { id }));
+</code></pre>
+  </section>
+
+  <footer>
+    <div class="small">Want this as a downloadable file or want me to add more examples (OpenAPI, route transformers, versioning)? Tell me which format you prefer.</div>
+  </footer>
+</body>
+</html>

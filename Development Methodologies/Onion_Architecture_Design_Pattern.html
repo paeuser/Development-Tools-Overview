@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onion Architecture - A Beginner's Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .onion-diagram {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            position: relative;
+            height: 400px;
+        }
+
+        .layer {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .layer:hover {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .core {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+            z-index: 4;
+            font-size: 14px;
+        }
+
+        .services {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #4ECDC4, #44A08D);
+            z-index: 3;
+            font-size: 16px;
+        }
+
+        .repository {
+            width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #45B7D1, #96C93D);
+            z-index: 2;
+            font-size: 18px;
+        }
+
+        .presentation {
+            width: 360px;
+            height: 360px;
+            background: linear-gradient(135deg, #9B59B6, #8E44AD);
+            z-index: 1;
+            font-size: 20px;
+        }
+
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        pre {
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            overflow-x: auto;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        code {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            color: #2d3748;
+        }
+
+        .comment {
+            color: #718096;
+            font-style: italic;
+        }
+
+        .keyword {
+            color: #805ad5;
+            font-weight: bold;
+        }
+
+        .string {
+            color: #38a169;
+        }
+
+        .function {
+            color: #3182ce;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .comparison-card {
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .traditional {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #333;
+        }
+
+        .onion {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+        }
+
+        .layer-info {
+            position: absolute;
+            top: 450px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            width: 300px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .layer-info.active {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+            
+            .onion-diagram {
+                height: 300px;
+            }
+            
+            .layer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧅 Onion Architecture</h1>
+            <p>A Clean, Maintainable Software Design Pattern</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2>What is Onion Architecture?</h2>
+                <p>Onion Architecture is a software design pattern that organizes your code into concentric layers, just like an onion! Each layer has a specific responsibility and can only depend on layers closer to the center. This creates a clean, maintainable, and testable codebase.</p>
+            </div>
+
+            <div class="section">
+                <h2>Interactive Onion Diagram</h2>
+                <p>Hover over each layer to learn more about its role:</p>
+                
+                <div class="onion-diagram">
+                    <div class="layer core" data-info="core">
+                        Domain<br>Core
+                    </div>
+                    <div class="layer services" data-info="services">
+                        Application<br>Services
+                    </div>
+                    <div class="layer repository" data-info="repository">
+                        Infrastructure<br>Layer
+                    </div>
+                    <div class="layer presentation" data-info="presentation">
+                        Presentation<br>Layer
+                    </div>
+                    
+                    <div class="layer-info" id="layer-info">
+                        <h3 id="info-title">Select a layer</h3>
+                        <p id="info-description">Hover over any layer to learn about its responsibilities</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="section"></div>
+                <h2>Onion Architecture Layers Explained</h2>
+                <ol style="margin-left: 30px;">
+                    <li>
+                        <strong>Domain Layer (Core / Center of the Onion)</strong>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>What it contains:</strong> Entities (business models), domain services, business rules.</li>
+                            <li><strong>Purpose:</strong> Represents the pure business logic without dependencies on other layers.</li>
+                            <li><strong>Key point:</strong> This layer should not depend on any external frameworks or libraries.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 20px;">
+                        <strong>Application Layer (Use Cases)</strong>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>What it contains:</strong> Application services, use case logic, DTOs (data transfer objects), interfaces for persistence or external services.</li>
+                            <li><strong>Purpose:</strong> Defines how the business logic is used (use cases), orchestrates workflow.</li>
+                            <li><strong>Key point:</strong> Depends only on the Domain Layer. No infrastructure details here — only contracts/interfaces.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 20px;">
+                        <strong>Infrastructure Layer</strong>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>What it contains:</strong> Implementation details (repositories, data access, EF Core, logging, email providers, external APIs).</li>
+                            <li><strong>Purpose:</strong> Provides concrete implementations for the interfaces defined in the Application Layer.</li>
+                            <li><strong>Key point:</strong> This depends on the Application Layer, not the other way around.</li>
+                        </ul>
+                    </li>
+                    <li style="margin-top: 20px;">
+                        <strong>Presentation Layer (UI / API / Outer Layer)</strong>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>What it contains:</strong> Web API controllers, UI (MVC, Angular, React, etc.), CLI, REST endpoints, GraphQL, etc.</li>
+                            <li><strong>Purpose:</strong> Handles user interaction or external input/output.</li>
+                            <li><strong>Key point:</strong> Calls into the Application Layer to perform operations. It should not contain business rules.</li>
+                        </ul>
+                    </li>
+                </ol>
+                <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px; border-left: 5px solid #667eea;"></div>
+                    <h3 style="color: #667eea; margin-bottom: 10px;">📌 The Dependency Rule</h3>
+                    <p><strong>Code dependencies always point inward.</strong></p>
+                    <p>Outer layers know about inner layers, but inner layers don’t know about outer ones.</p>
+                    <p><strong>Example:</strong> UI → Application → Domain.</p>
+                    <p>Infrastructure is plugged in at runtime (e.g., repository implementations injected via dependency injection).</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Key Benefits</h2>
+                <div class="benefits">
+                    <div class="benefit-card">
+                        <h3>🔧 Easy to Test</h3>
+                        <p>Each layer can be tested independently. Mock external dependencies easily and focus on testing business logic.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🔄 Flexible & Adaptable</h3>
+                        <p>Change databases, UI frameworks, or external services without affecting your core business logic.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>📚 Clear Separation</h3>
+                        <p>Each layer has a single responsibility, making code easier to understand and maintain.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <h3>🎯 Focus on Business Logic</h3>
+                        <p>Your core domain logic stays pure and independent of external concerns.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>Simple Code Example</h2>
+                <p>Here's how you might structure a simple e-commerce application:</p>
+                
+                <pre><code><span class="comment">// Domain Core (Center of the onion)</span>
+<span class="keyword">class</span> <span class="function">Product</span> {
+    <span class="function">constructor</span>(name, price) {
+        <span class="keyword">this</span>.name = name;
+        <span class="keyword">this</span>.price = price;
+    }
+    
+    <span class="function">calculateDiscount</span>(percentage) {
+        <span class="keyword">return</span> <span class="keyword">this</span>.price * (percentage / 100);
+    }
+}
+
+<span class="comment">// Application Services Layer</span>
+<span class="keyword">class</span> <span class="function">ProductService</span> {
+    <span class="function">constructor</span>(productRepository) {
+        <span class="keyword">this</span>.productRepository = productRepository;
+    }
+    
+    <span class="keyword">async</span> <span class="function">createProduct</span>(name, price) {
+        <span class="keyword">const</span> product = <span class="keyword">new</span> <span class="function">Product</span>(name, price);
+        <span class="keyword">return await</span> <span class="keyword">this</span>.productRepository.<span class="function">save</span>(product);
+    }
+}
+
+<span class="comment">// Infrastructure Layer</span>
+<span class="keyword">class</span> <span class="function">DatabaseProductRepository</span> {
+    <span class="keyword">async</span> <span class="function">save</span>(product) {
+        <span class="comment">// Save to database</span>
+        <span class="keyword">return</span> product;
+    }
+}
+
+<span class="comment">// Presentation Layer</span>
+<span class="keyword">class</span> <span class="function">ProductController</span> {
+    <span class="function">constructor</span>(productService) {
+        <span class="keyword">this</span>.productService = productService;
+    }
+    
+    <span class="keyword">async</span> <span class="function">createProduct</span>(req, res) {
+        <span class="keyword">const</span> product = <span class="keyword">await</span> <span class="keyword">this</span>.productService.<span class="function">createProduct</span>(
+            req.body.name, 
+            req.body.price
+        );
+        res.<span class="function">json</span>(product);
+    }
+}</code></pre>
+            </div>
+
+            <div class="section">
+                <h2>Traditional vs Onion Architecture</h2>
+                <div class="comparison">
+                    <div class="comparison-card traditional">
+                        <h3>❌ Traditional Layered</h3>
+                        <p><strong>Problems:</strong></p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>Tight coupling to databases</li>
+                            <li>Hard to test business logic</li>
+                            <li>Changes ripple through layers</li>
+                            <li>Business logic mixed with infrastructure</li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card onion">
+                        <h3>✅ Onion Architecture</h3>
+                        <p><strong>Solutions:</strong></p>
+                        <ul style="text-align: left; margin-top: 15px;">
+                            <li>Business logic is independent</li>
+                            <li>Easy to swap implementations</li>
+                            <li>Highly testable</li>
+                            <li>Clear dependency direction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>The Golden Rule</h2>
+                <p style="font-size: 1.3rem; text-align: center; color: #667eea; font-weight: bold;">
+                    "Dependencies always point INWARD"
+                </p>
+                <p style="text-align: center; margin-top: 15px;">
+                    Outer layers can depend on inner layers, but inner layers should never depend on outer layers. This keeps your core business logic pure and independent.
+                </p>
+            </div>
+
+            <div class="section">
+                <h2>When to Use Onion Architecture</h2>
+                <p><strong>Great for:</strong></p>
+                <ul style="margin: 15px 0 15px 30px;">
+                    <li>Complex business applications</li>
+                    <li>Long-term projects that need maintenance</li>
+                    <li>Applications with changing requirements</li>
+                    <li>Projects that need extensive testing</li>
+                </ul>
+                
+                <p><strong>Maybe overkill for:</strong></p>
+                <ul style="margin: 15px 0 15px 30px;">
+                    <li>Simple CRUD applications</li>
+                    <li>Prototypes or proof-of-concepts</li>
+                    <li>Very small projects with simple logic</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const layerInfos = {
+            core: {
+                title: "Domain Core",
+                description: "Contains your business entities, value objects, and core business rules. This is the heart of your application - pure business logic with no external dependencies."
+            },
+            services: {
+                title: "Application Services",
+                description: "Contains application-specific business rules, use cases, and orchestrates the flow between the domain and infrastructure. Defines interfaces that outer layers implement."
+            },
+            repository: {
+                title: "Infrastructure Layer",
+                description: "Implements interfaces defined by inner layers. Contains database access, external API calls, file systems, and other external concerns."
+            },
+            presentation: {
+                title: "Presentation Layer",
+                description: "The outermost layer containing controllers, views, APIs, and user interfaces. Handles user input and presents data to users."
+            }
+        };
+
+        const layers = document.querySelectorAll('.layer');
+        const layerInfo = document.getElementById('layer-info');
+        const infoTitle = document.getElementById('info-title');
+        const infoDescription = document.getElementById('info-description');
+
+        layers.forEach(layer => {
+            layer.addEventListener('mouseenter', (e) => {
+                const infoKey = e.target.dataset.info;
+                const info = layerInfos[infoKey];
+                
+                infoTitle.textContent = info.title;
+                infoDescription.textContent = info.description;
+                layerInfo.classList.add('active');
+            });
+
+            layer.addEventListener('mouseleave', () => {
+                layerInfo.classList.remove('active');
+            });
+        });
+
+        // Add some simple hover effects without animations
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simple static interactions only
+            console.log('Onion Architecture guide loaded');
+        });
+    </script>
+</body>
+</html>

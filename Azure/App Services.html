@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Azure App Services - FAQ</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  details {
+    margin-bottom: 1rem;
+    background: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  }
+  summary {
+    font-weight: bold;
+    cursor: pointer;
+  }
+  summary:hover {
+    color: #0078d7;
+  }
+</style>
+</head>
+<body>
+
+<h1>Azure App Services - Frequently Asked Questions</h1>
+
+<details>
+  <summary>1. What is Azure App Service?</summary>
+  <p>Azure App Service is a fully managed platform for building, deploying, and scaling web apps, APIs, and mobile backends.</p>
+</details>
+
+<details>
+  <summary>2. Which programming languages are supported by Azure App Service?</summary>
+  <p>It supports .NET, .NET Core, Java, Ruby, Node.js, PHP, Python, and more.</p>
+</details>
+
+<details>
+  <summary>3. What deployment options does Azure App Service provide?</summary>
+  <p>You can deploy using FTP, Git, GitHub, Azure DevOps, Visual Studio, or ZIP file deployments.</p>
+</details>
+
+<details>
+  <summary>4. Can Azure App Service scale automatically?</summary>
+  <p>Yes, it supports automatic scaling based on demand, including scaling out (adding instances) and scaling up (increasing instance size).</p>
+</details>
+
+<details>
+  <summary>5. What is the difference between scaling up and scaling out?</summary>
+  <p>Scaling up increases the resources (CPU, RAM) of a single instance, while scaling out increases the number of instances.</p>
+</details>
+
+<details>
+  <summary>6. What types of apps can I host on Azure App Service?</summary>
+  <p>Web apps, RESTful APIs, mobile backends, and even containerized apps using Linux or Windows containers.</p>
+</details>
+
+<details>
+  <summary>7. Does Azure App Service support custom domains?</summary>
+  <p>Yes, you can configure custom domains and SSL certificates for secure connections.</p>
+</details>
+
+<details>
+  <summary>8. How does Azure App Service handle security?</summary>
+  <p>It offers built-in authentication and authorization with providers like Azure AD, Google, Facebook, and more, plus SSL/TLS encryption and network isolation options.</p>
+</details>
+
+<details>
+  <summary>9. What is the difference between App Service Plans?</summary>
+  <p>App Service Plans define the compute resources your app runs on, including pricing tiers like Free, Shared, Basic, Standard, Premium, and Isolated.</p>
+</details>
+
+<details>
+  <summary>10. Can I run Linux-based apps on Azure App Service?</summary>
+  <p>Yes, Azure App Service supports both Windows and Linux environments for hosting apps.</p>
+</details>
+
+<details>
+  <summary>11. What is deployment slot in Azure App Service?</summary>
+  <p>Deployment slots let you deploy different versions of your app (e.g., staging, testing) and swap them without downtime.</p>
+</details>
+
+<details>
+  <summary>12. How do deployment slots help in continuous deployment?</summary>
+  <p>They enable you to validate changes in a staging slot before swapping to production, minimizing downtime and risk.</p>
+</details>
+
+<details>
+  <summary>13. What is Azure App Service Environment (ASE)?</summary>
+  <p>ASE is a fully isolated and dedicated environment for securely running App Service apps at high scale.</p>
+</details>
+
+<details>
+  <summary>14. How do I monitor the health of my App Service?</summary>
+  <p>You can use Azure Monitor, Application Insights, and logs for performance and diagnostic data.</p>
+</details>
+
+<details>
+  <summary>15. Can Azure App Service integrate with databases?</summary>
+  <p>Yes, it easily integrates with Azure SQL Database, Cosmos DB, MySQL, and other database services.</p>
+</details>
+
+<details>
+  <summary>16. Does Azure App Service support containers?</summary>
+  <p>Yes, you can deploy Docker containers or use Azure Container Registry with App Service.</p>
+</details>
+
+<details>
+  <summary>17. What is the maximum size for an Azure App Service app?</summary>
+  <p>Limits vary by plan, but typically up to 250GB of disk storage per app.</p>
+</details>
+
+<details>
+  <summary>18. Can I use Azure DevOps with Azure App Service?</summary>
+  <p>Yes, Azure DevOps integrates seamlessly for CI/CD pipelines deploying to App Service.</p>
+</details>
+
+<details>
+  <summary>19. How is App Service billed?</summary>
+  <p>Billing depends on the App Service Plan tier and the number of instances running, not on the number of apps hosted.</p>
+</details>
+
+<details>
+  <summary>20. Can I configure auto-scaling rules in Azure App Service?</summary>
+  <p>Yes, you can configure auto-scale based on CPU usage, memory, HTTP queue length, and custom metrics.</p>
+</details>
+
+<details>
+  <summary>21. What are WebJobs in Azure App Service?</summary>
+  <p>WebJobs allow you to run background tasks or scripts in the same App Service environment as your web app.</p>
+</details>
+
+<details>
+  <summary>22. How does Azure App Service handle backups?</summary>
+  <p>You can schedule automated backups for your app and its associated databases.</p>
+</details>
+
+<details>
+  <summary>23. Can I secure my Azure App Service with Virtual Network integration?</summary>
+  <p>Yes, App Service supports Virtual Network integration and private endpoints for enhanced security.</p>
+</details>
+
+<details>
+  <summary>24. What is the difference between Azure Functions and Azure App Service?</summary>
+  <p>Azure Functions is a serverless compute service for event-driven code, while App Service hosts full web apps and APIs.</p>
+</details>
+
+<details>
+  <summary>25. Does Azure App Service support HTTP/2?</summary>
+  <p>Yes, Azure App Service supports HTTP/2 for faster web performance.</p>
+</details>
+
+<details>
+  <summary>26. Can I customize the runtime environment in Azure App Service?</summary>
+  <p>Yes, especially when using Linux or containers, you can customize runtimes and dependencies.</p>
+</details>
+
+<details>
+  <summary>27. What is Always On in Azure App Service?</summary>
+  <p>Always On keeps your app running continuously, preventing cold starts for faster response times.</p>
+</details>
+
+<details>
+  <summary>28. Can Azure App Service host multiple apps on a single plan?</summary>
+  <p>Yes, you can host multiple apps under one App Service Plan, sharing the same resources.</p>
+</details>
+
+<details>
+  <summary>29. How can I troubleshoot my Azure App Service app?</summary>
+  <p>Use Application Insights, diagnostic logs, and Kudu console to debug and troubleshoot issues.</p>
+</details>
+
+<details>
+  <summary>30. What compliance certifications does Azure App Service have?</summary>
+  <p>Azure App Service complies with many standards including HIPAA, ISO, SOC, GDPR, and more.</p>
+</details>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tricky T-SQL Questions with Samples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        .question {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-left: 5px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .answer {
+            margin-top: 10px;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-left: 5px solid #2ecc71;
+        }
+        code {
+            display: block;
+            background-color: #dcdde1;
+            padding: 5px;
+            margin-top: 5px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tricky T-SQL Questions with Sample Queries</h1>
+
+    <div class="question">
+        <strong>Q1: What is the difference between INNER JOIN and OUTER JOIN?</strong>
+        <div class="answer">
+            INNER JOIN returns only matching rows. OUTER JOIN returns all rows from one table plus matching rows from another.<br>
+            <code>
+-- INNER JOIN
+SELECT e.Name, d.Name AS Dept
+FROM Employees e
+INNER JOIN Departments d ON e.DeptID = d.DeptID;
+
+-- LEFT OUTER JOIN
+SELECT e.Name, d.Name AS Dept
+FROM Employees e
+LEFT JOIN Departments d ON e.DeptID = d.DeptID;
+            </code>
+        </div>
+    </div>
+
+   <div class="question">
+    <strong>Q2: What is a CTE and how is it different from a temp table?</strong>
+    <div class="answer">
+        CTE stands for <strong>Common Table Expression</strong>. It is a temporary named result set that exists only during the execution of a single query. CTEs make complex queries easier to read and maintain, especially for recursive queries or breaking queries into logical steps. Unlike temp tables, CTEs are not stored physically in the database.<br><br>
+        <strong>Key Points:</strong>
+        <ul>
+            <li>CTE is temporary and disappears after the query finishes.</li>
+            <li>CTE can be recursive, allowing self-referencing queries.</li>
+            <li>Temp tables exist physically in the tempdb database and persist for the session or until explicitly dropped.</li>
+        </ul>
+        <strong>CTE Example:</strong>
+        <code>
+WITH SalesCTE AS (
+    SELECT SalesPerson, SUM(SalesAmount) AS TotalSales
+    FROM Sales
+    GROUP BY SalesPerson
+)
+SELECT *
+FROM SalesCTE
+WHERE TotalSales > 1000;
+        </code>
+    </div>
+</div>
+
+
+    <div class="question">
+        <strong>Q3: How does the ROW_NUMBER() function work?</strong>
+        <div class="answer">
+            Assigns sequential numbers to rows within a partition.<br>
+            <code>
+SELECT Name, DeptID,
+       ROW_NUMBER() OVER(PARTITION BY DeptID ORDER BY Salary DESC) AS RowNum
+FROM Employees;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q4: Difference between a stored procedure and a function?</strong>
+        <div class="answer">
+            Stored procedures can perform actions like INSERT/UPDATE. Functions return values and cannot modify database state.<br>
+            <code>
+-- Stored Procedure
+CREATE PROCEDURE UpdateSalary @EmpID INT, @Amount DECIMAL
+AS
+UPDATE Employees SET Salary = Salary + @Amount WHERE EmployeeID = @EmpID;
+GO
+
+-- Scalar Function
+CREATE FUNCTION GetSalary(@EmpID INT)
+RETURNS DECIMAL
+AS
+BEGIN
+    RETURN (SELECT Salary FROM Employees WHERE EmployeeID = @EmpID)
+END;
+GO
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q5: What happens if you use SELECT * in a JOIN on large tables?</strong>
+        <div class="answer">
+            SELECT * retrieves all columns, causing more I/O and memory usage. It's better to select only needed columns.<br>
+            <code>
+SELECT e.Name, d.Name AS Dept
+FROM Employees e
+JOIN Departments d ON e.DeptID = d.DeptID;
+-- Avoid: SELECT * FROM Employees e JOIN Departments d ...
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q6: What is a NULL in SQL and how does it behave in comparisons?</strong>
+        <div class="answer">
+            NULL represents unknown/missing value. Use IS NULL to check.<br>
+            <code>
+SELECT Name FROM Employees WHERE ManagerID IS NULL;
+SELECT Name FROM Employees WHERE ManagerID = NULL; -- wrong!
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q7: Difference between DELETE and TRUNCATE?</strong>
+        <div class="answer">
+            DELETE removes rows and fires triggers. TRUNCATE is faster, resets identity, and cannot be rolled back in some cases.<br>
+            <code>
+DELETE FROM Employees WHERE DeptID = 5;
+TRUNCATE TABLE Employees;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q8: What is the effect of using NOLOCK in a SELECT query?</strong>
+        <div class="answer">
+            Reads data without locks; may return dirty data.<br>
+            <code>
+SELECT * FROM Employees WITH (NOLOCK);
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q9: How does SQL Server handle implicit vs explicit conversions?</strong>
+        <div class="answer">
+            Implicit conversions happen automatically. Explicit conversions use CAST or CONVERT.<br>
+            <code>
+-- Implicit
+SELECT 'EmployeeID: ' + EmployeeID FROM Employees;
+
+-- Explicit
+SELECT 'EmployeeID: ' + CAST(EmployeeID AS VARCHAR(10)) FROM Employees;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q10: Difference between clustered and non-clustered indexes?</strong>
+        <div class="answer">
+            Clustered determines physical order. Non-clustered is separate and points to data rows.<br>
+            <code>
+-- Clustered index
+CREATE CLUSTERED INDEX IX_Employees_DeptID ON Employees(DeptID);
+
+-- Non-clustered index
+CREATE NONCLUSTERED INDEX IX_Employees_Name ON Employees(Name);
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q11: Difference between UNION and UNION ALL?</strong>
+        <div class="answer">
+            UNION removes duplicates. UNION ALL keeps all rows.<br>
+            <code>
+SELECT Name FROM Employees
+UNION
+SELECT Name FROM Contractors;
+
+SELECT Name FROM Employees
+UNION ALL
+SELECT Name FROM Contractors;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q12: How do you prevent deadlocks in SQL Server?</strong>
+        <div class="answer">
+            Keep transactions short, use proper indexing, and access tables in same order.<br>
+            <code>
+BEGIN TRAN
+UPDATE Accounts SET Balance = Balance - 100 WHERE ID = 1;
+UPDATE Accounts SET Balance = Balance + 100 WHERE ID = 2;
+COMMIT TRAN;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q13: Difference between CROSS APPLY and OUTER APPLY?</strong>
+        <div class="answer">
+            CROSS APPLY returns only matching rows; OUTER APPLY returns all rows from left table.<br>
+            <code>
+-- CROSS APPLY
+SELECT e.Name, s.Sales
+FROM Employees e
+CROSS APPLY (
+    SELECT TOP 1 SalesAmount AS Sales
+    FROM Sales
+    WHERE Sales.SalesPersonID = e.EmployeeID
+    ORDER BY SaleDate DESC
+) s;
+
+-- OUTER APPLY
+SELECT e.Name, s.Sales
+FROM Employees e
+OUTER APPLY (
+    SELECT TOP 1 SalesAmount AS Sales
+    FROM Sales
+    WHERE Sales.SalesPersonID = e.EmployeeID
+    ORDER BY SaleDate DESC
+) s;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q14: Scalar vs Table-Valued Function?</strong>
+        <div class="answer">
+            Scalar returns single value; table-valued returns table.<br>
+            <code>
+-- Scalar function
+SELECT dbo.GetSalary(101);
+
+-- Table-valued function
+SELECT * FROM dbo.GetEmployeeSales(101);
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q15: How does SQL Server handle transactions with isolation levels?</strong>
+        <div class="answer">
+            Controls locking and consistency.<br>
+            <code>
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+BEGIN TRAN
+SELECT * FROM Accounts WHERE ID = 1;
+COMMIT TRAN;
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q16: What is a deadlock and how can you detect it?</strong>
+        <div class="answer">
+            Two transactions block each other. Detect with system_health session or Profiler.<br>
+            <code>
+-- Example deadlock scenario
+-- Transaction 1 locks Row A then Row B
+-- Transaction 2 locks Row B then Row A
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q17: How does SQL Server optimize queries with indexes?</strong>
+        <div class="answer">
+            Query optimizer chooses the most efficient path using indexes.<br>
+            <code>
+SELECT Name FROM Employees WHERE DeptID = 5; -- uses IX_Employees_DeptID
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q18: Difference between EXISTS and IN?</strong>
+        <div class="answer">
+            EXISTS returns TRUE if subquery has rows; IN checks values.<br>
+            <code>
+-- EXISTS
+SELECT Name FROM Employees e
+WHERE EXISTS (
+    SELECT 1 FROM Sales s WHERE s.SalesPersonID = e.EmployeeID
+);
+
+-- IN
+SELECT Name FROM Employees
+WHERE EmployeeID IN (SELECT SalesPersonID FROM Sales);
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q19: What is a transaction log?</strong>
+        <div class="answer">
+            Records all database changes; used for rollback and recovery.<br>
+            <code>
+-- Cannot query directly, but view log backup
+BACKUP LOG MyDB TO DISK = 'C:\Logs\MyDB_Log.bak';
+            </code>
+        </div>
+    </div>
+
+    <div class="question">
+        <strong>Q20: Difference between CHAR and VARCHAR?</strong>
+        <div class="answer">
+            CHAR = fixed length, VARCHAR = variable length.<br>
+            <code>
+DECLARE @c CHAR(10) = 'Test'; -- stores 'Test      '
+DECLARE @v VARCHAR(10) = 'Test'; -- stores 'Test'
+            </code>
+        </div>
+    </div>
+
+</body>
+</html>

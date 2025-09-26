@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terraform + Azure DevOps Pipeline — Beginner Walkthrough</title>
+  <style>
+    body{font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;line-height:1.5;color:#0f172a;padding:28px;max-width:980px;margin:auto}
+    header h1{margin:0 0 6px}
+    header p{margin:0 0 18px;color:#475569}
+    pre{background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto}
+    code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace}
+    section{margin:18px 0;padding:18px;border-radius:10px;background:#f8fafc;border:1px solid #e6eef8}
+    h2{margin-top:0}
+    ol li{margin:8px 0}
+    .note{background:#fff4e6;border-left:4px solid #f59e0b;padding:10px;border-radius:6px}
+    .tip{background:#ecfeff;border-left:4px solid #06b6d4;padding:10px;border-radius:6px}
+    .kbd{background:#111827;color:#fff;padding:2px 6px;border-radius:4px;font-size:0.9em}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Terraform + Azure DevOps Pipeline — Beginner Walkthrough</h1>
+    <p>A friendly, step-by-step HTML guide that states the plan first and then shows each step so a beginner can reproduce the demo: use Terraform to create Azure DevOps project resources, then use an Azure DevOps YAML pipeline to run Terraform that provisions an Azure virtual network.</p>
+  </header>
+
+  <section id="plan">
+    <h2>Plan (What we'll accomplish)</h2>
+    <ol>
+      <li>Create an Azure DevOps project and supporting resources (service connection to GitHub, variable group).</li>
+      <li>Provision an Azure Storage Account and container to use as a remote state backend (SAS or account key).</li>
+      <li>Store pipeline variables (including secrets) in an Azure DevOps variable group.</li>
+      <li>Create an Azure DevOps YAML pipeline in the repository (validate &gt; plan &gt; manual approve &gt; apply).</li>
+      <li>Use Terraform Cloud (or another remote state) for the setup run that provisions the DevOps resources.</li>
+      <li>Run the pipeline to deploy a simple Azure VNet with two subnets (as a reproducible example).</li>
+    </ol>
+    <div class="tip">Tip: do this in a test subscription first. Keep production credentials separate and use Key Vault later.</div>
+  </section>
+
+  <section id="prereqs">
+    <h2>Prerequisites</h2>
+    <ul>
+      <li>An Azure subscription and an account with permission to create resources (storage, resource groups, service principals).</li>
+      <li>An Azure DevOps organization (https://dev.azure.com/yourorg) and a Personal Access Token (PAT) with appropriate scopes.</li>
+      <li>A GitHub repo (or Azure Repos) that will host the Terraform configuration and the <code>azure-pipelines.yml</code>.</li>
+      <li>Terraform installed locally for testing (optional) and a Terraform Cloud account if you want remote runs for the setup step.</li>
+    </ul>
+  </section>
+
+  <section id="file-structure">
+    <h2>Recommended repository structure</h2>
+    <pre><code>/ (repo root)
+  ├─ setup/                # Terraform code that creates the Azure DevOps project + storage account
+  │   ├─ main.tf
+  │   ├─ variables.tf
+  │   └─ outputs.tf
+  ├─ v-net/                # Terraform code deployed by the pipeline
+  │   ├─ main.tf
+  │   ├─ variables.tf
+  │   └─ outputs.tf
+  └─ azure-pipelines.yml   # Pipeline that runs terraform in v-net/
+</code></pre>
+  </section>
+
+  <section id="highlevel-steps">
+    <h2>High-level steps (summary)</h2>
+    <ol>
+      <li>Write Terraform in <code>setup/</code> to create Azure DevOps project, service connection (GitHub), variable group, storage account, container, and SAS token.</li>
+      <li>Run the <code>setup</code> Terraform (e.g., from Terraform Cloud workspace) — this creates the DevOps objects needed for the pipeline.
+      </li>
+      <li>Create a YAML pipeline file in the repo that uses the variable group and executes Terraform CLI commands (init/plan/apply) for <code>v-net/</code>.</li>
+      <li>Push a change to the <code>v-net</code> folder to trigger the pipeline or run it manually. Review the plan, approve, and apply.</li>
+    </ol>
+  </section>
+
+  <section id="setup-terraform-examples">
+    <h2>Key Terraform snippets (setup)</h2>
+    <p>Below are condensed examples — adapt names, locations and credentials to your environment.</p>
+
+    <h3>Providers (in <code>setup/terraform.tf</code>)</h3>
+    <pre><code>terraform {
+  required_providers {
+    azuredevops = { source = "microsoft/azuredevops" }
+    azurerm      = { source = "hashicorp/azurerm" }
+  }
+  backend "remote" { # terraform cloud or another remote
+    organization = "your-tf-cloud-org"
+    workspaces { name = "ado-setup-workspace" }
+  }
+}
+
+provider "azuredevops" { org_service_url = var.ado_org_url }
+provider "azurerm" { features = {} }
+</code></pre>
+
+    <h3>Create an Azure DevOps project + enable pipelines</h3>
+    <pre><code>resource "azuredevops_project" "project" {
+  name               = local.project_name
+  description        = "Project created by Terraform"
+  visibility         = "private"
+  version_control    = "Git"
+  work_item_template = "Agile"
+}
+</code></pre>
+
+    <h3>Create storage account + container (for backend)</h3>
+    <pre><code>resource "azurerm_resource_group" "rg" { name = "rg-terraform-setup" location = var.location }
+resource "azurerm_storage_account" "sa" { name = local.sa_name resource_group_name = azurerm_resource_group.rg.name location = var.location account_tier="Standard" account_replication_type="LRS" }
+resource "azurerm_storage_container" "container" { name = var.container_name storage_account_name = azurerm_storage_account.sa.name }
+
+# Optionally create a SAS token, then store it in azuredevops variable group
+</code></pre>
+  </section>
+
+  <section id="devops-variable-group">
+    <h2>Variable group &amp; secrets</h2>
+    <p>Create a variable group in Azure DevOps and add variables: storage account name, container, key, client_id, client_secret, subscription_id, tenant_id, and any other values your Terraform needs. Mark sensitive values as secret.</p>
+
+    <div class="note">Note: currently some providers require the GitHub PAT to be a non-environment variable — check provider docs. If needed, store PAT in a plain pipeline variable marked as secret inside the variable group.</div>
+  </section>
+
+  <section id="pipeline-yaml">
+    <h2>Sample Azure DevOps pipeline (<code>azure-pipelines.yml</code>)</h2>
+    <p>This pipeline uses stages: <strong>validate</strong>, <strong>plan</strong>, <strong>approval</strong>, <strong>apply</strong>. It reads variables from the variable group created by setup.</p>
+
+    <pre><code>trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - v-net/*
+
+variables:
+  - group: 'terraform-tuesday'   # name of your variable group
+
+stages:
+- stage: Validate
+  jobs:
+  - job: validate
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: UseTerraform@0
+      inputs:
+        command: init
+        workingDirectory: 'v-net'
+    - script: |
+        terraform -chdir=v-net validate
+      displayName: 'terraform validate'
+
+- stage: Plan
+  dependsOn: Validate
+  jobs:
+  - job: plan
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        terraform -chdir=v-net init -backend-config="storage_account_name=$(storageAccountName)" -backend-config="container_name=$(containerName)" -backend-config="key=$(stateKey)"
+        terraform -chdir=v-net plan -out=tfplan
+      displayName: 'terraform plan'
+    - publish: v-net/tfplan
+      artifact: tfplan
+
+- stage: Approval
+  dependsOn: Plan
+  jobs:
+  - deployment: ManualApproval
+    pool: server
+    environment: 'none'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - task: ManualValidation@0
+            inputs:
+              instructions: 'Review the plan artifact and approve to continue.'
+
+- stage: Apply
+  dependsOn: Approval
+  jobs:
+  - job: apply
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - download: current
+      artifact: tfplan
+    - script: |
+        terraform -chdir=v-net apply -auto-approve tfplan
+      displayName: 'terraform apply'
+</code></pre>
+
+    <div class="tip">Tip: prefer stashing the plan file and applying the same plan file to avoid drift between plan and apply.</div>
+  </section>
+
+  <section id="run-examples">
+    <h2>Run examples (local vs CI)</h2>
+    <ol>
+      <li>Locally (optional): <span class="kbd">terraform init</span> &amp; <span class="kbd">terraform plan -out=tfplan</span> &amp; <span class="kbd">terraform apply tfplan</span>.</li>
+      <li>From Azure Pipelines: push a change to <code>v-net/</code> and the YAML pipeline will trigger (if triggers are configured).</li>
+      <li>Review plan output in the pipeline UI and approve the manual stage to apply.</li>
+    </ol>
+  </section>
+
+  <section id="best-practices">
+    <h2>Best practices &amp; next improvements</h2>
+    <ul>
+      <li>Use Key Vault to store secrets and reference them in the pipeline.</li>
+      <li>Pin Terraform versions in pipelines to avoid surprises from new releases.</li>
+      <li>Create separate pipelines for PR validation and for main-to-production deployments.</li>
+      <li>Run security scans (eg. Checkov or tfsec) as part of validation stage.</li>
+      <li>Store and apply a binary plan file between plan &amp; apply to ensure consistency.</li>
+    </ul>
+  </section>
+
+  <section id="final">
+    <h2>Wrap-up</h2>
+    <p>This file gives you a compact, reproducible guide to follow the video workflow: use Terraform to create Azure DevOps resources, then use an Azure DevOps YAML pipeline to run Terraform to provision Azure resources. If you want, I can:</p>
+    <ul>
+      <li>Generate complete, copy/paste-ready <code>setup/main.tf</code> and <code>v-net/main.tf</code> files tailored to your subscription and names.</li>
+      <li>Convert the pipeline to use an Azure Key Vault task to fetch secrets instead of variable groups.
+      </li>
+      <li>Add Checkov and automatic plan artifact storage to the pipeline.</li>
+    </ul>
+  </section>
+
+  <footer style="font-size:0.9em;color:#475569;margin-top:18px">Made for beginners — edit the values and names to match your environment. If you want a zip or a copy of the files prepared for your subscription, tell me the resource name prefix and region and I will generate them.</footer>
+</body>
+</html>

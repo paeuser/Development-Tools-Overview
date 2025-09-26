@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure DevOps & GitHub CI/CD Pipelines - Interview Q&A</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #f9f9f9; color: #222; margin: 0; padding: 0 1em; }
+        .container { max-width: 900px; margin: 32px auto; background: #fff; border-radius: 10px; box-shadow: 0 2px 12px #e0e0e0; padding: 2em 1.5em; }
+        h1, h2 { color: #0078d4; }
+        ol { margin-bottom: 2em; }
+        li { margin-bottom: 1em; line-height: 1.7; }
+        b { color: #005a9e; }
+        i { color: #444; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <p style="margin-bottom:1.5em;"><a href="index.html" style="color:#0078d4;text-decoration:underline;font-weight:bold;">&larr; Back to DevOps Index</a></p>
+    <h1>Azure DevOps & GitHub CI/CD Pipelines - 50 Interview Questions & Answers</h1>
+    <ol>
+        <li><b>What is CI/CD?</b><br><i>CI/CD stands for Continuous Integration and Continuous Deployment/Delivery, a set of practices for automating the building, testing, and deployment of applications.</i></li>
+        <li><b>What is Azure DevOps?</b><br><i>Azure DevOps is a suite of development tools by Microsoft for source control, build/release pipelines, project management, and more.</i></li>
+        <li><b>What is a pipeline in Azure DevOps?</b><br><i>A pipeline automates the process of building, testing, and deploying code.</i></li>
+        <li><b>What is GitHub Actions?</b><br><i>GitHub Actions is a CI/CD and automation platform built into GitHub, allowing you to automate workflows directly from your repository.</i></li>
+        <li><b>What is a YAML pipeline?</b><br><i>A pipeline defined as code using YAML syntax, enabling versioning and easy reuse.</i></li>
+        <li><b>What is the difference between build and release pipelines?</b><br><i>Build pipelines compile and test code; release pipelines deploy built artifacts to environments.</i></li>
+        <li><b>What are pipeline agents?</b><br><i>Agents are machines that run pipeline jobs (hosted by Microsoft or self-hosted).</i></li>
+        <li><b>What is an artifact?</b><br><i>An artifact is a file or set of files produced by a build, used as input for deployments.</i></li>
+        <li><b>How do you trigger a pipeline automatically?</b><br><i>By configuring triggers such as push, pull request, or schedule in the pipeline definition.</i></li>
+        <li><b>What is a stage in a pipeline?</b><br><i>A logical boundary in a pipeline representing a phase (e.g., build, test, deploy).</i></li>
+        <li><b>What is a job in a pipeline?</b><br><i>A job is a collection of steps run sequentially on the same agent.</i></li>
+        <li><b>What is a step in a pipeline?</b><br><i>A step is a single task, script, or action within a job.</i></li>
+        <li><b>How do you secure secrets in pipelines?</b><br><i>By using secret variables, Azure Key Vault, or GitHub Secrets to store sensitive data.</i></li>
+        <li><b>What is environment in Azure DevOps?</b><br><i>An environment represents a target for deployment, such as dev, test, or production.</i></li>
+        <li><b>What is a service connection?</b><br><i>A secure connection to external services/resources (e.g., Azure, Docker Hub) used in pipelines.</i></li>
+        <li><b>How do you implement approvals in pipelines?</b><br><i>By configuring manual approval gates before or after stages/environments.</i></li>
+        <li><b>What is a self-hosted agent?</b><br><i>An agent you install and manage on your own infrastructure for custom builds or deployments.</i></li>
+        <li><b>What is a hosted agent?</b><br><i>An agent provided and managed by Microsoft or GitHub, running in the cloud.</i></li>
+        <li><b>How do you reuse pipeline code?</b><br><i>By using templates (YAML includes) or composite actions in GitHub Actions.</i></li>
+        <li><b>What is a pipeline variable?</b><br><i>A value used in pipelines for configuration, which can be set at queue time, in YAML, or in the UI.</i></li>
+        <li><b>How do you handle pipeline failures?</b><br><i>By reviewing logs, using retry strategies, and setting up notifications for failed runs.</i></li>
+        <li><b>What is a pull request validation pipeline?</b><br><i>A pipeline that runs automatically to validate code changes in a pull request before merging.</i></li>
+        <li><b>How do you deploy to Azure from a pipeline?</b><br><i>By using Azure CLI, ARM/Bicep templates, or built-in Azure deployment tasks/actions.</i></li>
+        <li><b>What is a matrix build?</b><br><i>Running the same job with different parameters (e.g., OS, language version) in parallel.</i></li>
+        <li><b>What is a pipeline artifact?</b><br><i>A file or set of files published by a pipeline for sharing between jobs or stages.</i></li>
+        <li><b>What is a GitHub workflow?</b><br><i>A YAML file in the .github/workflows directory that defines automation for your repository.</i></li>
+        <li><b>How do you cache dependencies in pipelines?</b><br><i>By using cache tasks/actions to speed up builds by reusing previously downloaded dependencies.</i></li>
+        <li><b>What is a deployment strategy?</b><br><i>A method for rolling out changes, such as blue-green, canary, or rolling deployments.</i></li>
+        <li><b>What is infrastructure as code (IaC)?</b><br><i>Managing infrastructure using code (e.g., ARM, Bicep, Terraform) for repeatable deployments.</i></li>
+        <li><b>How do you integrate tests in CI/CD?</b><br><i>By adding test steps/tasks in the pipeline to run unit, integration, or end-to-end tests.</i></li>
+        <li><b>What is a GitHub Action?</b><br><i>A reusable unit of automation in GitHub Actions, defined in a repository or published on the Marketplace.</i></li>
+        <li><b>How do you rollback a deployment?</b><br><i>By redeploying a previous artifact or using deployment slots/environments.</i></li>
+        <li><b>What is a pipeline template?</b><br><i>A reusable YAML file that defines common pipeline logic for inclusion in multiple pipelines.</i></li>
+        <li><b>What is a build trigger?</b><br><i>An event that starts a build, such as a code push, PR, or schedule.</i></li>
+        <li><b>How do you monitor pipeline runs?</b><br><i>By using dashboards, logs, and notifications in Azure DevOps or GitHub.</i></li>
+        <li><b>What is a deployment slot?</b><br><i>A live environment for staging deployments before swapping to production (e.g., in Azure App Service).</i></li>
+        <li><b>How do you use Key Vault in pipelines?</b><br><i>By linking Azure Key Vault to your pipeline and referencing secrets as variables.</i></li>
+        <li><b>What is a conditional step?</b><br><i>A step that runs only if certain conditions are met (e.g., based on variables or previous step results).</i></li>
+        <li><b>What is a GitHub runner?</b><br><i>A machine that executes GitHub Actions workflows (hosted or self-hosted).</i></li>
+        <li><b>How do you deploy to multiple environments?</b><br><i>By defining multiple stages/environments in your pipeline and using approvals or gates.</i></li>
+        <li><b>What is a pipeline badge?</b><br><i>A status indicator (image) showing the latest pipeline run result, embeddable in README files.</i></li>
+        <li><b>How do you handle secrets in GitHub Actions?</b><br><i>By storing them in GitHub Secrets and referencing them in workflow YAML.</i></li>
+        <li><b>What is a release gate?</b><br><i>A precondition (e.g., approval, query, or check) that must be met before a release proceeds.</i></li>
+        <li><b>How do you use environment variables in pipelines?</b><br><i>By defining them in YAML, pipeline settings, or as secrets, and referencing them in steps.</i></li>
+        <li><b>What is a build artifact?</b><br><i>The output of a build process, such as binaries, packages, or container images.</i></li>
+        <li><b>How do you integrate code quality checks?</b><br><i>By adding static analysis, linting, or security scanning tasks to your pipeline.</i></li>
+        <li><b>What is a pipeline schedule?</b><br><i>A configuration to run pipelines at specific times (e.g., nightly builds).</i></li>
+        <li><b>How do you use templates in GitHub Actions?</b><br><i>By creating composite actions or reusable workflows and referencing them in workflow YAML.</i></li>
+        <li><b>What is a deployment job?</b><br><i>A job that deploys artifacts to an environment, often with rollback and approval support.</i></li>
+        <li><b>How do you integrate notifications?</b><br><i>By configuring email, Teams, Slack, or other integrations for pipeline events.</i></li>
+        <li><b>What is a canary deployment?</b><br><i>A deployment strategy where changes are rolled out to a small subset of users before full rollout.</i></li>
+    </ol>
+</div>
+</body>
+</html>

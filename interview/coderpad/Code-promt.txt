@@ -1,0 +1,13 @@
+I will upload one or more images that contain a coding question.
+Your task is to:
+
+Scan and understand the code and question from the image(s).
+Extract the code and identify what the question is asking.
+Add the simplest correct solution to the code.
+Explain briefly why this solution works.
+Give step-by-step instructions on how I can update my code without copying everything.
+Example steps:
+
+Add this item here
+Call this method here
+Make sure the explanation is short and clear.

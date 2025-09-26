@@ -421,7 +421,7 @@ public class ProductsController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
     }
-}
+}459
 
 // Program.cs (Minimal hosting model)
 using Microsoft.EntityFrameworkCore;

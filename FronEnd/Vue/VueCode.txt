@@ -1,0 +1,31 @@
+1) Add a new <section> at the bottom
+
+
+<section id="lifecycle">
+  <h2>Lifecycle Hooks</h2>
+  <pre><code>&lt;script setup&gt;
+import { onMounted, onUnmounted } from 'vue'
+
+onMounted(() =&gt; {
+  console.log('Component mounted')
+})
+
+onUnmounted(() =&gt; {
+  console.log('Component unmounted')
+})
+&lt;/script&gt;
+</code></pre>
+</section>
+
+
+
+
+2 Find this block at the top of your HTML:
+<div class="nav">
+  <a href="#options-api">Vue 2 Options API</a>
+  <a href="#composition-api">Vue 3 Composition API</a>
+  <a href="#function">Function</a>
+</div>
+Add your new link here:
+<a href="#lifecycle">Lifecycle Hooks</a>
+

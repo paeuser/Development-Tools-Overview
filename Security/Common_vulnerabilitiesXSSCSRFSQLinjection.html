@@ -3,42 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Common Vulnerabilities: XSS, CSRF, SQL Injection</title>
+    <title>Vulnerabilities: XSS, CSRF, SQL Injection</title>
     <style>
         body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
-        .container { max-width: 700px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
+        .container { max-width: 800px; margin: 2rem auto; background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); padding: 2rem; }
         h1, h2 { text-align: center; }
         ul { margin-bottom: 1.5rem; }
-        code, pre { background: #eee; border-radius: 4px; padding: 2px 6px; }
+        .example { background: #eee; border-radius: 4px; padding: 1rem; margin-bottom: 2rem; }
+        .fix { color: green; font-weight: bold; }
     </style>
 </head>
 <body>
 <div class="container">
-    <h1>Common Vulnerabilities: XSS, CSRF, SQL Injection</h1>
-    <h2>Cross-Site Scripting (XSS)</h2>
-    <ul>
-        <li><strong>What is it?</strong> XSS allows attackers to inject malicious scripts into web pages viewed by other users.</li>
-        <li><strong>Impact:</strong> Can steal cookies, session tokens, or perform actions as the user.</li>
-        <li><strong>Prevention:</strong> Always escape user input, use Content Security Policy (CSP), and sanitize data before rendering.</li>
-    </ul>
-    <h2>Cross-Site Request Forgery (CSRF)</h2>
-    <ul>
-        <li><strong>What is it?</strong> CSRF tricks a user into submitting unwanted actions on a web app where they're authenticated.</li>
-        <li><strong>Impact:</strong> Can change user data, make purchases, or perform admin actions without consent.</li>
-        <li><strong>Prevention:</strong> Use anti-CSRF tokens, check referer headers, and require re-authentication for sensitive actions.</li>
-    </ul>
-    <h2>SQL Injection</h2>
-    <ul>
-        <li><strong>What is it?</strong> SQL Injection lets attackers run arbitrary SQL queries by injecting code into input fields.</li>
-        <li><strong>Impact:</strong> Can read, modify, or delete database data; sometimes gain full control of the server.</li>
-        <li><strong>Prevention:</strong> Always use parameterized queries or prepared statements, validate and sanitize input, and limit database permissions.</li>
-    </ul>
+    <h1>Common Web Vulnerabilities</h1>
+
+    <!-- XSS -->
+    <h2>1. Cross-Site Scripting (XSS)</h2>
+    <div class="example">
+  <ul>
+    <li><strong>What is it?</strong> Malicious scripts injected into web pages viewed by other users.</li>
+    <li><strong>Impact:</strong> Can steal cookies, session tokens, or perform actions as the user.</li>
+    <li><strong>How to fix:</strong>
+      <span class="fix">Always escape user input before displaying it (e.g., using HTML escaping or sanitization).</span>
+    </li>
+  </ul>
+
+  <!-- Simple, copy-paste example showing the fix -->
+  <p><strong>Example (safe display):</strong></p>
+  <pre><code>
+&lt;div&gt;User says: &lt;span id="output"&gt;&lt;/span&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  // attacker-controlled input (example)
+  const userInput = "&lt;script&gt;alert('xss')&lt;/script&gt; Hello &lt;b&gt;world&lt;/b&gt;";
+
+  // FIX: insert as text so any HTML is not interpreted/executed
+  document.getElementById("output").textContent = userInput;
+&lt;/script&gt;
+  </code></pre>
+
+<p>
+    Yes — after escaping, the alert will not execute because escaping replaces special characters with safe equivalents:
+</p>
+<table style="width:100%; border-collapse: collapse; margin-top: 1em;">
+    <thead>
+        <tr>
+            <th style="border: 1px solid #ccc; padding: 6px;">Character</th>
+            <th style="border: 1px solid #ccc; padding: 6px;">Escaped form</th>
+            <th style="border: 1px solid #ccc; padding: 6px;">Meaning</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="border: 1px solid #ccc; padding: 6px;">&lt;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">&amp;lt;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">Displays as &lt; instead of starting a tag</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ccc; padding: 6px;">&gt;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">&amp;gt;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">Displays as &gt;</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ccc; padding: 6px;">&amp;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">&amp;amp;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">Displays as &amp;</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ccc; padding: 6px;">"</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">&amp;quot;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">Displays as "</td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #ccc; padding: 6px;">'</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">&#039;</td>
+            <td style="border: 1px solid #ccc; padding: 6px;">Displays as '</td>
+        </tr>
+    </tbody>
+</table>
+
+
+</div>
+
+    <!-- CSRF -->
+    <h2>2. Cross-Site Request Forgery (CSRF)</h2>
+    <div class="example">
+        <ul>
+            <li><strong>What is it?</strong> Tricks a user into performing actions they didn’t intend to on a site where they’re authenticated.</li>
+            <li><strong>Impact:</strong> Can change user data, make purchases, or perform admin actions without consent.</li>
+            <li><strong>How to fix:</strong> <span class="fix">Use anti-CSRF tokens and verify requests originate from your site.</span></li>
+        </ul>
+    </div>
+
+    <!-- SQL Injection -->
+    <h2>3. SQL Injection</h2>
+    <div class="example">
+        <ul>
+            <li><strong>What is it?</strong> Attackers inject malicious SQL into input fields to manipulate your database.</li>
+            <li><strong>Impact:</strong> Can read, modify, or delete data; sometimes gain full control of the server.</li>
+            <li><strong>How to fix:</strong> <span class="fix">Use prepared statements or parameterized queries and validate all input.</span></li>
+        </ul>
+    </div>
+
     <h2>Best Practices</h2>
     <ul>
         <li>Validate and sanitize all user input.</li>
-        <li>Use security libraries and frameworks that protect against these attacks.</li>
+        <li>Use frameworks and libraries that protect against these attacks.</li>
         <li>Keep software and dependencies up to date.</li>
-        <li>Educate developers about secure coding practices.</li>
+        <li>Educate developers on secure coding practices.</li>
     </ul>
 </div>
 </body>

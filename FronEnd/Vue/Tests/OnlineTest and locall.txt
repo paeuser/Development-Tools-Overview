@@ -1,0 +1,122 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Users</title>
+    <script src="https://unpkg.com/vue@3.4.18/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <user-list></user-list>
+    </div>
+
+    <script>
+      // Define the UserList component
+      const UserList = {
+        data() {
+          return {
+            firstName: '',
+            lastName: '',
+            users: []  // Store users in an array
+          };
+        },
+        methods: {
+          addUser() {
+            // Only add user if both fields have values
+            if (this.firstName && this.lastName) {
+              this.users.push({
+                firstName: this.firstName,
+                lastName: this.lastName
+              });
+              this.firstName = '';  // Clear the first name input
+              this.lastName = '';    // Clear the last name input
+            }
+          }
+        },
+        template: `
+          <div>
+            First name: <input type="text" v-model="firstName"/> 
+            Last name: <input type="text" v-model="lastName"/>
+            <button @click="addUser">Add user</button>
+
+            <table>
+              <caption>Users</caption>
+              <thead>
+                <tr>
+                  <th>Index</th>
+                  <th>First name</th>
+                  <th>Last name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(user, index) in users" :key="index">
+                  <td>{{ index + 1 }}</td>
+                  <td>{{ user.firstName }}</td>
+                  <td>{{ user.lastName }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      };
+
+      // Create the Vue app and register the component
+      const app = Vue.createApp({});
+      app.component("user-list", UserList);
+      app.mount("#app");
+    </script>
+  </body>
+</html>
+
+
+
+// same component in my local enviroment 
+				<template>
+				  <div>
+					First name: <input type="text" v-model="firstName"/> 
+					Last name: <input type="text" v-model="lastName"/>
+					<button @click="addUser">Add user</button>
+
+					<table>
+					  <caption>Users</caption>
+					  <thead>
+						<tr>
+						  <th>Index</th>
+						  <th>First name</th>
+						  <th>Last name</th>
+						</tr>
+					  </thead>
+					  <tbody>
+						<tr v-for="(user, index) in users" :key="index">
+						  <td>{{ index + 1 }}</td>
+						  <td>{{ user.firstName }}</td>
+						  <td>{{ user.lastName }}</td>
+						</tr>
+					  </tbody>
+					</table>
+				  </div>
+				</template>
+
+				<script setup>
+				import { ref } from 'vue'
+
+				// Reactive references for input fields and users list
+				const firstName = ref('');
+				const lastName = ref('');
+				const users = ref([]);
+
+				// Function to add the user
+				const addUser = () => {
+				  // Only add user if both fields have values
+				  if (firstName.value && lastName.value) {
+					users.value.push({
+					  firstName: firstName.value,
+					  lastName: lastName.value
+					});
+					firstName.value = '';  // Clear the first name input
+					lastName.value = '';    // Clear the last name input
+				  }
+				};
+				</script>
+

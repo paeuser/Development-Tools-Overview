@@ -1,0 +1,71 @@
+ADO.NET
+AEM
+AEP
+API Gateway
+ApiController
+App.Run
+App.Use
+Application Insights
+Asynchronous Programming
+Authentication
+Authorization
+AutoMapper
+Cache-Control
+CORS
+CLR Common Language Runtime
+Custom Middleware
+DbContext
+Dependency Injection
+Disconnected Architecture
+DTO
+Endpoint
+Entity Framework Core (EF Core)
+Fields Parameter
+GraphQL
+HATEOAS
+HTTP Methods
+HTTP Status Codes
+Idempotency
+IEnumerable and IQueryable
+Integration Testing
+Invoke
+InvokeAsync
+JSON Web Token (JWT)
+Logging
+lINQ
+Middleware
+Minimal APIs
+Model Binding
+ModelState
+Multipart/form-data
+OAuth 2.0
+Object-Oriented Programming (OOP)
+OpenAPI
+PATCH
+Performance Optimization
+PostgreSQL
+Prometheus
+PUT
+Rate Limiting
+Reference Type
+RequestDelegate
+Response Compression
+REST
+Routing
+Scoped
+Sealed Class
+Server-Sent Events (SSE)
+SQL Server
+Static Files Middleware
+Swagger
+Test-Driven Development (TDD)
+Token
+Uniform Interface
+Unit Testing
+URI Versioning
+UseExceptionHandler
+UseStaticFiles
+Validation Attributes
+Versioning
+Vue.js
+Webhook

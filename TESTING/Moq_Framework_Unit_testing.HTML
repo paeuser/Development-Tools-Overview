@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Moq Framework — Beginner's Guide (C#)</title>
+  <style>
+    body{font-family:Inter,Segoe UI,Roboto,Helvetica,Arial,sans-serif;line-height:1.6;margin:24px;color:#0b1220;background:#f7fafc}
+    header{background:#0f1724;color:#fff;padding:18px;border-radius:10px}
+    h1{margin:0;font-size:24px}
+    .card{background:#fff;border-radius:10px;padding:18px;margin-top:16px;box-shadow:0 6px 18px rgba(11,18,32,0.06)}
+    pre{background:#0b1220;color:#dbeafe;padding:12px;border-radius:6px;overflow:auto}
+    code{font-family:SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+    ul{margin:8px 0 8px 20px}
+    .tip{background:#ecfeff;border-left:4px solid #06b6d4;padding:12px;border-radius:6px;margin-top:12px}
+    footer{margin-top:18px;font-size:13px;color:#475569}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Moq Framework — Beginner's Guide (C#)</h1>
+    <p style="margin-top:6px;opacity:.9">A concise, hands-on introduction to using <strong>Moq</strong> for unit testing in C#.</p>
+  </header>
+
+  <section class="card">
+    <h2>What is Moq?</h2>
+    <p>Moq is a popular, simple-to-use mocking library for .NET that helps you create mock objects for unit tests. It's most commonly used with test frameworks like <code>xUnit</code>, <code>NUnit</code>, or <code>MSTest</code>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Why mock?</h2>
+    <ul>
+      <li>Isolate the unit under test (class/method) from external dependencies (DB, web services, file system).</li>
+      <li>Control dependency behavior (return values, exceptions).</li>
+      <li>Verify interaction (was a method called? how many times?).</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Install Moq</h2>
+    <p>Using the .NET CLI:</p>
+    <pre><code>dotnet add package Moq</code></pre>
+    <p>Or using NuGet Package Manager Console:</p>
+    <pre><code>Install-Package Moq</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Basic example — Arrange/Act/Assert</h2>
+    <p>Suppose you have a service that depends on an interface:</p>
+    <pre><code>// Production code
+public interface IEmailSender
+{
+  void Send(string to, string subject, string body);
+}
+
+public class WelcomeService
+{
+  private readonly IEmailSender _emailSender;
+  public WelcomeService(IEmailSender emailSender) => _emailSender = emailSender;
+
+  public void SendWelcome(string userEmail)
+  {
+    var subject = "Welcome!";
+    var body = "Thanks for joining.";
+    _emailSender.Send(userEmail, subject, body);
+  }
+}
+</code></pre>
+
+    <p>Unit test with Moq:</p>
+    <pre><code>// Test code (xUnit)
+using Moq;
+using Xunit;
+
+public class WelcomeServiceTests
+{
+  [Fact]
+  public void SendWelcome_CallsEmailSender()
+  {
+    // Arrange
+    var mockEmail = new Mock<IEmailSender>();
+    var service = new WelcomeService(mockEmail.Object);
+
+    // Act
+    service.SendWelcome("alice@example.com");
+
+    // Assert - verify that Send was called once with those parameters
+    mockEmail.Verify(m => m.Send("alice@example.com", "Welcome!", "Thanks for joining."), Times.Once);
+  }
+}
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Setup &amp; Returns</h2>
+    <p>Use <code>Setup</code> to configure mock behavior and <code>Returns</code> to provide a return value:</p>
+    <pre><code>public interface IUserRepository { User GetById(int id); }
+
+var mockRepo = new Mock<IUserRepository>();
+mockRepo.Setup(r => r.GetById(5)).Returns(new User { Id = 5, Name = "Ben" });
+
+var user = mockRepo.Object.GetById(5);
+// user.Name == "Ben"
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>It.Is &amp; It.IsAny</h2>
+    <p>For flexible matching of arguments:</p>
+    <pre><code>mockRepo.Setup(r => r.GetById(It.IsAny<int>()))
+        .Returns((int id) =&gt; new User { Id = id, Name = "User" + id });
+
+// Or match predicate:
+mockRepo.Setup(r => r.GetById(It.Is<int>(i =&gt; i &gt; 0))).Returns(new User());
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Verifying calls</h2>
+    <ul>
+      <li><code>Verify</code> — check a method was called with particular arguments.</li>
+      <li><code>Times.Once</code>, <code>Times.Never</code>, <code>Times.AtLeastOnce</code>, etc.</li>
+    </ul>
+    <pre><code>mock.Verify(m => m.DoSomething(), Times.Exactly(2));
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Exceptions and Throws</h2>
+    <pre><code>mock.Setup(m => m.Process(It.IsAny&lt;string&gt;()))
+    .Throws(new InvalidOperationException("bad input"));
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Callbacks</h2>
+    <p>Use callbacks to inspect arguments or change state when a mock method is called:</p>
+    <pre><code>string captured = null;
+mock.Setup(m =&gt; m.Send(It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;()))
+    .Callback((string to, string subject, string body) =&gt; captured = to);
+
+// After action, captured will hold the 'to' value
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Mocking properties</h2>
+    <p>By default, mocks don't store property values. Use <code>SetupProperty</code> or <code>SetupAllProperties</code>:</p>
+    <pre><code>var mock = new Mock&lt;IUser&gt;();
+mock.SetupProperty(u =&gt; u.Name);
+mock.Object.Name = "Sam";
+// Now mock.Object.Name returns "Sam".
+
+// Or automatically for all properties:
+mock.SetupAllProperties();
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Partial mocks (classes)</h2>
+    <p>You can mock concrete classes, but only virtual/abstract members are mockable:</p>
+    <pre><code>public class Greeter
+{
+  public virtual string Hello() => "Hello";
+}
+
+var mock = new Mock&lt;Greeter&gt;();
+mock.Setup(g =&gt; g.Hello()).Returns("Hi");
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Mock behaviors</h2>
+    <p><strong>Loose (default)</strong>: Calls that aren't set up return default values. <br>
+       <strong>Strict</strong>: Any call not explicitly set up throws <code>MockException</code>.</p>
+    <pre><code>var strictMock = new Mock&lt;IService&gt;(MockBehavior.Strict);
+strictMock.Setup(s =&gt; s.DoStuff());
+// Any other call will throw
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Async methods</h2>
+    <p>For methods returning <code>Task</code> or <code>Task&lt;T&gt;</code>:</p>
+    <pre><code>mock.Setup(m => m.GetAsync(1)).ReturnsAsync(new User { Id = 1 });
+
+mock.Setup(m =&gt; m.DoWorkAsync()).Returns(Task.CompletedTask);
+</code></pre>
+  </section>
+
+  <section class="card">
+    <h2>Common pitfalls &amp; tips</h2>
+    <ul>
+      <li>Mock interfaces or abstract classes — avoid mocking concrete implementation details when possible.</li>
+      <li>Don't overuse mocks — for simple data objects use real instances.</li>
+      <li>Keep tests small and focused: one behavior per test.</li>
+      <li>When mocking dependencies, prefer testing behavior (calls, outcomes) over internal implementation.</li>
+      <li>Use <code>It.IsAny&lt;T&gt;()</code> sparingly — precise argument checks catch bugs earlier.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Example — full test (xUnit)</h2>
+    <pre><code>public class OrderProcessorTests
+{
+  [Fact]
+  public void Process_Order_SendsEmailAndMarksProcessed()
+  {
+    // Arrange
+    var order = new Order { Id = 1 };
+    var repo = new Mock&lt;IOrderRepository&gt;();
+    repo.Setup(r =&gt; r.Get(1)).Returns(order);
+
+    var email = new Mock&lt;IEmailSender&gt;();
+
+    var processor = new OrderProcessor(repo.Object, email.Object);
+
+    // Act
+    processor.Process(1);
+
+    // Assert
+    repo.Verify(r =&gt; r.Save(It.Is&lt;Order&gt;(o =&gt; o.Processed == true)), Times.Once);
+    email.Verify(e =&gt; e.Send(It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;(), It.IsAny&lt;string&gt;()), Times.Once);
+  }
+}
+</code></pre>
+  </section>
+
+  <div class="card tip">
+    <strong>Quick cheatsheet</strong>
+    <ul>
+      <li><code>new Mock&lt;T&gt;()</code> — create a mock.</li>
+      <li><code>.Object</code> — instance to pass to the SUT (system under test).</li>
+      <li><code>Setup()</code> — define behavior.</li>
+      <li><code>Returns()</code> / <code>ReturnsAsync()</code> — supply return values.</li>
+      <li><code>Verify()</code> — assert interactions.</li>
+      <li><code>It.IsAny&lt;T&gt;()</code> / <code>It.Is&lt;T&gt;(predicate)</code> — argument matching.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <p>Want this trimmed to a one-page cheat-sheet or converted to a PDF? Tell me which parts to emphasize (async, advanced setups, or integration tests) and I'll update it.</p>
+  </footer>
+</body>
+</html>
